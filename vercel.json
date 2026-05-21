@@ -1,9 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/", "destination": "/app.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -14,7 +11,7 @@
       ]
     },
     {
-      "source": "/app.html",
+      "source": "/index.html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
