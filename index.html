@@ -96,7 +96,7 @@ a{color:var(--brand);text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3,h4{font-family:"Fredoka",inherit;font-weight:600;letter-spacing:-.01em}
 
-.app{display:grid;grid-template-rows:auto 1fr;height:100vh;overflow:hidden}
+.app{display:grid;grid-template-rows:auto 1fr;height:100vh;height:100dvh;overflow:hidden}
 
 /* ================ Auth screen ================ */
 .auth-screen{
@@ -586,15 +586,18 @@ header.topbar{
 
   /* Workspace: ou lista ou mapa, controlado por toggle */
   .workspace{
-    grid-template-columns:1fr;
+    display:flex;
+    flex-direction:column;
     padding:8px 8px 8px;
     gap:0;
     position:relative;
+    height:100%;
+    min-height:0;
   }
   #view-map .list-card{display:none}
-  #view-map.mob-list .list-card{display:flex}
+  #view-map.mob-list .list-card{display:flex;flex:1;min-height:0}
   #view-map.mob-list #map-wrap{display:none}
-  #view-map #map-wrap{display:block}
+  #view-map #map-wrap{display:block;flex:1;min-height:0;height:auto;width:100%}
   /* Toggle FAB no canto inferior direito */
   .mob-toggle{
     display:flex;align-items:center;justify-content:center;gap:8px;
@@ -1788,6 +1791,14 @@ function wireUp(){
   document.getElementById("btn-draw-clear").addEventListener("click", clearArea);
 
   // Mobile: toggle Lista <-> Mapa
+  function forceMapInvalidate(){
+    if(!State.map) return;
+    // Várias chamadas em frames diferentes para garantir que o Leaflet calcula o tamanho
+    // correto após CSS transitions / display changes (Safari iOS pode ser lento).
+    for(const delay of [0, 50, 200, 500]){
+      setTimeout(()=>{ try{ State.map.invalidateSize(true); }catch(e){} }, delay);
+    }
+  }
   const mobToggle = document.getElementById("mob-toggle");
   if(mobToggle){
     mobToggle.addEventListener("click", ()=>{
@@ -1796,12 +1807,18 @@ function wireUp(){
       const showingList = view.classList.contains("mob-list");
       document.getElementById("mob-toggle-ic").textContent = showingList ? "🗺" : "📋";
       document.getElementById("mob-toggle-lbl").textContent = showingList ? "Ver no mapa" : "Ver lista";
-      if(!showingList && State.map){ setTimeout(()=>State.map.invalidateSize(), 50); }
+      if(!showingList) forceMapInvalidate();
     });
     // Inicial: mostrar lista em mobile (faz mais sentido como first view)
     if(window.matchMedia && window.matchMedia("(max-width: 820px)").matches){
       document.getElementById("view-map").classList.add("mob-list");
     }
+  }
+  // Observar mudanças de tamanho do container do mapa (rotação, mudanças de UI)
+  if(window.ResizeObserver && document.getElementById("map-wrap")){
+    new ResizeObserver(()=>{
+      if(State.map) try{ State.map.invalidateSize(true); }catch(e){}
+    }).observe(document.getElementById("map-wrap"));
   }
   // Auto-mostrar mapa quando desenha área ou clica em cluster (mobile)
   function maybeAutoShowMapMobile(){
@@ -1810,10 +1827,13 @@ function wireUp(){
       v.classList.remove("mob-list");
       document.getElementById("mob-toggle-ic").textContent = "📋";
       document.getElementById("mob-toggle-lbl").textContent = "Ver lista";
-      if(State.map) setTimeout(()=>State.map.invalidateSize(), 50);
+      forceMapInvalidate();
     }
   }
   window._maybeAutoShowMapMobile = maybeAutoShowMapMobile;
+  // Quando muda orientação ou redimensiona janela
+  window.addEventListener("resize", ()=>{ if(State.map) try{ State.map.invalidateSize(true); }catch(e){} });
+  window.addEventListener("orientationchange", forceMapInvalidate);
   document.getElementById("btn-here").addEventListener("click", ()=>{
     if(!navigator.geolocation){ alert("Geolocalização não suportada"); return; }
     navigator.geolocation.getCurrentPosition(
