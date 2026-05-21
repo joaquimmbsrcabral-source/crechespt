@@ -1,0 +1,17 @@
+{
+  "name": "CrechesPT",
+  "short_name": "CrechesPT",
+  "description": "Encontra a creche certa para o teu filho — mapa interativo com 2591 creches em Portugal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF6EE",
+  "theme_color": "#FF9F68",
+  "orientation": "any",
+  "lang": "pt-PT",
+  "icons": [
+    { "src": "/favicon.svg",  "sizes": "any",     "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
