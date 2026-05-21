@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 51 creches, jardins de infância e infantários no distrito de Évora, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Évora (51) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 51 creches, jardins de infância e infantários no distrito de Évora, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/evora">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/evora">
+<title>Creches em Évora (51) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Évora",
+  "description": "Lista atualizada de 51 creches, jardins de infância e infantários no distrito de Évora, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 51,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Externato Nossa Senhora da Piedade"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Évora","item":"https://crechespt.vercel.app/creches/evora"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Évora</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Évora</span>
+  <h1>Creches em Évora</h1>
+  <p>51 creches, jardins de infância e infantários no distrito de Évora. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>51</b>creches no total</div>
+  <div class="tile"><b>30</b>públicas</div>
+  <div class="tile"><b>1</b>IPSS</div>
+  <div class="tile"><b>9</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Évora</span> <span>Estremoz</span> <span>Reguengos de Monsaraz</span> <span>Montemor-o-Novo</span> <span>Vendas Novas</span> <span>Aguiar Vnt</span> <span>São João dos Caldeireiros</span> <span>Sabugueiro</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Évora</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1314685140" class="nm">Externato Nossa Senhora da Piedade</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2031073466" class="nm">Jardim de Infância da Mata</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5310976828" class="nm">Jardim de Infância</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11110310650" class="nm">Coopberço - Creche e Jardim de Infância</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266706410">📞 +351 266706410</a> · <a href="mailto:coopbercoevora@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11976179350" class="nm">Jardim de Infância do Centro Social e Paroquial de Santo André em Estremoz</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Estremoz</div>
+  <div class="rc"><a href="tel:+351 268333405">📞 +351 268333405</a> · <a href="mailto:csandre.etz@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11976179351" class="nm">Creche e Pré-Escolar Rainha Santa Isabel de Estremoz</a></div>
+  <div class="rmeta">Privada · Infantário · Estremoz</div>
+  <div class="rc"><a href="tel:+351 268339380">📞 +351 268339380</a> · <a href="mailto:ji.cbesocialestremoz@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11976179361" class="nm">Jardim de Infância &quot;O Casulo&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266735698">📞 +351 266735698</a> · <a href="mailto:ocasulo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12021328199" class="nm">Jardim de infância Legado Caixeiro Alentejano</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><a href="tel:+351 266 760 680">📞 +351 266 760 680</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12294404150" class="nm">Centro Infantil Irene Lisboa</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Évora</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-13106064829" class="nm">Jardim de Infância de Aguiar</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-117655985" class="nm">Jardim de Infância de Aguiar</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Aguiar Vnt</div>
+  <div class="rc"><a href="tel:+351 266 791 243">📞 +351 266 791 243</a> · <a href="mailto:ji.aguiar10outubro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-150114687" class="nm">Jardim de Infância de Santa Maria</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Estremoz</div>
+  <div class="rc"><a href="tel:+351 268324412">📞 +351 268324412</a> · <a href="mailto:ji.n1.estremoz@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-339751731" class="nm">Jardim de Infância de Mourão</a></div>
+  <div class="rmeta">Pública · Jardim de Infância</div>
+  <div class="rc"><a href="tel:+351 266 586 256">📞 +351 266 586 256</a> · <a href="mailto:ji.mourao@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.drealentejo.pt/webi/MOURAO/default.htm" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-392434704" class="nm">Jardim de Infância de Reguengos de Monsaraz</a></div>
+  <div class="rmeta">Jardim de Infância · Reguengos de Monsaraz</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-867450333" class="nm">Jardim de Infância de Penilhos</a></div>
+  <div class="rmeta">Pública · Creche · São João dos Caldeireiros</div>
+  <div class="rc"><a href="tel:+351 286975395">📞 +351 286975395</a> · <a href="mailto:eb1.penilhos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-890355429" class="nm">Jardim Infantil nº2 de Montemor</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-989740171" class="nm">Jardim de Infância de Cabrela</a></div>
+  <div class="rmeta">Pública · Creche · Montemor-o-Novo</div>
+  <div class="rc"><a href="tel:+351 265895333">📞 +351 265895333</a> · <a href="mailto:secretaria.aemn@aemn.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1062477822" class="nm">Jardim de Infância de Sabugueiro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sabugueiro</div>
+  <div class="rc"><a href="tel:+351 266 497 002">📞 +351 266 497 002</a> · <a href="mailto:ji.slargoigreja@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1147373572" class="nm">Jardim de Infância de São Romão</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Ciladas (São Romão)</div>
+  <div class="rc"><a href="tel:+351 268969046">📞 +351 268969046</a> · <a href="mailto:ji.sromaociladas@escolas.min-edu.pt">✉ Email</a> · <a href="http://agrupescolasvvicosa.no.sapo.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424238" class="nm">Jardim de Infância de Graça do Divor</a></div>
+  <div class="rmeta">Pública · Jardim de Infância</div>
+  <div class="rc"><a href="tel:+351 266967210">📞 +351 266967210</a> · <a href="mailto:ji.gracadivor@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424241" class="nm">Jardim de Infância de Azaruja</a></div>
+  <div class="rmeta">Pública · Jardim de Infância</div>
+  <div class="rc"><a href="tel:+351 266979385">📞 +351 266979385</a> · <a href="mailto:ji.azaruja@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424244" class="nm">Polo de Itinerância de São Miguel de Machede</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 963561385">📞 +351 963561385</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424245" class="nm">Jardim de Infância de Nossa Senhora de Machede</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Nossa Senhora de Machede</div>
+  <div class="rc"><a href="tel:+351 266917381">📞 +351 266917381</a> · <a href="mailto:ji.nsramachede@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424253" class="nm">Jardim de Infância do Bairro Garcia de Resende</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266707562">📞 +351 266707562</a> · <a href="mailto:ji.evorasrasaude@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424254" class="nm">Jardim de Infância do Penedo de Ouro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266777194">📞 +351 266777194</a> · <a href="mailto:ji.penedoouro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424256" class="nm">Jardim de Infância do Bairro de Santo António</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266742646">📞 +351 266742646</a> · <a href="mailto:ji.stantonioevora@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424447" class="nm">Jardim de Infância de São Sebastião da Giesteira</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · São Sebastião da Giesteira</div>
+  <div class="rc"><a href="tel:+351 266907459">📞 +351 266907459</a> · <a href="mailto:ji.ssgiesteira@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424449" class="nm">Jardim de Infância de Água de Lupe</a></div>
+  <div class="rmeta">Pública · Jardim de Infância</div>
+  <div class="rc"><a href="tel:+351 266781210">📞 +351 266781210</a> · <a href="mailto:ji.agualupe@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424453" class="nm">Jardim de Infância de Valverde</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Valverde</div>
+  <div class="rc"><a href="tel:+351 266711262">📞 +351 266711262</a> · <a href="mailto:ji.vnsratorega@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424455" class="nm">Jardim de Infância da Cruz da Picada</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266 731 242">📞 +351 266 731 242</a> · <a href="mailto:ji.evoramalagueira@escolas.min-edu.pt">✉ Email</a> · <a href="https://aemfp.pt/ji_cruz_picada.html" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1263424458" class="nm">Creche e Jardim de Infância ADBES</a></div>
+  <div class="rmeta">Creche + JI · Évora</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1267084581" class="nm">Jardim de Infância n.º 1 de Montemor-o-Novo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Montemor-o-Novo</div>
+  <div class="rc"><a href="tel:+351 266084751">📞 +351 266084751</a> · <a href="mailto:secretaria.aemn@aemn.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1267084586" class="nm">Jardim de Infância de Monte Branco</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vendas Novas</div>
+  <div class="rc"><a href="tel:+351 265892198">📞 +351 265892198</a> · <a href="mailto:direcao.aevn@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273156108" class="nm">Jardim de Infância de Aldeia dos Fernandes</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Aldeia dos Fernandes</div>
+  <div class="rc"><a href="tel:+351 286479100">📞 +351 286479100</a> · <a href="mailto:ji.aldeiafernandes@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273156116" class="nm">Jardim de Infância de Bencatel</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Bencatel</div>
+  <div class="rc"><a href="tel:+351 268408035">📞 +351 268408035</a> · <a href="mailto:ji.bencatel@escolas.min-edu.pt">✉ Email</a> · <a href="http://agrupescolasvvicosa.no.sapo.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273156118" class="nm">Jardim de Infância de Pardais</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Pardais</div>
+  <div class="rc"><a href="tel:+351 268431075">📞 +351 268431075</a> · <a href="mailto:eb1.pardais@escolas.min-edu.pt">✉ Email</a> · <a href="http://agrupescolasvvicosa.no.sapo.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273156119" class="nm">Jardim de Infância de Vila Viçosa</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vila Viçosa</div>
+  <div class="rc"><a href="tel:+351 268881293">📞 +351 268881293</a> · <a href="mailto:ji.vvicosa@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273166178" class="nm">Jardim de Infância de Castro Verde</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Castro Verde</div>
+  <div class="rc"><a href="tel:+351 286327237">📞 +351 286327237</a> · <a href="mailto:ji.castroverde@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1273184858" class="nm">Jardim de Infância de Mértola</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Mértola</div>
+  <div class="rc"><a href="tel:+351 286611146">📞 +351 286611146</a> · <a href="mailto:ji.mertola@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1275399322" class="nm">Jardim de Infância de Igrejinha</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Igrejinha</div>
+  <div class="rc"><a href="tel:+351 266477103">📞 +351 266477103</a> · <a href="mailto:ji.igrejinha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1275399323" class="nm">Jardim de Infância de Orada</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Orada</div>
+  <div class="rc"><a href="tel:+351 268800280">📞 +351 268800280</a> · <a href="mailto:ji.orada@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291583791" class="nm">Infantário Carrilho Garcia</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância · Almodôvar</div>
+  <div class="rc"><a href="tel:+351 286662639">📞 +351 286662639</a> · <a href="mailto:if.carrilhogarcia@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291858281" class="nm">Jardim de Infância dos Campos da Rainha</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vendas Novas</div>
+  <div class="rc"><a href="tel:+351 265893744">📞 +351 265893744</a> · <a href="mailto:eb1.camposrainha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291858291" class="nm">Jardim de Infância da Santa Casa da Misericórdia de Vimieiro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Vimieiro</div>
+  <div class="rc"><a href="tel:+351 266 467 584">📞 +351 266 467 584</a> · <a href="mailto:ji.scmvimieiro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291858292" class="nm">Colégio &quot;Jardim dos Sentidos&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Montemor-o-Novo</div>
+  <div class="rc"><a href="tel:+351 266892134">📞 +351 266892134</a> · <a href="mailto:colegio.jardimdossentidos@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291858294" class="nm">Centro Infantil &quot;Palmo e Meio&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266742118">📞 +351 266742118</a> · <a href="mailto:ci.palmoemeio@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1291858295" class="nm">Colégio Internacional Petit Enfant</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · ÉVORA</div>
+  <div class="rc"><a href="tel:+351 968532823">📞 +351 968532823</a> · <a href="mailto:eborlandia@gmail.com">✉ Email</a> · <a href="https://www.petitenfant.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1304549171" class="nm">Jardim de Infância &quot;Quinta dos Sonhos&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Évora</div>
+  <div class="rc"><a href="tel:+351 266771123">📞 +351 266771123</a> · <a href="mailto:ji.qtsonhos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-relation-17399434" class="nm">Jardim de Infância da Afeiteira</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vendas Novas</div>
+  <div class="rc"><a href="tel:+351 265893704">📞 +351 265893704</a> · <a href="mailto:direcao.aevn@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-392434703" class="nm">Creche e Aparece</a></div>
+  <div class="rmeta">Creche · Reguengos de Monsaraz</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-392434707" class="nm">Creche e Jardim de Infância</a></div>
+  <div class="rmeta">Creche + JI · Reguengos de Monsaraz</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Évora</h2>
+  <p>O distrito de Évora tem 51 creches registadas no CrechesPT, incluindo 30 pública, 11 desconhecido, 9 privada, 1 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Évora</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

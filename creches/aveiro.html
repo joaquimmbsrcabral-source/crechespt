@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 144 creches, jardins de infância e infantários no distrito de Aveiro, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Aveiro (144) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 144 creches, jardins de infância e infantários no distrito de Aveiro, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/aveiro">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/aveiro">
+<title>Creches em Aveiro (144) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Aveiro",
+  "description": "Lista atualizada de 144 creches, jardins de infância e infantários no distrito de Aveiro, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 144,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Shalom"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Aveiro","item":"https://crechespt.vercel.app/creches/aveiro"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Aveiro</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Aveiro</span>
+  <h1>Creches em Aveiro</h1>
+  <p>144 creches, jardins de infância e infantários no distrito de Aveiro. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>144</b>creches no total</div>
+  <div class="tile"><b>58</b>públicas</div>
+  <div class="tile"><b>10</b>IPSS</div>
+  <div class="tile"><b>40</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Aveiro</span> <span>Ovar</span> <span>São João da Madeira</span> <span>Branca</span> <span>Arrifana</span> <span>Tamengos</span> <span>Fajões</span> <span>Oiã</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Aveiro</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1126452530" class="nm">Shalom</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1295105127" class="nm">Jardim de Infância de Castanheira do Vouga</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Igreja</div>
+  <div class="rc"><a href="tel:+351 234 180 159">📞 +351 234 180 159</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1362965511" class="nm">Pequinitates e Companhia</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Aveiro</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1533306375" class="nm">O Mágico</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Giesteira</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1699716468" class="nm">Centro Infantil de Aveiro</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1699763499" class="nm">Gymboree</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1799579126" class="nm">Jardim Infantil &quot;O Tagarela&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 234383030">📞 +351 234383030</a> · <a href="mailto:ji.otagarela@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1799641752" class="nm">Parque Infantil dos Chorões</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1801499233" class="nm">Centro de Estudo de Albergaria</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2142414043" class="nm">Centro Infantil - Casa do Povo de Oliveirinha</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2808881281" class="nm">Creche Fundação António Pascal</a></div>
+  <div class="rmeta">IPSS · Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-4628553451" class="nm">Jardim Infantil da Obra Social de São Martinho da Gândara</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · São Martinho da Gândara</div>
+  <div class="rc"><a href="tel:+351 256687200">📞 +351 256687200</a> · <a href="mailto:jiossmgandara@min-educ.pt">✉ Email</a> · <a href="http://obrasocialsmg.sitesedv.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-7251403319" class="nm">Associação de Infância D.Teresa</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-7346765831" class="nm">Jardim de Infância &quot;Quinta dos Pequenotes&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 234308075">📞 +351 234308075</a> · <a href="mailto:ji.qtpequenotes@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9001002285" class="nm">Jardim de Infância José Atónio Martins</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11203601713" class="nm">Abrigo Infantil das Laranjeiras</a></div>
+  <div class="rmeta">Infantário (IPSS) · São João da Madeira</div>
+  <div class="rc"><a href="https://misericordiasjm.org/abrigo-infantil-das-laranjeiras/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11829354258" class="nm">Jardim de Infância de Vila Nova de Monsarros</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vila Nova de Monsarros</div>
+  <div class="rc"><a href="tel:+351 231516213">📞 +351 231516213</a> · <a href="mailto:ji.vnovamonsarros@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11961322856" class="nm">Jardim Infantil do Centro Social Doutora Leonilda Aurora da Silva Matos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Fajões</div>
+  <div class="rc"><a href="tel:+351 256851656">📞 +351 256851656</a> · <a href="mailto:ji.cdlasilvamatos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11961322862" class="nm">Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Maceda</div>
+  <div class="rc"><a href="tel:+351 256792178">📞 +351 256792178</a> · <a href="mailto:ji.cspspedromaceda@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11961703622" class="nm">Jardim de Infância do Centro Social e Paroquial de São Tomé de Canelas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Canelas</div>
+  <div class="rc"><a href="tel:+351 234849912">📞 +351 234849912</a> · <a href="mailto:csp.stomecanelas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11961703642" class="nm">Jardim Infantil do Centro Social Paroquial de Santa Maria da Murtosa</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Murtosa</div>
+  <div class="rc"><a href="tel:+351 234867533">📞 +351 234867533</a> · <a href="mailto:ji.cspstammurtosa@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11961745976" class="nm">Jardim de Infância Probranca</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Branca</div>
+  <div class="rc"><a href="tel:+351 234540220">📞 +351 234540220</a> · <a href="mailto:ji.probranca@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804178" class="nm">Jardim de Infância da Associação de Solidariedade Social do Silveiro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Oiã</div>
+  <div class="rc"><a href="tel:+351 234729170">📞 +351 234729170</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804230" class="nm">Jardim Infantil do Patronato da Nossa Senhora das Dores</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Travassô</div>
+  <div class="rc"><a href="tel:+351 234629238">📞 +351 234629238</a> · <a href="mailto:ji.patnsradores@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.pnsdores.com/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804244" class="nm">Jardim Infantil da Associação de Solidariedade Social de Alquerubim</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Alquerubim</div>
+  <div class="rc"><a href="tel:+351 234930303">📞 +351 234930303</a> · <a href="mailto:ji.assalquerubim@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804249" class="nm">Jardim Infantil do Centro de Bem-Estar Social de Macinhata do Vouga</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Macinhata do Vouga</div>
+  <div class="rc"><a href="tel:+351 234571154">📞 +351 234571154</a> · <a href="mailto:ji.cbesmvouga@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804254" class="nm">Jardim de Infância Trá-Lá-Lá</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 234421187">📞 +351 234421187</a> · <a href="mailto:ji.tralala@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804260" class="nm">Jardim Infantil do Centro Paroquial de São Bernardo</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 231340130">📞 +351 231340130</a> · <a href="mailto:ji.cpsbernardo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11962804271" class="nm">Jardim de Infância da Associação de Solidariedade e Acção Social - ASAS Santa Joana</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 234305100">📞 +351 234305100</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11963019991" class="nm">Jardim Infantil da Casa da Imaculada Conceição</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Anadia</div>
+  <div class="rc"><a href="tel:+351 231512602">📞 +351 231512602</a> · <a href="mailto:ji.ciconceicao@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11963020045" class="nm">Jardim de Infância do Centro Social, Cultural e Recreativo de Paredes do Bairro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Paredes do Bairro</div>
+  <div class="rc"><a href="tel:+351 231528391">📞 +351 231528391</a> · <a href="mailto:csc.rparedesbairro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11963020047" class="nm">Jardim Infantil da Associação de Beneficiência e Cultura de Bustos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Bustos</div>
+  <div class="rc"><a href="tel:+351 234753294">📞 +351 234753294</a> · <a href="mailto:ji.abculturabustos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11970553038" class="nm">Jardim de Infância Habitovar</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Ovar</div>
+  <div class="rc"><a href="tel:+351 256573144">📞 +351 256573144</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11970695420" class="nm">Jardim de Infância da Associação Recreativa Cultural de Óis da Ribeira</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Óis da Ribeira</div>
+  <div class="rc"><a href="tel:+351 234629818">📞 +351 234629818</a> · <a href="mailto:ass.rcoisribeira@escolas.min-edu.pt">✉ Email</a> · <a href="http://arcor.no.sapo.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11970695439" class="nm">Infantário da Obra do Frei Gil</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Bustos</div>
+  <div class="rc"><a href="tel:+351 234750146;+351 926260158">📞 +351 234750146;+351 926260158</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12068906128" class="nm">Jardim Infantil do Centro Social de Oiã</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Oiã</div>
+  <div class="rc"><a href="tel:+351 234721366">📞 +351 234721366</a> · <a href="mailto:ji.csoia@escolas.min-edu.pt">✉ Email</a> · <a href="http://csocialoia.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12068906129" class="nm">Jardim de Infância do Centro Ambiente Para Todos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Troviscal</div>
+  <div class="rc"><a href="tel:+351 234754503">📞 +351 234754503</a> · <a href="mailto:ass.ctambientetodos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12068906130" class="nm">Jardim Infantil do Centro Social e Paroquial de São Pedro da Palhaça</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Palhaça</div>
+  <div class="rc"><a href="tel:+351 234752388">📞 +351 234752388</a> · <a href="mailto:direccao@csp-palhaca.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12068906151" class="nm">Jardim Infantil da Santa Casa da Misericórdia de Oliveira de Azeméis</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Oliveira de Azeméis</div>
+  <div class="rc"><a href="tel:+351 256600840">📞 +351 256600840</a> · <a href="mailto:contab.misericordia@mail.telepac.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12335685186" class="nm">Cresce e Jardim de Infância da Santa Casa da Misericórdia</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-78121960" class="nm">Jardim de infância do Furadouro</a></div>
+  <div class="rmeta">Jardim de Infância · Ovar</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-86959467" class="nm">Parque Infantil das Barreiras</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-93987305" class="nm">Bela Vista</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-95458492" class="nm">Casa da Criança</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Águeda</div>
+  <div class="rc"><a href="tel:+351 234 690 355">📞 +351 234 690 355</a> · <a href="http://www.scm-agueda.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-105609189" class="nm">Jardim de Infância de Junqueira</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-105888680" class="nm">Parque Infantil</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-130782949" class="nm">Centro Social de Azurva</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-134486044" class="nm">Centro Infantil da Santa Casa da Misericórdia de Estarreja</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Estarreja</div>
+  <div class="rc"><a href="tel:+351 234844267">📞 +351 234844267</a> · <a href="mailto:ji.csteixugueira@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-161202906" class="nm">Infantário Centro de Esgueira</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-168522918" class="nm">Escolinha Capitão Lebre</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Aveiro</div>
+  <div class="rc"><a href="tel:+351 914483737">📞 +351 914483737</a> · <a href="http://www.escolinhacapitaolebre.com/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-168735565" class="nm">Centro de Infância da Barra</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Gafanha da Nazaré</div>
+  <div class="rc"><a href="tel:+351 234 369471">📞 +351 234 369471</a> · <a href="mailto:barra@casci.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-168977069" class="nm">Jardim de Infância da Avenida</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Albergaria-a-Velha</div>
+  <div class="rc"><a href="tel:+351 234524604">📞 +351 234524604</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-192573518" class="nm">Antigo Jardim Infantil</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-198190788" class="nm">Infantário</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-198190799" class="nm">Creche</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-227955243" class="nm">Centro Social e Paroquial de São Vicente da Branca</a></div>
+  <div class="rmeta">IPSS · Infantário</div>
+  <div class="rc"><a href="https://cspsvb.video.blog/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-227956355" class="nm">Jardim de Infância de São João de Loure</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · São João de Loure</div>
+  <div class="rc"><a href="tel:+351 234932911">📞 +351 234932911</a> · <a href="mailto:ji.sjoaoloure@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-238976036" class="nm">Jardim de Infância de Eirol</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-241866149" class="nm">Jardim de Infância de Senhorinha</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sever do Vouga</div>
+  <div class="rc"><a href="tel:+351 234556406">📞 +351 234556406</a> · <a href="mailto:eb1.senhorinha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-244233232" class="nm">Jardim de Infância de Oliveirinha</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Oliveirinha</div>
+  <div class="rc"><a href="tel:+351 961274356">📞 +351 961274356</a> · <a href="mailto:ji.oliveirinhanariz@escolas.min-edu.pt">✉ Email</a></div>
+</li><li class="more"><a href="/app">+ Ver as outras 84 creches no mapa →</a></li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Aveiro</h2>
+  <p>O distrito de Aveiro tem 144 creches registadas no CrechesPT, incluindo 58 pública, 40 privada, 36 desconhecido, 10 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Aveiro</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

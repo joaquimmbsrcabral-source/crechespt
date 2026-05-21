@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 201 creches, jardins de infância e infantários no distrito de Braga, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Braga (201) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 201 creches, jardins de infância e infantários no distrito de Braga, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/braga">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/braga">
+<title>Creches em Braga (201) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Braga",
+  "description": "Lista atualizada de 201 creches, jardins de infância e infantários no distrito de Braga, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 201,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Jardim de Infância da Associação Maconde"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Braga","item":"https://crechespt.vercel.app/creches/braga"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Braga</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Braga</span>
+  <h1>Creches em Braga</h1>
+  <p>201 creches, jardins de infância e infantários no distrito de Braga. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>201</b>creches no total</div>
+  <div class="tile"><b>104</b>públicas</div>
+  <div class="tile"><b>14</b>IPSS</div>
+  <div class="tile"><b>31</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Braga</span> <span>Barcelos</span> <span>Vila Nova de Famalicão</span> <span>Lixa</span> <span>Esposende</span> <span>Ribeirão</span> <span>Nine</span> <span>Arcozelo</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Braga</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1225469967" class="nm">Jardim de Infância da Associação Maconde</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1243162055" class="nm">Casa de Benificiência Dias Machado</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1434529887" class="nm">Bercário e Infantário São José</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1491899838" class="nm">Infantário das Dominicas</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1494161456" class="nm">Centro Jovem</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1674071220" class="nm">Centro Social Padre Manuel Joaquim de Sousa</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1780985181" class="nm">Centro Social P. David Oliveira Martins</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1795164328" class="nm">ATL Fiéis de Deus</a></div>
+  <div class="rmeta">ATL</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1988288505" class="nm">Creche Cruz Vermelha</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2149319243" class="nm">Infantário do Centro Paroquial de Penselo</a></div>
+  <div class="rmeta">IPSS · Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2165693089" class="nm">Jardim de Infância de Pulo Aldão</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2194531980" class="nm">Jardim de Infância do Centro de Intervenção Cultural de Palmeira de Faro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Palmeira de Faro</div>
+  <div class="rc"><a href="tel:+351 253963783">📞 +351 253963783</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2195511293" class="nm">Jardim de Infância D. Pedro V</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2242796531" class="nm">Jardim de Infância de Sequeira</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2244670035" class="nm">Creche de Briteiros</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2894454443" class="nm">Cantinho Alegre</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-3652519629" class="nm">Creche/Pré-escola</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-3660127813" class="nm">Infantário</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-6245403950" class="nm">José Carneiro Bouças</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9949585812" class="nm">Creche Casa do povo</a></div>
+  <div class="rmeta">IPSS · Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9992480657" class="nm">Jardim de Infância de Sapugal</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11759312975" class="nm">Jardim de Infância de Sabariz</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sabariz</div>
+  <div class="rc"><a href="tel:+351 253311442">📞 +351 253311442</a> · <a href="mailto:eb1.arinho@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11759312976" class="nm">Jardim de Infância de Lanhas</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Lanhas</div>
+  <div class="rc"><a href="mailto:ji.lanhas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11770206502" class="nm">Jardim de Infância de Aldeia Nova</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Ribeirão</div>
+  <div class="rc"><a href="tel:+351 252491029">📞 +351 252491029</a> · <a href="mailto:eb1.n2.anvnfamalicao@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11772640296" class="nm">Jardim de Infância de São Miguel de Seide</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Seide São Miguel</div>
+  <div class="rc"><a href="tel:+351 252327352">📞 +351 252327352</a> · <a href="mailto:ji.seidesmiguel@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11781661528" class="nm">Jardim de Infância de Bracara Augusta</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253271965">📞 +351 253271965</a> · <a href="mailto:ji.bracaraaugusta@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11781684737" class="nm">Jardim de Infância de Adaúfe</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253284050">📞 +351 253284050</a> · <a href="mailto:ji.romil@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11781684771" class="nm">Jardim de Infância de São Pedro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253284568">📞 +351 253284568</a> · <a href="mailto:ji.areiasbaixo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11901607021" class="nm">Jardim Infantil da Casa do Povo de Nine</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Nine</div>
+  <div class="rc"><a href="tel:+351 252961183">📞 +351 252961183</a> · <a href="mailto:ji.cpovonine@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11901607030" class="nm">Jardim Infantil da Cruz Vermelha Portuguesa de Macieira de Rates</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Macieira de Rates</div>
+  <div class="rc"><a href="tel:+351 252957639">📞 +351 252957639</a> · <a href="mailto:ji.cvpmacieirarates@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11939418729" class="nm">Jardim de Infância da Obra Social das Franciscanas Missionárias de Maria</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Arcozelo</div>
+  <div class="rc"><a href="tel:+351 253824800">📞 +351 253824800</a> · <a href="mailto:ji.osfmmaria@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11940097036" class="nm">Jardim Infantil do Centro Paroquial de Ariz</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Ariz</div>
+  <div class="rc"><a href="tel:+351 255589019">📞 +351 255589019</a> · <a href="mailto:ji.cpariz@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954312512" class="nm">Jardim de Infância &quot;Aldeia da Gente Pequena&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253110647">📞 +351 253110647</a> · <a href="mailto:agpinterno@gmail.com;a.g.pequena@gmail.com">✉ Email</a> · <a href="http://www.agp.yolasite.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954645911" class="nm">Jardim Infantil do Centro Social de Guardizela</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Guardizela</div>
+  <div class="rc"><a href="tel:+351 252938196">📞 +351 252938196</a> · <a href="mailto:ji.guardizela@escolas.min-edu.pt">✉ Email</a> · <a href="http://centrosocialguardizela.comyr.com/index.php?p=1_9" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954645930" class="nm">Jardim de Infância do Centro Social Paroquial de Avidos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lagoa</div>
+  <div class="rc"><a href="tel:+351 252501370">📞 +351 252501370</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954646022" class="nm">Jardim de Infância da Associação de Trabalhadores da ACO</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Mogege</div>
+  <div class="rc"><a href="tel:+351 252990410">📞 +351 252990410</a> · <a href="mailto:ata@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954714309" class="nm">Centro Infantil da Lixa</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Freixo de Cima</div>
+  <div class="rc"><a href="tel:+351 255494472">📞 +351 255494472</a> · <a href="mailto:ci.lixa@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954714310" class="nm">Centro Infantil do Terreiro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Borba de Godim</div>
+  <div class="rc"><a href="tel:+351 255 496424">📞 +351 255 496424</a> · <a href="mailto:centro.terreiro@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954714318" class="nm">Externato Senhora do Alívio</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lixa</div>
+  <div class="rc"><a href="tel:+351 255494758;+351 255137146">📞 +351 255494758;+351 255137146</a> · <a href="mailto:ext.sraalivio@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954714319" class="nm">Jardim de Infância do Centro Social e Paroquial de Santão</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Santão</div>
+  <div class="rc"><a href="tel:+351 255494352">📞 +351 255494352</a> · <a href="mailto:ji.cspsantao@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954730322" class="nm">Creche e Jardim de Infância do Centro Social e Paroquial Padre António Mendonça</a></div>
+  <div class="rmeta">Privada · Infantário · Airães</div>
+  <div class="rc"><a href="tel:+351 925 340 301;+351 255488574">📞 +351 925 340 301;+351 255488574</a> · <a href="mailto:centrosocialpam@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11956149098" class="nm">Jardim de Infância do Centro Social de Santa Cruz do Douro</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Santa Cruz do Bispo</div>
+  <div class="rc"><a href="tel:+351 254880120">📞 +351 254880120</a> · <a href="mailto:cs.stacruzdouro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11959253120" class="nm">Jardim Infantil da Santa Casa da Misericórdia de Resende</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Resende</div>
+  <div class="rc"><a href="tel:+351 254870180">📞 +351 254870180</a> · <a href="mailto:ji.scmresende@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.scmr.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-12083592505" class="nm">Jardim de Infância do Centro Cultural e Social de Santo Adrião</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253200690">📞 +351 253200690</a> · <a href="mailto:csc.staadriao@escolas.min-edu.pt;geral@santoadriao.com">✉ Email</a> · <a href="http://pwp.netcabo.pt/ccssa" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-55598975" class="nm">Creche Goães</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-105465917" class="nm">Jardim de Infância de São Mamede</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253677686">📞 +351 253677686</a> · <a href="mailto:eb1.pidre@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-107492398" class="nm">Jardim de Infância de Aldeia Nova</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Ribeirão</div>
+  <div class="rc"><a href="tel:+351 252491029">📞 +351 252491029</a> · <a href="mailto:eb1.n2.anvnfamalicao@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-107681189" class="nm">Jardim de Infância de Monte</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253682354">📞 +351 253682354</a> · <a href="mailto:ji.montenogueira@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-108459927" class="nm">Infantário Doutor Nuno Simões</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-109262617" class="nm">Infantário Mãe Cegonha</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-120806622" class="nm">Jardim de Infância da Quinta das Fontes</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Braga</div>
+  <div class="rc"><a href="tel:+351 253619909">📞 +351 253619909</a> · <a href="mailto:ji.qtfontes@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-122271657" class="nm">Centro Infantil A Gaivota</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância · Esposende</div>
+  <div class="rc"><a href="tel:+351 253961584">📞 +351 253961584</a> · <a href="mailto:geral@assinjepe.com">✉ Email</a> · <a href="https://assinjepe.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-134574742" class="nm">Jardim de Infância de Antime</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-134659907" class="nm">Casa do Povo</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-135219188" class="nm">Creche e Pré-Primária do Centro Social da Juventude Unida de Marinhas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Marinhas</div>
+  <div class="rc"><a href="tel:+351 253965740">📞 +351 253965740</a> · <a href="mailto:ji.unidadasmarinhas@escolas.min-edu.pt">✉ Email</a> · <a href="https://jum.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-146342993" class="nm">Associação Portuguesa de Deficientes</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-146343968" class="nm">Infantário de Santa Ana</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-146343971" class="nm">Infantário Santa Cruz</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-153612544" class="nm">Jardim de Infância de Pico de Regalados</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Pico de Regalados</div>
+  <div class="rc"><a href="tel:+351 253324560">📞 +351 253324560</a> · <a href="mailto:ji.vilapicoregalados@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-162544061" class="nm">Creche de Braga</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li><li class="more"><a href="/app">+ Ver as outras 141 creches no mapa →</a></li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Braga</h2>
+  <p>O distrito de Braga tem 201 creches registadas no CrechesPT, incluindo 104 pública, 52 desconhecido, 31 privada, 14 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Braga</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

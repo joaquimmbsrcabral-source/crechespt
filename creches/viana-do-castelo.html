@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 71 creches, jardins de infância e infantários no distrito de Viana do Castelo, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Viana do Castelo (71) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 71 creches, jardins de infância e infantários no distrito de Viana do Castelo, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/viana-do-castelo">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/viana-do-castelo">
+<title>Creches em Viana do Castelo (71) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Viana do Castelo",
+  "description": "Lista atualizada de 71 creches, jardins de infância e infantários no distrito de Viana do Castelo, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 71,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Infantário de Refóios do Lima"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Viana do Castelo","item":"https://crechespt.vercel.app/creches/viana-do-castelo"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Viana do Castelo</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Viana do Castelo</span>
+  <h1>Creches em Viana do Castelo</h1>
+  <p>71 creches, jardins de infância e infantários no distrito de Viana do Castelo. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>71</b>creches no total</div>
+  <div class="tile"><b>47</b>públicas</div>
+  <div class="tile"><b>4</b>IPSS</div>
+  <div class="tile"><b>13</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Viana do Castelo</span> <span>Celorico de Basto</span> <span>Arcos de Valdevez</span> <span>Guimarães</span> <span>Carvalho CBT</span> <span>Vieira do Minho</span> <span>Caminha</span> <span>Medelo</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Viana do Castelo</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1370341822" class="nm">Infantário de Refóios do Lima</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2629951326" class="nm">Jardim de Infância da Santa Casa da Misericórdia de Vieira do Minho</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Vieira do Minho</div>
+  <div class="rc"><a href="tel:+351 253649330">📞 +351 253649330</a> · <a href="mailto:scmisericordiavminho@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-4810003121" class="nm">Centro social paroquial Santa Marta de Portuzelo</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9334171885" class="nm">JI Vila de Punhe</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11883399461" class="nm">Jardim de Infância do Convento de Santo António</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Caminha</div>
+  <div class="rc"><a href="tel:+351 258719600">📞 +351 258719600</a> · <a href="mailto:ji.larstantonio@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11883403371" class="nm">Jardim Infantil do Centro Social Paroquial Nossa Senhora de Fátima</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258821510">📞 +351 258821510</a> · <a href="mailto:ji.csparoqnsrafatima@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.paroquiafatima.nortenet.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11883403372" class="nm">Jardim de Infância &quot;Academia dos Pimpolhos&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258843444">📞 +351 258843444</a> · <a href="http://www.academiadospimpolhos.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11901606979" class="nm">Associação Social Recreativa Juventude de Vila Fonche</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Arcos de Valdevez</div>
+  <div class="rc"><a href="tel:+351 258520000">📞 +351 258520000</a> · <a href="mailto:ass.srjvfonche@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954645931" class="nm">Jardim Infantil do Centro Paroquial de São Romão de Mesão Frio</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Guimarães</div>
+  <div class="rc"><a href="tel:+351 253431225">📞 +351 253431225</a> · <a href="mailto:ji.cpsromaomesaofrio@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954645960" class="nm">Jardim de Infância do Centro Social da Paróquia de São Martinho de Medelo</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Medelo</div>
+  <div class="rc"><a href="tel:+351 253502971">📞 +351 253502971</a> · <a href="mailto:ji.smartinhodemedelo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954645961" class="nm">Salgueiral - Associação Recreio e Cultura</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Guimarães</div>
+  <div class="rc"><a href="tel:+351 253525368">📞 +351 253525368</a> · <a href="mailto:salgueiral@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11954646030" class="nm">Jardim de Infância do Centro Social, Cultural, Desportivo e Recreativo de Vila Nova de Sande</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Balazar</div>
+  <div class="rc"><a href="tel:+351 253478492">📞 +351 253478492</a> · <a href="mailto:cs.drvnovasande@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11956149079" class="nm">Jardim de Infância do Centro Paroquial Social de Barbeita</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · BARBEITA</div>
+  <div class="rc"><a href="tel:+351 251534165;+351 926235118">📞 +351 251534165;+351 926235118</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11956179232" class="nm">Jardim de Infância da Casa do Povo de Creixomil</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Guimarães</div>
+  <div class="rc"><a href="tel:+351 927956261">📞 +351 927956261</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-157385358" class="nm">Jardim de Infância de Canedo de Basto</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Canedo de Basto</div>
+  <div class="rc"><a href="tel:+351 255361530">📞 +351 255361530</a> · <a href="mailto:eb1.slcanedobasto@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.eb1-sta-luzia-canedo.nets.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-170352096" class="nm">Creche de Dem</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Dem</div>
+  <div class="rc"><a href="tel:+351 258922227">📞 +351 258922227</a> · <a href="mailto:eb1.dem@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-190110938" class="nm">Centro Infantil de Golães</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-209222151" class="nm">Jardim de Infância Santo António</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-211013778" class="nm">Jardim de Infância de Lamela</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Arcos de Valdevez</div>
+  <div class="rc"><a href="tel:+351 258515713">📞 +351 258515713</a> · <a href="mailto:ji.sobreirogiela@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-243789887" class="nm">Jardim de Infância de Rego</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 253655972">📞 +351 253655972</a> · <a href="mailto:ji.pedroso@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-278630142" class="nm">Infantário de Lanhelas</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-435982029" class="nm">Jardim Infantil Chafé</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-487412012" class="nm">Jardim de Infância de Arnóia</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 255323503">📞 +351 255323503</a> · <a href="mailto:ji.boucinha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-493316334" class="nm">Jardim de Infância de Bárrio</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Fontoura</div>
+  <div class="rc"><a href="tel:+351 251837737">📞 +351 251837737</a> · <a href="mailto:eb1.barriofontoura@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-545132050" class="nm">Jardim de Infância de Cristelo</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-851797180" class="nm">Jardim de Infância Lar de Santa Teresa</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1104487297" class="nm">Jardim de Infância de Vilarinho</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vilar de Ferreiros</div>
+  <div class="rc"><a href="tel:+351 255386607">📞 +351 255386607</a> · <a href="mailto:ji.vvilarferreiros@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1136597813" class="nm">Jardim de Infância de Praça</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Atei</div>
+  <div class="rc"><a href="tel:+351 255386493">📞 +351 255386493</a> · <a href="mailto:ji.pracaatei@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1260653639" class="nm">Jardim de Infância de Cortes</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Cortes</div>
+  <div class="rc"><a href="tel:+351 251649401">📞 +351 251649401</a> · <a href="mailto:eb1.cortesmazedo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1260688109" class="nm">Jardim de Infância de Bogim</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Cerdal</div>
+  <div class="rc"><a href="tel:+351 251822230">📞 +351 251822230</a> · <a href="mailto:eb1.bogim@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1264983193" class="nm">Jardim de Infância de Terras de Bouro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Terras de Bouro</div>
+  <div class="rc"><a href="tel:+351 253352067">📞 +351 253352067</a> · <a href="mailto:eb1.terrasbouro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1264983195" class="nm">Jardim de Infância de Chorense</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Chorense</div>
+  <div class="rc"><a href="tel:+351 253352012">📞 +351 253352012</a> · <a href="mailto:eb1.outeiralchorense@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1264983198" class="nm">Jardim de Infância de Carvalheira</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Carvalheira</div>
+  <div class="rc"><a href="tel:+351 253353198">📞 +351 253353198</a> · <a href="mailto:eb1.acarvalheira@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265010770" class="nm">Jardim de Infância de Vila Fonche</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Arcos de Valdevez</div>
+  <div class="rc"><a href="tel:+351 258520000">📞 +351 258520000</a> · <a href="mailto:ji.vfonche@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265010774" class="nm">Jardim de Infância de Assento</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Arcos de Valdevez</div>
+  <div class="rc"><a href="tel:+351 258515705">📞 +351 258515705</a> · <a href="mailto:ji.assentopaco@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265012056" class="nm">Jardim de Infância de Mozelos</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Mozelos PCR</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265203187" class="nm">Jardim de Infância de Moledo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Moledo CMN</div>
+  <div class="rc"><a href="tel:+351 258922379">📞 +351 258922379</a> · <a href="mailto:ji.moledocosta@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265203192" class="nm">Jardim de Infância de Vila Praia de Âncora</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vila Praia de Âncora</div>
+  <div class="rc"><a href="tel:+351 258911328">📞 +351 258911328</a> · <a href="mailto:ji.vpraiaancora@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265203199" class="nm">Jardim de Infância de Igreja</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Âncora</div>
+  <div class="rc"><a href="tel:+351 258951181">📞 +351 258951181</a> · <a href="mailto:ji.ivpraiaancora@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265225092" class="nm">Jardim de Infância de Cepões</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Cepões PTL</div>
+  <div class="rc"><a href="tel:+351 258757424">📞 +351 258757424</a> · <a href="mailto:ji.cepoes@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265260668" class="nm">Jardim de Infância de Gândara</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Geraz Lima (Sta. Maria)</div>
+  <div class="rc"><a href="tel:+351 258732586">📞 +351 258732586</a> · <a href="mailto:eb1.gglimasantamaria@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265292276" class="nm">Jardim de Infância de Serreleis</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Serreleis</div>
+  <div class="rc"><a href="tel:+351 258830976">📞 +351 258830976</a> · <a href="mailto:eb1.moreno@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265292310" class="nm">Jardim de Infância de Areosa</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258836560">📞 +351 258836560</a> · <a href="mailto:ji.meio@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265297034" class="nm">Jardim de Infância de Brandara</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Brandara</div>
+  <div class="rc"><a href="tel:+351 258751462">📞 +351 258751462</a> · <a href="mailto:ji.canadelo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265297037" class="nm">Jardim de Infância do Calvário</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Calheiros</div>
+  <div class="rc"><a href="tel:+351 258751350">📞 +351 258751350</a> · <a href="mailto:ji.calvariocalheiros@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265313992" class="nm">Jardim de Infância n.º 1 de Viana do Castelo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258823319">📞 +351 258823319</a> · <a href="mailto:ji.n1.vianacastelo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265313996" class="nm">Jardim de Infância da Meadela</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258828357">📞 +351 258828357</a> · <a href="mailto:eb1.igrejameadela@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1265336544" class="nm">Jardim de Infância da Senhora das Oliveiras</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Viana do Castelo</div>
+  <div class="rc"><a href="tel:+351 258322698">📞 +351 258322698</a> · <a href="mailto:eb1.n1.darque@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1267584010" class="nm">Jardim de Infância de Fragoso</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Fragoso</div>
+  <div class="rc"><a href="http://www.avef.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1267584011" class="nm">Jardim de Infância de Aldreu</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Aldreu</div>
+  <div class="rc"><a href="tel:+351 258773940">📞 +351 258773940</a> · <a href="mailto:ji.boavistaaldreu@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1267787609" class="nm">Jardim de Infância do Vale do Neiva</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sandiães</div>
+  <div class="rc"><a href="tel:+351 258763845">📞 +351 258763845</a> · <a href="mailto:ji.igrejasandiaes@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030437" class="nm">Jardim de Infância de Caçarilhe</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 255323504">📞 +351 255323504</a> · <a href="mailto:ji.carvalhal@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030439" class="nm">Jardim de Infância de Ribas</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 253653625">📞 +351 253653625</a> · <a href="mailto:ji.assentoribas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030444" class="nm">Jardim de Infância de Borba de Montanha</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Borba de Montanha</div>
+  <div class="rc"><a href="tel:+351 255481096">📞 +351 255481096</a> · <a href="mailto:ji.aborbamontanha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030445" class="nm">Jardim de Infância do Assento</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 255481119">📞 +351 255481119</a> · <a href="mailto:ji.assentofervenca@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030446" class="nm">Jardim de Infância de Carvalho</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Carvalho CBT</div>
+  <div class="rc"><a href="tel:+351 255489066">📞 +351 255489066</a> · <a href="mailto:eb1.feiracarvalho@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030447" class="nm">Jardim de Infância de Carvalho</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Carvalho CBT</div>
+  <div class="rc"><a href="tel:+351 255323954">📞 +351 255323954</a> · <a href="mailto:eb1.covascarvalho@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030449" class="nm">Escola Básica de Fermil</a></div>
+  <div class="rmeta">Pública · Creche · Veade</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030450" class="nm">Jardim de Infância de Agilde</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Celorico de Basto</div>
+  <div class="rc"><a href="tel:+351 255489064">📞 +351 255489064</a> · <a href="mailto:eb1.estradaagilde@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1268030451" class="nm">Jardim de Infância de Moreira do Castelo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Moreira do Castelo</div>
+  <div class="rc"><a href="tel:+351 255489069">📞 +351 255489069</a> · <a href="mailto:eb1.cmoreiracastelo@escolas.min-edu.pt">✉ Email</a></div>
+</li><li class="more"><a href="/app">+ Ver as outras 11 creches no mapa →</a></li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Viana do Castelo</h2>
+  <p>O distrito de Viana do Castelo tem 71 creches registadas no CrechesPT, incluindo 47 pública, 13 privada, 7 desconhecido, 4 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Viana do Castelo</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

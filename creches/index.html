@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Creches em Portugal por distrito: 2591 creches, jardins de infância e infantários organizados por região.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches">
+<title>Creches por distrito — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+.hero-idx{padding:36px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+.hero-idx h1{font-size:36px;margin-bottom:10px}
+.hero-idx p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+.dist-grid{max-width:900px;margin:0 auto;padding:20px 24px 40px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.dist-card{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:16px 18px;text-decoration:none;color:var(--ink);
+  box-shadow:var(--sh-1);transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dist-card:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(60,40,90,.1);border-color:var(--c-coral);text-decoration:none}
+.dist-card .nm{font-weight:700;font-size:15px;font-family:"Fredoka"}
+.dist-card .ct{background:var(--c-coral-soft);color:var(--c-coral);padding:3px 10px;border-radius:var(--r-pill);font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%"><stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/></radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<section class="hero-idx">
+  <h1>Creches por distrito</h1>
+  <p>Escolhe o teu distrito para veres a lista de creches, jardins de infância e infantários — ou abre o <a href="/app">mapa interativo</a> com filtros e geolocalização.</p>
+</section>
+
+<div class="dist-grid">
+  <a class="dist-card" href="/creches/lisboa"><span class="nm">Lisboa</span><span class="ct">497</span></a>
+  <a class="dist-card" href="/creches/porto"><span class="nm">Porto</span><span class="ct">342</span></a>
+  <a class="dist-card" href="/creches/setubal"><span class="nm">Setúbal</span><span class="ct">253</span></a>
+  <a class="dist-card" href="/creches/braga"><span class="nm">Braga</span><span class="ct">201</span></a>
+  <a class="dist-card" href="/creches/leiria"><span class="nm">Leiria</span><span class="ct">183</span></a>
+  <a class="dist-card" href="/creches/coimbra"><span class="nm">Coimbra</span><span class="ct">147</span></a>
+  <a class="dist-card" href="/creches/aveiro"><span class="nm">Aveiro</span><span class="ct">144</span></a>
+  <a class="dist-card" href="/creches/faro"><span class="nm">Faro</span><span class="ct">136</span></a>
+  <a class="dist-card" href="/creches/santarem"><span class="nm">Santarém</span><span class="ct">106</span></a>
+  <a class="dist-card" href="/creches/castelo-branco"><span class="nm">Castelo Branco</span><span class="ct">88</span></a>
+  <a class="dist-card" href="/creches/vila-real"><span class="nm">Vila Real</span><span class="ct">86</span></a>
+  <a class="dist-card" href="/creches/guarda"><span class="nm">Guarda</span><span class="ct">83</span></a>
+  <a class="dist-card" href="/creches/viana-do-castelo"><span class="nm">Viana do Castelo</span><span class="ct">71</span></a>
+  <a class="dist-card" href="/creches/viseu"><span class="nm">Viseu</span><span class="ct">61</span></a>
+  <a class="dist-card" href="/creches/evora"><span class="nm">Évora</span><span class="ct">51</span></a>
+  <a class="dist-card" href="/creches/beja"><span class="nm">Beja</span><span class="ct">47</span></a>
+  <a class="dist-card" href="/creches/acores"><span class="nm">Açores</span><span class="ct">27</span></a>
+  <a class="dist-card" href="/creches/madeira"><span class="nm">Madeira</span><span class="ct">23</span></a>
+  <a class="dist-card" href="/creches/portalegre"><span class="nm">Portalegre</span><span class="ct">22</span></a>
+  <a class="dist-card" href="/creches/braganca"><span class="nm">Bragança</span><span class="ct">22</span></a>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+<script src="/cookies.js" defer></script>
+</body>
+</html>

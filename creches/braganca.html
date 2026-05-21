@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 22 creches, jardins de infância e infantários no distrito de Bragança, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Bragança (22) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 22 creches, jardins de infância e infantários no distrito de Bragança, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/braganca">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/braganca">
+<title>Creches em Bragança (22) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Bragança",
+  "description": "Lista atualizada de 22 creches, jardins de infância e infantários no distrito de Bragança, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 22,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Creche João Lopes da Silva"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Bragança","item":"https://crechespt.vercel.app/creches/braganca"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Bragança</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Bragança</span>
+  <h1>Creches em Bragança</h1>
+  <p>22 creches, jardins de infância e infantários no distrito de Bragança. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>22</b>creches no total</div>
+  <div class="tile"><b>17</b>públicas</div>
+  <div class="tile"><b>0</b>IPSS</div>
+  <div class="tile"><b>2</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Bragança</span> <span>Sambade</span> <span>Vila Flor</span> <span>Sendim</span> <span>Miranda do Douro</span> <span>Argozelo</span> <span>Gimonde</span> <span>BRAGANÇA</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Bragança</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-4265866891" class="nm">Creche João Lopes da Silva</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><a href="https://misericordiamogadouro.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11728836679" class="nm">Jardim de Infância de Sambade</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sambade</div>
+  <div class="rc"><a href="tel:+351 279479447">📞 +351 279479447</a> · <a href="mailto:ji.sambade@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11939558015" class="nm">Jardim De Infância do Centro Social e Paroquial do Santo Condestável</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Bragança</div>
+  <div class="rc"><a href="tel:+351 273327410">📞 +351 273327410</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-98465195" class="nm">Jardim de Infância Flor de Liz</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Vila Flor</div>
+  <div class="rc"><a href="tel:+351 278518070">📞 +351 278518070</a> · <a href="mailto:ji.scmvflor@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.misericordiavilaflor.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-218099368" class="nm">Jardim de Infância da Estação</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Bragança</div>
+  <div class="rc"><a href="tel:+351 273322918">📞 +351 273322918</a> · <a href="mailto:ji.braganca@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-462881316" class="nm">Pré-Escolar SCMM</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1076871924" class="nm">Jardim de Infância de Sendim</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Sendim</div>
+  <div class="rc"><a href="tel:+351 273739506;+351 273739130">📞 +351 273739506;+351 273739130</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1260733802" class="nm">Jardim de Infância de Miranda do Douro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Miranda do Douro</div>
+  <div class="rc"><a href="tel:+351 273431471">📞 +351 273431471</a> · <a href="mailto:eb1.mirandadouro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1260750216" class="nm">Jardim de Infância de Argozelo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Argozelo</div>
+  <div class="rc"><a href="mailto:ji.n2.argozelo@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1260757320" class="nm">Jardim de Infância de Gimonde</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Gimonde</div>
+  <div class="rc"><a href="tel:+351 273381265">📞 +351 273381265</a> · <a href="mailto:ji.gimonde@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1261138994" class="nm">Jardim de Infância de Santiago</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · BRAGANÇA</div>
+  <div class="rc"><a href="tel:+351 273333944">📞 +351 273333944</a> · <a href="mailto:ji.santiago@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1261981156" class="nm">Jardim de Infância de Travanca</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Macedo de Cavaleiros</div>
+  <div class="rc"><a href="mailto:ji.tmacedocavaleiros@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262185728" class="nm">Jardim de Infância de Agrochão</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Rebordelo</div>
+  <div class="rc"><a href="mailto:ji.agrochao@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262185737" class="nm">Jardim de Infância de Ervedosa</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Ervedosa VNH</div>
+  <div class="rc"><a href="tel:+351 273349027">📞 +351 273349027</a> · <a href="mailto:ji.ervedosa@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262185738" class="nm">Jardim de Infância de Vinhais</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Vinhais</div>
+  <div class="rc"><a href="tel:+351 273771415">📞 +351 273771415</a> · <a href="mailto:ji.n1.vinhais@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262320532" class="nm">Jardim de Infância de Mirandela</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Mirandela</div>
+  <div class="rc"><a href="tel:+351 278257492">📞 +351 278257492</a> · <a href="mailto:ji.n1.mirandela@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262320535" class="nm">Jardim de Infância de Frechas</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Frechas</div>
+  <div class="rc"><a href="tel:+351 278945128">📞 +351 278945128</a> · <a href="mailto:eb1.frechas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262320539" class="nm">Jardim de Infância de Passos</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Passos MDL</div>
+  <div class="rc"><a href="tel:+351 278979575">📞 +351 278979575</a> · <a href="mailto:ji.passosmdl@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262320541" class="nm">Jardim de Infância de Romeu</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Romeu</div>
+  <div class="rc"><a href="tel:+351 278939276">📞 +351 278939276</a> · <a href="mailto:eb1.romeu@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262376345" class="nm">Jardim de Infância de Freixiel</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Freixiel</div>
+  <div class="rc"><a href="tel:+351 278549112">📞 +351 278549112</a> · <a href="mailto:eb1.freixiel@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1262376353" class="nm">Jardim de Infância de Benlhevai</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Benlhevai</div>
+  <div class="rc"><a href="tel:+351 278536100">📞 +351 278536100</a> · <a href="mailto:ji.benlhevai@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-way-1287385557" class="nm">NucliSol Jean Piaget</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Bragança</h2>
+  <p>O distrito de Bragança tem 22 creches registadas no CrechesPT, incluindo 17 pública, 3 desconhecido, 2 privada. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Bragança</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

@@ -24,6 +24,15 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // Feedback de utilizadores autenticados
+    match /feedback/{id} {
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.message is string
+        && request.resource.data.message.size() <= 2000;
+      allow read, update, delete: if false;
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;

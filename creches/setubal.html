@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 253 creches, jardins de infância e infantários no distrito de Setúbal, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Setúbal (253) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 253 creches, jardins de infância e infantários no distrito de Setúbal, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/setubal">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/setubal">
+<title>Creches em Setúbal (253) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Setúbal",
+  "description": "Lista atualizada de 253 creches, jardins de infância e infantários no distrito de Setúbal, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 253,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Jardim de Infância \"Parque dos Sorrisos\""}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Setúbal","item":"https://crechespt.vercel.app/creches/setubal"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Setúbal</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Setúbal</span>
+  <h1>Creches em Setúbal</h1>
+  <p>253 creches, jardins de infância e infantários no distrito de Setúbal. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>253</b>creches no total</div>
+  <div class="tile"><b>44</b>públicas</div>
+  <div class="tile"><b>10</b>IPSS</div>
+  <div class="tile"><b>125</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Montijo</span> <span>Almada</span> <span>Corroios</span> <span>Setúbal</span> <span>Amora</span> <span>Barreiro</span> <span>Fernão Ferro</span> <span>Seixal</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Setúbal</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1596865287" class="nm">Jardim de Infância &quot;Parque dos Sorrisos&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Amora</div>
+  <div class="rc"><a href="tel:+351 210503792">📞 +351 210503792</a> · <a href="mailto:ji.parquedossorrisos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1780423216" class="nm">Casa do Povo</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1801714944" class="nm">Jardim de Infância da Associação Tom da Terra</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Sesimbra</div>
+  <div class="rc"><a href="tel:+351 212686591">📞 +351 212686591</a> · <a href="mailto:tomdaterra@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5077343918" class="nm">Jardim de Infância &quot;Ursinhos Carinhosos&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Montijo</div>
+  <div class="rc"><a href="tel:+351 914028549">📞 +351 914028549</a> · <a href="mailto:b.c.ursinhoscarinhosos@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5079796791" class="nm">Jardim de Infância &quot;O Girassol&quot;</a></div>
+  <div class="rmeta">Privada · Creche · Montijo</div>
+  <div class="rc"><a href="tel:+351 212310401">📞 +351 212310401</a> · <a href="mailto:secretariacparoquial@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5548994195" class="nm">Creche, consigo...CRL</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089506" class="nm">Creche - Jardim de Infância 25 de Abril (AIPICA)</a></div>
+  <div class="rmeta">Creche + JI · Almada</div>
+  <div class="rc"><a href="tel:+351 212757713">📞 +351 212757713</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089507" class="nm">Jardim de Infância da Associação de Solidariedade e Desenvolvimento do Laranjeiro</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212583934">📞 +351 212583934</a> · <a href="mailto:geral@asdl.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089508" class="nm">CEAS - Centro Educativo e Apoio Social (Casa Pia de Lisboa)</a></div>
+  <div class="rmeta">ATL · Caparica</div>
+  <div class="rc"><a href="tel:+351 212947080">📞 +351 212947080</a> · <a href="mailto:ana.longle@casapia.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089509" class="nm">Creche e Jardim de Infância do Pão de Açucar (AIPICA)</a></div>
+  <div class="rmeta">Creche + JI · Almada</div>
+  <div class="rc"><a href="tel:+351 212756427">📞 +351 212756427</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089510" class="nm">Creche e Jardim Infantil Popular do Castelo (AIPICA)</a></div>
+  <div class="rmeta">Creche + JI · Almada</div>
+  <div class="rc"><a href="tel:+351 212757403">📞 +351 212757403</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089511" class="nm">Jardim Infantil do Pombal (AIPICA)</a></div>
+  <div class="rmeta">Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212754490">📞 +351 212754490</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089512" class="nm">Centro Social Paroquial Padre Ricardo Gameiro - S. Simão</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212720140">📞 +351 212720140</a> · <a href="mailto:infor@cparoquial-covapiedade.pt">✉ Email</a> · <a href="https://www.cparoquial-covapiedade.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089513" class="nm">Centro Comunitário Pia I</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Caparica</div>
+  <div class="rc"><a href="tel:+351 212956453">📞 +351 212956453</a> · <a href="mailto:dtcgoncalves@scma.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089515" class="nm">Jardim Infantil do Centro Paroquial de Almada</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212731313">📞 +351 212731313</a> · <a href="mailto:geral@centroparoquial-almada.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089516" class="nm">Centro Social e Paroquial Cristo Rei</a></div>
+  <div class="rmeta">IPSS · Creche / Jardim de Infância · Caparica</div>
+  <div class="rc"><a href="tel:+351 212942944">📞 +351 212942944</a> · <a href="mailto:csp-cristorei@net.novis.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089517" class="nm">Centro Infantil da Trafaria</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Trafaria</div>
+  <div class="rc"><a href="tel:+351 212919500">📞 +351 212919500</a> · <a href="mailto:informacoestrafaria@scma.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089518" class="nm">Jardim Infantil Centro Paroquial Bem Estar Social de Cacilhas</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212754455">📞 +351 212754455</a> · <a href="mailto:cpcacilhas@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089519" class="nm">Jardim Infantil Bento Gonçalves (AIPICA)</a></div>
+  <div class="rmeta">Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212591961">📞 +351 212591961</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089520" class="nm">Jardim Infantil Ninho 3</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212879560">📞 +351 212879560</a> · <a href="mailto:ana.pinto@estradasdeportugal.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089521" class="nm">Centro Comunitário Promoção Social Feijó e Laranjeiro</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212591297">📞 +351 212591297</a> · <a href="mailto:ccp_slf@mail.telepac.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089522" class="nm">Centro da Actividades e Tempos Livres do Raposo (AIPICA)</a></div>
+  <div class="rmeta">ATL · Almada</div>
+  <div class="rc"><a href="tel:+351 212951324">📞 +351 212951324</a> · <a href="mailto:aipica1@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089533" class="nm">Jardim de Infância Meninos Rabinos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Charneca de Caparica</div>
+  <div class="rc"><a href="tel:+351 212972727">📞 +351 212972727</a> · <a href="mailto:meninosrabinos@sapo.pt">✉ Email</a> · <a href="https://meninosrabinos.com/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089534" class="nm">O Cantinho da Brincadeira</a></div>
+  <div class="rmeta">Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212553938">📞 +351 212553938</a> · <a href="mailto:cantinhodabrincadeiralda@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089535" class="nm">Jardim de Infância João Pestana</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Charneca de Caparica</div>
+  <div class="rc"><a href="tel:+351 212977638">📞 +351 212977638</a> · <a href="mailto:jardiminfancia_joaopestana@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089536" class="nm">Externato O Pinguim</a></div>
+  <div class="rmeta">Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212592309">📞 +351 212592309</a> · <a href="mailto:o_pinguim@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089539" class="nm">Jardim de Infância A Cidade da Brincadeira</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Cacilhas</div>
+  <div class="rc"><a href="tel:+351 966631807;+351 212761823">📞 +351 966631807;+351 212761823</a> · <a href="mailto:cidade.brincadeira@gmail.com">✉ Email</a> · <a href="https://www.cidadedabrincadeira.pt/menu-cidade" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089541" class="nm">Externato Os Grilinhos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Charneca de Caparica</div>
+  <div class="rc"><a href="tel:+351 212960528">📞 +351 212960528</a> · <a href="mailto:externato_os_grilinhos@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089542" class="nm">Jardim Escola Vale Rosal</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Charneca de Caparica</div>
+  <div class="rc"><a href="tel:+351 212973671">📞 +351 212973671</a> · <a href="mailto:antonio.ramiro@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089543" class="nm">Atrium 7</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212500772">📞 +351 212500772</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089544" class="nm">Jardim Escola Natel</a></div>
+  <div class="rmeta">Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 964045309">📞 +351 964045309</a> · <a href="mailto:mariazegreamorim@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089546" class="nm">Jardim de Infância Bem-Me-Quer</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Charneca de Caparica</div>
+  <div class="rc"><a href="tel:+351 212979473">📞 +351 212979473</a> · <a href="mailto:bem-m-quer@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089547" class="nm">Irmanadora CRL - Jardim de Infância</a></div>
+  <div class="rmeta">Jardim de Infância · Costa de Caparica</div>
+  <div class="rc"><a href="tel:+351 212912038">📞 +351 212912038</a> · <a href="mailto:irmanadora@netcabo.pt">✉ Email</a> · <a href="https://www.irmanadora.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089549" class="nm">Externato O Baloiço</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212592686">📞 +351 212592686</a> · <a href="mailto:geral@obaloico.pt">✉ Email</a> · <a href="https://obaloico.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5863089551" class="nm">Jardim de Infância do Feijó, Almada</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Almada</div>
+  <div class="rc"><a href="tel:+351 212598813">📞 +351 212598813</a> · <a href="mailto:agrup@esfsimoes.edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309326" class="nm">Centro Infantil O Patronato</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Amora</div>
+  <div class="rc"><a href="tel:+351 212278073">📞 +351 212278073</a> · <a href="mailto:geral@capa-amora.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309327" class="nm">Jardim Infantil C. Paroq. Bem-Estar Social Corroios</a></div>
+  <div class="rmeta">Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212531289">📞 +351 212531289</a> · <a href="mailto:cpsfamilia@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309340" class="nm">Externato A Casinha Mágica</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Fernão Ferro</div>
+  <div class="rc"><a href="tel:+351 212121519">📞 +351 212121519</a> · <a href="mailto:externatoacasinhamagica@hotmail.com">✉ Email</a> · <a href="Http://www.externatoacasinhamagica.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309341" class="nm">Jardim de Infância O Nosso Jardim</a></div>
+  <div class="rmeta">Jardim de Infância · Fernão Ferro</div>
+  <div class="rc"><a href="tel:+351 210857373">📞 +351 210857373</a> · <a href="mailto:rui.nosso.jardim@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309342" class="nm">Externato Infantil Dó-Ré-Mi</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212534386">📞 +351 212534386</a> · <a href="mailto:externato.doremi@sapo.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309344" class="nm">Externato Infantil O Trevo</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212537422">📞 +351 212537422</a> · <a href="mailto:anammachadosantos@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309351" class="nm">Jardim Infantil &quot;Casinha das Surpresas&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Amora</div>
+  <div class="rc"><a href="tel:+351 212253519">📞 +351 212253519</a> · <a href="mailto:ji.casinhasurpresas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309354" class="nm">Jardim de Infância &quot;Jardim do Pinhal&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 214186078">📞 +351 214186078</a> · <a href="mailto:pinheirinhoverde@net.vodafone.pt">✉ Email</a> · <a href="http://www.pinheirinhoverde.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309355" class="nm">Colégio &quot;O Gaitinhas&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212547037">📞 +351 212547037</a> · <a href="mailto:cl.ogaitinhas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309359" class="nm">Infantário A Casinha Azul</a></div>
+  <div class="rmeta">Infantário · Aldeia de Paio Pires</div>
+  <div class="rc"><a href="tel:+351 212219148">📞 +351 212219148</a> · <a href="mailto:infantariocasazul@gmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309361" class="nm">Externato &quot;O Pequeno Polegar&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Seixal</div>
+  <div class="rc"><a href="tel:+351 212225735">📞 +351 212225735</a> · <a href="mailto:ext.opequenopolegar@escolas.min-edu.pt">✉ Email</a> · <a href="http://colegiopequenopolegar.webnode.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309362" class="nm">Externato &quot;Aladino&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Amora</div>
+  <div class="rc"><a href="tel:+351 212241160">📞 +351 212241160</a> · <a href="mailto:ext.aladino@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309363" class="nm">Jardim de Infância O Pinheirinho Verde</a></div>
+  <div class="rmeta">Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212543837">📞 +351 212543837</a> · <a href="mailto:pinheirinhoverde@net.vodafone.pt">✉ Email</a> · <a href="http://www.pinheirinhoverde.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309365" class="nm">Jardim Infantil Palmo e Meio</a></div>
+  <div class="rmeta">Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212537243">📞 +351 212537243</a> · <a href="mailto:ana.gomes91@hotmail.com">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5871309372" class="nm">Jardim de Infância de São Nicolau</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Corroios</div>
+  <div class="rc"><a href="tel:+351 212549290">📞 +351 212549290</a> · <a href="mailto:eb23valedemilhacos@gmail.com">✉ Email</a> · <a href="https://aevm.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-6343916275" class="nm">Jardim de Infância da Pequenada da Santa Casa da Misericórdia de Vidigueira</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Vidigueira</div>
+  <div class="rc"><a href="tel:+351 284 434 455">📞 +351 284 434 455</a> · <a href="mailto:ji.scmvidigueira@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-6439708107" class="nm">Creche O Mestre Cuco</a></div>
+  <div class="rmeta">Creche · Almada</div>
+  <div class="rc"><a href="https://www.mestrecuco.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9890134508" class="nm">Colégio Beija-Flor</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Seixal</div>
+  <div class="rc"><a href="tel:+351 212223441">📞 +351 212223441</a> · <a href="mailto:cl.beijaflor@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11052772589" class="nm">Andorinha Nova</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Setúbal</div>
+  <div class="rc"><a href="tel:+351 265233340">📞 +351 265233340</a> · <a href="mailto:andorinhanova@gmail.com">✉ Email</a> · <a href="http://www.osonho.pt/andorinha/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11761556378" class="nm">Jardim de Infância de Fonte do Feto</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Santo António Da Charneca</div>
+  <div class="rc"><a href="tel:+351 212157653">📞 +351 212157653</a> · <a href="mailto:info.jifontefeto@escolasdestantonio.edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11761556380" class="nm">Jardim de Infância do Bairro das Palmeiras</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Barreiro</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11761556381" class="nm">Jardim de Infância n.º 3 do Alto do Seixalinho</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Barreiro</div>
+  <div class="rc"><a href="tel:+351 212052612">📞 +351 212052612</a> · <a href="mailto:direcao@aeaugustocabrita.edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11761556382" class="nm">Jardim de Infância n.º 1 do Alto do Seixalinho</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Barreiro</div>
+  <div class="rc"><a href="tel:+351 212091082">📞 +351 212091082</a> · <a href="mailto:direcao@aeaugustocabrita.edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11761556383" class="nm">Jardim de Infância n.º 2 de Verderena</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Barreiro</div>
+  <div class="rc"><a href="tel:+351 212170745">📞 +351 212170745</a> · <a href="mailto:jin2verderena@aebarreiro.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11763629131" class="nm">Jardim de Infância do Samouco</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Alcochete</div>
+  <div class="rc"><a href="tel:+351 212321873;+351 913026586">📞 +351 212321873;+351 913026586</a> · <a href="mailto:coordenacao.jisamouco@aealcochete.edu.pt">✉ Email</a></div>
+</li><li class="more"><a href="/app">+ Ver as outras 193 creches no mapa →</a></li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Setúbal</h2>
+  <p>O distrito de Setúbal tem 253 creches registadas no CrechesPT, incluindo 125 privada, 74 desconhecido, 44 pública, 10 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Setúbal</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>

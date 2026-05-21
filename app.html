@@ -892,6 +892,7 @@ header.topbar{
           <div class="nm" id="user-name-2">—</div>
           <div class="em" id="user-email">—</div>
         </div>
+        <button id="btn-feedback">💬 Enviar feedback</button>
         <button id="btn-logout">🚪 Terminar sessão</button>
         <div class="sep"></div>
         <a href="/privacidade" style="display:block;padding:6px 10px;font-size:12px;color:var(--ink-soft);text-decoration:none">Privacidade</a>
@@ -1109,6 +1110,32 @@ header.topbar{
 
 <!-- Toast host -->
 <div id="toast-host" class="toast-host" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Feedback modal -->
+<div id="fb-host" class="confirm-host" role="dialog" aria-modal="true">
+  <div class="confirm-card" style="max-width:460px;text-align:left">
+    <h3 style="text-align:center">💬 Envia-nos feedback</h3>
+    <p style="text-align:center">Sugestões, problemas, ideias — tudo ajuda a melhorar.</p>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="fb-cat" style="padding-top:0">Tipo</label>
+      <select id="fb-cat">
+        <option value="sugestao">💡 Sugestão</option>
+        <option value="bug">🐞 Problema / bug</option>
+        <option value="dados">📍 Dados errados de uma creche</option>
+        <option value="elogio">❤️ Elogio</option>
+        <option value="outro">📝 Outro</option>
+      </select>
+    </div>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="fb-msg" style="padding-top:0">A tua mensagem</label>
+      <textarea id="fb-msg" rows="5" placeholder="Conta-nos o que aconteceu ou o que gostarias…" maxlength="2000" style="min-height:120px"></textarea>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="fb-cancel" class="btn">Cancelar</button>
+      <button id="fb-send" class="btn primary">Enviar</button>
+    </div>
+  </div>
+</div>
 
 <!-- Custom confirm -->
 <div id="confirm-host" class="confirm-host" role="dialog" aria-modal="true">
@@ -2390,6 +2417,49 @@ function renderUserChip(user){
       });
       document.getElementById("btn-google").addEventListener("click", signInGoogle);
       document.getElementById("btn-logout").addEventListener("click", signOut);
+
+      // Feedback
+      const fbBtn = document.getElementById("btn-feedback");
+      const fbHost = document.getElementById("fb-host");
+      const fbCancel = document.getElementById("fb-cancel");
+      const fbSend = document.getElementById("fb-send");
+      const fbMsg = document.getElementById("fb-msg");
+      const fbCat = document.getElementById("fb-cat");
+      function openFb(){
+        document.getElementById("user-menu").classList.remove("open");
+        fbHost.classList.add("open");
+        setTimeout(()=>fbMsg.focus(), 80);
+      }
+      function closeFb(){ fbHost.classList.remove("open"); fbMsg.value=""; }
+      fbBtn.addEventListener("click", openFb);
+      fbCancel.addEventListener("click", closeFb);
+      fbHost.addEventListener("click", (e)=>{ if(e.target===fbHost) closeFb(); });
+      fbSend.addEventListener("click", async ()=>{
+        const msg = fbMsg.value.trim();
+        if(!msg || msg.length < 5){ toast("Escreve um pouco mais de mensagem","warn"); return; }
+        fbSend.disabled = true;
+        fbSend.textContent = "A enviar…";
+        try{
+          await FB.db.collection("feedback").add({
+            uid: FB.user.uid,
+            email: FB.user.email || "",
+            displayName: FB.user.displayName || "",
+            category: fbCat.value,
+            message: msg.slice(0,2000),
+            url: location.href,
+            user_agent: navigator.userAgent.slice(0,200),
+            ts: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+          closeFb();
+          toast("Obrigado! Recebi a tua mensagem 💛","ok",{duration:4000});
+        }catch(e){
+          console.error(e);
+          toast("Não foi possível enviar. Tenta de novo.","err");
+        } finally {
+          fbSend.disabled = false;
+          fbSend.textContent = "Enviar";
+        }
+      });
       // toggle do menu do utilizador
       document.getElementById("user-chip").addEventListener("click", (e)=>{
         if(e.target.closest("#user-menu")) return;

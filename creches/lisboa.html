@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Lista atualizada de 497 creches, jardins de infância e infantários no distrito de Lisboa, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Creches em Lisboa (497) — CrechesPT">
+<meta property="og:description" content="Lista atualizada de 497 creches, jardins de infância e infantários no distrito de Lisboa, com mapa interativo, contactos e filtros por idade. Gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crechespt.vercel.app/creches/lisboa">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://crechespt.vercel.app/creches/lisboa">
+<title>Creches em Lisboa (497) — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+  .hero-dist{padding:30px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
+  .hero-dist .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+    padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:12px}
+  .hero-dist h1{font-size:36px;margin-bottom:12px}
+  .hero-dist p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
+  .hero-dist .ctas a{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);
+    font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
+  .hero-dist .ctas .primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+    box-shadow:0 6px 16px rgba(255,107,157,.35)}
+  .hero-dist .ctas .ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+  .stats-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px auto 30px;max-width:720px}
+  .tile{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:10px 16px;font-size:13px;color:var(--ink-soft);
+    box-shadow:var(--sh-1);font-weight:600}
+  .tile b{color:var(--ink);font-family:"Fredoka";font-size:16px;margin-right:4px}
+  .locs{text-align:center;margin:0 auto 24px;max-width:720px;font-size:13px;color:var(--ink-soft);padding:0 24px}
+  .locs span{background:#fff;padding:3px 10px;border-radius:var(--r-pill);margin:0 3px;display:inline-block;
+    font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(60,40,90,.05)}
+  .list-wrap{max-width:780px;margin:0 auto;padding:0 24px 30px}
+  .list-wrap h2{font-size:20px;margin:14px 0}
+  ul.creche-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .creche-list .row{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:13px 16px;
+    box-shadow:0 1px 2px rgba(60,40,90,.04);transition:all .15s}
+  .creche-list .row:hover{box-shadow:var(--sh-1);transform:translateY(-1px)}
+  .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none}
+  .creche-list .nm:hover{color:var(--c-coral);text-decoration:underline}
+  .creche-list .rmeta{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .creche-list .rc{font-size:12.5px;margin-top:6px}
+  .creche-list .rc a{color:var(--c-coral);margin-right:10px;text-decoration:none;font-weight:600}
+  .creche-list .rc .muted{color:var(--ink-faint);font-style:italic}
+  .creche-list .more{text-align:center;padding:18px;font-weight:700}
+  .creche-list .more a{color:var(--c-coral);text-decoration:none}
+  .seo-text{max-width:720px;margin:30px auto 20px;padding:0 24px;color:var(--ink-soft);font-size:14px;line-height:1.75}
+  .seo-text h2{color:var(--ink);font-size:20px;margin:18px 0 8px}
+  .breadcrumb{max-width:720px;margin:14px auto 0;padding:0 24px;font-size:12px;color:var(--ink-soft)}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none}
+  .breadcrumb a:hover{color:var(--c-coral)}
+  @media (max-width:600px){
+    .hero-dist{padding:20px 16px}
+    .hero-dist h1{font-size:26px}
+    .list-wrap{padding:0 16px 20px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Creches em Lisboa",
+  "description": "Lista atualizada de 497 creches, jardins de infância e infantários no distrito de Lisboa, com mapa interativo, contactos e filtros por idade. Gratuito.",
+  "numberOfItems": 497,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Jardim de Infância de Santo Isidoro"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://crechespt.vercel.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches por distrito","item":"https://crechespt.vercel.app/creches"},
+    {"@type":"ListItem","position":3,"name":"Lisboa","item":"https://crechespt.vercel.app/creches/lisboa"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+          <stop offset="0%" stop-color="#FFD66E"/><stop offset="55%" stop-color="#FF9F68"/><stop offset="100%" stop-color="#FF6B9D"/>
+        </radialGradient></defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name"><b>CrechesPT</b><span>encontra a creche certa para o teu filho</span></div>
+  </a>
+  <div class="spacer"></div>
+  <a href="/app" class="back">Abrir a app →</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Início</a> ›
+  <a href="/creches">Creches por distrito</a> ›
+  <strong>Lisboa</strong>
+</nav>
+
+<section class="hero-dist">
+  <span class="kicker">📍 Distrito de Lisboa</span>
+  <h1>Creches em Lisboa</h1>
+  <p>497 creches, jardins de infância e infantários no distrito de Lisboa. Mapa, filtros por idade, contactos.</p>
+  <div class="ctas">
+    <a class="primary" href="/app">🗺 Ver no mapa →</a>
+    <a class="ghost" href="/">Como funciona</a>
+  </div>
+</section>
+
+<div class="stats-tiles">
+  <div class="tile"><b>497</b>creches no total</div>
+  <div class="tile"><b>91</b>públicas</div>
+  <div class="tile"><b>11</b>IPSS</div>
+  <div class="tile"><b>286</b>privadas</div>
+</div>
+
+<p class="locs">Principais localidades: <span>Lisboa</span> <span>Odivelas</span> <span>Amadora</span> <span>Queluz</span> <span>Agualva-Cacém</span> <span>Mem Martins</span> <span>Rio de Mouro</span> <span>Mafra</span></p>
+
+<div class="list-wrap">
+  <h2>Lista de creches em Lisboa</h2>
+  <ul class="creche-list">
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-433161494" class="nm">Jardim de Infância de Santo Isidoro</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Santo Isidoro</div>
+  <div class="rc"><a href="tel:+351 261 864 420">📞 +351 261 864 420</a> · <a href="mailto:ji.stisidoro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1183566969" class="nm">Casa das Abelhinhas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 218982060">📞 +351 218982060</a> · <a href="mailto:colmeiadasabelhinhas@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.casadasabelhinhas.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1268503391" class="nm">Colégio Santiago</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Carnaxide</div>
+  <div class="rc"><a href="tel:+351 214177567">📞 +351 214177567</a> · <a href="mailto:cl.santiago@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.colegio-santiago.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1270691048" class="nm">Jardim de Infância &quot;Chuxinhas&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Póvoa de Santa Iria</div>
+  <div class="rc"><a href="tel:+351 219 593 253">📞 +351 219 593 253</a> · <a href="mailto:ji.chuxinhas@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.chuxinhas.com/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1420826229" class="nm">Datacool</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1537328240" class="nm">ATL</a></div>
+  <div class="rmeta">ATL</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1540818149" class="nm">Jardim de Infância &quot;As Quatro Estações&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Queluz</div>
+  <div class="rc"><a href="tel:+351 214371445">📞 +351 214371445</a> · <a href="mailto:ji.as4estacoes@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.asquatroestacoes.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1547517207" class="nm">Escolinha dos Pequenitos</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1570120925" class="nm">Jardim de Infância &quot;Os Ursinhos&quot;</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1589700652" class="nm">KriaBébés - Infantário</a></div>
+  <div class="rmeta">Infantário</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1590594034" class="nm">Creche e Jardim de Infância &quot;Marcolândia&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Algés</div>
+  <div class="rc"><a href="tel:+351 214101453">📞 +351 214101453</a> · <a href="mailto:ji.marcolandia@escolas.min-edu.pt">✉ Email</a> · <a href="https://escolamarcolandia.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1603801482" class="nm">Mimarte</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Moscavide</div>
+  <div class="rc"><a href="tel:+351 219443265">📞 +351 219443265</a> · <a href="mailto:geral@crechemimarte.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1642162860" class="nm">Jardim de Infância do Turcifal</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1766015842" class="nm">Creche Gente Pequena</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1911674268" class="nm">Xururuca</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Estoril</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-1952693693" class="nm">Jardim de Infância das Mercês</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2100644439" class="nm">Jardim de Infância Monte-Abraão</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2154562474" class="nm">Parque Infantil - Jardim das Palmeiras</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2264027414" class="nm">Jardim de Infância O Moinho do Bolinha</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 341 484">📞 +351 219 341 484</a> · <a href="mailto:ji.obolinha@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2296790470" class="nm">B-A-Baby</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Algés</div>
+  <div class="rc"><a href="tel:+351 214121505">📞 +351 214121505</a> · <a href="mailto:abc@b-a-baby.pt">✉ Email</a> · <a href="https://www.b-a-baby.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2402924661" class="nm">Creche/J.I. (Inactivo)</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2545025392" class="nm">Jardim de Infância &quot;A Cidade da Brincadeira&quot;</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2545029088" class="nm">Creche do Centro Social Paroquial Padre Ricardo Gameiro da Cova da Piedade - A Nossa Creche</a></div>
+  <div class="rmeta">IPSS · Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2622506628" class="nm">Centro Infantil de Santos-o-Novo</a></div>
+  <div class="rmeta">Pública · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 218163080">📞 +351 218163080</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-2951411654" class="nm">Jardim de Infância &quot;O Pirilampo do Cruzeiro&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Mem Martins</div>
+  <div class="rc"><a href="tel:+351 219215823">📞 +351 219215823</a> · <a href="mailto:opirilampodocruzeiro@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-3687216641" class="nm">Jardim de Infância da Santa Casa da Misericórdia de Arruda dos Vinhos</a></div>
+  <div class="rmeta">IPSS · Jardim de Infância · Arruda dos Vinhos</div>
+  <div class="rc"><a href="tel:+351 263977312">📞 +351 263977312</a> · <a href="mailto:ji.scmarrudavinhos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-4575288091" class="nm">JI Conquinha 2</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-4748573193" class="nm">Creche Henriqueta Adelaide</a></div>
+  <div class="rmeta">Creche</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5609223835" class="nm">O Mimo da Joaninha</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5613761695" class="nm">Ser Criança</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5613964062" class="nm">A casa dos Sonhos</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · São Pedro do Estoril</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5614011685" class="nm">O Cantinho da Cegonha</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Sacavém</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-5615197517" class="nm">Bebé Sol</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-6434240856" class="nm">Jardim Infancia De Cacilhas</a></div>
+  <div class="rmeta">Creche / Jardim de Infância · Almada</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-7882260544" class="nm">Creche &quot;Pequenos Índios&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 210995474">📞 +351 210995474</a> · <a href="http://www.pequenosindios.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-8691232066" class="nm">Creche Jardim De Infáncia E Atl, Fitares</a></div>
+  <div class="rmeta">Creche + JI</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-8694939817" class="nm">Jardim de Infância &quot;Pinóquio&quot;</a></div>
+  <div class="rmeta">Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-8699540509" class="nm">Colégio &quot;Quintinha da Fidalga&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Agualva-Cacém</div>
+  <div class="rc"><a href="tel:+351 219120162">📞 +351 219120162</a> · <a href="http://www.quintinhadafidalga.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-8801807920" class="nm">Colégio das Colinas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 349 730">📞 +351 219 349 730</a> · <a href="mailto:cl.colinas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9408637256" class="nm">Externato Infantil &quot;O Nosso Jardim&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 213901658">📞 +351 213901658</a> · <a href="mailto:infantil@onossojardim.com">✉ Email</a> · <a href="https://onossojardim.com" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9730189235" class="nm">N´Avozinha</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-9730189237" class="nm">N´Avozinha</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-10183831666" class="nm">Academia dos Miúdos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 217740126">📞 +351 217740126</a> · <a href="mailto:secretaria@academiadosmiudos.pt">✉ Email</a> · <a href="http://www.academiadosmiudos.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-10873848734" class="nm">Associação de Pais e Técnicos do Infantário &quot;Pedrita&quot;</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Lisboa</div>
+  <div class="rc"><a href="tel:+351 217154701">📞 +351 217154701</a> · <a href="mailto:ji.pedrita@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11019532711" class="nm">ADECO</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11521901169" class="nm">Jardim Da Fantasia</a></div>
+  <div class="rmeta">Creche / Jardim de Infância</div>
+  <div class="rc"><span class="muted">sem contacto registado</span></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11733773536" class="nm">Jardim de Infância Academia dos Peixinhos</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 339 754">📞 +351 219 339 754</a> · <a href="mailto:geral@academiadospeixinhos.pt;ji.academiadospeixinhos@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11831664792" class="nm">Jardim de Infância O Fofas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Póvoa de Santa Iria</div>
+  <div class="rc"><a href="tel:+351 219 531 990">📞 +351 219 531 990</a> · <a href="mailto:ji.ofofas@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11831664827" class="nm">Creche Planeta dos Traquinas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Póvoa de Santa Iria</div>
+  <div class="rc"><a href="tel:+351 214 031 369;+351 917 746 615;+351 935 270 453">📞 +351 214 031 369;+351 917 746 615;+351 935 270 453</a> · <a href="mailto:geral@planetadostraquinas.pt">✉ Email</a> · <a href="https://planetadostraquinas.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11833231247" class="nm">Jardim Infantil Estrela do Mar</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Ericeira</div>
+  <div class="rc"><a href="tel:+351 261 869 700">📞 +351 261 869 700</a> · <a href="mailto:ji.estreladomar@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677799" class="nm">Os Trombinhas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 325 522">📞 +351 219 325 522</a> · <a href="http://www.ostrombinhas.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677800" class="nm">Os Ilustres</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 322 818">📞 +351 219 322 818</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677801" class="nm">Colégio A Sandrinha</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Pontinha</div>
+  <div class="rc"><a href="tel:+351 214 785 124;+351 965 762 180;+351 961 585 737">📞 +351 214 785 124;+351 965 762 180;+351 961 585 737</a> · <a href="mailto:colegiosandrinha@gmail.com;ji.sandrinhapontinha@escolas.min-edu.pt">✉ Email</a> · <a href="http://www.colegiosandrinha.pt" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677802" class="nm">Jardim Infantil O Pónei</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 329 690">📞 +351 219 329 690</a> · <a href="mailto:oponei@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677808" class="nm">Jardim de Infância Timena</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 324 389">📞 +351 219 324 389</a> · <a href="mailto:ji.timena@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677813" class="nm">Jardim de Infância Pipos &amp; Bibas</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 322 528">📞 +351 219 322 528</a> · <a href="http://www.pipos-e-bibas.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677814" class="nm">Duende Mágico</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 317 248">📞 +351 219 317 248</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677839" class="nm">Jardim de Infância O Alicerce</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="mailto:ji.oalicerce@escolas.min-edu.pt">✉ Email</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677851" class="nm">Colégio O Bom Principezinho</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 961 591 452">📞 +351 961 591 452</a> · <a href="mailto:creche@obomprincipezinho.pt">✉ Email</a> · <a href="http://www.obomprincipezinho.pt/" target="_blank" rel="noopener">🌐 Site</a></div>
+</li>
+<li class="row">
+  <div class="rh"><a href="/app#creche-osm-node-11835677852" class="nm">Creche Colinas do Cruzeiro e Jardim de Infância</a></div>
+  <div class="rmeta">Privada · Jardim de Infância · Odivelas</div>
+  <div class="rc"><a href="tel:+351 219 313 170;+351 914 744 281">📞 +351 219 313 170;+351 914 744 281</a></div>
+</li><li class="more"><a href="/app">+ Ver as outras 437 creches no mapa →</a></li>
+  </ul>
+</div>
+
+<div class="seo-text">
+  <h2>Como encontrar a creche certa em Lisboa</h2>
+  <p>O distrito de Lisboa tem 497 creches registadas no CrechesPT, incluindo 286 privada, 109 desconhecido, 91 pública, 11 ipss. Podes filtrar por faixa etária (berçário 0-1 ano, creche 1-3 anos, jardim de infância 3-6 anos), tipo de creche (pública, IPSS, privada) ou desenhar uma área no mapa para ver só as creches numa zona específica.</p>
+  <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
+  <p>👉 <a href="/app">Ver mapa interativo de Lisboa</a></p>
+</div>
+
+<footer class="foot">
+  <div class="row">
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+  </div>
+  <div class="row">CrechesPT © 2026 · feito com ❤️ para famílias portuguesas</div>
+</footer>
+
+<script src="/cookies.js" defer></script>
+</body>
+</html>
