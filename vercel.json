@@ -1,6 +1,15 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/app", "destination": "/app.html" },
+    { "source": "/para-creches", "destination": "/para-creches.html" },
+    { "source": "/privacidade", "destination": "/privacidade.html" },
+    { "source": "/cookies", "destination": "/cookies.html" },
+    { "source": "/termos", "destination": "/termos.html" },
+    { "source": "/creches", "destination": "/creches/index.html" },
+    { "source": "/creches/:slug", "destination": "/creches/:slug.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -20,6 +29,12 @@
       "source": "/app.html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/googlea7f7e895f1730c2f.html",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
       ]
     }
   ]
