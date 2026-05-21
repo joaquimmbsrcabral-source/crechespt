@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.vercel
+.env
+.env.local
+*.log
+.cache/
+outputs/
+creches_raw.json
+childcare_raw.json
+creches_b64.txt
+overpass_query.txt
+overpass_q2.txt

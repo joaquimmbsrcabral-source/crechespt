@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Regras de segurança Firestore — CrechesPT
+// Modelo: cada utilizador tem o seu próprio espaço; ninguém vê os dados de mais ninguém.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Espaço pessoal de cada utilizador
+    // /users/{uid}/tracking/{crecheId}  → estado de contacto, notas, prioridade, etc.
+    // /users/{uid}/profile/...          → preferências
+    match /users/{uid}/{document=**} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == uid;
+    }
+
+    // Tudo o resto bloqueado (por agora não há dados públicos)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
