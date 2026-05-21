@@ -380,6 +380,7 @@ header.topbar{
 .chip.active .dot{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
 .chip.toggle-fav.active{background:linear-gradient(135deg,var(--c-yellow),var(--c-peach))}
 .chip.toggle-tracked.active{background:linear-gradient(135deg,var(--c-turquoise),var(--c-mint))}
+.chip.toggle-near.active{background:linear-gradient(135deg,var(--c-sky),var(--c-turquoise));color:#fff}
 .chip.chip-age.active{background:linear-gradient(135deg,var(--c-lilac),var(--c-sky));color:#fff;box-shadow:0 4px 12px rgba(177,151,252,.35)}
 .age-pill{display:inline-flex;align-items:center;gap:3px;padding:1px 8px;border-radius:var(--r-pill);
   background:var(--c-mint-soft);color:#3CA64B;font-weight:700;font-size:11px}
@@ -931,6 +932,7 @@ header.topbar{
           <option value="6">Tem 6 anos</option>
         </select>
       </div>
+      <button id="f-near-me" class="chip toggle-near"><span>📍</span>Perto de mim</button>
       <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
       <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
       <button id="f-clear" class="chip-clear">↺ Limpar</button>
@@ -1016,7 +1018,10 @@ header.topbar{
           <span id="d-loc" style="color:var(--ink-soft);font-size:12px;font-weight:600"></span>
         </div>
       </div>
-      <button id="d-close" class="closebtn" aria-label="Fechar">✕</button>
+      <div style="display:flex;gap:8px;flex-shrink:0">
+        <button id="d-share-top" class="closebtn" aria-label="Partilhar esta creche" title="Partilhar">🔗</button>
+        <button id="d-close" class="closebtn" aria-label="Fechar">✕</button>
+      </div>
     </div>
     <div class="body">
       <div class="section">
@@ -2076,6 +2081,46 @@ function wireUp(){
     State.filters.onlyTracked = !State.filters.onlyTracked;
     e.currentTarget.classList.toggle("active", State.filters.onlyTracked); applyFilters();
   });
+  // Botão "Perto de mim" — pede GPS, ordena por distância, mostra pino
+  document.getElementById("f-near-me").addEventListener("click", (e)=>{
+    const btn = e.currentTarget;
+    if(btn.classList.contains("active")){
+      // desligar
+      btn.classList.remove("active");
+      State.userPos = null;
+      if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} State.userMarker = null; }
+      State.filters.sort = "name";
+      document.getElementById("sort").value = "name";
+      applyFilters();
+      toast("Localização desligada","ok");
+      return;
+    }
+    if(!navigator.geolocation){ toast("Geolocalização não suportada","err"); return; }
+    const tDismiss = toast("A obter a tua localização…","warn",{duration:8000});
+    navigator.geolocation.getCurrentPosition(
+      (pos)=>{
+        const ll = [pos.coords.latitude, pos.coords.longitude];
+        State.userPos = ll;
+        if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} }
+        const ic = L.divIcon({ html:'<div class="user-marker"></div>', className:"", iconSize:[18,18]});
+        State.userMarker = L.marker(ll, {icon:ic, interactive:false}).addTo(State.map);
+        State.map.setView(ll, 13);
+        State.filters.sort = "dist";
+        document.getElementById("sort").value = "dist";
+        btn.classList.add("active");
+        applyFilters();
+        if(tDismiss) tDismiss();
+        toast("Mostro as creches mais perto de ti","ok");
+      },
+      (err)=>{
+        if(tDismiss) tDismiss();
+        let msg = "Não foi possível obter a tua localização";
+        if(err.code===1) msg = "Precisas de permitir o acesso à localização nas definições do browser.";
+        toast(msg,"err",{duration:5000});
+      },
+      { enableHighAccuracy:false, timeout:8000, maximumAge:60000 }
+    );
+  });
   document.getElementById("f-only-fav").addEventListener("click", e=>{
     State.filters.onlyFav = !State.filters.onlyFav;
     e.currentTarget.classList.toggle("active", State.filters.onlyFav); applyFilters();
@@ -2224,6 +2269,8 @@ function wireUp(){
   document.getElementById("d-reset").addEventListener("click", resetDetail);
   const dShare = document.getElementById("d-share");
   if(dShare) dShare.addEventListener("click", shareDetail);
+  const dShareTop = document.getElementById("d-share-top");
+  if(dShareTop) dShareTop.addEventListener("click", shareDetail);
   document.querySelectorAll("#d-stars .star").forEach(s=>{
     s.addEventListener("click", ()=>{
       const v = Number(s.dataset.v);
