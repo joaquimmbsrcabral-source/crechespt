@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="description" content="Aparece onde os pais estão à procura. Lista a tua creche gratuitamente no CrechesPT.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>Para creches — CrechesPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF6EE; --bg2:#FFEFE3; --panel:#fff; --ink:#2C2356; --ink-soft:#6E6790; --ink-faint:#A39DBE;
+  --line:#F1E6D9; --c-coral:#FF6B9D; --c-coral-soft:#FFE2EC; --c-turquoise:#5EC0B7; --c-turquoise-soft:#D9F2EF;
+  --c-yellow:#FFC857; --c-yellow-soft:#FFF1D6; --c-peach:#FF9F68; --c-peach-soft:#FFE3D2;
+  --c-sky:#6EC6F7; --c-sky-soft:#DDEEFB; --c-mint:#7DD389; --c-mint-soft:#DEF5E1;
+  --r-lg:22px; --r-md:16px; --r-sm:12px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(60,40,90,.05), 0 6px 18px rgba(60,40,90,.06);
+  --sh-2:0 8px 24px rgba(60,40,90,.10);
+  --sh-pop:0 20px 50px rgba(60,40,90,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:
+  radial-gradient(1100px 700px at -10% -10%, var(--c-coral-soft) 0%, transparent 55%),
+  radial-gradient(900px 600px at 110% 10%, var(--c-turquoise-soft) 0%, transparent 60%),
+  radial-gradient(900px 700px at 50% 110%, var(--c-yellow-soft) 0%, transparent 60%),
+  var(--bg); color:var(--ink);
+  font-family:"Quicksand",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh}
+h1,h2,h3,h4{font-family:"Fredoka",inherit;font-weight:600;letter-spacing:-.01em;margin:0}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer;border:none}
+input,select,textarea{font:inherit;color:inherit}
+
+/* Header */
+header.top{
+  display:flex;align-items:center;gap:14px;padding:18px 24px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:50%;box-shadow:0 6px 16px rgba(255,107,157,.35);overflow:hidden;flex-shrink:0}
+.logo svg{display:block;width:100%;height:100%}
+.brand-name b{font-family:"Fredoka";font-size:20px;color:var(--ink);display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:500}
+.top .spacer{flex:1}
+.top a.back{
+  border-radius:var(--r-pill);background:#fff;color:var(--ink);
+  padding:8px 16px;font-weight:600;font-size:13px;box-shadow:var(--sh-1);
+}
+.top a.back:hover{transform:translateY(-1px);box-shadow:var(--sh-2);text-decoration:none}
+
+/* Hero */
+section.hero{padding:60px 24px 40px;text-align:center;max-width:780px;margin:0 auto}
+.kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+  padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:12px;margin-bottom:18px}
+.hero h1{font-size:44px;line-height:1.1;margin-bottom:16px}
+.hero h1 .accent{
+  background:linear-gradient(135deg,var(--c-coral),var(--c-peach));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{font-size:18px;color:var(--ink-soft);max-width:600px;margin:0 auto 28px}
+.hero .ctas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:var(--r-pill);padding:13px 26px;font-weight:700;font-size:15px;
+  border:1.5px solid transparent;transition:all .15s;
+}
+.btn.primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+.btn.primary:hover{transform:translateY(-1px);filter:brightness(1.05);text-decoration:none}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.btn.ghost:hover{transform:translateY(-1px);box-shadow:var(--sh-2);text-decoration:none}
+
+/* Stats strip */
+.stats{
+  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+  max-width:780px;margin:0 auto 30px;padding:22px 24px;
+  background:rgba(255,255,255,.85);border-radius:var(--r-lg);box-shadow:var(--sh-1);
+}
+.stat{text-align:center}
+.stat b{font-family:"Fredoka";font-size:28px;display:block;line-height:1;color:var(--ink)}
+.stat span{color:var(--ink-soft);font-size:13px;margin-top:4px;display:block}
+
+/* Benefits */
+section.benefits{padding:30px 24px 50px;max-width:1100px;margin:0 auto}
+.benefits .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bcard{
+  background:rgba(255,255,255,.9);border-radius:var(--r-lg);padding:22px;box-shadow:var(--sh-1);
+}
+.bcard .ic{
+  width:50px;height:50px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px;
+}
+.bcard.b1 .ic{background:var(--c-coral-soft);color:var(--c-coral)}
+.bcard.b2 .ic{background:var(--c-turquoise-soft);color:#218985}
+.bcard.b3 .ic{background:var(--c-yellow-soft);color:#A8780E}
+.bcard h3{font-size:17px;margin-bottom:6px}
+.bcard p{margin:0;color:var(--ink-soft);font-size:13.5px;line-height:1.55}
+.bcard .badge{display:inline-block;background:var(--c-mint-soft);color:#3CA64B;
+  padding:2px 10px;border-radius:var(--r-pill);font-size:11px;font-weight:700;margin-top:10px}
+.bcard .badge.soon{background:var(--c-yellow-soft);color:#A8780E}
+
+/* Pricing tease */
+section.pricing{
+  padding:30px 24px 50px;max-width:780px;margin:0 auto;text-align:center;
+}
+.price-card{
+  background:#fff;border-radius:var(--r-lg);padding:30px 24px;box-shadow:var(--sh-pop);
+  border:2px solid var(--c-coral-soft);
+}
+.price-card .badge{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));
+  color:#fff;padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:12px;margin-bottom:12px}
+.price-card .big{font-family:"Fredoka";font-size:46px;font-weight:600;line-height:1;color:var(--ink)}
+.price-card .big small{font-size:18px;color:var(--ink-soft);font-weight:500;margin-left:4px}
+.price-card p.sub{color:var(--ink-soft);margin:10px 0 18px;font-size:14px}
+.price-card ul{list-style:none;padding:0;margin:0 0 14px;text-align:left;max-width:380px;margin-inline:auto}
+.price-card ul li{padding:6px 0;font-size:14px;display:flex;align-items:flex-start;gap:8px}
+.price-card ul li::before{content:"✓";color:var(--c-turquoise);font-weight:700;flex-shrink:0}
+.price-card ul li.soon{color:var(--ink-soft)}
+.price-card ul li.soon::before{content:"○";color:var(--c-yellow);font-weight:700}
+
+/* Form */
+section.form{padding:30px 24px 70px;max-width:600px;margin:0 auto}
+.form-card{background:#fff;border-radius:var(--r-lg);padding:30px;box-shadow:var(--sh-pop)}
+.form-card h2{font-size:24px;margin-bottom:6px}
+.form-card p.sub{margin:0 0 22px;color:var(--ink-soft);font-size:14px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12px;color:var(--ink-soft);font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.form-row label .req{color:var(--c-coral)}
+.form-row input, .form-row select, .form-row textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:var(--r-md);
+  padding:11px 13px;background:#fff;outline:none;font-size:15px;
+  transition:border-color .15s, box-shadow .15s;
+}
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+  border-color:var(--c-coral);box-shadow:0 0 0 4px var(--c-coral-soft);
+}
+.form-row textarea{resize:vertical;min-height:80px}
+.form-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{
+  width:100%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+  border-radius:var(--r-pill);padding:14px;font-weight:700;font-size:15px;margin-top:8px;
+  box-shadow:0 6px 16px rgba(255,107,157,.35);transition:all .15s;
+}
+.form-submit:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.05)}
+.form-submit:disabled{opacity:.65;cursor:wait}
+.form-note{margin:14px 0 0;font-size:11.5px;color:var(--ink-faint);line-height:1.55;text-align:center}
+.form-thanks{
+  display:none;text-align:center;padding:30px 18px;
+}
+.form-thanks.show{display:block}
+.form-thanks .emoji{font-size:54px;margin-bottom:10px}
+.form-thanks h2{font-size:22px;margin-bottom:8px}
+.form-thanks p{color:var(--ink-soft);font-size:14px;margin:0 auto;max-width:380px}
+.form-error{color:var(--c-coral);font-size:13px;margin-top:10px;min-height:18px;text-align:center}
+
+/* Footer */
+footer{text-align:center;padding:30px 24px 60px;color:var(--ink-faint);font-size:12.5px}
+footer a{color:var(--ink-soft)}
+
+@media (max-width:760px){
+  header.top{padding:14px 16px}
+  .brand-name span{display:none}
+  .top a.back{padding:7px 12px;font-size:12px}
+  section.hero{padding:34px 16px 20px}
+  .hero h1{font-size:32px}
+  .hero p.lead{font-size:16px}
+  .stats{gap:24px;padding:16px}
+  .stat b{font-size:24px}
+  .benefits .grid{grid-template-columns:1fr;gap:12px}
+  section.benefits{padding:18px 16px 30px}
+  .bcard{padding:18px}
+  .price-card{padding:24px 18px}
+  .price-card .big{font-size:38px}
+  section.form{padding:18px 16px 50px}
+  .form-card{padding:22px 18px}
+  .form-grid2{grid-template-columns:1fr}
+  input,select,textarea{font-size:16px !important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="lbg" cx="35%" cy="35%" r="75%">
+            <stop offset="0%" stop-color="#FFD66E"/>
+            <stop offset="55%" stop-color="#FF9F68"/>
+            <stop offset="100%" stop-color="#FF6B9D"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="49" fill="url(#lbg)"/>
+        <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M 22 52 L 50 26 L 67 41 L 67 32 L 73 32 L 73 47 L 78 52" stroke-width="5"/>
+          <line x1="28" y1="55" x2="28" y2="80" stroke-width="5"/>
+          <line x1="72" y1="55" x2="72" y2="80" stroke-width="5"/>
+          <path d="M 18 84 Q 50 79 82 84" stroke-width="3"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="48" cy="54" r="9"/>
+          <path d="M 50 45 Q 53 41 56 43 Q 54 47 51 48 Z"/>
+          <path d="M 41 62 Q 40 72 44 78 L 60 78 Q 63 74 61 70 Q 58 67 53 67 Q 47 66 44 64 Q 41 62 41 62 Z"/>
+          <ellipse cx="60" cy="79" rx="6" ry="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="brand-name">
+      <b>CrechesPT</b>
+      <span>encontra a creche certa para o teu filho</span>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <a href="/" class="back">← Voltar à app</a>
+</header>
+
+<section class="hero">
+  <span class="kicker">Para creches, jardins de infância e IPSS</span>
+  <h1>Aparece onde os pais estão a <span class="accent">procurar creche</span></h1>
+  <p class="lead">
+    O CrechesPT é a forma mais simples para pais portugueses encontrarem creche para os filhos.
+    A tua creche já está na nossa base — agora pode ter um perfil melhor e receber contactos diretos de famílias interessadas.
+  </p>
+  <div class="ctas">
+    <a href="#registo" class="btn primary">Quero saber mais →</a>
+    <a href="/" class="btn ghost">Ver a app dos pais</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><b>2.591</b><span>creches já listadas</span></div>
+  <div class="stat"><b>20</b><span>distritos cobertos</span></div>
+  <div class="stat"><b>0€</b><span>custo para creches hoje</span></div>
+</div>
+
+<section class="benefits">
+  <div class="grid">
+    <div class="bcard b1">
+      <div class="ic">🗺</div>
+      <h3>Já estás no mapa</h3>
+      <p>A tua creche está em <strong>https://crechespt.vercel.app</strong> com nome, morada e contacto, completamente gratuito. Pais a procurar na tua zona vão encontrar-te.</p>
+      <span class="badge">Disponível agora</span>
+    </div>
+    <div class="bcard b2">
+      <div class="ic">✓</div>
+      <h3>Verifica e edita o teu perfil</h3>
+      <p>Reclama a página da tua creche, adiciona fotos, mensalidade, vagas em tempo real, e ganha um badge "Verificada". Os pais confiam mais em perfis verificados.</p>
+      <span class="badge soon">Em breve</span>
+    </div>
+    <div class="bcard b3">
+      <div class="ic">📩</div>
+      <h3>Recebe contactos qualificados</h3>
+      <p>Pais que querem mais informação preenchem um pedido — nome, contacto, idade da criança, data prevista. Vai direto para o teu email, sem mais voltas.</p>
+      <span class="badge soon">Em breve</span>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="price-card">
+    <span class="badge">Programa fundador</span>
+    <div class="big">0€<small>/mês</small></div>
+    <p class="sub">Para todas as creches que se registarem nos primeiros meses</p>
+    <ul>
+      <li>Perfil básico no mapa e nas pesquisas</li>
+      <li>Receção de favoritos e cliques (estatísticas)</li>
+      <li>Verificação e edição do perfil <strong>(em breve)</strong></li>
+      <li class="soon">Destaque nos resultados do teu distrito</li>
+      <li class="soon">Recebimento de contactos qualificados de pais</li>
+    </ul>
+    <p class="sub" style="margin-top:14px"><strong>Primeiros utilizadores ganham 3 meses grátis</strong> quando as features premium forem lançadas.</p>
+  </div>
+</section>
+
+<section id="registo" class="form">
+  <div class="form-card">
+    <div id="form-fields">
+      <h2>Quero saber mais</h2>
+      <p class="sub">Deixa os teus dados e avisamos-te quando lançarmos as funcionalidades para creches. Sem spam, sem compromisso.</p>
+      <form id="interest-form" novalidate>
+        <div class="form-row">
+          <label for="i-nome">Nome da creche <span class="req">*</span></label>
+          <input id="i-nome" name="nome" type="text" required maxlength="200" placeholder="Ex.: Centro Infantil O Caracol">
+        </div>
+        <div class="form-grid2">
+          <div class="form-row">
+            <label for="i-tipo">Tipo <span class="req">*</span></label>
+            <select id="i-tipo" name="tipo" required>
+              <option value="">Escolhe…</option>
+              <option value="privada">Privada</option>
+              <option value="ipss">IPSS</option>
+              <option value="publica">Pública</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="i-distrito">Distrito <span class="req">*</span></label>
+            <select id="i-distrito" name="distrito" required>
+              <option value="">Escolhe…</option>
+              <option>Aveiro</option><option>Beja</option><option>Braga</option><option>Bragança</option>
+              <option>Castelo Branco</option><option>Coimbra</option><option>Évora</option><option>Faro</option>
+              <option>Guarda</option><option>Leiria</option><option>Lisboa</option><option>Portalegre</option>
+              <option>Porto</option><option>Santarém</option><option>Setúbal</option><option>Viana do Castelo</option>
+              <option>Vila Real</option><option>Viseu</option><option>Madeira</option><option>Açores</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="i-email">Email de contacto <span class="req">*</span></label>
+          <input id="i-email" name="email" type="email" required maxlength="120" placeholder="responsavel@creche.pt">
+        </div>
+        <div class="form-grid2">
+          <div class="form-row">
+            <label for="i-tel">Telefone</label>
+            <input id="i-tel" name="telefone" type="tel" maxlength="40" placeholder="Ex.: 21 000 0000">
+          </div>
+          <div class="form-row">
+            <label for="i-crianças">Nº de crianças</label>
+            <input id="i-criancas" name="criancas" type="text" maxlength="20" placeholder="Ex.: 60">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="i-msg">Algo a acrescentar?</label>
+          <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Conta-nos o que mais te ajudaria — vagas em tempo real, gestão de contactos, etc."></textarea>
+        </div>
+        <button id="i-submit" class="form-submit" type="submit">Quero saber quando lançarem →</button>
+        <div id="i-error" class="form-error"></div>
+        <p class="form-note">
+          Ao enviar, aceitas que te contactemos por email a propósito do CrechesPT.
+          Não partilhamos os teus dados com ninguém. Podes pedir para sermos retirados a qualquer momento.
+        </p>
+      </form>
+    </div>
+    <div id="form-thanks" class="form-thanks">
+      <div class="emoji">🎉</div>
+      <h2>Recebido!</h2>
+      <p>Obrigado pelo teu interesse. Vamos avisar-te assim que estiverem disponíveis as funcionalidades para creches — sem spam, prometido.</p>
+      <p style="margin-top:14px"><a href="/" class="btn ghost" style="font-size:13px;padding:9px 18px">Voltar à app</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  CrechesPT — feito com ❤️ para famílias portuguesas.
+  Dados das creches: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL).
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+  authDomain: "crechespt.firebaseapp.com",
+  projectId: "crechespt",
+  storageBucket: "crechespt.firebasestorage.app",
+  messagingSenderId: "286409365255",
+  appId: "1:286409365255:web:0edecccfa2a954c40b57a2"
+};
+firebase.initializeApp(FIREBASE_CONFIG);
+const db = firebase.firestore();
+
+const form = document.getElementById("interest-form");
+const errEl = document.getElementById("i-error");
+const submitBtn = document.getElementById("i-submit");
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  errEl.textContent = "";
+  const data = Object.fromEntries(new FormData(form).entries());
+  // validação leve
+  if(!data.nome || data.nome.length < 2){ errEl.textContent="Indica o nome da creche."; return; }
+  if(!data.tipo){ errEl.textContent="Escolhe o tipo de creche."; return; }
+  if(!data.distrito){ errEl.textContent="Escolhe o distrito."; return; }
+  if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)){ errEl.textContent="Indica um email válido."; return; }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "A enviar…";
+  try{
+    await db.collection("creche_interest").add({
+      ...data,
+      source: "para-creches",
+      user_agent: navigator.userAgent.slice(0,200),
+      lang: navigator.language || "",
+      ts: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    document.getElementById("form-fields").style.display = "none";
+    document.getElementById("form-thanks").classList.add("show");
+    window.scrollTo({top:document.getElementById("form-thanks").offsetTop-80, behavior:"smooth"});
+  }catch(err){
+    console.error(err);
+    errEl.textContent = "Não foi possível enviar. Verifica a tua ligação e tenta de novo.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Quero saber quando lançarem →";
+  }
+});
+</script>
+</body>
+</html>
