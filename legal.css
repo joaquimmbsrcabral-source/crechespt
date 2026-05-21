@@ -1,0 +1,76 @@
+:root{
+  --bg:#FFF6EE;--bg2:#FFEFE3;--ink:#2C2356;--ink-soft:#6E6790;--ink-faint:#A39DBE;--line:#F1E6D9;
+  --c-coral:#FF6B9D;--c-coral-soft:#FFE2EC;--c-turquoise:#5EC0B7;--c-turquoise-soft:#D9F2EF;
+  --c-yellow:#FFC857;--c-yellow-soft:#FFF1D6;--c-peach:#FF9F68;--c-peach-soft:#FFE3D2;
+  --r-lg:22px;--r-md:16px;--r-pill:999px;
+  --sh-1:0 1px 2px rgba(60,40,90,.05), 0 6px 18px rgba(60,40,90,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:
+  radial-gradient(900px 600px at -10% -10%, var(--c-coral-soft) 0%, transparent 60%),
+  radial-gradient(800px 500px at 110% 10%, var(--c-turquoise-soft) 0%, transparent 60%),
+  var(--bg); color:var(--ink);
+  font-family:"Quicksand",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; min-height:100vh}
+h1,h2,h3,h4{font-family:"Fredoka",inherit;font-weight:600;letter-spacing:-.01em;margin:0;color:var(--ink)}
+a{color:var(--c-coral);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+button{font:inherit;cursor:pointer;border:none}
+code{background:var(--bg2);padding:1px 6px;border-radius:6px;font-family:"SFMono-Regular",ui-monospace,Consolas,monospace;font-size:.92em}
+
+header.top{
+  display:flex;align-items:center;gap:14px;padding:16px 24px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo{width:42px;height:42px;border-radius:50%;box-shadow:0 6px 16px rgba(255,107,157,.35);overflow:hidden;flex-shrink:0}
+.logo svg{display:block;width:100%;height:100%}
+.brand-name b{font-family:"Fredoka";font-size:18px;color:var(--ink);display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:500}
+.top .spacer{flex:1}
+.top a.back{
+  border-radius:var(--r-pill);background:#fff;color:var(--ink);
+  padding:8px 14px;font-weight:600;font-size:13px;box-shadow:var(--sh-1);text-decoration:none;
+}
+.top a.back:hover{transform:translateY(-1px)}
+
+main.doc{max-width:780px;margin:0 auto;padding:40px 24px 40px;background:rgba(255,255,255,.86);
+  border-radius:var(--r-lg);box-shadow:var(--sh-1);margin-top:30px;margin-bottom:30px}
+.doc .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+  padding:3px 12px;border-radius:var(--r-pill);font-weight:700;font-size:11px;margin-bottom:14px}
+.doc h1{font-size:34px;margin-bottom:8px}
+.doc .lead{color:var(--ink-soft);margin:0 0 24px;font-size:14px}
+.doc h2{font-size:20px;margin:26px 0 10px}
+.doc h3{font-size:16px;margin:18px 0 8px;color:var(--c-coral)}
+.doc p{margin:0 0 12px}
+.doc ul{margin:0 0 14px;padding-left:22px}
+.doc ul li{margin-bottom:5px}
+.doc .updated{margin-top:30px;color:var(--ink-faint);font-size:12px;font-style:italic;text-align:right}
+
+.data-table{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:13.5px}
+.data-table th,.data-table td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.data-table th{background:var(--bg2);color:var(--ink-soft);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+.data-table tbody tr:hover{background:rgba(255,233,242,.4)}
+
+.btn-link{
+  background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+  border-radius:var(--r-pill);padding:9px 18px;font-weight:700;font-size:13.5px;
+  box-shadow:0 6px 14px rgba(255,107,157,.35);transition:all .15s;text-decoration:none;display:inline-block;
+}
+.btn-link:hover{transform:translateY(-1px);filter:brightness(1.05);text-decoration:none}
+
+footer.foot{text-align:center;padding:30px 24px 60px;color:var(--ink-faint);font-size:12.5px}
+footer.foot a{color:var(--ink-soft);text-decoration:none}
+footer.foot a:hover{color:var(--c-coral)}
+footer.foot .row{margin-bottom:6px}
+
+@media (max-width:760px){
+  header.top{padding:12px 14px}
+  .brand-name span{display:none}
+  main.doc{margin:14px 12px;padding:24px 18px}
+  .doc h1{font-size:26px}
+  .doc h2{font-size:18px}
+  .data-table{font-size:12.5px}
+  .data-table th,.data-table td{padding:7px 7px}
+}

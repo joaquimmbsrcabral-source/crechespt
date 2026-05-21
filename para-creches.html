@@ -349,9 +349,15 @@ footer a{color:var(--ink-soft)}
 </section>
 
 <footer>
-  CrechesPT — feito com ❤️ para famílias portuguesas.
+  <div style="margin-bottom:8px">
+    <a href="/">Início</a> · <a href="/app">App</a> ·
+    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a> ·
+    <button onclick="window.openCookiePrefs && openCookiePrefs()" style="background:none;color:var(--ink-soft);font:inherit;cursor:pointer;padding:0;text-decoration:underline">⚙ Gerir cookies</button>
+  </div>
+  CrechesPT © 2026 — feito com ❤️ para famílias portuguesas.
   Dados das creches: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL).
 </footer>
+<script src="/cookies.js" defer></script>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
