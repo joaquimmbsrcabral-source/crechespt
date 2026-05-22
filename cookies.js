@@ -1,4 +1,4 @@
-/* CrechesPT — gestão de consentimento de cookies (RGPD)
+/* Creches.app — gestão de consentimento de cookies (RGPD)
    - Banner ao primeiro acesso
    - Opt-in para cookies analíticos (Firebase Analytics)
    - Função global openCookiePrefs() para reabrir

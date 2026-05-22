@@ -74,3 +74,4 @@ footer.foot .row{margin-bottom:6px}
   .data-table{font-size:12.5px}
   .data-table th,.data-table td{padding:7px 7px}
 }
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
