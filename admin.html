@@ -196,11 +196,22 @@ table tr:hover{background:rgba(255,243,214,.4)}
         <div class="value" id="m-feedback">—</div>
         <div class="hint">Mensagens recebidas</div>
       </div>
+      <div class="metric coral">
+        <span class="ico">🚩</span>
+        <div class="label">Idades reportadas</div>
+        <div class="value" id="m-reports">—</div>
+        <div class="hint">Correções pendentes</div>
+      </div>
     </div>
 
     <section class="panel">
       <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
       <div id="ci-host"></div>
+    </section>
+
+    <section class="panel">
+      <h3>🚩 Idades reportadas como incorretas <span class="count" id="rp-count">0</span></h3>
+      <div id="rp-host"></div>
     </section>
 
     <section class="panel">
@@ -282,11 +293,12 @@ async function checkAdmin(uid){
 async function loadDashboard(user){
   $("admin-name").textContent = (user.displayName||"").split(" ")[0] || "admin";
 
-  // Em paralelo: 3 queries
-  const [usersSnap, ciSnap, fbSnap] = await Promise.all([
+  // Em paralelo: 4 queries
+  const [usersSnap, ciSnap, fbSnap, rpSnap] = await Promise.all([
     db.collection("users").orderBy("lastSeen","desc").limit(500).get().catch(e=>{console.warn("users",e);return null;}),
     db.collection("creche_interest").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("ci",e);return null;}),
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
+    db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
   ]);
 
   // --- Utilizadores
@@ -320,9 +332,47 @@ async function loadDashboard(user){
     $("m-feedback").textContent = feedbacks.length;
   } else { $("m-feedback").textContent = "?"; }
 
+  // --- Reports de idade
+  let reports = [];
+  if(rpSnap){
+    rpSnap.forEach(d=>{ const x = d.data(); x.id=d.id; reports.push(x); });
+    $("m-reports").textContent = reports.length;
+  } else { $("m-reports").textContent = "?"; }
+
   renderCreches(creches);
+  renderReports(reports);
   renderFeedback(feedbacks);
   renderUsers(users.slice(0,30));
+}
+
+function renderReports(rows){
+  $("rp-count").textContent = rows.length;
+  if(rows.length===0){
+    $("rp-host").innerHTML = '<div class="empty">Ainda sem reports — quando um utilizador clicar em "🚩 idade errada?" numa creche, aparece aqui.</div>';
+    return;
+  }
+  const labels = {
+    bercario:"👶 Berçário (4-12m)", creche:"🍼 Creche (0-3)", ji:"🎨 JI (3-6)",
+    infantario:"🌈 Infantário (0-6)", atl:"🎒 ATL (6+)", naoecreche:"❌ Não é creche", outra:"📝 Outra"
+  };
+  $("rp-host").innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Data</th><th>Creche</th><th>Atual</th><th>Sugerido</th><th>Nota</th><th>Reporter</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.ts)}</td>
+            <td><b>${escapeHtml(r.creche_name||"—")}</b><br><span style="font-size:11px;color:#888">${escapeHtml(r.creche_id||"")}</span></td>
+            <td>${escapeHtml(r.current_tipo||"—")}<br><small style="color:#888">${r.current_min??"?"}–${r.current_max??"?"} meses</small></td>
+            <td><span class="pill">${escapeHtml(labels[r.claimed_age] || r.claimed_age || "—")}</span></td>
+            <td class="msg">${escapeHtml(r.note||"")}</td>
+            <td class="email-cell">${escapeHtml(r.email||r.uid||"")}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+  `;
 }
 
 function renderCreches(rows){

@@ -386,6 +386,12 @@ header.topbar{
   background:var(--c-mint-soft);color:#3CA64B;font-weight:700;font-size:11px}
 .resp-pill{display:inline-flex;align-items:center;gap:3px;padding:1px 8px;border-radius:var(--r-pill);
   background:var(--c-sky-soft);color:#2A8DCC;font-weight:700;font-size:11px}
+.verif-badge{display:inline-flex;align-items:center;gap:3px;padding:1px 8px;border-radius:var(--r-pill);
+  background:#FFF3D6;color:#A87420;font-weight:700;font-size:11px;border:1px solid #F5C77A;cursor:help}
+.report-age-btn{display:inline-flex;align-items:center;gap:3px;padding:2px 9px;border-radius:var(--r-pill);
+  background:transparent;color:var(--ink-soft);font-weight:600;font-size:11px;border:1px dashed rgba(60,40,90,.25);
+  cursor:pointer;margin-left:4px;line-height:1.4}
+.report-age-btn:hover{background:#FFE3EE;color:#C2185B;border-color:transparent}
 .chip-clear{background:#fff;color:var(--ink-soft);border-radius:var(--r-pill);
   padding:8px 14px;box-shadow:var(--sh-1);font-weight:600;font-size:13px}
 
@@ -1137,6 +1143,35 @@ header.topbar{
   </div>
 </div>
 
+<!-- Report idade incorreta -->
+<div id="ra-host" class="confirm-host" role="dialog" aria-modal="true">
+  <div class="confirm-card" style="max-width:480px;text-align:left">
+    <h3 style="text-align:center">🚩 Reportar idade incorreta</h3>
+    <p style="text-align:center;font-size:13px;color:var(--ink-soft);margin:4px 0 14px">Esta creche é <b id="ra-creche-name">—</b></p>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label style="padding-top:0">Qual a faixa etária correta?</label>
+      <select id="ra-claimed">
+        <option value="">— escolhe —</option>
+        <option value="bercario">👶 Berçário (4-12 meses)</option>
+        <option value="creche">🍼 Creche (4 meses a 3 anos)</option>
+        <option value="ji">🎨 JI / Pré-escolar (3 a 6 anos)</option>
+        <option value="infantario">🌈 Infantário (creche + JI, 0-6)</option>
+        <option value="atl">🎒 ATL / CATL (6-12 anos, após escola)</option>
+        <option value="naoecreche">❌ Não é creche</option>
+        <option value="outra">📝 Outra (descreve abaixo)</option>
+      </select>
+    </div>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="ra-note" style="padding-top:0">Nota (opcional)</label>
+      <textarea id="ra-note" rows="3" placeholder="Ex: só aceita a partir do 1 ano; só JI; entrada a partir dos 18 meses…" maxlength="500" style="min-height:70px"></textarea>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="ra-cancel" class="btn">Cancelar</button>
+      <button id="ra-send" class="btn primary">Enviar correção</button>
+    </div>
+  </div>
+</div>
+
 <!-- Custom confirm -->
 <div id="confirm-host" class="confirm-host" role="dialog" aria-modal="true">
   <div class="confirm-card">
@@ -1398,7 +1433,110 @@ async function loadDataset(){
   const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
   const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
   const text = await new Response(stream).text();
-  return JSON.parse(text);
+  const raw = JSON.parse(text);
+  // Reescrita client-side da inferência de idades (algoritmo melhorado)
+  // Resultado: cada creche fica com c.tipo, c.idade_min_meses, c.idade_max_meses, c.idade_verificar
+  // Entradas que claramente NÃO são creches são removidas (escolas básicas só, ATL puros).
+  const cleaned = [];
+  for(const c of raw){
+    const r = inferAges(c.nome || "", c.tipo || "");
+    if(r.exclude) continue;
+    c.tipo = r.tipo;
+    c.idade_min_meses = r.min;
+    c.idade_max_meses = r.max;
+    c.idade_verificar = !!r.verificar;
+    cleaned.push(c);
+  }
+  return cleaned;
+}
+
+/* ===== Inferência de idades (algoritmo v2) =====
+   Regras baseadas nas "respostas sociais" oficiais (Segurança Social):
+     Berçário      4-12 meses
+     Creche        4-36 meses (0-3 anos)
+     Pré-escolar / JI  3-6 anos (36-72 meses)
+     Infantário    creche + JI (4-72 meses)
+     ATL/CATL      6-12 anos (NÃO é creche)
+   Marca verificar=true quando o nome é ambíguo ou genérico. */
+function inferAges(nameRaw, originalTipo){
+  const n = (nameRaw||"").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, ""); // remove acentos
+  if(!n.trim()){
+    return { tipo: "Desconhecido", min: 4, max: 72, verificar: true };
+  }
+
+  // ---------- EXCLUSÕES (não são creches) ----------
+  // Escolas básicas 2/3 ciclo, secundárias, profissionais
+  if (/\b(eb\s*2|eb\s*3|escola secundaria|escola profissional|secundario|3.?\s*ciclo|2.?\s*ciclo)\b/.test(n)
+      && !/(\bji\b|\bjardim\b|infant|pre.?escola|creche)/.test(n)) {
+    return { exclude: true };
+  }
+  // Escola Básica 1º ciclo SEM componente JI/pré-escolar = só primária
+  if (/\b(eb\s*1|eb1|escola basica do 1|1.?\s*ciclo|primaria)\b/.test(n)
+      && !/(\bji\b|jardim|infant|pre.?escola|preschol|cb|enriquecimento)/.test(n)) {
+    return { exclude: true };
+  }
+  // Universidades, institutos politécnicos, ATS de adultos
+  if (/\b(universidade|politecnico|instituto superior|faculdade)\b/.test(n)) {
+    return { exclude: true };
+  }
+  // Lares de idosos, centros de dia para idosos
+  if (/(lar de idosos|centro de dia|sad|3.?\s*idade|terceira idade)/.test(n) && !/(creche|infant|jardim|berc)/.test(n)) {
+    return { exclude: true };
+  }
+
+  // ---------- DETECTORES ----------
+  const hasBerc      = /\b(bercario|berc[au])\b/.test(n);
+  const hasCreche    = /\bcreches?\b/.test(n);
+  const hasJI        = /\b(j\.?\s*i\.?|jardim de infancia|jardim infantil|pre.?escolar|pre.?escola|kindergarten)\b/.test(n);
+  const hasInfant    = /\binfantario\b/.test(n) || /\bcentro infantil\b/.test(n);
+  const hasATL       = /\b(c\.?a\.?t\.?l\.?|atl|tempos? livres?|after.?school)\b/.test(n);
+
+  // ---------- ATL standalone (sem creche/JI) ----------
+  if (hasATL && !hasCreche && !hasJI && !hasInfant && !hasBerc) {
+    return { tipo: "ATL", min: 72, max: 144, verificar: false };
+  }
+
+  // ---------- Combinações de respostas ----------
+  // Infantário OU (creche + JI) → 0-6 anos
+  if (hasInfant || (hasCreche && hasJI)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: false };
+  }
+  // Berçário + Creche
+  if (hasBerc && hasCreche) {
+    return { tipo: "Creche", min: 4, max: 36, verificar: false };
+  }
+  // Berçário sozinho
+  if (hasBerc) {
+    return { tipo: "Berçário", min: 4, max: 12, verificar: false };
+  }
+  // JI + ATL
+  if (hasJI && hasATL) {
+    return { tipo: "JI + ATL", min: 36, max: 144, verificar: false };
+  }
+  // JI sozinho
+  if (hasJI) {
+    return { tipo: "JI", min: 36, max: 72, verificar: false };
+  }
+  // Creche sozinha (mais comum)
+  if (hasCreche) {
+    return { tipo: "Creche", min: 4, max: 36, verificar: false };
+  }
+
+  // ---------- Operadores típicos de creche (alta probabilidade mas sem indicação clara da resposta) ----------
+  const operadorCreche = /(patronato|centro social paroquial|centro paroquial|centro social|misericordia|santa casa|casa do povo|externato|colegio|cooperativa|associacao social|fundacao|obra social|filhos? do coracao|nossa senhora|sao [a-z]|santa [a-z]|caritas)/.test(n);
+  if (operadorCreche) {
+    // Assume infantário (0-6) mas marca para verificar
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+
+  // ---------- Casos específicos pouco frequentes ----------
+  if (/(amas?|ama familiar|familia de acolhimento)/.test(n)) {
+    return { tipo: "Ama", min: 4, max: 36, verificar: true };
+  }
+
+  // ---------- Sem indicação clara — manter mas avisar ----------
+  return { tipo: "Desconhecido", min: 4, max: 72, verificar: true };
 }
 
 /* ===== Selects ===== */
@@ -1779,7 +1917,11 @@ function openDetail(id){
   if(c.fax)      rows.push(["Fax", escapeHtml(c.fax)]);
   const ageTxt = formatAges(c);
   if(c.resposta) rows.push(["Resposta", `<span class="resp-pill">${escapeHtml(c.resposta)}</span>`]);
-  if(ageTxt)     rows.push(["Faixa etária", `<span class="age-pill">🎂 ${ageTxt}</span>${c.grades?` <small style="color:var(--ink-faint)">(OSM: ${escapeHtml(c.grades)})</small>`:""}`]);
+  if(ageTxt){
+    const verif = c.idade_verificar ? ' <span class="verif-badge" title="A idade desta creche foi inferida e pode estar incorreta — confirma diretamente com a creche">⚠️ a verificar</span>' : "";
+    const reportBtn = ` <button class="report-age-btn" data-noopen="1" type="button" title="Achas que a idade está errada? Reporta">🚩 idade errada?</button>`;
+    rows.push(["Faixa etária", `<span class="age-pill">🎂 ${ageTxt}</span>${verif}${reportBtn}`]);
+  }
   if(State.userPos){
     const d = haversineKm(State.userPos, [c.lat, c.lon]);
     rows.push(["Distância", `<span class="dist-pill">📍 ${fmtDist(d)} a partir de ti</span>`]);
@@ -2473,6 +2615,67 @@ function renderUserChip(user){
           fbSend.textContent = "Enviar";
         }
       });
+      // Report idade incorreta (clicar no botão dentro do detail)
+      const raHost = document.getElementById("ra-host");
+      const raClaimed = document.getElementById("ra-claimed");
+      const raNote = document.getElementById("ra-note");
+      const raSend = document.getElementById("ra-send");
+      const raCancel = document.getElementById("ra-cancel");
+      const raName = document.getElementById("ra-creche-name");
+      function openRa(c){
+        raName.textContent = c.nome || "creche";
+        raClaimed.value = "";
+        raNote.value = "";
+        raHost.dataset.crecheId = c.id;
+        raHost.dataset.crecheName = c.nome || "";
+        raHost.classList.add("open");
+        setTimeout(()=>raClaimed.focus(), 80);
+      }
+      function closeRa(){ raHost.classList.remove("open"); }
+      raCancel.addEventListener("click", closeRa);
+      raHost.addEventListener("click", (e)=>{ if(e.target===raHost) closeRa(); });
+      // Delegated click on the report button (rendered inside detail)
+      document.addEventListener("click", (e)=>{
+        const btn = e.target.closest && e.target.closest(".report-age-btn");
+        if(!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        if(!FB || !FB.user){ toast("Inicia sessão para reportar","warn"); return; }
+        const c = State.creches.find(x=>x.id===State.selectedId);
+        if(!c){ return; }
+        openRa(c);
+      });
+      raSend.addEventListener("click", async ()=>{
+        const claimed = raClaimed.value;
+        const note = (raNote.value||"").trim().slice(0,500);
+        if(!claimed){ toast("Escolhe a faixa etária correta","warn"); return; }
+        raSend.disabled = true;
+        raSend.textContent = "A enviar…";
+        try{
+          await FB.db.collection("creche_reports").add({
+            uid: FB.user.uid,
+            email: FB.user.email || "",
+            creche_id: raHost.dataset.crecheId || "",
+            creche_name: (raHost.dataset.crecheName || "").slice(0,200),
+            claimed_age: claimed.slice(0,30),
+            note: note,
+            current_tipo: ((State.creches.find(x=>x.id===State.selectedId)||{}).tipo || "").slice(0,40),
+            current_min: ((State.creches.find(x=>x.id===State.selectedId)||{}).idade_min_meses) ?? null,
+            current_max: ((State.creches.find(x=>x.id===State.selectedId)||{}).idade_max_meses) ?? null,
+            url: location.href,
+            ts: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+          closeRa();
+          toast("Obrigado! Vou corrigir 💛","ok",{duration:4000});
+        }catch(e){
+          console.error(e);
+          toast("Não foi possível enviar. Tenta de novo.","err");
+        } finally {
+          raSend.disabled = false;
+          raSend.textContent = "Enviar correção";
+        }
+      });
+
       // toggle do menu do utilizador
       document.getElementById("user-chip").addEventListener("click", (e)=>{
         if(e.target.closest("#user-menu")) return;
