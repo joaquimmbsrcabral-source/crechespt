@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://crechespt.vercel.app/sitemap.xml
+Sitemap: https://creches.app/sitemap.xml
