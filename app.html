@@ -2404,6 +2404,19 @@ function renderUserChip(user){
         if(user){
           FB.user = user;
           renderUserChip(user);
+          // grava/atualiza perfil — necessário para painel admin (contagem + lastSeen)
+          try{
+            const ref = FB.db.doc("users/"+user.uid);
+            const snap = await ref.get();
+            const base = {
+              email: user.email || "",
+              displayName: user.displayName || "",
+              photoURL: user.photoURL || "",
+              lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+            };
+            if(!snap.exists){ base.createdAt = firebase.firestore.FieldValue.serverTimestamp(); }
+            await ref.set(base, { merge: true });
+          }catch(e){ console.warn("profile write skipped", e); }
           await loadUserDataFromFirestore();
           showAppShell();
           applyFilters();

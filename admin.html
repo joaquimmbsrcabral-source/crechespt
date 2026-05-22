@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#FF9F68">
+<title>Painel admin — Creches.app</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989;
+  --line:rgba(60,40,90,.08); --r-pill:999px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+  --sh-2:0 4px 10px rgba(60,40,90,.08), 0 12px 28px rgba(60,40,90,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1200px 800px at 20% -10%, var(--c-peach-soft) 0%, transparent 55%),
+    radial-gradient(900px 700px at 100% 0%, var(--c-coral-soft) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:15px; line-height:1.55; min-height:100vh;
+}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;margin:0;letter-spacing:-.01em}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer;border:none}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+
+header.top{
+  display:flex;align-items:center;gap:14px;padding:16px 24px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;
+  box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.brand-name b{font-family:"Fredoka";font-size:20px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.top .spacer{flex:1}
+.user-chip{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;background:#fff;border-radius:var(--r-pill);box-shadow:var(--sh-1);font-size:13px;font-weight:600}
+.user-chip img{width:30px;height:30px;border-radius:50%}
+.btn-out{background:transparent;color:var(--ink-soft);font-weight:600;font-size:13px;padding:8px 14px;border-radius:var(--r-pill)}
+.btn-out:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+
+main{max-width:1100px;margin:0 auto;padding:30px 24px 60px}
+
+/* Login / gating screens */
+.screen{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;min-height:60vh}
+.screen.on{display:flex}
+.screen .card{background:#fff;border-radius:var(--r-card);padding:36px;box-shadow:var(--sh-2);max-width:520px;width:100%}
+.screen h2{font-size:26px;margin-bottom:8px}
+.screen p{color:var(--ink-soft);margin:8px 0 22px}
+.btn-google{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#3c4043;border:1.5px solid #dadce0;font-weight:600;padding:12px 22px;border-radius:var(--r-pill);font-size:15px;box-shadow:var(--sh-1)}
+.btn-google:hover{box-shadow:var(--sh-2);transform:translateY(-1px)}
+.btn-google svg{width:20px;height:20px}
+.uid-box{background:var(--c-yellow-soft);border:1.5px solid var(--c-yellow);border-radius:14px;padding:14px 18px;margin:18px 0;text-align:left;font-family:"SF Mono",Menlo,monospace;font-size:13px;word-break:break-all}
+.uid-box .lbl{display:block;font-size:11px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:"Quicksand"}
+.steps{text-align:left;margin:22px 0;font-size:14px;color:var(--ink)}
+.steps li{margin:8px 0}
+.copy-btn{background:var(--c-coral);color:#fff;font-weight:700;padding:6px 12px;border-radius:var(--r-pill);font-size:12px;margin-top:8px}
+.copy-btn:hover{filter:brightness(1.05)}
+
+/* Dashboard */
+.dash{display:none}
+.dash.on{display:block}
+.dash h2{font-size:30px;margin-bottom:6px}
+.dash .sub{color:var(--ink-soft);margin-bottom:28px}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.metric{background:#fff;border-radius:var(--r-card);padding:22px;box-shadow:var(--sh-1);position:relative;overflow:hidden}
+.metric .label{font-size:12px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.metric .value{font-family:"Fredoka";font-size:38px;font-weight:600;line-height:1;color:var(--ink)}
+.metric .hint{font-size:12px;color:var(--ink-soft);margin-top:6px}
+.metric.coral{background:linear-gradient(135deg,#fff,var(--c-coral-soft) 240%)}
+.metric.peach{background:linear-gradient(135deg,#fff,var(--c-peach-soft) 240%)}
+.metric.turq{background:linear-gradient(135deg,#fff,var(--c-turquoise-soft) 240%)}
+.metric.yellow{background:linear-gradient(135deg,#fff,var(--c-yellow-soft) 240%)}
+.metric .ico{position:absolute;top:18px;right:18px;font-size:24px;opacity:.7}
+
+section.panel{background:#fff;border-radius:var(--r-card);padding:22px;box-shadow:var(--sh-1);margin-bottom:24px}
+section.panel h3{font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+section.panel h3 .count{background:var(--c-coral-soft);color:var(--c-coral);font-size:13px;font-weight:700;padding:2px 10px;border-radius:var(--r-pill);font-family:"Quicksand"}
+.empty{padding:30px;text-align:center;color:var(--ink-soft)}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th{text-align:left;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-size:11px;padding:10px 12px;border-bottom:1.5px solid var(--line);position:sticky;top:0;background:#fff}
+table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+table tr:hover{background:rgba(255,243,214,.4)}
+.tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+.pill{display:inline-block;background:var(--c-turquoise-soft);color:#218985;font-weight:700;font-size:11px;padding:2px 8px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.05em}
+.msg{max-width:480px;color:var(--ink-soft);font-size:13px;line-height:1.4}
+.date{color:var(--ink-soft);font-size:12px;white-space:nowrap}
+.email-cell{font-family:"SF Mono",Menlo,monospace;font-size:12px}
+
+.loading{text-align:center;padding:40px;color:var(--ink-soft)}
+.spinner{display:inline-block;width:22px;height:22px;border:2.5px solid var(--c-coral-soft);border-top-color:var(--c-coral);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:640px){
+  main{padding:20px 14px 40px}
+  .metric .value{font-size:30px}
+  header.top{padding:14px 16px}
+  .brand-name span{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand" style="color:inherit">
+    <div class="logo">🍼</div>
+    <div class="brand-name">
+      <b>Creches<span class="brand-tld">.app</span></b>
+      <span>Painel admin</span>
+    </div>
+  </a>
+  <div class="spacer"></div>
+  <div id="user-area"></div>
+</header>
+
+<main>
+
+  <!-- 1. ECRÃ LOGIN -->
+  <div id="screen-login" class="screen">
+    <div class="card">
+      <div style="font-size:48px;margin-bottom:8px">🔒</div>
+      <h2>Painel administrativo</h2>
+      <p>Esta área é restrita. Faz login com a tua conta de admin para continuares.</p>
+      <button class="btn-google" id="btn-login">
+        <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3a12 12 0 1 1-3.3-13l5.7-5.7A20 20 0 1 0 44 24c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8A12 12 0 0 1 24 12c3 0 5.8 1.2 7.9 3l5.7-5.7A20 20 0 0 0 6.3 14.7z"/><path fill="#4CAF50" d="M24 44a20 20 0 0 0 13.5-5.2l-6.2-5.3a12 12 0 0 1-17.6-6.3L7.1 32.4A20 20 0 0 0 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3a12 12 0 0 1-4.1 5.5l6.2 5.3A20 20 0 0 0 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+        Entrar com Google
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. ECRÃ NÃO AUTORIZADO -->
+  <div id="screen-denied" class="screen">
+    <div class="card">
+      <div style="font-size:48px;margin-bottom:8px">🚫</div>
+      <h2>Sem permissão</h2>
+      <p>A tua conta não é admin. Se devias ter acesso, segue os passos para te auto-autorizar:</p>
+      <div class="uid-box">
+        <span class="lbl">O teu UID</span>
+        <span id="uid-display">—</span>
+        <button class="copy-btn" id="btn-copy-uid">Copiar UID</button>
+      </div>
+      <ol class="steps">
+        <li>Abre o <a href="https://console.firebase.google.com/" target="_blank" rel="noopener">Firebase Console</a> → projeto <b>crechespt</b></li>
+        <li>Vai a <b>Firestore Database</b></li>
+        <li>Clica em <b>+ Iniciar coleção</b> → nome: <code>admins</code></li>
+        <li>Document ID: cola o UID acima</li>
+        <li>Adiciona um campo qualquer (p.ex. <code>enabled</code> = <code>true</code>) e <b>Guardar</b></li>
+        <li>Volta aqui e recarrega a página</li>
+      </ol>
+      <button class="btn-out" id="btn-logout-denied" style="margin-top:8px">Sair</button>
+    </div>
+  </div>
+
+  <!-- 3. DASHBOARD -->
+  <div id="dashboard" class="dash">
+    <h2>Olá <span id="admin-name">admin</span> 👋</h2>
+    <p class="sub">Resumo da atividade do <b>Creches<span class="brand-tld">.app</span></b></p>
+
+    <div class="metrics">
+      <div class="metric coral">
+        <span class="ico">👥</span>
+        <div class="label">Utilizadores</div>
+        <div class="value" id="m-users">—</div>
+        <div class="hint">Total registado</div>
+      </div>
+      <div class="metric peach">
+        <span class="ico">✨</span>
+        <div class="label">Ativos 7 dias</div>
+        <div class="value" id="m-active">—</div>
+        <div class="hint">Login na última semana</div>
+      </div>
+      <div class="metric turq">
+        <span class="ico">🏫</span>
+        <div class="label">Creches interessadas</div>
+        <div class="value" id="m-creches">—</div>
+        <div class="hint">Pediram para listar-se</div>
+      </div>
+      <div class="metric yellow">
+        <span class="ico">💬</span>
+        <div class="label">Feedback</div>
+        <div class="value" id="m-feedback">—</div>
+        <div class="hint">Mensagens recebidas</div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
+      <div id="ci-host"></div>
+    </section>
+
+    <section class="panel">
+      <h3>💬 Mensagens de feedback <span class="count" id="fb-count">0</span></h3>
+      <div id="fb-host"></div>
+    </section>
+
+    <section class="panel">
+      <h3>👥 Utilizadores recentes <span class="count" id="us-count">0</span></h3>
+      <div id="us-host"></div>
+    </section>
+  </div>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+
+<script>
+// === Firebase config (igual ao app.html) ===
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+  authDomain: "crechespt.firebaseapp.com",
+  projectId: "crechespt",
+  storageBucket: "crechespt.firebasestorage.app",
+  messagingSenderId: "470551729340",
+  appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
+};
+
+const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// === Util ===
+function $(id){ return document.getElementById(id); }
+function showScreen(id){
+  ["screen-login","screen-denied","dashboard"].forEach(s=>{
+    const el = $(s);
+    el.classList.toggle("on", s===id);
+  });
+}
+function fmtDate(ts){
+  if(!ts) return "—";
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  return d.toLocaleString("pt-PT",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+}
+function escapeHtml(s){
+  return (s==null?"":String(s)).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
+}
+function renderUserChip(user){
+  const host = $("user-area");
+  if(!user){ host.innerHTML = ""; return; }
+  host.innerHTML = `
+    <div class="user-chip">
+      ${user.photoURL ? `<img src="${escapeHtml(user.photoURL)}" alt="">` : ""}
+      <span>${escapeHtml(user.displayName || user.email || "admin")}</span>
+    </div>
+    <button class="btn-out" id="btn-logout">Sair</button>
+  `;
+  $("btn-logout").addEventListener("click", ()=>auth.signOut());
+}
+
+// === Login ===
+$("btn-login").addEventListener("click", ()=>{
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).catch(e=>{ alert("Erro no login: "+e.message); });
+});
+
+// === Verificação de admin ===
+async function checkAdmin(uid){
+  try{
+    const snap = await db.doc("admins/"+uid).get();
+    return snap.exists;
+  }catch(e){ console.error("admin check", e); return false; }
+}
+
+// === Carregar dados ===
+async function loadDashboard(user){
+  $("admin-name").textContent = (user.displayName||"").split(" ")[0] || "admin";
+
+  // Em paralelo: 3 queries
+  const [usersSnap, ciSnap, fbSnap] = await Promise.all([
+    db.collection("users").orderBy("lastSeen","desc").limit(500).get().catch(e=>{console.warn("users",e);return null;}),
+    db.collection("creche_interest").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("ci",e);return null;}),
+    db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
+  ]);
+
+  // --- Utilizadores
+  let users = [];
+  let activeCount = 0;
+  if(usersSnap){
+    const weekAgo = Date.now() - 7*24*60*60*1000;
+    usersSnap.forEach(d=>{
+      const u = d.data(); u.id = d.id; users.push(u);
+      const t = u.lastSeen && u.lastSeen.toDate ? u.lastSeen.toDate().getTime() : 0;
+      if(t > weekAgo) activeCount++;
+    });
+    $("m-users").textContent = users.length;
+    $("m-active").textContent = activeCount;
+  } else {
+    $("m-users").textContent = "?";
+    $("m-active").textContent = "?";
+  }
+
+  // --- Creche interest
+  let creches = [];
+  if(ciSnap){
+    ciSnap.forEach(d=>{ const x = d.data(); x.id=d.id; creches.push(x); });
+    $("m-creches").textContent = creches.length;
+  } else { $("m-creches").textContent = "?"; }
+
+  // --- Feedback
+  let feedbacks = [];
+  if(fbSnap){
+    fbSnap.forEach(d=>{ const x = d.data(); x.id=d.id; feedbacks.push(x); });
+    $("m-feedback").textContent = feedbacks.length;
+  } else { $("m-feedback").textContent = "?"; }
+
+  renderCreches(creches);
+  renderFeedback(feedbacks);
+  renderUsers(users.slice(0,30));
+}
+
+function renderCreches(rows){
+  $("ci-count").textContent = rows.length;
+  if(rows.length===0){ $("ci-host").innerHTML = '<div class="empty">Sem submissões ainda. Quando uma creche preencher o formulário em /para-creches, aparece aqui.</div>'; return; }
+  $("ci-host").innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Data</th><th>Nome</th><th>Email / Tel</th><th>Tipo</th><th>Distrito</th><th>Crianças</th><th>Mensagem</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.ts)}</td>
+            <td><b>${escapeHtml(r.nome||"—")}</b></td>
+            <td class="email-cell">${escapeHtml(r.email||"—")}${r.telefone?`<br>${escapeHtml(r.telefone)}`:""}</td>
+            <td><span class="pill">${escapeHtml(r.tipo||"")}</span></td>
+            <td>${escapeHtml(r.distrito||"—")}</td>
+            <td>${escapeHtml(r.criancas||"—")}</td>
+            <td class="msg">${escapeHtml(r.mensagem||"").slice(0,200)}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+  `;
+}
+
+function renderFeedback(rows){
+  $("fb-count").textContent = rows.length;
+  if(rows.length===0){ $("fb-host").innerHTML = '<div class="empty">Sem feedback ainda.</div>'; return; }
+  $("fb-host").innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Data</th><th>Utilizador</th><th>Categoria</th><th>Mensagem</th><th>URL</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.ts)}</td>
+            <td class="email-cell">${escapeHtml(r.displayName||"")}<br><span style="color:#888">${escapeHtml(r.email||r.uid||"")}</span></td>
+            <td>${r.category?`<span class="pill">${escapeHtml(r.category)}</span>`:"—"}</td>
+            <td class="msg">${escapeHtml(r.message||"")}</td>
+            <td class="email-cell">${escapeHtml((r.url||"").replace(/^https?:\/\/[^/]+/,""))}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+  `;
+}
+
+function renderUsers(rows){
+  $("us-count").textContent = rows.length;
+  if(rows.length===0){ $("us-host").innerHTML = '<div class="empty">Ainda sem utilizadores registados.</div>'; return; }
+  $("us-host").innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Última atividade</th><th>Nome</th><th>Email</th><th>Registo</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.lastSeen)}</td>
+            <td>${escapeHtml(r.displayName||"—")}</td>
+            <td class="email-cell">${escapeHtml(r.email||"")}</td>
+            <td class="date">${fmtDate(r.createdAt)}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+  `;
+}
+
+// === Botões secundários ===
+$("btn-copy-uid").addEventListener("click", ()=>{
+  const uid = $("uid-display").textContent.trim();
+  if(uid && uid!=="—"){
+    navigator.clipboard.writeText(uid);
+    $("btn-copy-uid").textContent = "Copiado!";
+    setTimeout(()=>{ $("btn-copy-uid").textContent = "Copiar UID"; }, 1500);
+  }
+});
+$("btn-logout-denied").addEventListener("click", ()=>auth.signOut());
+
+// === Auth listener ===
+auth.onAuthStateChanged(async (user)=>{
+  if(!user){
+    renderUserChip(null);
+    showScreen("screen-login");
+    return;
+  }
+  renderUserChip(user);
+
+  // Garante perfil escrito (igual ao app.html), por segurança
+  try{
+    await db.doc("users/"+user.uid).set({
+      email: user.email||"",
+      displayName: user.displayName||"",
+      photoURL: user.photoURL||"",
+      lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+    }, { merge: true });
+  }catch(e){ console.warn("profile write", e); }
+
+  const isAdmin = await checkAdmin(user.uid);
+  if(!isAdmin){
+    $("uid-display").textContent = user.uid;
+    showScreen("screen-denied");
+    return;
+  }
+  showScreen("dashboard");
+  loadDashboard(user);
+});
+</script>
+</body>
+</html>
