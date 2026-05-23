@@ -1,32 +1,156 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FF9F68">
-<meta name="description" content="Creches em Portugal por distrito: 2591 creches, jardins de infância e infantários organizados por região.">
-<meta name="robots" content="index, follow">
+<title>Creches em Portugal: lista completa por distrito (2591 creches) | Creches.app</title>
+<meta name="description" content="Lista completa de creches em Portugal organizadas por distrito: 2591 creches, jardins de infância, IPSS, infantários e berçários. Mapa interativo, filtros e contactos. Gratuito.">
+<meta name="keywords" content="creches portugal, creches em portugal, lista creches portugal, creches por distrito, creches IPSS, jardim de infância portugal, infantário portugal, mapa creches">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="geo.region" content="PT">
+<meta name="geo.placename" content="Portugal">
+<meta property="og:title" content="Creches em Portugal — lista completa por distrito | Creches.app">
+<meta property="og:description" content="Lista organizada de todas as creches em Portugal por distrito. 2591 creches, gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://creches.app/creches">
+<meta property="og:locale" content="pt_PT">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://creches.app/creches">
-<title>Creches por distrito — Creches.app</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/legal.css">
 <style>
-.hero-idx{padding:36px 24px 10px;text-align:center;max-width:720px;margin:0 auto}
-.hero-idx h1{font-size:36px;margin-bottom:10px}
-.hero-idx p{color:var(--ink-soft);font-size:16px;margin:0 0 18px}
-.dist-grid{max-width:900px;margin:0 auto;padding:20px 24px 40px;
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --c-mint:#7DD389; --c-mint-soft:#DEF5E1;
+  --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5;
+  --bg:#FFF6EE; --line:rgba(60,40,90,.08);
+  --r-pill:999px; --r-md:14px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+}
+.hero-idx{padding:46px 24px 14px;text-align:center;max-width:780px;margin:0 auto}
+.hero-idx .kicker{display:inline-block;background:var(--c-turquoise-soft);color:#218985;padding:5px 14px;border-radius:var(--r-pill);font-weight:700;font-size:12.5px;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+.hero-idx h1{font-size:42px;line-height:1.1;margin-bottom:14px}
+.hero-idx h1 .accent{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-idx p{color:var(--ink-soft);font-size:17px;margin:0 0 18px;line-height:1.6}
+.stats-strip{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:24px auto 28px;max-width:760px;padding:0 24px}
+.stat-card{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:14px 22px;box-shadow:var(--sh-1);text-align:center}
+.stat-card b{display:block;font-family:"Fredoka";font-size:28px;color:var(--ink);font-weight:600}
+.stat-card span{font-size:12px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.dist-grid{max-width:900px;margin:0 auto;padding:6px 24px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
 .dist-card{background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:16px 18px;text-decoration:none;color:var(--ink);
   box-shadow:var(--sh-1);transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.dist-card:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(60,40,90,.1);border-color:var(--c-coral);text-decoration:none}
+.dist-card:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(60,40,90,.1);text-decoration:none}
 .dist-card .nm{font-weight:700;font-size:15px;font-family:"Fredoka"}
 .dist-card .ct{background:var(--c-coral-soft);color:var(--c-coral);padding:3px 10px;border-radius:var(--r-pill);font-size:12px;font-weight:700}
-.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}</style>
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+
+.seo-section{max-width:780px;margin:30px auto;padding:0 24px;color:var(--ink-soft);font-size:15px;line-height:1.75}
+.seo-section h2{color:var(--ink);font-size:24px;margin:28px 0 10px;font-family:"Fredoka"}
+.seo-section h3{color:var(--ink);font-size:18px;margin:22px 0 8px;font-family:"Fredoka"}
+.seo-section p{margin:10px 0}
+.seo-section a{color:var(--c-coral);text-decoration:none}
+.seo-section a:hover{text-decoration:underline}
+.seo-section ul{padding-left:22px}
+.seo-section ul li{margin:6px 0}
+.callout{background:#fff;border-radius:var(--r-card);padding:18px 22px;box-shadow:var(--sh-1);margin:22px 0;border-left:4px solid var(--c-coral)}
+.callout.tip{border-left-color:var(--c-turquoise)}
+.callout b{color:var(--ink);font-family:"Fredoka";display:block;margin-bottom:6px}
+
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-1);margin:18px 0;font-size:14px}
+.tbl th,.tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{background:var(--c-peach-soft);font-weight:700;color:var(--ink);font-family:"Fredoka"}
+.tbl tr:last-child td{border-bottom:none}
+
+.faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:14px 18px;margin:10px 0}
+.faq summary{font-weight:700;color:var(--ink);font-family:"Fredoka";font-size:17px;list-style:none;outline:none;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--c-coral);font-size:22px;line-height:.8;font-weight:600}
+.faq details[open] summary::after{content:"−"}
+.faq details[open] summary{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:8px}
+
+.cta-final{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:30px;text-align:center;margin:34px auto;max-width:760px}
+.cta-final h3{font-family:"Fredoka";font-size:24px;margin:0 0 8px;color:var(--ink)}
+.cta-final p{color:var(--ink-soft);margin:0 0 16px;font-size:15px}
+.cta-final .btn{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:14px 28px;border-radius:var(--r-pill);font-size:15px;box-shadow:0 8px 20px rgba(255,107,157,.4);text-decoration:none}
+.cta-final .btn:hover{filter:brightness(1.05);transform:translateY(-1px);text-decoration:none;color:#fff}
+.breadcrumb-strip{max-width:780px;margin:14px auto -8px;padding:0 24px;font-size:12.5px;color:var(--ink-soft)}
+.breadcrumb-strip a{color:var(--ink-soft);text-decoration:none}
+.breadcrumb-strip a:hover{color:var(--c-coral)}
+
+@media (max-width:600px){
+  .hero-idx h1{font-size:30px}
+  .hero-idx{padding:30px 16px 10px}
+  .dist-grid{padding:6px 16px 30px}
+  .seo-section{padding:0 16px}
+}
+</style>
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://creches.app/"},
+    {"@type":"ListItem","position":2,"name":"Creches em Portugal","item":"https://creches.app/creches"}
+  ]
+}
+</script>
+
+<!-- Schema: ItemList with all districts -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Creches em Portugal por distrito",
+  "description":"Lista completa de creches em Portugal organizadas por distrito.",
+  "numberOfItems":20,
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Creches em Lisboa","url":"https://creches.app/creches/lisboa"},
+    {"@type":"ListItem","position":2,"name":"Creches no Porto","url":"https://creches.app/creches/porto"},
+    {"@type":"ListItem","position":3,"name":"Creches em Setúbal","url":"https://creches.app/creches/setubal"},
+    {"@type":"ListItem","position":4,"name":"Creches em Braga","url":"https://creches.app/creches/braga"},
+    {"@type":"ListItem","position":5,"name":"Creches em Leiria","url":"https://creches.app/creches/leiria"},
+    {"@type":"ListItem","position":6,"name":"Creches em Coimbra","url":"https://creches.app/creches/coimbra"},
+    {"@type":"ListItem","position":7,"name":"Creches em Aveiro","url":"https://creches.app/creches/aveiro"},
+    {"@type":"ListItem","position":8,"name":"Creches em Faro","url":"https://creches.app/creches/faro"},
+    {"@type":"ListItem","position":9,"name":"Creches em Santarém","url":"https://creches.app/creches/santarem"},
+    {"@type":"ListItem","position":10,"name":"Creches em Castelo Branco","url":"https://creches.app/creches/castelo-branco"},
+    {"@type":"ListItem","position":11,"name":"Creches em Vila Real","url":"https://creches.app/creches/vila-real"},
+    {"@type":"ListItem","position":12,"name":"Creches na Guarda","url":"https://creches.app/creches/guarda"},
+    {"@type":"ListItem","position":13,"name":"Creches em Viana do Castelo","url":"https://creches.app/creches/viana-do-castelo"},
+    {"@type":"ListItem","position":14,"name":"Creches em Viseu","url":"https://creches.app/creches/viseu"},
+    {"@type":"ListItem","position":15,"name":"Creches em Évora","url":"https://creches.app/creches/evora"},
+    {"@type":"ListItem","position":16,"name":"Creches em Beja","url":"https://creches.app/creches/beja"},
+    {"@type":"ListItem","position":17,"name":"Creches nos Açores","url":"https://creches.app/creches/acores"},
+    {"@type":"ListItem","position":18,"name":"Creches na Madeira","url":"https://creches.app/creches/madeira"},
+    {"@type":"ListItem","position":19,"name":"Creches em Portalegre","url":"https://creches.app/creches/portalegre"},
+    {"@type":"ListItem","position":20,"name":"Creches em Bragança","url":"https://creches.app/creches/braganca"}
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Quantas creches existem em Portugal?","acceptedAnswer":{"@type":"Answer","text":"Em Portugal existem cerca de 2591 creches, jardins de infância e infantários distribuídos pelos 20 distritos do continente e regiões autónomas dos Açores e Madeira. O distrito de Lisboa concentra o maior número (497), seguido pelo Porto (342) e Setúbal (253)."}},
+    {"@type":"Question","name":"Como encontrar uma creche em Portugal?","acceptedAnswer":{"@type":"Answer","text":"A forma mais rápida é usar o mapa interativo do Creches.app, que reúne todas as 2591 creches do país com filtros por idade (berçário, creche, JI), distrito e tipo (IPSS ou privada). Podes também filtrar pelas creches mais próximas da tua casa via geolocalização."}},
+    {"@type":"Question","name":"Qual o distrito com mais creches em Portugal?","acceptedAnswer":{"@type":"Answer","text":"Lisboa lidera com 497 creches, seguida do Porto (342), Setúbal (253) e Braga (201). Em contrapartida, distritos como Bragança e Portalegre têm apenas 22 cada."}},
+    {"@type":"Question","name":"As creches em Portugal são todas IPSS?","acceptedAnswer":{"@type":"Answer","text":"Não. Em Portugal coexistem três modelos: IPSS (Instituições Particulares de Solidariedade Social, geralmente com acordo de cooperação com a Segurança Social e mensalidades por escalão de rendimento), creches privadas (livre mercado, mensalidades entre 250€ e 700€), e jardins de infância da rede pública (gratuitos, mas apenas a partir dos 3 anos)."}},
+    {"@type":"Question","name":"Quanto custa uma creche em Portugal?","acceptedAnswer":{"@type":"Answer","text":"As mensalidades variam muito: numa creche privada em Lisboa, Porto ou Cascais, ronda os 400-700€/mês. Em zonas mais interiores ou em IPSS por escalão de rendimento, pode ser desde gratuita (Creche Feliz para nascidos após set/2022) até 350€/mês. JI público é gratuito (paga-se apenas refeições)."}}
+  ]
+}
+</script>
 </head>
 <body>
+
 <header class="top">
   <a href="/" class="brand">
     <div class="logo" aria-hidden="true">
@@ -47,16 +171,27 @@
         </g>
       </svg>
     </div>
-    <div class="brand-name"><b>Creches<span class="brand-tld">.app</span></b><span>encontra a creche certa para o teu filho</span></div>
+    <div class="brand-name"><b>Creches<span class="brand-tld">.app</span></b><span>creches em Portugal · gratuito</span></div>
   </a>
   <div class="spacer"></div>
-  <a href="/app" class="back">Abrir a app →</a>
+  <a href="/app" class="back">Abrir o mapa →</a>
 </header>
 
+<div class="breadcrumb-strip">
+  <a href="/">Início</a> &rsaquo; Creches em Portugal
+</div>
+
 <section class="hero-idx">
-  <h1>Creches por distrito</h1>
-  <p>Escolhe o teu distrito para veres a lista de creches, jardins de infância e infantários — ou abre o <a href="/app">mapa interativo</a> com filtros e geolocalização.</p>
+  <span class="kicker">🇵🇹 lista completa</span>
+  <h1>Creches em Portugal: <span class="accent">todas as 2591 por distrito</span></h1>
+  <p>A lista mais completa de creches em Portugal. <strong>2591 creches</strong>, jardins de infância, IPSS e infantários organizados pelos 20 distritos do país. Escolhe o teu distrito ou abre o <a href="/app">mapa interativo</a> com filtros e geolocalização.</p>
 </section>
+
+<div class="stats-strip">
+  <div class="stat-card"><b>2591</b><span>Creches no total</span></div>
+  <div class="stat-card"><b>20</b><span>Distritos cobertos</span></div>
+  <div class="stat-card"><b>0€</b><span>Sempre gratuito</span></div>
+</div>
 
 <div class="dist-grid">
   <a class="dist-card" href="/creches/lisboa"><span class="nm">Lisboa</span><span class="ct">497</span></a>
@@ -81,12 +216,115 @@
   <a class="dist-card" href="/creches/braganca"><span class="nm">Bragança</span><span class="ct">22</span></a>
 </div>
 
+<section class="seo-section">
+
+  <h2>O panorama das creches em Portugal</h2>
+  <p>Procurar creche em Portugal é, para muitos pais, a primeira grande dor de cabeça da vida adulta. As listas de espera, os formulários diferentes em cada instituição, as visitas a marcar — tudo isto demora meses e tira-te energia para o que realmente importa. O <strong>Creches.app</strong> nasceu para resolver isto: juntámos num só mapa <strong>todas as 2591 creches de Portugal</strong>, com filtros por idade, distrito e tipo, e ferramentas para organizares a tua procura.</p>
+
+  <p>Em Portugal existem três grandes redes de creches: as <strong>IPSS</strong> (Instituições Particulares de Solidariedade Social, com acordos de cooperação com a Segurança Social), as <strong>creches privadas</strong> (livre mercado, mensalidades variáveis) e os <strong>jardins de infância da rede pública</strong> (apenas a partir dos 3 anos, gratuitos). A combinação dos três cobre quase todo o território nacional, mas a oferta varia bastante entre Lisboa, Porto e zonas mais interiores.</p>
+
+  <h2>Como estão distribuídas as creches em Portugal</h2>
+  <p>A concentração de creches em Portugal segue a densidade populacional do país. O distrito de <a href="/creches/lisboa">Lisboa</a> lidera com 497 creches, seguido pelo <a href="/creches/porto">Porto</a> (342), <a href="/creches/setubal">Setúbal</a> (253) e <a href="/creches/braga">Braga</a> (201). Em conjunto, estes quatro distritos representam mais de metade das creches do país.</p>
+
+  <div class="callout tip">
+    <b>💡 Dica</b>
+    Se vives em zonas com pouca oferta (como Bragança ou Portalegre), considera também a opção de <strong>amas familiares credenciadas</strong> — figuram na rede social do estado e podem ser uma alternativa válida nos primeiros 3 anos.
+  </div>
+
+  <h3>Top 5 distritos com mais creches em Portugal</h3>
+  <table class="tbl">
+    <thead>
+      <tr><th>Distrito</th><th>Nº de creches</th><th>% do total nacional</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="/creches/lisboa">Lisboa</a></td><td>497</td><td>19,2%</td></tr>
+      <tr><td><a href="/creches/porto">Porto</a></td><td>342</td><td>13,2%</td></tr>
+      <tr><td><a href="/creches/setubal">Setúbal</a></td><td>253</td><td>9,8%</td></tr>
+      <tr><td><a href="/creches/braga">Braga</a></td><td>201</td><td>7,8%</td></tr>
+      <tr><td><a href="/creches/leiria">Leiria</a></td><td>183</td><td>7,1%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Tipos de creche em Portugal: berçário, creche, JI, infantário</h2>
+  <p>A nomenclatura oficial das respostas sociais para crianças em Portugal divide-se em:</p>
+  <ul>
+    <li><strong>Berçário</strong> — dos 4 aos 12 meses. Geralmente integrado numa creche.</li>
+    <li><strong>Creche</strong> — dos 4 meses aos 3 anos. Inclui muitas vezes berçário.</li>
+    <li><strong>Jardim de Infância (JI / pré-escolar)</strong> — dos 3 aos 6 anos.</li>
+    <li><strong>Infantário</strong> — termo informal para um estabelecimento que junta creche + JI (dos 4 meses aos 6 anos).</li>
+    <li><strong>CATL (ATL)</strong> — Centro de Actividades de Tempos Livres, para crianças dos 6 aos 12 anos (após escola).</li>
+  </ul>
+  <p>Se queres entender melhor as diferenças e escolher o tipo certo para o teu filho, lê o nosso <a href="/guias/como-escolher-creche">guia completo para escolher creche em Portugal</a> (~8 minutos).</p>
+
+  <h2>Quanto custa uma creche em Portugal em 2026</h2>
+  <p>O custo de uma creche em Portugal depende sobretudo do tipo (IPSS, privada ou JI público) e do distrito. Em IPSS com acordo, o valor é calculado por escalão de rendimento da família. Em creches privadas, a mensalidade média ronda os 400-700€ em Lisboa, Porto e Cascais; 250-450€ em zonas menos densas.</p>
+
+  <div class="callout">
+    <b>💛 Creche Feliz</b>
+    Desde setembro de 2022, todas as crianças nascidas a partir dessa data têm direito a creche gratuita em IPSS com acordo de cooperação — independentemente do rendimento familiar. Em 2024 o programa foi alargado a algumas creches privadas com protocolo. Confirma sempre se a creche que estás a considerar está abrangida.
+  </div>
+
+  <h2>Como organizar a tua procura de creche em Portugal</h2>
+  <p>A maior parte dos pais visita 5 a 10 creches antes de decidir. Para não te perderes:</p>
+  <ol>
+    <li>Define a tua zona de procura (casa, trabalho, escola dos mais velhos).</li>
+    <li>Filtra por idade e tipo no <a href="/app">mapa interativo</a>.</li>
+    <li>Faz uma lista das 5-10 que te interessam.</li>
+    <li>Marca visita em pelo menos 3 (não decidas só com base no site).</li>
+    <li>Leva a <a href="/guias/como-escolher-creche#faq">checklist de 15 perguntas</a> para fazeres em cada visita.</li>
+    <li>Inscreve-te em paralelo em várias — as listas de espera variam muito.</li>
+  </ol>
+
+  <h2>Perguntas frequentes sobre creches em Portugal</h2>
+  <div class="faq">
+
+    <details>
+      <summary>Quantas creches existem em Portugal?</summary>
+      <p>Em Portugal existem cerca de <strong>2591 creches, jardins de infância e infantários</strong> distribuídos pelos 20 distritos do continente e regiões autónomas dos Açores e Madeira. O Creches.app reúne-os todos num só mapa interativo, gratuitamente.</p>
+    </details>
+
+    <details>
+      <summary>Como encontrar uma creche perto de mim em Portugal?</summary>
+      <p>Abre o <a href="/app">mapa do Creches.app</a> e clica no botão <strong>"Perto de mim"</strong> (vai pedir-te permissão de geolocalização). Vais ver as creches ordenadas por distância à tua localização, com filtros por idade e tipo. Funciona em qualquer dispositivo, sem instalação.</p>
+    </details>
+
+    <details>
+      <summary>Qual o distrito com mais creches em Portugal?</summary>
+      <p>Lisboa lidera com 497 creches, seguida do Porto (342), Setúbal (253) e Braga (201). Estes quatro distritos representam mais de 50% das creches do país.</p>
+    </details>
+
+    <details>
+      <summary>As creches em Portugal são todas IPSS?</summary>
+      <p>Não. Coexistem três modelos: <strong>IPSS</strong> (acordo de cooperação com a Segurança Social, mensalidades por escalão), <strong>creches privadas</strong> (livre mercado), e <strong>jardins de infância da rede pública</strong> (gratuitos, a partir dos 3 anos). O Creches.app inclui todos os três.</p>
+    </details>
+
+    <details>
+      <summary>Quando devo inscrever o meu filho na creche em Portugal?</summary>
+      <p>Em Lisboa, Porto e Cascais, o ideal é inscrever em IPSS entre <strong>6 a 12 meses antes</strong> da entrada pretendida — algumas listas têm 1 a 2 anos. Em zonas menos densas, 3 a 6 meses de antecedência costuma ser suficiente. Inscreve-te em paralelo em 3-4 creches para teres plano B.</p>
+    </details>
+
+    <details>
+      <summary>Quanto custa uma creche em Portugal em 2026?</summary>
+      <p>Numa creche privada, mensalidade média de 350-700€/mês (mais cara em Lisboa, Porto e Cascais). Numa IPSS, paga-se por escalão de rendimento (0€ a ~350€). Desde 2022, o <strong>Creche Feliz</strong> tornou a creche gratuita em IPSS para crianças nascidas após setembro 2022.</p>
+    </details>
+
+  </div>
+
+</section>
+
+<div class="cta-final">
+  <h3>Encontra a tua creche em 30 segundos</h3>
+  <p>Mapa interativo com todas as 2591 creches de Portugal. Filtros por idade, distrito e tipo. Gratuito, sem anúncios.</p>
+  <a href="/app" class="btn">🍼 Abrir o mapa →</a>
+</div>
+
 <footer class="foot">
   <div class="row">
-    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/para-creches">Para creches</a> ·
-    <a href="/privacidade">Privacidade</a> · <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
+    <a href="/">Início</a> · <a href="/app">App</a> · <a href="/guias">Guias</a> ·
+    <a href="/para-creches">Para creches</a> · <a href="/privacidade">Privacidade</a> ·
+    <a href="/cookies">Cookies</a> · <a href="/termos">Termos</a>
   </div>
-  <div class="row">Creches.app © 2026 · feito com ❤️ para famílias portuguesas</div>
+  <div class="row">Creches<span class="brand-tld">.app</span> © 2026 · feito com ❤️ para famílias portuguesas</div>
 </footer>
 <script src="/cookies.js" defer></script>
 </body>

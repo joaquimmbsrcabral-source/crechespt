@@ -4,29 +4,159 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FF9F68">
-<meta name="description" content="Encontra a creche certa para o teu filho. Mapa interativo com 2591 creches em Portugal — gratuito, sem anúncios.">
-<meta property="og:title" content="Creches.app — encontra a creche certa para o teu filho">
-<meta property="og:description" content="Mapa interativo com 2591 creches em Portugal. Organiza contactos, datas e notas — gratuito.">
+<meta name="description" content="Creches em Portugal: lista completa com 2591 creches, jardins de infância, IPSS e infantários. Mapa interativo, filtros por idade e distrito. Gratuito.">
+<meta name="keywords" content="creches portugal, creches em portugal, lista de creches, mapa creches portugal, creches IPSS, jardim de infância portugal, infantário, creches lisboa, creches porto, encontrar creche">
+<meta property="og:title" content="Creches em Portugal — Mapa com 2591 creches | Creches.app">
+<meta property="og:description" content="Lista completa de todas as creches em Portugal. Mapa interativo, filtros por idade e distrito, organização de contactos. 100% gratuito.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://creches.app">
+<meta property="og:site_name" content="Creches.app">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creches em Portugal — Mapa com 2591 creches">
+<meta name="twitter:description" content="Lista completa de creches em Portugal. Mapa interativo, gratuito, sem anúncios.">
+<meta name="geo.region" content="PT">
+<meta name="geo.placename" content="Portugal">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="canonical" href="https://creches.app/">
-<title>Creches.app — encontra a creche certa para o teu filho</title>
+<title>Creches em Portugal — Mapa com 2591 creches (todas) | Creches.app</title>
+
+<!-- Schema 1: WebSite with Sitelinks Searchbox -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Creches.app",
+  "alternateName": "Creches em Portugal",
+  "url": "https://creches.app",
+  "inLanguage": "pt-PT",
+  "description": "Mapa interativo com todas as creches em Portugal — 2591 creches, jardins de infância, IPSS e infantários.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://creches.app/app?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Schema 2: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Creches.app",
+  "url": "https://creches.app",
+  "logo": "https://creches.app/icon-512.png",
+  "description": "Plataforma gratuita que ajuda pais portugueses a encontrar a creche certa para os seus filhos. Mapa com 2591 creches em Portugal.",
+  "areaServed": { "@type": "Country", "name": "Portugal" },
+  "knowsAbout": ["Creches", "Jardins de Infância", "Infantários", "Berçários", "IPSS", "Creche Feliz"],
+  "email": "geral@creches.app",
+  "foundingDate": "2026",
+  "founder": { "@type": "Person", "name": "Joaquim Cabral" }
+}
+</script>
+
+<!-- Schema 3: WebApplication -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Creches.app",
   "url": "https://creches.app",
-  "description": "Mapa interativo com 2591 creches em Portugal. Encontra, compara e organiza candidaturas a creches, jardins de infância, IPSS e infantários.",
+  "description": "Mapa interativo de creches em Portugal com filtros por idade, distrito e tipo (IPSS, privada, JI).",
   "inLanguage": "pt-PT",
   "applicationCategory": "EducationalApplication",
-  "operatingSystem": "Any",
+  "operatingSystem": "Any (Web)",
+  "browserRequirements": "Requires JavaScript",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "creator": { "@type": "Person", "name": "Joaquim Cabral" },
-  "audience": { "@type": "ParentAudience" }
+  "audience": { "@type": "ParentAudience" },
+  "featureList": [
+    "Mapa interativo com 2591 creches em Portugal",
+    "Filtros por idade, distrito e tipo",
+    "Pipeline de contactos pessoal",
+    "Geolocalização (creches perto de mim)",
+    "Páginas dedicadas por distrito"
+  ]
+}
+</script>
+
+<!-- Schema 4: Dataset (rich results badge for datasets) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Lista de Creches em Portugal — Creches.app",
+  "description": "Dataset georreferenciado de 2591 creches, jardins de infância, infantários e berçários em Portugal continental e ilhas. Inclui IPSS e privadas. Atualizado em 2026.",
+  "url": "https://creches.app/app",
+  "keywords": ["creches", "portugal", "jardim de infância", "IPSS", "infantário", "berçário", "educação infantil"],
+  "spatialCoverage": { "@type": "Place", "name": "Portugal" },
+  "temporalCoverage": "2026",
+  "creator": { "@type": "Organization", "name": "Creches.app", "url": "https://creches.app" },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "inLanguage": "pt-PT",
+  "variableMeasured": [
+    { "@type": "PropertyValue", "name": "Nome da creche" },
+    { "@type": "PropertyValue", "name": "Distrito" },
+    { "@type": "PropertyValue", "name": "Concelho" },
+    { "@type": "PropertyValue", "name": "Coordenadas geográficas" },
+    { "@type": "PropertyValue", "name": "Tipo (creche, JI, infantário)" },
+    { "@type": "PropertyValue", "name": "Faixa etária" }
+  ]
+}
+</script>
+
+<!-- Schema 5: FAQPage — perguntas para rich snippet -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quantas creches existem em Portugal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em Portugal existem cerca de 2591 creches, jardins de infância e infantários registados, distribuídos por todos os distritos do continente e regiões autónomas. A maioria são IPSS com acordo de cooperação com a Segurança Social, mas há também creches privadas e jardins de infância da rede pública."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como encontrar uma creche perto de mim em Portugal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No Creches.app podes encontrar todas as 2591 creches em Portugal num mapa interativo. Usa o botão 'Perto de mim' para ver as creches mais próximas da tua localização, filtra por idade do teu filho (berçário, creche, JI, infantário) e por tipo (IPSS ou privada). É gratuito e sem anúncios."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "As creches em Portugal são gratuitas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde setembro de 2022, o programa Creche Feliz tornou a creche gratuita em IPSS com acordo de cooperação para crianças nascidas a partir dessa data. Creches privadas variam entre 250€ e 700€ por mês, dependendo do distrito e do tipo de serviço."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre creche, jardim de infância e infantário em Portugal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Creche é para crianças dos 4 meses aos 3 anos. Jardim de infância (pré-escolar) é dos 3 aos 6 anos. Infantário é o termo informal para um estabelecimento que junta as duas valências (creche + JI), dos 4 meses aos 6 anos. Berçário é a parte da creche dedicada a bebés até 12 meses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando devo inscrever o meu filho na creche em Portugal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para creches IPSS em Lisboa, Porto e Cascais, o ideal é inscrever 6 a 12 meses antes da data de entrada pretendida — algumas listas têm 1 a 2 anos de espera. Para zonas menos densas, 3 a 6 meses costuma ser suficiente."
+      }
+    }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -289,9 +419,9 @@ footer.foot .row{margin-bottom:8px}
   </a>
   <div class="spacer"></div>
   <nav>
-    <a href="#como">Como funciona</a>
-    <a href="#features">Funcionalidades</a>
+    <a href="/creches" title="Lista de creches em Portugal">Por distrito</a>
     <a href="/guias">Guias</a>
+    <a href="#como">Como funciona</a>
     <a href="/para-creches">Para creches</a>
   </nav>
   <a href="/app" class="cta">Começar →</a>
@@ -299,11 +429,12 @@ footer.foot .row{margin-bottom:8px}
 
 <section class="hero">
   <div>
-    <span class="kicker">🎉 Grátis · Sem anúncios · 2591 creches</span>
-    <h1>A creche certa para o teu filho, sem <span class="accent">stress nem dezenas de chamadas</span></h1>
+    <span class="kicker">🇵🇹 Grátis · 2591 creches · todo o país</span>
+    <h1>Creches em Portugal: <span class="accent">todas as 2591 num só mapa</span></h1>
     <p class="lead">
-      Mapa interativo com todas as creches, jardins de infância, IPSS e infantários de Portugal.
-      Filtra por idade, distrito, tipo. Marca contactos, datas e notas — tudo organizado num só sítio.
+      A lista mais completa de creches em Portugal — IPSS, privadas, jardins de infância e infantários
+      em todos os 21 distritos. Mapa interativo com filtros por idade, distrito e tipo. Organiza os teus
+      contactos numa só app. <strong>Gratuito e sem anúncios.</strong>
     </p>
     <div class="ctas">
       <a href="/app" class="btn primary">Encontrar creche →</a>

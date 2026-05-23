@@ -59,7 +59,18 @@
     .hero-dist h1{font-size:26px}
     .list-wrap{padding:0 16px 20px}
   }
-.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}</style>
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+.related-section{max-width:780px;margin:30px auto 10px;padding:24px;background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1)}
+.related-section h2{font-family:"Fredoka";font-size:20px;color:var(--ink);margin:0 0 6px}
+.related-section p{color:var(--ink-soft);font-size:14px;margin:0 0 16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.related-grid a{background:var(--c-coral-soft);color:var(--c-coral);padding:8px 14px;border-radius:var(--r-pill);text-decoration:none;font-size:13.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.related-grid a:hover{background:var(--c-coral);color:#fff;text-decoration:none}
+.related-grid a .ct{font-size:11px;opacity:.7}
+.related-grid a:hover .ct{opacity:.95}
+.cornerstone-link{display:block;margin:18px auto 0;max-width:780px;padding:0 24px;text-align:center;font-size:14.5px}
+.cornerstone-link a{color:var(--c-coral);font-weight:700}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -406,6 +417,37 @@
   <p>Recomendamos começar pela <a href="/app">app interativa</a>, onde podes ver todas as creches no mapa, marcar favoritas, e guardar notas e datas de contacto. É grátis e os teus dados ficam privados à tua conta.</p>
   <p>👉 <a href="/app">Ver mapa interativo de Évora</a></p>
 </div>
+
+
+<section class="related-section">
+  <h2>Creches noutros distritos de Portugal</h2>
+  <p>Procuras creche noutra zona? Vê a lista completa por distrito:</p>
+  <div class="related-grid">
+  <a href="/creches/lisboa" title="Creches em Lisboa"><span>Lisboa</span><span class="ct">497</span></a>
+  <a href="/creches/porto" title="Creches em Porto"><span>Porto</span><span class="ct">342</span></a>
+  <a href="/creches/setubal" title="Creches em Setúbal"><span>Setúbal</span><span class="ct">253</span></a>
+  <a href="/creches/braga" title="Creches em Braga"><span>Braga</span><span class="ct">201</span></a>
+  <a href="/creches/leiria" title="Creches em Leiria"><span>Leiria</span><span class="ct">183</span></a>
+  <a href="/creches/coimbra" title="Creches em Coimbra"><span>Coimbra</span><span class="ct">147</span></a>
+  <a href="/creches/aveiro" title="Creches em Aveiro"><span>Aveiro</span><span class="ct">144</span></a>
+  <a href="/creches/faro" title="Creches em Faro"><span>Faro</span><span class="ct">136</span></a>
+  <a href="/creches/santarem" title="Creches em Santarém"><span>Santarém</span><span class="ct">106</span></a>
+  <a href="/creches/castelo-branco" title="Creches em Castelo Branco"><span>Castelo Branco</span><span class="ct">88</span></a>
+  <a href="/creches/vila-real" title="Creches em Vila Real"><span>Vila Real</span><span class="ct">86</span></a>
+  <a href="/creches/guarda" title="Creches em Guarda"><span>Guarda</span><span class="ct">83</span></a>
+  <a href="/creches/viana-do-castelo" title="Creches em Viana do Castelo"><span>Viana do Castelo</span><span class="ct">71</span></a>
+  <a href="/creches/viseu" title="Creches em Viseu"><span>Viseu</span><span class="ct">61</span></a>
+  <a href="/creches/beja" title="Creches em Beja"><span>Beja</span><span class="ct">47</span></a>
+  <a href="/creches/acores" title="Creches em Açores"><span>Açores</span><span class="ct">27</span></a>
+  <a href="/creches/madeira" title="Creches em Madeira"><span>Madeira</span><span class="ct">23</span></a>
+  <a href="/creches/portalegre" title="Creches em Portalegre"><span>Portalegre</span><span class="ct">22</span></a>
+  <a href="/creches/braganca" title="Creches em Bragança"><span>Bragança</span><span class="ct">22</span></a>
+  </div>
+</section>
+
+<p class="cornerstone-link">
+  <a href="/creches">← Voltar à lista completa de creches em Portugal</a>
+</p>
 
 <footer class="foot">
   <div class="row">
