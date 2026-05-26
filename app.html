@@ -949,6 +949,7 @@ header.topbar{
         </select>
       </div>
       <button id="f-near-me" class="chip toggle-near"><span>📍</span>Perto de mim</button>
+      <button id="f-by-cp" class="chip toggle-near"><span>📮</span>Por morada/CP</button>
       <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
       <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
       <button id="f-clear" class="chip-clear">↺ Limpar</button>
@@ -1142,6 +1143,25 @@ header.topbar{
     <div class="row" style="margin-top:8px">
       <button id="fb-cancel" class="btn">Cancelar</button>
       <button id="fb-send" class="btn primary">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Procurar por morada ou código postal -->
+<div id="cp-host" class="confirm-host" role="dialog" aria-modal="true">
+  <div class="confirm-card" style="max-width:480px;text-align:left">
+    <h3 style="text-align:center">📮 Procurar creches perto de uma morada</h3>
+    <p style="text-align:center;font-size:13px;color:var(--ink-soft);margin:4px 0 14px">
+      Escreve a tua morada ou código postal. Mostro-te as creches mais próximas.
+    </p>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="cp-input" style="padding-top:0">Morada ou Código Postal</label>
+      <input id="cp-input" type="text" placeholder="ex: 1100-001  ou  Rua Augusta, Lisboa" maxlength="200" autocomplete="off" inputmode="search">
+      <small style="color:var(--ink-faint);font-size:12px;margin-top:4px">Pesquisa em Portugal · podes escrever só o código postal (XXXX-XXX) ou uma morada completa.</small>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="cp-cancel" class="btn">Cancelar</button>
+      <button id="cp-send" class="btn primary">Procurar</button>
     </div>
   </div>
 </div>
@@ -2280,6 +2300,9 @@ function wireUp(){
       (pos)=>{
         const ll = [pos.coords.latitude, pos.coords.longitude];
         State.userPos = ll;
+        State.userPosLabel = null;
+        // desliga botão "por morada/CP" caso estivesse ativo
+        document.getElementById("f-by-cp").classList.remove("active");
         if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} }
         const ic = L.divIcon({ html:'<div class="user-marker"></div>', className:"", iconSize:[18,18]});
         State.userMarker = L.marker(ll, {icon:ic, interactive:false}).addTo(State.map);
@@ -2300,6 +2323,95 @@ function wireUp(){
       { enableHighAccuracy:false, timeout:8000, maximumAge:60000 }
     );
   });
+  // Botão "📮 Por morada/CP" — abre modal de input + geocode
+  const cpHost = document.getElementById("cp-host");
+  const cpInput = document.getElementById("cp-input");
+  const cpSend = document.getElementById("cp-send");
+  const cpCancel = document.getElementById("cp-cancel");
+  function openCp(){
+    cpInput.value = "";
+    cpHost.classList.add("open");
+    setTimeout(()=>cpInput.focus(), 80);
+  }
+  function closeCp(){ cpHost.classList.remove("open"); }
+  cpCancel.addEventListener("click", closeCp);
+  cpHost.addEventListener("click", (e)=>{ if(e.target===cpHost) closeCp(); });
+  cpInput.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); cpSend.click(); } });
+
+  // Geocoding via Nominatim (OpenStreetMap) — gratuito, sem API key
+  async function geocodePT(query){
+    // Normaliza: se for só CP (XXXX-XXX ou XXXX), adiciona "Portugal"
+    let q = query.trim();
+    if(/^\d{4}(-\d{3})?$/.test(q)){
+      q = q + ", Portugal";
+    } else if(!/portugal/i.test(q)){
+      q = q + ", Portugal";
+    }
+    const url = "https://nominatim.openstreetmap.org/search?"
+      + "q=" + encodeURIComponent(q)
+      + "&format=json&limit=1&countrycodes=pt&accept-language=pt-PT&addressdetails=0";
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if(!res.ok) throw new Error("Servidor de pesquisa indisponível");
+    const data = await res.json();
+    if(!data || !data.length) throw new Error("Morada não encontrada. Tenta com código postal ou rua + cidade.");
+    return {
+      lat: parseFloat(data[0].lat),
+      lon: parseFloat(data[0].lon),
+      label: data[0].display_name || q
+    };
+  }
+
+  document.getElementById("f-by-cp").addEventListener("click", (e)=>{
+    const btn = e.currentTarget;
+    // Toggle off if active
+    if(btn.classList.contains("active")){
+      btn.classList.remove("active");
+      State.userPos = null;
+      State.userPosLabel = null;
+      if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} State.userMarker = null; }
+      State.filters.sort = "name";
+      document.getElementById("sort").value = "name";
+      applyFilters();
+      toast("Pesquisa por morada desligada","ok");
+      return;
+    }
+    openCp();
+  });
+
+  cpSend.addEventListener("click", async ()=>{
+    const q = (cpInput.value||"").trim();
+    if(q.length < 4){ toast("Escreve uma morada ou código postal","warn"); return; }
+    cpSend.disabled = true;
+    cpSend.textContent = "A procurar…";
+    try{
+      const loc = await geocodePT(q);
+      const ll = [loc.lat, loc.lon];
+      // Reset GPS button state caso esteja ativo
+      const nearBtn = document.getElementById("f-near-me");
+      nearBtn.classList.remove("active");
+      // Aplica localização
+      State.userPos = ll;
+      State.userPosLabel = loc.label;
+      if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} }
+      const ic = L.divIcon({ html:'<div class="user-marker"></div>', className:"", iconSize:[18,18]});
+      State.userMarker = L.marker(ll, {icon:ic, interactive:false}).addTo(State.map)
+        .bindTooltip("📮 " + (loc.label.split(",")[0]||q), {permanent:false, direction:"top", offset:[0,-6]});
+      State.map.setView(ll, 13);
+      State.filters.sort = "dist";
+      document.getElementById("sort").value = "dist";
+      document.getElementById("f-by-cp").classList.add("active");
+      applyFilters();
+      closeCp();
+      toast("Mostro as creches mais próximas de " + (loc.label.split(",")[0]||q),"ok",{duration:4000});
+    }catch(e){
+      console.error(e);
+      toast(e.message || "Não foi possível encontrar essa morada","err",{duration:5000});
+    } finally {
+      cpSend.disabled = false;
+      cpSend.textContent = "Procurar";
+    }
+  });
+
   document.getElementById("f-only-fav").addEventListener("click", e=>{
     State.filters.onlyFav = !State.filters.onlyFav;
     e.currentTarget.classList.toggle("active", State.filters.onlyFav); applyFilters();
@@ -2312,6 +2424,10 @@ function wireUp(){
     document.getElementById("f-distrito").value="";
     document.getElementById("f-idade-anos").value="";
     document.querySelectorAll(".chip.active").forEach(b=>b.classList.remove("active"));
+    // limpa também a localização (GPS e morada)
+    State.userPos = null;
+    State.userPosLabel = null;
+    if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} State.userMarker = null; }
     refreshConcelhoSelect();
     clearArea();
   });
