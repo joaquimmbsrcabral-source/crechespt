@@ -379,11 +379,39 @@ header.topbar{
 .search-wrap::before{
   content:"";
 }
+/* Filters toggle */
+.filters-toggle{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);
+  border-radius:var(--r-pill);padding:8px 16px;font-weight:700;font-size:13px;color:var(--ink);
+  cursor:pointer;align-self:flex-start;box-shadow:var(--sh-1);transition:all .15s;
+  font-family:inherit;
+}
+.filters-toggle:hover{background:var(--c-coral-soft);border-color:var(--c-coral);color:var(--c-coral)}
+.filters-toggle .ft-arrow{transition:transform .25s;font-size:10px;color:var(--ink-soft)}
+.filters-toggle[aria-expanded="true"] .ft-arrow{transform:rotate(180deg)}
+.filters-toggle .ft-count{
+  background:var(--c-coral);color:#fff;font-size:11px;font-weight:700;padding:1px 7px;
+  border-radius:var(--r-pill);min-width:18px;text-align:center;
+}
+.filters-toggle .ft-icon{font-size:14px;opacity:.7}
+
+/* Collapsible container */
+.filters-collapse{
+  display:flex;flex-direction:column;gap:8px;width:100%;
+  overflow:hidden;max-height:0;opacity:0;
+  transition:max-height .3s ease, opacity .25s ease;
+}
+.filters-collapse.open{
+  max-height:1000px;opacity:1;
+  transition:max-height .4s ease, opacity .3s ease;
+}
+
 @media (max-width:600px){
   .filter-row-hero{flex-direction:column;align-items:stretch}
   .filter-row-hero .chip-gps{align-self:center}
   .addr-wrap{min-width:0}
   .search-wrap{min-width:0}
+  .addr-search-btn{padding:9px 14px}
 }
 .chip-select{
   background:#fff;border-radius:var(--r-pill);padding:8px 14px 8px 12px;box-shadow:var(--sh-1);
@@ -950,7 +978,7 @@ header.topbar{
   <!-- ========================= View: Mapa ========================= -->
   <section id="view-map" class="view active" role="tabpanel">
     <div class="filters">
-      <!-- LINHA 1 (HERO): Onde moras? Pesquisa por morada/CP -->
+      <!-- LINHA 1 (HERO): Onde moras? — SEMPRE visível -->
       <div class="filter-row filter-row-hero">
         <div class="addr-wrap">
           <span class="addr-icon">🏠</span>
@@ -962,63 +990,76 @@ header.topbar{
         <button id="f-near-me" class="chip toggle-near chip-gps"><span>📍</span>Usar GPS</button>
       </div>
 
-      <!-- LINHA 2: Procurar pelo nome da creche -->
-      <div class="filter-row">
-        <div class="search-wrap">
-          <input id="q" type="search" placeholder="🔍 Procurar uma creche específica pelo nome" aria-label="Procurar creche pelo nome">
-          <button id="q-clear" class="search-clear" aria-label="Limpar pesquisa" type="button">✕</button>
-        </div>
-      </div>
+      <!-- Toggle dos filtros avançados -->
+      <button id="filters-toggle" class="filters-toggle" type="button" aria-expanded="false" aria-controls="filters-collapse">
+        <span class="ft-icon">⚙</span>
+        <span class="ft-label">Mais filtros</span>
+        <span class="ft-count" id="filters-count" style="display:none">0</span>
+        <span class="ft-arrow">▼</span>
+      </button>
 
-      <!-- LINHA 3: Filtros geográficos + idade -->
-      <div class="filter-row">
-        <div class="chip-select">
-          🌎 <select id="f-distrito"><option value="">Todos os distritos</option></select>
-        </div>
-        <div class="chip-select">
-          📍 <select id="f-concelho"><option value="">Todas as localidades</option></select>
-        </div>
-        <div class="chip-select">
-          🎂 <select id="f-idade-anos">
-            <option value="">Qualquer idade</option>
-            <option value="0">Tem 0 anos</option>
-            <option value="1">Tem 1 ano</option>
-            <option value="2">Tem 2 anos</option>
-            <option value="3">Tem 3 anos</option>
-            <option value="4">Tem 4 anos</option>
-            <option value="5">Tem 5 anos</option>
-            <option value="6">Tem 6 anos</option>
-          </select>
-        </div>
-      </div>
+      <!-- Bloco colapsável com tudo o resto -->
+      <div id="filters-collapse" class="filters-collapse" aria-hidden="true">
 
-      <!-- LINHA 4: Tipo de creche -->
-      <div class="filter-row">
-        <span class="filter-label">Tipo:</span>
-        <div id="f-tipo" style="display:contents">
-          <button class="chip" data-tipo="Pública"><span class="dot"></span>Pública</button>
-          <button class="chip" data-tipo="IPSS"><span class="dot"></span>IPSS</button>
-          <button class="chip" data-tipo="Privada"><span class="dot"></span>Privada</button>
-          <button class="chip" data-tipo="Desconhecido"><span class="dot"></span>?</button>
+        <!-- LINHA 2: Procurar pelo nome da creche -->
+        <div class="filter-row">
+          <div class="search-wrap">
+            <input id="q" type="search" placeholder="🔍 Procurar uma creche específica pelo nome" aria-label="Procurar creche pelo nome">
+            <button id="q-clear" class="search-clear" aria-label="Limpar pesquisa" type="button">✕</button>
+          </div>
         </div>
-      </div>
 
-      <!-- LINHA 5: Faixa etária da resposta social -->
-      <div class="filter-row">
-        <span class="filter-label">Resposta:</span>
-        <div id="f-idade" style="display:contents">
-          <button class="chip chip-age" data-idade="bercario"><span>👶</span>Berçário 0-1</button>
-          <button class="chip chip-age" data-idade="creche"><span>🍼</span>Creche 1-3</button>
-          <button class="chip chip-age" data-idade="ji"><span>🎨</span>JI 3-6</button>
-          <button class="chip chip-age" data-idade="atl"><span>🎒</span>ATL 6+</button>
+        <!-- LINHA 3: Filtros geográficos + idade -->
+        <div class="filter-row">
+          <div class="chip-select">
+            🌎 <select id="f-distrito"><option value="">Todos os distritos</option></select>
+          </div>
+          <div class="chip-select">
+            📍 <select id="f-concelho"><option value="">Todas as localidades</option></select>
+          </div>
+          <div class="chip-select">
+            🎂 <select id="f-idade-anos">
+              <option value="">Qualquer idade</option>
+              <option value="0">Tem 0 anos</option>
+              <option value="1">Tem 1 ano</option>
+              <option value="2">Tem 2 anos</option>
+              <option value="3">Tem 3 anos</option>
+              <option value="4">Tem 4 anos</option>
+              <option value="5">Tem 5 anos</option>
+              <option value="6">Tem 6 anos</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <!-- LINHA 6: Vistas pessoais + limpar -->
-      <div class="filter-row">
-        <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
-        <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
-        <button id="f-clear" class="chip-clear">↺ Limpar tudo</button>
+        <!-- LINHA 4: Tipo de creche -->
+        <div class="filter-row">
+          <span class="filter-label">Tipo:</span>
+          <div id="f-tipo" style="display:contents">
+            <button class="chip" data-tipo="Pública"><span class="dot"></span>Pública</button>
+            <button class="chip" data-tipo="IPSS"><span class="dot"></span>IPSS</button>
+            <button class="chip" data-tipo="Privada"><span class="dot"></span>Privada</button>
+            <button class="chip" data-tipo="Desconhecido"><span class="dot"></span>?</button>
+          </div>
+        </div>
+
+        <!-- LINHA 5: Faixa etária da resposta social -->
+        <div class="filter-row">
+          <span class="filter-label">Resposta:</span>
+          <div id="f-idade" style="display:contents">
+            <button class="chip chip-age" data-idade="bercario"><span>👶</span>Berçário 0-1</button>
+            <button class="chip chip-age" data-idade="creche"><span>🍼</span>Creche 1-3</button>
+            <button class="chip chip-age" data-idade="ji"><span>🎨</span>JI 3-6</button>
+            <button class="chip chip-age" data-idade="atl"><span>🎒</span>ATL 6+</button>
+          </div>
+        </div>
+
+        <!-- LINHA 6: Vistas pessoais + limpar -->
+        <div class="filter-row">
+          <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
+          <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
+          <button id="f-clear" class="chip-clear">↺ Limpar tudo</button>
+        </div>
+
       </div>
     </div>
 
@@ -1718,6 +1759,7 @@ function applyFilters(){
   renderMap();
   updateHeader();
   updateAreaBanner();
+  if(typeof window.refreshFiltersCount === "function") window.refreshFiltersCount();
 }
 
 function updateHeader(){
@@ -2422,6 +2464,51 @@ function wireUp(){
   }
   addrBtn.addEventListener("click", doAddressSearch);
   addrInput.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); doAddressSearch(); } });
+
+  // === Toggle "Mais filtros" — collapse/expand ===
+  const filtersToggle = document.getElementById("filters-toggle");
+  const filtersCollapse = document.getElementById("filters-collapse");
+  const filtersCount = document.getElementById("filters-count");
+
+  function setFiltersOpen(open){
+    filtersToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    filtersCollapse.setAttribute("aria-hidden", open ? "false" : "true");
+    filtersCollapse.classList.toggle("open", open);
+    const lbl = filtersToggle.querySelector(".ft-label");
+    if(lbl) lbl.textContent = open ? "Esconder filtros" : "Mais filtros";
+  }
+
+  // Default: aberto em desktop, fechado em mobile (<980px)
+  const isMobile = () => window.matchMedia("(max-width: 980px)").matches;
+  setFiltersOpen(!isMobile());
+
+  filtersToggle.addEventListener("click", ()=>{
+    const isOpen = filtersToggle.getAttribute("aria-expanded") === "true";
+    setFiltersOpen(!isOpen);
+  });
+
+  // Contador de filtros ativos — atualiza sempre que applyFilters() corre
+  function countActiveFilters(){
+    const f = State.filters || {};
+    let n = 0;
+    if(f.q && f.q.trim()) n++;
+    if(f.distrito) n++;
+    if(f.concelho) n++;
+    if(f.idadeAnos !== "" && f.idadeAnos != null) n++;
+    if(f.tipo && f.tipo.size) n += f.tipo.size;
+    if(f.idade && f.idade.size) n += f.idade.size;
+    if(f.onlyTracked) n++;
+    if(f.onlyFav) n++;
+    return n;
+  }
+  function refreshFiltersCount(){
+    const n = countActiveFilters();
+    if(n > 0){ filtersCount.textContent = n; filtersCount.style.display = "inline-block"; }
+    else { filtersCount.style.display = "none"; }
+  }
+  // Expor para applyFilters() chamar automaticamente no fim
+  window.refreshFiltersCount = refreshFiltersCount;
+  refreshFiltersCount();
 
   document.getElementById("f-only-fav").addEventListener("click", e=>{
     State.filters.onlyFav = !State.filters.onlyFav;
