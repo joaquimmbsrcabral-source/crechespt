@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<title>Sobre o Creches.app — a história | Creches.app</title>
+<meta name="description" content="Sou o Joaquim, 28 anos, vou ser pai pela primeira vez. Construí o Creches.app para nos ajudar a mim e à minha mulher a procurar creche — e disponibilizei para todos os pais portugueses, sempre gratuito.">
+<link rel="canonical" href="https://creches.app/sobre">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Sobre o Creches.app — feito por um pai, para os pais portugueses">
+<meta property="og:description" content="A história por trás do mapa com 2591 creches de Portugal.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://creches.app/sobre">
+<meta property="og:locale" content="pt_PT">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --c-mint:#7DD389; --c-mint-soft:#DEF5E1;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5;
+  --line:rgba(60,40,90,.08); --r-pill:999px; --r-md:14px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 600px at 10% 0%, var(--c-peach-soft) 0%, transparent 55%),
+    radial-gradient(800px 600px at 100% 0%, var(--c-coral-soft) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.75; min-height:100vh;
+}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+
+header.top{display:flex;align-items:center;gap:14px;padding:16px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.brand-name b{font-family:"Fredoka";font-size:20px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
+header .spacer{flex:1}
+header nav{display:flex;gap:6px;align-items:center}
+header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
+header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
+header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+header .cta:hover{filter:brightness(1.05);text-decoration:none;color:#fff}
+
+article{max-width:720px;margin:0 auto;padding:40px 24px 60px}
+.breadcrumb{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+.breadcrumb a{color:var(--ink-soft)}
+.kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);padding:5px 14px;border-radius:var(--r-pill);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+h1.title{font-size:44px;line-height:1.1;margin:0 0 22px}
+h1.title .accent{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:20px;color:var(--ink-soft);line-height:1.6;margin:0 0 30px}
+
+article h2{font-size:30px;margin:50px 0 14px}
+article h3{font-size:20px;margin:30px 0 10px}
+article p{margin:16px 0}
+article ul{padding-left:22px;margin:14px 0}
+article li{margin:8px 0}
+article strong{color:var(--ink);font-weight:700}
+article em{color:var(--ink)}
+
+.author-card{display:flex;gap:18px;align-items:center;background:#fff;border-radius:var(--r-card);padding:22px;box-shadow:var(--sh-1);margin:24px 0 36px}
+.author-card .avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;flex-shrink:0;font-family:"Fredoka";font-weight:700}
+.author-card .info b{font-family:"Fredoka";font-size:20px;display:block;color:var(--ink)}
+.author-card .info span{color:var(--ink-soft);font-size:14.5px;display:block;margin-top:4px}
+.author-card .info small{color:var(--ink-faint);font-size:12.5px;display:block;margin-top:8px}
+
+.callout{background:#fff;border-radius:var(--r-card);padding:22px 26px;box-shadow:var(--sh-1);margin:28px 0;border-left:4px solid var(--c-coral)}
+.callout.tip{border-left-color:var(--c-turquoise)}
+.callout.win{border-left-color:var(--c-mint);background:linear-gradient(135deg,var(--c-mint-soft) 0%,#fff 40%)}
+.callout.warn{border-left-color:var(--c-yellow)}
+.callout p:first-child{margin-top:0}
+.callout p:last-child{margin-bottom:0}
+.callout-title{font-weight:700;color:var(--ink);display:block;margin-bottom:8px;font-family:"Fredoka";font-size:18px}
+
+.promise-box{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:30px;text-align:center;margin:40px 0;border:2px solid var(--c-coral)}
+.promise-box .seal{font-size:48px;margin-bottom:6px}
+.promise-box h3{font-size:26px;margin:0 0 10px;color:var(--ink)}
+.promise-box p{margin:8px 0;color:var(--ink);font-size:16px}
+
+.cta-box{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:28px;text-align:center;margin:40px 0}
+.cta-box h3{margin-top:0;font-size:22px}
+.cta-box .btn{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:14px 28px;border-radius:var(--r-pill);font-size:15px;box-shadow:0 8px 20px rgba(255,107,157,.4);margin:10px 6px 0}
+.cta-box .btn:hover{filter:brightness(1.05);text-decoration:none;color:#fff;transform:translateY(-1px)}
+.cta-box .btn.secondary{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+
+.signature{margin:50px 0 20px;text-align:left;font-style:italic;color:var(--ink-soft);font-size:18px;padding-left:20px;border-left:3px solid var(--c-coral)}
+.signature b{font-style:normal;color:var(--ink);font-family:"Fredoka";font-weight:600}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:60px}
+footer a{color:var(--ink-soft);margin:0 8px}
+footer a:hover{color:var(--c-coral)}
+
+@media(max-width:640px){
+  article{padding:28px 18px 40px}
+  h1.title{font-size:32px}
+  article h2{font-size:24px;margin:36px 0 12px}
+  .lede{font-size:17px}
+  header.top{padding:14px 16px}
+  header nav a:not(.cta){display:none}
+  .brand-name span{display:none}
+  .author-card{flex-direction:column;text-align:center}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AboutPage",
+  "name":"Sobre o Creches.app",
+  "url":"https://creches.app/sobre",
+  "description":"A história do Creches.app, feito por um pai português, para todos os pais portugueses. Sempre gratuito.",
+  "inLanguage":"pt-PT",
+  "about":{
+    "@type":"Organization",
+    "name":"Creches.app",
+    "url":"https://creches.app",
+    "founder":{
+      "@type":"Person",
+      "name":"Joaquim Cabral",
+      "description":"Fundador do Creches.app. 28 anos, pai pela primeira vez."
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://creches.app/"},
+    {"@type":"ListItem","position":2,"name":"Sobre","item":"https://creches.app/sobre"}
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo">🍼</div>
+    <div class="brand-name">
+      <b>Creches<span class="brand-tld">.app</span></b>
+      <span>A nossa história</span>
+    </div>
+  </a>
+  <div class="spacer"></div>
+  <nav>
+    <a href="/guias">Guias</a>
+    <a href="/creches">Por distrito</a>
+    <a href="/app" class="cta">Abrir mapa</a>
+  </nav>
+</header>
+
+<article>
+
+  <div class="breadcrumb"><a href="/">Início</a> &rsaquo; Sobre</div>
+
+  <span class="kicker">💛 A nossa história</span>
+  <h1 class="title">Feito por um pai português, <span class="accent">para os pais portugueses.</span></h1>
+  <p class="lede">Olá. Sou o Joaquim, vou ser pai pela primeira vez. O <strong>Creches<span class="brand-tld">.app</span></strong> nasceu da minha procura por uma creche para o meu filho — e percebi rapidamente que isto deveria ser muito mais fácil.</p>
+
+  <div class="author-card">
+    <div class="avatar">JC</div>
+    <div class="info">
+      <b>Joaquim Cabral</b>
+      <span>28 anos · Portugal · pai pela 1ª vez</span>
+      <small>Fundador e único responsável pelo Creches<span class="brand-tld">.app</span></small>
+    </div>
+  </div>
+
+  <h2>Como tudo começou</h2>
+  <p>Quando soubemos que íamos ser pais, a euforia das primeiras semanas deu lugar a uma realidade muito prática: <strong>onde é que o nosso filho vai ficar quando voltarmos ao trabalho?</strong></p>
+
+  <p>Comecei a fazer o que toda a gente faz — abrir o Google. Mas em poucos dias estava perdido. Sites de creches desatualizados, listas de espera longas em IPSS, formulários de inscrição diferentes em cada sítio, telefones que nunca atendem. Cada vez que falava com outros pais a passar pelo mesmo, ouvia a mesma frase: <em>"é um caos."</em></p>
+
+  <p>Numa noite, com o portátil ao colo enquanto a minha mulher dormia, comecei a fazer uma folha de cálculo. <strong>Quantas creches existem mesmo em Portugal?</strong> Onde estão? IPSS ou privadas? Qual o intervalo de idades? Quanto cobram? Quem responde aos emails?</p>
+
+  <p>Quando vi que estava a olhar para <strong>mais de 2.500 creches</strong> espalhadas pelos 20 distritos do país, percebi duas coisas:</p>
+  <ol>
+    <li>Esta folha de cálculo era demasiado grande para qualquer pai a fazer sozinho.</li>
+    <li>Eu sou engenheiro. Posso fazer disto uma ferramenta — e oferecê-la a quem está a passar pelo mesmo.</li>
+  </ol>
+
+  <p>Foi assim que nasceu o <strong>Creches<span class="brand-tld">.app</span></strong>.</p>
+
+  <h2>O que é o Creches.app</h2>
+  <p>Um mapa interativo com <strong>todas as 2591 creches, infantários, IPSS e jardins de infância de Portugal</strong>. Com filtros por idade, distrito, tipo. Com a possibilidade de organizares a tua procura — marcares quem já contactaste, quem respondeu, quem tens visita marcada.</p>
+
+  <p>É a ferramenta que eu próprio queria ter quando comecei a procurar para o meu filho. Não tem publicidade. Não vende os teus dados. Não te força a criar conta para veres o mapa.</p>
+
+  <div class="callout tip">
+    <span class="callout-title">📊 Onde vêm os dados</span>
+    <p>Cruzo informação de várias fontes públicas — <strong>OpenStreetMap</strong> (dados colaborativos abertos), <strong>Carta Social</strong> (registo oficial da Segurança Social), e contributos dos próprios utilizadores quando reportam erros.</p>
+    <p>Como qualquer base de dados, podem haver erros. Por isso há um botão <em>"reportar idade incorreta"</em> em cada creche — e respondo aos reports manualmente, um a um.</p>
+  </div>
+
+  <h2>A promessa que vos faço</h2>
+
+  <div class="promise-box">
+    <div class="seal">🤝</div>
+    <h3>Sempre gratuito para os pais.</h3>
+    <p>Já têm gastos suficientes quando chega um bebé. Não precisam de mais um.</p>
+    <p><b>O Creches<span class="brand-tld">.app</span> nunca vai cobrar aos pais. Nunca.</b></p>
+  </div>
+
+  <p>Esta é a única promessa que faço — e que assumo publicamente aqui para que possam responsabilizar-me se algum dia for traído.</p>
+
+  <h2>Mas então como ganho dinheiro com isto?</h2>
+  <p>Sendo transparente: <strong>hoje, não ganho.</strong> Sou eu que pago o domínio, o servidor e o tempo (que é o que mais custa). Não é caro mas também não é sustentável a longo prazo.</p>
+
+  <p>O modelo que estou a explorar — e a validar agora com creches privadas — é simples: <strong>algumas creches privadas pagariam para receberem pais qualificados</strong> que estão ativamente à procura nesta plataforma. Como um Google Ads, mas com 100% de pais reais e geograficamente próximos.</p>
+
+  <p>Se isto vingar:</p>
+  <ul>
+    <li>A app continua <strong>gratuita</strong> para pais</li>
+    <li>Creches privadas pagam um <strong>pequeno valor</strong> por cada pai que pede contacto direto</li>
+    <li>Pais ficam a saber que <em>"esta creche é parceira"</em> — transparência total, sem pop-ups nem manipulação</li>
+    <li>Eu posso continuar a investir tempo a melhorar a plataforma</li>
+  </ul>
+
+  <p>Se não vingar, vou tentar outra coisa. Mas a promessa de gratuito para os pais mantém-se sempre.</p>
+
+  <h2>O que vem a seguir</h2>
+  <p>Algumas ideias que já tenho na manga, por ordem de prioridade:</p>
+  <ol>
+    <li><strong>Corrigir os dados que ainda têm erros</strong> — listas de espera, idades exatas, contactos atualizados</li>
+    <li><strong>Newsletter mensal</strong> — alertas quando aparecem vagas no teu distrito (opt-in)</li>
+    <li><strong>Mais guias</strong> — adaptação, alimentação, transição para o JI, escolha de escola primária</li>
+    <li><strong>Avaliações de pais</strong> — para os pais ouvirem outros pais, não só marketing das creches</li>
+    <li><strong>Versão para Ama familiar credenciada</strong> — alargar a rede de cuidado para além da creche</li>
+  </ol>
+
+  <p>Mas, mais importante que tudo isto — vou ouvir-vos. Cada email que chega ao <a href="mailto:geral@creches.app">geral@creches.app</a> é lido por mim, pessoalmente. Cada feedback dentro da app aparece-me em tempo real. As próximas funcionalidades vão sair da vossa procura, não da minha cabeça.</p>
+
+  <h2>Como podes ajudar</h2>
+  <ul>
+    <li>🔄 <strong>Partilha</strong> com outros pais à procura — é a melhor forma de o projeto crescer</li>
+    <li>💬 <strong>Dá feedback</strong> — o que funciona, o que falta, o que está mal. Dentro da app ou por email</li>
+    <li>🚩 <strong>Reporta dados errados</strong> — em cada creche tens um botão "idade errada?"</li>
+    <li>⭐ <strong>Marca-nos no Instagram</strong> <a href="https://instagram.com/creches.app" target="_blank" rel="noopener">@creches.app</a> quando partilhares</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Pronto para começar a procurar?</h3>
+    <p>Mapa interativo com 2591 creches em Portugal. Gratuito, sem anúncios.</p>
+    <a href="/app" class="btn">🍼 Abrir o mapa →</a>
+    <a href="/guias" class="btn secondary">Ler os guias</a>
+  </div>
+
+  <div class="signature">
+    Obrigado por leres até aqui. Espero que o Creches<span class="brand-tld">.app</span> te poupe metade do tempo, do stress e da incerteza que eu próprio estou a passar com a procura para o meu filho.
+    <br><br>
+    Se quiseres conversar — por sugestão, dúvida ou só dizer olá — escreve-me para <a href="mailto:geral@creches.app">geral@creches.app</a>. Respondo a tudo.
+    <br><br>
+    <b>— Joaquim Cabral</b>
+  </div>
+
+</article>
+
+<footer>
+  <p>
+    <a href="/">Início</a> ·
+    <a href="/app">Mapa</a> ·
+    <a href="/guias">Guias</a> ·
+    <a href="/sobre">Sobre</a> ·
+    <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> ·
+    <a href="/cookies">Cookies</a> ·
+    <a href="/termos">Termos</a>
+  </p>
+  <p style="margin-top:10px">Creches<span class="brand-tld">.app</span> © 2026 · feito com ❤️ para famílias portuguesas</p>
+</footer>
+
+</body>
+</html>

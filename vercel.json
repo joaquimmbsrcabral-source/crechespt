@@ -4,6 +4,7 @@
   "rewrites": [
     { "source": "/app", "destination": "/app.html" },
     { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/sobre", "destination": "/sobre.html" },
     { "source": "/para-creches", "destination": "/para-creches.html" },
     { "source": "/privacidade", "destination": "/privacidade.html" },
     { "source": "/cookies", "destination": "/cookies.html" },
