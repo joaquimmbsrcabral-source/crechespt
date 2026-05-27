@@ -1287,6 +1287,42 @@ header.topbar{
   </div>
 </div>
 
+<!-- Pedir remoção desta creche -->
+<div id="rm-host" class="confirm-host" role="dialog" aria-modal="true">
+  <div class="confirm-card" style="max-width:500px;text-align:left">
+    <h3 style="text-align:center">🛡 Pedir remoção desta creche</h3>
+    <p style="text-align:center;font-size:13px;color:var(--ink-soft);margin:4px 0 14px">
+      Se és responsável pela <b id="rm-creche-name">—</b> e queres que seja removida do mapa, preenche este pedido.
+      Atendemos em 7 dias úteis. Os dados são públicos (OpenStreetMap), mas respeitamos sempre o pedido.
+    </p>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="rm-relationship" style="padding-top:0">A tua função na creche</label>
+      <select id="rm-relationship">
+        <option value="">— escolhe —</option>
+        <option value="diretor">Diretor/a</option>
+        <option value="proprietario">Proprietário/a</option>
+        <option value="administrativo">Pessoal administrativo</option>
+        <option value="educador">Educador/a</option>
+        <option value="advogado">Advogado/a / Representante legal</option>
+        <option value="outra">Outra</option>
+      </select>
+    </div>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="rm-email" style="padding-top:0">Email de contacto *</label>
+      <input id="rm-email" type="email" placeholder="ex: direcao@minhacreche.pt" maxlength="120" autocomplete="email">
+      <small style="color:var(--ink-faint);font-size:12px;margin-top:4px">Preferencialmente um email do domínio da creche, para validarmos o pedido.</small>
+    </div>
+    <div class="frow" style="grid-template-columns:1fr">
+      <label for="rm-reason" style="padding-top:0">Motivo do pedido (opcional)</label>
+      <textarea id="rm-reason" rows="3" placeholder="Ex: dados desatualizados, encerramos, preferimos não estar listados…" maxlength="800" style="min-height:80px"></textarea>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="rm-cancel" class="btn">Cancelar</button>
+      <button id="rm-send" class="btn primary">Enviar pedido</button>
+    </div>
+  </div>
+</div>
+
 <!-- Report idade incorreta -->
 <div id="ra-host" class="confirm-host" role="dialog" aria-modal="true">
   <div class="confirm-card" style="max-width:480px;text-align:left">
@@ -2073,7 +2109,7 @@ function openDetail(id){
     rows.push(["Distância", `<span class="dist-pill">📍 ${fmtDist(d)} a partir de ti</span>`]);
   }
   rows.push(["Coordenadas", `${c.lat.toFixed(5)}, ${c.lon.toFixed(5)} · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}">▶ direções</a>`]);
-  rows.push(["Fonte", `<a target="_blank" rel="noopener" href="${c.osm_url}">OpenStreetMap</a>`]);
+  rows.push(["Fonte", `<a target="_blank" rel="noopener" href="${c.osm_url}">OpenStreetMap</a> · <a href="#" class="remove-creche-btn" data-noopen="1" title="Sou desta creche e quero ser removida do mapa">esta é a minha creche → pedir remoção</a>`]);
   kv.innerHTML = rows.map(([k,v])=>`<div class="k">${k}</div><div>${v}</div>`).join("");
 
   document.getElementById("d-status").value = u.status || "todo";
@@ -2880,6 +2916,69 @@ function renderUserChip(user){
           fbSend.textContent = "Enviar";
         }
       });
+      // Pedir remoção desta creche (link "esta é a minha creche → pedir remoção")
+      const rmHost = document.getElementById("rm-host");
+      const rmName = document.getElementById("rm-creche-name");
+      const rmRel = document.getElementById("rm-relationship");
+      const rmEmail = document.getElementById("rm-email");
+      const rmReason = document.getElementById("rm-reason");
+      const rmSend = document.getElementById("rm-send");
+      const rmCancel = document.getElementById("rm-cancel");
+      function openRm(c){
+        rmName.textContent = c.nome || "creche";
+        rmRel.value = ""; rmEmail.value = ""; rmReason.value = "";
+        rmHost.dataset.crecheId = c.id;
+        rmHost.dataset.crecheName = c.nome || "";
+        rmHost.classList.add("open");
+        setTimeout(()=>rmRel.focus(), 80);
+      }
+      function closeRm(){ rmHost.classList.remove("open"); }
+      rmCancel.addEventListener("click", closeRm);
+      rmHost.addEventListener("click", (e)=>{ if(e.target===rmHost) closeRm(); });
+
+      document.addEventListener("click", (e)=>{
+        const btn = e.target.closest && e.target.closest(".remove-creche-btn");
+        if(!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const c = State.creches.find(x=>x.id===State.selectedId);
+        if(!c){ return; }
+        openRm(c);
+      });
+
+      rmSend.addEventListener("click", async ()=>{
+        const rel = rmRel.value;
+        const email = (rmEmail.value||"").trim().slice(0,120);
+        const reason = (rmReason.value||"").trim().slice(0,800);
+        if(!rel){ toast("Escolhe a tua função","warn"); return; }
+        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast("Email inválido","warn"); return; }
+        rmSend.disabled = true;
+        rmSend.textContent = "A enviar…";
+        try{
+          // funciona mesmo sem login — guarda como pedido público
+          const db = FB ? FB.db : firebase.firestore();
+          await db.collection("creche_removals").add({
+            creche_id: rmHost.dataset.crecheId || "",
+            creche_name: (rmHost.dataset.crecheName || "").slice(0,200),
+            relationship: rel,
+            requester_email: email,
+            reason: reason,
+            url: location.href,
+            user_agent: navigator.userAgent.slice(0,200),
+            uid: (FB && FB.user) ? FB.user.uid : null,
+            ts: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+          closeRm();
+          toast("Pedido recebido. Respondemos em 7 dias úteis para "+email,"ok",{duration:5000});
+        }catch(e){
+          console.error(e);
+          toast("Não foi possível enviar. Tenta de novo ou envia email para geral@creches.app","err",{duration:6000});
+        } finally {
+          rmSend.disabled = false;
+          rmSend.textContent = "Enviar pedido";
+        }
+      });
+
       // Report idade incorreta (clicar no botão dentro do detail)
       const raHost = document.getElementById("ra-host");
       const raClaimed = document.getElementById("ra-claimed");

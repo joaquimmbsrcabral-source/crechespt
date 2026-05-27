@@ -69,6 +69,22 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Pedidos de remoção de creche (RGPD / direito ao esquecimento)
+    // Qualquer pessoa (autenticada ou não) pode pedir; só admin lê.
+    match /creche_removals/{id} {
+      allow create: if
+           request.resource.data.creche_name is string
+        && request.resource.data.creche_name.size() <= 200
+        && request.resource.data.relationship is string
+        && request.resource.data.relationship.size() <= 30
+        && request.resource.data.requester_email is string
+        && request.resource.data.requester_email.size() <= 120
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() <= 800;
+      allow read:   if isAdmin();
+      allow update, delete: if false;
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;

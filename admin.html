@@ -202,11 +202,23 @@ table tr:hover{background:rgba(255,243,214,.4)}
         <div class="value" id="m-reports">—</div>
         <div class="hint">Correções pendentes</div>
       </div>
+      <div class="metric peach">
+        <span class="ico">🛡</span>
+        <div class="label">Remoções pedidas</div>
+        <div class="value" id="m-removals">—</div>
+        <div class="hint">Creches que querem sair</div>
+      </div>
     </div>
 
     <section class="panel">
       <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
       <div id="ci-host"></div>
+    </section>
+
+    <section class="panel">
+      <h3>🛡 Pedidos de remoção de creche <span class="count" id="rm-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">Atende-os em 7 dias úteis (compromisso público nos Termos).</p>
+      <div id="rm-host"></div>
     </section>
 
     <section class="panel">
@@ -293,12 +305,13 @@ async function checkAdmin(uid){
 async function loadDashboard(user){
   $("admin-name").textContent = (user.displayName||"").split(" ")[0] || "admin";
 
-  // Em paralelo: 4 queries
-  const [usersSnap, ciSnap, fbSnap, rpSnap] = await Promise.all([
+  // Em paralelo: 5 queries
+  const [usersSnap, ciSnap, fbSnap, rpSnap, rmSnap] = await Promise.all([
     db.collection("users").orderBy("lastSeen","desc").limit(500).get().catch(e=>{console.warn("users",e);return null;}),
     db.collection("creche_interest").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("ci",e);return null;}),
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
     db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
+    db.collection("creche_removals").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rm",e);return null;}),
   ]);
 
   // --- Utilizadores
@@ -339,10 +352,47 @@ async function loadDashboard(user){
     $("m-reports").textContent = reports.length;
   } else { $("m-reports").textContent = "?"; }
 
+  // --- Pedidos de remoção
+  let removals = [];
+  if(rmSnap){
+    rmSnap.forEach(d=>{ const x = d.data(); x.id=d.id; removals.push(x); });
+    $("m-removals").textContent = removals.length;
+  } else { $("m-removals").textContent = "?"; }
+
   renderCreches(creches);
+  renderRemovals(removals);
   renderReports(reports);
   renderFeedback(feedbacks);
   renderUsers(users.slice(0,30));
+}
+
+function renderRemovals(rows){
+  $("rm-count").textContent = rows.length;
+  if(rows.length===0){
+    $("rm-host").innerHTML = '<div class="empty">Sem pedidos de remoção. Quando uma creche pedir para sair do mapa, aparece aqui.</div>';
+    return;
+  }
+  const relLabels = {
+    diretor:"Diretor/a", proprietario:"Proprietário/a", administrativo:"Administrativo",
+    educador:"Educador/a", advogado:"Advogado/a", outra:"Outra"
+  };
+  $("rm-host").innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Data</th><th>Creche</th><th>Função</th><th>Email contacto</th><th>Motivo</th>
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.ts)}</td>
+            <td><b>${escapeHtml(r.creche_name||"—")}</b><br><span style="font-size:11px;color:#888">${escapeHtml(r.creche_id||"")}</span></td>
+            <td><span class="pill">${escapeHtml(relLabels[r.relationship]||r.relationship||"—")}</span></td>
+            <td class="email-cell"><a href="mailto:${escapeHtml(r.requester_email||"")}">${escapeHtml(r.requester_email||"")}</a></td>
+            <td class="msg">${escapeHtml(r.reason||"—")}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+  `;
 }
 
 function renderReports(rows){
