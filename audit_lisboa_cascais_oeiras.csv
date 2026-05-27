@@ -1,0 +1,402 @@
+Nome,Localidade,Tipo_inferido,Min_meses,Max_meses,Confianca,Telefone_status,Telefone_orig,Email,Lat,Lon
+Casa das Abelhinhas,Lisboa,Infantário,4,72,Verificar,OK,+351 218982060,colmeiadasabelhinhas@escolas.min-edu.pt,38.779213,-9.095929
+Colégio Santiago,Carnaxide,Infantário,4,72,Verificar,OK,+351 214177567,cl.santiago@escolas.min-edu.pt,38.721484,-9.223637
+ATL,,ATL,72,144,Alta,SEM_TEL,,,38.704789,-9.358476
+"Jardim de Infância ""As Quatro Estações""",Queluz,JI,36,72,Alta,OK,+351 214371445,ji.as4estacoes@escolas.min-edu.pt,38.754837,-9.27824
+KriaBébés - Infantário,,Infantário,4,72,Alta,SEM_TEL,,,38.70866,-9.232145
+"Creche e Jardim de Infância ""Marcolândia""",Algés,Infantário,4,72,Alta,OK,+351 214101453,ji.marcolandia@escolas.min-edu.pt,38.705933,-9.2261
+Mimarte,Moscavide,Desconhecido,4,72,Verificar,OK,+351 219443265,geral@crechemimarte.pt,38.776607,-9.106309
+Creche Gente Pequena,,Creche,4,36,Alta,SEM_TEL,,,38.765436,-9.153678
+Xururuca,Estoril,Desconhecido,4,72,Verificar,SEM_TEL,,,38.706225,-9.385699
+Jardim de Infância das Mercês,,JI,36,72,Alta,SEM_TEL,,,38.715412,-9.148635
+Jardim de Infância Monte-Abraão,,JI,36,72,Alta,SEM_TEL,,,38.76365,-9.262824
+Parque Infantil - Jardim das Palmeiras,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.699266,-9.275093
+B-A-Baby,Algés,Desconhecido,4,72,Verificar,OK,+351 214121505,abc@b-a-baby.pt,38.712264,-9.226853
+"Jardim de Infância ""A Cidade da Brincadeira""",,JI,36,72,Alta,SEM_TEL,,,38.673555,-9.15872
+Creche do Centro Social Paroquial Padre Ricardo Gameiro da Cova da Piedade - A Nossa Creche,,Creche,4,36,Alta,SEM_TEL,,,38.669849,-9.162351
+Centro Infantil de Santos-o-Novo,Lisboa,Infantário,4,72,Alta,OK,+351 218163080,,38.721825,-9.11723
+"Jardim de Infância ""O Pirilampo do Cruzeiro""",Mem Martins,JI,36,72,Alta,OK,+351 219215823,opirilampodocruzeiro@escolas.min-edu.pt,38.789195,-9.349501
+Creche Henriqueta Adelaide,,Creche,4,36,Alta,SEM_TEL,,,38.757183,-9.141714
+O Mimo da Joaninha,,Infantário,4,72,Verificar,SEM_TEL,,,38.711434,-9.339564
+Ser Criança,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.697602,-9.371585
+A casa dos Sonhos,São Pedro do Estoril,Infantário,4,72,Verificar,SEM_TEL,,,38.695824,-9.36913
+O Cantinho da Cegonha,Sacavém,Infantário,4,72,Verificar,SEM_TEL,,,38.790122,-9.108065
+Bebé Sol,,Infantário,4,72,Verificar,SEM_TEL,,,38.690521,-9.337813
+Creche - Jardim de Infância 25 de Abril (AIPICA),Almada,Infantário,4,72,Alta,OK,+351 212757713,aipica1@sapo.pt,38.682516,-9.153325
+Jardim de Infância da Associação de Solidariedade e Desenvolvimento do Laranjeiro,Almada,JI,36,72,Alta,OK,+351 212583934,geral@asdl.pt,38.65161,-9.154436
+CEAS - Centro Educativo e Apoio Social (Casa Pia de Lisboa),Caparica,Infantário,4,72,Verificar,OK,+351 212947080,ana.longle@casapia.pt,38.665541,-9.188187
+Creche e Jardim de Infância do Pão de Açucar (AIPICA),Almada,Infantário,4,72,Alta,OK,+351 212756427,aipica1@sapo.pt,38.668247,-9.164651
+Creche e Jardim Infantil Popular do Castelo (AIPICA),Almada,Infantário,4,72,Alta,OK,+351 212757403,aipica1@sapo.pt,38.68421,-9.153797
+Jardim Infantil do Pombal (AIPICA),Almada,JI,36,72,Alta,OK,+351 212754490,aipica1@sapo.pt,38.67631,-9.160358
+Centro Social Paroquial Padre Ricardo Gameiro - S. Simão,Almada,Infantário,4,72,Verificar,OK,+351 212720140,infor@cparoquial-covapiedade.pt,38.67049,-9.165229
+Centro Comunitário Pia I,Caparica,Infantário,4,72,Verificar,OK,+351 212956453,dtcgoncalves@scma.pt,38.669388,-9.192898
+Jardim Infantil do Centro Paroquial de Almada,Almada,JI,36,72,Alta,OK,+351 212731313,geral@centroparoquial-almada.pt,38.680755,-9.158581
+Centro Social e Paroquial Cristo Rei,Caparica,Infantário,4,72,Verificar,OK,+351 212942944,csp-cristorei@net.novis.pt,38.666428,-9.184542
+Centro Infantil da Trafaria,Trafaria,Infantário,4,72,Alta,OK,+351 212919500,informacoestrafaria@scma.pt,38.66942,-9.239228
+Jardim Infantil Centro Paroquial Bem Estar Social de Cacilhas,Almada,JI,36,72,Alta,OK,+351 212754455,cpcacilhas@sapo.pt,38.687244,-9.150232
+Jardim Infantil Bento Gonçalves (AIPICA),Almada,JI,36,72,Alta,OK,+351 212591961,aipica1@sapo.pt,38.659275,-9.160745
+Jardim Infantil Ninho 3,Almada,JI,36,72,Alta,OK,+351 212879560,ana.pinto@estradasdeportugal.pt,38.676895,-9.176077
+Centro Comunitário Promoção Social Feijó e Laranjeiro,Almada,Infantário,4,72,Verificar,OK,+351 212591297,ccp_slf@mail.telepac.pt,38.65544,-9.160692
+Centro da Actividades e Tempos Livres do Raposo (AIPICA),Almada,ATL,72,144,Alta,OK,+351 212951324,aipica1@sapo.pt,38.666096,-9.19124
+O Cantinho da Brincadeira,Almada,Infantário,4,72,Verificar,OK,+351 212553938,cantinhodabrincadeiralda@gmail.com,38.65337,-9.148773
+Externato O Pinguim,Almada,Infantário,4,72,Verificar,OK,+351 212592309,o_pinguim@hotmail.com,38.654057,-9.161294
+Jardim de Infância A Cidade da Brincadeira,Cacilhas,JI,36,72,Alta,OK_MULTI,+351 966631807;+351 212761823,cidade.brincadeira@gmail.com,38.68611,-9.150214
+Atrium 7,Almada,Desconhecido,4,72,Verificar,OK,+351 212500772,,38.655037,-9.160234
+Jardim Escola Natel,Almada,JI,36,72,Alta,OK,+351 964045309,mariazegreamorim@hotmail.com,38.66595,-9.156755
+Externato O Baloiço,Almada,Infantário,4,72,Verificar,OK,+351 212592686,geral@obaloico.pt,38.657479,-9.153056
+Jardim Infantil C. Paroq. Bem-Estar Social Corroios,Corroios,JI,36,72,Alta,OK,+351 212531289,cpsfamilia@gmail.com,38.653282,-9.144441
+Jardim Infantil Palmo e Meio,Corroios,JI,36,72,Alta,OK,+351 212537243,ana.gomes91@hotmail.com,38.65056,-9.144209
+Jardim Infancia De Cacilhas,Almada,Desconhecido,4,72,Verificar,SEM_TEL,,,38.680782,-9.150571
+Creche O Mestre Cuco,Almada,Creche,4,36,Alta,SEM_TEL,,,38.67141,-9.168214
+"Creche ""Pequenos Índios""",Lisboa,Creche,4,36,Alta,OK,+351 210995474,,38.748964,-9.168244
+"Creche Jardim De Infáncia E Atl, Fitares",,Infantário,4,72,Alta,SEM_TEL,,,38.786313,-9.314659
+"Jardim de Infância ""Pinóquio""",,JI,36,72,Alta,SEM_TEL,,,38.700841,-9.233529
+"Colégio ""Quintinha da Fidalga""",Agualva-Cacém,Infantário,4,72,Verificar,OK,+351 219120162,,38.772754,-9.301473
+Colégio das Colinas,Odivelas,Infantário,4,72,Verificar,OK,+351 219 349 730,cl.colinas@escolas.min-edu.pt,38.787789,-9.188374
+"Externato Infantil ""O Nosso Jardim""",Lisboa,Infantário,4,72,Verificar,OK,+351 213901658,infantil@onossojardim.com,38.709841,-9.151504
+N´Avozinha,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.724526,-9.148347
+N´Avozinha,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.724411,-9.148622
+Academia dos Miúdos,Lisboa,Infantário,4,144,Verificar,OK,+351 217740126,secretaria@academiadosmiudos.pt,38.747858,-9.185424
+"Associação de Pais e Técnicos do Infantário ""Pedrita""",Lisboa,Infantário,4,72,Alta,OK,+351 217154701,ji.pedrita@escolas.min-edu.pt,38.749686,-9.194034
+ADECO,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.714904,-9.149078
+Jardim Da Fantasia,,Infantário,4,72,Verificar,SEM_TEL,,,38.725544,-9.145561
+Jardim de Infância Academia dos Peixinhos,Odivelas,JI,36,72,Alta,OK,+351 219 339 754,geral@academiadospeixinhos.pt;ji.academiadospeixinhos@escolas.min-edu.pt,38.791809,-9.19366
+Jardim de Infância n.º 2 de Verderena,Barreiro,JI,36,72,Alta,OK,+351 212170745,jin2verderena@aebarreiro.pt,38.654717,-9.073035
+Os Trombinhas,Odivelas,Desconhecido,4,72,Verificar,OK,+351 219 325 522,,38.795861,-9.175299
+Os Ilustres,Odivelas,Desconhecido,4,72,Verificar,OK,+351 219 322 818,,38.79289,-9.190089
+Colégio A Sandrinha,Pontinha,Infantário,4,72,Verificar,OK_MULTI,+351 214 785 124;+351 965 762 180;+351 961 585 737,colegiosandrinha@gmail.com;ji.sandrinhapontinha@escolas.min-edu.pt,38.784943,-9.21539
+Jardim Infantil O Pónei,Odivelas,JI,36,72,Alta,OK,+351 219 329 690,oponei@escolas.min-edu.pt,38.795749,-9.184288
+Jardim de Infância Timena,Odivelas,JI,36,72,Alta,OK,+351 219 324 389,ji.timena@escolas.min-edu.pt,38.791131,-9.179778
+Jardim de Infância Pipos & Bibas,Odivelas,JI,36,72,Alta,OK,+351 219 322 528,,38.788118,-9.188591
+Jardim de Infância O Alicerce,Odivelas,JI,36,72,Alta,SEM_TEL,,ji.oalicerce@escolas.min-edu.pt,38.797642,-9.191691
+Colégio O Bom Principezinho,Odivelas,Infantário,4,72,Verificar,OK,+351 961 591 452,creche@obomprincipezinho.pt,38.789674,-9.194623
+Creche Colinas do Cruzeiro e Jardim de Infância,Odivelas,Infantário,4,72,Alta,OK_MULTI,+351 219 313 170;+351 914 744 281,,38.791728,-9.189933
+Externato Jardim do Sol,Odivelas,Infantário,4,72,Verificar,OK,+351 219 334 084,ext.jardimsol@escolas.min-edu.pt,38.794166,-9.19485
+"Colégio ""Cantinho das Alfazemas""",Lisboa,Infantário,4,72,Verificar,OK_MULTI,+351 215 900 211;+351 918 225 051,geral@colegiocantinhodasalfazemas.com,38.760871,-9.095147
+Jardim de Infância Dom João II,Lisboa,JI,36,72,Alta,OK,+351 213888572,ji.djoaoii@escolas.min-edu.pt,38.718768,-9.165771
+caselsol,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.718032,-9.21087
+Centro de Acolhimento Infantil do Bairro Padre Cruz,Lisboa,Infantário,4,72,Verificar,OK,+351 217124220,cai.padrecruz@scml.pt,38.772356,-9.189217
+Os Pirralhos do Marquês,Lisboa,Desconhecido,4,72,Verificar,OK,+351 213867639,ji.ospirralhosdomarques@escolas.min-edu.pt,38.723137,-9.153214
+Centro Social do Sagrado Coração de Jesus,Lisboa,Infantário,4,72,Verificar,OK_MULTI,+351 213902112;+351 938855204,cs.scoracaojesus@escolas.min-edu.pt,38.708292,-9.161604
+"Jardim de Infância ""Sol Dourado""",Rio de Mouro,JI,36,72,Alta,OK_MULTI,+351 210937980;+351 926774092,ext.soldourado@escolas.min-edu.pt,38.747097,-9.343312
+Jardim de Infância da Belourinha,Sintra,JI,36,72,Alta,OK,+351 219108040,belourinha@escolas.min-edu.pt;secretaria@colegiodabeloura.pt,38.77226,-9.377237
+"Jardim de Infância ""Os Meus Amigos""",Cacém,JI,36,72,Alta,OK,+351 219141490,colegioosamigos@gmail.com;margaridagomescolegio@gmail.com,38.772468,-9.310448
+"Jardim Infantil ""O Palhaço Alegre""",Rio de Mouro,JI,36,72,Alta,OK,+351 219164958,ji.opalhacoalegre@escolas.min-edu.pt,38.787126,-9.32235
+"Jardim de Infância ""Maçã Azul""",Mem Martins,JI,36,72,Alta,OK,+351 219208179,,38.791809,-9.330301
+Jardim de Infância do Centro Paroquial do Estoril,Estoril,JI,36,72,Alta,OK,+351 214686767,ji.cpestoril@escolas.min-edu.pt,38.709811,-9.387349
+Jardim de Infância do Centro de Apoio à Criança,Agualva-Cacém,JI,36,72,Alta,OK,+351 219142607,cac.mirasintra@gmail.com,38.785728,-9.305174
+Jardim de Infância do Centro de Apoio à Criança,Agualva-Cacém,JI,36,72,Alta,OK,+351 219142607,cac.mirasintra@gmail.com,38.785936,-9.304882
+Jardim Infantil do Centro Social e Paroquial de Mira Sintra,Agualva-Cacém,JI,36,72,Alta,OK_MULTI,+351 219185382;+351 963821150,ji.cspmirasintra@escolas.min-edu.pt,38.784192,-9.30593
+"Jardim de Infância ""Cosme e Damião""",Rio de Mouro,JI,36,72,Alta,OK_MULTI,+351 961 391 942;+351 219 197 214;+351 219 197 213;+351 962 428 342,ji.cosmeedamiao@escolas.min-edu.pt,38.781377,-9.315467
+"Jardim de Infância ""Bem-Me-Quer""",Rio de Mouro,JI,36,72,Alta,OK,+351 219161741,ji.bemmequer@escolas.min-edu.pt,38.780726,-9.322926
+"Colégio ""Os Filhotes""",Porto Salvo,Infantário,4,72,Verificar,OK,+351 214212619,cl.osfilhotes@escolas.min-edu.pt,38.723077,-9.304429
+Jardim de Infância António Pinheiro Pinto Basto,Belas,JI,36,72,Alta,OK,+351 214310300,ji.pbastoctassocial@escolas.min-edu.pt,38.779104,-9.263417
+"Jardim de Infância ""O Farol""",Queluz,JI,36,72,Alta,OK,+351 214371506,ofarolmassama@escolas.min-edu.pt,38.751428,-9.28156
+Jardim de Infância da Associação de Solidariedade e Amizade Casal de Cambra,Casal de Cambra,JI,36,72,Alta,OK,+351 219809830,solami@solami.org,38.799449,-9.236455
+"Jardim Infantil ""O Girassol Dourado""",Queluz,JI,36,72,Alta,OK,+351 214377338,ji.ogirassoldourado@escolas.min-edu.pt,38.757262,-9.267412
+"Colégio ""O Teu Jardim""",Queluz,Infantário,4,72,Verificar,OK,+351 214390126,cl.oteujardim@escolas.min-edu.pt,38.764775,-9.262454
+Tesouros e Aventuras,Queluz,Desconhecido,4,72,Verificar,OK,+351 214392918,tesouroseaventuras@gmail.com,38.759319,-9.256589
+"Jardim de Infância ""Caíque""",Queijas,JI,36,72,Alta,OK,+351 214171150,ji.caique@escolas.min-edu.pt,38.72394,-9.262554
+"Externato ""Marité""",Amadora,Infantário,4,72,Verificar,OK,+351 214932831,ext.marite@escolas.min-edu.pt,38.761809,-9.237496
+"Jardim Infantil ""O Caracol Pimpão""",Amadora,JI,36,72,Alta,OK,+351 214937104,ji.ocaracolpimpao@escolas.min-edu.pt,38.760547,-9.241257
+"Jardim de Infância ""Casal dos Sonhos""",Amadora,JI,36,72,Alta,SEM_TEL,,,38.7609,-9.225624
+"Externato ""Modelo""",Amadora,Infantário,4,72,Verificar,OK,+351 214959194,ext.modelo@escolas.min-edu.pt,38.750213,-9.223551
+Jardim de Infância do Casal Popular da Damaia,Amadora,JI,36,72,Alta,OK,+351 214906090,ji.associalvencer@escolas.min-edu.pt,38.745308,-9.225096
+"Colégio ""Pequenos Sorrisos""",Amadora,Infantário,4,72,Verificar,INVALIDO,+351 309968500,pequenosorriso@netcabo.pt,38.766511,-9.238924
+"Jardim de Infância ""Estrelas de Luz""",Amadora,JI,36,72,Alta,OK_MULTI,+351 214930638;+351 963925114,geral@estrelasdeluz.pt,38.767238,-9.237915
+"Jardim Infantil ""O Finório""",Amadora,JI,36,72,Alta,OK_MULTI,+351 214945604;+351 916073917,ji.ofinorio@escolas.min-edu.pt,38.768154,-9.229799
+"Jardim de Infância ""Escolinha 7""",Amadora,JI,36,72,Alta,OK,+351 935114271,,38.767542,-9.22799
+Jardim de Infância n.º 2 da Brandoa,Amadora,JI,36,72,Alta,OK,+351 214757281,ji.n2.brandoa@escolas.min-edu.pt,38.7691,-9.218691
+Jardim de Infância do Centro Comunitário Paroquial de Famões,Odivelas,JI,36,72,Alta,OK,+351 214 009 043,direccao@ccparoquial-famoes.com,38.795191,-9.179124
+"Jardim de Infância ""O Nosso Recreio""",Odivelas,JI,36,72,Alta,OK,+351 219333810,ji.epodivelas@escolas.min-edu.pt,38.787244,-9.191347
+"Jardim de Infância ""Boneca de Corda""",Odivelas,JI,36,72,Alta,OK,+351 219446086,bonecadecorda@gmail.com,38.798206,-9.173623
+Pequenos e Divertidos,Odivelas,Desconhecido,4,72,Verificar,OK,+351 210999409,,38.788462,-9.17531
+Jardim de Infância da Quinta de São José,Sacavém,JI,36,72,Alta,OK,+351 219419218,ji.n1.sacavem@escolas.min-edu.pt,38.793524,-9.111962
+"Centro Infantil ""Golfinho Saltitão""",Algés,Infantário,4,72,Alta,OK,+351 210138886,golfinhosaltitao@sapo.pt,38.708465,-9.229696
+Jardim de Infância do Centro Social Paroquial Nossa Senhora do Cabo de Linda-a-Velha,Linda a Velha,JI,36,72,Alta,OK,+351 214157610,ji.csparoqnsracabo@escolas.min-edu.pt,38.712226,-9.239901
+"Creche com Berçário ""Fraldinhas e Travessuras""",Amadora,Creche,4,36,Alta,OK,+351 214714867,fraldinhastravessuras@gmail.com,38.736083,-9.212102
+Abrigo Infantil de Santa Maria de Belém,Lisboa,Infantário,4,72,Verificar,OK,+351 213634242,ainfantilstambelem@escolas.min-edu.pt,38.698238,-9.204573
+"Jardim Infantil ""Chiquinha""",Lisboa,JI,36,72,Alta,OK,+351 213639137,ji.chiquinha@escolas.min-edu.pt,38.706965,-9.187764
+Jardim de Infância do Centro Social da Musgueira,Lisboa,JI,36,72,Alta,OK,+351 217591775,,38.777158,-9.154415
+Jardim de Infância da Associação Vida Cristã Filadélfia,Lisboa,JI,36,72,Alta,OK,+351 219488960,ass.vcfiladelfia@escolas.min-edu.pt,38.783053,-9.148888
+Jardim de Infância do Centro de Assistência Social Infantil da Charneca do Lumiar,Lisboa,JI,36,72,Alta,OK,+351 217590385,ct.ainfantilcharneca@escolas.min-edu.pt,38.783403,-9.143728
+"Jardim de Infância ""A Mãe Canguru""",Prior Velho,JI,36,72,Alta,OK,+351 936171792,ji.amaecanguru@escolas.min-edu.pt,38.791938,-9.122937
+"Jardim de Infância ""Majari""",Lisboa,JI,36,72,Alta,OK,+351 217551838,ji.masari@escolas.min-edu.pt,38.789961,-9.157312
+Jardim dos Pipocas,Lisboa,Desconhecido,4,72,Verificar,OK_MULTI,+351 214037441;+351 967424982,crecheospipoquinhas@gmail.com,38.762194,-9.179874
+Jardim de Infância do Centro Social Paroquial de Carnide,Lisboa,JI,36,72,Alta,OK,+351 217112520,csp.carnide@escolas.min-edu.pt,38.760114,-9.191339
+Chuva de Papel,Lisboa,Desconhecido,4,72,Verificar,OK,+351 217550483,,38.763428,-9.163458
+Jardim de Infância do Centro Paroquial de São Domingos de Benfica,Lisboa,JI,36,72,Alta,OK,+351 217221350,direccao@sdomingos.net,38.741573,-9.173258
+"Externato ""A Caravela""",Lisboa,Infantário,4,72,Verificar,OK,+351 217261742,ext.acaravela@escolas.min-edu.pt,38.755671,-9.177969
+Creche e Aparece,Lisboa,Creche,4,36,Alta,OK,+351 214066474,,38.769813,-9.096383
+Jardim Infantil do Bairro das Laranjeiras,Lisboa,JI,36,72,Alta,OK,+351 218509030,,38.771077,-9.100898
+"Jardim Infantil ""Espaço Júnior""",Moscavide,JI,36,72,Alta,OK,+351 219 441 440,ji.assvidaabundante@escolas.min-edu.pt,38.776764,-9.104826
+Creche Popular de Moscavide,Moscavide,Creche,4,36,Alta,OK,+351 219446086,geral@crevide.pt,38.778727,-9.10417
+A Mamã Coelha,Moscavide,Desconhecido,4,72,Verificar,OK,+351 219446004,,38.778977,-9.104548
+"Jardim Infantil ""Beloquitas""",Lisboa,JI,36,72,Alta,OK,+351 213637327,ji.beloquitas@escolas.min-edu.pt,38.705744,-9.177316
+"Externato Infantil ""A Candeia Encantada""",Lisboa,Infantário,4,72,Verificar,OK,+351 218498851,ext.acandeia@escolas.min-edu.pt,38.742087,-9.134821
+Escola Montessori São Lourenço,Lisboa,Infantário,4,72,Verificar,OK,+351 215834088,montessorischoolsl@gmail.com;oateliermontessori@gmail.com,38.743865,-9.159861
+Jardim Infantil João Paulo II,Lisboa,JI,36,72,Alta,OK,+351 217934161,ji.joaopauloiilisboa@escolas.min-edu.pt,38.748615,-9.152621
+Jardim de Infância do Centro Social Paroquial de São João de Brito,Lisboa,JI,36,72,Alta,OK,+351 218405731,geral@cpsjbrito.com,38.755574,-9.137993
+Jardim de Infância da Fundação Adolfo Vieira de Brito,Lisboa,JI,36,72,Alta,OK,+351 218435020,fadolfovieirabrito@escolas.min-edu.pt,38.754419,-9.132471
+Jardim de Infância do Centro Social José Luís Coelho,Lisboa,JI,36,72,Alta,OK,+351 213977927,ji.cscasalventoso@escolas.min-edu.pt,38.717294,-9.173177
+Jardim de Infância do Centro Social e Paroquial de São Francisco de Paula,Lisboa,JI,36,72,Alta,OK,+351 213965210,ji.cspsaofranciscodepaula@escolas.min-edu.pt,38.706927,-9.171277
+Jardim de Infância do Centro Paroquial de Bem Estar Social de Alfama,LISBOA,JI,36,72,Alta,OK,+351 218875045,cp.bemestaralfama@escolas.min-edu.pt,38.711728,-9.128507
+Casa da Infância de Santana,Lisboa,Infantário,4,72,Verificar,OK,+351 218802038,ji.santanalisboa@escolas.min-edu.pt,38.719411,-9.139867
+Jardim de Infância do Patronato Cristo-Rei,Lisboa,JI,36,72,Alta,OK,+351 213960402,ji.pcristorei@escolas.min-edu.pt,38.710177,-9.160552
+Casa Pastorinhos de Fátima,Lisboa,Infantário,4,72,Verificar,OK,+351 213961124,apsantosovelho@escolas.min-edu.pt,38.706122,-9.158883
+Jardim Infantil do Centro de Bem Estar Infantil das Janelas Verdes,Lisboa,JI,36,72,Alta,OK,+351 213905789,,38.704677,-9.163481
+Parque Infantil de Santa Catarina,Lisboa,Infantário,4,72,Verificar,OK,+351 213261530,pinfantilstacatarina@escolas.min-edu.pt,38.711146,-9.148476
+Escola no Chiado,Lisboa,Desconhecido,4,72,Verificar,OK,+351 213467248,ji.cspnsraencarnacao@escolas.min-edu.pt,38.717428,-9.14706
+Jardim de Infância António José de Almeida,Lisboa,JI,36,72,Alta,SEM_TEL,,ji.ajosealmeida@escolas.min-edu.pt,38.738281,-9.140269
+"Externato ""Santa Teresinha de Lisieux""",Lisboa,Infantário,4,72,Verificar,OK,+351 217963533,ext.stdelisieux@escolas.min-edu.pt,38.73877,-9.142826
+"Centro Infantil ""Visconde de Valmor""",Lisboa,Infantário,4,72,Alta,OK,+351 217979627,,38.738009,-9.148821
+Infantário Popular Ribeiro dos Santos,Lisboa,Infantário,4,72,Alta,OK,+351 218121429,ass.pribeirosantos@escolas.min-edu.pt,38.727572,-9.134562
+Jardim de Infância do Centro Social Paroquial Nossa Senhora da Penha de França,Lisboa,JI,36,72,Alta,OK,+351 218133638,ji.csppenhafranca@escolas.min-edu.pt,38.727033,-9.125921
+Só Bebés,,Infantário,4,72,Verificar,OK,+351217540813,,38.759258,-9.170126
+Saídos da Casca,Lisboa,Desconhecido,4,72,Verificar,OK,+351217550290,,38.758682,-9.170981
+Instituto Português De Pedagogia Infantil,Póvoa de Santo Adrião,Infantário,4,72,Verificar,OK,+351 219 371 527,it.ppinfantil@escolas.min-edu.pt,38.797553,-9.164262
+"Creche e Jardim de Infância ""Pingolé""",Porto Salvo,Infantário,4,72,Alta,OK,+351 214214289,ji.pingole@escolas.min-edu.pt,38.717984,-9.292008
+Jardim de Infância da Associação do Pessoal do Instituto Superior Técnico,Lisboa,JI,36,72,Alta,OK,+351 218417314,ji.apistecnico@escolas.min-edu.pt,38.735822,-9.139429
+Creche do Bairro do Armador,,Creche,4,36,Alta,SEM_TEL,,,38.745849,-9.12086
+Centro de Educação Pré-Escolar dos Serviços de Ação Social da Universidade Nova de Lisboa,Caparica,JI,36,72,Alta,OK,+351 212948308,ji.ipdsccaparica@escolas.min-edu.pt,38.662074,-9.204196
+Jardim de Infância da Associação Popular do Lumiar,Lumiar,JI,36,72,Alta,OK,+351 217580137,ass.popularlumiar@escolas.min-edu.pt,38.775078,-9.162363
+Jardim de Infância de Murches,Alcabideche,JI,36,72,Alta,OK,+351 214 850 659,ji.murches@escolas.min-edu.pt,38.736573,-9.439263
+Colégio Moderno,,Infantário,4,72,Verificar,SEM_TEL,,,38.753402,-9.154249
+Jardim de Infância de Alvalade,,JI,36,72,Alta,SEM_TEL,,,38.747555,-9.13583
+"Jardim de Infância Roberto Ivens, Dafundo, Oeiras",CRUZ QUEBRADA-DAFUNDO,JI,36,72,Alta,OK,+351 214 198 080,eb1.dafundo@escolas.min-edu.pt,38.700385,-9.249566
+Jardim de Infância do Centro Social Paroquial da Brandoa,Amadora,JI,36,72,Alta,OK,+351 214740460,ji.cspbrandoa@escolas.min-edu.pt,38.766925,-9.219833
+Infantário Popular de Sintra,,Infantário,4,72,Alta,SEM_TEL,,,38.799467,-9.375582
+Jardim de Infância 1.º de Maio,Carnaxide,JI,36,72,Alta,OK,+351 214180657,cre.1demaio@escolas.min-edu.pt,38.72721,-9.242743
+Jardim de Infância Luísa Ducla Soares,Algés,JI,36,72,Alta,OK,+351 214 107 056,ji.mirafloresalges@escolas.min-edu.pt,38.707747,-9.22598
+"Jardim de Infância ""O Botãozinho""",Parede,JI,36,72,Alta,OK,+351 214588520,ji.obotaozinho@escolas.min-edu.pt,38.683365,-9.344394
+Creche e Jardim De Infância Ramalha,Almada,Infantário,4,72,Alta,OK,+351 212739530,infor@cparoquial-covapiedade.pt,38.670721,-9.167223
+Jardim de Infância Popular,Agualva-Cacém,JI,36,72,Alta,OK,+351 219140288,ji.popular@escolas.min-edu.pt,38.768978,-9.300208
+Jardim de Infância Nossa Senhora da Anunciação,Agualva-Cacém,JI,36,72,Alta,OK,+351 219144773,eb1.n2.agualva@escolas.min-edu.pt,38.77295,-9.296204
+Creche e Jardim de Infância da Freguesia de Moscavide e Portela,,Infantário,4,72,Alta,SEM_TEL,,,38.781439,-9.10646
+Jardim de Infância 1 de Marvila,,JI,36,72,Alta,SEM_TEL,,,38.752852,-9.124272
+Jardim de Infância Bairro do Armador,,JI,36,72,Alta,SEM_TEL,,,38.744533,-9.120704
+Centro Paroquial de Bem Estar Social de Cacilhas,,Infantário,4,72,Verificar,SEM_TEL,,,38.681888,-9.160827
+Creche do Bairro do Armador,,Creche,4,36,Alta,SEM_TEL,,,38.745915,-9.121072
+"Creche ""Saídos da Casca""",Lisboa,Creche,4,36,Alta,OK,+351 218945028,oriente@saidosdacasca.pt,38.785932,-9.095937
+"Jardim de Infância ""O Barco do Mimo""",Queluz,JI,36,72,Alta,OK,+351 214375451,ji.obarcodomimo@escolas.min-edu.pt,38.7592,-9.273547
+Centro de Promoção Social da Alta de Lisboa,Lisboa,Infantário,4,72,Verificar,OK,+351 217530700,cps.altadelisboa@scml.pt,38.780683,-9.149641
+"Jardim de Infância n.º 1 de Benfica, Lisboa",LISBOA,JI,36,72,Alta,OK,+351 217 169 692,ji.n1.benfica@escolas.min-edu.pt,38.74745,-9.196849
+"Creche e Jardim de Infância ""Grãos de Gente""",Oeiras,Infantário,4,72,Alta,OK_MULTI,+351 214403663;+351 914443567,direccao@graosdegente.pt,38.698674,-9.316432
+Escola do Arco,Paço de Arcos,Desconhecido,4,72,Verificar,OK,+351 214542120,escoladoarco@escolas.min-edu.pt,38.699567,-9.291653
+A Chupeta,Cascais,Desconhecido,4,72,Verificar,OK_MULTI,+351 214821521;+351 914849649,achupeta@sapo.pt,38.704414,-9.418724
+Creche e Jardim de Infância da Liberdade (AIPICA),Almada,Infantário,4,72,Alta,OK,+351 212753244,aipica1@sapo.pt,38.675065,-9.167087
+Centro Infantil da Parede,Parede,Infantário,4,72,Alta,OK_MULTI,+351 210553892;+351 961116970,,38.688222,-9.354991
+Tutor T,Lisboa,Desconhecido,4,72,Verificar,OK,+351 218933080,tutortime@escolas.min-edu.pt,38.756122,-9.094797
+Jardim Infantil do Laboratório Nacional de Engenharia Civil,Lisboa,JI,36,72,Alta,OK,+351 218443000,ji.lnengenhariacivil@escolas.min-edu.pt,38.759377,-9.143491
+Centro Infantil Maria de Monserrate,,Infantário,4,72,Alta,SEM_TEL,,,38.743639,-9.13132
+Jardim de Infância de Almada,Almada,JI,36,72,Alta,OK,+351 212746641,geral@aeen.pt,38.682862,-9.154561
+"Colégio ""Herdeiros do Futuro""",Mem Martins,Infantário,4,72,Verificar,OK,+351 219263543,coop.apapoila@escolas.min-edu.pt,38.786535,-9.347579
+"Externato ""O Mundo dos Sentidos""",Mem Martins,Infantário,4,72,Verificar,OK,+351 219 200 011,ext.nsconceicao@escolas.min-edu.pt,38.797218,-9.343505
+"Jardim de Infância n.º 3 de Mem Martins, Sintra",Mem Martins,JI,36,72,Alta,OK,+351 219 262 290,eb1.n3.memmartins@escolas.min-edu.pt,38.790761,-9.34923
+"Jardim de Infância do Lumiar, Lisboa",LISBOA,JI,36,72,Alta,SEM_TEL,,,38.768511,-9.16177
+Jardim Infantil e Creche Popular do Monte da Caparica,Monte de Caparica,Infantário,4,72,Alta,OK,+351 212955261,creche.caparica@sapo.pt,38.665306,-9.198318
+Jardim de Infância de Nossa Senhora do Vale,Caxias,JI,36,72,Alta,OK,+351 214425022,eb1.n1.caxias@escolas.min-edu.pt,38.702751,-9.277034
+Infantário e Jardim Infantil da Romeira,Almada,Infantário,4,72,Alta,OK,+351 212769032,infor@cparoquial-covapiedade.pt,38.669027,-9.152414
+Jardim Infantil Popular do Pragal (AIPICA),Almada,JI,36,72,Alta,OK,+351 212752111,aipica1@sapo.pt,38.676328,-9.168304
+Centro de Bem Estar Social do Laranjeiro,Almada,Desconhecido,4,72,Verificar,OK,+351 212542274,cebesl@gmail.com,38.654157,-9.148706
+Jardim Infantil Os Dois Patinhos,Almada,JI,36,72,Alta,OK,+351 212581158,inscricoes.cmel@gmail.com,38.655533,-9.163866
+A Escolinha da Aldeia,Carcavelos,Infantário,4,72,Verificar,OK,+351 214580419,aescolinhadaaldeia@gmail.com,38.688275,-9.333174
+Jardim de Infância Maria Lamas,,JI,36,72,Alta,SEM_TEL,,,38.788042,-9.181047
+Colégio Mãe Maria,Lisboa,Infantário,4,72,Verificar,OK,+351 214787470,geral@jipp.com.pt;sofiarodrigues@colegiomaemaria.pt,38.730043,-9.139595
+"Jardim de Infância do Bairro Padre Cruz, Lisboa",LISBOA,JI,36,72,Alta,OK,+351 217 153 601,ji.pecruz@escolas.min-edu.pt,38.768718,-9.189743
+Centro Comunitário Renascer,,Infantário,4,72,Verificar,SEM_TEL,,,38.660794,-9.163964
+Jardim de Infância da Associação de Moradores do Vale do Forno,Odivelas,JI,36,72,Alta,OK,+351 962829828,,38.783896,-9.175529
+"Jardim de Infância da Ameixoeira, Lisboa",LISBOA,JI,36,72,Alta,OK,+351 217 593 531,ji.ameixoeira@escolas.min-edu.pt,38.780653,-9.158809
+Jardim de Infância Alexandre Rodrigues Ferreira,Lisboa,JI,36,72,Alta,OK,+351 213634446,eb1.n60.lisboa@escolas.min-edu.pt,38.704346,-9.197487
+Externato Tim Tim,Almada,Infantário,4,72,Verificar,OK,+351 212586880,externatotimtim@gmail.com,38.656023,-9.173
+Creche da Graça,Lisboa,Creche,4,36,Alta,SEM_TEL,,,38.720767,-9.129939
+Inválidos do Comércio,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.776761,-9.162646
+Jardim de Infância Almirante Nunes da Matta~,Parede,JI,36,72,Alta,OK,+351 214565173,ji.parede@escolas.min-edu.pt,38.690573,-9.358029
+Casa do Bebé,,Infantário,4,72,Verificar,SEM_TEL,,,38.74552,-9.205103
+O Peluche,Cascais e Estoril,Desconhecido,4,72,Verificar,OK,21 482 1266,,38.69829,-9.436679
+Creche O Pinhal,Galiza,Creche,4,36,Alta,OK,214689400,misericordiacascais@scmc.pt,38.707256,-9.387018
+Creche Sementes do Mundo,Lisboa,Creche,4,36,Alta,SEM_TEL,,,38.771302,-9.170291
+Jardim de Infância Dr. João dos Santos,Odivelas,JI,36,72,Alta,OK,+351 219 330 283,ji.n2.odivelas@escolas.min-edu.pt,38.797815,-9.190423
+Centro Infantil Doutor António da Costa Leal,,Infantário,4,72,Alta,SEM_TEL,,,38.785099,-9.142043
+Colégio dos Arcos,Lisboa,Infantário,4,72,Verificar,OK,+351 217583522,cl.arcos@escolas.min-edu.pt,38.758439,-9.166246
+"Centro Infantil ""Curiosa Idade""",Linda a Velha,Infantário,4,72,Alta,OK,+351 214143925,ci.curiosaidade@escolas.min-edu.pt,38.710111,-9.241041
+Infantário do Povo de Massamá,Queluz,Infantário,4,72,Alta,OK_MULTI,+351 214 378 050;+351 968424977,geral@infantario-povo.pt,38.754056,-9.286937
+Escola da Ajuda,Lisboa,Desconhecido,4,72,Verificar,OK,+351 210 150 718,,38.709866,-9.196854
+Jardim de Infância da Associação de Educação e Promoção Social,Lisboa,JI,36,72,Alta,OK_MULTI,+351 213952480;+351 961406261,apros@escolas.min-edu.pt,38.747974,-9.177867
+Creche Santa Clara,,Creche,4,36,Alta,SEM_TEL,,,38.777984,-9.145359
+Os Pitruquinhas,Odivelas,Desconhecido,4,72,Verificar,SEM_TEL,,,38.796928,-9.195171
+Jardim de Infância da Sobreda,Sobreda,JI,36,72,Alta,OK,+351 212599547,sec.eliasgarcia@gmail.com,38.653209,-9.18286
+"Jardim de Infância ""O Mundo das Tropelias""",Odivelas,JI,36,72,Alta,OK,+351 219385878,ji.omundodastropelias@escolas.min-edu.pt,38.794916,-9.170727
+Jardim de Infância Roque Gameiro,Odivelas,JI,36,72,Alta,OK,+351 219 340 786,ji.n3.edec@escolas.min-edu.pt,38.794108,-9.175297
+Jardim de Infância de A-da-Beja,AMADORA,JI,36,72,Alta,OK,+351 219 802 476,eb1.adabeja@escolas.min-edu.pt,38.789902,-9.230942
+Jardim de Infância do Alto da Ajuda,,JI,36,72,Alta,SEM_TEL,,,38.712937,-9.20175
+"Jardim de Infância da Damaia, Amadora",AMADORA,JI,36,72,Alta,OK,+351 214 906 920,ji.n3.damaia@escolas.min-edu.pt,38.746808,-9.217143
+Recreio das Gargalhadas,Barreiro,Desconhecido,4,72,Verificar,OK_MULTI,+351 215 969 343;+351 913206025,direcao.recreiodasgargalhadas@gmail.com,38.657694,-9.07788
+Jardim de Infância Dom Pedro V - A Colmeia,Barreiro,JI,36,72,Alta,OK,+351 212075499,ji.acolmeiabarreiro@escolas.min-edu.pt,38.662303,-9.077203
+Jardim de Infância Dom Pedro V - O Comboio,Barreiro,JI,36,72,Alta,OK,+351 212078820,ji.ocomboiobarreiro@escolas.min-edu.pt,38.657165,-9.074785
+Jardim de Infância Gil Eanes,Pontinha,JI,36,72,Alta,OK,+351 214 785 178,ji.pontinhagileanes@escolas.min-edu.pt,38.769055,-9.198238
+Creche do Tomás,,Creche,4,36,Alta,SEM_TEL,,,38.774697,-9.151007
+"Jardim de Infância de Terraços da Ponte, Sacavém, Loures",SACAVÉM,JI,36,72,Alta,OK,+351 219 423 609,ji.terracosponte@escolas.min-edu.pt,38.79751,-9.113921
+Associação da Penha de França,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.725991,-9.12463
+"Jardim de Infância ""O Palhaço""",Linda a Velha,JI,36,72,Alta,OK,+351 214191239,cji.opalhaco@escolas.min-edu.pt,38.717386,-9.243896
+Jardim de Infância José Martins,Linda A Velha,JI,36,72,Alta,OK,+351 214 190 874,ji.lindaavelha@escolas.min-edu.pt,38.710623,-9.241897
+"Infantário Horizonte - ""Educar para Incluir""",Parede,Infantário,4,72,Alta,OK,+351 214524619,recepcao1@horizonte.pt,38.704752,-9.361453
+Jardim de Infância Raquel Gameiro,Amadora,JI,36,72,Alta,OK,+351 214939719,eb1.raquelgameiro@escolas.min-edu.pt,38.756054,-9.242119
+Creche Luís Madureira,,Creche,4,36,Alta,SEM_TEL,,,38.73459,-9.211245
+Creche Jardim Infantil de Santo Amaro,Lisboa,Infantário,4,72,Alta,OK,+351 213644674,cre.lisboa@escolas.min-edu.pt,38.70431,-9.185555
+Infantário de Bicesse,,Infantário,4,72,Alta,SEM_TEL,,,38.725211,-9.373367
+Creche Rainha Dona Leonor,,Creche,4,36,Alta,SEM_TEL,,,38.73068,-9.317882
+"Jardim de Infância ""Unidinhos""",Amadora,JI,36,72,Alta,OK_MULTI,+351 218268459;+351 937067728,ji.bestrelaafrica@escolas.min-edu.pt,38.783023,-9.2218
+Associação Ester Janz,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.750328,-9.102975
+Creche Manuela Ramalho Eanes,,Creche,4,36,Alta,SEM_TEL,,,38.731142,-9.110986
+Casa Chabad,Cascais,Infantário,4,72,Verificar,OK_MULTI,+351 211626104;+351 213860618;+351 910345639,raizel@chabadportugal.com,38.69961,-9.443196
+Jardim de Infância Álvaro de Campos,Odivelas,JI,36,72,Alta,OK,+351 219 387 497,ji.n1.odivelas@escolas.min-edu.pt,38.794937,-9.172993
+Jardim de Infância O Sonho dos Pestinhas,Odivelas,JI,36,72,Alta,OK,+351 219 377 137,ji.osonhodospestinhas@escolas.min-edu.pt,38.793331,-9.169261
+Jardim de Infância Padre Agostinho da Mota,Rio de Mouro,JI,36,72,Alta,OK,+351 219 258 473,eb1.n1.albarraque@escolas.min-edu.pt,38.757741,-9.345785
+Jardim de Infância n.º 1 do Cacém,Agualva-Cacém,JI,36,72,Alta,OK,+351 219 180 470,eb1.n2.cacem@escolas.min-edu.pt,38.766448,-9.309162
+Jardim de Infância de Bicesse,Alcabideche,JI,36,72,Alta,OK,+351 214 691 026,ji.bicesse@escolas.min-edu.pt,38.728597,-9.385189
+Jardim de Infância de Carcavelos,Carcavelos,JI,36,72,Alta,OK,+351 214 564 815,ji.carcavelos@escolas.min-edu.pt,38.689525,-9.334609
+"Jardim de Infância de Telheiras, Lisboa",Lisboa,JI,36,72,Alta,OK,+351 217 586 091,ji.telheiras@escolas.min-edu.pt,38.760166,-9.170846
+"Jardim de Infância da Horta Nova, Lisboa",LISBOA,JI,36,72,Alta,OK,+351 217 169 951,ji.boahora@escolas.min-edu.pt,38.765524,-9.181876
+Jardim de Infância do Cerrado da Bica,AMADORA,JI,36,72,Alta,OK,+351 214 928 491,ji.cerradobica@escolas.min-edu.pt,38.759962,-9.231018
+Jardim de Infância Cova da Moura,AMADORA,JI,36,72,Alta,OK,+351 214 906 420,eb1.covamoura@escolas.min-edu.pt,38.74481,-9.214852
+Jardim de Infância Fátima Campino,ALCABIDECHE,JI,36,72,Alta,SEM_TEL,,ji.alcoitao@escolas.min-edu.pt,38.734758,-9.391193
+Jardim de Infância de São Brás,AMADORA,JI,36,72,Alta,OK,+351 214 912 150,ji.sbppalvaroproenca@escolas.min-edu.pt,38.768179,-9.22698
+Jardim de Infância de Belém,LISBOA,JI,36,72,Alta,SEM_TEL,,,38.69923,-9.204273
+Jardim de Infância da Torre,CASCAIS,JI,36,72,Alta,OK,+351 214 867 292,ji.torrecascais@escolas.min-edu.pt,38.701295,-9.439511
+Colégio Saint Daniel Brottier,Lisboa,Infantário,4,72,Verificar,OK,+351 218409027,,38.751645,-9.130264
+Jardim Infantil do Centro Social Paroquial de Colares,Colares,JI,36,72,Alta,OK,+351 219293070,ji.cspalmocageme@escolas.min-edu.pt,38.795806,-9.470757
+Jardim de Infância Cesaltina Fialho Gouveia,Alcabideche,JI,36,72,Alta,OK,+351 214690467,eb1.n1.alcabideche@escolas.min-edu.pt,38.729946,-9.408412
+"Jardim de Infância ""Garatuja""",Alcabideche,JI,36,72,Alta,OK,+351 214603900,ji.garatuja@escolas.min-edu.pt,38.730764,-9.40628
+Centro Infantil De Fisgas/Linhó,Alcabideche,Infantário,4,72,Alta,OK,+351 214691090,ci.linho@escolas.min-edu.pt,38.746016,-9.39014
+"Jardim de Infância ""Fraldinhas""",Cascais,JI,36,72,Alta,OK_MULTI,+351 966193401;+351 214093553,fraldinhascnaf@gmail.com,38.710896,-9.432972
+Escolinha da Ana,Cascais,Infantário,4,72,Verificar,OK,+351 214835368,esc.daana@escolas.min-edu.pt,38.712935,-9.436865
+O Pomar,Cascais,Desconhecido,4,72,Verificar,OK,+351 211396598,crecheopomar@gmail.com,38.715069,-9.437098
+"Jardim de Infância ""Os Traquinas""",Cascais,JI,36,72,Alta,OK,+351 214830925,ji.ostraquinasestremoz@escolas.min-edu.pt,38.7066,-9.423781
+Colégio Cachabiu,Cascais,Infantário,4,72,Verificar,OK,+351 214822481,cl.cachabiu@escolas.min-edu.pt,38.700351,-9.42881
+"Jardim Infantil ""A Nova Escola""",Agualva-Cacém,JI,36,72,Alta,OK,+351 214313606,ji.anovaescola@escolas.min-edu.pt,38.774937,-9.296823
+"Jardim de Infância ""Toca e Fica""",Agualva-Cacém,JI,36,72,Alta,OK,+351 214325649,ji.tocafica@escolas.min-edu.pt,38.77848,-9.297424
+"Colégio ""Cor e Magia""",Agualva-Cacém,Infantário,4,72,Verificar,OK,+351 214310356,ext.obalaomagico@escolas.min-edu.pt,38.773873,-9.28918
+Escolinha Amarela,Agualva-Cacém,Infantário,4,72,Verificar,OK,+351 214365119,,38.772647,-9.289466
+"Externato ""A Sementinha Mágica""",Agualva-Cacém,Infantário,4,72,Verificar,OK,+351 219141500,ext.asmagica@escolas.min-edu.pt,38.767622,-9.31229
+"Jardim de Infância ""Ecobabies""",Agualva-Cacém,JI,36,72,Alta,OK,+351 214338985,,38.770786,-9.284932
+Jardim de Infância n.º 2 do Cacém,Agualva-Cacém,JI,36,72,Alta,OK,+351 214313413,ji.cuantaagualva@escolas.min-edu.pt,38.775571,-9.284428
+"Jardim de Infância ""Brincar, Rir e Crescer""",Rio de Mouro,JI,36,72,Alta,OK,+351 967236765,,38.791999,-9.319521
+"Colégio ""Dim Dam Dum""",Mem Martins,Infantário,4,72,Verificar,OK,+351 939596158,dim_dam_dum@hotmail.com,38.794653,-9.337025
+"Jardim de Infância ""Gente Pequena""",Mem Martins,JI,36,72,Alta,OK,+351 219263073,ji.gentepequena@escolas.min-edu.pt,38.798032,-9.34383
+"Jardim Infantil ""Os Brincalhões""",Mem Martins,JI,36,72,Alta,OK,+351 219219800,ji.osbrincalhoes@escolas.min-edu.pt,38.796331,-9.346231
+"Jardim de Infância ""A Nossa Escola""",Mem Martins,JI,36,72,Alta,OK,+351 219260176,ji.anossaescola@escolas.min-edu.pt,38.79705,-9.351494
+Saint John's School,Cascais,Desconhecido,4,72,Verificar,OK,+351 214867966,cl.stjohn@escolas.min-edu.pt,38.704734,-9.415664
+Jardim de Infância do Centro Social Baptista do Cacém,Agualva-Cacém,JI,36,72,Alta,OK,+351 219129120,cs.baptista@escolas.min-edu.pt;geral@csbaptista.pt,38.76856,-9.302937
+"Jardim de Infância ""Krexe e Muito Mais""",Rio de Mouro,JI,36,72,Alta,OK,+351 210138826,,38.781888,-9.322675
+"Jardim de Infância ""Pequenos Aprendizes""",Rio de Mouro,JI,36,72,Alta,OK,+351 219177834,ji.paprendizes@escolas.min-edu.pt,38.782097,-9.326063
+Boa Ventura Montessori Nursery School,São Pedro do Estoril,Desconhecido,4,72,Verificar,OK_MULTI,+351 214688023;+351 936 319 160,info@boaventuramontessori.com,38.695021,-9.371588
+Jardim de Infância do Centro Social Paroquial de São Pedro e São João do Estoril,Estoril,JI,36,72,Alta,OK_MULTI,+351 214661819;+351 214661918,,38.699199,-9.380047
+"Colégio ""Refúgio dos Anjos""",Porto Salvo,Infantário,4,72,Verificar,OK,+351 929 138 007,info@refugiodosanjos.pt,38.74577,-9.307831
+"Jardim de Infância ""O Chorão""",Porto Salvo,JI,36,72,Alta,OK,+351 214452700,ji.ochoraoportosalvo@escolas.min-edu.pt,38.71073,-9.314801
+Academia AJEC,São Domingos de Rana,Infantário,4,144,Verificar,OK,+351 214489800,ji.ocavalinhopimpao@escolas.min-edu.pt,38.729132,-9.324594
+Creche Abóbada,São Domingos de Rana,Creche,4,36,Alta,OK,+351 214446654,,38.727078,-9.334295
+"Colégio ""Brinca e Educa""",São Domingos de Rana,Infantário,4,72,Verificar,OK,+351 214451649,cl.brincaeeduca@escolas.min-edu.pt,38.718475,-9.334661
+"Jardim de Infância ""Fantasia e Letras""",São Domingos de Rana,JI,36,72,Alta,OK,+351 214456500,amigos@escolas.min-edu.pt,38.717135,-9.348273
+"Jardim Escola ""O Cebolinha""",Barcarena,JI,36,72,Alta,OK,+351 214217454,je.ocebolinha@escolas.min-edu.pt,38.72865,-9.283431
+"Jardim de Infância ""Tão Balalão""",Porto Salvo,JI,36,72,Alta,OK,+351 214212640,ji.taobalalao@escolas.min-edu.pt,38.71653,-9.299567
+"Jardim Infantil ""O Recantinho""",Porto Salvo,JI,36,72,Alta,OK,+351 214212369,ji.orecantinho@escolas.min-edu.pt,38.720032,-9.301903
+"Jardim de Infância ""Sonhos e Fantasias""",Belas,JI,36,72,Alta,OK,+351 918660422,ji.sonhosefantasias@escolas.min-edu.pt,38.775532,-9.261159
+The Great Kids,Queluz,Desconhecido,4,72,Verificar,SEM_TEL,,,38.751538,-9.279844
+"Infantário e Jardim de Infância ""A Colmeia""",Queluz,Infantário,4,72,Alta,OK,+351 214377388,info@acolmeia.pt;direccao@acolmeia.pt,38.750618,-9.27935
+"Jardim de Infância ""Giz Mágico""",Queluz,JI,36,72,Alta,OK,+351 214397807,geral@gizmagico.pt,38.751382,-9.278925
+Colégio Dona Maria II,Queluz,Infantário,4,72,Verificar,OK,+351 214377249,cl.onossocantinho@escolas.min-edu.pt,38.756599,-9.286835
+"Jardim de Infância ""Canteiro dos Sonhos""",Barcarena,JI,36,72,Alta,OK,+351 214388620,ji.canteirosonhos@escolas.min-edu.pt,38.748576,-9.282455
+"Colégio ""Os Bobocas""",Barcarena,Infantário,4,72,Verificar,OK,+351 214304896,cl.osbobocas@escolas.min-edu.pt,38.748226,-9.28129
+"Cooperativa de Ensino ""A Praceta""",Oeiras,Infantário,4,72,Verificar,OK,+351 214430628,coop.apraceta@escolas.min-edu.pt,38.693714,-9.320491
+Horizonte Sagrada Família,São Domingos de Rana,Desconhecido,4,72,Verificar,OK,+351 211378062,gab.direcao@horizonte.pt;secretaria.hsf@horizonte.pt,38.70115,-9.354733
+Jardim de Infância da Associação de Educação Popular do Zambujal,São Domingos de Rana,JI,36,72,Alta,OK,+351 214522434,,38.702593,-9.345612
+"Jardim de Infância ""Traquinauta""",Carcavelos,JI,36,72,Alta,OK,+351 214579388,ji.traquinauta@escolas.min-edu.pt,38.691861,-9.337011
+Jardim de Infância Nossa Senhora do Rosário de Fátima,Carcavelos,JI,36,72,Alta,OK,+351 214570949,ji.nsrarosariofatima@escolas.min-edu.pt,38.69066,-9.327518
+"Recanto Infantil ""Mafalda""",Oeiras,Desconhecido,4,72,Verificar,OK,+351 214564030,mafalda@escolas.min-edu.pt,38.689041,-9.325201
+"Externato ""Jardim dos Lombos""",Carcavelos,Infantário,4,72,Verificar,OK,+351 214576447,ext.jardimlombos@escolas.min-edu.pt,38.685554,-9.326136
+"Externato ""O Balão Azul""",Oeiras,Infantário,4,72,Verificar,OK,+351 214425976,ext.obalaoazul@escolas.min-edu.pt,38.690725,-9.317182
+Colégio Flor da Linha,Paço de Arcos,Infantário,4,72,Verificar,OK,+351 214540430,cl.flordalinha@escolas.min-edu.pt,38.697254,-9.294462
+Infantário Popular de Paço de Arcos,Oeiras,Infantário,4,72,Alta,OK,+351 214437818,ass.popularpacoarcos@escolas.min-edu.pt,38.696848,-9.289621
+Casa da Criança Rainha Santa Isabel,Paço de Arcos,Infantário,4,72,Verificar,OK_MULTI,+351 214460570;+351 968121047,geral@nibpacodearcos.com,38.694699,-9.294948
+Os Pequenos Marqueses,Oeiras,Desconhecido,4,72,Verificar,OK,+351 917995103,geral@ospequenosmarqueses.pt,38.703698,-9.309495
+Externato Fernando Pessoa,Queluz,Infantário,4,72,Verificar,OK,+351 214304133,,38.760045,-9.266905
+"Jardim Infantil ""O Rezingão""",Queluz,JI,36,72,Alta,OK,+351 214373045,ji.orezingao@escolas.min-edu.pt,38.760005,-9.267407
+"Colégio ""Galáxia Branca""",Queluz,Infantário,4,72,Verificar,OK,+351 214376273,ji.galaxiabranca@escolas.min-edu.pt,38.760163,-9.267704
+"Externato ""Os Coelhinhos""",Queluz,Infantário,4,72,Verificar,OK,+351 214304367,ext.oscoelhinhos@escolas.min-edu.pt,38.760262,-9.266403
+Creche e Jardim de Infância Madre Maria Clara,Queijas,Infantário,4,72,Alta,OK,+351 214181227,geral@osmmac.pt,38.717118,-9.254195
+Gugulândia,Queijas,Desconhecido,4,72,Verificar,OK_MULTI,+351 212490379;+351 963740046;+351 965615439,gugulandia.creche@gmail.com,38.720884,-9.259582
+"Centro Infantil ""Os Traquinas""",Queijas,Infantário,4,72,Alta,OK,+351 214186421,ci.traquinas@escolas.min-edu.pt,38.721747,-9.264123
+Jardim de Infância Julieta Pimenta,Amadora,JI,36,72,Alta,OK,+351 214950505,geral@misericordia-oeiras.pt;ji.jpstcmisericordia@escolas.min-edu.pt,38.753923,-9.230123
+Jardim de Infância da Falagueira,Amadora,JI,36,72,Alta,SEM_TEL,,,38.758944,-9.227959
+Jardim de Infância da Associação dos Amigos da Damaia,Amadora,JI,36,72,Alta,OK,+351 214901230,ji.assamigosdadamaia@escolas.min-edu.pt,38.746346,-9.218802
+Jardim de Infância do Centro Social Paroquial de São Brás,Amadora,JI,36,72,Alta,OK,+351 214929450,ji.cspsaobras@escolas.min-edu.pt,38.76986,-9.229643
+"Colégio ""Moinho do Sonho""",Amadora,Infantário,4,72,Verificar,OK,+351 214988340,,38.777689,-9.23538
+"Jardim Infantil ""Bela Vista""",Amadora,JI,36,72,Alta,OK,+351 214932900,ji.bvistaserramina@escolas.min-edu.pt,38.779202,-9.229427
+Centro de Acolhimento Infantil do Bairro da Boavista,Lisboa,Infantário,4,72,Verificar,OK,+351 217620640,,38.732489,-9.20599
+Escola Ana Guedes,Linda a Velha,Desconhecido,4,72,Verificar,OK,+351 214198523,ji.osnossostemposlivres@escolas.min-edu.pt,38.71198,-9.240959
+"Jardim de Infância ""O Bambi""",Cruz Quebrada - Dafundo,JI,36,72,Alta,OK,+351 214197898,ji.obambi@escolas.min-edu.pt,38.700721,-9.240387
+Kriakrianças,Linda a Velha,Desconhecido,4,72,Verificar,OK,+351 214199082,jardimestrelinhas@escolas.min-edu.pt,38.718182,-9.241289
+Jardim de Infância Tomás Ribeiro,Carnaxide,JI,36,72,Alta,OK,+351 214177467,ji.altobarronhos@escolas.min-edu.pt,38.719428,-9.233366
+Colégio Rik & Rok de Alfragide,Carnaxide,Infantário,4,72,Verificar,OK,+351 217127331,,38.726453,-9.217033
+"Colégio ""Jardim d'Alfragide""",Amadora,Infantário,4,72,Verificar,OK,+351 214714867,fraldinhastravessuras@gmail.com,38.73183,-9.218765
+Jardim de Infância São Jorge,Amadora,JI,36,72,Alta,OK,+351 214711920,ji.sjorgealfragide@escolas.min-edu.pt,38.73707,-9.213845
+Jardim de Infância da Associação de Proteção à Infância da Ajuda,Lisboa,JI,36,72,Alta,OK,+351 213647808,ass.pinfanciaajuda@escolas.min-edu.pt,38.708123,-9.195617
+L'École Trilingue,Lisboa,Desconhecido,4,72,Verificar,OK_MULTI,+351 910335102;+351 211931518,info@lecoletrilingue.com;admin@lecoletrilingue.com;direction@lecolebiligue.com,38.699441,-9.212354
+"Jardim Infantil ""O Nosso Colégio""",Lisboa,JI,36,72,Alta,OK,+351 914968527,ji.onossocolegio@escolas.min-edu.pt,38.700319,-9.216781
+Creche na Quinta,Lisboa,Creche,4,36,Alta,OK,+351 217570862,geral@crechenaquinta.com,38.782336,-9.15805
+Jardim de Infância da Associação Cantinho das Crianças do Prior Velho,Prior Velho,JI,36,72,Alta,OK_MULTI,+351 211 921 797;+351 219424949,ass.ccpriorvelho@escolas.min-edu.pt,38.79103,-9.120712
+A Casa Amarela,Lisboa,Infantário,4,72,Verificar,SEM_TEL,,,38.760927,-9.185708
+"Jardim Escola ""O Carrocel""",Lisboa,JI,36,72,Alta,OK,+351 217603958,je.ocarrocel@escolas.min-edu.pt,38.752252,-9.205124
+Centro Infantil dos Olivais Sul,Lisboa,Infantário,4,72,Alta,OK,+351 218533539,akfportugal@akdn.org,38.763479,-9.113918
+Jardim Infantil do Centro Paroquial Santo Eugénio,Lisboa,JI,36,72,Alta,OK,+351 218510864,ji.cpsteugenio@escolas.min-edu.pt,38.77149,-9.114943
+Jardim de Infância da Fundação Obra de Nossa Senhora da Purificação,Lisboa,JI,36,72,Alta,OK,+351 219434433,ji.fonsrapurificacao@escolas.min-edu.pt,38.780761,-9.114511
+Astória International School,Lisboa,Desconhecido,4,72,Verificar,OK,+351 211583551,,38.752351,-9.130199
+Centro de Acolhimento Infantil Vale Fundão I,Lisboa,Infantário,4,72,Verificar,OK,+351 218310620,,38.745067,-9.108381
+Centro de Promoção Social da PRODAC,Lisboa,Infantário,4,72,Verificar,OK,+351 218310950,cps.prodac@scml.pt,38.744635,-9.107989
+Jardim Infantil da Associação do Pessoal da Fundação Calouste Gulbenkian,Lisboa,JI,36,72,Alta,OK,+351 217823566,ji.apfcgulbenkian@escolas.min-edu.pt,38.739007,-9.156575
+"Centro Infantil ""O Roseiral""",Lisboa,Infantário,4,72,Alta,OK,+351 217802410,,38.738389,-9.156088
+Infantário de Nossa Senhora da Purificação,Lisboa,Infantário,4,72,Alta,OK,+351 217969727,if.nsradapurificacao@escolas.min-edu.pt,38.746879,-9.14254
+Centro de Educação e Desenvolvimento António Aurélio da Costa Ferreira,Lisboa,Desconhecido,4,72,Verificar,OK,+351 217935975,,38.753748,-9.145353
+Colégio do Largo,Lisboa,Infantário,4,72,Verificar,OK,+351 218 455 930,colegiodolargo@mail.telepac.pt,38.738201,-9.140749
+Externato Santa Maria do Mar,Lisboa,Infantário,4,72,Verificar,OK,+351 218407386,sta_maria_mar@hotmail.com,38.73843,-9.139594
+"Creche ""A Tartaruga e a Lebre""",,Creche,4,36,Alta,SEM_TEL,,,38.756607,-9.136945
+Creche da Quinta dos Arcos,,Creche,4,36,Alta,SEM_TEL,,,38.77165,-9.108338
+Creche do Casal do Pinto,,Creche,4,36,Alta,SEM_TEL,,,38.736662,-9.121678
+Jardim Escola João De Deus - Lisboa 1,Lisboa,JI,36,72,Alta,OK,+351 217 972 554,cilisboa1@escolasjoaodeus.pt,38.757466,-9.156703
+Creche André de Gouveia,,Creche,4,36,Alta,SEM_TEL,,,38.777797,-9.165312
+Creche Almada Negreiros,,Creche,4,36,Alta,SEM_TEL,,,38.760306,-9.109409
+Creche da Quinta dos Ourives,,Creche,4,36,Alta,SEM_TEL,,,38.736438,-9.114291
+Creche Rodrigues Miguéis,,Creche,4,36,Alta,SEM_TEL,,,38.748842,-9.19298
+Colégio Terra da Fantasia,,Infantário,4,72,Verificar,SEM_TEL,,,38.761203,-9.128517
+Jardim de Infância do Centro Social Paroquial São Vicente de Alcabideche,Alcabideche,JI,36,72,Alta,OK,+351 215961617,geral@escolasdesaovicente.pt;ji.cspsvicente@escolas.min-edu.pt,38.745915,-9.389457
+Jardim de Infância Santa Ana,Paço de Arcos,JI,36,72,Alta,OK_MULTI,+351 214413646;+351 914487095,ji.staanapacoarcos@escolas.min-edu.pt,38.70334,-9.292442
+Nuclisol Jean Piaget,Lisboa,Desconhecido,4,72,Verificar,OK,+351 217572422,ana.correia@nuclisol.org,38.792478,-9.150319
+Infantário ATL,,Infantário,4,72,Alta,SEM_TEL,,,38.689596,-9.334737
+Casa do sagrado Coração de jesus,,Infantário,4,72,Verificar,SEM_TEL,,,38.690041,-9.34036
+A Pipoca Azul,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.702579,-9.357252
+Bebés Patuscos,São João do Estoril,Infantário,4,72,Verificar,SEM_TEL,,,38.699454,-9.376206
+creche o pinhal,,Creche,4,36,Alta,SEM_TEL,,,38.705578,-9.38888
+A Cegonha,Carcavelos e Parede,Desconhecido,4,72,Verificar,SEM_TEL,,,38.697767,-9.356662
+Cantinho d'O Baloiço,,Infantário,4,72,Verificar,SEM_TEL,,,38.657187,-9.15459
+O Berço,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.672023,-9.163271
+Sol,Caparica,Infantário,4,72,Verificar,SEM_TEL,,,38.667099,-9.188538
+Chupetas e Biberons Creche,Lisboa,Creche,4,36,Alta,INVALIDO,+35121758 895,,38.759627,-9.166697
+Só miminhos,Lisboa,Desconhecido,4,72,Verificar,OK,212412811,crechesomiminhos@gmail.com,38.753933,-9.168773
+jardim creche,,Creche,4,36,Alta,SEM_TEL,,,38.706515,-9.176237
+sonhos e fantasias,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.77555,-9.261627
+Cantinho das Fadas- Berçario e Babysitting,,Berçário,4,12,Alta,SEM_TEL,,,38.705839,-9.229177
+Colégio Bebecas,,Infantário,4,72,Verificar,OK,+351214015150,,38.748458,-9.176132
+Gente Pequena,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.677556,-9.158932
+Ba,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.736069,-9.15568
+Creche do Gato Amarelo,,Creche,4,36,Alta,SEM_TEL,,,38.757764,-9.095141
+Rute,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.753944,-9.206542
+A Patatina,Lisboa,Desconhecido,4,72,Verificar,OK,218484757,,38.759742,-9.138381
+Mimos & Compª,,Desconhecido,4,72,Verificar,OK,+351 265 415 881,,38.676761,-9.161453
+Centro de Acolhimento de Campolide,Lisboa,Infantário,4,72,Verificar,SEM_TEL,,,38.735429,-9.165486
+Centro Sagrada Família,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.706235,-9.224583
+Creche da Paróquia de Nossa Senhora do Amparo,,Creche,4,36,Alta,SEM_TEL,,,38.751312,-9.202608
+Externato Tim Tim,,Infantário,4,72,Verificar,SEM_TEL,,,38.654003,-9.16585
+AFID Kids Alfragide,,Desconhecido,4,72,Verificar,SEM_TEL,,,38.729837,-9.211289
+Creche Jardim Infatil,,Creche,4,36,Alta,SEM_TEL,,,38.754475,-9.263106
+Creche da Venteira,,Creche,4,36,Alta,SEM_TEL,,,38.757076,-9.246867

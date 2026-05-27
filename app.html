@@ -1703,10 +1703,21 @@ function inferAges(nameRaw, originalTipo){
     return { tipo: "Creche", min: 4, max: 36, verificar: false };
   }
 
+  // ---------- v3: Centros comunitários e institutos sociais ----------
+  if (/(centro de promocao social|centro comunitario|centro de acolhimento|instituto.*infantil|instituto.*pedagogia)/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
   // ---------- Operadores típicos de creche (alta probabilidade mas sem indicação clara da resposta) ----------
   const operadorCreche = /(patronato|centro social paroquial|centro paroquial|centro social|misericordia|santa casa|casa do povo|externato|colegio|cooperativa|associacao social|fundacao|obra social|filhos? do coracao|nossa senhora|sao [a-z]|santa [a-z]|caritas)/.test(n);
   if (operadorCreche) {
-    // Assume infantário (0-6) mas marca para verificar
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // ---------- v3: "Academia X" tem geralmente creche + JI + ATL ----------
+  if (/\bacademia\b/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 144, verificar: true };
+  }
+  // ---------- v3: Nomes "casinha", "ninho", "mundo", animais carinhosos ----------
+  if (/\b(casa|casinha|ninho|cantinho|mundo|escolinha|brincadeira|colmeia|sementeira|caracol|abelhinha|pintainho|borboleta|estrela|girassol|nuvem|bebes?|pequen|joaninh|coelh|fantasia|aventur)\b/.test(n)) {
     return { tipo: "Infantário", min: 4, max: 72, verificar: true };
   }
 
