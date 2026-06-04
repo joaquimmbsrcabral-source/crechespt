@@ -208,7 +208,24 @@ table tr:hover{background:rgba(255,243,214,.4)}
         <div class="value" id="m-removals">—</div>
         <div class="hint">Creches que querem sair</div>
       </div>
+      <div class="metric turq">
+        <span class="ico">👀</span>
+        <div class="label">Visitas hoje</div>
+        <div class="value" id="m-views-today">—</div>
+        <div class="hint">Sessões na app /app</div>
+      </div>
+      <div class="metric yellow">
+        <span class="ico">📊</span>
+        <div class="label">Visitas 7 dias</div>
+        <div class="value" id="m-views-7d">—</div>
+        <div class="hint">Total na última semana</div>
+      </div>
     </div>
+
+    <section class="panel">
+      <h3>📈 Visitas diárias à app — últimos 30 dias</h3>
+      <div id="views-chart-host" style="height:220px;display:flex;align-items:stretch;gap:3px;padding:14px;background:rgba(255,246,238,.5);border-radius:14px"></div>
+    </section>
 
     <section class="panel">
       <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
@@ -305,13 +322,14 @@ async function checkAdmin(uid){
 async function loadDashboard(user){
   $("admin-name").textContent = (user.displayName||"").split(" ")[0] || "admin";
 
-  // Em paralelo: 5 queries
-  const [usersSnap, ciSnap, fbSnap, rpSnap, rmSnap] = await Promise.all([
+  // Em paralelo: 6 queries
+  const [usersSnap, ciSnap, fbSnap, rpSnap, rmSnap, statsSnap] = await Promise.all([
     db.collection("users").orderBy("lastSeen","desc").limit(500).get().catch(e=>{console.warn("users",e);return null;}),
     db.collection("creche_interest").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("ci",e);return null;}),
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
     db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
     db.collection("creche_removals").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rm",e);return null;}),
+    db.collection("daily_stats").orderBy("__name__","desc").limit(30).get().catch(e=>{console.warn("stats",e);return null;}),
   ]);
 
   // --- Utilizadores
@@ -359,11 +377,72 @@ async function loadDashboard(user){
     $("m-removals").textContent = removals.length;
   } else { $("m-removals").textContent = "?"; }
 
+  // --- Estatísticas diárias (visitas)
+  let stats = [];
+  if(statsSnap){
+    statsSnap.forEach(d=>{
+      const x = d.data();
+      stats.push({ date: d.id, app_views: x.app_views||0, site_views: x.site_views||0 });
+    });
+    // ordenar ascendente por data
+    stats.sort((a,b)=> a.date.localeCompare(b.date));
+  }
+
+  renderStats(stats);
   renderCreches(creches);
   renderRemovals(removals);
   renderReports(reports);
   renderFeedback(feedbacks);
   renderUsers(users.slice(0,30));
+}
+
+function renderStats(stats){
+  const todayISO = new Date().toISOString().slice(0,10);
+  const todayEntry = stats.find(s => s.date === todayISO);
+  const todayViews = todayEntry ? todayEntry.app_views : 0;
+
+  // Soma últimos 7 dias (inclui hoje)
+  const sevenDaysAgo = new Date(Date.now() - 7*24*60*60*1000).toISOString().slice(0,10);
+  const last7 = stats.filter(s => s.date >= sevenDaysAgo);
+  const sum7 = last7.reduce((acc, s) => acc + (s.app_views||0), 0);
+
+  $("m-views-today").textContent = todayViews;
+  $("m-views-7d").textContent = sum7;
+
+  // Renderiza gráfico de barras
+  const host = $("views-chart-host");
+  if(!host) return;
+
+  if(stats.length === 0){
+    host.innerHTML = '<div style="margin:auto;color:var(--ink-soft);font-size:13px">Ainda sem dados de visitas. As contagens começam quando os utilizadores abrirem /app.</div>';
+    return;
+  }
+
+  // Preencher dias em falta com 0 para os últimos 30 dias
+  const days = [];
+  for(let i=29; i>=0; i--){
+    const d = new Date(Date.now() - i*24*60*60*1000);
+    const iso = d.toISOString().slice(0,10);
+    const entry = stats.find(s => s.date === iso);
+    days.push({ date: iso, views: entry ? entry.app_views : 0 });
+  }
+
+  const maxViews = Math.max(1, ...days.map(d => d.views));
+
+  host.innerHTML = days.map(d=>{
+    const heightPct = Math.max(2, Math.round(d.views / maxViews * 85));
+    const dayLabel = d.date.slice(8,10);
+    const isToday = d.date === todayISO;
+    const color = isToday ? "var(--c-coral)" : "var(--c-peach)";
+    return `
+      <div title="${d.date}: ${d.views} visita${d.views===1?"":"s"}"
+           style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;cursor:default;min-width:0">
+        <div style="font-size:9px;color:var(--ink-soft);font-weight:600;line-height:1;min-height:11px">${d.views||""}</div>
+        <div style="width:100%;height:${heightPct}%;background:${color};border-radius:4px 4px 0 0;min-height:3px"></div>
+        <div style="font-size:9px;color:var(--ink-soft);font-weight:${isToday?700:500};line-height:1">${dayLabel}</div>
+      </div>
+    `;
+  }).join("");
 }
 
 function renderRemovals(rows){

@@ -69,6 +69,18 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Stats diários (page views agregados, sem dados pessoais)
+    // Qualquer pessoa pode criar/incrementar; só admin lê.
+    match /daily_stats/{date} {
+      allow read: if isAdmin();
+      allow create: if
+        request.resource.data.keys().hasOnly(['app_views','site_views','updated_at']);
+      allow update: if
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['app_views','site_views','updated_at']);
+      allow delete: if false;
+    }
+
     // Pedidos de remoção de creche (RGPD / direito ao esquecimento)
     // Qualquer pessoa (autenticada ou não) pode pedir; só admin lê.
     match /creche_removals/{id} {

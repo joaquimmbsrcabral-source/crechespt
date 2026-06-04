@@ -989,6 +989,9 @@ header.topbar{
     <button id="btn-export" class="iconbtn ghost" title="Exportar os teus dados">↓ Exportar</button>
     <button id="btn-import" class="iconbtn ghost" title="Importar dados">↑ Importar</button>
     <input id="file-import" type="file" accept="application/json" style="display:none">
+    <button id="btn-login-quick" class="iconbtn" style="display:none;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:8px 14px;border-radius:var(--r-pill);box-shadow:0 4px 12px rgba(255,107,157,.3)" title="Entrar para guardar entre dispositivos">
+      <span style="margin-right:4px">🔑</span>Entrar
+    </button>
     <div id="user-chip" class="user-chip" style="display:none">
       <img id="user-photo" alt="">
       <span class="nm" id="user-name">—</span>
@@ -1006,6 +1009,13 @@ header.topbar{
       </div>
     </div>
   </header>
+
+  <!-- Guest mode banner — subtil, dispensável -->
+  <div id="guest-banner" style="display:none;background:linear-gradient(135deg,rgba(255,227,238,.7),rgba(255,232,214,.7));padding:8px 18px;font-size:13px;color:var(--ink);text-align:center;border-bottom:1px solid var(--line)">
+    <span>💾 Estás a navegar como <b>convidado</b>. As tuas notas só ficam neste browser.</span>
+    <button id="btn-login-banner" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:5px 14px;border-radius:var(--r-pill);border:none;font-size:12.5px;cursor:pointer;margin-left:10px">Entrar para sincronizar</button>
+    <button id="btn-dismiss-banner" style="background:transparent;color:var(--ink-soft);padding:2px 10px;font-size:14px;cursor:pointer;border:none;margin-left:4px" title="Dispensar">✕</button>
+  </div>
 
   <!-- ========================= View: Mapa ========================= -->
   <section id="view-map" class="view active" role="tabpanel">
@@ -2824,8 +2834,16 @@ async function signOut(){
 
 function renderUserChip(user){
   const chip = document.getElementById("user-chip");
-  if(!user){ chip.style.display = "none"; return; }
+  const loginBtn = document.getElementById("btn-login-quick");
+  if(!user){
+    // GUEST: esconde chip, mostra botão "Entrar"
+    chip.style.display = "none";
+    if(loginBtn) loginBtn.style.display = "";
+    return;
+  }
+  // LOGGED IN: mostra chip, esconde botão "Entrar"
   chip.style.display = "";
+  if(loginBtn) loginBtn.style.display = "none";
   const photo = user.photoURL || ("data:image/svg+xml;utf8,"+encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='#FF6B9D'/><text x='50%' y='55%' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='18' font-weight='600'>${(user.displayName||user.email||'?').slice(0,1).toUpperCase()}</text></svg>`));
   document.getElementById("user-photo").src = photo;
@@ -2853,6 +2871,18 @@ function renderUserChip(user){
     try{
       const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
       FB = { app: fbApp, auth: firebase.auth(), db: firebase.firestore(), user: null };
+      // Tracking de visitas (1 vez por sessão, anónimo)
+      try{
+        const SESSION_KEY = "crechespt/session_tracked_today";
+        const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+        if(sessionStorage.getItem(SESSION_KEY) !== today){
+          sessionStorage.setItem(SESSION_KEY, today);
+          FB.db.collection("daily_stats").doc(today).set({
+            app_views: firebase.firestore.FieldValue.increment(1),
+            updated_at: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true }).catch(e=>console.warn("stats write", e));
+        }
+      }catch(e){ console.warn("tracking skipped", e); }
       // espera o callback inicial de auth
       FB.auth.onAuthStateChanged(async (user)=>{
         if(user){
@@ -2876,14 +2906,42 @@ function renderUserChip(user){
           applyFilters();
           updatePipelineBadge();
           if(State.view==="pipeline") renderPipeline();
+          // Esconde guest banner se existir
+          const gb = document.getElementById("guest-banner");
+          if(gb) gb.style.display = "none";
         } else {
           FB.user = null;
           renderUserChip(null);
-          showAuthScreen();
+          // GUEST MODE: mostrar app shell, NÃO o auth screen
+          // localStorage já guarda os dados, sincroniza com Firestore quando o user fizer login
+          showAppShell();
+          applyFilters();
+          updatePipelineBadge();
+          if(State.view==="pipeline") renderPipeline();
+          // Mostra guest banner (subtil)
+          const gb = document.getElementById("guest-banner");
+          if(gb) gb.style.display = "";
         }
       });
       document.getElementById("btn-google").addEventListener("click", signInGoogle);
       document.getElementById("btn-logout").addEventListener("click", signOut);
+      // Botões guest mode
+      const btnLoginQuick = document.getElementById("btn-login-quick");
+      const btnLoginBanner = document.getElementById("btn-login-banner");
+      const btnDismissBanner = document.getElementById("btn-dismiss-banner");
+      if(btnLoginQuick) btnLoginQuick.addEventListener("click", signInGoogle);
+      if(btnLoginBanner) btnLoginBanner.addEventListener("click", signInGoogle);
+      if(btnDismissBanner) btnDismissBanner.addEventListener("click", ()=>{
+        document.getElementById("guest-banner").style.display="none";
+        try{ localStorage.setItem("crechespt/guest_banner_dismissed","1"); }catch(e){}
+      });
+      // Respeitar a opção de "dispensar" entre sessões
+      try{
+        if(localStorage.getItem("crechespt/guest_banner_dismissed")==="1"){
+          const gb = document.getElementById("guest-banner");
+          if(gb) gb.style.display = "none";
+        }
+      }catch(e){}
 
       // Feedback
       const fbBtn = document.getElementById("btn-feedback");
