@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Teste daily_stats — Creches.app</title>
+<style>
+  body{font:16px/1.6 system-ui,sans-serif;max-width:680px;margin:30px auto;padding:0 18px;color:#222}
+  h1{font-size:22px}
+  button{font:600 15px/1 system-ui;padding:14px 22px;border-radius:10px;border:0;background:#FF6B9D;color:#fff;cursor:pointer;margin:6px 4px}
+  button:hover{filter:brightness(1.05)}
+  pre{background:#f3f3f6;padding:12px 14px;border-radius:8px;overflow:auto;font-size:13px;white-space:pre-wrap;word-break:break-word}
+  .ok{color:#0a7e3a;font-weight:700}
+  .bad{color:#b3261e;font-weight:700}
+  .warn{color:#a85a00;font-weight:700}
+  .step{margin:18px 0;padding:14px;background:#fff8ee;border-radius:10px;border:1px solid #eee}
+  .step h3{margin:0 0 8px;font-size:15px}
+</style>
+</head>
+<body>
+<h1>🔎 Teste daily_stats — Creches.app</h1>
+<p>Esta página vai tentar escrever e ler no Firestore como faz o /app e o /admin. Vê os resultados abaixo.</p>
+
+<button id="b1">1️⃣ Tentar ESCREVER (como faz /app)</button>
+<button id="b2">2️⃣ Tentar LER (como faz /admin)</button>
+<button id="b3">3️⃣ Ver UID atual (preciso para admins/)</button>
+<button id="b4">🧹 Limpar sessão (para reescrever hoje)</button>
+
+<div id="out"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+  authDomain: "crechespt.firebaseapp.com",
+  projectId: "crechespt",
+  storageBucket: "crechespt.firebasestorage.app",
+  messagingSenderId: "470551729340",
+  appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
+};
+firebase.initializeApp(FIREBASE_CONFIG);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const out = document.getElementById("out");
+function log(html){
+  const div = document.createElement("div");
+  div.className = "step";
+  div.innerHTML = html;
+  out.prepend(div);
+}
+
+// Test 1 — write to daily_stats
+document.getElementById("b1").onclick = async ()=>{
+  const today = new Date().toISOString().slice(0,10);
+  log(`<h3>1️⃣ ESCRITA em daily_stats/${today}</h3><p>A tentar incrementar app_views...</p>`);
+  try{
+    await db.collection("daily_stats").doc(today).set({
+      app_views: firebase.firestore.FieldValue.increment(1),
+      updated_at: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+    log(`<h3>1️⃣ ESCRITA</h3><p class="ok">✅ Sucesso! As regras Firestore estão correctas e a escrita funcionou.</p><p>Agora carrega no botão 2 para ler.</p>`);
+  }catch(e){
+    log(`<h3>1️⃣ ESCRITA</h3>
+      <p class="bad">❌ FALHOU: <code>${e.code}</code></p>
+      <pre>${e.message}</pre>
+      <p><b>Provável causa:</b> ${interpretError(e.code, "write")}</p>`);
+  }
+};
+
+// Test 2 — read daily_stats (requires admin)
+document.getElementById("b2").onclick = async ()=>{
+  log(`<h3>2️⃣ LEITURA de daily_stats</h3><p>A tentar ler últimos 30 dias (como faz o /admin)...</p>`);
+  const user = auth.currentUser;
+  if(!user){
+    log(`<h3>2️⃣ LEITURA</h3><p class="warn">⚠️ Não estás autenticado. Para ler tens de fazer login primeiro.</p>
+      <button onclick="loginGoogle()">Fazer login com Google</button>`);
+    return;
+  }
+  try{
+    const snap = await db.collection("daily_stats").orderBy("__name__","desc").limit(30).get();
+    const rows = [];
+    snap.forEach(d => rows.push(`<li><b>${d.id}</b>: ${JSON.stringify(d.data())}</li>`));
+    if(rows.length === 0){
+      log(`<h3>2️⃣ LEITURA</h3><p class="warn">⚠️ Lê com sucesso mas a coleção está VAZIA.</p>
+        <p>Significa que nenhuma escrita chegou a acontecer (ou foi limpa). Carrega no botão 1 primeiro.</p>`);
+    } else {
+      log(`<h3>2️⃣ LEITURA</h3><p class="ok">✅ Conseguiu ler ${rows.length} entradas:</p><ul>${rows.join("")}</ul>`);
+    }
+  }catch(e){
+    log(`<h3>2️⃣ LEITURA</h3>
+      <p class="bad">❌ FALHOU: <code>${e.code}</code></p>
+      <pre>${e.message}</pre>
+      <p><b>Provável causa:</b> ${interpretError(e.code, "read")}</p>`);
+  }
+};
+
+// Test 3 — show UID
+document.getElementById("b3").onclick = async ()=>{
+  const user = auth.currentUser;
+  if(!user){
+    log(`<h3>3️⃣ UID</h3><p class="warn">Ainda não autenticado.</p>
+      <button onclick="loginGoogle()">Login com Google</button>`);
+    return;
+  }
+  log(`<h3>3️⃣ UID</h3>
+    <p>Email: <code>${user.email}</code></p>
+    <p>UID: <code>${user.uid}</code></p>
+    <p>Verifica no Firebase Console que existe o documento <code>admins/${user.uid}</code> (pode estar vazio, basta existir).</p>
+    <p>Se não existir, vai ao Firebase Console → Firestore → coleção <b>admins</b> → criar doc com ID <code>${user.uid}</code>.</p>`);
+};
+
+// Test 4 — clear session (force retracking)
+document.getElementById("b4").onclick = ()=>{
+  sessionStorage.removeItem("crechespt/session_tracked_today");
+  log(`<h3>🧹 Sessão limpa</h3><p>Da próxima vez que abrires o /app vai tentar tracking outra vez.</p>`);
+};
+
+function loginGoogle(){
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then(()=>{
+    log(`<h3>✅ Login</h3><p>Autenticado como <code>${auth.currentUser.email}</code>. Já podes carregar nos botões 2 e 3.</p>`);
+  }).catch(e => log(`<h3>❌ Login falhou</h3><pre>${e.message}</pre>`));
+}
+
+function interpretError(code, op){
+  if(code === "permission-denied"){
+    if(op === "write") return "<b>Regras Firestore NÃO PUBLICADAS.</b> Vai ao Firebase Console → Firestore → Rules → cola firestore.rules → Publish.";
+    if(op === "read") return "Não és reconhecido como admin OU as regras não estão publicadas. Confirma que existe admins/{teu UID}.";
+  }
+  if(code === "unavailable") return "Firestore offline ou bloqueado por extensão do browser (ad blocker?). Tenta noutro browser.";
+  if(code === "failed-precondition") return "Falta criar índice no Firestore. Verifica a mensagem para link de criação automática.";
+  return "Erro inesperado — copia e envia.";
+}
+
+// auto-login state
+auth.onAuthStateChanged(u => {
+  if(u){
+    log(`<h3>🔑 Autenticado</h3><p>Logado como <code>${u.email}</code>. UID: <code>${u.uid}</code></p>`);
+  } else {
+    log(`<h3>🔓 Não autenticado</h3>
+      <p>Para o teste de leitura precisas de login.</p>
+      <button onclick="loginGoogle()">Login com Google</button>`);
+  }
+});
+</script>
+</body>
+</html>
