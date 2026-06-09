@@ -329,7 +329,7 @@ async function loadDashboard(user){
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
     db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
     db.collection("creche_removals").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rm",e);return null;}),
-    db.collection("daily_stats").orderBy("__name__","desc").limit(30).get().catch(e=>{console.warn("stats",e);return null;}),
+    db.collection("daily_stats").limit(60).get().catch(e=>{console.warn("stats",e);return null;}),
   ]);
 
   // --- Utilizadores
