@@ -549,14 +549,19 @@ function renderCreches(rows){
               data-tipo="${escapeHtml(r.tipo||"")}"
               data-distrito="${escapeHtml(r.distrito||"")}"
               data-tel="${escapeHtml(r.telefone||"")}"
-              data-email="${escapeHtml(r.email||"")}">
+              data-email="${escapeHtml(r.email||"")}"
+              data-morada="${escapeHtml(r.morada||"")}"
+              data-min="${r.idade_min_meses ?? ""}"
+              data-max="${r.idade_max_meses ?? ""}"
+              data-website="${escapeHtml(r.website||"")}"
+              data-horario="${escapeHtml(r.horario||"")}">
             <td class="date">${fmtDate(r.ts)}</td>
-            <td><b>${escapeHtml(r.nome||"—")}</b></td>
+            <td><b>${escapeHtml(r.nome||"—")}</b>${r.morada?`<br><small style="color:#888">${escapeHtml(r.morada)}</small>`:""}</td>
             <td class="email-cell">${escapeHtml(r.email||"—")}${r.telefone?`<br>${escapeHtml(r.telefone)}`:""}</td>
-            <td><span class="pill">${escapeHtml(r.tipo||"")}</span></td>
+            <td><span class="pill">${escapeHtml(r.tipo||"")}</span>${r.idade_min_meses!=null?`<br><small style="color:#888">${r.idade_min_meses}–${r.idade_max_meses}m</small>`:""}</td>
             <td>${escapeHtml(r.distrito||"—")}</td>
             <td>${escapeHtml(r.criancas||"—")}</td>
-            <td class="msg">${escapeHtml(r.mensagem||"").slice(0,200)}</td>
+            <td class="msg">${r.website?`<a href="${escapeHtml(r.website)}" target="_blank" rel="noopener">🌐 site</a><br>`:""}${escapeHtml(r.mensagem||"").slice(0,180)}</td>
             <td>
               <button class="btn-approve-ci">✓ Aprovar</button>
               <button class="btn-reject-ci">✕ Rejeitar</button>
@@ -692,44 +697,81 @@ async function approveInterest(tr){
   const distrito = tr.dataset.distrito;
   const tel = tr.dataset.tel;
   const email = tr.dataset.email;
+  const website = tr.dataset.website || "";
+  const horario = tr.dataset.horario || "";
+  const minSubmitted = tr.dataset.min;
+  const maxSubmitted = tr.dataset.max;
 
-  // Pedir morada para geocoding automático
-  const morada = prompt(`Aprovar "${nome}" (${distrito}).\n\nIntroduz a morada completa para obter as coordenadas:`, "");
-  if(!morada) return;
+  // 1. Morada: usar a que foi submetida, ou pedir se faltar (submissões antigas)
+  let morada = (tr.dataset.morada || "").trim();
+  if(!morada){
+    morada = prompt(`"${nome}" (${distrito}) não tem morada submetida.\n\nIntroduz a morada completa para obter as coordenadas:`, "");
+    if(!morada) return;
+  }
 
-  alert("A geocodificar a morada... aguarda.");
+  // 2. Idades: usar as submetidas, ou cair no mapping antigo do tipo
+  const tipoMap = {
+    bercario:"Berçário", creche:"Creche", ji:"JI",
+    infantario:"Infantário", atl:"ATL", outra:"Creche",
+    privada:"Creche", ipss:"Creche", publica:"Creche", outro:"Creche"
+  };
+  const tipoFinal = tipoMap[tipo] || "Creche";
+  let idade_min_meses, idade_max_meses;
+  if(minSubmitted && maxSubmitted){
+    idade_min_meses = parseInt(minSubmitted);
+    idade_max_meses = parseInt(maxSubmitted);
+  } else {
+    const fallback = AGE_RANGES[tipo] || AGE_RANGES.creche;
+    idade_min_meses = fallback.idade_min_meses;
+    idade_max_meses = fallback.idade_max_meses;
+  }
+
+  // 3. Geocodificar
   let lat, lon;
   try{
     const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" + encodeURIComponent(morada);
     const r = await fetch(url, { headers: { "Accept-Language": "pt-PT" } });
     const j = await r.json();
-    if(!j || !j.length){ alert("Morada não encontrada. Tenta uma mais completa."); return; }
-    lat = parseFloat(j[0].lat);
-    lon = parseFloat(j[0].lon);
+    if(!j || !j.length){
+      const manualCoords = prompt(`Não consegui geocodificar a morada "${morada}".\n\nIntroduz lat,lon manualmente (ex: 38.7223,-9.1393) ou deixa vazio para cancelar:`);
+      if(!manualCoords) return;
+      const parts = manualCoords.split(",").map(s=>parseFloat(s.trim()));
+      if(parts.length !== 2 || isNaN(parts[0]) || isNaN(parts[1])){ alert("Coordenadas inválidas."); return; }
+      [lat, lon] = parts;
+    } else {
+      lat = parseFloat(j[0].lat);
+      lon = parseFloat(j[0].lon);
+    }
   }catch(e){
     alert("Erro a geocodificar: "+e.message);
     return;
   }
 
-  // Mapear tipo do form para o tipo do dataset
-  const tipoMap = {
-    bercario:"Berçário", creche:"Creche", ji:"JI",
-    infantario:"Infantário", atl:"ATL", outra:"Creche"
-  };
-  const tipoFinal = tipoMap[tipo] || "Creche";
-  const range = AGE_RANGES[tipo] || AGE_RANGES.creche;
-
-  if(!confirm(`Confirma adicionar à app:\n\nNome: ${nome}\nMorada: ${morada}\nLat/Lon: ${lat.toFixed(5)}, ${lon.toFixed(5)}\nTipo: ${tipoFinal}\nIdade: ${range.idade_min_meses}–${range.idade_max_meses} meses\nTel: ${tel}\n\nVai aparecer imediatamente no mapa para todos os utilizadores.`)) return;
+  // 4. Confirmação final com TODOS os dados que vão para o mapa
+  const summary =
+    `Confirma adicionar à app:\n\n`+
+    `Nome: ${nome}\n`+
+    `Morada: ${morada}\n`+
+    `Coordenadas: ${lat.toFixed(5)}, ${lon.toFixed(5)}\n`+
+    `Tipo: ${tipoFinal}\n`+
+    `Idades: ${idade_min_meses}–${idade_max_meses} meses\n`+
+    `Telefone: ${tel || "(sem)"}\n`+
+    `Website: ${website || "(sem)"}\n`+
+    `Horário: ${horario || "(sem)"}\n\n`+
+    `Aparece imediatamente no mapa para todos.`;
+  if(!confirm(summary)) return;
 
   try{
     await db.collection("creche_extras").add({
       nome, morada, distrito,
       lat, lon,
       tipo: tipoFinal,
-      idade_min_meses: range.idade_min_meses,
-      idade_max_meses: range.idade_max_meses,
+      idade_min_meses,
+      idade_max_meses,
       telefone: tel || "",
       email: email || "",
+      website: website || "",
+      horario: horario || "",
       source: "user_submission",
       interest_id: iid,
       added_at: firebase.firestore.FieldValue.serverTimestamp(),
