@@ -633,17 +633,16 @@ async function applyReport(tr){
       }catch(e){ console.warn("user lookup failed:", e); }
     }
 
+    const cname = tr.dataset.cname;
     tr.remove();
 
     if(reporterEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(reporterEmail)){
-      if(confirm(`✓ Correção aplicada.\n\nQueres abrir o Gmail com email pré-preenchido para avisar ${reporterEmail}?`)){
-        openGmailCompose(reporterEmail, "report_applied", {
-          creche_name: tr.dataset.cname,
-          tipo: range.tipo,
-          min: range.idade_min_meses,
-          max: range.idade_max_meses
-        });
-      }
+      showEmailLinkBanner(reporterEmail, "report_applied", {
+        creche_name: cname,
+        tipo: range.tipo,
+        min: range.idade_min_meses,
+        max: range.idade_max_meses
+      });
     } else {
       alert("✓ Correção aplicada.\n(Sem email do reporter — não foi possível avisar.)");
     }
@@ -744,12 +743,10 @@ async function approveInterest(tr){
     tr.remove();
 
     if(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      if(confirm(`✓ Creche adicionada ao mapa!\n\nQueres abrir o Gmail com email pré-preenchido para avisar ${email}?`)){
-        openGmailCompose(email, "creche_approved", {
-          creche_name: nome,
-          distrito: distrito
-        });
-      }
+      showEmailLinkBanner(email, "creche_approved", {
+        creche_name: nome,
+        distrito: distrito
+      });
     } else {
       alert("✓ Creche adicionada ao mapa!\n(Sem email da creche — não foi possível avisar.)");
     }
@@ -787,41 +784,66 @@ async function bulkRequestInfo(){
       return;
     }
 
-    if(!confirm(`Encontrei ${candidates.length} creche${candidates.length>1?"s":""} a precisar de info. Vou abrir UM separador do Gmail por cada uma, com email pré-preenchido. Tu carregas Send (envia de geral@creches.app) ou fechas (guarda em rascunhos). Continuar?`)) {
+    if(!confirm(`Encontrei ${candidates.length} creche${candidates.length>1?"s":""} a precisar de info. Vou abrir uma lista com 1 link por cada — tu clicas cada um para abrir o Gmail (envia de geral@creches.app). Continuar?`)) {
       status.textContent = "Cancelado.";
       btn.disabled = false;
       return;
     }
 
-    let opened = 0, skipped = 0;
-    for(let i = 0; i < candidates.length; i++){
-      const c = candidates[i];
-      status.textContent = `${i+1}/${candidates.length}: ${c.nome}…`;
+    // Renderiza fila de links — cada um é uma âncora real (não bloqueado por browser)
+    let queueHost = document.getElementById("bulk-queue");
+    if(queueHost) queueHost.remove();
+    queueHost = document.createElement("div");
+    queueHost.id = "bulk-queue";
+    queueHost.style.cssText = "background:#fff;border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:var(--sh-1)";
+    queueHost.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h4 style="margin:0;font-size:15px">📧 Queue — clica cada link para abrir no Gmail</h4>
+        <button id="bulk-queue-close" style="background:transparent;color:var(--ink-soft);font-size:12px;border:0;cursor:pointer;text-decoration:underline">Fechar</button>
+      </div>
+      <div style="font-size:12px;color:var(--ink-soft);margin-bottom:14px">Cada link abre o Gmail compose pré-preenchido. Carrega "Send" lá (ou fecha a tab para guardar em rascunhos). O link riscado = já feito.</div>
+      <div id="bulk-queue-list"></div>
+    `;
+    document.getElementById("ci-host").parentNode.insertBefore(queueHost, document.getElementById("ci-host"));
+    document.getElementById("bulk-queue-close").addEventListener("click", ()=> queueHost.remove());
 
-      // confirm entre cada para que o browser permita window.open (gesture do user)
-      const ok = confirm(`Próxima (${i+1}/${candidates.length}):\n\n${c.nome}\n${c.email}\n${c.distrito || ""}\n\nOK = abrir Gmail compose · Cancel = saltar`);
-      if(!ok){
-        skipped++;
-        continue;
-      }
-
-      const w = openGmailCompose(c.email, "more_info_needed", { creche_name: c.nome });
-      if(!w){
-        if(!confirm("O browser bloqueou a abertura. Ativa popups para creches.app e tenta de novo. Continuar com as restantes?")) break;
-        skipped++;
-        continue;
-      }
-      opened++;
-      // Marca como pedido
-      await db.collection("creche_interest").doc(c.id).update({
-        info_requested_at: firebase.firestore.FieldValue.serverTimestamp(),
-        info_requested_by: auth.currentUser.email
+    const list = document.getElementById("bulk-queue-list");
+    candidates.forEach((c, i)=>{
+      const url = buildGmailUrl(c.email, "more_info_needed", { creche_name: c.nome });
+      const item = document.createElement("div");
+      item.style.cssText = "display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)";
+      item.innerHTML = `
+        <span style="font-size:12px;color:var(--ink-soft);min-width:38px">${i+1}/${candidates.length}</span>
+        <a href="${url}" target="_blank" rel="noopener" data-cid="${c.id}" class="bulk-link"
+           style="flex:1;color:var(--c-coral);font-weight:600;text-decoration:none;font-size:13px">
+          📧 ${escapeHtml(c.nome)} → ${escapeHtml(c.email)}
+        </a>
+        <span class="bulk-status" style="font-size:11px;color:var(--ink-soft);min-width:60px;text-align:right">por fazer</span>
+      `;
+      list.appendChild(item);
+      // Quando o admin clica no link, marca como pedido
+      const link = item.querySelector(".bulk-link");
+      const stat = item.querySelector(".bulk-status");
+      link.addEventListener("click", async ()=>{
+        link.style.textDecoration = "line-through";
+        link.style.opacity = "0.6";
+        stat.textContent = "a marcar…";
+        try{
+          await db.collection("creche_interest").doc(c.id).update({
+            info_requested_at: firebase.firestore.FieldValue.serverTimestamp(),
+            info_requested_by: auth.currentUser.email
+          });
+          stat.textContent = "✓ enviado";
+          stat.style.color = "var(--c-turquoise)";
+        }catch(e){
+          stat.textContent = "⚠ erro";
+          stat.style.color = "#b3261e";
+        }
       });
-    }
+    });
 
-    status.textContent = `✓ Abertos no Gmail: ${opened}. Saltados: ${skipped}.`;
+    status.textContent = `${candidates.length} email${candidates.length===1?"":"s"} prontos na queue acima.`;
     btn.disabled = false;
-    alert(`Abri ${opened} email${opened===1?"":"s"} no Gmail. Vai à tab para os enviares (ou fechar para guardar em rascunhos).`);
   }catch(e){
     console.error(e);
     status.textContent = "Erro: " + e.message;
@@ -891,8 +913,8 @@ creches.app`
   })
 };
 
-// Abre Gmail compose pré-preenchido (envia/guarda de geral@creches.app)
-function openGmailCompose(to, template, data){
+// Constrói o URL do Gmail compose pré-preenchido (envia de geral@creches.app)
+function buildGmailUrl(to, template, data){
   if(!to || !EMAIL_TEMPLATES[template]) return null;
   const t = EMAIL_TEMPLATES[template](data || {});
   const params = new URLSearchParams({
@@ -904,7 +926,33 @@ function openGmailCompose(to, template, data){
     body: t.body,
     authuser: "geral@creches.app"
   });
-  return window.open("https://mail.google.com/mail/?" + params.toString(), "_blank");
+  return "https://mail.google.com/mail/?" + params.toString();
+}
+
+// Banner com link âncora que o admin clica (não bloqueado por browser)
+function showEmailLinkBanner(to, template, data, onClicked){
+  const url = buildGmailUrl(to, template, data);
+  if(!url) return;
+  // Cria banner em cima do dashboard
+  const old = document.getElementById("email-banner");
+  if(old) old.remove();
+  const banner = document.createElement("div");
+  banner.id = "email-banner";
+  banner.style.cssText = "position:fixed;bottom:20px;right:20px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(60,40,90,.18);padding:18px 22px;z-index:1000;max-width:380px;border-left:6px solid var(--c-coral)";
+  banner.innerHTML = `
+    <div style="font-weight:700;color:var(--ink);margin-bottom:6px">📧 Email pronto a enviar</div>
+    <div style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">Carrega no link abaixo para abrir no Gmail (já pré-preenchido):</div>
+    <a id="email-banner-link" href="${url}" target="_blank" rel="noopener" style="display:inline-block;background:var(--c-coral);color:#fff;padding:10px 18px;border-radius:20px;text-decoration:none;font-weight:700;font-size:13px">
+      Abrir Gmail compose para ${escapeHtml(to)} →
+    </a>
+    <button id="email-banner-close" style="display:block;margin-top:10px;background:transparent;color:var(--ink-soft);font-size:12px;border:0;cursor:pointer;text-decoration:underline">Fechar (não enviar)</button>
+  `;
+  document.body.appendChild(banner);
+  document.getElementById("email-banner-link").addEventListener("click", ()=>{
+    if(onClicked) onClicked();
+    setTimeout(()=> banner.remove(), 500);
+  });
+  document.getElementById("email-banner-close").addEventListener("click", ()=> banner.remove());
 }
 
 async function rejectInterest(tr){
