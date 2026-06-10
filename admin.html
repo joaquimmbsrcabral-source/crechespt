@@ -619,78 +619,37 @@ async function applyReport(tr){
     }, { merge: true });
     await markReportResolved(reportId, "applied");
 
-    // Tentar notificar o reporter (best-effort, robusto)
-    const emailResult = await tryNotifyReporter(tr, {
-      creche_name: tr.dataset.cname,
-      tipo: range.tipo,
-      min: range.idade_min_meses,
-      max: range.idade_max_meses
-    });
+    // Encontrar email do reporter — em 3 níveis (doc, users/{uid}, manual)
+    let reporterEmail = (tr.dataset.email || "").trim();
+    if(!reporterEmail){
+      // Tenta buscar via users/{uid}
+      try{
+        const rDoc = await db.collection("creche_reports").doc(reportId).get();
+        const uid = rDoc.exists ? rDoc.data().uid : null;
+        if(uid){
+          const uDoc = await db.collection("users").doc(uid).get();
+          reporterEmail = uDoc.exists ? (uDoc.data().email || "").trim() : "";
+        }
+      }catch(e){ console.warn("user lookup failed:", e); }
+    }
 
     tr.remove();
-    if(emailResult.sent){
-      alert(`✓ Correção aplicada e email enviado para ${emailResult.to}.\nVê em creches.app/app (recarrega).`);
+
+    if(reporterEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(reporterEmail)){
+      if(confirm(`✓ Correção aplicada.\n\nQueres abrir o Gmail com email pré-preenchido para avisar ${reporterEmail}?`)){
+        openGmailCompose(reporterEmail, "report_applied", {
+          creche_name: tr.dataset.cname,
+          tipo: range.tipo,
+          min: range.idade_min_meses,
+          max: range.idade_max_meses
+        });
+      }
     } else {
-      alert(`✓ Correção aplicada.\n⚠ Email NÃO enviado: ${emailResult.reason}\nVê em creches.app/app (recarrega).`);
+      alert("✓ Correção aplicada.\n(Sem email do reporter — não foi possível avisar.)");
     }
   }catch(e){
     console.error(e);
     alert("Erro a aplicar: "+e.message);
-  }
-}
-
-// Tenta encontrar email do reporter por 3 vias e enviar notificação.
-// Retorna { sent: bool, to: string, reason: string }
-async function tryNotifyReporter(tr, data){
-  // 1. Email no doc do report (já vem no data-email)
-  let to = (tr.dataset.email || "").trim();
-  let source = "report doc";
-
-  // 2. Se não houver, tenta puxar do users/{uid} via UID
-  if(!to){
-    // O UID está na coluna do reporter no <td>; tentamos extrair do dataset se existir
-    // (não está no atual data-*; vamos via API: ler o doc report)
-    const reportId = tr.dataset.rid;
-    try{
-      const rDoc = await db.collection("creche_reports").doc(reportId).get();
-      const uid = rDoc.exists ? rDoc.data().uid : null;
-      if(uid){
-        const uDoc = await db.collection("users").doc(uid).get();
-        to = uDoc.exists ? (uDoc.data().email || "").trim() : "";
-        source = "users/{uid}";
-      }
-    }catch(e){ console.warn("user lookup failed:", e); }
-  }
-
-  // 3. Se ainda não houver, pergunta ao admin (opcional)
-  if(!to){
-    const manual = prompt("Este report não tem email guardado. Queres enviar email a quem? (deixa vazio para saltar)");
-    to = (manual || "").trim();
-    source = "manual";
-    if(!to) return { sent: false, to: "", reason: "Sem email associado." };
-  }
-
-  // 4. Valida formato
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)){
-    return { sent: false, to, reason: "Formato de email inválido." };
-  }
-
-  // 5. Envia via /api/notify
-  try{
-    const token = await auth.currentUser.getIdToken();
-    const resp = await fetch("/api/notify", {
-      method: "POST",
-      headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ template: "report_applied", to, data })
-    });
-    if(resp.ok){
-      return { sent: true, to, reason: "OK (" + source + ")" };
-    } else {
-      const err = await resp.json().catch(()=>({error:"unknown"}));
-      return { sent: false, to, reason: `HTTP ${resp.status}: ${err.error || "erro desconhecido"}` };
-    }
-  }catch(e){
-    return { sent: false, to, reason: "Falha de rede: " + e.message };
   }
 }
 
@@ -782,34 +741,18 @@ async function approveInterest(tr){
       resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
       resolved_by: auth.currentUser.email
     });
-    // Notificar a creche que submeteu — feedback claro
-    let emailMsg = "";
+    tr.remove();
+
     if(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      try{
-        const token = await auth.currentUser.getIdToken();
-        const resp = await fetch("/api/notify", {
-          method: "POST",
-          headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            template: "creche_approved",
-            to: email,
-            data: { creche_name: nome, distrito }
-          })
+      if(confirm(`✓ Creche adicionada ao mapa!\n\nQueres abrir o Gmail com email pré-preenchido para avisar ${email}?`)){
+        openGmailCompose(email, "creche_approved", {
+          creche_name: nome,
+          distrito: distrito
         });
-        if(resp.ok){
-          emailMsg = `📧 Email enviado para ${email}.`;
-        } else {
-          const err = await resp.json().catch(()=>({error:"unknown"}));
-          emailMsg = `⚠ Email NÃO enviado (HTTP ${resp.status}: ${err.error || "erro"}).`;
-        }
-      }catch(e){
-        emailMsg = `⚠ Email NÃO enviado (falha de rede: ${e.message}).`;
       }
     } else {
-      emailMsg = "⚠ Sem email válido no doc — não foi enviada notificação.";
+      alert("✓ Creche adicionada ao mapa!\n(Sem email da creche — não foi possível avisar.)");
     }
-    tr.remove();
-    alert(`✓ Creche adicionada ao mapa!\n${emailMsg}`);
   }catch(e){
     console.error(e);
     alert("Erro: "+e.message);
@@ -844,49 +787,41 @@ async function bulkRequestInfo(){
       return;
     }
 
-    if(!confirm(`Vou enviar ${candidates.length} email${candidates.length>1?"s":""}. Vou demorar ~${candidates.length} segundos. Continuar?`)) {
+    if(!confirm(`Encontrei ${candidates.length} creche${candidates.length>1?"s":""} a precisar de info. Vou abrir UM separador do Gmail por cada uma, com email pré-preenchido. Tu carregas Send (envia de geral@creches.app) ou fechas (guarda em rascunhos). Continuar?`)) {
       status.textContent = "Cancelado.";
       btn.disabled = false;
       return;
     }
 
-    const token = await auth.currentUser.getIdToken();
-    let ok = 0, fail = 0;
+    let opened = 0, skipped = 0;
     for(let i = 0; i < candidates.length; i++){
       const c = candidates[i];
-      status.textContent = `A enviar ${i+1}/${candidates.length}: ${c.nome}…`;
-      try{
-        const resp = await fetch("/api/notify", {
-          method: "POST",
-          headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            template: "more_info_needed",
-            to: c.email,
-            data: { creche_name: c.nome }
-          })
-        });
-        if(resp.ok){
-          ok++;
-          // Marca para não enviar de novo
-          await db.collection("creche_interest").doc(c.id).update({
-            info_requested_at: firebase.firestore.FieldValue.serverTimestamp(),
-            info_requested_by: auth.currentUser.email
-          });
-        } else {
-          fail++;
-          console.warn("Falhou para", c.email, await resp.text());
-        }
-      }catch(e){
-        fail++;
-        console.warn("Erro de rede para", c.email, e);
+      status.textContent = `${i+1}/${candidates.length}: ${c.nome}…`;
+
+      // confirm entre cada para que o browser permita window.open (gesture do user)
+      const ok = confirm(`Próxima (${i+1}/${candidates.length}):\n\n${c.nome}\n${c.email}\n${c.distrito || ""}\n\nOK = abrir Gmail compose · Cancel = saltar`);
+      if(!ok){
+        skipped++;
+        continue;
       }
-      // Pequeno delay para não estourar rate limits Resend
-      await new Promise(r => setTimeout(r, 600));
+
+      const w = openGmailCompose(c.email, "more_info_needed", { creche_name: c.nome });
+      if(!w){
+        if(!confirm("O browser bloqueou a abertura. Ativa popups para creches.app e tenta de novo. Continuar com as restantes?")) break;
+        skipped++;
+        continue;
+      }
+      opened++;
+      // Marca como pedido
+      await db.collection("creche_interest").doc(c.id).update({
+        info_requested_at: firebase.firestore.FieldValue.serverTimestamp(),
+        info_requested_by: auth.currentUser.email
+      });
     }
 
-    status.textContent = `✓ Enviados: ${ok}. Falhas: ${fail}.`;
+    status.textContent = `✓ Abertos no Gmail: ${opened}. Saltados: ${skipped}.`;
     btn.disabled = false;
-    alert(`Enviados ${ok} email${ok===1?"":"s"} de ${candidates.length}.${fail?` ${fail} falhou(aram).`:""}`);
+    alert(`Abri ${opened} email${opened===1?"":"s"} no Gmail. Vai à tab para os enviares (ou fechar para guardar em rascunhos).`);
   }catch(e){
     console.error(e);
     status.textContent = "Erro: " + e.message;
@@ -894,26 +829,82 @@ async function bulkRequestInfo(){
   }
 }
 
-// ===== Email notifications (chamada para /api/notify) =====
-async function sendNotification(template, to, data){
-  if(!to || !auth.currentUser) return;
-  try{
-    const token = await auth.currentUser.getIdToken();
-    const resp = await fetch("/api/notify", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ template, to, data })
-    });
-    if(!resp.ok){
-      const err = await resp.json().catch(()=>({error:"unknown"}));
-      console.warn("notify failed:", resp.status, err);
-    }
-  }catch(e){
-    console.warn("notify error:", e);
-  }
+// ===== Email templates (texto puro, abertos no Gmail compose) =====
+const EMAIL_TEMPLATES = {
+  report_applied: (d) => ({
+    subject: `A tua correção em "${d.creche_name}" foi aplicada — obrigado!`,
+    body:
+`Olá,
+
+Recebi o teu report sobre ${d.creche_name} e acabei de aplicar a correção. A informação correta já está visível em creches.app para todos os pais.
+
+Aplicado:
+• Tipo: ${d.tipo || "—"}
+• Idades: ${d.min}–${d.max} meses
+
+Obrigado por ajudares a tornar isto melhor.
+
+— Joaquim
+creches.app`
+  }),
+
+  creche_approved: (d) => ({
+    subject: `A ${d.creche_name} já está em creches.app`,
+    body:
+`Olá,
+
+Obrigado por nos contactarem. Acabei de adicionar a ${d.creche_name} ao mapa em creches.app — já está visível para todos os pais que procurem creche em ${d.distrito || "Portugal"}.
+
+Vejam aqui: https://creches.app
+
+Se notarem alguma informação errada (idades, telefone, horário), respondam a este email e corrijo. Se quiserem sair do mapa no futuro, têm um botão "remover esta creche" na ficha da vossa instituição.
+
+— Joaquim
+creches.app`
+  }),
+
+  more_info_needed: (d) => ({
+    subject: `Para colocarmos a ${d.creche_name || "vossa creche"} no mapa, precisamos de mais 2 minutos`,
+    body:
+`Olá,
+
+Obrigado por nos contactarem para listar a ${d.creche_name || "vossa creche"} no creches.app.
+
+Para podermos colocar a vossa creche no mapa e acessível aos pais, precisamos de alguns dados adicionais que ainda não temos:
+
+  • Morada completa (rua, número, código postal)
+  • Idades atendidas (berçário, creche, JI, ATL)
+  • Telefone de contacto principal
+  • Website ou rede social (se tiverem)
+  • Horário de funcionamento (opcional)
+
+Em vez de responderem por aqui, peço-vos que tornem a preencher o formulário aqui (5 minutos):
+
+https://creches.app/para-creches
+
+Já agora — também é grátis e fica grátis. Não há subscrições, não há comissões.
+
+Se tiverem alguma dúvida, respondam a este email.
+
+— Joaquim
+creches.app`
+  })
+};
+
+// Abre Gmail compose pré-preenchido (envia/guarda de geral@creches.app)
+function openGmailCompose(to, template, data){
+  if(!to || !EMAIL_TEMPLATES[template]) return null;
+  const t = EMAIL_TEMPLATES[template](data || {});
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    tf: "1",
+    to,
+    su: t.subject,
+    body: t.body,
+    authuser: "geral@creches.app"
+  });
+  return window.open("https://mail.google.com/mail/?" + params.toString(), "_blank");
 }
 
 async function rejectInterest(tr){
