@@ -689,6 +689,122 @@ async function markReportResolved(id, status){
   });
 }
 
+// ===== Geocoding inteligente: várias tentativas + fallback Google Maps =====
+async function geocodeOnce(query){
+  try{
+    const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" + encodeURIComponent(query);
+    const r = await fetch(url, { headers: { "Accept-Language": "pt-PT" } });
+    const j = await r.json();
+    if(j && j.length) return { lat: parseFloat(j[0].lat), lon: parseFloat(j[0].lon), match: j[0].display_name };
+  }catch(e){ console.warn("nominatim error:", e); }
+  return null;
+}
+
+async function smartGeocode(morada, distrito){
+  // Tenta várias variações antes de pedir ao admin
+  const candidates = [];
+  candidates.push(morada);                                    // 1: morada exata
+  if(!/portugal/i.test(morada)) candidates.push(morada + ", Portugal");  // 2: + Portugal
+  // 3: sem número (alguns sítios não têm)
+  const semNumero = morada.replace(/^\d+\s*[-,]?\s*/, "").replace(/,?\s*\d+\s*[-,]/, ",");
+  if(semNumero !== morada) candidates.push(semNumero);
+  // 4: só código postal + localidade (apanhar tipo "1100-053 Lisboa")
+  const cpMatch = morada.match(/\d{4}-\d{3}[^,]*/);
+  if(cpMatch) candidates.push(cpMatch[0] + ", Portugal");
+  // 5: última parte (geralmente a localidade)
+  const lastPart = morada.split(",").pop().trim();
+  if(lastPart && lastPart !== morada) candidates.push(lastPart + ", " + (distrito||"") + ", Portugal");
+  // 6: só distrito (último recurso)
+  if(distrito) candidates.push(distrito + ", Portugal");
+
+  for(const q of candidates){
+    const r = await geocodeOnce(q);
+    if(r){
+      // Confirma com o admin se for fallback aproximado (>= índice 2)
+      const idx = candidates.indexOf(q);
+      if(idx >= 2){
+        if(!confirm(`Geocodificação aproximada usando: "${q}"\n\nResultado: ${r.match}\nLat/Lon: ${r.lat.toFixed(5)}, ${r.lon.toFixed(5)}\n\nUsar esta posição? (Cancel = introduzir manualmente)`)){
+          continue;
+        }
+      }
+      return { lat: r.lat, lon: r.lon };
+    }
+    await new Promise(res => setTimeout(res, 1100));  // rate limit Nominatim
+  }
+
+  // Fallback: abre Google Maps e aceita lat/lon ou URL colada
+  return await manualCoordsDialog(morada);
+}
+
+async function manualCoordsDialog(morada){
+  // 1) Abre Google Maps numa nova tab pré-pesquisada
+  const gmapsUrl = "https://www.google.com/maps/search/" + encodeURIComponent(morada + ", Portugal");
+
+  // Cria modal simples
+  const modal = document.createElement("div");
+  modal.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999";
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:14px;padding:24px;max-width:480px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,.3)">
+      <h3 style="margin:0 0 10px;font-size:18px">📍 Não consegui geocodificar automaticamente</h3>
+      <p style="font-size:13px;color:#666;margin:0 0 14px"><b>Morada:</b> ${escapeHtml(morada)}</p>
+      <p style="font-size:13px;margin:0 0 14px"><b>Como obter as coordenadas:</b></p>
+      <ol style="font-size:13px;color:#444;margin:0 0 14px;padding-left:20px;line-height:1.6">
+        <li>Clica <a href="${gmapsUrl}" target="_blank" rel="noopener" style="color:var(--c-coral);font-weight:600">🗺 Abrir Google Maps</a></li>
+        <li>Encontra a creche exata no mapa</li>
+        <li><b>Clica direito</b> no ponto exato → carrega na primeira linha (mostra "lat, lon" — copia automaticamente)</li>
+        <li>Volta cá e cola abaixo:</li>
+      </ol>
+      <input id="manual-coords-input" type="text" placeholder="38.7223, -9.1393  ou  URL Google Maps"
+             style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:6px">
+      <div id="manual-coords-error" style="color:#b3261e;font-size:12px;min-height:16px;margin-bottom:8px"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button id="manual-coords-cancel" style="padding:9px 16px;background:#eee;color:#333;border:0;border-radius:8px;font-weight:600;cursor:pointer">Cancelar</button>
+        <button id="manual-coords-ok" style="padding:9px 18px;background:var(--c-coral);color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer">Confirmar</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  return new Promise((resolve)=>{
+    const input = document.getElementById("manual-coords-input");
+    const err = document.getElementById("manual-coords-error");
+    input.focus();
+
+    function close(value){ modal.remove(); resolve(value); }
+
+    document.getElementById("manual-coords-cancel").onclick = ()=> close(null);
+
+    document.getElementById("manual-coords-ok").onclick = ()=>{
+      const raw = input.value.trim();
+      if(!raw){ err.textContent = "Cola as coordenadas ou o URL do Google Maps."; return; }
+      const parsed = parseCoords(raw);
+      if(!parsed){ err.textContent = "Formato não reconhecido. Tenta 38.7223, -9.1393 ou cola o URL completo do Google Maps."; return; }
+      close(parsed);
+    };
+    input.onkeydown = (e)=>{ if(e.key === "Enter") document.getElementById("manual-coords-ok").click(); };
+  });
+}
+
+// Parse lat/lon de várias formas: "lat, lon", "lat lon", URL Google Maps (@lat,lon,zoom)
+function parseCoords(raw){
+  // Tentativa 1: URL Google Maps "@lat,lon"
+  const at = raw.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+  if(at) return { lat: parseFloat(at[1]), lon: parseFloat(at[2]) };
+  // Tentativa 2: URL "q=lat,lon" ou "place/.../lat,lon"
+  const q = raw.match(/[?&/](?:q|ll)=(-?\d+\.\d+),(-?\d+\.\d+)/);
+  if(q) return { lat: parseFloat(q[1]), lon: parseFloat(q[2]) };
+  const place = raw.match(/place\/[^/]*\/(-?\d+\.\d+),(-?\d+\.\d+)/);
+  if(place) return { lat: parseFloat(place[1]), lon: parseFloat(place[2]) };
+  // Tentativa 3: plain "lat, lon" ou "lat lon"
+  const m = raw.match(/(-?\d+\.\d+)\s*[,\s]\s*(-?\d+\.\d+)/);
+  if(m){
+    const lat = parseFloat(m[1]), lon = parseFloat(m[2]);
+    // Sanity: PT está entre 32-43 lat, -32 a -6 lon
+    if(lat >= 32 && lat <= 43 && lon >= -32 && lon <= -6) return { lat, lon };
+  }
+  return null;
+}
+
 // ===== Acções: aprovar creche nova (creche_interest) =====
 async function approveInterest(tr){
   const iid = tr.dataset.iid;
@@ -726,26 +842,10 @@ async function approveInterest(tr){
     idade_max_meses = fallback.idade_max_meses;
   }
 
-  // 3. Geocodificar
-  let lat, lon;
-  try{
-    const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" + encodeURIComponent(morada);
-    const r = await fetch(url, { headers: { "Accept-Language": "pt-PT" } });
-    const j = await r.json();
-    if(!j || !j.length){
-      const manualCoords = prompt(`Não consegui geocodificar a morada "${morada}".\n\nIntroduz lat,lon manualmente (ex: 38.7223,-9.1393) ou deixa vazio para cancelar:`);
-      if(!manualCoords) return;
-      const parts = manualCoords.split(",").map(s=>parseFloat(s.trim()));
-      if(parts.length !== 2 || isNaN(parts[0]) || isNaN(parts[1])){ alert("Coordenadas inválidas."); return; }
-      [lat, lon] = parts;
-    } else {
-      lat = parseFloat(j[0].lat);
-      lon = parseFloat(j[0].lon);
-    }
-  }catch(e){
-    alert("Erro a geocodificar: "+e.message);
-    return;
-  }
+  // 3. Geocodificar (várias tentativas, depois fallback manual via Google Maps)
+  const coords = await smartGeocode(morada, distrito);
+  if(!coords) return;
+  const { lat, lon } = coords;
 
   // 4. Confirmação final com TODOS os dados que vão para o mapa
   const summary =
