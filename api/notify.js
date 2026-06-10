@@ -43,6 +43,50 @@ creches.app`,
 </div>`
   },
 
+  // Pedir info completa a quem submeteu apenas dados parciais
+  more_info_needed: {
+    subject: (d) => `Para colocarmos a ${d.creche_name || "vossa creche"} no mapa, precisamos de mais 2 minutos do vosso tempo`,
+    text: (d) => `Olá,
+
+Obrigado por nos contactarem para listar a ${d.creche_name || "vossa creche"} no creches.app.
+
+Para podermos colocar a vossa creche no mapa e acessível aos pais, precisamos de alguns dados adicionais que ainda não temos:
+
+  • Morada completa (rua, número, código postal)
+  • Idades atendidas (berçário 4-12m, creche 4-36m, JI 3-6 anos, ATL)
+  • Telefone de contacto principal
+  • Website ou rede social (se tiverem)
+  • Horário de funcionamento (opcional)
+
+Em vez de responderem por aqui, peço-vos que tornem a preencher o formulário aqui (5 minutos):
+
+  https://creches.app/para-creches
+
+Já agora — também é grátis e fica grátis. Não há subscrições, não há comissões.
+
+Se tiverem alguma dúvida, respondam a este email.
+
+— Joaquim
+creches.app`,
+    html: (d) => `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;color:#2C2356;line-height:1.55">
+  <p>Olá,</p>
+  <p>Obrigado por nos contactarem para listar a <b>${escapeHtml(d.creche_name || "vossa creche")}</b> no <a href="https://creches.app" style="color:#FF6B9D">creches.app</a>.</p>
+  <p>Para podermos colocar a vossa creche no mapa e acessível aos pais, precisamos de alguns dados adicionais que ainda não temos:</p>
+  <ul>
+    <li>Morada completa (rua, número, código postal)</li>
+    <li>Idades atendidas (berçário, creche, JI, ATL)</li>
+    <li>Telefone de contacto principal</li>
+    <li>Website ou rede social (se tiverem)</li>
+    <li>Horário de funcionamento (opcional)</li>
+  </ul>
+  <p>Em vez de responderem por aqui, peço-vos que tornem a preencher o formulário (são 5 minutos):</p>
+  <p><a href="https://creches.app/para-creches" style="display:inline-block;background:#FF6B9D;color:#fff;padding:12px 22px;border-radius:20px;text-decoration:none;font-weight:600">Preencher formulário</a></p>
+  <p style="color:#6E6989;font-size:14px">Já agora — também é grátis e fica grátis. Não há subscrições, não há comissões.</p>
+  <p>Se tiverem alguma dúvida, respondam a este email.</p>
+  <p>— Joaquim<br><a href="https://creches.app" style="color:#FF6B9D">creches.app</a></p>
+</div>`
+  },
+
   // Quando aprovas uma creche que pediu para entrar
   creche_approved: {
     subject: (d) => `A ${d.creche_name} já está em creches.app`,

@@ -34,11 +34,12 @@ service cloud.firestore {
     // Qualquer pessoa pode submeter (create); só admin lê.
     match /creche_interest/{id} {
       allow create: if
-           request.resource.data.keys().hasOnly(["nome","tipo","distrito","email","telefone","criancas","mensagem","source","user_agent","lang","ts"])
+           request.resource.data.keys().hasOnly(["nome","tipo","distrito","email","telefone","criancas","mensagem","morada","idades","idade_min_meses","idade_max_meses","website","horario","source","user_agent","lang","ts"])
         && request.resource.data.nome is string && request.resource.data.nome.size() <= 200
         && request.resource.data.email is string && request.resource.data.email.size() <= 120
         && request.resource.data.tipo is string && request.resource.data.tipo.size() <= 20
-        && request.resource.data.distrito is string && request.resource.data.distrito.size() <= 60;
+        && request.resource.data.distrito is string && request.resource.data.distrito.size() <= 60
+        && request.resource.data.morada is string && request.resource.data.morada.size() <= 200;
       allow read:   if isAdmin();
       allow update: if isAdmin();  // marca como aprovado/rejeitado
       allow delete: if false;

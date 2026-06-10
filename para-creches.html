@@ -314,22 +314,45 @@ footer a{color:var(--ink-soft)}
           </div>
         </div>
         <div class="form-row">
+          <label for="i-morada">Morada completa <span class="req">*</span></label>
+          <input id="i-morada" name="morada" type="text" required maxlength="200" placeholder="Ex.: Rua Augusta 100, 1100-053 Lisboa">
+        </div>
+        <div class="form-row">
+          <label>Idades atendidas <span class="req">*</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14px;line-height:1.4">
+            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="bercario" style="width:18px;height:18px"> Berçário (4-12m)</label>
+            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="creche" style="width:18px;height:18px"> Creche (4-36m)</label>
+            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="ji" style="width:18px;height:18px"> JI (3-6 anos)</label>
+            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="atl" style="width:18px;height:18px"> ATL (6+ anos)</label>
+          </div>
+        </div>
+        <div class="form-row">
           <label for="i-email">Email de contacto <span class="req">*</span></label>
           <input id="i-email" name="email" type="email" required maxlength="120" placeholder="responsavel@creche.pt">
         </div>
         <div class="form-grid2">
           <div class="form-row">
-            <label for="i-tel">Telefone</label>
-            <input id="i-tel" name="telefone" type="tel" maxlength="40" placeholder="Ex.: 21 000 0000">
+            <label for="i-tel">Telefone <span class="req">*</span></label>
+            <input id="i-tel" name="telefone" type="tel" required maxlength="40" placeholder="Ex.: 21 000 0000">
           </div>
           <div class="form-row">
-            <label for="i-crianças">Nº de crianças</label>
+            <label for="i-site">Website ou Facebook</label>
+            <input id="i-site" name="website" type="url" maxlength="200" placeholder="https://...">
+          </div>
+        </div>
+        <div class="form-grid2">
+          <div class="form-row">
+            <label for="i-horario">Horário</label>
+            <input id="i-horario" name="horario" type="text" maxlength="60" placeholder="Ex.: 07:30-19:00">
+          </div>
+          <div class="form-row">
+            <label for="i-criancas">Nº de crianças</label>
             <input id="i-criancas" name="criancas" type="text" maxlength="20" placeholder="Ex.: 60">
           </div>
         </div>
         <div class="form-row">
           <label for="i-msg">Algo a acrescentar?</label>
-          <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Conta-nos o que mais te ajudaria — vagas em tempo real, gestão de contactos, etc."></textarea>
+          <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Algo que queiras que saibamos — horário especial, particularidades, etc."></textarea>
         </div>
         <button id="i-submit" class="form-submit" type="submit">Quero saber quando lançarem →</button>
         <div id="i-error" class="form-error"></div>
@@ -377,21 +400,55 @@ const form = document.getElementById("interest-form");
 const errEl = document.getElementById("i-error");
 const submitBtn = document.getElementById("i-submit");
 
+// Map idades (checkboxes) -> intervalo em meses
+function idadesToRange(idades){
+  if(!idades.length) return null;
+  const map = { bercario:[4,12], creche:[4,36], ji:[36,72], atl:[72,144] };
+  let min = Infinity, max = -Infinity;
+  for(const i of idades){
+    const r = map[i];
+    if(r){ if(r[0]<min) min=r[0]; if(r[1]>max) max=r[1]; }
+  }
+  return min===Infinity ? null : { min, max };
+}
+
 form.addEventListener("submit", async (e)=>{
   e.preventDefault();
   errEl.textContent = "";
-  const data = Object.fromEntries(new FormData(form).entries());
-  // validação leve
+  const fd = new FormData(form);
+  const data = Object.fromEntries(fd.entries());
+  // idades é multi-checkbox, recolho manualmente
+  const idadesSel = fd.getAll("idades").filter(Boolean);
+
+  // validação
   if(!data.nome || data.nome.length < 2){ errEl.textContent="Indica o nome da creche."; return; }
   if(!data.tipo){ errEl.textContent="Escolhe o tipo de creche."; return; }
   if(!data.distrito){ errEl.textContent="Escolhe o distrito."; return; }
+  if(!data.morada || data.morada.length < 8){ errEl.textContent="Indica a morada completa (rua + número + código postal)."; return; }
+  if(!idadesSel.length){ errEl.textContent="Marca pelo menos uma idade atendida."; return; }
   if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)){ errEl.textContent="Indica um email válido."; return; }
+  if(!data.telefone || data.telefone.replace(/\D/g,"").length < 9){ errEl.textContent="Indica um telefone com pelo menos 9 dígitos."; return; }
+
+  const range = idadesToRange(idadesSel);
+  if(!range){ errEl.textContent="Idades inválidas."; return; }
 
   submitBtn.disabled = true;
   submitBtn.textContent = "A enviar…";
   try{
     await db.collection("creche_interest").add({
-      ...data,
+      nome: data.nome,
+      tipo: data.tipo,
+      distrito: data.distrito,
+      morada: data.morada,
+      idades: idadesSel,
+      idade_min_meses: range.min,
+      idade_max_meses: range.max,
+      email: data.email,
+      telefone: data.telefone || "",
+      website: data.website || "",
+      horario: data.horario || "",
+      criancas: data.criancas || "",
+      mensagem: data.mensagem || "",
       source: "para-creches",
       user_agent: navigator.userAgent.slice(0,200),
       lang: navigator.language || "",

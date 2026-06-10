@@ -233,6 +233,10 @@ table tr:hover{background:rgba(255,243,214,.4)}
 
     <section class="panel">
       <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
+      <div style="margin-bottom:14px">
+        <button id="btn-bulk-info" class="btn-apply" style="font-size:13px;padding:8px 14px">📧 Pedir info completa a todas as pendentes</button>
+        <span id="bulk-info-status" style="font-size:12px;color:var(--ink-soft);margin-left:8px"></span>
+      </div>
       <div id="ci-host"></div>
     </section>
 
@@ -812,6 +816,84 @@ async function approveInterest(tr){
   }
 }
 
+// ===== Bulk: pedir info completa a todas as creches pendentes que ainda não a têm =====
+async function bulkRequestInfo(){
+  const btn = document.getElementById("btn-bulk-info");
+  const status = document.getElementById("bulk-info-status");
+  if(!confirm("Vai enviar email a todas as creches pendentes que ainda não enviaram morada/idades completas. Confirmar?")) return;
+
+  btn.disabled = true;
+  status.textContent = "A buscar pendentes…";
+
+  try{
+    const snap = await db.collection("creche_interest").orderBy("ts","desc").limit(500).get();
+    const candidates = [];
+    snap.forEach(d=>{
+      const x = d.data();
+      // Só envia se: (1) ainda não foi resolvida, (2) não tem morada, (3) tem email válido
+      if(x.status === "approved" || x.status === "rejected") return;
+      if(x.morada && x.idade_min_meses != null) return;  // já tem info completa
+      if(!x.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x.email)) return;
+      if(x.info_requested_at) return;  // já lhe pedi antes
+      candidates.push({ id: d.id, ...x });
+    });
+
+    if(candidates.length === 0){
+      status.textContent = "✓ Sem candidatas (todas já têm info ou já foi pedido).";
+      btn.disabled = false;
+      return;
+    }
+
+    if(!confirm(`Vou enviar ${candidates.length} email${candidates.length>1?"s":""}. Vou demorar ~${candidates.length} segundos. Continuar?`)) {
+      status.textContent = "Cancelado.";
+      btn.disabled = false;
+      return;
+    }
+
+    const token = await auth.currentUser.getIdToken();
+    let ok = 0, fail = 0;
+    for(let i = 0; i < candidates.length; i++){
+      const c = candidates[i];
+      status.textContent = `A enviar ${i+1}/${candidates.length}: ${c.nome}…`;
+      try{
+        const resp = await fetch("/api/notify", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            template: "more_info_needed",
+            to: c.email,
+            data: { creche_name: c.nome }
+          })
+        });
+        if(resp.ok){
+          ok++;
+          // Marca para não enviar de novo
+          await db.collection("creche_interest").doc(c.id).update({
+            info_requested_at: firebase.firestore.FieldValue.serverTimestamp(),
+            info_requested_by: auth.currentUser.email
+          });
+        } else {
+          fail++;
+          console.warn("Falhou para", c.email, await resp.text());
+        }
+      }catch(e){
+        fail++;
+        console.warn("Erro de rede para", c.email, e);
+      }
+      // Pequeno delay para não estourar rate limits Resend
+      await new Promise(r => setTimeout(r, 600));
+    }
+
+    status.textContent = `✓ Enviados: ${ok}. Falhas: ${fail}.`;
+    btn.disabled = false;
+    alert(`Enviados ${ok} email${ok===1?"":"s"} de ${candidates.length}.${fail?` ${fail} falhou(aram).`:""}`);
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+    btn.disabled = false;
+  }
+}
+
 // ===== Email notifications (chamada para /api/notify) =====
 async function sendNotification(template, to, data){
   if(!to || !auth.currentUser) return;
@@ -899,6 +981,9 @@ $("btn-copy-uid").addEventListener("click", ()=>{
   }
 });
 $("btn-logout-denied").addEventListener("click", ()=>auth.signOut());
+// Botão bulk request info
+const btnBulk = document.getElementById("btn-bulk-info");
+if(btnBulk) btnBulk.addEventListener("click", bulkRequestInfo);
 
 // === Auth listener ===
 auth.onAuthStateChanged(async (user)=>{
