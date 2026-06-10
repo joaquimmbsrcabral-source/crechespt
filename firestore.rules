@@ -40,7 +40,8 @@ service cloud.firestore {
         && request.resource.data.tipo is string && request.resource.data.tipo.size() <= 20
         && request.resource.data.distrito is string && request.resource.data.distrito.size() <= 60;
       allow read:   if isAdmin();
-      allow update, delete: if false;
+      allow update: if isAdmin();  // marca como aprovado/rejeitado
+      allow delete: if false;
     }
 
     // Feedback de utilizadores autenticados
@@ -55,7 +56,7 @@ service cloud.firestore {
     }
 
     // Reports de idades incorretas em creches específicas
-    // Qualquer utilizador autenticado cria; só admin lê.
+    // Qualquer utilizador autenticado cria; só admin lê e atualiza (marcar resolvido).
     match /creche_reports/{id} {
       allow create: if request.auth != null
         && request.resource.data.uid == request.auth.uid
@@ -66,7 +67,23 @@ service cloud.firestore {
         && request.resource.data.note is string
         && request.resource.data.note.size() <= 500;
       allow read:   if isAdmin();
-      allow update, delete: if false;
+      allow update: if isAdmin();  // marca como aplicado/rejeitado
+      allow delete: if false;
+    }
+
+    // Override de creches existentes (corrige idades, telefone, etc.)
+    // Read público — a app aplica os overrides ao carregar.
+    // Write só admin (via admin panel).
+    match /creche_overrides/{cid} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // Creches extra (não estavam no dataset original; submetidas via /para-creches e aprovadas).
+    // Read público; write só admin.
+    match /creche_extras/{eid} {
+      allow read:  if true;
+      allow write: if isAdmin();
     }
 
     // Stats diários (page views agregados, sem dados pessoais)

@@ -96,6 +96,10 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 table th{text-align:left;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-size:11px;padding:10px 12px;border-bottom:1.5px solid var(--line);position:sticky;top:0;background:#fff}
 table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
 table tr:hover{background:rgba(255,243,214,.4)}
+.btn-apply,.btn-approve-ci{background:var(--c-turquoise);color:#fff;font-weight:700;font-size:11px;padding:5px 9px;border-radius:6px;margin-right:4px;white-space:nowrap}
+.btn-apply:hover,.btn-approve-ci:hover{filter:brightness(1.05)}
+.btn-reject,.btn-reject-ci{background:#fff;color:#888;border:1px solid #ddd;font-weight:600;font-size:11px;padding:4px 8px;border-radius:6px;white-space:nowrap}
+.btn-reject:hover,.btn-reject-ci:hover{border-color:#bbb;color:#444}
 .tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
 .pill{display:inline-block;background:var(--c-turquoise-soft);color:#218985;font-weight:700;font-size:11px;padding:2px 8px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.05em}
 .msg{max-width:480px;color:var(--ink-soft);font-size:13px;line-height:1.4}
@@ -474,10 +478,21 @@ function renderRemovals(rows){
   `;
 }
 
+// Mapeamento das idades claimed para min/max em meses (compatível com creche_overrides)
+const AGE_RANGES = {
+  bercario:   { tipo: "Berçário",   idade_min_meses: 4,  idade_max_meses: 12 },
+  creche:     { tipo: "Creche",     idade_min_meses: 4,  idade_max_meses: 36 },
+  ji:         { tipo: "JI",         idade_min_meses: 36, idade_max_meses: 72 },
+  infantario: { tipo: "Infantário", idade_min_meses: 4,  idade_max_meses: 72 },
+  atl:        { tipo: "ATL",        idade_min_meses: 72, idade_max_meses: 144 },
+};
+
 function renderReports(rows){
-  $("rp-count").textContent = rows.length;
-  if(rows.length===0){
-    $("rp-host").innerHTML = '<div class="empty">Ainda sem reports — quando um utilizador clicar em "🚩 idade errada?" numa creche, aparece aqui.</div>';
+  // Filtrar resolvidos por defeito
+  const pending = rows.filter(r => r.status !== "applied" && r.status !== "rejected");
+  $("rp-count").textContent = pending.length;
+  if(pending.length===0){
+    $("rp-host").innerHTML = '<div class="empty">Sem reports pendentes. 🎉</div>';
     return;
   }
   const labels = {
@@ -487,34 +502,50 @@ function renderReports(rows){
   $("rp-host").innerHTML = `
     <div class="tbl-wrap"><table>
       <thead><tr>
-        <th>Data</th><th>Creche</th><th>Atual</th><th>Sugerido</th><th>Nota</th><th>Reporter</th>
+        <th>Data</th><th>Creche</th><th>Atual</th><th>Sugerido</th><th>Nota</th><th>Ações</th>
       </tr></thead>
       <tbody>
-        ${rows.map(r=>`
-          <tr>
+        ${pending.map(r=>`
+          <tr data-rid="${escapeHtml(r.id)}" data-cid="${escapeHtml(r.creche_id||"")}" data-claim="${escapeHtml(r.claimed_age||"")}">
             <td class="date">${fmtDate(r.ts)}</td>
-            <td><b>${escapeHtml(r.creche_name||"—")}</b><br><span style="font-size:11px;color:#888">${escapeHtml(r.creche_id||"")}</span></td>
+            <td><b>${escapeHtml(r.creche_name||"—")}</b><br><span style="font-size:11px;color:#888">id: ${escapeHtml(r.creche_id||"")}</span></td>
             <td>${escapeHtml(r.current_tipo||"—")}<br><small style="color:#888">${r.current_min??"?"}–${r.current_max??"?"} meses</small></td>
             <td><span class="pill">${escapeHtml(labels[r.claimed_age] || r.claimed_age || "—")}</span></td>
-            <td class="msg">${escapeHtml(r.note||"")}</td>
-            <td class="email-cell">${escapeHtml(r.email||r.uid||"")}</td>
+            <td class="msg">${escapeHtml(r.note||"")}<br><small style="color:#888">por ${escapeHtml(r.email||r.uid||"")}</small></td>
+            <td>
+              <button class="btn-apply">✓ Aplicar</button>
+              <button class="btn-reject">✕ Rejeitar</button>
+            </td>
           </tr>`).join("")}
       </tbody>
     </table></div>
   `;
+  // Wire-up dos botões
+  $("rp-host").querySelectorAll(".btn-apply").forEach(b=>{
+    b.addEventListener("click", e => applyReport(e.target.closest("tr")));
+  });
+  $("rp-host").querySelectorAll(".btn-reject").forEach(b=>{
+    b.addEventListener("click", e => rejectReport(e.target.closest("tr")));
+  });
 }
 
 function renderCreches(rows){
-  $("ci-count").textContent = rows.length;
-  if(rows.length===0){ $("ci-host").innerHTML = '<div class="empty">Sem submissões ainda. Quando uma creche preencher o formulário em /para-creches, aparece aqui.</div>'; return; }
+  const pending = rows.filter(r => r.status !== "approved" && r.status !== "rejected");
+  $("ci-count").textContent = pending.length;
+  if(pending.length===0){ $("ci-host").innerHTML = '<div class="empty">Sem submissões pendentes. 🎉</div>'; return; }
   $("ci-host").innerHTML = `
     <div class="tbl-wrap"><table>
       <thead><tr>
-        <th>Data</th><th>Nome</th><th>Email / Tel</th><th>Tipo</th><th>Distrito</th><th>Crianças</th><th>Mensagem</th>
+        <th>Data</th><th>Nome</th><th>Email / Tel</th><th>Tipo</th><th>Distrito</th><th>Crianças</th><th>Mensagem</th><th>Ações</th>
       </tr></thead>
       <tbody>
-        ${rows.map(r=>`
-          <tr>
+        ${pending.map(r=>`
+          <tr data-iid="${escapeHtml(r.id)}"
+              data-nome="${escapeHtml(r.nome||"")}"
+              data-tipo="${escapeHtml(r.tipo||"")}"
+              data-distrito="${escapeHtml(r.distrito||"")}"
+              data-tel="${escapeHtml(r.telefone||"")}"
+              data-email="${escapeHtml(r.email||"")}">
             <td class="date">${fmtDate(r.ts)}</td>
             <td><b>${escapeHtml(r.nome||"—")}</b></td>
             <td class="email-cell">${escapeHtml(r.email||"—")}${r.telefone?`<br>${escapeHtml(r.telefone)}`:""}</td>
@@ -522,10 +553,181 @@ function renderCreches(rows){
             <td>${escapeHtml(r.distrito||"—")}</td>
             <td>${escapeHtml(r.criancas||"—")}</td>
             <td class="msg">${escapeHtml(r.mensagem||"").slice(0,200)}</td>
+            <td>
+              <button class="btn-approve-ci">✓ Aprovar</button>
+              <button class="btn-reject-ci">✕ Rejeitar</button>
+            </td>
           </tr>`).join("")}
       </tbody>
     </table></div>
   `;
+  $("ci-host").querySelectorAll(".btn-approve-ci").forEach(b=>{
+    b.addEventListener("click", e => approveInterest(e.target.closest("tr")));
+  });
+  $("ci-host").querySelectorAll(".btn-reject-ci").forEach(b=>{
+    b.addEventListener("click", e => rejectInterest(e.target.closest("tr")));
+  });
+}
+
+// ===== Acções: aplicar correção de idade =====
+async function applyReport(tr){
+  const reportId = tr.dataset.rid;
+  const crecheId = tr.dataset.cid;
+  const claim    = tr.dataset.claim;
+  if(!crecheId){
+    alert("Este report não tem ID da creche associado — não dá para aplicar override automático.");
+    return;
+  }
+  if(claim === "naoecreche"){
+    if(!confirm("Marcar como 'não é creche'? Isto vai ESCONDER a creche da app para todos os utilizadores.")) return;
+    try{
+      await db.collection("creche_overrides").doc(String(crecheId)).set({
+        hidden: true,
+        applied_at: firebase.firestore.FieldValue.serverTimestamp(),
+        applied_by: auth.currentUser.email,
+        reason: "naoecreche (via report)"
+      }, { merge: true });
+      await markReportResolved(reportId, "applied");
+      tr.remove();
+      alert("Creche escondida. Os utilizadores deixam de a ver imediatamente.");
+    }catch(e){ alert("Erro: "+e.message); }
+    return;
+  }
+  if(claim === "outra"){
+    alert("Este report é 'Outra' — abre a nota e aplica manualmente. Edita aqui:");
+    customApply(crecheId, reportId);
+    return;
+  }
+  const range = AGE_RANGES[claim];
+  if(!range){
+    alert("Idade reportada desconhecida: " + claim);
+    return;
+  }
+  if(!confirm(`Aplicar override:\nTipo: ${range.tipo}\nIdade: ${range.idade_min_meses}–${range.idade_max_meses} meses\n\nEsta correção fica imediatamente visível na app.`)) return;
+  try{
+    await db.collection("creche_overrides").doc(String(crecheId)).set({
+      tipo: range.tipo,
+      idade_min_meses: range.idade_min_meses,
+      idade_max_meses: range.idade_max_meses,
+      applied_at: firebase.firestore.FieldValue.serverTimestamp(),
+      applied_by: auth.currentUser.email,
+      report_id: reportId
+    }, { merge: true });
+    await markReportResolved(reportId, "applied");
+    tr.remove();
+    alert("✓ Correção aplicada! Vê em creches.app/app (recarrega).");
+  }catch(e){
+    console.error(e);
+    alert("Erro a aplicar: "+e.message);
+  }
+}
+
+function customApply(crecheId, reportId){
+  const tipo = prompt("Tipo (Berçário | Creche | JI | Infantário | ATL):", "Creche");
+  if(!tipo) return;
+  const minM = parseInt(prompt("Idade mínima em meses:", "4"));
+  const maxM = parseInt(prompt("Idade máxima em meses:", "36"));
+  if(isNaN(minM) || isNaN(maxM)) return alert("Idades inválidas.");
+  db.collection("creche_overrides").doc(String(crecheId)).set({
+    tipo, idade_min_meses: minM, idade_max_meses: maxM,
+    applied_at: firebase.firestore.FieldValue.serverTimestamp(),
+    applied_by: auth.currentUser.email,
+    report_id: reportId,
+    custom: true
+  }, { merge: true })
+  .then(()=> markReportResolved(reportId, "applied"))
+  .then(()=> { alert("✓ Override custom aplicado."); loadDashboard(auth.currentUser); })
+  .catch(e=> alert("Erro: "+e.message));
+}
+
+async function rejectReport(tr){
+  if(!confirm("Rejeitar este report? Vai deixar de aparecer aqui mas a creche fica como está no dataset original.")) return;
+  await markReportResolved(tr.dataset.rid, "rejected");
+  tr.remove();
+}
+
+async function markReportResolved(id, status){
+  return db.collection("creche_reports").doc(id).update({
+    status,
+    resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
+    resolved_by: auth.currentUser.email
+  });
+}
+
+// ===== Acções: aprovar creche nova (creche_interest) =====
+async function approveInterest(tr){
+  const iid = tr.dataset.iid;
+  const nome = tr.dataset.nome;
+  const tipo = tr.dataset.tipo;
+  const distrito = tr.dataset.distrito;
+  const tel = tr.dataset.tel;
+  const email = tr.dataset.email;
+
+  // Pedir morada para geocoding automático
+  const morada = prompt(`Aprovar "${nome}" (${distrito}).\n\nIntroduz a morada completa para obter as coordenadas:`, "");
+  if(!morada) return;
+
+  alert("A geocodificar a morada... aguarda.");
+  let lat, lon;
+  try{
+    const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" + encodeURIComponent(morada);
+    const r = await fetch(url, { headers: { "Accept-Language": "pt-PT" } });
+    const j = await r.json();
+    if(!j || !j.length){ alert("Morada não encontrada. Tenta uma mais completa."); return; }
+    lat = parseFloat(j[0].lat);
+    lon = parseFloat(j[0].lon);
+  }catch(e){
+    alert("Erro a geocodificar: "+e.message);
+    return;
+  }
+
+  // Mapear tipo do form para o tipo do dataset
+  const tipoMap = {
+    bercario:"Berçário", creche:"Creche", ji:"JI",
+    infantario:"Infantário", atl:"ATL", outra:"Creche"
+  };
+  const tipoFinal = tipoMap[tipo] || "Creche";
+  const range = AGE_RANGES[tipo] || AGE_RANGES.creche;
+
+  if(!confirm(`Confirma adicionar à app:\n\nNome: ${nome}\nMorada: ${morada}\nLat/Lon: ${lat.toFixed(5)}, ${lon.toFixed(5)}\nTipo: ${tipoFinal}\nIdade: ${range.idade_min_meses}–${range.idade_max_meses} meses\nTel: ${tel}\n\nVai aparecer imediatamente no mapa para todos os utilizadores.`)) return;
+
+  try{
+    await db.collection("creche_extras").add({
+      nome, morada, distrito,
+      lat, lon,
+      tipo: tipoFinal,
+      idade_min_meses: range.idade_min_meses,
+      idade_max_meses: range.idade_max_meses,
+      telefone: tel || "",
+      email: email || "",
+      source: "user_submission",
+      interest_id: iid,
+      added_at: firebase.firestore.FieldValue.serverTimestamp(),
+      added_by: auth.currentUser.email
+    });
+    await db.collection("creche_interest").doc(iid).update({
+      status: "approved",
+      resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
+      resolved_by: auth.currentUser.email
+    });
+    tr.remove();
+    alert("✓ Creche adicionada! Já está no mapa.");
+  }catch(e){
+    console.error(e);
+    alert("Erro: "+e.message);
+  }
+}
+
+async function rejectInterest(tr){
+  if(!confirm("Rejeitar esta submissão?")) return;
+  try{
+    await db.collection("creche_interest").doc(tr.dataset.iid).update({
+      status: "rejected",
+      resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
+      resolved_by: auth.currentUser.email
+    });
+    tr.remove();
+  }catch(e){ alert("Erro: "+e.message); }
 }
 
 function renderFeedback(rows){

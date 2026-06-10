@@ -1625,8 +1625,6 @@ async function loadDataset(){
   const text = await new Response(stream).text();
   const raw = JSON.parse(text);
   // Reescrita client-side da inferência de idades (algoritmo melhorado)
-  // Resultado: cada creche fica com c.tipo, c.idade_min_meses, c.idade_max_meses, c.idade_verificar
-  // Entradas que claramente NÃO são creches são removidas (escolas básicas só, ATL puros).
   const cleaned = [];
   for(const c of raw){
     const r = inferAges(c.nome || "", c.tipo || "");
@@ -1637,6 +1635,41 @@ async function loadDataset(){
     c.idade_verificar = !!r.verificar;
     cleaned.push(c);
   }
+  // === Override layer (Firestore) ===
+  // Aplica correções manuais (idade, telefone, nome, tipo) e adiciona creches extra.
+  // Carrega em paralelo com o resto da app — não bloqueia.
+  try{
+    if(typeof firebase !== "undefined" && firebase.apps && firebase.apps.length){
+      const db = firebase.firestore();
+      const [overridesSnap, extrasSnap] = await Promise.all([
+        db.collection("creche_overrides").get().catch(()=>null),
+        db.collection("creche_extras").get().catch(()=>null),
+      ]);
+      // Map overrides by creche id
+      if(overridesSnap){
+        const overrides = new Map();
+        overridesSnap.forEach(d => overrides.set(String(d.id), d.data()));
+        for(let i=0; i<cleaned.length; i++){
+          const o = overrides.get(String(cleaned[i].id));
+          if(o){
+            // Merge — campos do override sobrescrevem o dataset original
+            cleaned[i] = { ...cleaned[i], ...o, _overridden: true };
+            // Se o override define tipo/idades explicitamente, marca como verificado
+            if(o.tipo || o.idade_min_meses != null) cleaned[i].idade_verificar = false;
+          }
+        }
+      }
+      // Append extras (creches novas)
+      if(extrasSnap){
+        extrasSnap.forEach(d => {
+          const x = d.data();
+          if(x && x.lat != null && x.lon != null){
+            cleaned.push({ ...x, id: "extra_" + d.id, _extra: true });
+          }
+        });
+      }
+    }
+  }catch(e){ console.warn("Overrides skipped:", e); }
   return cleaned;
 }
 
