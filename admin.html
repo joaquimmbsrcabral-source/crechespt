@@ -614,21 +614,79 @@ async function applyReport(tr){
       report_id: reportId
     }, { merge: true });
     await markReportResolved(reportId, "applied");
-    // Notificar o reporter (best-effort)
-    const reporterEmail = tr.dataset.email;
-    if(reporterEmail){
-      sendNotification("report_applied", reporterEmail, {
-        creche_name: tr.dataset.cname,
-        tipo: range.tipo,
-        min: range.idade_min_meses,
-        max: range.idade_max_meses
-      });
-    }
+
+    // Tentar notificar o reporter (best-effort, robusto)
+    const emailResult = await tryNotifyReporter(tr, {
+      creche_name: tr.dataset.cname,
+      tipo: range.tipo,
+      min: range.idade_min_meses,
+      max: range.idade_max_meses
+    });
+
     tr.remove();
-    alert("✓ Correção aplicada! Vê em creches.app/app (recarrega).");
+    if(emailResult.sent){
+      alert(`✓ Correção aplicada e email enviado para ${emailResult.to}.\nVê em creches.app/app (recarrega).`);
+    } else {
+      alert(`✓ Correção aplicada.\n⚠ Email NÃO enviado: ${emailResult.reason}\nVê em creches.app/app (recarrega).`);
+    }
   }catch(e){
     console.error(e);
     alert("Erro a aplicar: "+e.message);
+  }
+}
+
+// Tenta encontrar email do reporter por 3 vias e enviar notificação.
+// Retorna { sent: bool, to: string, reason: string }
+async function tryNotifyReporter(tr, data){
+  // 1. Email no doc do report (já vem no data-email)
+  let to = (tr.dataset.email || "").trim();
+  let source = "report doc";
+
+  // 2. Se não houver, tenta puxar do users/{uid} via UID
+  if(!to){
+    // O UID está na coluna do reporter no <td>; tentamos extrair do dataset se existir
+    // (não está no atual data-*; vamos via API: ler o doc report)
+    const reportId = tr.dataset.rid;
+    try{
+      const rDoc = await db.collection("creche_reports").doc(reportId).get();
+      const uid = rDoc.exists ? rDoc.data().uid : null;
+      if(uid){
+        const uDoc = await db.collection("users").doc(uid).get();
+        to = uDoc.exists ? (uDoc.data().email || "").trim() : "";
+        source = "users/{uid}";
+      }
+    }catch(e){ console.warn("user lookup failed:", e); }
+  }
+
+  // 3. Se ainda não houver, pergunta ao admin (opcional)
+  if(!to){
+    const manual = prompt("Este report não tem email guardado. Queres enviar email a quem? (deixa vazio para saltar)");
+    to = (manual || "").trim();
+    source = "manual";
+    if(!to) return { sent: false, to: "", reason: "Sem email associado." };
+  }
+
+  // 4. Valida formato
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)){
+    return { sent: false, to, reason: "Formato de email inválido." };
+  }
+
+  // 5. Envia via /api/notify
+  try{
+    const token = await auth.currentUser.getIdToken();
+    const resp = await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ template: "report_applied", to, data })
+    });
+    if(resp.ok){
+      return { sent: true, to, reason: "OK (" + source + ")" };
+    } else {
+      const err = await resp.json().catch(()=>({error:"unknown"}));
+      return { sent: false, to, reason: `HTTP ${resp.status}: ${err.error || "erro desconhecido"}` };
+    }
+  }catch(e){
+    return { sent: false, to, reason: "Falha de rede: " + e.message };
   }
 }
 
@@ -720,15 +778,34 @@ async function approveInterest(tr){
       resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
       resolved_by: auth.currentUser.email
     });
-    // Notificar a creche que submeteu (best-effort)
-    if(email){
-      sendNotification("creche_approved", email, {
-        creche_name: nome,
-        distrito: distrito
-      });
+    // Notificar a creche que submeteu — feedback claro
+    let emailMsg = "";
+    if(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      try{
+        const token = await auth.currentUser.getIdToken();
+        const resp = await fetch("/api/notify", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            template: "creche_approved",
+            to: email,
+            data: { creche_name: nome, distrito }
+          })
+        });
+        if(resp.ok){
+          emailMsg = `📧 Email enviado para ${email}.`;
+        } else {
+          const err = await resp.json().catch(()=>({error:"unknown"}));
+          emailMsg = `⚠ Email NÃO enviado (HTTP ${resp.status}: ${err.error || "erro"}).`;
+        }
+      }catch(e){
+        emailMsg = `⚠ Email NÃO enviado (falha de rede: ${e.message}).`;
+      }
+    } else {
+      emailMsg = "⚠ Sem email válido no doc — não foi enviada notificação.";
     }
     tr.remove();
-    alert("✓ Creche adicionada! Já está no mapa.");
+    alert(`✓ Creche adicionada ao mapa!\n${emailMsg}`);
   }catch(e){
     console.error(e);
     alert("Erro: "+e.message);
