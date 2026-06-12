@@ -232,6 +232,19 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <section class="panel">
+      <h3>🛠 Ferramentas admin</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <button id="btn-copy-summary" class="btn-apply" style="font-size:13px;padding:8px 14px">📋 Copiar resumo para clipboard</button>
+        <button id="btn-clean-dupes" class="btn-apply" style="font-size:13px;padding:8px 14px;background:var(--c-peach)">🧹 Limpar duplicados de creche_extras</button>
+        <span id="tools-status" style="font-size:12px;color:var(--ink-soft)"></span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-soft);margin-top:10px">
+        <b>📋 Copiar resumo:</b> copia todas as métricas (visitas, registos, pendentes...) em texto pronto para colares ao Claude. •
+        <b>🧹 Limpar duplicados:</b> verifica e apaga entradas duplicadas em creche_extras (mantém a mais antiga).
+      </p>
+    </section>
+
+    <section class="panel">
       <h3>🏫 Creches interessadas em listar-se <span class="count" id="ci-count">0</span></h3>
       <div style="margin-bottom:14px">
         <button id="btn-bulk-info" class="btn-apply" style="font-size:13px;padding:8px 14px">📧 Pedir info completa a todas as pendentes</button>
@@ -526,10 +539,24 @@ function renderReports(rows){
   `;
   // Wire-up dos botões
   $("rp-host").querySelectorAll(".btn-apply").forEach(b=>{
-    b.addEventListener("click", e => applyReport(e.target.closest("tr")));
+    b.addEventListener("click", async e => {
+      const btn = e.target;
+      if(btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = "...";
+      try { await applyReport(btn.closest("tr")); }
+      catch(err){ console.error(err); btn.disabled = false; btn.textContent = "✓ Aplicar"; }
+    });
   });
   $("rp-host").querySelectorAll(".btn-reject").forEach(b=>{
-    b.addEventListener("click", e => rejectReport(e.target.closest("tr")));
+    b.addEventListener("click", async e => {
+      const btn = e.target;
+      if(btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = "...";
+      try { await rejectReport(btn.closest("tr")); }
+      catch(err){ console.error(err); btn.disabled = false; btn.textContent = "✕ Rejeitar"; }
+    });
   });
 }
 
@@ -571,10 +598,24 @@ function renderCreches(rows){
     </table></div>
   `;
   $("ci-host").querySelectorAll(".btn-approve-ci").forEach(b=>{
-    b.addEventListener("click", e => approveInterest(e.target.closest("tr")));
+    b.addEventListener("click", async e => {
+      const btn = e.target;
+      if(btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = "...";
+      try { await approveInterest(btn.closest("tr")); }
+      catch(err){ console.error(err); btn.disabled = false; btn.textContent = "✓ Aprovar"; }
+    });
   });
   $("ci-host").querySelectorAll(".btn-reject-ci").forEach(b=>{
-    b.addEventListener("click", e => rejectInterest(e.target.closest("tr")));
+    b.addEventListener("click", async e => {
+      const btn = e.target;
+      if(btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = "...";
+      try { await rejectInterest(btn.closest("tr")); }
+      catch(err){ console.error(err); btn.disabled = false; btn.textContent = "✕ Rejeitar"; }
+    });
   });
 }
 
@@ -1165,6 +1206,105 @@ $("btn-logout-denied").addEventListener("click", ()=>auth.signOut());
 // Botão bulk request info
 const btnBulk = document.getElementById("btn-bulk-info");
 if(btnBulk) btnBulk.addEventListener("click", bulkRequestInfo);
+
+// Botão limpar duplicados de creche_extras
+const btnCleanDupes = document.getElementById("btn-clean-dupes");
+if(btnCleanDupes) btnCleanDupes.addEventListener("click", async ()=>{
+  const status = document.getElementById("tools-status");
+  status.textContent = "A verificar duplicados…";
+  btnCleanDupes.disabled = true;
+  try{
+    const snap = await db.collection("creche_extras").orderBy("added_at").get();
+    const seen = new Map();
+    const dupes = [];
+    snap.forEach(d => {
+      const key = (d.data().nome||"").trim().toLowerCase()+"|"+(d.data().distrito||"").trim().toLowerCase();
+      if(seen.has(key)){ dupes.push({id: d.id, nome: d.data().nome}); }
+      else seen.set(key, d.id);
+    });
+    if(dupes.length === 0){
+      status.textContent = "✓ Sem duplicados (" + snap.size + " entradas únicas).";
+      btnCleanDupes.disabled = false;
+      return;
+    }
+    const list = dupes.map(d=>"  • "+d.nome).join("\n");
+    if(!confirm(`Encontrei ${dupes.length} duplicado${dupes.length===1?"":"s"}:\n\n${list}\n\nApagar?`)){
+      status.textContent = "Cancelado.";
+      btnCleanDupes.disabled = false;
+      return;
+    }
+    let ok = 0;
+    for(const d of dupes){
+      try{
+        await db.collection("creche_extras").doc(d.id).delete();
+        ok++;
+      }catch(e){ console.warn("Falha a apagar", d.id, e); }
+    }
+    status.textContent = `✓ ${ok} duplicado${ok===1?"":"s"} apagado${ok===1?"":"s"}.`;
+    btnCleanDupes.disabled = false;
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+    btnCleanDupes.disabled = false;
+  }
+});
+
+// Botão copiar resumo para clipboard
+const btnCopy = document.getElementById("btn-copy-summary");
+if(btnCopy) btnCopy.addEventListener("click", async ()=>{
+  const status = document.getElementById("tools-status");
+  status.textContent = "A juntar números…";
+  btnCopy.disabled = true;
+  try{
+    // Tudo o que já está no DOM:
+    const v = (id) => document.getElementById(id)?.textContent?.trim() || "?";
+    const counts = {
+      "Utilizadores totais": v("m-users"),
+      "Utilizadores ativos (7d)": v("m-active"),
+      "Creches interessadas": v("m-creches"),
+      "Feedback": v("m-feedback"),
+      "Reports de idade": v("m-reports"),
+      "Pedidos de remoção": v("m-removals"),
+      "Visitas hoje": v("m-views-today"),
+      "Visitas 7 dias": v("m-views-7d")
+    };
+
+    // Contagens extras: creche_extras e overrides
+    const [extrasSnap, overridesSnap] = await Promise.all([
+      db.collection("creche_extras").get(),
+      db.collection("creche_overrides").get()
+    ]);
+    const extrasSeen = new Set();
+    let extrasUnicos = 0;
+    extrasSnap.forEach(d => {
+      const k = (d.data().nome||"").trim().toLowerCase()+"|"+(d.data().distrito||"").trim().toLowerCase();
+      if(!extrasSeen.has(k)){ extrasSeen.add(k); extrasUnicos++; }
+    });
+
+    const today = new Date().toISOString().slice(0,10);
+    const lines = [
+      `=== Resumo Creches.app — ${today} ===`,
+      ``,
+      `Dataset base: 2.591 creches em 20 distritos`,
+      `Creches extras adicionadas via admin: ${extrasUnicos} únicas (${extrasSnap.size} docs em creche_extras${extrasSnap.size > extrasUnicos ? " — há duplicados!" : ""})`,
+      `Overrides de idade aplicados: ${overridesSnap.size}`,
+      `Total mapeado: ${2591 + extrasUnicos} creches`,
+      ``,
+      `--- Métricas do dashboard ---`,
+      ...Object.entries(counts).map(([k,v])=>`${k}: ${v}`),
+      ``,
+      `(gerado automaticamente em creches.app/admin)`
+    ];
+    const text = lines.join("\n");
+    await navigator.clipboard.writeText(text);
+    status.textContent = "✓ Copiado para clipboard! Cola ao Claude.";
+    btnCopy.disabled = false;
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+    btnCopy.disabled = false;
+  }
+});
 
 // === Auth listener ===
 auth.onAuthStateChanged(async (user)=>{
