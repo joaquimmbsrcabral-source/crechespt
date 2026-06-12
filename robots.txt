@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://creches.app/sitemap.xml
+Sitemap: https://creches.app/sitemap-creches.xml
