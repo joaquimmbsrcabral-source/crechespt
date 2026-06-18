@@ -11,6 +11,7 @@
     { "source": "/cookies", "destination": "/cookies.html" },
     { "source": "/termos", "destination": "/termos.html" },
     { "source": "/creches", "destination": "/creches/index.html" },
+    { "source": "/creches/:distrito/:concelho", "destination": "/creches/:distrito/:concelho.html" },
     { "source": "/creches/:slug", "destination": "/creches/:slug.html" },
     { "source": "/creche/:slug", "destination": "/creche/:slug.html" },
     { "source": "/guias", "destination": "/guias/index.html" },

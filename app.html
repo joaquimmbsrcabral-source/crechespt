@@ -886,6 +886,7 @@ header.topbar{
 <meta property="og:image:alt" content="Creches.app — todas as creches de Portugal num só mapa">
 <meta name="twitter:image" content="https://creches.app/og-image.png">
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer data-domain="creches.app" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
 <body>
 
@@ -1527,6 +1528,11 @@ const AGE_BUCKETS = {
   atl:        { label:"ATL (6+)",               min:72, max:144, emoji:"🎒" },
 };
 
+// Wrapper de console — só dispara em localhost/dev. Em produção fica silencioso.
+const __DEV__ = (typeof location !== "undefined") && (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname.endsWith(".vercel.app"));
+function _w(){ if(__DEV__ && typeof console !== "undefined") console.warn.apply(console, arguments); }
+function _e(){ if(__DEV__ && typeof console !== "undefined") console.error.apply(console, arguments); }
+
 const State = {
   creches: [],
   filtered: [],
@@ -1564,7 +1570,7 @@ function loadUserDataFromLocal(){
       }
     }
     if(raw) State.userData = JSON.parse(raw);
-  }catch(e){ console.warn("ls read", e); }
+  }catch(e){ _w("ls read", e); }
   if(!State.userData.creches) State.userData.creches = {};
   if(!State.userData.settings) State.userData.settings = {};
 }
@@ -1585,7 +1591,7 @@ let _saveInFlight = false;
 function saveUserData(){
   // cache local imediato (offline-first)
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(State.userData)); }
-  catch(e){ console.warn("ls write", e); }
+  catch(e){ _w("ls write", e); }
   // sync para Firestore (debounced, 800ms)
   if(USE_FIREBASE && FB && FB.user){
     if(_saveTimer) clearTimeout(_saveTimer);
@@ -1599,7 +1605,7 @@ function saveUserData(){
                  updated_at: firebase.firestore.FieldValue.serverTimestamp() });
         setSyncStatus("ok","Sincronizado");
       }catch(e){
-        console.error("firestore write", e);
+        _e("firestore write", e);
         setSyncStatus("err","Erro a sincronizar");
       } finally{ _saveInFlight = false; }
     }, 800);
@@ -1626,7 +1632,7 @@ async function loadUserDataFromFirestore(){
     setSyncStatus("ok","Sincronizado");
     return true;
   }catch(e){
-    console.error("firestore read", e);
+    _e("firestore read", e);
     setSyncStatus("err","Modo offline");
     return false;
   }
@@ -1741,7 +1747,7 @@ async function loadDataset(){
         });
       }
     }
-  }catch(e){ console.warn("Overrides skipped:", e); }
+  }catch(e){ _w("Overrides skipped:", e); }
   return cleaned;
 }
 
@@ -2713,7 +2719,7 @@ function wireUp(){
       applyFilters();
       toast("A mostrar creches mais próximas de " + (loc.label.split(",")[0]||q),"ok",{duration:4000});
     }catch(e){
-      console.error(e);
+      _e(e);
       toast(e.message || "Não foi possível encontrar essa morada","err",{duration:5000});
     } finally {
       addrBtn.disabled = false;
@@ -2981,7 +2987,7 @@ async function signInGoogle(){
     provider.setCustomParameters({ prompt: "select_account" });
     await FB.auth.signInWithPopup(provider);
   }catch(e){
-    console.error(e);
+    _e(e);
     let msg = e.message || "Erro ao iniciar sessão";
     if(e.code === "auth/popup-blocked") msg = "O browser bloqueou o pop-up. Permite pop-ups para esta página e tenta de novo.";
     if(e.code === "auth/popup-closed-by-user") msg = "Pop-up fechado. Tenta de novo.";
@@ -2994,7 +3000,7 @@ async function signInGoogle(){
 
 async function signOut(){
   if(!FB) return;
-  try{ await FB.auth.signOut(); }catch(e){ console.warn(e); }
+  try{ await FB.auth.signOut(); }catch(e){ _w(e); }
   // limpa cache local também
   localStorage.removeItem(STORAGE_KEY);
   location.reload();
@@ -3033,14 +3039,14 @@ function renderUserChip(user){
     try{
       const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
       FB = { app: fbApp, auth: firebase.auth(), db: firebase.firestore(), user: null };
-    }catch(e){ console.warn("Firebase init falhou:", e); }
+    }catch(e){ _w("Firebase init falhou:", e); }
   }
 
   try{
     State.creches = await loadDataset();
   }catch(e){
     document.getElementById("list-scroll").innerHTML = '<div class="empty">Erro a carregar dataset: '+escapeHtml(e.message)+'</div>';
-    console.error(e); return;
+    _e(e); return;
   }
   populateSelects();
   refreshConcelhoSelect();
@@ -3056,9 +3062,9 @@ function renderUserChip(user){
           FB.db.collection("daily_stats").doc(today).set({
             app_views: firebase.firestore.FieldValue.increment(1),
             updated_at: firebase.firestore.FieldValue.serverTimestamp()
-          }, { merge: true }).catch(e=>console.warn("stats write", e));
+          }, { merge: true }).catch(e=>_w("stats write", e));
         }
-      }catch(e){ console.warn("tracking skipped", e); }
+      }catch(e){ _w("tracking skipped", e); }
       // espera o callback inicial de auth
       FB.auth.onAuthStateChanged(async (user)=>{
         if(user){
@@ -3076,7 +3082,7 @@ function renderUserChip(user){
             };
             if(!snap.exists){ base.createdAt = firebase.firestore.FieldValue.serverTimestamp(); }
             await ref.set(base, { merge: true });
-          }catch(e){ console.warn("profile write skipped", e); }
+          }catch(e){ _w("profile write skipped", e); }
           await loadUserDataFromFirestore();
           showAppShell();
           applyFilters();
@@ -3154,7 +3160,7 @@ function renderUserChip(user){
           closeFb();
           toast("Obrigado! Recebi a tua mensagem 💛","ok",{duration:4000});
         }catch(e){
-          console.error(e);
+          _e(e);
           toast("Não foi possível enviar. Tenta de novo.","err");
         } finally {
           fbSend.disabled = false;
@@ -3216,7 +3222,7 @@ function renderUserChip(user){
           closeRm();
           toast("Pedido recebido. Respondemos em 7 dias úteis para "+email,"ok",{duration:5000});
         }catch(e){
-          console.error(e);
+          _e(e);
           toast("Não foi possível enviar. Tenta de novo ou envia email para geral@creches.app","err",{duration:6000});
         } finally {
           rmSend.disabled = false;
@@ -3311,7 +3317,7 @@ function renderUserChip(user){
           closeRa();
           toast("Obrigado! Vou rever à mão 💛","ok",{duration:4000});
         }catch(e){
-          console.error(e);
+          _e(e);
           toast("Não foi possível enviar. Tenta de novo.","err");
         } finally {
           raSend.disabled = false;
@@ -3328,7 +3334,7 @@ function renderUserChip(user){
         if(!e.target.closest("#user-chip")) document.getElementById("user-menu").classList.remove("open");
       });
     }catch(e){
-      console.error("firebase init", e);
+      _e("firebase init", e);
       // fallback offline
       showAppShell();
       applyFilters();

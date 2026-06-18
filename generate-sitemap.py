@@ -118,7 +118,10 @@ def main():
     # 5. Sitemap INDEX
     index_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for fname in ["sitemap-main.xml", "sitemap-guias.xml", "sitemap-distritos.xml"] + sitemap_creches_files:
+    extra_sitemaps = []
+    if os.path.exists(os.path.join(ROOT, "sitemap-concelhos.xml")):
+        extra_sitemaps.append("sitemap-concelhos.xml")
+    for fname in ["sitemap-main.xml", "sitemap-guias.xml", "sitemap-distritos.xml"] + extra_sitemaps + sitemap_creches_files:
         index_lines.append("  <sitemap>")
         index_lines.append(f"    <loc>{BASE}/{fname}</loc>")
         index_lines.append(f"    <lastmod>{TODAY}</lastmod>")
