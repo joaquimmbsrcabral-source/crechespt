@@ -96,6 +96,13 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 table th{text-align:left;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-size:11px;padding:10px 12px;border-bottom:1.5px solid var(--line);position:sticky;top:0;background:#fff}
 table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
 table tr:hover{background:rgba(255,243,214,.4)}
+.ef-input{width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font:inherit;box-sizing:border-box;background:#fff}
+.ef-input:focus{outline:none;border-color:var(--c-coral)}
+.edit-result{padding:10px 14px;border-bottom:1px solid var(--line);cursor:pointer;font-size:13px}
+.edit-result:hover{background:rgba(255,243,214,.4)}
+.edit-result:last-child{border-bottom:0}
+.edit-result .er-nome{font-weight:700;color:var(--ink)}
+.edit-result .er-meta{font-size:11px;color:var(--ink-soft);margin-top:2px}
 .btn-apply,.btn-approve-ci{background:var(--c-turquoise);color:#fff;font-weight:700;font-size:11px;padding:5px 9px;border-radius:6px;margin-right:4px;white-space:nowrap}
 .btn-apply:hover,.btn-approve-ci:hover{filter:brightness(1.05)}
 .btn-reject,.btn-reject-ci{background:#fff;color:#888;border:1px solid #ddd;font-weight:600;font-size:11px;padding:4px 8px;border-radius:6px;white-space:nowrap}
@@ -229,6 +236,87 @@ table tr:hover{background:rgba(255,243,214,.4)}
     <section class="panel">
       <h3>📈 Visitas diárias à app — últimos 30 dias</h3>
       <div id="views-chart-host" style="height:220px;display:flex;align-items:stretch;gap:3px;padding:14px;background:rgba(255,246,238,.5);border-radius:14px"></div>
+    </section>
+
+    <section class="panel">
+      <h3>📝 Editar qualquer creche</h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Pesquisa por nome, morada, telefone ou distrito (mínimo 3 letras). Carrega numa para editar todos os campos.
+      </p>
+      <input id="edit-search" type="search" placeholder="Ex.: Casinha do ABC"
+             style="width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;box-sizing:border-box">
+      <div id="edit-search-status" style="font-size:12px;color:var(--ink-soft);margin-top:6px;min-height:16px"></div>
+      <div id="edit-search-results" style="max-height:280px;overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:8px;display:none"></div>
+      <!-- Editor form -->
+      <div id="edit-form-host" style="display:none;margin-top:18px;padding-top:18px;border-top:1.5px solid var(--line)">
+        <h4 id="edit-form-title" style="margin:0 0 4px;font-size:16px">A editar: —</h4>
+        <p id="edit-form-id" style="font-size:11px;color:var(--ink-soft);font-family:monospace;margin:0 0 16px">id: —</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;font-size:13px">
+          <label style="grid-column:span 2"><span style="display:block;font-weight:700;margin-bottom:3px">Nome</span>
+            <input id="ef-nome" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Telefone</span>
+            <input id="ef-telefone" type="tel" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Email</span>
+            <input id="ef-email" type="email" class="ef-input"></label>
+          <label style="grid-column:span 2"><span style="display:block;font-weight:700;margin-bottom:3px">Website</span>
+            <input id="ef-website" type="url" class="ef-input"></label>
+          <label style="grid-column:span 2"><span style="display:block;font-weight:700;margin-bottom:3px">Morada</span>
+            <input id="ef-morada" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Localidade</span>
+            <input id="ef-localidade" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Código postal</span>
+            <input id="ef-cp" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Distrito</span>
+            <input id="ef-distrito" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Horário</span>
+            <input id="ef-horario" type="text" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Latitude</span>
+            <input id="ef-lat" type="number" step="0.000001" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Longitude</span>
+            <input id="ef-lon" type="number" step="0.000001" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Tipo operador</span>
+            <select id="ef-tipo-oper" class="ef-input">
+              <option value="">—</option>
+              <option value="Pública">Pública</option>
+              <option value="IPSS">IPSS</option>
+              <option value="Privada">Privada</option>
+              <option value="Desconhecido">Desconhecido</option>
+            </select></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Tipo principal</span>
+            <select id="ef-tipo" class="ef-input">
+              <option value="">—</option>
+              <option>Berçário</option>
+              <option>Creche</option>
+              <option>JI</option>
+              <option>Infantário</option>
+              <option>ATL</option>
+              <option>Ama</option>
+              <option>Desconhecido</option>
+            </select></label>
+          <label style="grid-column:span 2"><span style="display:block;font-weight:700;margin-bottom:3px">Tipos (multi-resposta)</span>
+            <div id="ef-tipos" style="display:flex;flex-wrap:wrap;gap:8px 14px;padding:8px 0">
+              <label style="display:flex;gap:4px;align-items:center;font-weight:500"><input type="checkbox" value="Berçário"> Berçário</label>
+              <label style="display:flex;gap:4px;align-items:center;font-weight:500"><input type="checkbox" value="Creche"> Creche</label>
+              <label style="display:flex;gap:4px;align-items:center;font-weight:500"><input type="checkbox" value="JI"> JI</label>
+              <label style="display:flex;gap:4px;align-items:center;font-weight:500"><input type="checkbox" value="ATL"> ATL</label>
+              <label style="display:flex;gap:4px;align-items:center;font-weight:500"><input type="checkbox" value="Ama"> Ama</label>
+            </div></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Idade mín (meses)</span>
+            <input id="ef-min" type="number" min="0" max="240" class="ef-input"></label>
+          <label><span style="display:block;font-weight:700;margin-bottom:3px">Idade máx (meses)</span>
+            <input id="ef-max" type="number" min="0" max="240" class="ef-input"></label>
+          <label style="grid-column:span 2"><span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#b3261e">
+            <input id="ef-hidden" type="checkbox"> Esconder da app (só admin vê)
+          </span></label>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+          <button id="ef-cancel" class="btn-reject">Cancelar</button>
+          <button id="ef-save" class="btn-apply">💾 Guardar</button>
+        </div>
+        <div id="ef-status" style="font-size:12px;color:var(--ink-soft);margin-top:8px;min-height:16px"></div>
+      </div>
     </section>
 
     <section class="panel">
@@ -1223,6 +1311,211 @@ $("btn-logout-denied").addEventListener("click", ()=>auth.signOut());
 // Botão bulk request info
 const btnBulk = document.getElementById("btn-bulk-info");
 if(btnBulk) btnBulk.addEventListener("click", bulkRequestInfo);
+
+// ===== Editor universal de creches =====
+let _fullDataset = null;
+let _allExtras = null;
+let _currentEdit = null;  // { source: "base"|"extra", id, original }
+
+async function loadFullDataset(){
+  if(_fullDataset) return _fullDataset;
+  // Buscar app.html e extrair o blob de dataset embedded
+  const html = await fetch("/app", { cache: "no-cache" }).then(r => r.text());
+  const m = html.match(/<script[^>]*id="dataset"[^>]*>([\s\S]*?)<\/script>/);
+  if(!m) throw new Error("Dataset não encontrado em /app");
+  const b64 = m[1].trim();
+  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+  const text = await new Response(stream).text();
+  _fullDataset = JSON.parse(text);
+  return _fullDataset;
+}
+
+async function loadAllExtras(){
+  if(_allExtras) return _allExtras;
+  const snap = await db.collection("creche_extras").get();
+  _allExtras = [];
+  snap.forEach(d => _allExtras.push({ ...d.data(), _docId: d.id, id: "extra_" + d.id, _extra: true }));
+  return _allExtras;
+}
+
+const editSearch = document.getElementById("edit-search");
+const editStatus = document.getElementById("edit-search-status");
+const editResults = document.getElementById("edit-search-results");
+const editFormHost = document.getElementById("edit-form-host");
+
+let _searchTimer = null;
+editSearch.addEventListener("input", ()=>{
+  clearTimeout(_searchTimer);
+  const q = editSearch.value.trim().toLowerCase();
+  if(q.length < 3){
+    editResults.style.display = "none";
+    editStatus.textContent = q.length ? "Continua a escrever…" : "";
+    return;
+  }
+  editStatus.textContent = "A pesquisar…";
+  _searchTimer = setTimeout(()=> doSearch(q), 250);
+});
+
+async function doSearch(q){
+  try{
+    const [base, extras] = await Promise.all([loadFullDataset(), loadAllExtras()]);
+    const all = [...base, ...extras];
+    const matches = all.filter(c => {
+      const blob = [c.nome, c.morada, c.distrito, c.telefone, c.localidade]
+        .filter(Boolean).join(" ").toLowerCase();
+      return blob.includes(q);
+    });
+    editStatus.textContent = `${matches.length} resultado${matches.length===1?"":"s"} (mostrando até 30)`;
+    if(matches.length === 0){
+      editResults.style.display = "none";
+      return;
+    }
+    editResults.innerHTML = matches.slice(0,30).map(c => `
+      <div class="edit-result" data-source="${c._extra?"extra":"base"}" data-id="${escapeHtml(c.id)}" data-docid="${escapeHtml(c._docId||"")}">
+        <div class="er-nome">${escapeHtml(c.nome || "(sem nome)")}${c._extra?' <span style="color:var(--c-coral);font-size:10px">EXTRA</span>':''}</div>
+        <div class="er-meta">${escapeHtml(c.distrito||"?")} · ${escapeHtml(c.morada||"sem morada")} · ${escapeHtml(c.telefone||"sem telefone")}</div>
+      </div>`).join("");
+    editResults.style.display = "block";
+    editResults.querySelectorAll(".edit-result").forEach(el => {
+      el.addEventListener("click", ()=> openEditor(el.dataset.source, el.dataset.id, el.dataset.docid));
+    });
+  }catch(e){
+    console.error(e);
+    editStatus.textContent = "Erro: " + e.message;
+  }
+}
+
+async function openEditor(source, id, docId){
+  try{
+    // Encontrar o doc original
+    let creche;
+    if(source === "extra"){
+      const extras = await loadAllExtras();
+      creche = extras.find(c => c.id === id);
+    } else {
+      const base = await loadFullDataset();
+      creche = base.find(c => String(c.id) === String(id));
+      // Aplicar override existente (se houver)
+      try{
+        const overrideDoc = await db.collection("creche_overrides").doc(String(id)).get();
+        if(overrideDoc.exists){
+          creche = { ...creche, ...overrideDoc.data(), _hasOverride: true };
+        }
+      }catch(e){ console.warn("override fetch:", e); }
+    }
+    if(!creche){ alert("Não encontrei a creche."); return; }
+
+    _currentEdit = { source, id, docId, original: creche };
+
+    // Popular o form
+    document.getElementById("edit-form-title").textContent =
+      "A editar: " + (creche.nome || "(sem nome)") + (source === "extra" ? " (extra)" : creche._hasOverride ? " (com override)" : "");
+    document.getElementById("edit-form-id").textContent = "id: " + id;
+    document.getElementById("ef-nome").value = creche.nome || "";
+    document.getElementById("ef-telefone").value = creche.telefone || "";
+    document.getElementById("ef-email").value = creche.email || "";
+    document.getElementById("ef-website").value = creche.website || "";
+    document.getElementById("ef-morada").value = creche.morada || "";
+    document.getElementById("ef-localidade").value = creche.localidade || "";
+    document.getElementById("ef-cp").value = creche.codigo_postal || "";
+    document.getElementById("ef-distrito").value = creche.distrito || "";
+    document.getElementById("ef-horario").value = creche.horario || "";
+    document.getElementById("ef-lat").value = creche.lat ?? "";
+    document.getElementById("ef-lon").value = creche.lon ?? "";
+    document.getElementById("ef-tipo-oper").value = creche.tipo_oper || "";
+    document.getElementById("ef-tipo").value = creche.tipo || "";
+    document.getElementById("ef-min").value = creche.idade_min_meses ?? "";
+    document.getElementById("ef-max").value = creche.idade_max_meses ?? "";
+    document.getElementById("ef-hidden").checked = !!creche.hidden;
+
+    // Tipos array
+    const tiposSet = new Set(creche.tipos || (creche.tipo ? [creche.tipo] : []));
+    document.querySelectorAll("#ef-tipos input[type=checkbox]").forEach(ck => {
+      ck.checked = tiposSet.has(ck.value);
+    });
+
+    document.getElementById("ef-status").textContent = "";
+    editFormHost.style.display = "block";
+    editFormHost.scrollIntoView({ behavior: "smooth", block: "start" });
+  }catch(e){
+    console.error(e);
+    alert("Erro a abrir: " + e.message);
+  }
+}
+
+document.getElementById("ef-cancel").addEventListener("click", ()=>{
+  editFormHost.style.display = "none";
+  _currentEdit = null;
+});
+
+document.getElementById("ef-save").addEventListener("click", async ()=>{
+  if(!_currentEdit){ return; }
+  const status = document.getElementById("ef-status");
+  const btn = document.getElementById("ef-save");
+  btn.disabled = true;
+  status.textContent = "A guardar…";
+  try{
+    // Construir o payload a partir do form
+    const payload = {
+      nome: document.getElementById("ef-nome").value.trim(),
+      telefone: document.getElementById("ef-telefone").value.trim(),
+      email: document.getElementById("ef-email").value.trim(),
+      website: document.getElementById("ef-website").value.trim(),
+      morada: document.getElementById("ef-morada").value.trim(),
+      localidade: document.getElementById("ef-localidade").value.trim(),
+      codigo_postal: document.getElementById("ef-cp").value.trim(),
+      distrito: document.getElementById("ef-distrito").value.trim(),
+      horario: document.getElementById("ef-horario").value.trim(),
+      tipo_oper: document.getElementById("ef-tipo-oper").value || null,
+      tipo: document.getElementById("ef-tipo").value || null,
+      hidden: document.getElementById("ef-hidden").checked
+    };
+    const latStr = document.getElementById("ef-lat").value;
+    const lonStr = document.getElementById("ef-lon").value;
+    if(latStr) payload.lat = parseFloat(latStr);
+    if(lonStr) payload.lon = parseFloat(lonStr);
+    const minStr = document.getElementById("ef-min").value;
+    const maxStr = document.getElementById("ef-max").value;
+    if(minStr) payload.idade_min_meses = parseInt(minStr);
+    if(maxStr) payload.idade_max_meses = parseInt(maxStr);
+    const tipos = [...document.querySelectorAll("#ef-tipos input[type=checkbox]:checked")].map(ck => ck.value);
+    if(tipos.length) payload.tipos = tipos;
+
+    // Remover keys vazias (para não sobrescrever com null no Firestore)
+    Object.keys(payload).forEach(k => {
+      if(payload[k] === "" || payload[k] === null) delete payload[k];
+    });
+
+    // Metadata
+    payload.edited_at = firebase.firestore.FieldValue.serverTimestamp();
+    payload.edited_by = auth.currentUser.email;
+
+    if(_currentEdit.source === "extra"){
+      // Update da extra
+      await db.collection("creche_extras").doc(_currentEdit.docId).update(payload);
+      // Limpa cache local
+      _allExtras = null;
+      status.textContent = "✓ Extra atualizado.";
+    } else {
+      // Cria/atualiza override na coleção creche_overrides
+      await db.collection("creche_overrides").doc(String(_currentEdit.id)).set(payload, { merge: true });
+      status.textContent = "✓ Override gravado. A app aplica em ~30s (refresh).";
+    }
+    setTimeout(()=>{
+      editFormHost.style.display = "none";
+      _currentEdit = null;
+      editSearch.value = "";
+      editResults.style.display = "none";
+      editStatus.textContent = "";
+    }, 1500);
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+  }finally{
+    btn.disabled = false;
+  }
+});
 
 // Botão limpar duplicados de creche_extras
 const btnCleanDupes = document.getElementById("btn-clean-dupes");
