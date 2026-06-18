@@ -643,6 +643,10 @@ footer.foot .row{margin-bottom:8px}
   </div>
 </section>
 
+<section style="padding:20px 24px 10px">
+  <div id="newsletter-home"></div>
+</section>
+
 <footer class="foot">
   <div class="row">
     <a href="/app">Abrir a app</a> · <a href="/para-creches">Para creches</a> ·
@@ -654,6 +658,10 @@ footer.foot .row{margin-bottom:8px}
   <div class="row">Dados: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL)</div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="/newsletter.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded", function(){ if(window.mountNewsletter) mountNewsletter(document.getElementById("newsletter-home"), { source: "home" }); });</script>
 <script src="/cookies.js" defer></script>
 </body>
 </html>

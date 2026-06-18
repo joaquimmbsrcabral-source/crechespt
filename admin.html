@@ -321,6 +321,18 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <section class="panel">
+      <h3>📬 Subscritores da newsletter <span class="count" id="nl-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Pessoas que se inscreveram para receber updates. Exporta a lista quando quiseres enviar via Brevo, Mailchimp ou Gmail.
+      </p>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+        <button id="btn-nl-export" class="btn-apply" style="font-size:13px;padding:8px 14px">⬇ Exportar CSV</button>
+        <span id="nl-status" style="font-size:12px;color:var(--ink-soft)"></span>
+      </div>
+      <div id="nl-host"></div>
+    </section>
+
+    <section class="panel">
       <h3>🛠 Ferramentas admin</h3>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
         <button id="btn-copy-summary" class="btn-apply" style="font-size:13px;padding:8px 14px">📋 Copiar resumo para clipboard</button>
@@ -432,14 +444,15 @@ async function checkAdmin(uid){
 async function loadDashboard(user){
   $("admin-name").textContent = (user.displayName||"").split(" ")[0] || "admin";
 
-  // Em paralelo: 6 queries
-  const [usersSnap, ciSnap, fbSnap, rpSnap, rmSnap, statsSnap] = await Promise.all([
+  // Em paralelo: 7 queries
+  const [usersSnap, ciSnap, fbSnap, rpSnap, rmSnap, statsSnap, nlSnap] = await Promise.all([
     db.collection("users").orderBy("lastSeen","desc").limit(500).get().catch(e=>{console.warn("users",e);return null;}),
     db.collection("creche_interest").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("ci",e);return null;}),
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
     db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
     db.collection("creche_removals").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rm",e);return null;}),
     db.collection("daily_stats").limit(60).get().catch(e=>{console.warn("stats",e);return null;}),
+    db.collection("newsletter_subscribers").orderBy("ts","desc").limit(1000).get().catch(e=>{console.warn("nl",e);return null;}),
   ]);
 
   // --- Utilizadores
@@ -498,12 +511,47 @@ async function loadDashboard(user){
     stats.sort((a,b)=> a.date.localeCompare(b.date));
   }
 
+  // --- Newsletter subscribers
+  let nlSubscribers = [];
+  if(nlSnap){
+    nlSnap.forEach(d=>{ const x = d.data(); x.id = d.id; nlSubscribers.push(x); });
+  }
+
   renderStats(stats);
   renderCreches(creches);
   renderRemovals(removals);
   renderReports(reports);
   renderFeedback(feedbacks);
   renderUsers(users.slice(0,30));
+  renderNewsletter(nlSubscribers);
+}
+
+function renderNewsletter(rows){
+  document.getElementById("nl-count").textContent = rows.length;
+  const host = document.getElementById("nl-host");
+  if(rows.length === 0){
+    host.innerHTML = '<div class="empty">Ainda sem subscritores. Quando alguém preencher o form na home aparece aqui.</div>';
+    return;
+  }
+  // Mostra os mais recentes 20
+  const recent = rows.slice(0, 20);
+  host.innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Data</th><th>Email</th><th>Origem</th><th>Idioma</th>
+      </tr></thead>
+      <tbody>
+        ${recent.map(r=>`
+          <tr>
+            <td class="date">${fmtDate(r.ts)}</td>
+            <td class="email-cell"><a href="mailto:${escapeHtml(r.email||"")}">${escapeHtml(r.email||"—")}</a></td>
+            <td>${escapeHtml(r.source||"—")}</td>
+            <td>${escapeHtml(r.lang||"—")}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>
+    ${rows.length > 20 ? `<p style="font-size:12px;color:var(--ink-soft);margin-top:8px">(mais ${rows.length-20} subscritores — exporta CSV para ver todos)</p>` : ""}
+  `;
 }
 
 function renderStats(stats){
@@ -1515,6 +1563,44 @@ document.getElementById("ef-save").addEventListener("click", async ()=>{
     status.textContent = "Erro: " + e.message;
   }finally{
     btn.disabled = false;
+  }
+});
+
+// Botão exportar newsletter subscribers como CSV
+const btnNlExport = document.getElementById("btn-nl-export");
+if(btnNlExport) btnNlExport.addEventListener("click", async ()=>{
+  const status = document.getElementById("nl-status");
+  status.textContent = "A buscar todos os subscritores…";
+  btnNlExport.disabled = true;
+  try{
+    const snap = await db.collection("newsletter_subscribers").orderBy("ts","desc").get();
+    const rows = [["email", "source", "lang", "data"]];
+    snap.forEach(d => {
+      const x = d.data();
+      const ts = x.ts && x.ts.toDate ? x.ts.toDate().toISOString().slice(0,10) : "";
+      rows.push([
+        (x.email||"").replace(/[",\n]/g," ").trim(),
+        (x.source||"").replace(/[",\n]/g," ").trim(),
+        (x.lang||"").replace(/[",\n]/g," ").trim(),
+        ts
+      ]);
+    });
+    // gera CSV
+    const csv = rows.map(r => r.map(c => `"${c}"`).join(",")).join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const today = new Date().toISOString().slice(0,10);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `crechesapp-newsletter-${today}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    status.textContent = `✓ Descarregados ${snap.size} subscritores.`;
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+  }finally{
+    btnNlExport.disabled = false;
   }
 });
 

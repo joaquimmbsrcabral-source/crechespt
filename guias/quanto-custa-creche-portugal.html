@@ -422,5 +422,15 @@ footer a:hover{color:var(--c-coral)}
   <p style="margin-top:10px">Creches<span class="brand-tld">.app</span> © 2026 · feito com ❤️ para famílias portuguesas</p>
 </footer>
 
+
+<section style="padding:0 24px 30px;max-width:760px;margin:0 auto">
+  <div id="newsletter-guia"></div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="/newsletter.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded", function(){ if(window.mountNewsletter) mountNewsletter(document.getElementById("newsletter-guia"), { source: "guia" }); });</script>
+
 </body>
 </html>

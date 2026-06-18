@@ -30,6 +30,18 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Newsletter — subscritores de updates do creches.app
+    // Qualquer pessoa pode subscrever; só admin lê e gere.
+    match /newsletter_subscribers/{id} {
+      allow create: if
+           request.resource.data.keys().hasOnly(['email', 'source', 'lang', 'ts'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 120
+        && request.resource.data.email.matches('[^\\s@]+@[^\\s@]+\\.[^\\s@]+');
+      allow read:   if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
     // Captura de interesse de creches via página /para-creches
     // Qualquer pessoa pode submeter (create); só admin lê.
     match /creche_interest/{id} {
