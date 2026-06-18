@@ -202,7 +202,7 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
 </style>
 <script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumbs_ld, ensure_ascii=False)}</script>
-<script defer data-domain="creches.app" src="https://plausible.io/js/script.outbound-links.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "076bc362f2104b70ba542774beb4a274"}}'></script>
 </head>
 <body>
 
