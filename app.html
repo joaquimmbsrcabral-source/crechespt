@@ -1823,7 +1823,7 @@ function inferAges(nameRaw, originalTipo){
     return { tipo: "Infantário", min: 4, max: 72, verificar: true };
   }
   // ---------- Operadores típicos de creche (alta probabilidade mas sem indicação clara da resposta) ----------
-  const operadorCreche = /(patronato|centro social paroquial|centro paroquial|centro social|misericordia|santa casa|casa do povo|externato|colegio|cooperativa|associacao social|fundacao|obra social|filhos? do coracao|nossa senhora|sao [a-z]|santa [a-z]|caritas)/.test(n);
+  const operadorCreche = /(patronato|centro social paroquial|centro paroquial|centro social|misericordia|santa casa|casa do povo|externato|colegio|col[eé]gio|cooperativa|associacao social|fundacao|obra social|filhos? do coracao|nossa senhora|sao [a-z]|santa [a-z]|caritas|conferencia s\. vicente)/.test(n);
   if (operadorCreche) {
     return { tipo: "Infantário", min: 4, max: 72, verificar: true };
   }
@@ -1833,6 +1833,40 @@ function inferAges(nameRaw, originalTipo){
   }
   // ---------- v3: Nomes "casinha", "ninho", "mundo", animais carinhosos ----------
   if (/\b(casa|casinha|ninho|cantinho|mundo|escolinha|brincadeira|colmeia|sementeira|caracol|abelhinha|pintainho|borboleta|estrela|girassol|nuvem|bebes?|pequen|joaninh|coelh|fantasia|aventur)\b/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+
+  // ---------- v4 (junho 2026): novos padrões para baixar "Desconhecido" ----------
+  // "Jardim Escola" / "Jardim-Escola" — modelo João de Deus, geralmente JI puro
+  if (/(jardim.?escola|jardim escola|escola joao de deus)/.test(n)) {
+    return { tipo: "JI", min: 36, max: 72, verificar: true };
+  }
+  // "Centro Infantil" — quase sempre Infantário (já apanhado por hasInfant, reforço)
+  if (/centro infantil/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // Nomes carinhosos extras (sonhos, aventura, brincalhão, ternura, etc.)
+  if (/\b(sonhos?|aventur|brincalh|ternura|magic|mago|ma?gicos?|baloi|cantar|pintinho|patinho|infanti|gym|kids|tots|babies?|tiny|chalala|nho|nina|babbo|piaget|maternal|tropeco|alfaiate|conta|principe|priminhos?|gnomo|pinta|piska|mimo|janica|sandes)\b/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // "Refúgio", "Pequeno mundo", "Pequenitates", "Pequenitos"
+  if (/(refugio|pequen[ai]?to?s?|pequen mundo|pequenitates|cantinho dos? bebes?|berco encantado|primeiros passos)/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // "Apoio à Infância", "Bem Estar Infantil", "Espaço Crianças"
+  if (/(apoio.*(infanc|crianc)|bem.?estar.*infant|espaco.*(infanc|crianc)|saber.*crescer)/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // Outras associações ou centros sociais (mesmo sem palavra "social")
+  if (/(comunitario|paroquial|associacao|comunidade|junta de freguesia.*(infant|crianc))/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // Quintinha, Quinta + infantil
+  if (/quinta\b/.test(n)) {
+    return { tipo: "Infantário", min: 4, max: 72, verificar: true };
+  }
+  // "Anjinhos", "Anjos", "Querubim"
+  if (/\b(anjinhos?|anjos?|querubi[mn]|pequenos? anjos?)\b/.test(n)) {
     return { tipo: "Infantário", min: 4, max: 72, verificar: true };
   }
 
