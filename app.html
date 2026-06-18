@@ -412,7 +412,11 @@ header.topbar{
   .addr-wrap{min-width:0}
   .search-wrap{min-width:0}
   .addr-search-btn{padding:9px 14px}
+  /* Botões de zoom maiores no mobile (toque-friendly) */
+  .leaflet-touch .leaflet-bar a{width:36px !important;height:36px !important;line-height:36px !important;font-size:22px !important}
+  .leaflet-reset-view{font-size:16px !important}
 }
+.leaflet-control-zoom a, .leaflet-reset-view{box-shadow:0 2px 6px rgba(0,0,0,.15);border-radius:6px !important}
 .chip-select{
   background:#fff;border-radius:var(--r-pill);padding:8px 14px 8px 12px;box-shadow:var(--sh-1);
   display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--ink-soft);
@@ -1342,9 +1346,19 @@ header.topbar{
 <!-- Report idade incorreta -->
 <div id="ra-host" class="confirm-host" role="dialog" aria-modal="true">
   <div class="confirm-card" style="max-width:480px;text-align:left">
-    <h3 style="text-align:center">🚩 Reportar idade incorreta</h3>
+    <h3 style="text-align:center">🚩 Reportar erro</h3>
     <p style="text-align:center;font-size:13px;color:var(--ink-soft);margin:4px 0 14px">Esta creche é <b id="ra-creche-name">—</b></p>
     <div class="frow" style="grid-template-columns:1fr">
+      <label style="padding-top:0">Tipo de erro</label>
+      <select id="ra-type">
+        <option value="">— escolhe —</option>
+        <option value="idade">📅 Idade / faixa etária errada</option>
+        <option value="telefone">📞 Telefone errado ou em falta</option>
+        <option value="encerrada">❌ Creche já não existe / encerrada</option>
+        <option value="info">📝 Outra informação errada (morada, nome, etc.)</option>
+      </select>
+    </div>
+    <div id="ra-idade-block" class="frow" style="grid-template-columns:1fr;display:none">
       <label style="padding-top:0">Qual a faixa etária correta?</label>
       <select id="ra-claimed">
         <option value="">— escolhe —</option>
@@ -1357,9 +1371,13 @@ header.topbar{
         <option value="outra">📝 Outra (descreve abaixo)</option>
       </select>
     </div>
+    <div id="ra-telefone-block" class="frow" style="grid-template-columns:1fr;display:none">
+      <label for="ra-correction" style="padding-top:0">Telefone correto (se souberes)</label>
+      <input id="ra-correction" type="tel" maxlength="50" placeholder="Ex: 21 000 0000">
+    </div>
     <div class="frow" style="grid-template-columns:1fr">
-      <label for="ra-note" style="padding-top:0">Nota (opcional)</label>
-      <textarea id="ra-note" rows="3" placeholder="Ex: só aceita a partir do 1 ano; só JI; entrada a partir dos 18 meses…" maxlength="500" style="min-height:70px"></textarea>
+      <label for="ra-note" style="padding-top:0">Detalhes <span id="ra-note-req" style="color:var(--ink-soft)">(opcional)</span></label>
+      <textarea id="ra-note" rows="3" placeholder="Descreve o erro e a correção. Quanto mais detalhe melhor — eu reviso à mão." maxlength="600" style="min-height:80px"></textarea>
     </div>
     <div class="row" style="margin-top:8px">
       <button id="ra-cancel" class="btn">Cancelar</button>
@@ -2006,11 +2024,39 @@ function renderList(){
 
 /* ===== Mapa ===== */
 function initMap(){
-  State.map = L.map("map", { preferCanvas:true, zoomControl:true }).setView([39.7, -8.2], 7);
+  State.map = L.map("map", {
+    preferCanvas: true,
+    zoomControl: true,
+    minZoom: 6,      // não deixa fazer zoom out além de Portugal continental
+    maxZoom: 19,
+    bounceAtZoomLimits: true,
+    tap: true,       // garante touch no iOS
+    touchZoom: true  // pinch in/out no mobile
+  }).setView([39.7, -8.2], 7);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     maxZoom:19,
     attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(State.map);
+  // Botão custom de "voltar à vista geral"
+  const ResetView = L.Control.extend({
+    options: { position: "topleft" },
+    onAdd(){
+      const btn = L.DomUtil.create("a", "leaflet-control leaflet-bar leaflet-reset-view");
+      btn.innerHTML = "⛶";
+      btn.href = "#";
+      btn.title = "Ver Portugal todo";
+      btn.style.cssText = "background:#fff;width:30px;height:30px;line-height:30px;text-align:center;font-size:18px;text-decoration:none;color:#333;display:block";
+      L.DomEvent.on(btn, "click", (e)=>{
+        L.DomEvent.preventDefault(e);
+        State.map.setView([39.7, -8.2], 7);
+        State.areaIds = null;
+        State.areaLabel = "";
+        applyFilters();
+      });
+      return btn;
+    }
+  });
+  State.map.addControl(new ResetView());
   State.cluster = L.markerClusterGroup({
     chunkedLoading:true,
     spiderfyOnMaxZoom:true,
@@ -2161,7 +2207,7 @@ function openDetail(id){
   if(c.resposta) rows.push(["Resposta", `<span class="resp-pill">${escapeHtml(c.resposta)}</span>`]);
   if(ageTxt){
     const verif = c.idade_verificar ? ' <span class="verif-badge" title="A idade desta creche foi inferida e pode estar incorreta — confirma diretamente com a creche">⚠️ a verificar</span>' : "";
-    const reportBtn = ` <button class="report-age-btn" data-noopen="1" type="button" title="Achas que a idade está errada? Reporta">🚩 idade errada?</button>`;
+    const reportBtn = ` <button class="report-age-btn" data-noopen="1" type="button" title="Reportar qualquer erro: idade, telefone, encerrada, etc.">🚩 reportar erro</button>`;
     rows.push(["Faixa etária", `<span class="age-pill">🎂 ${ageTxt}</span>${verif}${reportBtn}`]);
   }
   if(State.userPos){
@@ -3095,23 +3141,45 @@ function renderUserChip(user){
         }
       });
 
-      // Report idade incorreta (clicar no botão dentro do detail)
+      // Report de erros (idade, telefone, encerrada, outra)
       const raHost = document.getElementById("ra-host");
+      const raType = document.getElementById("ra-type");
       const raClaimed = document.getElementById("ra-claimed");
+      const raCorrection = document.getElementById("ra-correction");
       const raNote = document.getElementById("ra-note");
       const raSend = document.getElementById("ra-send");
       const raCancel = document.getElementById("ra-cancel");
       const raName = document.getElementById("ra-creche-name");
+      const raIdadeBlock = document.getElementById("ra-idade-block");
+      const raTelefoneBlock = document.getElementById("ra-telefone-block");
+      const raNoteReq = document.getElementById("ra-note-req");
+
       function openRa(c){
         raName.textContent = c.nome || "creche";
+        raType.value = "";
         raClaimed.value = "";
+        raCorrection.value = "";
         raNote.value = "";
+        raIdadeBlock.style.display = "none";
+        raTelefoneBlock.style.display = "none";
+        raNoteReq.textContent = "(opcional)";
         raHost.dataset.crecheId = c.id;
         raHost.dataset.crecheName = c.nome || "";
         raHost.classList.add("open");
-        setTimeout(()=>raClaimed.focus(), 80);
+        setTimeout(()=>raType.focus(), 80);
       }
       function closeRa(){ raHost.classList.remove("open"); }
+
+      // Mostrar campos relevantes consoante o tipo escolhido
+      raType.addEventListener("change", ()=>{
+        const t = raType.value;
+        raIdadeBlock.style.display = (t === "idade") ? "" : "none";
+        raTelefoneBlock.style.display = (t === "telefone") ? "" : "none";
+        // Nota fica obrigatória quando não há outro campo principal
+        const needNote = (t === "encerrada" || t === "info");
+        raNoteReq.textContent = needNote ? "(obrigatório)" : "(opcional)";
+      });
+
       raCancel.addEventListener("click", closeRa);
       raHost.addEventListener("click", (e)=>{ if(e.target===raHost) closeRa(); });
       // Delegated click on the report button (rendered inside detail)
@@ -3126,27 +3194,39 @@ function renderUserChip(user){
         openRa(c);
       });
       raSend.addEventListener("click", async ()=>{
+        const type = raType.value;
         const claimed = raClaimed.value;
-        const note = (raNote.value||"").trim().slice(0,500);
-        if(!claimed){ toast("Escolhe a faixa etária correta","warn"); return; }
+        const correction = (raCorrection.value||"").trim().slice(0,100);
+        const note = (raNote.value||"").trim().slice(0,600);
+
+        // Validações por tipo
+        if(!type){ toast("Escolhe o tipo de erro","warn"); return; }
+        if(type === "idade" && !claimed){ toast("Escolhe a faixa etária correta","warn"); return; }
+        if(type === "telefone" && !correction && !note){ toast("Indica o telefone correto ou descreve o problema na nota","warn"); return; }
+        if((type === "encerrada" || type === "info") && !note){ toast("Descreve o problema na nota","warn"); return; }
+
         raSend.disabled = true;
         raSend.textContent = "A enviar…";
         try{
+          const c = State.creches.find(x=>x.id===State.selectedId) || {};
           await FB.db.collection("creche_reports").add({
             uid: FB.user.uid,
             email: FB.user.email || "",
             creche_id: raHost.dataset.crecheId || "",
             creche_name: (raHost.dataset.crecheName || "").slice(0,200),
-            claimed_age: claimed.slice(0,30),
+            report_type: type,
+            claimed_age: (claimed||"").slice(0,30),
+            correction: correction,
             note: note,
-            current_tipo: ((State.creches.find(x=>x.id===State.selectedId)||{}).tipo || "").slice(0,40),
-            current_min: ((State.creches.find(x=>x.id===State.selectedId)||{}).idade_min_meses) ?? null,
-            current_max: ((State.creches.find(x=>x.id===State.selectedId)||{}).idade_max_meses) ?? null,
+            current_tipo: (c.tipo || "").slice(0,40),
+            current_min: c.idade_min_meses ?? null,
+            current_max: c.idade_max_meses ?? null,
+            current_telefone: (c.telefone || "").slice(0,50),
             url: location.href,
             ts: firebase.firestore.FieldValue.serverTimestamp(),
           });
           closeRa();
-          toast("Obrigado! Vou corrigir 💛","ok",{duration:4000});
+          toast("Obrigado! Vou rever à mão 💛","ok",{duration:4000});
         }catch(e){
           console.error(e);
           toast("Não foi possível enviar. Tenta de novo.","err");

@@ -56,8 +56,8 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
-    // Reports de idades incorretas em creches específicas
-    // Qualquer utilizador autenticado cria; só admin lê e atualiza (marcar resolvido).
+    // Reports de erros em creches (idade, telefone, encerrada, etc.)
+    // Qualquer utilizador autenticado cria; só admin lê e atualiza.
     match /creche_reports/{id} {
       allow create: if request.auth != null
         && request.resource.data.uid == request.auth.uid
@@ -66,9 +66,9 @@ service cloud.firestore {
         && request.resource.data.claimed_age is string
         && request.resource.data.claimed_age.size() <= 30
         && request.resource.data.note is string
-        && request.resource.data.note.size() <= 500;
+        && request.resource.data.note.size() <= 600;
       allow read:   if isAdmin();
-      allow update: if isAdmin();  // marca como aplicado/rejeitado
+      allow update: if isAdmin();
       allow delete: if false;
     }
 
