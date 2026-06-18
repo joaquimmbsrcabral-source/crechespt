@@ -2896,6 +2896,17 @@ function renderUserChip(user){
   loadUserData();          // localStorage (offline-first)
   initMap();
   wireUp();
+
+  // ⚠ Inicializar Firebase ANTES de loadDataset()
+  // porque a função faz merge de creche_overrides + creche_extras vindos de Firestore.
+  // Se Firebase não estiver pronto, esses dados ficam de fora.
+  if(USE_FIREBASE){
+    try{
+      const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
+      FB = { app: fbApp, auth: firebase.auth(), db: firebase.firestore(), user: null };
+    }catch(e){ console.warn("Firebase init falhou:", e); }
+  }
+
   try{
     State.creches = await loadDataset();
   }catch(e){
@@ -2905,11 +2916,8 @@ function renderUserChip(user){
   populateSelects();
   refreshConcelhoSelect();
 
-  if(USE_FIREBASE){
-    // inicializa Firebase
+  if(USE_FIREBASE && FB){
     try{
-      const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
-      FB = { app: fbApp, auth: firebase.auth(), db: firebase.firestore(), user: null };
       // Tracking de visitas (1 vez por sessão, anónimo)
       try{
         const SESSION_KEY = "crechespt/session_tracked_today";
