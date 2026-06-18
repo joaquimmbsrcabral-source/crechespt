@@ -902,11 +902,28 @@ async function approveInterest(tr){
     `Aparece imediatamente no mapa para todos.`;
   if(!confirm(summary)) return;
 
+  // Calcular tipos array (a partir do que a creche submeteu)
+  // tipo (do form) é "privada"/"ipss"/"publica"/"outro" → tipo_oper
+  const operMap = { privada: "Privada", ipss: "IPSS", publica: "Pública", outro: "Desconhecido" };
+  const tipoOper = operMap[tipo] || "Privada";
+  // Tipos de resposta social → vem do array de idades selecionadas no form
+  const respostaMap = { bercario: "Berçário", creche: "Creche", ji: "JI", infantario: "Infantário", atl: "ATL" };
+  // Buscar idades originais no doc da submissão
+  let tipos = [];
+  try{
+    const interestDoc = await db.collection("creche_interest").doc(iid).get();
+    const idadesSubmitted = interestDoc.exists ? (interestDoc.data().idades || []) : [];
+    tipos = idadesSubmitted.map(k => respostaMap[k]).filter(Boolean);
+  }catch(e){ console.warn("interest doc read:", e); }
+  if(tipos.length === 0) tipos = [tipoFinal];
+
   try{
     await db.collection("creche_extras").add({
       nome, morada, distrito,
       lat, lon,
-      tipo: tipoFinal,
+      tipo: tipos[0],          // tipo principal (retrocompat)
+      tipos: tipos,            // array — todas as respostas que oferece
+      tipo_oper: tipoOper,     // operador (Pública/Privada/IPSS)
       idade_min_meses,
       idade_max_meses,
       telefone: tel || "",

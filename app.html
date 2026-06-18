@@ -1642,6 +1642,26 @@ function isTracked(id){
 }
 
 /* ===== Dataset ===== */
+// Expande uma resposta social em todas as respostas que cobre (multi-tipo).
+// "Infantário" engloba berçário + creche + JI; "JI + ATL" são dois.
+function expandRespostas(tipo){
+  if(!tipo) return ["Desconhecido"];
+  if(tipo === "Infantário") return ["Berçário", "Creche", "JI"];
+  if(tipo === "JI + ATL") return ["JI", "ATL"];
+  return [tipo];
+}
+
+// Normaliza o tipo de operador (Pública/IPSS/Privada/Desconhecido).
+function normalizeOperador(t){
+  if(!t) return "Desconhecido";
+  const x = String(t).toLowerCase();
+  if(x.includes("ipss") || x.includes("santa casa") || x.includes("solidar")) return "IPSS";
+  if(x.includes("privad")) return "Privada";
+  if(x.includes("pública") || x.includes("publica") || x.includes("min-edu") || x.includes("ministério")) return "Pública";
+  if(["Pública","IPSS","Privada","Desconhecido"].includes(t)) return t;
+  return "Desconhecido";
+}
+
 async function loadDataset(){
   const b64 = document.getElementById("dataset").textContent.trim();
   const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
@@ -1651,9 +1671,12 @@ async function loadDataset(){
   // Reescrita client-side da inferência de idades (algoritmo melhorado)
   const cleaned = [];
   for(const c of raw){
+    // Preserva o tipo de operador (Pública/Privada/IPSS) ANTES de overwrite
+    c.tipo_oper = normalizeOperador(c.tipo || c.operador);
     const r = inferAges(c.nome || "", c.tipo || "");
     if(r.exclude) continue;
-    c.tipo = r.tipo;
+    c.tipo = r.tipo;                         // resposta social principal (retrocompat)
+    c.tipos = expandRespostas(r.tipo);       // array — para multi-tipo
     c.idade_min_meses = r.min;
     c.idade_max_meses = r.max;
     c.idade_verificar = !!r.verificar;
@@ -1680,6 +1703,14 @@ async function loadDataset(){
             cleaned[i] = { ...cleaned[i], ...o, _overridden: true };
             // Se o override define tipo/idades explicitamente, marca como verificado
             if(o.tipo || o.idade_min_meses != null) cleaned[i].idade_verificar = false;
+            // Recalcular tipos se o override mudou o tipo (mas só se não trouxe tipos próprio)
+            if(o.tipo && !o.tipos){
+              cleaned[i].tipos = expandRespostas(o.tipo);
+            }
+            // Recalcular tipo_oper se o override trouxe novo
+            if(o.tipo_oper){
+              cleaned[i].tipo_oper = normalizeOperador(o.tipo_oper);
+            }
           }
         }
       }
@@ -1688,7 +1719,24 @@ async function loadDataset(){
         extrasSnap.forEach(d => {
           const x = d.data();
           if(x && x.lat != null && x.lon != null){
-            cleaned.push({ ...x, id: "extra_" + d.id, _extra: true });
+            // Normaliza tipos array (vem do form como ["bercario","creche",...])
+            const idadesMap = { bercario:"Berçário", creche:"Creche", ji:"JI", infantario:"Infantário", atl:"ATL" };
+            let tipos = [];
+            if(Array.isArray(x.tipos)) {
+              tipos = x.tipos;
+            } else if(Array.isArray(x.idades)) {
+              tipos = x.idades.map(k => idadesMap[k]).filter(Boolean);
+            } else {
+              tipos = expandRespostas(x.tipo || "Creche");
+            }
+            cleaned.push({
+              ...x,
+              id: "extra_" + d.id,
+              _extra: true,
+              tipos: tipos.length ? tipos : ["Creche"],
+              tipo: tipos[0] || x.tipo || "Creche",
+              tipo_oper: normalizeOperador(x.tipo_oper || x.tipo_operador || "Privada")
+            });
           }
         });
       }
@@ -1841,7 +1889,8 @@ function applyFilters(){
     if(f.distrito && c.distrito !== f.distrito) return false;
     if(f.concelho && c.localidade !== f.concelho) return false;
     if(f.tipo.size){
-      const t = c.tipo || "Desconhecido";
+      // Filtro chip "Pública/IPSS/Privada" — usa tipo_oper (operador)
+      const t = c.tipo_oper || normalizeOperador(c.tipo);
       if(!f.tipo.has(t)) return false;
     }
     if(f.status.size){
@@ -1999,7 +2048,7 @@ function renderList(){
       </div>
       <div class="meta">
         <span class="statusdot s-${status}" title="${STATUS_LABEL[status]}"></span>
-        <span class="minitag tipo-${tipo}">${tipo}</span>
+        ${(c.tipos||[c.tipo||"Desconhecido"]).map(t => `<span class="minitag tipo-${t}">${t}</span>`).join("")}
         ${resp ? `<span class="resp-pill" title="Tipo de resposta">${escapeHtml(resp)}</span>` : ""}
         ${ageTxt ? `<span class="age-pill" title="Faixa etária">🎂 ${ageTxt}</span>` : ""}
         ${distTxt ? `<span class="dist-pill" title="Distância a partir de ti">📍 ${distTxt}</span>` : ""}
@@ -2101,7 +2150,7 @@ function initMap(){
   State.map.setView([38.7223, -9.1393], 12);
 }
 function markerHtml(c){
-  const color = TIPO_COLOR[c.tipo||"Desconhecido"] || TIPO_COLOR.Desconhecido;
+  const color = TIPO_COLOR[c.tipo_oper||"Desconhecido"] || TIPO_COLOR.Desconhecido;
   const u = State.userData.creches[c.id] || {};
   const sCol = u.status && u.status!=="todo" ? STATUS_COLOR[u.status] : null;
   const ring = sCol ? `box-shadow:0 0 0 3px ${sCol}, 0 1px 4px rgba(60,40,90,.35);` : "";
@@ -2412,13 +2461,13 @@ function renderPipeline(){
             nx = `<div class="nx ${cls}">📅 ${u.next_action_date} ${u.next_action?("· "+escapeHtml(u.next_action)):""}</div>`;
           }
           const last = u.last_contact?`<span>· último ${u.last_contact}</span>`:"";
-          const tipo = c.tipo||"Desconhecido";
+          const tipos = c.tipos || [c.tipo || "Desconhecido"];
           const stars = u.prio?`<div class="stars">${"★".repeat(u.prio)}</div>`:"";
           const ageTxt = formatAges(c);
           return `<div class="pcard" data-id="${escapeAttr(c.id)}">
             <div class="nm">${u.fav?"⭐ ":""}${escapeHtml(c.nome)}</div>
             <div class="mt">
-              <span class="minitag tipo-${tipo}">${tipo}</span>
+              ${tipos.map(t => `<span class="minitag tipo-${t}">${t}</span>`).join("")}
               ${ageTxt ? `<span class="age-pill">🎂 ${ageTxt}</span>` : ""}
               ${c.distrito?`<span>${escapeHtml(c.distrito)}</span>`:""}
               ${c.localidade?`<span>· ${escapeHtml(c.localidade)}</span>`:""}
