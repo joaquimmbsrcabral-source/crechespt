@@ -460,6 +460,27 @@ header.topbar{
   background:linear-gradient(135deg,#7DD389,#5BC07A);color:#fff;font-weight:700;font-size:11px;
   box-shadow:0 2px 6px rgba(125,211,137,.35);animation:pulse-vaga 2.5s ease-in-out infinite}
 @keyframes pulse-vaga{0%,100%{box-shadow:0 2px 6px rgba(125,211,137,.35)}50%{box-shadow:0 2px 14px rgba(125,211,137,.6)}}
+.vagas-banner{margin:0 0 12px;animation:vagas-slide-down .4s ease}
+.vagas-banner-inner{display:flex;align-items:center;gap:12px;padding:11px 14px;
+  background:linear-gradient(135deg,#E5F8E9 0%,#DAF3E0 100%);
+  border:1px solid #B5E2C0;border-radius:14px;box-shadow:0 2px 8px rgba(91,192,122,.15);
+  position:relative}
+.vagas-banner-emoji{font-size:22px;line-height:1;flex-shrink:0;animation:pulse-vaga 2.5s ease-in-out infinite;
+  background:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 6px rgba(125,211,137,.35)}
+.vagas-banner-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;line-height:1.35}
+.vagas-banner-text b{font-size:13.5px;color:#1F6E37;font-weight:700}
+.vagas-banner-text span{font-size:12.5px;color:#3A6549}
+.vagas-banner-close{background:transparent;border:0;color:#3A6549;font-size:18px;cursor:pointer;
+  padding:6px 8px;border-radius:8px;line-height:1;opacity:.65}
+.vagas-banner-close:hover{opacity:1;background:rgba(255,255,255,.6)}
+@keyframes vagas-slide-down{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:600px){
+  .vagas-banner-inner{padding:10px 12px;gap:10px}
+  .vagas-banner-emoji{width:32px;height:32px;font-size:18px}
+  .vagas-banner-text b{font-size:13px}
+  .vagas-banner-text span{font-size:12px}
+}
 .resp-pill{display:inline-flex;align-items:center;gap:3px;padding:1px 8px;border-radius:var(--r-pill);
   background:var(--c-sky-soft);color:#2A8DCC;font-weight:700;font-size:11px}
 .verif-badge{display:inline-flex;align-items:center;gap:3px;padding:1px 8px;border-radius:var(--r-pill);
@@ -1086,6 +1107,7 @@ header.topbar{
           <li>⭐ Marca favoritas para comparares mais tarde.</li>
           <li>🗺 Os pontos no mapa filtram a lista ao lado.</li>
           <li>📞 Toca no telefone para ligares logo.</li>
+          <li>🟢 <b>Em breve:</b> filtra por creches que têm vaga agora.</li>
         </ul>
         <button id="ob-finish" style="width:100%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:0;border-radius:14px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(255,107,157,.3)">Ver as creches perto de mim →</button>
       </div>
@@ -1094,6 +1116,19 @@ header.topbar{
 
   <!-- ========================= View: Mapa ========================= -->
   <section id="view-map" class="view active" role="tabpanel">
+
+    <!-- Banner "Em breve": Vagas em tempo real -->
+    <div id="vagas-coming-banner" class="vagas-banner" style="display:none">
+      <div class="vagas-banner-inner">
+        <span class="vagas-banner-emoji">🟢</span>
+        <div class="vagas-banner-text">
+          <b>Em breve — vagas em tempo real</b>
+          <span>Estamos a recolher junto das creches quais têm vaga agora. Já podes ver as primeiras no filtro <b>“🟢 Com vaga”</b>.</span>
+        </div>
+        <button id="vagas-banner-close" class="vagas-banner-close" aria-label="Fechar">✕</button>
+      </div>
+    </div>
+
     <div class="filters">
       <!-- LINHA 1 (HERO): Onde moras? — SEMPRE visível -->
       <div class="filter-row filter-row-hero">
@@ -1172,7 +1207,7 @@ header.topbar{
 
         <!-- LINHA 6: Vistas pessoais + limpar -->
         <div class="filter-row">
-          <button id="f-only-vaga" class="chip toggle-vaga" title="Mostrar só creches que sinalizaram vaga disponível"><span>🟢</span>Com vaga</button>
+          <button id="f-only-vaga" class="chip toggle-vaga" title="🆕 Em fase inicial — mostra as creches que já sinalizaram ter vaga disponível agora"><span>🟢</span>Com vaga</button>
           <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
           <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
           <button id="f-clear" class="chip-clear">↺ Limpar tudo</button>
@@ -2879,6 +2914,24 @@ function wireUp(){
     State.filters.onlyVaga = !State.filters.onlyVaga;
     e.currentTarget.classList.toggle("active", State.filters.onlyVaga); applyFilters();
   });
+
+  // Banner "Em breve — vagas em tempo real" (one-time, dispensável)
+  try{
+    const BK = "crechespt/vagas_banner_dismissed_v1";
+    if(localStorage.getItem(BK) !== "1"){
+      const bn = document.getElementById("vagas-coming-banner");
+      if(bn){
+        bn.style.display = "block";
+        const cb = document.getElementById("vagas-banner-close");
+        if(cb){
+          cb.addEventListener("click", ()=>{
+            bn.style.display = "none";
+            try{ localStorage.setItem(BK, "1"); }catch(_){}
+          });
+        }
+      }
+    }
+  }catch(_){}
   document.getElementById("f-clear").addEventListener("click", ()=>{
     State.filters = { q:"", distrito:"", concelho:"", tipo:new Set(), status:new Set(),
       idade:new Set(), idadeAnos:"",
