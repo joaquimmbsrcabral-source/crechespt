@@ -23,7 +23,7 @@ Listas de espera em IPSS chegam a anos em zonas urbanas. Mensalidades em creches
 Joaquim Cabral, 28, de Lisboa, está à espera do primeiro filho. Quando começou a procurar creche, percebeu o que muitos pais já tinham percebido: a informação está dispersa entre IPSS, privadas e públicas, e não havia um sítio único e amigável onde estivessem todas — com idades aceites, contactos e localização. Decidiu construir essa ferramenta sozinho. **Creches.app** é uma plataforma gratuita, sem publicidade e sem login obrigatório, que mapeia mais de 2.500 creches de Portugal, dos Açores ao Algarve, públicas, IPSS e privadas.
 
 **3. Tração rápida, validação institucional**
-Em junho de 2026 a NiT publicou um destaque sobre o projecto. Nos dias seguintes, a app passou de cerca de 100 visitantes diários para 4000 visitantes. O jornal **Público** fez uma reportagem na semana seguinte. A **Fundação Jerónimo Martins** entrou em contacto para discutir uma parceria que apoie o acesso a creches por parte dos colaboradores do grupo. **Tudo grátis. Sem ads. Sem venda de dados.**
+Em junho de 2026 a NiT publicou um destaque sobre o projecto. Nos dias seguintes, a app passou de cerca de 100 visitantes diários para 4000 visitantes. O jornal **Público** fez uma reportagem na semana seguinte. **Tudo grátis. Sem ads. Sem venda de dados.**
 
 **4. Um complemento, não uma alternativa**
 "A Carta Social existe e é importante — usei-a como uma das fontes. Achei só que conseguia fazer uma ferramenta mais simples para quem está, neste momento, a tentar encontrar creche para o seu filho. É um complemento, não uma alternativa", explica Joaquim. A app cruza dados oficiais com submissões das próprias creches e correcções dos pais, num modelo aberto.

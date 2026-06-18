@@ -1,6 +1,6 @@
 # Press Outreach Wave 3 — Julho 2026 (pós-NiT + pós-Público)
 
-**Prova social dupla.** Agora podes começar todos os emails com "Como talvez tenham visto na **NiT** [LINK] e mais recentemente na **Público** [LINK]…"
+**Prova social dupla.** Agora podes começar todos os emails com "Como talvez tenham visto na **NiT** (https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal) e mais recentemente na **Público** (https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023)…"
 
 **Ângulo central:** *Crise das creches em Portugal — o pai que construiu o mapa que faltava.*
 
@@ -67,14 +67,14 @@ Audiência exacta dos teus utilizadores. Maior taxa de conversão esperada.
 
 **TV é o mais difícil mas o de maior amplificação.** Aceita uma resposta em 7-10 dias. Não percas tempo a fazer follow-up.
 
-## ALVOS — Económicas (ângulo Fundação JM — opcional, alta diferenciação)
+## ALVOS — Económicas (ângulo civic-tech português)
 
-Só se quiseres puxar o ângulo "empresas a apoiar creches dos colaboradores".
+Ângulo: cidadão constrói infra-estrutura digital pública gratuita, sem investimento publicitário, com tracção real.
 
 | # | Publicação | Email | Ângulo |
 |---|---|---|---|
-| 16 | **ECO Económico** | redacao@eco.pt | "Fundação JM contactou Creches.app" |
-| 17 | **Jornal de Negócios** | negocios@negocios.pt | Same |
+| 16 | **ECO Económico** | redacao@eco.pt | "Civic-tech português: 4000 visitantes sem investimento" |
+| 17 | **Jornal de Negócios** | filomenalanca@negocios.pt | Custo da parentalidade (€600-900/mês) |
 | 18 | **Dinheiro Vivo** (Wave 1) | — | (já enviado) |
 
 ---
@@ -91,7 +91,7 @@ Copia, ajusta o nome, envia. **Assunto importa mais do que corpo** — testa.
 >
 > Sou o Joaquim Cabral, à espera do primeiro filho. Construí uma plataforma gratuita chamada **Creches.app** que mapeia mais de 2.500 creches portuguesas — públicas, IPSS e privadas — porque enquanto procurava creche para o meu filho percebi que essa informação não estava organizada num único sítio amigável.
 >
-> A app foi destaque na **NiT** [LINK] e na **Público** [LINK]. Nos últimos dias chegámos aos 4000 visitantes. A **Fundação Jerónimo Martins** contactou-me já para discutir uma parceria que apoie creches para os colaboradores do grupo.
+> A app foi destaque na **NiT** (https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal) e na **Público** (https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023). Nos últimos dias chegámos aos 4000 visitantes, sem qualquer investimento publicitário.
 >
 > Vivi de perto a frustração que a vossa audiência também vive: começar a procurar com 6 meses de gestação, percorrer 20 telefones, e ainda assim ficar em lista de espera. Acho que a história — e a ferramenta — encaixaria bem na [Pais & Filhos / Bebé.com / Sapo Lifestyle / etc.], com **a volta às aulas a aproximar-se e as inscrições para Setembro já em curso**.
 >
@@ -107,14 +107,14 @@ Copia, ajusta o nome, envia. **Assunto importa mais do que corpo** — testa.
 
 > Olá [Nome / Redacção],
 >
-> Sou o Joaquim Cabral, fundador da **Creches.app** — uma plataforma gratuita que mapeia mais de 2.500 creches de Portugal. Foi notícia recente na **NiT** [LINK] e na **Público** [LINK].
+> Sou o Joaquim Cabral, fundador da **Creches.app** — uma plataforma gratuita que mapeia mais de 2.500 creches de Portugal. Foi notícia recente na **NiT** (https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal) e na **Público** (https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023).
 >
 > Estaria disponível para uma entrevista em estúdio ou remota, sempre que vos for útil. Em 10 minutos conta-se:
 >
 > - Por que mais de 2.500 creches não chegam para 85 mil nascimentos anuais
 > - Como cruzamos a Carta Social com submissões das próprias creches para chegar a um mapa completo
 > - Como tudo é construído gratuitamente, sem ads e sem login obrigatório
-> - O contacto recente da Fundação Jerónimo Martins
+> - A questão das mensalidades (€600-€900) e das listas de espera
 >
 > Sou pai à espera do primeiro filho — isto não é teoria. Sou de Lisboa e vou onde for preciso.
 >
@@ -137,7 +137,7 @@ Copia, ajusta o nome, envia. **Assunto importa mais do que corpo** — testa.
 >
 > - **A questão de fundo** — natalidade portuguesa em queda, e ainda assim faltam vagas em creches nas zonas urbanas. Listas de espera de meses, mensalidades médias entre €600-900.
 > - **A história pessoal** — à espera do primeiro filho, construiu sozinho a ferramenta que lhe fazia falta — gratuita, sem publicidade.
-> - **A validação** — 4000 visitantes nos últimos dias, contacto da Fundação Jerónimo Martins para parceria. Tudo grátis, sem ads.
+> - **A validação** — 4000 visitantes nos últimos dias, cobertura na NiT e na Público. Tudo grátis, sem ads.
 >
 > Disponível para entrevista no estúdio em Lisboa, gravação na minha casa (Lisboa) com a app em uso, ou direto à distância. Posso também fornecer dados visuais — estatísticas distrito a distrito, screenshots da app, imagens-conceito da escassez.
 >
@@ -148,23 +148,23 @@ Copia, ajusta o nome, envia. **Assunto importa mais do que corpo** — testa.
 > geral@creches.app
 > 91X XXX XXX
 
-## Template D — Económicas (Fundação JM)
+## Template D — Económicas (civic-tech português)
 
-**Assunto:** *Fundação Jerónimo Martins contactou: civic-tech português a apoiar empresas*
+**Assunto:** *Civic-tech português: 4000 visitantes sem investimento — o mapa das creches*
 
 > Olá [Redacção],
 >
 > Sou o Joaquim Cabral, fundador da Creches.app. Tenho uma história que pode interessar à vossa secção de empresas/social:
 >
-> Em Junho, depois de publicações na **NiT** e na **Público**, a **Fundação Jerónimo Martins** entrou em contacto para discutir uma parceria que apoie o acesso a creches por parte dos colaboradores do grupo. É a primeira manifestação concreta de uma tendência que aí vem: **grandes empresas portuguesas a usar parcerias com civic-tech para apoiar a parentalidade dos colaboradores**.
+> Em Junho, depois de publicações na **NiT** e na **Público**, a Creches.app passou de 100 para 4000 visitantes diários sem qualquer investimento publicitário. É um caso interessante de **civic-tech português a resolver um problema económico real para famílias** — mensalidades médias entre €600 e €900/mês numa creche privada, perto de um salário mínimo nacional.
 >
 > A Creches.app é a plataforma gratuita que mapeia mais de 2.500 creches do país — públicas, IPSS e privadas. Nos últimos dias chegou aos 4000 visitantes, sem qualquer investimento publicitário.
 >
 > Acho que vale uma peça curta, especialmente no contexto de:
 >
-> - O problema RH que isto resolve (rotatividade pós-licença parental)
-> - O sinal sobre o caminho que ESG/diversidade está a tomar em Portugal
-> - Comparação com programas semelhantes nos EUA e Reino Unido
+> - O peso económico das creches no orçamento das famílias jovens
+> - A escassez de oferta em zonas urbanas (mais de 2.500 creches para 85 mil nascimentos)
+> - O modelo gratuito sem ads num sector cada vez mais comercializado
 >
 > Disponível para conversa quando vos for útil.
 >

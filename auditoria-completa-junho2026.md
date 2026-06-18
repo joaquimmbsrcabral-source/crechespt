@@ -1,6 +1,6 @@
 # Auditoria Completa — Creches.app
 
-Junho 2026 · Pós-NiT, pré-Público, pré-Fundação JM
+Junho 2026 · Pós-NiT, pré-Público
 Verificações reais no código e em produção.
 
 ---
@@ -84,7 +84,7 @@ Tens um ficheiro `app 2.html` (300KB) abandonado. Vai ser servido em /app%202.ht
 
 ### P0 · 22% das creches em "Desconhecido"
 
-569 creches no dataset com `tipo: "Desconhecido"`. Isto é o teu **calcanhar de Aquiles**. Jornalistas e Fundação JM vão testar pesquisar a creche que conhecem — se aparecer "?", quebras credibilidade.
+569 creches no dataset com `tipo: "Desconhecido"`. Isto é o teu **calcanhar de Aquiles**. Jornalistas e potenciais parceiros vão testar pesquisar a creche que conhecem — se aparecer "?", quebras credibilidade.
 
 **Fix (curto prazo):** algoritmo de inferência v4 com mais padrões + lookup cruzado com Carta Social
 
@@ -315,7 +315,7 @@ A cada 10 sessões, mostra mini-survey "0-10, recomendarias o creches.app?". Med
 
 ## 📅 Plano de Execução Recomendado
 
-### Esta semana (urgente — pré-Público + pré-Fundação JM)
+### Esta semana (urgente — pré-Público)
 
 | # | Tarefa | Esforço |
 |---|---|---|
@@ -362,9 +362,9 @@ Estás num ponto onde 3 coisas competem pela tua atenção:
 
 1. **Crescer a base** (SEO, conteúdo, posts)
 2. **Polir o produto** (UX, dados, qualidade)
-3. **Monetizar com a Fundação JM** (parceria, mas mantendo independência)
+3. **Explorar parcerias** (mantendo independência editorial e modelo gratuito)
 
-A minha sugestão: **gasta 60% no #2 nas próximas 4 semanas**. Antes da Fundação JM voltar para a 2ª reunião, queres mostrar uma app polida, com dados de qualidade clara, e métricas de conversão real (não só "visitas").
+A minha sugestão: **gasta 60% no #2 nas próximas 4 semanas**. Antes de qualquer reunião importante, queres mostrar uma app polida, com dados de qualidade clara, e métricas de conversão real (não só "visitas").
 
 Quando demonstrares isso, justificas budget de Nível 3 (60-90k€/ano) com confiança total.
 
