@@ -7,7 +7,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 
 ## 1 · Headline em 30 segundos
 
-**Quem:** Joaquim Cabral, engenheiro de Lisboa, 28 anos, prestes a ser pai pela primeira vez.
+**Quem:** Joaquim Cabral, 28 anos, de Lisboa, prestes a ser pai pela primeira vez.
 
 **O quê:** Creches.app — mapa nacional de creches em Portugal.
 
@@ -25,7 +25,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 
 | Métrica | Valor |
 |---|---|
-| **Creches mapeadas** | **2.591** |
+| **Creches mapeadas** | **mais de 2.500** |
 | **Distritos cobertos** | **20** (todo o continente + Açores + Madeira) |
 | **Páginas de distrito publicadas** | 21 |
 | **Guias publicados** | 4 (escolher creche, custos, ama vs avós, sobre) |
@@ -95,7 +95,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 
 ## 4 · Bio pessoal (versão curta para usar nas respostas)
 
-> *"Joaquim Cabral, 28 anos. Sou engenheiro, vivo em Lisboa. A minha mulher e eu vamos ser pais pela primeira vez ainda este ano. Foi à procura de creche para o nosso filho que percebi quão difícil isto era em Portugal — não por falta de creches, mas por falta de informação acessível. O Creches.app é a ferramenta que eu próprio gostaria de ter encontrado."*
+> *"Joaquim Cabral, 28 anos. Vivo em Lisboa. A minha mulher e eu vamos ser pais pela primeira vez ainda este ano. Foi à procura de creche para o nosso filho que percebi quão difícil isto era em Portugal — não por falta de creches, mas por falta de informação acessível. O Creches.app é a ferramenta que eu próprio gostaria de ter encontrado."*
 
 ---
 
@@ -147,7 +147,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 | **Creche Feliz (Seg. Social)** | Apenas creches gratuitas | Gratuita | Limitado ao programa; lista apenas instituições aderentes |
 | **Coverflex** | 2.600+ creches | Pago (benefícios B2B) | Direcionado a empresas, não a pais individuais |
 | **Creche na Minha Rua** | ND | Pago | Modelo de subscrição |
-| **Creches.app** | 2.591 creches, 20 distritos | **Grátis para todos. Sem ads.** | Site novo, autoridade SEO em construção |
+| **Creches.app** | mais de 2.500 creches, 20 distritos | **Grátis para todos. Sem ads.** | Site novo, autoridade SEO em construção |
 
 **Diferenciador-chave:** sou o único 100% gratuito, sem login obrigatório, com botão de remoção RGPD-explícito, e mantido por uma pessoa só com dados oficiais.
 
@@ -166,7 +166,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 
 ### "Como é que conseguiste fazer isto sozinho?"
 
-> "Sou engenheiro de formação, programo desde adolescente. O que mais demorou não foi o código — foi limpar os dados. A Carta Social tem campos inconsistentes, instituições com nomes ambíguos, idades implícitas mas não escritas. Construí um algoritmo que olha para o nome e infere o tipo de resposta social — funciona em 88% dos casos."
+> "Mexo em código desde adolescente. O que mais demorou não foi o código — foi limpar os dados. As fontes públicas têm campos inconsistentes, instituições com nomes ambíguos, idades implícitas mas não escritas. Criei um algoritmo que olha para o nome e infere o tipo de resposta social — funciona em 88% dos casos."
 
 ### "Não é arriscado depender da Carta Social? E se o Estado mudar o formato?"
 
@@ -174,7 +174,7 @@ Junho 2026 · Dados atualizados a partir do dataset em produção.
 
 ### "Não vais ganhar dinheiro com isto? Como vives?"
 
-> "Tenho trabalho como engenheiro. O Creches.app é projecto pessoal feito à noite. Não tenho intenção de cobrar a pais nem a creches. Se algum dia precisar de cobrir custos de servidor, ponderaria opções como donations ou patrocínios institucionais — nunca ads ou venda de dados. Mas a base é, e fica, gratuita."
+> "Tenho um trabalho a tempo inteiro. O Creches.app é projecto pessoal feito à noite. Não tenho intenção de cobrar a pais nem a creches. Se algum dia precisar de cobrir custos de servidor, ponderaria opções como donations ou patrocínios institucionais — nunca ads ou venda de dados. Mas a base é, e fica, gratuita."
 
 ### "O que dizes às creches que não querem aparecer no mapa?"
 
