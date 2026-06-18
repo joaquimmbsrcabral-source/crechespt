@@ -310,6 +310,14 @@ table tr:hover{background:rgba(255,243,214,.4)}
           <label style="grid-column:span 2"><span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#b3261e">
             <input id="ef-hidden" type="checkbox"> Esconder da app (só admin vê)
           </span></label>
+          <div style="grid-column:span 2;background:linear-gradient(135deg,#DEF5E1,#D8F5F4);border-radius:12px;padding:14px 16px;margin-top:6px">
+            <div style="font-weight:700;color:#218985;font-size:13px;margin-bottom:8px">🟢 Vagas em tempo real</div>
+            <label style="display:flex;gap:8px;align-items:center;font-weight:600;color:var(--ink);font-size:13px;margin-bottom:8px">
+              <input id="ef-tem-vaga" type="checkbox" style="width:18px;height:18px"> Esta creche tem vaga disponível agora
+            </label>
+            <p style="font-size:11.5px;color:var(--ink-soft);margin:6px 0 4px">Vaga marcada expira automaticamente em 30 dias. Marca de novo quando confirmares.</p>
+            <div id="ef-vaga-since" style="font-size:11px;color:var(--ink-soft);margin-top:4px"></div>
+          </div>
         </div>
 
         <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
@@ -1477,6 +1485,15 @@ async function openEditor(source, id, docId){
     document.getElementById("ef-min").value = creche.idade_min_meses ?? "";
     document.getElementById("ef-max").value = creche.idade_max_meses ?? "";
     document.getElementById("ef-hidden").checked = !!creche.hidden;
+    document.getElementById("ef-tem-vaga").checked = !!creche.tem_vaga;
+    const vagaSinceEl = document.getElementById("ef-vaga-since");
+    if(creche.vaga_atualizada_em){
+      const ts = creche.vaga_atualizada_em.toDate ? creche.vaga_atualizada_em.toDate() : new Date(creche.vaga_atualizada_em);
+      const days = Math.floor((Date.now() - ts.getTime()) / 86400000);
+      vagaSinceEl.textContent = `Última atualização: há ${days} dia${days === 1 ? "" : "s"} (${ts.toLocaleDateString("pt-PT")})`;
+    } else {
+      vagaSinceEl.textContent = "";
+    }
 
     // Tipos array
     const tiposSet = new Set(creche.tipos || (creche.tipo ? [creche.tipo] : []));
@@ -1531,9 +1548,22 @@ document.getElementById("ef-save").addEventListener("click", async ()=>{
     const tipos = [...document.querySelectorAll("#ef-tipos input[type=checkbox]:checked")].map(ck => ck.value);
     if(tipos.length) payload.tipos = tipos;
 
+    // Vagas em tempo real
+    const temVaga = document.getElementById("ef-tem-vaga").checked;
+    payload.tem_vaga = temVaga;
+    if(temVaga){
+      // Marcar timestamp só quando muda para true (ou se já está e queremos refrescar)
+      const wasVaga = !!(_currentEdit.original && _currentEdit.original.tem_vaga);
+      if(!wasVaga || confirm("Renovar timestamp da vaga? (passa a contar mais 30 dias)")){
+        payload.vaga_atualizada_em = firebase.firestore.FieldValue.serverTimestamp();
+      }
+    } else {
+      payload.vaga_atualizada_em = null;
+    }
+
     // Remover keys vazias (para não sobrescrever com null no Firestore)
     Object.keys(payload).forEach(k => {
-      if(payload[k] === "" || payload[k] === null) delete payload[k];
+      if(payload[k] === "" || (payload[k] === null && k !== "vaga_atualizada_em")) delete payload[k];
     });
 
     // Metadata
