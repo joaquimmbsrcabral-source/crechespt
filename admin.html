@@ -333,10 +333,16 @@ table tr:hover{background:rgba(255,243,214,.4)}
       <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
         Pessoas que se inscreveram para receber updates. Exporta a lista quando quiseres enviar via Brevo, Mailchimp ou Gmail.
       </p>
-      <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
         <button id="btn-nl-export" class="btn-apply" style="font-size:13px;padding:8px 14px">⬇ Exportar CSV</button>
+        <button id="btn-nl-gmail" class="btn-apply" style="font-size:13px;padding:8px 14px;background:linear-gradient(135deg,#FF6B9D,#FF9F68)">📧 Abrir Gmail (BCC)</button>
+        <button id="btn-nl-copy" class="btn-apply" style="font-size:13px;padding:8px 14px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">📋 Copiar emails</button>
         <span id="nl-status" style="font-size:12px;color:var(--ink-soft)"></span>
       </div>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 14px;line-height:1.5">
+        <b>📧 Gmail (BCC):</b> abre o Gmail compose a partir de <code>geral@creches.app</code> com TODOS os subscritores em BCC (privacidade garantida). Tu escreves o assunto e o corpo e envias.<br>
+        <b>📋 Copiar emails:</b> copia só a lista de emails para clipboard (para colar manualmente onde quiseres).
+      </p>
       <div id="nl-host"></div>
     </section>
 
@@ -1631,6 +1637,95 @@ if(btnNlExport) btnNlExport.addEventListener("click", async ()=>{
     status.textContent = "Erro: " + e.message;
   }finally{
     btnNlExport.disabled = false;
+  }
+});
+
+// Botão "Copiar emails" newsletter
+const btnNlCopy = document.getElementById("btn-nl-copy");
+if(btnNlCopy) btnNlCopy.addEventListener("click", async ()=>{
+  const status = document.getElementById("nl-status");
+  status.textContent = "A buscar emails…";
+  btnNlCopy.disabled = true;
+  try{
+    const snap = await db.collection("newsletter_subscribers").orderBy("ts","desc").get();
+    const emails = [];
+    snap.forEach(d => {
+      const x = d.data();
+      if(x.email) emails.push(String(x.email).trim().toLowerCase());
+    });
+    // dedupe
+    const uniq = Array.from(new Set(emails));
+    const text = uniq.join(", ");
+    await navigator.clipboard.writeText(text);
+    status.textContent = `✓ ${uniq.length} emails copiados para clipboard.`;
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+  }finally{
+    btnNlCopy.disabled = false;
+  }
+});
+
+// Botão "Abrir Gmail BCC" newsletter
+const btnNlGmail = document.getElementById("btn-nl-gmail");
+if(btnNlGmail) btnNlGmail.addEventListener("click", async (e)=>{
+  const status = document.getElementById("nl-status");
+  status.textContent = "A buscar emails…";
+  btnNlGmail.disabled = true;
+  try{
+    const snap = await db.collection("newsletter_subscribers").orderBy("ts","desc").get();
+    const emails = [];
+    snap.forEach(d => {
+      const x = d.data();
+      if(x.email) emails.push(String(x.email).trim().toLowerCase());
+    });
+    const uniq = Array.from(new Set(emails));
+    if(uniq.length === 0){
+      status.textContent = "⚠ Sem subscritores ainda. Nada para enviar.";
+      btnNlGmail.disabled = false;
+      return;
+    }
+    // Aviso se ultrapassar limites Gmail
+    let warning = "";
+    if(uniq.length > 500){
+      warning = ` ⚠ Tens ${uniq.length} subscritores — Gmail limita a ~500/envio. Considera dividir ou usar MailerLite.`;
+    }
+    // Construir Gmail compose URL com BCC
+    const bcc = encodeURIComponent(uniq.join(","));
+    const subject = encodeURIComponent("Novidades da Creches.app");
+    const body = encodeURIComponent(
+      "Olá,\n\n" +
+      "[O TEU CONTEÚDO AQUI]\n\n" +
+      "─────────\n" +
+      "Recebes este email porque subscreveste a newsletter em creches.app.\n" +
+      "Para deixar de receber, responde a este email com a palavra \"SAIR\".\n\n" +
+      "Obrigado,\nJoaquim Cabral\nCreches.app"
+    );
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&authuser=geral@creches.app&bcc=${bcc}&su=${subject}&body=${body}`;
+    // Verificar tamanho do URL
+    if(url.length > 32000){
+      status.textContent = `⚠ Demasiados emails (${uniq.length}) — URL Gmail demasiado longa. Usa "Copiar emails" e cola manualmente em BCC.`;
+      btnNlGmail.disabled = false;
+      return;
+    }
+    // Abrir nova janela
+    const win = window.open(url, "_blank");
+    if(!win){
+      // Popup blocked — fallback: anchor link
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    status.textContent = `✓ Gmail aberto com ${uniq.length} subscritores em BCC.${warning}`;
+  }catch(e){
+    console.error(e);
+    status.textContent = "Erro: " + e.message;
+  }finally{
+    btnNlGmail.disabled = false;
   }
 });
 
