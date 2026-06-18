@@ -1028,6 +1028,65 @@ header.topbar{
     <button id="btn-dismiss-banner" style="background:transparent;color:var(--ink-soft);padding:2px 10px;font-size:14px;cursor:pointer;border:none;margin-left:4px" title="Dispensar">✕</button>
   </div>
 
+  <!-- ========================= Onboarding overlay — primeira visita ========================= -->
+  <div id="onboard-host" style="display:none;position:fixed;inset:0;background:rgba(44,35,86,.55);z-index:9000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)">
+    <div style="background:#fff;border-radius:22px;max-width:440px;width:100%;padding:28px 26px 22px;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative">
+      <button id="ob-skip-x" aria-label="Saltar onboarding" style="position:absolute;top:14px;right:14px;background:transparent;border:0;color:var(--ink-soft);font-size:22px;cursor:pointer;line-height:1">✕</button>
+      <!-- Progress -->
+      <div style="display:flex;gap:6px;margin-bottom:18px">
+        <div id="ob-prog-1" style="flex:1;height:4px;background:var(--c-coral);border-radius:4px;transition:background .2s"></div>
+        <div id="ob-prog-2" style="flex:1;height:4px;background:var(--c-coral-soft);border-radius:4px;transition:background .2s"></div>
+        <div id="ob-prog-3" style="flex:1;height:4px;background:var(--c-coral-soft);border-radius:4px;transition:background .2s"></div>
+      </div>
+
+      <!-- Step 1: Onde moras -->
+      <div id="ob-step-1" class="ob-step">
+        <div style="font-size:38px;text-align:center;margin-bottom:8px">📍</div>
+        <h2 style="font-family:'Fredoka';font-size:24px;text-align:center;margin:0 0 6px;color:var(--ink)">Olá! Vamos começar?</h2>
+        <p style="text-align:center;color:var(--ink-soft);font-size:14.5px;margin:0 0 18px;line-height:1.5">Onde queres procurar creche? Escreve a morada ou usa a tua localização.</p>
+        <input id="ob-morada" type="text" placeholder="Ex: Rua da Liberdade 50, Lisboa" autocomplete="off"
+               style="width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;font:inherit;font-size:15px;outline:none;margin-bottom:10px;box-sizing:border-box">
+        <button id="ob-gps" style="width:100%;background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:12px;font-weight:600;font-size:14px;cursor:pointer;margin-bottom:14px">📍 Usar a minha localização</button>
+        <div style="display:flex;gap:8px">
+          <button id="ob-skip-1" style="flex:1;background:transparent;color:var(--ink-soft);border:0;padding:12px;font-size:13px;cursor:pointer">Saltar →</button>
+          <button id="ob-next-1" style="flex:2;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:0;border-radius:14px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(255,107,157,.3)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Idade -->
+      <div id="ob-step-2" class="ob-step" style="display:none">
+        <div style="font-size:38px;text-align:center;margin-bottom:8px">👶</div>
+        <h2 style="font-family:'Fredoka';font-size:24px;text-align:center;margin:0 0 6px;color:var(--ink)">Que idade tem o teu filho?</h2>
+        <p style="text-align:center;color:var(--ink-soft);font-size:14.5px;margin:0 0 18px;line-height:1.5">Filtramos só as creches que aceitam essa idade.</p>
+        <div id="ob-idades" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+          <button class="ob-idade" data-val="bercario" style="background:var(--c-coral-soft);color:var(--c-coral);border:2px solid transparent;border-radius:14px;padding:14px;font-weight:700;cursor:pointer;font-size:14px">👶 Berçário<br><span style="font-size:11px;font-weight:500;color:var(--ink-soft)">0-1 ano</span></button>
+          <button class="ob-idade" data-val="creche" style="background:var(--c-peach-soft);color:#A8780E;border:2px solid transparent;border-radius:14px;padding:14px;font-weight:700;cursor:pointer;font-size:14px">🍼 Creche<br><span style="font-size:11px;font-weight:500;color:var(--ink-soft)">1-3 anos</span></button>
+          <button class="ob-idade" data-val="ji" style="background:var(--c-turquoise-soft);color:#218985;border:2px solid transparent;border-radius:14px;padding:14px;font-weight:700;cursor:pointer;font-size:14px">🎨 JI<br><span style="font-size:11px;font-weight:500;color:var(--ink-soft)">3-6 anos</span></button>
+          <button class="ob-idade" data-val="atl" style="background:var(--c-yellow-soft);color:#A8780E;border:2px solid transparent;border-radius:14px;padding:14px;font-weight:700;cursor:pointer;font-size:14px">🎒 ATL<br><span style="font-size:11px;font-weight:500;color:var(--ink-soft)">6+ anos</span></button>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button id="ob-back-2" style="flex:1;background:transparent;color:var(--ink-soft);border:0;padding:12px;font-size:13px;cursor:pointer">← Voltar</button>
+          <button id="ob-skip-2" style="flex:1;background:transparent;color:var(--ink-soft);border:0;padding:12px;font-size:13px;cursor:pointer">Saltar</button>
+          <button id="ob-next-2" style="flex:2;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:0;border-radius:14px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;opacity:.5;pointer-events:none;box-shadow:0 4px 12px rgba(255,107,157,.3)" disabled>Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Final -->
+      <div id="ob-step-3" class="ob-step" style="display:none">
+        <div style="font-size:38px;text-align:center;margin-bottom:8px">🎯</div>
+        <h2 style="font-family:'Fredoka';font-size:24px;text-align:center;margin:0 0 6px;color:var(--ink)">Pronto a explorar!</h2>
+        <p style="text-align:center;color:var(--ink-soft);font-size:14.5px;margin:0 0 18px;line-height:1.5">Tens algumas dicas rápidas:</p>
+        <ul style="font-size:14px;color:var(--ink);line-height:1.7;padding-left:22px;margin:0 0 18px">
+          <li>🚩 Vê erro numa creche? Reporta dentro da ficha.</li>
+          <li>⭐ Marca favoritas para comparares mais tarde.</li>
+          <li>🗺 Os pontos no mapa filtram a lista ao lado.</li>
+          <li>📞 Toca no telefone para ligares logo.</li>
+        </ul>
+        <button id="ob-finish" style="width:100%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:0;border-radius:14px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(255,107,157,.3)">Ver as creches perto de mim →</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ========================= View: Mapa ========================= -->
   <section id="view-map" class="view active" role="tabpanel">
     <div class="filters">
@@ -2974,6 +3033,127 @@ function showAppShell(){
   document.getElementById("app-shell").style.display = "";
   // Leaflet precisa que o container fique visível para calcular tamanhos
   if(State.map) setTimeout(()=>State.map.invalidateSize(), 60);
+  // Onboarding na primeira visita
+  setTimeout(maybeShowOnboarding, 400);
+}
+
+// ===== Onboarding (3 passos, primeira visita) =====
+const ONBOARD_KEY = "crechespt/onboarded";
+const _onboardState = { idade: null, lat: null, lon: null };
+
+function maybeShowOnboarding(){
+  if(localStorage.getItem(ONBOARD_KEY)) return;
+  const host = document.getElementById("onboard-host");
+  if(!host) return;
+  host.style.display = "flex";
+  obShowStep(1);
+  _wireOnboarding();
+}
+
+function obShowStep(n){
+  for(let i=1; i<=3; i++){
+    const el = document.getElementById("ob-step-"+i);
+    if(el) el.style.display = (i === n) ? "" : "none";
+    const prog = document.getElementById("ob-prog-"+i);
+    if(prog) prog.style.background = (i <= n) ? "var(--c-coral)" : "var(--c-coral-soft)";
+  }
+}
+
+function obFinish(){
+  localStorage.setItem(ONBOARD_KEY, new Date().toISOString());
+  document.getElementById("onboard-host").style.display = "none";
+  // Se houver morada/idade selecionada, aplicar
+  if(_onboardState.lat && _onboardState.lon){
+    State.userPos = [_onboardState.lat, _onboardState.lon];
+    if(State.map) State.map.setView(State.userPos, 13);
+    // sort por distância
+  }
+  if(_onboardState.idade){
+    State.filters.idade.clear();
+    State.filters.idade.add(_onboardState.idade);
+    // marca os chips visualmente
+    document.querySelectorAll('.chip[data-idade]').forEach(b=>{
+      b.classList.toggle("active", b.dataset.idade === _onboardState.idade);
+    });
+  }
+  applyFilters();
+}
+
+let _onboardWired = false;
+function _wireOnboarding(){
+  if(_onboardWired) return;
+  _onboardWired = true;
+
+  // Skip global
+  document.getElementById("ob-skip-x").addEventListener("click", obFinish);
+  document.getElementById("ob-skip-1").addEventListener("click", obFinish);
+  document.getElementById("ob-skip-2").addEventListener("click", ()=> obShowStep(3));
+
+  // Step 1: morada
+  const moradaInp = document.getElementById("ob-morada");
+  const btnGps = document.getElementById("ob-gps");
+  const btnNext1 = document.getElementById("ob-next-1");
+
+  btnGps.addEventListener("click", ()=>{
+    if(!navigator.geolocation){ toast("Geolocalização não disponível","warn"); return; }
+    btnGps.textContent = "📍 A localizar…";
+    btnGps.disabled = true;
+    navigator.geolocation.getCurrentPosition(pos=>{
+      _onboardState.lat = pos.coords.latitude;
+      _onboardState.lon = pos.coords.longitude;
+      moradaInp.value = "✓ Localização ativada";
+      btnGps.textContent = "📍 Localização OK";
+      btnGps.style.background = "var(--c-mint-soft)";
+      btnGps.style.color = "#3CA64B";
+    }, err=>{
+      btnGps.textContent = "📍 Usar a minha localização";
+      btnGps.disabled = false;
+      toast("Sem permissão de localização — escreve a morada","warn");
+    }, { timeout: 8000 });
+  });
+
+  btnNext1.addEventListener("click", async ()=>{
+    const morada = (moradaInp.value || "").trim();
+    if(_onboardState.lat){
+      obShowStep(2);
+      return;
+    }
+    if(morada && !morada.startsWith("✓")){
+      btnNext1.textContent = "A pesquisar…";
+      btnNext1.disabled = true;
+      try{
+        const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pt&q=" + encodeURIComponent(morada);
+        const r = await fetch(url, { headers: { "Accept-Language": "pt-PT" } });
+        const j = await r.json();
+        if(j && j.length){
+          _onboardState.lat = parseFloat(j[0].lat);
+          _onboardState.lon = parseFloat(j[0].lon);
+        }
+      }catch(e){ console.warn("geocode failed", e); }
+      btnNext1.textContent = "Continuar →";
+      btnNext1.disabled = false;
+    }
+    obShowStep(2);
+  });
+
+  // Step 2: idade
+  document.querySelectorAll(".ob-idade").forEach(btn => {
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(".ob-idade").forEach(b => b.style.borderColor = "transparent");
+      btn.style.borderColor = "var(--c-coral)";
+      _onboardState.idade = btn.dataset.val;
+      const next = document.getElementById("ob-next-2");
+      next.disabled = false;
+      next.style.opacity = "1";
+      next.style.pointerEvents = "";
+    });
+  });
+
+  document.getElementById("ob-back-2").addEventListener("click", ()=> obShowStep(1));
+  document.getElementById("ob-next-2").addEventListener("click", ()=> obShowStep(3));
+
+  // Step 3: finish
+  document.getElementById("ob-finish").addEventListener("click", obFinish);
 }
 
 async function signInGoogle(){
