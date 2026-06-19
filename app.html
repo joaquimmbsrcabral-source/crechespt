@@ -784,11 +784,13 @@ header.topbar{
     padding:6px 8px;gap:6px;
     background:linear-gradient(135deg,rgba(255,227,238,.7),rgba(255,232,214,.6));
   }
-  .addr-wrap{padding:0 4px 0 12px;flex:1;min-width:0}
-  .addr-wrap input{padding:11px 6px;font-size:14px}
-  .addr-search-btn{padding:9px 14px;font-size:13px;flex-shrink:0}
-  .addr-icon{font-size:16px}
-  .filter-row-hero .chip-gps{padding:8px 12px;font-size:12px;flex-shrink:0}
+  .addr-wrap{padding:0 3px 0 10px;flex:1;min-width:0}
+  .addr-wrap input{padding:9px 4px;font-size:13.5px}
+  .addr-search-btn{padding:7px 10px;font-size:12px;flex-shrink:0}
+  .addr-icon{font-size:15px}
+  .filter-row-hero .chip-gps{padding:6px 10px;font-size:11.5px;flex-shrink:0}
+  /* Quando hero é movido para dentro do collapse, remove o gradiente para parecer parte do bloco */
+  #filters-collapse .filter-row-hero{background:transparent;padding:4px 0;border-bottom:1px dashed var(--line);margin-bottom:4px;padding-bottom:8px}
   /* Mais filtros: botão compacto centralizado */
   .filters-toggle{padding:7px 14px;font-size:12.5px;align-self:flex-start;width:100%;justify-content:center}
   /* Collapsible: chips e selects compactos */
@@ -2714,7 +2716,31 @@ function escapeHtml(s){ if(s==null) return ""; return String(s)
 function escapeAttr(s){ return escapeHtml(s).replace(/`/g,"&#96;"); }
 
 /* ===== Listeners ===== */
+// Mobile: reposicionar a linha "Morada + GPS" para dentro do bloco "Mais filtros"
+// para libertar espaço no topo. Em desktop fica fora (sempre visível).
+function _relocateHeroForMobile(){
+  const hero = document.querySelector('.filter-row-hero');
+  const toggle = document.getElementById('filters-toggle');
+  const collapse = document.getElementById('filters-collapse');
+  if(!hero || !toggle || !collapse) return;
+  const isMobile = window.innerWidth <= 768;
+  const insideCollapse = collapse.contains(hero);
+  if(isMobile && !insideCollapse){
+    collapse.insertBefore(hero, collapse.firstChild);
+  } else if(!isMobile && insideCollapse){
+    toggle.parentNode.insertBefore(hero, toggle);
+  }
+}
+
 function wireUp(){
+  // Reposicionar hero conforme breakpoint
+  try{ _relocateHeroForMobile(); }catch(_){}
+  let _resizeTo = null;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(_resizeTo);
+    _resizeTo = setTimeout(_relocateHeroForMobile, 150);
+  });
+
   const qInput = document.getElementById("q");
   const qClear = document.getElementById("q-clear");
   const debouncedApply = debounce(applyFilters, 180);
