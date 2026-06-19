@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<title>Metodologia — como recolhemos os dados das creches | Creches.app</title>
+<meta name="description" content="Como a Creches.app cruza Carta Social, OpenStreetMap, submissões das creches e correcções dos pais para construir o mapa nacional de creches em Portugal. Frequência de actualização, fontes, controlo de qualidade.">
+<link rel="canonical" href="https://creches.app/sobre/metodologia">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Metodologia — como recolhemos os dados das creches">
+<meta property="og:description" content="Carta Social + OpenStreetMap + submissões verificadas + correcções dos pais. A transparência por trás do mapa de mais de 2500 creches em Portugal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://creches.app/sobre/metodologia">
+<meta property="og:image" content="https://creches.app/og-image.png">
+<meta property="og:locale" content="pt_PT">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --c-mint:#7DD389; --c-mint-soft:#DEF5E1;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5;
+  --line:rgba(60,40,90,.08); --r-pill:999px; --r-md:14px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 600px at 10% 0%, var(--c-peach-soft) 0%, transparent 55%),
+    radial-gradient(800px 600px at 100% 0%, var(--c-coral-soft) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.75; min-height:100vh;
+}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+header.top{display:flex;align-items:center;gap:14px;padding:16px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.brand-name b{font-family:"Fredoka";font-size:20px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
+header .spacer{flex:1}
+header nav{display:flex;gap:6px;align-items:center}
+header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
+header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
+header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+article{max-width:760px;margin:0 auto;padding:40px 24px 60px}
+.breadcrumb{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+.breadcrumb a{color:var(--ink-soft)}
+.breadcrumb a:hover{color:var(--c-coral)}
+h1{font-size:36px;margin:0 0 12px}
+.lede{font-size:18px;color:var(--ink-soft);margin:0 0 28px;line-height:1.55}
+.tldr{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:22px 26px;margin:26px 0;border-left:4px solid var(--c-coral)}
+.tldr h3{margin:0 0 10px;font-size:14px;color:var(--c-coral);text-transform:uppercase;letter-spacing:.05em}
+.tldr p{margin:0;color:var(--ink)}
+h2{font-size:24px;margin:42px 0 14px;display:flex;align-items:center;gap:10px}
+h2 .num{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;font-weight:700;font-family:"Fredoka"}
+h3{font-size:18px;margin:24px 0 10px}
+ul,ol{padding-left:22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;background:rgba(255,255,255,.65);border-radius:var(--r-md);overflow:hidden;font-size:14.5px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:rgba(255,255,255,.85);font-family:"Fredoka";color:var(--ink);font-weight:600}
+tr:last-child td{border-bottom:0}
+.source-card{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:18px 20px;margin:14px 0;border-left:3px solid var(--c-turquoise)}
+.source-card h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.source-card .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.04em}
+.source-card .badge.ok{background:var(--c-mint-soft);color:#1F6E37}
+.source-card .badge.semi{background:var(--c-yellow-soft);color:#A8780E}
+.source-card .badge.crowd{background:var(--c-turquoise-soft);color:#218985}
+.faq{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:6px 22px;margin:24px 0}
+.faq details{padding:14px 0;border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:0}
+.faq summary{font-weight:700;cursor:pointer;color:var(--ink);font-size:15px}
+.faq details[open] summary{color:var(--c-coral);margin-bottom:10px}
+.faq details p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+.cta-box{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:28px;margin:36px 0;text-align:center}
+.cta-box h3{font-size:20px;margin:0 0 8px;color:var(--ink)}
+.cta-box p{margin:0 0 16px;color:var(--ink-soft)}
+.cta-box .btn{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:12px 24px;border-radius:var(--r-pill);text-decoration:none;box-shadow:0 6px 16px rgba(255,107,157,.35);margin:4px 6px}
+.cta-box .btn.secondary{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.last-update{display:inline-block;background:var(--c-mint-soft);color:#1F6E37;padding:5px 13px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;margin:0 0 22px}
+footer{background:rgba(255,255,255,.5);border-top:1px solid var(--line);padding:24px;text-align:center;font-size:13px;color:var(--ink-soft);margin-top:60px}
+footer a{color:var(--ink-soft);margin:0 8px}
+footer a:hover{color:var(--c-coral)}
+@media (max-width:640px){
+  h1{font-size:28px}
+  article{padding:24px 18px 40px}
+  header.top{padding:12px 16px}
+  header nav a:not(.cta){display:none}
+  table{font-size:13px}
+  th,td{padding:9px 10px}
+}
+</style>
+
+<!-- Schema.org Dataset — GEO target -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://creches.app/dataset",
+  "name": "Mapa nacional de creches em Portugal",
+  "alternateName": "Creches.app Dataset",
+  "description": "Lista de mais de 2.500 creches portuguesas (públicas, IPSS e privadas) com geolocalização, contactos, idades aceites e tipo de resposta social. Actualizada continuamente a partir da Carta Social, OpenStreetMap, submissões directas das creches e correcções dos pais.",
+  "url": "https://creches.app/sobre/metodologia",
+  "sameAs": "https://creches.app",
+  "license": "https://creches.app/termos",
+  "creator": {
+    "@type": "Person",
+    "name": "Joaquim Cabral",
+    "url": "https://creches.app/sobre"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://creches.app/#org",
+    "name": "Creches.app",
+    "url": "https://creches.app",
+    "logo": "https://creches.app/favicon.svg",
+    "sameAs": [
+      "https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023",
+      "https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal"
+    ]
+  },
+  "isAccessibleForFree": true,
+  "spatialCoverage": {
+    "@type": "Country",
+    "name": "Portugal",
+    "identifier": "PT"
+  },
+  "temporalCoverage": "2026/..",
+  "dateModified": "2026-06-18",
+  "keywords": ["creches", "Portugal", "IPSS", "berçário", "jardim de infância", "Carta Social", "OpenStreetMap", "educação infantil"],
+  "variableMeasured": [
+    {"@type": "PropertyValue", "name": "Nome do estabelecimento"},
+    {"@type": "PropertyValue", "name": "Tipo (Pública / IPSS / Privada)"},
+    {"@type": "PropertyValue", "name": "Localização geográfica (lat/lon)"},
+    {"@type": "PropertyValue", "name": "Distrito e concelho"},
+    {"@type": "PropertyValue", "name": "Idades aceites (meses)"},
+    {"@type": "PropertyValue", "name": "Telefone"},
+    {"@type": "PropertyValue", "name": "Resposta social (creche, JI, ATL, etc.)"}
+  ],
+  "isBasedOn": [
+    {
+      "@type": "Dataset",
+      "name": "Carta Social",
+      "url": "https://www.cartasocial.pt",
+      "publisher": {"@type": "GovernmentOrganization", "name": "Instituto da Segurança Social"}
+    },
+    {
+      "@type": "Dataset",
+      "name": "OpenStreetMap",
+      "url": "https://www.openstreetmap.org",
+      "license": "https://opendatacommons.org/licenses/odbl/"
+    }
+  ]
+}
+</script>
+
+<!-- Schema.org BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app"},
+    {"@type": "ListItem", "position": 2, "name": "Sobre", "item": "https://creches.app/sobre"},
+    {"@type": "ListItem", "position": 3, "name": "Metodologia", "item": "https://creches.app/sobre/metodologia"}
+  ]
+}
+</script>
+
+<!-- Schema.org FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quantas creches estão no Creches.app?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Mais de 2.500 creches em todos os 20 distritos de Portugal continental, Açores e Madeira, incluindo públicas, IPSS e privadas."}
+    },
+    {
+      "@type": "Question",
+      "name": "De onde vêm os dados das creches?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Cruzamos três fontes: a Carta Social do Estado (base para IPSS e públicas), o OpenStreetMap (coordenadas e dados colaborativos abertos), e submissões directas das próprias creches via /para-creches. Correcções dos pais via reports na ficha de cada creche também alimentam o dataset."}
+    },
+    {
+      "@type": "Question",
+      "name": "Com que frequência o Creches.app é actualizado?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Continuamente. As submissões e correcções aprovadas pelo admin aparecem em produção sem necessidade de redeploy, através de uma camada de overrides em Firestore. A base do dataset é re-sincronizada com a Carta Social periodicamente."}
+    },
+    {
+      "@type": "Question",
+      "name": "Como sei se a informação de uma creche é fidedigna?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Cada creche tem um indicador de origem dos dados (fonte oficial, submissão verificada, ou correcção comunitária). Erros podem ser reportados directamente na ficha de cada creche e são revistos em 1 a 3 dias úteis."}
+    },
+    {
+      "@type": "Question",
+      "name": "A Creches.app é independente da Carta Social?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Sim. A Carta Social é uma das fontes — não a única. A Creches.app é um projecto independente, sem ligação institucional ao Estado, e complementa a Carta Social com creches privadas, geolocalização precisa, filtros amigáveis e correcções comunitárias."}
+    }
+  ]
+}
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Creches.app">
+    <span class="logo">🍼</span>
+    <span class="brand-name"><b>Creches<span class="brand-tld">.app</span></b><span>O mapa de creches em Portugal</span></span>
+  </a>
+  <span class="spacer"></span>
+  <nav>
+    <a href="/sobre">Sobre</a>
+    <a href="/guias">Guias</a>
+    <a href="/imprensa">Imprensa</a>
+    <a class="cta" href="/app">🍼 Abrir mapa →</a>
+  </nav>
+</header>
+
+<article>
+  <nav class="breadcrumb">
+    <a href="/">Início</a> → <a href="/sobre">Sobre</a> → <span>Metodologia</span>
+  </nav>
+
+  <span class="last-update">📅 Última actualização: 18 Junho 2026</span>
+
+  <h1>Metodologia</h1>
+  <p class="lede">Como recolhemos, verificamos e mantemos actualizada a base de mais de <strong>2.500 creches em Portugal</strong>.</p>
+
+  <div class="tldr">
+    <h3>TL;DR</h3>
+    <p>Cruzamos <strong>Carta Social</strong> (Estado, fonte oficial), <strong>OpenStreetMap</strong> (dados abertos para coordenadas), <strong>submissões directas das creches</strong> e <strong>correcções dos pais</strong>. Tudo verificado por uma pessoa (Joaquim) antes de aparecer em produção. Sem APIs pagas, sem dados comprados, sem raspagem oculta.</p>
+  </div>
+
+  <h2><span class="num">1</span> As três fontes principais</h2>
+  <p>O dataset é o resultado da composição de três camadas que se complementam. Cada creche pode ter informação proveniente de uma ou várias.</p>
+
+  <div class="source-card">
+    <h3>📋 Carta Social <span class="badge ok">fonte oficial</span></h3>
+    <p>O registo nacional de equipamentos sociais, mantido pelo <strong>Instituto da Segurança Social</strong> (Ministério do Trabalho, Solidariedade e Segurança Social). Esta é a nossa base, especialmente para creches IPSS e creches públicas. Cobertura: nacional. Formato original: PDFs e tabelas Excel. Limitação: sem geolocalização precisa, sem interface pesquisável amigável, actualização anual.</p>
+    <p>📎 <a href="https://www.cartasocial.pt" target="_blank" rel="noopener">cartasocial.pt</a></p>
+  </div>
+
+  <div class="source-card">
+    <h3>🗺 OpenStreetMap <span class="badge ok">dados abertos</span></h3>
+    <p>Projecto colaborativo global de cartografia. Usamos para <strong>coordenadas geográficas precisas</strong>, moradas, e dados complementares de creches privadas que não constam na Carta Social. Licença: <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a>. Atribuição: "© OpenStreetMap contributors".</p>
+    <p>📎 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">openstreetmap.org</a></p>
+  </div>
+
+  <div class="source-card">
+    <h3>🏫 Submissões directas das creches <span class="badge semi">comunitário verificado</span></h3>
+    <p>Qualquer creche em Portugal pode submeter ou corrigir os seus dados em <a href="/para-creches">creches.app/para-creches</a>. O formulário recolhe: nome, morada, idades aceites, contactos, horário, website. Cada submissão é <strong>verificada manualmente por admin</strong> (Joaquim) em 5-10 dias úteis antes de publicar. Sem custo, sem subscrição.</p>
+  </div>
+
+  <div class="source-card">
+    <h3>🚩 Correcções dos pais <span class="badge crowd">crowdsource</span></h3>
+    <p>Dentro da ficha de cada creche, o botão "Reportar erro" permite reportar: idade aceite errada, telefone inválido, estabelecimento encerrado, ou outra informação. Cada report é revisto pelo admin em 1-3 dias úteis. Os utilizadores que reportam são notificados quando o seu report é aplicado.</p>
+  </div>
+
+  <h2><span class="num">2</span> Como inferimos idades e tipos</h2>
+  <p>Muitas creches no dataset oficial não declaram explicitamente as idades aceites ou o tipo de resposta social. Para resolver isto, construímos um <strong>algoritmo de inferência baseado no nome do estabelecimento</strong>.</p>
+
+  <table>
+    <thead>
+      <tr><th>Pista no nome</th><th>Inferência</th><th>Precisão</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Berçário"</td><td>Idade mínima: 0 meses</td><td>Alta</td></tr>
+      <tr><td>"Jardim de Infância", "JI"</td><td>Faixa 3-6 anos</td><td>Alta</td></tr>
+      <tr><td>"Creche"</td><td>Faixa 1-3 anos</td><td>Média-Alta</td></tr>
+      <tr><td>"Infantário"</td><td>Faixa 0-6 anos</td><td>Média-Alta</td></tr>
+      <tr><td>"ATL", "Tempos Livres"</td><td>Faixa 6+ anos</td><td>Alta</td></tr>
+      <tr><td>"Santa Casa", "Centro Paroquial", "IPSS"</td><td>Tipo: IPSS</td><td>Alta</td></tr>
+      <tr><td>"Colégio", "Internacional"</td><td>Tipo: Privada</td><td>Média</td></tr>
+      <tr><td>"EB1/JI", "Agrupamento de Escolas"</td><td>Tipo: Pública</td><td>Alta</td></tr>
+    </tbody>
+  </table>
+
+  <p>A precisão geral do algoritmo é de cerca de <strong>88%</strong>, validada contra uma amostra aleatória de 100 creches verificadas manualmente. Os 12% restantes ficam classificados como "Desconhecido" e são prioritários para correcção comunitária.</p>
+
+  <h2><span class="num">3</span> Frequência de actualização</h2>
+  <p>O modelo de actualização é <strong>contínuo, não periódico</strong>:</p>
+  <ul>
+    <li><strong>Submissões aprovadas</strong> e <strong>correcções aprovadas</strong> aparecem em produção imediatamente, sem necessidade de redeploy do site. Isto é possível graças a uma camada de "overrides" em Firestore que é lida em tempo real pela app.</li>
+    <li><strong>Re-sincronização com a Carta Social</strong>: feita manualmente quando a Segurança Social publica nova versão (tipicamente 1-2 vezes por ano).</li>
+    <li><strong>Re-sincronização com OpenStreetMap</strong>: cada 3 meses, para apanhar novos pontos colaborativos.</li>
+    <li><strong>Dataset disponível em produção</strong>: comprimido em base64 dentro do `app.html` para zero round-trips, mas as alterações pós-deploy são feitas via overrides.</li>
+  </ul>
+
+  <h2><span class="num">4</span> Cobertura actual</h2>
+  <table>
+    <thead>
+      <tr><th>Dimensão</th><th>Valor</th><th>Notas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Creches no dataset</td><td>2.500+</td><td>Continente + Açores + Madeira</td></tr>
+      <tr><td>Distritos cobertos</td><td>20</td><td>Todos os distritos PT</td></tr>
+      <tr><td>Concelhos com página dedicada</td><td>154</td><td>Threshold: 3+ creches por concelho</td></tr>
+      <tr><td>Tipo "Pública" identificado</td><td>~997</td><td>~38% do total</td></tr>
+      <tr><td>Tipo "IPSS" identificado</td><td>~151</td><td>~6% do total — alvo de correcção comunitária</td></tr>
+      <tr><td>Tipo "Privada" identificado</td><td>~874</td><td>~34% do total</td></tr>
+      <tr><td>Tipo "Desconhecido"</td><td>~569</td><td>~22% — em melhoria contínua</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">5</span> Limitações conhecidas</h2>
+  <p>Para sermos honestos com pais, jornalistas e investigadores:</p>
+  <ul>
+    <li><strong>Cobertura de ATL é limitada</strong> — só 1 distrito tem actualmente 5+ ATL identificados.</li>
+    <li><strong>Coordenadas em pequenas localidades</strong> — algumas creches em zonas rurais têm coordenadas aproximadas (centróide da freguesia) em vez de exactas.</li>
+    <li><strong>Telefones podem desactualizar</strong> — confiamos em correcções dos pais; se viste um telefone inválido, reporta na ficha.</li>
+    <li><strong>Vagas em tempo real</strong> está em fase inicial — poucas creches já sinalizam.</li>
+    <li><strong>Mensalidades não são publicadas</strong> — as creches privadas raramente as divulgam abertamente.</li>
+  </ul>
+
+  <h2><span class="num">6</span> Perguntas frequentes</h2>
+  <div class="faq">
+    <details>
+      <summary>A Creches.app é independente da Carta Social?</summary>
+      <p>Sim. A Carta Social é uma das fontes que usamos — não a única. A Creches.app é um projecto independente, sem ligação institucional, e complementa a Carta Social com creches privadas, geolocalização precisa, filtros amigáveis e correcções comunitárias.</p>
+    </details>
+    <details>
+      <summary>Posso usar os dados da Creches.app no meu próprio projecto?</summary>
+      <p>Os dados resultam da composição de várias fontes com licenças diferentes. Carta Social: dados de origem pública, com atribuição obrigatória ao Instituto da Segurança Social. OpenStreetMap: licença ODbL com atribuição. Submissões directas e correcções: ficam disponíveis sob CC0. Para uso comercial ou em escala, contacta geral@creches.app.</p>
+    </details>
+    <details>
+      <summary>Como verifica se uma submissão é genuína?</summary>
+      <p>Cada submissão passa por validação manual. Verificamos: (1) que o número de telefone é atendível, (2) que a morada existe no Google Maps, (3) que a creche tem presença online (Facebook, site, registo na Carta Social ou em listas IPSS). Submissões duvidosas são contactadas para esclarecimento antes de publicar.</p>
+    </details>
+    <details>
+      <summary>Quanto tempo demora uma correcção a aparecer?</summary>
+      <p>Correcções aprovadas aparecem em produção <strong>imediatamente</strong> após aprovação pelo admin (1-3 dias úteis tipicamente). Não é necessário esperar por um deploy.</p>
+    </details>
+    <details>
+      <summary>O algoritmo de inferência de idades é open-source?</summary>
+      <p>Ainda não. O código vive no `app.html` mas não tem licença publicada. Se fores investigador ou jornalista e quiseres reutilizar, contacta-nos.</p>
+    </details>
+  </div>
+
+  <h2><span class="num">7</span> Para jornalistas e investigadores</h2>
+  <p>Disponibilizamos o dataset agregado (sem dados pessoais — não há dados pessoais aqui) para fins editoriais, académicos ou de investigação. Pede via <a href="mailto:geral@creches.app?subject=Pedido%20de%20dataset%20para%20investiga%C3%A7%C3%A3o">geral@creches.app</a> indicando o uso pretendido.</p>
+
+  <p>Possíveis cortes do dataset:</p>
+  <ul>
+    <li>Distribuição de creches por distrito e tipo</li>
+    <li>Evolução temporal (versões snapshot mensais)</li>
+    <li>Lista de creches com vagas sinalizadas</li>
+    <li>Estatísticas de correcções recebidas e processadas</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Achaste útil esta página?</h3>
+    <p>A Creches.app é gratuita, sem ads e sem login obrigatório.<br>Ajuda a fazê-la melhor para mais pais.</p>
+    <a class="btn" href="/app">🍼 Abrir o mapa →</a>
+    <a class="btn secondary" href="/para-creches">É creche? Submete-te</a>
+  </div>
+
+</article>
+
+<footer>
+  <a href="/">Início</a> ·
+  <a href="/app">App</a> ·
+  <a href="/sobre">Sobre</a> ·
+  <a href="/imprensa">Imprensa</a> ·
+  <a href="/privacidade">Privacidade</a> ·
+  <a href="/cookies">Cookies</a> ·
+  <a href="/termos">Termos</a>
+  <p style="margin-top:14px">© 2026 Creches.app · Feito em Lisboa, sem ads, sem login obrigatório</p>
+</footer>
+
+</body>
+</html>

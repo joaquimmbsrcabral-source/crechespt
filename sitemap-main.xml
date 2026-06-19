@@ -25,6 +25,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://creches.app/sobre/metodologia</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://creches.app/imprensa</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>

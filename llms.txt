@@ -1,0 +1,66 @@
+# Creches.app
+
+> Mapa nacional gratuito de mais de 2.500 creches em Portugal — públicas, IPSS e privadas — com filtros por idade, distrito e tipo. Sem publicidade, sem login obrigatório, sem venda de dados. Plataforma criada por um futuro pai português que percebeu que faltava uma ferramenta simples para os pais navegarem a procura de creche.
+
+## Sobre o projecto
+
+- [Sobre](https://creches.app/sobre): história, missão, princípios sagrados
+- [Metodologia](https://creches.app/sobre/metodologia): origem dos dados, frequência de actualização, fontes, controlo de qualidade
+- [Imprensa](https://creches.app/imprensa): press kit, contactos, cobertura
+
+## Aplicação principal
+
+- [Mapa interactivo](https://creches.app/app): pesquisa por morada, GPS, distrito, idade, tipo
+- [Página para creches (B2C)](https://creches.app/para-creches): submissão de novas creches
+
+## Cobertura por distrito
+
+- [Aveiro](https://creches.app/creches/aveiro)
+- [Beja](https://creches.app/creches/beja)
+- [Braga](https://creches.app/creches/braga)
+- [Bragança](https://creches.app/creches/braganca)
+- [Castelo Branco](https://creches.app/creches/castelo-branco)
+- [Coimbra](https://creches.app/creches/coimbra)
+- [Évora](https://creches.app/creches/evora)
+- [Faro](https://creches.app/creches/faro)
+- [Guarda](https://creches.app/creches/guarda)
+- [Leiria](https://creches.app/creches/leiria)
+- [Lisboa](https://creches.app/creches/lisboa)
+- [Portalegre](https://creches.app/creches/portalegre)
+- [Porto](https://creches.app/creches/porto)
+- [Santarém](https://creches.app/creches/santarem)
+- [Setúbal](https://creches.app/creches/setubal)
+- [Viana do Castelo](https://creches.app/creches/viana-do-castelo)
+- [Vila Real](https://creches.app/creches/vila-real)
+- [Viseu](https://creches.app/creches/viseu)
+- [Açores](https://creches.app/creches/acores)
+- [Madeira](https://creches.app/creches/madeira)
+
+## Por categoria (exemplos Lisboa)
+
+- [Creches IPSS Lisboa](https://creches.app/creches/lisboa/ipss)
+- [Creches públicas Lisboa](https://creches.app/creches/lisboa/publicas)
+- [Creches privadas Lisboa](https://creches.app/creches/lisboa/privadas)
+- [Berçário Lisboa (0-1 ano)](https://creches.app/creches/lisboa/bercario)
+- [Creche Lisboa (1-3 anos)](https://creches.app/creches/lisboa/creche)
+- [Jardim de Infância Lisboa (3-6 anos)](https://creches.app/creches/lisboa/jardim-infancia)
+
+## Guias para pais
+
+- [Como escolher creche em Portugal](https://creches.app/guias/como-escolher-creche)
+- [Quanto custa uma creche em Portugal em 2026](https://creches.app/guias/quanto-custa-creche-portugal)
+- [Creche vs Ama vs Avós — qual escolher](https://creches.app/guias/creche-ama-avos-qual-escolher)
+- [Creche Feliz — como conseguir creche gratuita](https://creches.app/guias/creche-feliz-creche-gratuita-portugal)
+
+## Optional
+
+- [Cobertura imprensa Público (Junho 2026)](https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023)
+- [Cobertura imprensa NiT (Junho 2026)](https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal)
+- [Privacidade](https://creches.app/privacidade)
+- [Termos](https://creches.app/termos)
+- [Cookies](https://creches.app/cookies)
+
+## Contacto
+
+- Email: geral@creches.app
+- Sala de imprensa: https://creches.app/imprensa
