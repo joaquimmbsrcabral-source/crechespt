@@ -2798,10 +2798,10 @@ function wireUp(){
   });
   document.getElementById("f-distrito").addEventListener("change", e=>{
     State.filters.distrito = e.target.value; State.filters.concelho="";
-    refreshConcelhoSelect(); applyFilters();
+    refreshConcelhoSelect(); applyFilters(); fitMap();
   });
   document.getElementById("f-concelho").addEventListener("change", e=>{
-    State.filters.concelho = e.target.value; applyFilters();
+    State.filters.concelho = e.target.value; applyFilters(); fitMap();
   });
   document.querySelectorAll('.chip[data-tipo]').forEach(b=>{
     b.setAttribute("aria-pressed","false");
@@ -3442,6 +3442,7 @@ function renderUserChip(user){
           await loadUserDataFromFirestore();
           showAppShell();
           applyFilters();
+          try{ fitMap(); }catch(_){}
           updatePipelineBadge();
           if(State.view==="pipeline") renderPipeline();
           // Esconde guest banner se existir
@@ -3454,6 +3455,7 @@ function renderUserChip(user){
           // localStorage já guarda os dados, sincroniza com Firestore quando o user fizer login
           showAppShell();
           applyFilters();
+          try{ fitMap(); }catch(_){}
           updatePipelineBadge();
           if(State.view==="pipeline") renderPipeline();
           // Mostra guest banner (subtil)
@@ -3694,6 +3696,9 @@ function renderUserChip(user){
       // fallback offline
       showAppShell();
       applyFilters();
+      // Mostrar Portugal inteiro no boot para a sincronização viewport↔lista
+      // não começar com viewport vazio em zonas fora de Lisboa
+      try{ fitMap(); }catch(_){}
       updatePipelineBadge();
       setSyncStatus("err","Firebase falhou — modo offline");
     }
@@ -3701,6 +3706,7 @@ function renderUserChip(user){
     // sem firebase configurado → modo offline / dev
     showAppShell();
     applyFilters();
+    try{ fitMap(); }catch(_){}
     updatePipelineBadge();
   }
   // Deep link
