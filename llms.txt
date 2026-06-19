@@ -4,7 +4,8 @@
 
 ## Sobre o projecto
 
-- [Sobre](https://creches.app/sobre): história, missão, princípios sagrados
+- [Sobre](https://creches.app/sobre): história, missão, princípios
+- [Roadmap](https://creches.app/roadmap): o que está feito, em curso, em exploração
 - [Metodologia](https://creches.app/sobre/metodologia): origem dos dados, frequência de actualização, fontes, controlo de qualidade
 - [Imprensa](https://creches.app/imprensa): press kit, contactos, cobertura
 

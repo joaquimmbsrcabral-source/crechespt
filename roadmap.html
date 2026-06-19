@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<title>Roadmap — o que estamos a construir | Creches.app</title>
+<meta name="description" content="Transparência sobre o que já fizemos, o que está em curso, o que estamos a explorar, e o que provavelmente nunca vai entrar na Creches.app. Página viva, actualizada quando avançamos.">
+<link rel="canonical" href="https://creches.app/roadmap">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Roadmap da Creches.app">
+<meta property="og:description" content="O que já fizemos · em curso · em exploração · provavelmente nunca. Página viva.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://creches.app/roadmap">
+<meta property="og:image" content="https://creches.app/og-image.png">
+<meta property="og:locale" content="pt_PT">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --c-mint:#7DD389; --c-mint-soft:#DEF5E1;
+  --c-grey:#BFBBD0; --c-grey-soft:#EFEDF3;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5;
+  --line:rgba(60,40,90,.08); --r-pill:999px; --r-md:14px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 600px at 10% 0%, var(--c-peach-soft) 0%, transparent 55%),
+    radial-gradient(800px 600px at 100% 0%, var(--c-coral-soft) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.7; min-height:100vh;
+}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+header.top{display:flex;align-items:center;gap:14px;padding:16px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.brand-name b{font-family:"Fredoka";font-size:20px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
+header .spacer{flex:1}
+header nav{display:flex;gap:6px;align-items:center}
+header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
+header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
+header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+
+.hero{max-width:780px;margin:0 auto;padding:50px 24px 24px;text-align:center}
+.hero .kicker{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+  padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:12px;margin-bottom:18px;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-size:42px;margin:0 0 14px;letter-spacing:-.02em;line-height:1.1}
+.hero .lede{font-size:18px;color:var(--ink-soft);max-width:620px;margin:0 auto;line-height:1.55}
+.hero .updated{display:inline-block;background:var(--c-mint-soft);color:#1F6E37;padding:5px 13px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;margin-top:18px}
+
+.sections{max-width:880px;margin:0 auto;padding:30px 24px 40px}
+
+.section{margin:0 0 50px}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--line)}
+.section-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;font-family:"Fredoka";font-weight:700;color:#fff}
+.section-head .label{flex:1}
+.section-head h2{margin:0;font-size:24px;line-height:1.15}
+.section-head .desc{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
+
+.s-done .section-icon{background:linear-gradient(135deg,#7DD389,#5BC07A);box-shadow:0 3px 10px rgba(125,211,137,.35)}
+.s-doing .section-icon{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));box-shadow:0 3px 10px rgba(255,107,157,.35)}
+.s-exploring .section-icon{background:linear-gradient(135deg,var(--c-turquoise),#5BC0BC);box-shadow:0 3px 10px rgba(72,209,204,.35)}
+.s-never .section-icon{background:linear-gradient(135deg,var(--c-grey),#A8A2BD);box-shadow:0 3px 10px rgba(155,151,181,.35)}
+
+.items{display:grid;gap:12px;list-style:none;padding:0;margin:0}
+.item{background:rgba(255,255,255,.85);border-radius:var(--r-md);padding:16px 20px;
+  display:flex;align-items:flex-start;gap:14px;box-shadow:var(--sh-1);
+  border-left:3px solid var(--c-grey-soft);transition:transform .15s}
+.item:hover{transform:translateX(2px)}
+.s-done .item{border-left-color:#5BC07A}
+.s-doing .item{border-left-color:var(--c-coral)}
+.s-exploring .item{border-left-color:var(--c-turquoise)}
+.s-never .item{border-left-color:var(--c-grey)}
+
+.item-mark{flex-shrink:0;font-size:18px;line-height:1;margin-top:2px}
+.item-body{flex:1;min-width:0}
+.item-body b{display:block;font-family:"Fredoka";color:var(--ink);font-size:15.5px;margin-bottom:3px;line-height:1.3}
+.item-body p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.item-body .when{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
+  padding:2px 8px;border-radius:var(--r-pill);font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle}
+.s-doing .item-body .when{background:var(--c-peach-soft);color:#A8780E}
+.s-exploring .item-body .when{background:var(--c-turquoise-soft);color:#218985}
+
+.note{
+  background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
+  border-radius:var(--r-card);padding:26px 30px;max-width:780px;margin:30px auto;
+  border:1px dashed var(--line)
+}
+.note h3{margin:0 0 12px;font-size:20px}
+.note p{margin:0 0 12px;color:var(--ink-soft);font-size:15px;line-height:1.6}
+.note p:last-child{margin:0}
+.note .sig{color:var(--ink);font-weight:700;margin-top:16px;font-family:"Fredoka"}
+
+.cta-box{
+  background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));
+  border-radius:var(--r-card);padding:32px 28px;margin:30px auto;max-width:780px;text-align:center
+}
+.cta-box h3{font-size:22px;margin:0 0 8px}
+.cta-box p{color:var(--ink-soft);margin:0 0 18px;font-size:15px}
+.cta-box .btn{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+  font-weight:700;padding:12px 24px;border-radius:var(--r-pill);text-decoration:none;
+  box-shadow:0 6px 16px rgba(255,107,157,.35);margin:4px 6px;font-size:14.5px}
+.cta-box .btn.secondary{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+
+footer{background:rgba(255,255,255,.5);border-top:1px solid var(--line);padding:24px;text-align:center;font-size:13px;color:var(--ink-soft);margin-top:60px}
+footer a{color:var(--ink-soft);margin:0 8px}
+footer a:hover{color:var(--c-coral)}
+
+@media (max-width:640px){
+  .hero{padding:32px 18px 16px}
+  .hero h1{font-size:30px}
+  .hero .lede{font-size:15.5px}
+  .sections{padding:20px 18px 30px}
+  .section{margin-bottom:36px}
+  .section-head h2{font-size:20px}
+  .section-icon{width:40px;height:40px;font-size:18px}
+  .item{padding:13px 16px;gap:11px}
+  .item-body b{font-size:14.5px}
+  .item-body p{font-size:13px}
+  .note,.cta-box{padding:22px 18px;margin:20px 18px}
+  header.top{padding:12px 16px}
+  header nav a:not(.cta){display:none}
+}
+</style>
+
+<!-- Schema.org WebPage + Organization sameAs -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Roadmap da Creches.app",
+  "url":"https://creches.app/roadmap",
+  "description":"Página viva sobre o que já fizemos, em curso, e em exploração na Creches.app — mapa nacional de creches em Portugal.",
+  "inLanguage":"pt-PT",
+  "datePublished":"2026-06-19",
+  "dateModified":"2026-06-19",
+  "about":{
+    "@type":"Organization",
+    "@id":"https://creches.app/#org",
+    "name":"Creches.app",
+    "url":"https://creches.app",
+    "sameAs":[
+      "https://www.wikidata.org/wiki/Q140290655",
+      "https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023",
+      "https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal"
+    ]
+  }
+}
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Creches.app">
+    <span class="logo">🍼</span>
+    <span class="brand-name"><b>Creches<span class="brand-tld">.app</span></b><span>O mapa de creches em Portugal</span></span>
+  </a>
+  <span class="spacer"></span>
+  <nav>
+    <a href="/sobre">Sobre</a>
+    <a href="/roadmap">Roadmap</a>
+    <a href="/guias">Guias</a>
+    <a href="/imprensa">Imprensa</a>
+    <a class="cta" href="/app">🍼 Abrir mapa →</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="kicker">Página viva</span>
+  <h1>O que estamos a construir.</h1>
+  <p class="lede">Sem datas certas, sem compromissos amarrados. Apenas transparência sobre o que está feito, o que está em curso, e o que andamos a explorar. Esta página é actualizada sempre que algo avança.</p>
+  <div class="updated">📅 Última actualização: 19 Junho 2026</div>
+</section>
+
+<div class="sections">
+
+  <!-- ============ FEITO ============ -->
+  <section class="section s-done">
+    <div class="section-head">
+      <div class="section-icon">✓</div>
+      <div class="label">
+        <h2>Já está em produção</h2>
+        <div class="desc">Funciona hoje na Creches.app. Podes usar agora.</div>
+      </div>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <span class="item-mark">🗺</span>
+        <div class="item-body">
+          <b>Mapa nacional com mais de 2.500 creches</b>
+          <p>Cobertura dos 20 distritos do continente + Açores e Madeira. Públicas, IPSS e privadas no mesmo mapa.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🔍</span>
+        <div class="item-body">
+          <b>Pesquisa por morada, GPS ou código postal</b>
+          <p>Escreve onde moras ou usa a tua localização — a app filtra as creches mais próximas.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🎂</span>
+        <div class="item-body">
+          <b>Filtros por idade do filho</b>
+          <p>Berçário (0-1), Creche (1-3), Jardim de Infância (3-6), ATL (6+) — ou idade específica em anos.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">⭐</span>
+        <div class="item-body">
+          <b>Favoritas e pipeline pessoal</b>
+          <p>Marca creches favoritas, regista quem contactaste, quem respondeu, quem tens visita marcada.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🟢</span>
+        <div class="item-body">
+          <b>Vagas em tempo real (fase inicial)</b>
+          <p>Filtra creches que sinalizaram ter vaga disponível agora. Em rolling-out.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🚩</span>
+        <div class="item-body">
+          <b>Sistema de reports e correcções</b>
+          <p>Qualquer pai pode reportar erros (idade errada, telefone, encerrada). Revisto e aplicado em 1-3 dias.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">📚</span>
+        <div class="item-body">
+          <b>4 guias gratuitos</b>
+          <p>Como escolher creche · Quanto custa em 2026 · Creche vs Ama vs Avós · Programa Creche Feliz.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">📬</span>
+        <div class="item-body">
+          <b>Newsletter mensal</b>
+          <p>Novidades, novos guias, actualizações importantes. 1 email por mês, sem spam.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">📱</span>
+        <div class="item-body">
+          <b>Instalável como app (PWA)</b>
+          <p>Funciona como app nativa no telemóvel. Adiciona ao ecrã inicial — sem App Store.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🏫</span>
+        <div class="item-body">
+          <b>Submissão e verificação de creches</b>
+          <p>Qualquer creche pode submeter os seus dados em /para-creches. Verificado em 5-10 dias.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ EM CURSO ============ -->
+  <section class="section s-doing">
+    <div class="section-head">
+      <div class="section-icon">⚡</div>
+      <div class="label">
+        <h2>Em curso agora</h2>
+        <div class="desc">Estamos a trabalhar nisto neste momento. Avança nas próximas semanas.</div>
+      </div>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <span class="item-mark">🟢</span>
+        <div class="item-body">
+          <b>Vagas em tempo real — escalar para todas as creches</b><span class="when">Próximas semanas</span>
+          <p>Hoje só admin pode marcar. Em desenvolvimento: link único por creche para sinalizar vaga sem precisar de conta.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🧠</span>
+        <div class="item-body">
+          <b>Reduzir creches com tipo "Desconhecido"</b><span class="when">Em melhoria contínua</span>
+          <p>~22% das creches ainda não estão classificadas como Pública/IPSS/Privada. Estamos a melhorar o algoritmo + crowdsource correcções.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">📰</span>
+        <div class="item-body">
+          <b>Mais cobertura editorial</b><span class="when">Próximas 4 semanas</span>
+          <p>Wave 3 de imprensa em curso — rádio, TV, magazines especializadas em parenting.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🌍</span>
+        <div class="item-body">
+          <b>Páginas em inglês para expats</b><span class="when">Em estudo</span>
+          <p>Comunidade expat em Portugal cresce — uma página guia em EN ajuda quem chega novo.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ EXPLORAÇÃO ============ -->
+  <section class="section s-exploring">
+    <div class="section-head">
+      <div class="section-icon">🔬</div>
+      <div class="label">
+        <h2>Em exploração</h2>
+        <div class="desc">Ideias que estamos a estudar. Sem garantia de chegarem — depende de fazerem sentido.</div>
+      </div>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <span class="item-mark">👥</span>
+        <div class="item-body">
+          <b>Conta para creches com auto-edição</b>
+          <p>Dashboard onde cada creche pode actualizar os próprios dados — mensalidades, horários, fotos, vagas — sem ter de passar pelo admin.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">📋</span>
+        <div class="item-body">
+          <b>Lista de espera tracker</b>
+          <p>Os pais acompanham em que posição estão em cada creche onde se inscreveram. Alertas quando avançam.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">⚖️</span>
+        <div class="item-body">
+          <b>Comparador lado a lado</b>
+          <p>Comparar 3 creches: mensalidades, idades aceites, horário, distância, equipa, número de crianças por sala.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🔔</span>
+        <div class="item-body">
+          <b>Notificações de novas creches ou vagas</b>
+          <p>Quando aparecer uma creche nova no teu concelho, ou uma vaga numa creche que tens guardada, ser avisado.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🔌</span>
+        <div class="item-body">
+          <b>API pública read-only</b>
+          <p>Disponibilizar o dataset agregado para investigadores, jornalistas e developers que queiram fazer análises ou ferramentas próprias.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🗓</span>
+        <div class="item-body">
+          <b>Agendamento de visitas</b>
+          <p>Marcar visita a uma creche directamente na app, com sincronização para o calendário.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">💰</span>
+        <div class="item-body">
+          <b>Médias de mensalidades por concelho</b>
+          <p>Dados agregados (e anónimos) de mensalidades reportadas por pais, para teres uma noção realista antes de telefonar.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ PROVAVELMENTE NUNCA ============ -->
+  <section class="section s-never">
+    <div class="section-head">
+      <div class="section-icon">×</div>
+      <div class="label">
+        <h2>Provavelmente nunca</h2>
+        <div class="desc">Ideias que não estão na nossa direcção actual. Não é compromisso — apenas o que faz sentido hoje.</div>
+      </div>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <span class="item-mark">🚫</span>
+        <div class="item-body">
+          <b>Publicidade na app</b>
+          <p>Banners, links patrocinados, ou creches que pagam para subir no ranking. Hoje a Creches.app é totalmente sem ads — e essa é a direcção que faz sentido continuar.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🔒</span>
+        <div class="item-body">
+          <b>Login obrigatório para ver o mapa</b>
+          <p>O mapa é visível sem registo. Login só existe para sincronizar a tua pesquisa entre dispositivos — e é opcional.</p>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">💸</span>
+        <div class="item-body">
+          <b>Venda de dados a terceiros</b>
+          <p>Os dados dos utilizadores não saem da Creches.app. Não há programa de afiliados disfarçado nem partilha com "parceiros".</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<div class="note">
+  <h3>Porque é que isto está aqui?</h3>
+  <p>Porque os pais merecem saber o que estamos a fazer com a Creches.app — não só o que já existe, mas também o que está a vir. E porque é justo dizer também o que <i>não</i> estamos a planear.</p>
+  <p>Esta página é actualizada quando há novidades. Os itens em "exploração" podem nunca chegar, ou podem chegar mais cedo do que esperado — é nesse compromisso flexível que esta página vive.</p>
+  <p>Tens uma ideia que devia estar aqui? <a href="mailto:geral@creches.app?subject=Ideia%20para%20o%20roadmap">Escreve um email</a> — leio todos.</p>
+  <div class="sig">— Joaquim Cabral, fundador</div>
+</div>
+
+<div class="cta-box">
+  <h3>Está pronto para abrir o mapa?</h3>
+  <p>Mais de 2.500 creches em Portugal. Pesquisa por morada ou usa o GPS.</p>
+  <a class="btn" href="/app">🍼 Abrir mapa →</a>
+  <a class="btn secondary" href="/sobre">Conhecer a história</a>
+</div>
+
+<footer>
+  <a href="/">Início</a> ·
+  <a href="/app">App</a> ·
+  <a href="/sobre">Sobre</a> ·
+  <a href="/roadmap">Roadmap</a> ·
+  <a href="/imprensa">Imprensa</a> ·
+  <a href="/privacidade">Privacidade</a> ·
+  <a href="/cookies">Cookies</a> ·
+  <a href="/termos">Termos</a>
+  <p style="margin-top:14px">© 2026 Creches.app · Feito em Lisboa</p>
+</footer>
+
+</body>
+</html>
