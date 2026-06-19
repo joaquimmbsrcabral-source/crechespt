@@ -1,5 +1,81 @@
+# Creches.app — robots.txt
+# Mapa nacional de creches em Portugal — https://creches.app
+#
+# Permite explicitamente todos os AI training bots e search crawlers
+# para máxima visibilidade em ChatGPT, Claude, Perplexity, Gemini e Bing.
+
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin.html
+
+# ---- AI training & search bots (permissão explícita) ----
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini — separado do Googlebot SEO)
+User-agent: Google-Extended
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (alimenta vários modelos)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon (Alexa, Q)
+User-agent: Amazonbot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# ByteDance (Doubao, TikTok)
+User-agent: Bytespider
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# ---- Sitemaps ----
 
 Sitemap: https://creches.app/sitemap.xml
-Sitemap: https://creches.app/sitemap-creches.xml
