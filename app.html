@@ -2281,12 +2281,12 @@ function renderList(){
     });
     wrap.appendChild(row);
   }
-  const src = getListSource();
+  const total = src.length;
   const start = State.page*PAGE_SIZE + 1;
-  const end = Math.min(src.length, (State.page+1)*PAGE_SIZE);
-  document.getElementById("page-info").textContent = `${start}–${end} de ${src.length}`;
+  const end = Math.min(total, (State.page+1)*PAGE_SIZE);
+  document.getElementById("page-info").textContent = `${start}–${end} de ${total}`;
   document.getElementById("prev").disabled = State.page===0;
-  document.getElementById("next").disabled = end >= src.length;
+  document.getElementById("next").disabled = end >= total;
   wrap.scrollTop = 0;
 }
 
