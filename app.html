@@ -518,6 +518,21 @@ header.topbar{
   background:var(--bg2);border-radius:var(--r-pill);padding:5px 10px;font-size:12px;
   color:var(--ink-soft);display:inline-flex;align-items:center;gap:4px
 }
+.vp-chip{
+  background:#fff;border:1.5px solid var(--line);border-radius:var(--r-pill);
+  padding:5px 11px 5px 8px;font-size:12px;color:var(--ink-soft);font:inherit;font-size:12px;
+  display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:600;
+  transition:all .15s
+}
+.vp-chip .vp-dot{
+  width:7px;height:7px;border-radius:50%;background:#ccc;display:inline-block;flex-shrink:0
+}
+.vp-chip.active{
+  background:linear-gradient(135deg,#DEF5E1,#D8F5F4);border-color:#B5E2C0;color:#1F6E37
+}
+.vp-chip.active .vp-dot{background:#5BC07A;box-shadow:0 0 0 3px rgba(125,211,137,.3);animation:pulse-vp 2.5s ease-in-out infinite}
+@keyframes pulse-vp{0%,100%{box-shadow:0 0 0 3px rgba(125,211,137,.3)}50%{box-shadow:0 0 0 5px rgba(125,211,137,.15)}}
+.vp-chip:hover{box-shadow:var(--sh-1)}
 .sort-chip select{
   border:none;background:transparent;font-weight:600;color:var(--ink);outline:none;cursor:pointer;
 }
@@ -1224,6 +1239,9 @@ header.topbar{
             <div class="subtitle" id="list-subtitle">A carregar…</div>
           </div>
           <div class="right">
+            <button id="btn-viewport-sync" class="vp-chip active" type="button" title="Mostra só as creches visíveis no mapa actual (ao fazer zoom/pan a lista actualiza)">
+              <span class="vp-dot"></span>🗺 Sincronizado
+            </button>
             <span class="sort-chip">Ordenar:
               <select id="sort" aria-label="Ordenar resultados">
                 <option value="name">Nome</option>
@@ -1638,6 +1656,7 @@ const State = {
   filtered: [],
   page: 0,
   view: "map",
+  viewportOnly: true,   // lista sincronizada com viewport do mapa (zoom/pan)
   filters: {
     q:"", distrito:"", concelho:"",
     tipo:new Set(), status:new Set(),
@@ -2123,7 +2142,13 @@ function applyFilters(){
 function updateHeader(){
   const total = State.creches.length;
   const f = State.filtered.length;
-  document.getElementById("list-subtitle").textContent = `${f.toLocaleString("pt-PT")} de ${total.toLocaleString("pt-PT")} creches`;
+  const visible = getListSource().length;
+  const el = document.getElementById("list-subtitle");
+  if(State.viewportOnly && State.view === "map" && visible !== f){
+    el.textContent = `${visible.toLocaleString("pt-PT")} no mapa · ${f.toLocaleString("pt-PT")} no total`;
+  } else {
+    el.textContent = `${f.toLocaleString("pt-PT")} de ${total.toLocaleString("pt-PT")} creches`;
+  }
 }
 function updateAreaBanner(){
   const b = document.getElementById("area-banner");
@@ -2148,7 +2173,22 @@ function updatePipelineBadge(){
 }
 
 /* ===== Lista ===== */
-function pageRows(){ const start = State.page*PAGE_SIZE; return State.filtered.slice(start, start+PAGE_SIZE); }
+// Fonte da lista — se viewportOnly estiver ON e o mapa estiver pronto,
+// filtra apenas as creches dentro dos bounds visíveis. Senão devolve State.filtered inteiro.
+function getListSource(){
+  if(State.viewportOnly && State.map && State.view === "map"){
+    try{
+      const b = State.map.getBounds();
+      return State.filtered.filter(c => b.contains([c.lat, c.lon]));
+    }catch(_){ return State.filtered; }
+  }
+  return State.filtered;
+}
+function pageRows(){
+  const src = getListSource();
+  const start = State.page*PAGE_SIZE;
+  return src.slice(start, start+PAGE_SIZE);
+}
 
 function highlightTerm(s, term){
   if(!s) return "";
@@ -2163,18 +2203,33 @@ function highlightTerm(s, term){
 }
 function renderList(){
   const wrap = document.getElementById("list-scroll");
-  if(!State.filtered.length){
+  const src = getListSource();
+  if(!src.length){
     const hasFilters = State.filters.q || State.filters.distrito || State.filters.concelho ||
       State.filters.tipo.size || State.filters.status.size || State.filters.idade.size ||
       State.filters.idadeAnos || State.filters.onlyTracked || State.filters.onlyFav || State.areaIds;
+    // Caso especial: filtros não geram zero, mas o viewport sim
+    const emptyByViewport = State.viewportOnly && State.filtered.length > 0;
+    let title, body, action;
+    if(emptyByViewport){
+      title = "Nenhuma creche neste pedaço do mapa";
+      body = `Há ${State.filtered.length.toLocaleString("pt-PT")} creches no resto do país com estes filtros. Faz zoom out ou desliga o "Sincronizado".`;
+      action = '<button id="empty-vp-off" class="btn primary">Desligar sincronização</button>';
+    } else {
+      title = "Nenhuma creche encontrada";
+      body = hasFilters ? "Os filtros que aplicaste não devolveram resultados. Tenta alargar os critérios." : "Ainda não há nada a mostrar.";
+      action = hasFilters ? '<button id="empty-clear" class="btn primary">↺ Limpar filtros</button>' : "";
+    }
     wrap.innerHTML = `<div class="empty illus">
-      <div class="emoji">🤔</div>
-      <h3>Nenhuma creche encontrada</h3>
-      <p>${hasFilters ? "Os filtros que aplicaste não devolveram resultados. Tenta alargar os critérios." : "Ainda não há nada a mostrar."}</p>
-      ${hasFilters ? '<button id="empty-clear" class="btn primary">↺ Limpar filtros</button>' : ""}
+      <div class="emoji">${emptyByViewport?"🔭":"🤔"}</div>
+      <h3>${title}</h3>
+      <p>${body}</p>
+      ${action}
     </div>`;
     const cb = document.getElementById("empty-clear");
     if(cb) cb.addEventListener("click", ()=>document.getElementById("f-clear").click());
+    const vpOff = document.getElementById("empty-vp-off");
+    if(vpOff) vpOff.addEventListener("click", ()=>document.getElementById("btn-viewport-sync").click());
     document.getElementById("page-info").textContent = "0";
     document.getElementById("prev").disabled = true;
     document.getElementById("next").disabled = true;
@@ -2226,11 +2281,12 @@ function renderList(){
     });
     wrap.appendChild(row);
   }
+  const src = getListSource();
   const start = State.page*PAGE_SIZE + 1;
-  const end = Math.min(State.filtered.length, (State.page+1)*PAGE_SIZE);
-  document.getElementById("page-info").textContent = `${start}–${end} de ${State.filtered.length}`;
+  const end = Math.min(src.length, (State.page+1)*PAGE_SIZE);
+  document.getElementById("page-info").textContent = `${start}–${end} de ${src.length}`;
   document.getElementById("prev").disabled = State.page===0;
-  document.getElementById("next").disabled = end >= State.filtered.length;
+  document.getElementById("next").disabled = end >= src.length;
   wrap.scrollTop = 0;
 }
 
@@ -2306,6 +2362,16 @@ function initMap(){
       clearArea();
     }
   });
+
+  // Sincronização lista <-> viewport: ao fazer zoom/pan, re-renderiza lista (não o mapa)
+  const debouncedVpUpdate = debounce(()=>{
+    if(State.viewportOnly && State.view === "map"){
+      State.page = 0;
+      renderList();
+      updateHeader();
+    }
+  }, 180);
+  State.map.on("moveend", debouncedVpUpdate);
   // FeatureGroup para desenho
   State.drawLayer = new L.FeatureGroup();
   State.map.addLayer(State.drawLayer);
@@ -2903,6 +2969,21 @@ function wireUp(){
   // Expor para applyFilters() chamar automaticamente no fim
   window.refreshFiltersCount = refreshFiltersCount;
   refreshFiltersCount();
+
+  // Toggle "Sincronizado com mapa"
+  const vpBtn = document.getElementById("btn-viewport-sync");
+  if(vpBtn){
+    vpBtn.addEventListener("click", ()=>{
+      State.viewportOnly = !State.viewportOnly;
+      vpBtn.classList.toggle("active", State.viewportOnly);
+      vpBtn.innerHTML = State.viewportOnly
+        ? '<span class="vp-dot"></span>🗺 Sincronizado'
+        : '<span class="vp-dot"></span>🗺 Sincronizar';
+      State.page = 0;
+      renderList();
+      updateHeader();
+    });
+  }
 
   document.getElementById("f-only-fav").addEventListener("click", e=>{
     State.filters.onlyFav = !State.filters.onlyFav;
