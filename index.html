@@ -52,15 +52,21 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://creches.app/#org",
   "name": "Creches.app",
   "url": "https://creches.app",
   "logo": "https://creches.app/icon-512.png",
-  "description": "Plataforma gratuita que ajuda pais portugueses a encontrar a creche certa para os seus filhos. Mapa com 2591 creches em Portugal.",
+  "description": "Plataforma gratuita que ajuda pais portugueses a encontrar a creche certa para os seus filhos. Mapa com mais de 2500 creches em Portugal.",
   "areaServed": { "@type": "Country", "name": "Portugal" },
   "knowsAbout": ["Creches", "Jardins de Infância", "Infantários", "Berçários", "IPSS", "Creche Feliz"],
   "email": "geral@creches.app",
   "foundingDate": "2026",
-  "founder": { "@type": "Person", "name": "Joaquim Cabral" }
+  "founder": { "@type": "Person", "name": "Joaquim Cabral" },
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q140290655",
+    "https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023",
+    "https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal"
+  ]
 }
 </script>
 
@@ -100,7 +106,7 @@
   "keywords": ["creches", "portugal", "jardim de infância", "IPSS", "infantário", "berçário", "educação infantil"],
   "spatialCoverage": { "@type": "Place", "name": "Portugal" },
   "temporalCoverage": "2026",
-  "creator": { "@type": "Organization", "name": "Creches.app", "url": "https://creches.app" },
+  "creator": { "@type": "Organization", "@id": "https://creches.app/#org", "name": "Creches.app", "url": "https://creches.app", "sameAs": "https://www.wikidata.org/wiki/Q140290655" },
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
   "inLanguage": "pt-PT",

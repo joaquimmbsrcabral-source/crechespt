@@ -54,6 +54,7 @@
 
 ## Optional
 
+- [Entidade Wikidata Q140290655](https://www.wikidata.org/wiki/Q140290655)
 - [Cobertura imprensa Público (Junho 2026)](https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023)
 - [Cobertura imprensa NiT (Junho 2026)](https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal)
 - [Privacidade](https://creches.app/privacidade)

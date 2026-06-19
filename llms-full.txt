@@ -126,6 +126,7 @@ Dentro da ficha de cada creche (`creches.app/creche/{slug}`), botão "Reportar e
 - Email: geral@creches.app
 - Sala de imprensa: https://creches.app/imprensa
 - Fundador: Joaquim Cabral, Lisboa
+- Entidade Wikidata: https://www.wikidata.org/wiki/Q140290655 (Q140290655)
 
 ## Licenças e atribuições
 
