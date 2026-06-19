@@ -21,8 +21,8 @@ Fundada por Joaquim Cabral, à espera do primeiro filho, em Lisboa. O projecto n
 
 ## Cobertura de imprensa
 
-- **Público** (jornal de referência nacional), 12 de Junho de 2026: reportagem em destaque na secção P3.
-- **NiT — New in Town** (revista digital), Junho de 2026: cobertura completa do projecto.
+- **Público** (jornal de referência nacional), 12 de Junho de 2026: reportagem em destaque na secção P3. URL: https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023
+- **NiT — New in Town** (revista digital), Junho de 2026: cobertura completa do projecto. URL: https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal
 
 ## O problema que resolve
 
