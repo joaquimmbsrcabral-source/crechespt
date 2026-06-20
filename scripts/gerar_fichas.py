@@ -281,6 +281,24 @@ for c in creches:
     crumbs.append({"@type":"ListItem","position":len(crumbs)+1,"name":nome,"item":url})
     ldbc = json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":crumbs}, ensure_ascii=False)
 
+    # FAQPage schema — rich snippet com perguntas frequentes
+    nome_q = ('A ' + nome) if not nome.lower().startswith('a ') else nome
+    faq_q1 = f"{nome_q} é gratuita?"
+    if tipo in ("IPSS","Pública"):
+        faq_a1 = (f"{nome_q} integra a rede {'solidária (IPSS)' if tipo=='IPSS' else 'pública'}. Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga.")
+    else:
+        faq_a1 = (f"{nome_q} é {tipo.lower() if tipo else 'privada'}. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona.")
+    faq_a2 = f"{fx}. Funciona como {resposta.lower()}." if resposta else fx
+    faq_a3 = (f"Telefone: {tel}." if tel else "Não temos contacto registado para esta creche.") + (f" Email: {mail}." if mail else "")
+    ldfaq = json.dumps({
+        "@context":"https://schema.org","@type":"FAQPage",
+        "mainEntity":[
+            {"@type":"Question","name":faq_q1,"acceptedAnswer":{"@type":"Answer","text":faq_a1}},
+            {"@type":"Question","name":f"Que idades aceita {nome_q}?","acceptedAnswer":{"@type":"Answer","text":faq_a2}},
+            {"@type":"Question","name":f"Como contactar {nome_q}?","acceptedAnswer":{"@type":"Answer","text":faq_a3}}
+        ]
+    }, ensure_ascii=False)
+
     # === Emoji avatar por tipo de resposta (mais visual que letra inicial) ===
     resp_lower = (resposta or "").lower()
     if "berç" in resp_lower or "0" in str(c.get("idade_min_meses","")):
@@ -412,6 +430,7 @@ for c in creches:
 {STYLE}
 <script type="application/ld+json">{ldjson}</script>
 <script type="application/ld+json">{ldbc}</script>
+<script type="application/ld+json">{ldfaq}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>

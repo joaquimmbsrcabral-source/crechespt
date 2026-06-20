@@ -92,6 +92,15 @@
 > - ✅ #47 **Roadmap "Em curso" com progress bars visuais** — gradient coral-peach + % + label texto (Vagas 40%, Tipos 75%, Imprensa 60%, Carta Social 55%, EN 10%)
 > - ✅ #48 **Página /404 personalizada** — branded com emoji 🍼, CTAs grandes, 6 atalhos para páginas principais (vs página 404 default do Vercel)
 >
+> **Onda 22 GRANDE — Calculadora + Polimentos:**
+> - ✅ #49 **NOVA PÁGINA /calculadora** — 3 perguntas, calcula mensalidade IPSS (por escalão), Privada (por zona) ou Creche Feliz (gratuita). Schema WebApp. Foco SEO "calculadora creche portugal".
+> - ✅ #50 **Card destacado /guias** com gradient coral apontando para /calculadora
+> - ✅ #51 **CTA "Quanto custa"** redireccionado para /calculadora (mais útil que abrir mapa)
+> - ✅ #52 **Sitemap-main.xml** + nav top-level (7 páginas) com link Calculadora
+> - ✅ #53 **Metodologia** actualizada: Pública 998 → 985 após filtro EB, nota explícita "Escolas Básicas excluídas"
+> - ✅ #54 **llms.txt** descreve /calculadora (AI visibility)
+> - ✅ #55 **FAQPage JSON-LD nas 2578 fichas** — 3 Q&A personalizadas (gratuita? / idades / contacto) → rich snippets Google
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)

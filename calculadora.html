@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<title>Calculadora de custo de creche em Portugal 2026 | Creches.app</title>
+<meta name="description" content="Calcula quanto vais pagar de creche em Portugal: IPSS (por escalão), privada (por distrito) e Creche Feliz (gratuita). Estimativa em 30 segundos, sem registo.">
+<meta name="keywords" content="calculadora creche, quanto custa creche, custo creche portugal, mensalidade IPSS, escalão creche, creche feliz">
+<link rel="canonical" href="https://creches.app/calculadora">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Calculadora de custo de creche em Portugal 2026">
+<meta property="og:description" content="Calcula a tua mensalidade — IPSS, privada ou Creche Feliz. 30 segundos, sem registo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://creches.app/calculadora">
+<meta property="og:image" content="https://creches.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:image" content="https://creches.app/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Calculadora de custo de creche em Portugal",
+  "url":"https://creches.app/calculadora",
+  "applicationCategory":"LifestyleApplication",
+  "operatingSystem":"Any (Web)",
+  "isAccessibleForFree":true,
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "inLanguage":"pt-PT",
+  "publisher":{"@type":"Organization","@id":"https://creches.app/#org","name":"Creches.app"}
+}
+</script>
+<style>
+:root{
+  --c-coral:#FF6B9D;--c-coral-soft:#FFE3EE;--c-coral-dk:#C2185B;--c-peach:#FF9F68;--c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC;--c-turquoise-soft:#D8F5F4;--c-turquoise-dk:#1d7d78;
+  --c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-mint-dk:#2f7d3b;
+  --c-yellow:#FFD166;--c-yellow-soft:#FFF3D6;
+  --bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--ink-faint:#9B97B5;
+  --line:rgba(60,40,90,.08);--r-pill:999px;--r-md:14px;--r-card:18px;--r-lg:24px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
+  --sh-2:0 8px 24px rgba(60,40,90,.12);
+}
+*{box-sizing:border-box}*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 600px at 10% 0%,var(--c-peach-soft) 0%,transparent 55%),
+    radial-gradient(800px 600px at 100% 0%,var(--c-coral-soft) 0%,transparent 55%),
+    var(--bg);
+  color:var(--ink);font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.65;min-height:100vh;
+}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.25}
+a{color:var(--c-coral);text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+header.top{display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
+.logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.3)}
+.brand-name b{font-family:"Fredoka";font-size:19px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
+header .spacer{flex:1}
+header nav{display:flex;gap:6px;align-items:center}
+header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
+header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
+header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+
+main{max-width:820px;margin:0 auto;padding:30px 22px 60px}
+.breadcrumb{font-size:13px;color:var(--ink-soft);margin-bottom:16px}
+.breadcrumb a{color:var(--ink-soft)}
+.kicker{display:inline-block;background:var(--c-turquoise-soft);color:#218985;padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:36px;line-height:1.15;margin:0 0 14px}
+h1 .accent{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:17px;color:var(--ink-soft);margin:0 0 28px;line-height:1.6}
+
+.calc{background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh-2);padding:28px;margin:0 0 28px}
+.calc-step{margin-bottom:22px}
+.calc-step:last-child{margin-bottom:0}
+.calc-step .lbl{display:block;font-family:"Fredoka";font-size:13.5px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+.opts.two{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.opts,.opts.two{grid-template-columns:1fr}}
+.opt{background:#FFF6EE;border:2px solid transparent;border-radius:14px;padding:14px 12px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;color:var(--ink);transition:all .15s}
+.opt:hover{background:var(--c-coral-soft);transform:translateY(-1px)}
+.opt.active{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(255,107,157,.3)}
+.opt .ic{display:block;font-size:22px;margin-bottom:5px}
+.opt .sub{display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px;font-family:"Quicksand"}
+.opt.active .sub{opacity:.95}
+
+.income-input{display:flex;align-items:center;gap:10px;background:#FFF6EE;border-radius:14px;padding:14px 18px}
+.income-input input{flex:1;border:none;background:transparent;font-size:22px;font-weight:700;color:var(--ink);outline:none;font-family:"Fredoka";min-width:0}
+.income-input .unit{color:var(--ink-soft);font-weight:700;font-size:15px}
+.helper{font-size:12.5px;color:var(--ink-faint);margin-top:6px;line-height:1.5}
+
+.result{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-lg);padding:30px 28px;margin:0 0 28px;text-align:center;box-shadow:var(--sh-1)}
+.result .lbl{display:block;font-family:"Fredoka";font-size:13px;color:var(--c-coral-dk);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.result .amount{font-family:"Fredoka";font-size:54px;font-weight:700;line-height:1;color:var(--ink);margin-bottom:6px}
+.result .amount small{font-size:18px;color:var(--ink-soft);font-weight:500;margin-left:4px}
+.result .range{font-size:14px;color:var(--ink-soft);margin-bottom:14px}
+.result .breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;text-align:left}
+@media(max-width:520px){.result .breakdown{grid-template-columns:1fr}}
+.result .breakdown .b{background:rgba(255,255,255,.7);padding:11px 14px;border-radius:12px}
+.result .breakdown .b .k{font-size:11px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.result .breakdown .b .v{font-family:"Fredoka";font-size:18px;font-weight:700;color:var(--ink)}
+
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:12px 22px;border-radius:var(--r-pill);font-weight:700;font-size:14px;text-decoration:none;transition:all .15s}
+.btn.primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;box-shadow:0 6px 16px rgba(255,107,157,.3)}
+.btn.primary:hover{transform:translateY(-2px);text-decoration:none;color:#fff}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.btn.ghost:hover{transform:translateY(-2px);text-decoration:none;color:var(--ink)}
+
+.disclaimer{font-size:12.5px;color:var(--ink-faint);background:rgba(255,255,255,.5);padding:14px 18px;border-radius:12px;margin-top:18px;line-height:1.6}
+
+.notes{background:#fff;border-radius:var(--r-card);padding:24px;box-shadow:var(--sh-1);margin-top:30px}
+.notes h2{font-size:20px;margin:0 0 14px}
+.notes p{margin:10px 0;font-size:14.5px;color:var(--ink-soft);line-height:1.65}
+.notes a{font-weight:700}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:26px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:50px}
+footer a{color:var(--ink-soft);margin:0 7px}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo">🍼</div>
+    <div class="brand-name"><b>Creches<span class="brand-tld">.app</span></b><span>Calculadora de custo</span></div>
+  </a>
+  <div class="spacer"></div>
+  <nav>
+    <a href="/guias">Guias</a>
+    <a href="/creches">Distritos</a>
+    <a href="/sobre">Sobre</a>
+    <a href="/app" class="cta">Abrir mapa</a>
+  </nav>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Início</a> › <a href="/guias">Guias</a> › Calculadora</div>
+  <span class="kicker">💰 Calculadora 2026</span>
+  <h1>Quanto vais pagar de <span class="accent">creche por mês?</span></h1>
+  <p class="lede">3 perguntas. Estimativa em 30 segundos. Sem registo, sem ads, sem partilhar dados. Baseado em escalões IPSS e mensalidades médias de creches privadas em Portugal.</p>
+
+  <div class="calc">
+    <!-- Step 1: Tipo de creche -->
+    <div class="calc-step">
+      <span class="lbl">1. Que tipo de creche?</span>
+      <div class="opts">
+        <button class="opt" data-step="tipo" data-v="ipss"><span class="ic">🌊</span>IPSS<span class="sub">com acordo</span></button>
+        <button class="opt" data-step="tipo" data-v="privada"><span class="ic">🌸</span>Privada<span class="sub">particular</span></button>
+        <button class="opt" data-step="tipo" data-v="cf"><span class="ic">🎁</span>Creche Feliz<span class="sub">gratuita</span></button>
+      </div>
+      <p class="helper">Não sabes? <a href="/guias/como-escolher-creche#7-criterios">Vê o guia</a> ou tenta cada opção.</p>
+    </div>
+
+    <!-- Step 2: Zona (só para privada) -->
+    <div class="calc-step" id="step-zona" style="display:none">
+      <span class="lbl">2. Em que zona?</span>
+      <div class="opts">
+        <button class="opt" data-step="zona" data-v="lisboa">Lisboa cidade<span class="sub">média alta</span></button>
+        <button class="opt" data-step="zona" data-v="grande-metropolitana">Grande Lisboa / Porto<span class="sub">média</span></button>
+        <button class="opt" data-step="zona" data-v="fora">Resto do país<span class="sub">média mais baixa</span></button>
+      </div>
+    </div>
+
+    <!-- Step 2 alt: Rendimento (só para IPSS) -->
+    <div class="calc-step" id="step-rendimento" style="display:none">
+      <span class="lbl">2. Rendimento mensal líquido do agregado familiar</span>
+      <div class="income-input">
+        <input id="renda" type="number" inputmode="numeric" min="0" step="50" placeholder="Ex: 1800">
+        <span class="unit">€/mês</span>
+      </div>
+      <p class="helper">Soma dos ordenados líquidos (depois de IRS+SS) de quem partilha contas. Divide-se pelo número de pessoas a cargo.</p>
+    </div>
+
+    <!-- Step 2 alt: Agregado (IPSS) -->
+    <div class="calc-step" id="step-agregado" style="display:none">
+      <span class="lbl">3. Quantas pessoas no agregado familiar?</span>
+      <div class="opts">
+        <button class="opt" data-step="agregado" data-v="2">2 pessoas<span class="sub">casal sem filhos</span></button>
+        <button class="opt" data-step="agregado" data-v="3">3 pessoas<span class="sub">casal + 1 filho</span></button>
+        <button class="opt" data-step="agregado" data-v="4">4+ pessoas<span class="sub">casal + 2 filhos</span></button>
+      </div>
+    </div>
+
+    <!-- Step 2 alt: Idade Creche Feliz -->
+    <div class="calc-step" id="step-cf" style="display:none">
+      <span class="lbl">2. Quando nasceu o bebé?</span>
+      <div class="opts two">
+        <button class="opt" data-step="cf" data-v="ok"><span class="ic">✓</span>Depois 1 Set 2021<span class="sub">elegível</span></button>
+        <button class="opt" data-step="cf" data-v="not"><span class="ic">✗</span>Antes 1 Set 2021<span class="sub">não elegível</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div class="result" id="result" style="display:none">
+    <span class="lbl" id="r-lbl">Estimativa mensal</span>
+    <div class="amount" id="r-amount">—</div>
+    <div class="range" id="r-range"></div>
+    <div class="breakdown" id="r-breakdown"></div>
+    <div class="cta-row">
+      <a href="/app" class="btn primary" id="r-cta">🗺 Ver creches perto de mim</a>
+      <a href="/guias/quanto-custa-creche-portugal" class="btn ghost">📚 Guia completo</a>
+    </div>
+    <p class="disclaimer">⚠ <strong>Estimativa indicativa</strong>. Os valores reais variam — cada creche tem mensalidade própria, escalões IPSS variam por instituição, e há sempre extras (refeições, atividades, inscrição). Para valor exacto: <a href="/app" style="color:inherit"><u>contacta a creche</u></a>.</p>
+  </div>
+
+  <div class="notes">
+    <h2>Como é calculado</h2>
+    <p><strong>IPSS:</strong> usa a tabela oficial de escalões da Segurança Social. O valor depende do <em>rendimento per capita</em> (rendimento total ÷ pessoas do agregado). Os escalões vão de ~30€ (escalão 1) a ~400€ (escalão 6, máximo IPSS). Esta calculadora estima o escalão e devolve uma mensalidade típica.</p>
+    <p><strong>Creches privadas:</strong> baseado em médias reais por zona. Lisboa cidade ronda 450-700€, Grande Lisboa/Porto 350-550€, resto do país 280-450€. A maioria cobra também refeições (50-90€/mês), atividades extra (30-50€) e inscrição anual.</p>
+    <p><strong>Creche Feliz:</strong> gratuita para crianças nascidas após 1 Set 2021, em IPSS ou privada aderente, com vaga disponível. <a href="/guias/creche-feliz">Mais sobre o Creche Feliz</a>.</p>
+    <p style="font-size:12.5px;color:var(--ink-faint);margin-top:14px">Dados de referência: Portaria 196-A/2015, Decreto-Lei 90/2019, observação directa de mensalidades publicadas (mais de 2.500 creches em <a href="/app">creches.app</a>).</p>
+  </div>
+</main>
+
+<footer>
+  <p><a href="/">Início</a> · <a href="/app">Mapa</a> · <a href="/guias">Guias</a> · <a href="/sobre">Sobre</a> · <a href="/imprensa">Imprensa</a> · <a href="/roadmap">Roadmap</a> · <a href="/privacidade">Privacidade</a> · <a href="/termos">Termos</a></p>
+  <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Estimativa, não vinculativa</p>
+</footer>
+
+<script>
+(function(){
+  const state = { tipo:null, zona:null, renda:null, agregado:null, cf:null };
+
+  document.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const step = btn.dataset.step;
+      const v = btn.dataset.v;
+      state[step] = v;
+      // Marca activo
+      document.querySelectorAll('.opt[data-step="'+step+'"]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      // Mostrar próximos passos
+      document.getElementById('step-zona').style.display = state.tipo==='privada' ? '' : 'none';
+      document.getElementById('step-rendimento').style.display = state.tipo==='ipss' ? '' : 'none';
+      document.getElementById('step-agregado').style.display = (state.tipo==='ipss' && state.renda) ? '' : 'none';
+      document.getElementById('step-cf').style.display = state.tipo==='cf' ? '' : 'none';
+      compute();
+    });
+  });
+  document.getElementById('renda').addEventListener('input', e=>{
+    state.renda = parseFloat(e.target.value) || null;
+    document.getElementById('step-agregado').style.display = (state.tipo==='ipss' && state.renda) ? '' : 'none';
+    compute();
+  });
+
+  function compute(){
+    const r = document.getElementById('result');
+    let amount = null, range = '', breakdown = '', lbl = 'Estimativa mensal';
+    if(state.tipo === 'cf'){
+      if(state.cf === 'ok'){ amount = 0; lbl = 'Mensalidade no Creche Feliz'; range = 'A Segurança Social paga directamente à creche.'; }
+      else if(state.cf === 'not'){
+        amount = null; lbl = 'Não elegível'; range = 'O Creche Feliz só cobre crianças nascidas depois de 1 Set 2021. Vê opção IPSS ou privada.';
+      }
+    } else if(state.tipo === 'privada' && state.zona){
+      const ZONAS = {
+        lisboa: [450, 700, 575],
+        'grande-metropolitana': [350, 550, 450],
+        fora: [280, 450, 365],
+      };
+      const [lo, hi, mid] = ZONAS[state.zona];
+      amount = mid;
+      range = `Entre <b>${lo}€</b> e <b>${hi}€</b>/mês (média ${mid}€)`;
+      breakdown = `
+        <div class="b"><div class="k">Mensalidade base</div><div class="v">${mid}€</div></div>
+        <div class="b"><div class="k">+ refeições (típico)</div><div class="v">70€</div></div>
+        <div class="b"><div class="k">+ extras (atividades)</div><div class="v">40€</div></div>
+        <div class="b"><div class="k">Total estimado mensal</div><div class="v">~${mid+70+40}€</div></div>`;
+    } else if(state.tipo === 'ipss' && state.renda && state.agregado){
+      const perCapita = state.renda / parseInt(state.agregado,10);
+      // Escalões IPSS (simplificado)
+      let esc, mensalidade;
+      if(perCapita <= 250){ esc = 1; mensalidade = 30; }
+      else if(perCapita <= 350){ esc = 2; mensalidade = 80; }
+      else if(perCapita <= 500){ esc = 3; mensalidade = 145; }
+      else if(perCapita <= 700){ esc = 4; mensalidade = 215; }
+      else if(perCapita <= 1000){ esc = 5; mensalidade = 295; }
+      else { esc = 6; mensalidade = 380; }
+      amount = mensalidade;
+      range = `<b>Escalão ${esc}</b> (rendimento per capita: ${Math.round(perCapita)}€/mês)`;
+      breakdown = `
+        <div class="b"><div class="k">Rendimento per capita</div><div class="v">${Math.round(perCapita)}€</div></div>
+        <div class="b"><div class="k">Escalão</div><div class="v">${esc} de 6</div></div>
+        <div class="b"><div class="k">Mensalidade IPSS</div><div class="v">${mensalidade}€</div></div>
+        <div class="b"><div class="k">Refeições incluídas?</div><div class="v">Sim*</div></div>`;
+    }
+    if(amount !== null){
+      r.style.display = '';
+      document.getElementById('r-lbl').textContent = lbl;
+      document.getElementById('r-amount').innerHTML = amount === 0 ? '0€ <small>grátis</small>' : amount + '€<small>/mês</small>';
+      document.getElementById('r-range').innerHTML = range;
+      document.getElementById('r-breakdown').innerHTML = breakdown;
+    } else if(state.tipo === 'cf' && state.cf === 'not'){
+      r.style.display = '';
+      document.getElementById('r-lbl').textContent = lbl;
+      document.getElementById('r-amount').textContent = '✗';
+      document.getElementById('r-range').innerHTML = range;
+      document.getElementById('r-breakdown').innerHTML = '';
+    } else {
+      r.style.display = 'none';
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -12,6 +12,7 @@
 ## Aplicação principal
 
 - [Mapa interactivo](https://creches.app/app): pesquisa por morada, GPS, distrito, idade, tipo
+- [Calculadora de custo de creche](https://creches.app/calculadora): estimativa de mensalidade em 30 segundos (IPSS por escalão, privada por zona, ou Creche Feliz gratuita)
 - [Página para creches (B2C)](https://creches.app/para-creches): submissão de novas creches
 
 ## Cobertura por distrito
