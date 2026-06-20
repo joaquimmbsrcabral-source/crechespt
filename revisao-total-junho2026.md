@@ -50,6 +50,9 @@
 > **Onda 8:**
 > - ✅ #30 **"2591" → "mais de 2.500"** em todos os textos visíveis (8 ficheiros: index, app, sobre, imprensa, roadmap, para-creches, 4 guias). Schemas mantêm número onde apropriado. Constraint dos números vagos cumprido em todo o site.
 >
+> **Onda 9:**
+> - ✅ #31 **Pills coloridos + sanitize nas 20 páginas distrito + 104 páginas categoria/concelho** (124 ficheiros). Inline JS de enhancement: pills por tipo (IPSS turquesa / Pública verde / Privada coral / Desconhecido cinza) + esconder Escolas Básicas + Inactivo + Datacool + ≤3 chars.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)

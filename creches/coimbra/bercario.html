@@ -274,5 +274,40 @@
   <p style="margin-top:14px">© 2026 Creches.app · Feito em Lisboa</p>
 </footer>
 
+<style>
+.creche-list .row .rmeta .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-weight:700;font-size:11px;letter-spacing:.02em;margin-right:4px}
+.creche-list .row .rmeta .pill-ipss{background:#D8F5F4;color:#1d7d78}
+.creche-list .row .rmeta .pill-publica{background:#DEF5E1;color:#2f7d3b}
+.creche-list .row .rmeta .pill-privada{background:#FFE3EE;color:#c2447a}
+.creche-list .row .rmeta .pill-desconhecido{background:#F0EBF8;color:#6E6989}
+*:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
+</style>
+<script>
+(function(){
+  var EB_RX = /^(escola\s*b[aá]sica|eb\s|eb1|eb-1|agrupamento\s*de\s*escolas)/i;
+  var LIXO_RX = /(inactiv|^datacool|^test)/i;
+  var rows = document.querySelectorAll(".creche-list .row");
+  rows.forEach(function(row){
+    var nameEl = row.querySelector(".nm");
+    var name = nameEl ? (nameEl.textContent || "").trim() : "";
+    if (!name || name.length <= 3 || EB_RX.test(name) || LIXO_RX.test(name)) {
+      row.style.display = "none"; return;
+    }
+    var meta = row.querySelector(".rmeta");
+    if (!meta) return;
+    var t = meta.textContent || "";
+    var parts = t.split(" · ");
+    if (parts.length < 1) return;
+    var tipo = parts[0].trim();
+    var cls = "pill-desconhecido";
+    var lc = tipo.toLowerCase();
+    if (lc.indexOf("ipss") !== -1) cls = "pill-ipss";
+    else if (lc.indexOf("pública") !== -1 || lc.indexOf("publica") !== -1) cls = "pill-publica";
+    else if (lc.indexOf("privada") !== -1) cls = "pill-privada";
+    parts[0] = '<span class="pill ' + cls + '">' + tipo + '</span>';
+    meta.innerHTML = parts.join(" · ");
+  });
+})();
+</script>
 </body>
 </html>
