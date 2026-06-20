@@ -42,10 +42,14 @@
 > - ✅ #26 **TOC sticky lateral nos 4 guias longos** — 35 h2s com IDs slugified, scroll-margin para fixed header, sticky no desktop (>1100px), oculto mobile
 > - ✅ #27 **Footers padronizados** — Imprensa + Roadmap adicionados nas legais (privacidade, cookies, termos), para-creches e index
 >
+> **Onda 7:**
+> - ✅ #28 **Mockup home com pill "Exemplo"** — clarifica que é ilustração (não clicável)
+> - ✅ #29 **Press Kit no /imprensa expandido** — 6 cards (era 4), com PNG directo, link "Capturar ao vivo" para screenshots, cartões Vídeo/B-roll e Press Release. Mailtos pré-preenchidos com template
+> - ✅ Filtros /app — auditoria desactualizada: filtros JÁ estão colapsados por defeito (só morada/GPS no hero, resto sob "Mais filtros ▼")
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
-> - ⏳ Refactor /app interno: extrair CSS/JS, reduzir filtros 12→3
-> - ⏳ Press Kit ZIP no /imprensa
+> - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)
 
 ---
 
