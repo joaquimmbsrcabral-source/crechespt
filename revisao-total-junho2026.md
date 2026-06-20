@@ -81,6 +81,17 @@
 > **Onda 17 (REVERTIDA):**
 > - ❌ Toggle "Ver lista" + viewport sync — implementação não convenceu o user, revertida.
 >
+> **Onda 19:**
+> - ✅ #44 **FIX filtros sempre escondidos** — bug: `setFiltersOpen(!isMobile())` abria por defeito em desktop. Corrigido para `setFiltersOpen(false)` sempre.
+>
+> **Onda 20:**
+> - ✅ #45 **Wave 4 imprensa REGENERADA com emails REAIS** — 21 drafts verificados em páginas oficiais (era 12 com padrões inventados). Padrão Expresso correcto: `inicialApelido@expresso.impresa.pt`. Tabela de padrões reais vs inventados.
+>
+> **Onda 21:**
+> - ✅ #46 **Preconnect + dns-prefetch no /app** — unpkg, gstatic, firestore, identitytoolkit (acelera primeira ligação)
+> - ✅ #47 **Roadmap "Em curso" com progress bars visuais** — gradient coral-peach + % + label texto (Vagas 40%, Tipos 75%, Imprensa 60%, Carta Social 55%, EN 10%)
+> - ✅ #48 **Página /404 personalizada** — branded com emoji 🍼, CTAs grandes, 6 atalhos para páginas principais (vs página 404 default do Vercel)
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)

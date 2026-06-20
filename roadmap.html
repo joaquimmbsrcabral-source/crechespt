@@ -89,6 +89,10 @@ header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));col
 .item-body .when{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
   padding:2px 8px;border-radius:var(--r-pill);font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle}
 .s-doing .item-body .when{background:var(--c-peach-soft);color:#A8780E}
+/* Progress bars nos items "em curso" */
+.s-doing .item-body .progress{margin-top:10px;height:6px;background:rgba(60,40,90,.06);border-radius:999px;overflow:hidden;position:relative}
+.s-doing .item-body .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--c-coral),var(--c-peach));border-radius:999px;transition:width .8s ease}
+.s-doing .item-body .progress-label{font-size:11px;color:var(--ink-faint);font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
 .s-exploring .item-body .when{background:var(--c-turquoise-soft);color:#218985}
 
 .note{
@@ -284,20 +288,35 @@ footer a:hover{color:var(--c-coral)}
         <div class="item-body">
           <b>Vagas em tempo real — escalar para todas as creches</b><span class="when">Próximas semanas</span>
           <p>Hoje só admin pode marcar. Em desenvolvimento: link único por creche para sinalizar vaga sem precisar de conta.</p>
+          <div class="progress" aria-label="40% completo"><i style="width:40%"></i></div>
+          <div class="progress-label">40% — MVP pronto, falta link público</div>
         </div>
       </li>
       <li class="item">
         <span class="item-mark">🧠</span>
         <div class="item-body">
           <b>Reduzir creches com tipo "Desconhecido"</b><span class="when">Em melhoria contínua</span>
-          <p>~22% das creches ainda não estão classificadas como Pública/IPSS/Privada. Estamos a melhorar o algoritmo + crowdsource correcções.</p>
+          <p>Cerca de 1 em cada 5 creches ainda não estão classificadas como Pública/IPSS/Privada. Estamos a melhorar o algoritmo + crowdsource correcções.</p>
+          <div class="progress" aria-label="75% completo"><i style="width:75%"></i></div>
+          <div class="progress-label">75% — algoritmo v4 reduziu de 22% para ~18%</div>
         </div>
       </li>
       <li class="item">
         <span class="item-mark">📰</span>
         <div class="item-body">
           <b>Mais cobertura editorial</b><span class="when">Próximas 4 semanas</span>
-          <p>Wave 3 de imprensa em curso — rádio, TV, magazines especializadas em parenting.</p>
+          <p>Wave 4 de imprensa em curso — Expresso, SIC Notícias, MAGG, Time Out Lisboa, Observador.</p>
+          <div class="progress" aria-label="60% completo"><i style="width:60%"></i></div>
+          <div class="progress-label">60% — 21 drafts enviados, à espera de resposta</div>
+        </div>
+      </li>
+      <li class="item">
+        <span class="item-mark">🗺</span>
+        <div class="item-body">
+          <b>Carta Social nacional integrada</b><span class="when">Em curso</span>
+          <p>Cruzar dados oficiais de mais municípios. Já temos Lisboa, Cascais, Oeiras e Águeda. Email enviado ao GEP-MTSSS para dataset nacional.</p>
+          <div class="progress" aria-label="55% completo"><i style="width:55%"></i></div>
+          <div class="progress-label">55% — 4 municípios integrados, à espera do GEP</div>
         </div>
       </li>
       <li class="item">
@@ -305,6 +324,8 @@ footer a:hover{color:var(--c-coral)}
         <div class="item-body">
           <b>Páginas em inglês para expats</b><span class="when">Em estudo</span>
           <p>Comunidade expat em Portugal cresce — uma página guia em EN ajuda quem chega novo.</p>
+          <div class="progress" aria-label="10% completo"><i style="width:10%"></i></div>
+          <div class="progress-label">10% — em pesquisa</div>
         </div>
       </li>
     </ul>
