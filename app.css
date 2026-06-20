@@ -669,15 +669,37 @@ header.topbar{
   border-radius:var(--r-lg);box-shadow:var(--sh-pop);
   display:flex;flex-direction:column;overflow:hidden;
 }
+/* HERO GRADIENT no detail — match com fichas estáticas */
 .detail .dhead{
-  padding:18px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;
-  background:linear-gradient(135deg,var(--c-coral-soft),var(--c-yellow-soft));
+  padding:22px 24px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  background:linear-gradient(135deg,#FF6B9D,#FF9F68);
+  color:#fff;position:relative;overflow:hidden;
 }
-.detail h2{margin:0 0 6px;font-size:19px;color:var(--ink);font-weight:600}
-.detail .hmeta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.closebtn{background:#fff;color:var(--ink);width:34px;height:34px;border-radius:50%;
-  font-size:18px;line-height:1;box-shadow:var(--sh-1);flex-shrink:0}
-.closebtn:hover{background:var(--c-coral);color:#fff}
+.detail .dhead::after{
+  content:"";position:absolute;top:-40%;right:-15%;width:60%;height:200%;
+  background:radial-gradient(circle at center,rgba(255,255,255,.16) 0%,transparent 60%);
+  pointer-events:none;
+}
+.detail.tipo-IPSS .dhead{background:linear-gradient(135deg,#48D1CC,#7DD389)}
+.detail.tipo-Privada .dhead{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
+.detail.tipo-Pública .dhead,.detail.tipo-Publica .dhead{background:linear-gradient(135deg,#7DD389,#FFD166)}
+.detail.tipo-Desconhecido .dhead{background:linear-gradient(135deg,#A78BFA,#FF6B9D)}
+
+.detail .dh-left{display:flex;gap:14px;align-items:flex-start;min-width:0;flex:1;position:relative;z-index:1}
+.detail .d-avatar{width:60px;height:60px;border-radius:16px;background:rgba(255,255,255,.22);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.4);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.detail h2{margin:2px 0 8px;font-size:22px;color:#fff;font-weight:700;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.08)}
+.detail .hmeta{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.detail .hmeta .minitag{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(6px);font-weight:700;padding:2px 9px;border-radius:999px;font-size:11px;letter-spacing:.02em}
+.detail .hmeta .minitag.tipo-IPSS,.detail .hmeta .minitag.tipo-Privada,
+.detail .hmeta .minitag.tipo-Pública,.detail .hmeta .minitag.tipo-Publica,
+.detail .hmeta .minitag.tipo-Desconhecido{background:#fff;color:var(--ink);border:none}
+.detail .dh-right{display:flex;gap:8px;flex-shrink:0;position:relative;z-index:1}
+.closebtn{background:rgba(255,255,255,.95);color:var(--ink);width:36px;height:36px;border-radius:50%;
+  font-size:18px;line-height:1;box-shadow:0 4px 10px rgba(0,0,0,.12);flex-shrink:0;border:none;cursor:pointer}
+.closebtn:hover{background:#fff;transform:scale(1.05)}
 
 .detail .body{overflow:auto;padding:18px 22px;flex:1;min-height:0}
 .section{margin:0 0 16px}

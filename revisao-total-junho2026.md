@@ -69,6 +69,9 @@
 > - ✅ #38 **Data /privacidade** corrigida (21 maio → 20 junho 2026)
 > - ✅ #39 **Cards /guias com 4 cores distintas por categoria** — cat-gratuita verde mint (Creche Feliz), cat-escolher coral (Como escolher), cat-custos amarelo (Quanto custa), cat-comparacao turquesa (Creche vs ama). Border-top + emoji bg + ttl color por categoria.
 >
+> **Onda 14:**
+> - ✅ #40 **Popup detail do /app redesenhado** — quando carregas numa creche no mapa, abre agora um popup com HERO GRADIENT COLORIDO por tipo + AVATAR EMOJI grande (👶/🎨/🎒/🧸/🍼) + chips com backdrop-blur + título branco sobre gradient. Match visual com as fichas estáticas /creche/. Em mobile fica como bottom-sheet com mesmo design.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)

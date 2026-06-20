@@ -421,17 +421,20 @@
 
 <!-- Detalhe -->
 <div id="scrim" class="scrim" role="dialog" aria-modal="true">
-  <div class="detail">
+  <div class="detail" id="detail-root">
     <div class="dhead">
-      <div style="min-width:0">
-        <h2 id="d-name">—</h2>
-        <div class="hmeta">
-          <span id="d-tipo" class="minitag"></span>
-          <span id="d-distrito" class="minitag" style="background:#fff;color:var(--ink-soft)"></span>
-          <span id="d-loc" style="color:var(--ink-soft);font-size:12px;font-weight:600"></span>
+      <div class="dh-left">
+        <div class="d-avatar" id="d-avatar" aria-hidden="true">🍼</div>
+        <div style="min-width:0;flex:1">
+          <h2 id="d-name">—</h2>
+          <div class="hmeta">
+            <span id="d-tipo" class="minitag"></span>
+            <span id="d-distrito" class="minitag"></span>
+            <span id="d-loc" style="color:rgba(255,255,255,.9);font-size:12px;font-weight:600"></span>
+          </div>
         </div>
       </div>
-      <div style="display:flex;gap:8px;flex-shrink:0">
+      <div class="dh-right">
         <button id="d-share-top" class="closebtn" aria-label="Partilhar esta creche" title="Partilhar">🔗</button>
         <button id="d-close" class="closebtn" aria-label="Fechar">✕</button>
       </div>
@@ -1638,6 +1641,19 @@ function openDetail(id){
   t.textContent = tipo; t.className = "minitag tipo-"+tipo;
   document.getElementById("d-distrito").textContent = c.distrito||"—";
   document.getElementById("d-loc").textContent = c.localidade?("· "+c.localidade):"";
+  // Aplicar tipo no root para hero gradient + escolher emoji avatar
+  const root = document.getElementById("detail-root");
+  if(root){
+    root.className = "detail tipo-"+tipo;
+  }
+  const resp = (c.resposta || "").toLowerCase();
+  let emoji = "🍼";
+  if (resp.includes("berç") || c.idade_min_meses === 0) emoji = "👶";
+  else if (resp.includes("jardim") || resp.includes("ji") || resp.includes("pré")) emoji = "🎨";
+  else if (resp.includes("atl") || resp.includes("tempos livres")) emoji = "🎒";
+  else if (resp.includes("infantário") || resp.includes("infantario")) emoji = "🧸";
+  const avEl = document.getElementById("d-avatar");
+  if(avEl) avEl.textContent = emoji;
   const kv = document.getElementById("d-info");
   const morada = [c.morada, c.numero].filter(Boolean).join(" ");
   const cp = [c.codigo_postal, c.localidade].filter(Boolean).join(" ");
