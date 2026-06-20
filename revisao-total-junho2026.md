@@ -20,18 +20,24 @@
 > - ✅ #12 Header consistente nas páginas /creches/:distrito/:concelho (regeneradas)
 > - ✅ #13 "A A Casa Amarela" FAQ duplicação corrigida
 >
-> **Onda 3 adicional:**
+> **Onda 3:**
 > - ✅ #14 **Header unificado em TODAS as top-level** — index, sobre, imprensa, roadmap, privacidade, cookies, termos, para-creches têm agora a mesma nav (Guias · Distritos · Sobre · Roadmap · [Abrir mapa]) na mesma ordem
 > - ✅ #15 **Schema WebApplication no /app** — JSON-LD com `applicationCategory`, `offers: free`, `sameAs: Wikidata Q140290655`
 > - ✅ #16 **Contagens desactualizadas corrigidas** — `/imprensa`: 3 → 4 Guias gratuitos
-> - ✅ #17 **Title do /app** dessaturado de número (era "2591 creches", agora genérico — não envelhece)
+> - ✅ #17 **Title do /app** dessaturado de número (era "2591 creches", agora genérico)
+> - ✅ #18 **Headline emocional da home** — "Encontra creche sem perder a cabeça"
+>
+> **Onda 4:**
+> - ✅ #19 **TL;DR no /guias/creche-feliz** — box rosa "Em 3 frases" (pais ansiosos não leem 2000 palavras)
+> - ✅ #20 **CTAs variados nos 4 guias** (era todos "Abrir o mapa", agora cada um com angle próprio)
+> - ✅ #21 **Mid-page CTA no /sobre** — "Abrir o mapa que fiz para mim e para ti" após "Foi assim que nasceu"
+> - ✅ #22 **Onboarding skip-by-default no /app** — mãe vê mapa imediatamente
 >
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
-> - ⏳ Refactor /app: extrair CSS/JS, reduzir filtros 12→3, onboarding skip-by-default
+> - ⏳ Refactor /app interno: extrair CSS/JS, reduzir filtros 12→3
 > - ⏳ Press Kit ZIP no /imprensa
 > - ⏳ TOC sticky nos guias
-> - ⏳ Headline emocional da home
 
 ---
 
@@ -52,7 +58,7 @@
 | 1 | **Ficha individual de creche é pobre** | `/creche/...` (2.578 páginas) | ✅ **REDESENHADA** |
 | 2 | **Header inconsistente** | Todas | ✅ **UNIFICADO** (todas as páginas) |
 | 3 | **/app monolítico 422 KB** | `/app` | ⏳ pendente |
-| 4 | **Onboarding 3 ecrãs** | `/app` mobile | ⏳ pendente |
+| 4 | **Onboarding 3 ecrãs** | `/app` mobile | ✅ **SKIP-BY-DEFAULT** |
 | 5 | **`maximum-scale=5`** bloqueia zoom (WCAG fail) | `/app` | ✅ **CORRIGIDO** |
 
 ---
@@ -81,7 +87,8 @@ Reduzido para 4 obrigatórios (Nome, Tipo, Distrito, Email, Telefone) com `<deta
 
 ### 8. **Press Kit ZIP num clique** — 1h  ⏳ pendente
 
-### 9. **Onboarding skip-by-default** — 2h  ⏳ pendente (refactor maior)
+### 9. **Onboarding skip-by-default** — 2h  ✅ FEITO
+Removida a chamada automática de `maybeShowOnboarding()` no boot da app. Mãe em pânico vê o mapa imediatamente sem 3 ecrãs de fricção. Onboarding fica disponível como fallback se chamado explicitamente.
 
 ### 10. **Email template pré-preenchido** — 30 min  ✅ FEITO
 Botão "✉ Email" na ficha agora abre mailto com `subject="Pedido de informação — {nome}"` + body template pronto a editar.

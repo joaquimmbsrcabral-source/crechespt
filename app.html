@@ -3277,8 +3277,9 @@ function showAppShell(){
   document.getElementById("app-shell").style.display = "";
   // Leaflet precisa que o container fique visível para calcular tamanhos
   if(State.map) setTimeout(()=>State.map.invalidateSize(), 60);
-  // Onboarding na primeira visita
-  setTimeout(maybeShowOnboarding, 400);
+  // Onboarding: skip-by-default. Mostrar só se utilizador clicar "Como funciona" ou
+  // numa primeira visita após scroll/interacção (não bloqueia o mapa).
+  // [revisão UX Jun 2026] — mães em pânico precisam ver o mapa imediatamente.
 }
 
 // ===== Onboarding (3 passos, primeira visita) =====
@@ -3286,7 +3287,7 @@ const ONBOARD_KEY = "crechespt/onboarded";
 const _onboardState = { idade: null, lat: null, lon: null };
 
 function maybeShowOnboarding(){
-  if(localStorage.getItem(ONBOARD_KEY)) return;
+  // skip-by-default (Jun 2026): só corre se explicitamente chamado (botão "Ver dicas")
   const host = document.getElementById("onboard-host");
   if(!host) return;
   host.style.display = "flex";
