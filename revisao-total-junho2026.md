@@ -53,6 +53,10 @@
 > **Onda 9:**
 > - ✅ #31 **Pills coloridos + sanitize nas 20 páginas distrito + 104 páginas categoria/concelho** (124 ficheiros). Inline JS de enhancement: pills por tipo (IPSS turquesa / Pública verde / Privada coral / Desconhecido cinza) + esconder Escolas Básicas + Inactivo + Datacool + ≤3 chars.
 >
+> **Onda 10:**
+> - ✅ #32 **Cache headers vercel.json** — JS/CSS 1 dia + SWR 1 semana, fichas creche 1h + SWR, manifest 1 dia, robots/sitemap 1h. Sitemap também com `Content-Type: application/xml`.
+> - ✅ #33 **HSTS Strict-Transport-Security** — header de segurança 1 ano com includeSubDomains.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)
@@ -120,7 +124,8 @@ Botão "✉ Email" na ficha agora abre mailto com `subject="Pedido de informaç�
 - ✅ Fix 3: `lang="pt-PT"` em 284 ficheiros (era `lang="pt"`)
 - ✅ Fix 4: ARIA labels nos CTAs das fichas (Ligar / Email / Direcções / Sem telefone / Sem email)
 - ✅ Fix 5: console.warn protegido (usa helper `_w()` com flag `__DEV__`)
-- ⏳ Fix 6: cache headers `.js` em vercel.json (pendente)
+- ✅ Fix 6: cache headers `.js/.css/.png/.svg/...` no vercel.json
+- ✅ Fix 7: HSTS strict-transport-security adicionado (segurança)
 
 ---
 
