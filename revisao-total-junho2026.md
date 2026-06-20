@@ -61,9 +61,17 @@
 > - ✅ #34 **VERIFICAÇÃO PRODUÇÃO** — tudo deployed (HSTS active, ficha redesenhada, schema WebApp, headline emocional, TOC guias) ✓
 > - ✅ #35 **REFACTOR /app: CSS extraído** — 887 linhas / 43KB movidas de inline para `/app.css` separado. app.html: 423KB → 380KB (-10%). CSS agora cacheable 1 dia + SWR (vercel.json).
 >
+> **Onda 12:**
+> - ✅ #36 **REDESIGN RADICAL ficha de creche** (2578 fichas): hero GIGANTE com gradient colorido por tipo (IPSS turquesa-verde / Privada coral-peach / Pública mint-amarelo / Outro púrpura), avatar emoji 96px (👶/🎨/🎒/🧸/🍼 escolhido pelo tipo), 3 CTAs gigantes brancos sobre gradient, stats cards visuais (📍🎂🏠🏢), mapa 380px destacado, creches próximas em grid 2 colunas com border-left coloured.
+>
+> **Onda 13:**
+> - ✅ #37 **"vos"/"vossos" → "te"/"tua"** no /sobre (uniformizar `tu` em todo o site)
+> - ✅ #38 **Data /privacidade** corrigida (21 maio → 20 junho 2026)
+> - ✅ #39 **Cards /guias com 4 cores distintas por categoria** — cat-gratuita verde mint (Creche Feliz), cat-escolher coral (Como escolher), cat-custos amarelo (Quanto custa), cat-comparacao turquesa (Creche vs ama). Border-top + emoji bg + ttl color por categoria.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
-> - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)
+> - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)
 
 ---
 
