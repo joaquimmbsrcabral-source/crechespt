@@ -20,13 +20,18 @@
 > - ✅ #12 Header consistente nas páginas /creches/:distrito/:concelho (regeneradas)
 > - ✅ #13 "A A Casa Amarela" FAQ duplicação corrigida
 >
+> **Onda 3 adicional:**
+> - ✅ #14 **Header unificado em TODAS as top-level** — index, sobre, imprensa, roadmap, privacidade, cookies, termos, para-creches têm agora a mesma nav (Guias · Distritos · Sobre · Roadmap · [Abrir mapa]) na mesma ordem
+> - ✅ #15 **Schema WebApplication no /app** — JSON-LD com `applicationCategory`, `offers: free`, `sameAs: Wikidata Q140290655`
+> - ✅ #16 **Contagens desactualizadas corrigidas** — `/imprensa`: 3 → 4 Guias gratuitos
+> - ✅ #17 **Title do /app** dessaturado de número (era "2591 creches", agora genérico — não envelhece)
+>
 > **Próximos (não nesta sessão):**
-> - ⏳ Header unificado nas restantes páginas top-level (index, sobre, imprensa, roadmap, privacidade)
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app: extrair CSS/JS, reduzir filtros 12→3, onboarding skip-by-default
 > - ⏳ Press Kit ZIP no /imprensa
 > - ⏳ TOC sticky nos guias
-> - ⏳ Schema WebApplication no /app
+> - ⏳ Headline emocional da home
 
 ---
 
@@ -45,7 +50,7 @@
 | # | Problema | Onde | Status |
 |---|---|---|---|
 | 1 | **Ficha individual de creche é pobre** | `/creche/...` (2.578 páginas) | ✅ **REDESENHADA** |
-| 2 | **Header inconsistente** | Todas | ⏳ parcial (só concelhos) |
+| 2 | **Header inconsistente** | Todas | ✅ **UNIFICADO** (todas as páginas) |
 | 3 | **/app monolítico 422 KB** | `/app` | ⏳ pendente |
 | 4 | **Onboarding 3 ecrãs** | `/app` mobile | ⏳ pendente |
 | 5 | **`maximum-scale=5`** bloqueia zoom (WCAG fail) | `/app` | ✅ **CORRIGIDO** |
@@ -54,7 +59,7 @@
 
 ## ⚡ Top 10 Quick Wins (alto impacto, < 1 dia cada)
 
-### 1. **Header unificado** — 2h  ⏳ parcial (só /creches/:distrito/:concelho regeneradas)
+### 1. **Header unificado** — 2h  ✅ FEITO em todas (8 top-level + 156 concelhos + 2578 fichas = 100% coverage)
 Hoje: cada página (`/`, `/sobre`, `/app`, `/imprensa`, `/para-creches`, `/privacidade`, `/creches/lisboa/lisboa`) tem um header diferente. Algumas só têm "← Início", outras nada.
 **Fix:** componente HTML único, sempre o mesmo: logo · 4 links (Mapa · Guias · Sobre · Para creches) · CTA "Abrir mapa →"
 
@@ -96,21 +101,21 @@ Botão "✉ Email" na ficha agora abre mailto com `subject="Pedido de informaç�
 
 ## 📄 Por página — o que está bem, mal, e como melhorar
 
-### `/` (Home — Landing pais) ★★★☆☆
+### `/` (Home — Landing pais) ★★★★☆ (era ★★★☆☆)
 
 **✅ Bom:** copy genuíno ("Sabemos como é. Estás grávida..."), FAQ útil, números grandes (2591/20/0€/3min), lista distritos no fundo (SEO+utilidade).
 
-**❌ Mal:**
-- H1 "Creches em Portugal: todas as 2591 num só mapa" → optimiza para Google, não para o pai ansioso
-- Mockup hero ("Casinha dos Sonhos" etc.) parece clicável mas não é
-- "🇵🇹 Grátis · 2591 creches · todo o país" **repete-se 3 vezes em 200px**
-- 2 CTAs competem em força no hero
+**✅ Headline emocional aplicada:** `"Encontra creche sem perder a cabeça"` (com `<span class="accent">` no "sem perder a cabeça"). Substitui o catálogo neutro anterior.
+**✅ Stat "3 min"** agora diz "para teres as creches da tua zona" (emocional).
+**✅ Kicker:** "🇵🇹 Gratuito · todo o país · sem anúncios" (mais propriedades, sem repetir "2591").
 
-**🎯 Fixes:**
-- **Headline:** `"Encontra creche para o teu filho sem perder a cabeça."` (sub: "Mapa com mais de 2.500 creches. Filtros por idade, IPSS ou privada, distância a pé. Grátis.")
+**❌ Mal (ainda pendente):**
+- Mockup hero ("Casinha dos Sonhos" etc.) parece clicável mas não é
+- 2 CTAs competem em força no hero (manter)
+
+**🎯 Fixes restantes:**
 - 1 CTA primário forte + 1 link de texto "Ver como funciona"
 - Mockup → screenshot real ou nota "exemplo"
-- "3 min para começares" → **"3 min para teres 15 creches da tua zona organizadas"**
 - "Procurar por distrito" subir mais alto (é o mental model)
 
 ---
