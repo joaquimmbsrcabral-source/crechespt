@@ -57,6 +57,10 @@
 > - ✅ #32 **Cache headers vercel.json** — JS/CSS 1 dia + SWR 1 semana, fichas creche 1h + SWR, manifest 1 dia, robots/sitemap 1h. Sitemap também com `Content-Type: application/xml`.
 > - ✅ #33 **HSTS Strict-Transport-Security** — header de segurança 1 ano com includeSubDomains.
 >
+> **Onda 11 (pós-deploy):**
+> - ✅ #34 **VERIFICAÇÃO PRODUÇÃO** — tudo deployed (HSTS active, ficha redesenhada, schema WebApp, headline emocional, TOC guias) ✓
+> - ✅ #35 **REFACTOR /app: CSS extraído** — 887 linhas / 43KB movidas de inline para `/app.css` separado. app.html: 423KB → 380KB (-10%). CSS agora cacheable 1 dia + SWR (vercel.json).
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)
@@ -79,7 +83,7 @@
 |---|---|---|---|
 | 1 | **Ficha individual de creche é pobre** | `/creche/...` (2.578 páginas) | ✅ **REDESENHADA** |
 | 2 | **Header inconsistente** | Todas | ✅ **UNIFICADO** (todas as páginas) |
-| 3 | **/app monolítico 422 KB** | `/app` | ⏳ pendente |
+| 3 | **/app monolítico 422 KB** | `/app` | ✅ **CSS EXTRAÍDO** (-43KB → /app.css cacheable) |
 | 4 | **Onboarding 3 ecrãs** | `/app` mobile | ✅ **SKIP-BY-DEFAULT** |
 | 5 | **`maximum-scale=5`** bloqueia zoom (WCAG fail) | `/app` | ✅ **CORRIGIDO** |
 
