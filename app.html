@@ -351,7 +351,10 @@
       </div>
     </div>
 
-    <div class="workspace">
+    <div class="workspace hide-list" id="workspace">
+      <button id="list-toggle-btn" class="list-toggle-btn" type="button" aria-pressed="false" aria-label="Mostrar ou esconder lista de creches">
+        <span>📋</span><span id="lt-label">Ver lista</span><span id="lt-count" class="lt-count" style="display:none">0</span>
+      </button>
       <aside class="list-card">
         <div class="list-head">
           <div>
@@ -1291,7 +1294,12 @@ function refreshConcelhoSelect(){
 function applyFilters(){
   const f = State.filters;
   const q = f.q.trim().toLowerCase();
+  // Viewport filter aplicado SÓ se a lista está visível (performance)
+  const ws = document.getElementById("workspace");
+  const listVisible = ws && !ws.classList.contains("hide-list");
+  const vbounds = (listVisible && State._viewportBounds) ? State._viewportBounds : null;
   State.filtered = State.creches.filter(c=>{
+    if(vbounds && !vbounds.contains([c.lat, c.lon])) return false;
     if(State.areaIds && !State.areaIds.has(c.id)) return false;
     if(f.distrito && c.distrito !== f.distrito) return false;
     if(f.concelho && c.localidade !== f.concelho) return false;
@@ -1409,6 +1417,12 @@ function highlightTerm(s, term){
   return safe.slice(0, idx) + '<span class="hl">' + safe.slice(idx, idx+t.length) + '</span>' + safe.slice(idx+t.length);
 }
 function renderList(){
+  // Actualizar contador no botão "Esconder lista"
+  const lt = document.getElementById("lt-count");
+  if(lt && lt.style.display !== "none"){
+    const n = State.filtered.length;
+    lt.textContent = n > 99 ? "99+" : String(n);
+  }
   const wrap = document.getElementById("list-scroll");
   if(!State.filtered.length){
     const hasFilters = State.filters.q || State.filters.distrito || State.filters.concelho ||
@@ -1553,6 +1567,21 @@ function initMap(){
     if(State.areaIds && State.areaLabel.startsWith("creches neste grupo") && State.map.getZoom() < 8){
       clearArea();
     }
+  });
+
+  // === Sync lista ↔ viewport do mapa (só se lista está visível) ===
+  // Performance-safe: debounce 350ms, só re-renderiza se workspace.hide-list NÃO presente.
+  let _viewportTo = null;
+  function _viewportSync(){
+    const ws = document.getElementById("workspace");
+    if(!ws || ws.classList.contains("hide-list")) return; // lista escondida — skip
+    // Render só do que está no viewport
+    State._viewportBounds = State.map.getBounds();
+    applyFilters();
+  }
+  State.map.on("moveend", ()=>{
+    clearTimeout(_viewportTo);
+    _viewportTo = setTimeout(_viewportSync, 350);
   });
   // FeatureGroup para desenho
   State.drawLayer = new L.FeatureGroup();
@@ -2004,9 +2033,36 @@ function _relocateHeroForMobile(){
   }
 }
 
+// Toggle "Ver lista" / "Esconder lista" — viewport sync com debounce
+function _wireListToggle(){
+  const btn = document.getElementById("list-toggle-btn");
+  const ws = document.getElementById("workspace");
+  const label = document.getElementById("lt-label");
+  const count = document.getElementById("lt-count");
+  if(!btn || !ws) return;
+  btn.addEventListener("click", ()=>{
+    const hidden = ws.classList.toggle("hide-list");
+    btn.setAttribute("aria-pressed", String(!hidden));
+    if(hidden){
+      label.textContent = "Ver lista";
+      count.style.display = "none";
+    } else {
+      label.textContent = "Esconder lista";
+      // Capturar viewport actual e aplicar
+      State._viewportBounds = State.map.getBounds();
+      applyFilters();
+      const n = State.filtered.length;
+      count.textContent = n > 99 ? "99+" : String(n);
+      count.style.display = "inline-block";
+    }
+  });
+}
+
 function wireUp(){
   // Reposicionar hero conforme breakpoint
   try{ _relocateHeroForMobile(); }catch(_){}
+  // Wire-up do toggle "Ver lista" + viewport sync
+  try{ _wireListToggle(); }catch(_){}
   let _resizeTo = null;
   window.addEventListener('resize', ()=>{
     clearTimeout(_resizeTo);
