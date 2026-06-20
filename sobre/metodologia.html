@@ -279,6 +279,11 @@ footer a:hover{color:var(--c-coral)}
   <h2><span class="num">2</span> Como inferimos idades e tipos</h2>
   <p>Muitas creches no dataset oficial não declaram explicitamente as idades aceites ou o tipo de resposta social. Para resolver isto, construímos um <strong>algoritmo de inferência baseado no nome do estabelecimento</strong>.</p>
 
+  <p style="background:linear-gradient(135deg,#FFE8D6,#FFF3D6);padding:14px 18px;border-radius:14px;border-left:4px solid var(--c-peach);margin:18px 0">
+    <strong>⓵ Critério de inclusão:</strong> Apenas creches, jardins de infância (JI), infantários e respostas equivalentes para crianças até aos 6 anos.
+    <strong>Excluímos</strong>: Escolas Básicas (EB1, EB2, EB1/JI), Agrupamentos de Escolas e estabelecimentos focados em 1º Ciclo ou superior — mesmo quando tenham componente pré-escolar integrada — para manter o foco específico no problema da procura de creche.
+  </p>
+
   <table>
     <thead>
       <tr><th>Pista no nome</th><th>Inferência</th><th>Precisão</th></tr>

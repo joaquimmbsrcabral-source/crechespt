@@ -1778,6 +1778,19 @@ function normalizeOperador(t){
 // Usado em complemento de normalizeOperador para corrigir a sub-classificação
 // de IPSS (a maioria das creches em PT são IPSS, não Pública/Privada).
 // Cross-referenciado com a Carta Social (GEP-MTSSS).
+// Identifica nomes que são Escolas Básicas / Agrupamentos — não são creches.
+// Estes ficam excluídos do dataset (filtrados no loadDataset).
+function isEscolaBasica(nome){
+  const n = String(nome||"").toLowerCase().trim();
+  if (!n) return false;
+  if (/^escola\s*b[aá]sica\b/.test(n)) return true;
+  if (/^eb\b/.test(n)) return true;                       // EB, EB1, EB 2, EB Pedro...
+  if (/^agrupamento\s*de\s*escolas/.test(n)) return true;
+  if (/\beb\s*[1-3]\s*[/,]\s*ji\b/.test(n)) return true;  // EB1/JI, EB2,JI
+  if (/^escola\s*do\s*1[ºo\.]*\s*ciclo/.test(n)) return true;
+  return false;
+}
+
 function inferTipoFromName(nome, operador){
   const blob = ` ${String(nome||"").toLowerCase()} ${String(operador||"").toLowerCase()} `;
 
@@ -1849,6 +1862,8 @@ async function loadDataset(){
   // Reescrita client-side da inferência de idades (algoritmo melhorado)
   const cleaned = [];
   for(const c of raw){
+    // Filtra escolas básicas / agrupamentos — não são creches/JI puros.
+    if(isEscolaBasica(c.nome)) continue;
     // Preserva o tipo de operador (Pública/Privada/IPSS) ANTES de overwrite.
     // Estratégia: 1) markers no nome (mais fiável); 2) fallback ao tipo/operador OSM.
     const inferredTipo = inferTipoFromName(c.nome, c.operador);
@@ -1912,6 +1927,8 @@ async function loadDataset(){
       if(extrasSnap){
         extrasSnap.forEach(d => {
           const x = d.data();
+          // Filtra escolas básicas / agrupamentos também nos extras.
+          if(x && isEscolaBasica(x.nome)) return;
           if(x && x.lat != null && x.lon != null){
             // Normaliza tipos array (vem do form como ["bercario","creche",...])
             const idadesMap = { bercario:"Berçário", creche:"Creche", ji:"JI", infantario:"Infantário", atl:"ATL" };
