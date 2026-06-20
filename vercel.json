@@ -4,6 +4,7 @@
   "rewrites": [
     { "source": "/app", "destination": "/app.html" },
     { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/admin/import-cs", "destination": "/admin-import-cs.html" },
     { "source": "/sobre", "destination": "/sobre.html" },
     { "source": "/sobre/metodologia", "destination": "/sobre/metodologia.html" },
     { "source": "/roadmap", "destination": "/roadmap.html" },
