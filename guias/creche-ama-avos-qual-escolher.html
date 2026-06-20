@@ -139,6 +139,17 @@ footer a{color:var(--ink-soft);margin:0 8px}
   .brand-name span{display:none}
   .proscons{grid-template-columns:1fr;gap:10px}
 }
+
+.toc-side{position:sticky;top:80px;align-self:start;max-width:240px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.toc-side .lbl{font-family:Fredoka;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:12px;display:block}
+.toc-side ol{list-style:none;padding:0;margin:0;border-left:2px solid rgba(60,40,90,.08)}
+.toc-side li{margin:0}
+.toc-side a{display:block;padding:7px 14px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;font-weight:500;transition:all .15s}
+.toc-side a:hover{color:var(--c-coral);border-left-color:var(--c-coral);background:rgba(255,107,157,.04);text-decoration:none}
+.toc-wrap{display:grid;grid-template-columns:240px 1fr;gap:50px;max-width:1080px;margin:0 auto;align-items:start;padding:30px 24px 0}
+@media(max-width:1100px){.toc-side{display:none}.toc-wrap{display:block;max-width:760px;padding:0}}
+html{scroll-behavior:smooth}
+h2[id]{scroll-margin-top:80px}
 </style>
 
 <script type="application/ld+json">
@@ -206,6 +217,22 @@ footer a{color:var(--ink-soft);margin:0 8px}
   </nav>
 </header>
 
+<div class="toc-wrap">
+<nav class="toc-side" aria-label="Índice deste guia">
+  <span class="lbl">📑 Neste guia</span>
+  <ol>
+    <li><a href="#tabela-comparativa-as-5-opcoes-em-portugal">Tabela comparativa: as 5 opções em Portugal</a></li>
+    <li><a href="#1-creche-infantario">1. Creche / Infantário</a></li>
+    <li><a href="#2-ama-familiar-credenciada">2. Ama familiar credenciada</a></li>
+    <li><a href="#3-jardim-de-infancia-publico-ou-ipss">3. Jardim de Infância (público ou IPSS)</a></li>
+    <li><a href="#4-avos-ou-familia">4. Avós ou família</a></li>
+    <li><a href="#5-ficar-em-casa-licenca-parental">5. Ficar em casa (licença parental)</a></li>
+    <li><a href="#qual-e-a-melhor-opcao-por-idade-do-teu-filho">Qual é a melhor opção por idade do teu filho?</a></li>
+    <li><a href="#qual-escolher-pela-tua-situacao">Qual escolher pela tua situação</a></li>
+    <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+    <li><a href="#proximo-passo">Próximo passo</a></li>
+  </ol>
+</nav>
 <article>
 
   <div class="breadcrumb">
@@ -217,7 +244,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <p class="lede">A maior decisão antes de escolher creche é decidir se queres mesmo creche. Há 5 opções viáveis em Portugal, cada uma com prós, contras e custos muito diferentes. Este guia compara todas em detalhe — para escolheres com base em factos, não em pressão social.</p>
   <div class="meta">Atualizado em maio de 2026 · Por Creches.app</div>
 
-  <h2>Tabela comparativa: as 5 opções em Portugal</h2>
+  <h2 id="tabela-comparativa-as-5-opcoes-em-portugal">Tabela comparativa: as 5 opções em Portugal</h2>
   <p>Antes de mergulharmos em cada uma, aqui está a comparação rápida:</p>
 
   <table class="compare-tbl">
@@ -263,7 +290,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
     </tbody>
   </table>
 
-  <h2>1. Creche / Infantário</h2>
+  <h2 id="1-creche-infantario">1. Creche / Infantário</h2>
 
   <div class="option-card creche">
     <h3><span class="emoji">🍼</span> Creche / Infantário</h3>
@@ -301,7 +328,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
 
   <p>Em termos práticos, é a opção mais "completa" para a maioria das famílias com horários de trabalho regulares. Se queres saber mais detalhes, lê o nosso <a href="/guias/como-escolher-creche">guia para escolher creche em Portugal</a> e a <a href="/guias/quanto-custa-creche-portugal">análise dos custos reais</a>.</p>
 
-  <h2>2. Ama familiar credenciada</h2>
+  <h2 id="2-ama-familiar-credenciada">2. Ama familiar credenciada</h2>
 
   <div class="option-card ama">
     <h3><span class="emoji">👩‍🍼</span> Ama familiar credenciada</h3>
@@ -342,7 +369,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
     <p>Procura no portal da <a href="https://www.seg-social.pt/" rel="nofollow" target="_blank">Segurança Social</a> a lista de amas certificadas no teu concelho. Pede sempre o cartão de ama e visita a casa antes de decidires. Algumas amas trabalham através de uma "Creche Familiar" (IPSS que coordena rede de amas) — esta versão tem mais supervisão.</p>
   </div>
 
-  <h2>3. Jardim de Infância (público ou IPSS)</h2>
+  <h2 id="3-jardim-de-infancia-publico-ou-ipss">3. Jardim de Infância (público ou IPSS)</h2>
 
   <div class="option-card ji">
     <h3><span class="emoji">🎨</span> Jardim de Infância</h3>
@@ -380,7 +407,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
 
   <p>Para muitas famílias, a sequência ideal é: creche/ama dos 0-3 anos, depois JI público dos 3-6. Vê a <a href="/creches">lista de JI por distrito</a> no nosso mapa.</p>
 
-  <h2>4. Avós ou família</h2>
+  <h2 id="4-avos-ou-familia">4. Avós ou família</h2>
 
   <div class="option-card avos">
     <h3><span class="emoji">👵</span> Avós ou outra família</h3>
@@ -421,7 +448,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
     <p>Mesmo que os avós cuidem do teu filho durante a semana, considera fortemente <strong>inscrevê-lo em creche ou ama 2-3 dias por semana a partir dos 18 meses</strong>. A socialização com outras crianças nesta fase é determinante para desenvolvimento da linguagem, partilha e auto-regulação emocional.</p>
   </div>
 
-  <h2>5. Ficar em casa (licença parental)</h2>
+  <h2 id="5-ficar-em-casa-licenca-parental">5. Ficar em casa (licença parental)</h2>
 
   <div class="option-card parental">
     <h3><span class="emoji">🏠</span> Ficar em casa (parental)</h3>
@@ -465,7 +492,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
     <a href="/app" class="btn">🍼 Abrir o mapa →</a>
   </div>
 
-  <h2>Qual é a melhor opção por idade do teu filho?</h2>
+  <h2 id="qual-e-a-melhor-opcao-por-idade-do-teu-filho">Qual é a melhor opção por idade do teu filho?</h2>
   <p>Não há resposta universal, mas há padrões. Aqui está o que a maioria das famílias portuguesas escolhe em cada fase:</p>
 
   <h3>👶 Dos 0 aos 6 meses</h3>
@@ -480,7 +507,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <h3>🎒 Dos 3 aos 6 anos</h3>
   <p><strong>Recomendação:</strong> Jardim de Infância (público se possível). Prepara para a escolaridade obrigatória, foco em pré-leitura, motricidade fina e relacionamento com grupos maiores. Se já estás em IPSS/privada com JI integrado, faz sentido continuar.</p>
 
-  <h2>Qual escolher pela tua situação</h2>
+  <h2 id="qual-escolher-pela-tua-situacao">Qual escolher pela tua situação</h2>
 
   <h3>💰 Tens orçamento apertado</h3>
   <p>Por ordem de prioridade:</p>
@@ -516,7 +543,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
     <li><strong>Avós</strong> (logística mais simples)</li>
   </ol>
 
-  <h2>Perguntas frequentes</h2>
+  <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 
   <div class="faq">
 
@@ -557,7 +584,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
 
   </div>
 
-  <h2>Próximo passo</h2>
+  <h2 id="proximo-passo">Próximo passo</h2>
   <p>Se já decidiste que queres creche, ama em creche familiar ou JI, podes encontrar todas as opções no <strong>Creches<span class="brand-tld">.app</span></strong> — mapa com 2591 estabelecimentos em Portugal, filtros por idade, distrito e tipo. Gratuito.</p>
 
   <div class="cta-box">
@@ -582,6 +609,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
   </div>
 
 </article>
+</div>
 
 <footer>
   <p>

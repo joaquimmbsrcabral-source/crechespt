@@ -33,11 +33,19 @@
 > - ✅ #21 **Mid-page CTA no /sobre** — "Abrir o mapa que fiz para mim e para ti" após "Foi assim que nasceu"
 > - ✅ #22 **Onboarding skip-by-default no /app** — mãe vê mapa imediatamente
 >
+> **Onda 5:**
+> - ✅ #23 **Exemplo Braga/Coimbra no /quanto-custa** — fatura típica fora de Lisboa (503€ vs 788€), referência a IPSS rural < 100€
+> - ✅ #24 **Modal login /app simplificado** — tag emocional, 2 bullets (era 3), footer 1 linha (era 2)
+> - ✅ #25 **Avatar /sobre melhorado** — "J" grande com gradient coral-peach + email visível
+>
+> **Onda 6:**
+> - ✅ #26 **TOC sticky lateral nos 4 guias longos** — 35 h2s com IDs slugified, scroll-margin para fixed header, sticky no desktop (>1100px), oculto mobile
+> - ✅ #27 **Footers padronizados** — Imprensa + Roadmap adicionados nas legais (privacidade, cookies, termos), para-creches e index
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app interno: extrair CSS/JS, reduzir filtros 12→3
 > - ⏳ Press Kit ZIP no /imprensa
-> - ⏳ TOC sticky nos guias
 
 ---
 

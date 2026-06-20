@@ -116,6 +116,17 @@ footer a:hover{color:var(--c-coral)}
   header nav a:not(.cta){display:none}
   .brand-name span{display:none}
 }
+
+.toc-side{position:sticky;top:80px;align-self:start;max-width:240px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.toc-side .lbl{font-family:Fredoka;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:12px;display:block}
+.toc-side ol{list-style:none;padding:0;margin:0;border-left:2px solid rgba(60,40,90,.08)}
+.toc-side li{margin:0}
+.toc-side a{display:block;padding:7px 14px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;font-weight:500;transition:all .15s}
+.toc-side a:hover{color:var(--c-coral);border-left-color:var(--c-coral);background:rgba(255,107,157,.04);text-decoration:none}
+.toc-wrap{display:grid;grid-template-columns:240px 1fr;gap:50px;max-width:1080px;margin:0 auto;align-items:start;padding:30px 24px 0}
+@media(max-width:1100px){.toc-side{display:none}.toc-wrap{display:block;max-width:760px;padding:0}}
+html{scroll-behavior:smooth}
+h2[id]{scroll-margin-top:80px}
 </style>
 
 <script type="application/ld+json">
@@ -183,6 +194,20 @@ footer a:hover{color:var(--c-coral)}
   </nav>
 </header>
 
+<div class="toc-wrap">
+<nav class="toc-side" aria-label="Índice deste guia">
+  <span class="lbl">📑 Neste guia</span>
+  <ol>
+    <li><a href="#antes-de-comecares-tres-decisoes-previas">Antes de começares: três decisões prévias</a></li>
+    <li><a href="#os-7-criterios-mais-importantes">Os 7 critérios mais importantes</a></li>
+    <li><a href="#a-visita-15-perguntas-que-tens-de-fazer">A visita: 15 perguntas que tens de fazer</a></li>
+    <li><a href="#lista-de-espera-como-funciona">Lista de espera: como funciona</a></li>
+    <li><a href="#e-se-nao-encontrares-vaga">E se não encontrares vaga?</a></li>
+    <li><a href="#decidiu-e-agora">Decidiu — e agora?</a></li>
+    <li><a href="#faq">Perguntas frequentes</a></li>
+    <li><a href="#proximo-passo">Próximo passo</a></li>
+  </ol>
+</nav>
 <article>
 
   <div class="breadcrumb">
@@ -194,7 +219,7 @@ footer a:hover{color:var(--c-coral)}
   <p class="lede">Escolher a primeira creche do teu filho é uma das decisões mais importantes que vais tomar nos primeiros anos. Este guia leva-te pelos critérios que importam mesmo, as perguntas certas para fazer na visita, e como decidir entre IPSS, privada e jardim de infância.</p>
   <div class="meta">Atualizado em maio de 2026 · Por Creches.app</div>
 
-  <h2>Antes de começares: três decisões prévias</h2>
+  <h2 id="antes-de-comecares-tres-decisoes-previas">Antes de começares: três decisões prévias</h2>
   <p>Antes de abrires o Google Maps a comparar creches, há três perguntas que tens de responder a ti mesmo. Sem isto, vais comparar opções que nem são comparáveis entre si.</p>
 
   <h3>1. Que faixa etária precisas?</h3>
@@ -242,7 +267,7 @@ footer a:hover{color:var(--c-coral)}
   <h3>3. Distância ou preço — o que pesa mais?</h3>
   <p>Esta é a decisão menos óbvia. Faz contas reais: se a creche A custa 100 € a mais por mês mas fica a 2 km, e a creche B é mais barata mas fica a 12 km — ao fim de um ano, o tempo perdido em deslocações (e o stress matinal) vale muito mais que esses 1200 €. Para mais, a creche que fica a caminho do trabalho ou de casa é a que aguenta os anos.</p>
 
-  <h2>Os 7 critérios mais importantes</h2>
+  <h2 id="os-7-criterios-mais-importantes">Os 7 critérios mais importantes</h2>
   <p>Depois de definires o tipo, é hora de comparar opções. Estes são os critérios pelos quais vale mesmo a pena avaliar — por ordem de importância:</p>
 
   <h3>1. Rácio de adultos por criança</h3>
@@ -298,7 +323,7 @@ footer a:hover{color:var(--c-coral)}
     <a href="/app" class="btn">🍼 Ver creches da minha zona →</a>
   </div>
 
-  <h2>A visita: 15 perguntas que tens de fazer</h2>
+  <h2 id="a-visita-15-perguntas-que-tens-de-fazer">A visita: 15 perguntas que tens de fazer</h2>
   <p>Marca visita em <strong>pelo menos 3 creches</strong> antes de decidires. Sem comparar, vais aceitar a primeira porque parece boa — mas só sabes o que é "boa" depois de veres outras. Imprime esta checklist e leva contigo:</p>
 
   <ul class="checklist">
@@ -324,7 +349,7 @@ footer a:hover{color:var(--c-coral)}
     <p>Se durante a visita não te deixarem ver a sala onde o teu filho ficaria, ou se as crianças que estão lá pareçam apáticas/silenciosas em vez de envolvidas, presta atenção. Também desconfia se nunca te perguntarem nada sobre o teu filho — uma creche que se preocupa quer saber alergias, ritmos de sono, comportamento.</p>
   </div>
 
-  <h2>Lista de espera: como funciona</h2>
+  <h2 id="lista-de-espera-como-funciona">Lista de espera: como funciona</h2>
   <p>As listas de espera são a coisa que mais surpreende os pais de primeira viagem. Coisas a saber:</p>
 
   <h3>Inscreve-te cedo (muito cedo)</h3>
@@ -344,7 +369,7 @@ footer a:hover{color:var(--c-coral)}
   <h3>Tem sempre Plano B</h3>
   <p>Mesmo que estejas na lista da tua creche favorita, inscreve-te em pelo menos 3-4 creches em paralelo. Quando souberes que entraste numa, retiras das outras — mas se ficares à espera de uma só, podes ficar pelo cabelo em agosto sem solução.</p>
 
-  <h2>E se não encontrares vaga?</h2>
+  <h2 id="e-se-nao-encontrares-vaga">E se não encontrares vaga?</h2>
   <p>Acontece. Se em julho/agosto ainda não tiveres vaga para setembro, considera estas alternativas:</p>
   <ul>
     <li><strong>Ama familiar credenciada</strong> — uma ama com licença pode cuidar até 4 crianças em casa. Algumas Segurança Social regionais têm bolsas de amas disponíveis.</li>
@@ -353,7 +378,7 @@ footer a:hover{color:var(--c-coral)}
     <li><strong>Outro distrito próximo</strong> — se moras em Lisboa mas trabalhas em Oeiras, uma creche em Oeiras pode ser mais fácil de garantir.</li>
   </ul>
 
-  <h2>Decidiu — e agora?</h2>
+  <h2 id="decidiu-e-agora">Decidiu — e agora?</h2>
   <p>Antes de assinar:</p>
   <ul>
     <li>Lê o regulamento interno todo (sim, todo)</li>
@@ -400,7 +425,7 @@ footer a:hover{color:var(--c-coral)}
 
   </div>
 
-  <h2>Próximo passo</h2>
+  <h2 id="proximo-passo">Próximo passo</h2>
   <p>O <strong>Creches<span class="brand-tld">.app</span></strong> ajuda-te a fazer exatamente isto: comparar creches num mapa, filtrar por idade e zona, e organizar quem já contactaste, quem respondeu e quem tens visita marcada. <strong>Gratuito e sem anúncios.</strong></p>
 
   <div class="cta-box">
@@ -425,6 +450,7 @@ footer a:hover{color:var(--c-coral)}
   </div>
 
 </article>
+</div>
 
 <footer>
   <p>

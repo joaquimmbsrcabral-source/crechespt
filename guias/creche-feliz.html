@@ -125,6 +125,17 @@ footer a:hover{color:var(--c-coral)}
   header nav a:not(.cta){display:none}
   .brand-name span{display:none}
 }
+
+.toc-side{position:sticky;top:80px;align-self:start;max-width:240px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.toc-side .lbl{font-family:Fredoka;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:12px;display:block}
+.toc-side ol{list-style:none;padding:0;margin:0;border-left:2px solid rgba(60,40,90,.08)}
+.toc-side li{margin:0}
+.toc-side a{display:block;padding:7px 14px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;font-weight:500;transition:all .15s}
+.toc-side a:hover{color:var(--c-coral);border-left-color:var(--c-coral);background:rgba(255,107,157,.04);text-decoration:none}
+.toc-wrap{display:grid;grid-template-columns:240px 1fr;gap:50px;max-width:1080px;margin:0 auto;align-items:start;padding:30px 24px 0}
+@media(max-width:1100px){.toc-side{display:none}.toc-wrap{display:block;max-width:760px;padding:0}}
+html{scroll-behavior:smooth}
+h2[id]{scroll-margin-top:80px}
 </style>
 
 <script type="application/ld+json">
@@ -192,6 +203,21 @@ footer a:hover{color:var(--c-coral)}
   </nav>
 </header>
 
+<div class="toc-wrap">
+<nav class="toc-side" aria-label="Índice deste guia">
+  <span class="lbl">📑 Neste guia</span>
+  <ol>
+    <li><a href="#o-que-e">O que é o programa Creche Feliz?</a></li>
+    <li><a href="#quem-tem-direito">Quem tem direito em 2026?</a></li>
+    <li><a href="#redes">Que creches aderem? As 3 redes do programa</a></li>
+    <li><a href="#como-pedir">Como pedir a gratuitidade, passo a passo</a></li>
+    <li><a href="#sem-vaga">E se não houver vaga gratuita?</a></li>
+    <li><a href="#incluido">O que está incluído na gratuitidade?</a></li>
+    <li><a href="#prioridades">Quem tem prioridade quando há poucas vagas?</a></li>
+    <li><a href="#faq">Perguntas frequentes</a></li>
+    <li><a href="#proximo-passo">Próximo passo</a></li>
+  </ol>
+</nav>
 <article>
   <div class="breadcrumb"><a href="/">Início</a> › <a href="/guias">Guias</a> › Creche Feliz 2026</div>
   <span class="kicker">Guia 2026 · Creches gratuitas</span>
@@ -335,7 +361,7 @@ footer a:hover{color:var(--c-coral)}
     </details>
   </div>
 
-  <h2>Próximo passo</h2>
+  <h2 id="proximo-passo">Próximo passo</h2>
   <p>O Creche Feliz só funciona se encontrares <em>a</em> creche certa com vaga — e isso continua a ser a parte difícil. O <strong>Creches<span class="brand-tld">.app</span></strong> mostra-te as 2591 creches de Portugal num só mapa, com filtros por idade e tipo (IPSS, pública, privada) e contactos diretos, e ajuda-te a organizar as listas de espera.</p>
 
   <div class="cta-box">
@@ -359,6 +385,7 @@ footer a:hover{color:var(--c-coral)}
   </div>
 
 </article>
+</div>
 
 <footer>
   <p>

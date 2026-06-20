@@ -125,6 +125,17 @@ footer a:hover{color:var(--c-coral)}
   header nav a:not(.cta){display:none}
   .brand-name span{display:none}
 }
+
+.toc-side{position:sticky;top:80px;align-self:start;max-width:240px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.toc-side .lbl{font-family:Fredoka;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:12px;display:block}
+.toc-side ol{list-style:none;padding:0;margin:0;border-left:2px solid rgba(60,40,90,.08)}
+.toc-side li{margin:0}
+.toc-side a{display:block;padding:7px 14px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;font-weight:500;transition:all .15s}
+.toc-side a:hover{color:var(--c-coral);border-left-color:var(--c-coral);background:rgba(255,107,157,.04);text-decoration:none}
+.toc-wrap{display:grid;grid-template-columns:240px 1fr;gap:50px;max-width:1080px;margin:0 auto;align-items:start;padding:30px 24px 0}
+@media(max-width:1100px){.toc-side{display:none}.toc-wrap{display:block;max-width:760px;padding:0}}
+html{scroll-behavior:smooth}
+h2[id]{scroll-margin-top:80px}
 </style>
 
 <script type="application/ld+json">
@@ -193,6 +204,20 @@ footer a:hover{color:var(--c-coral)}
   </nav>
 </header>
 
+<div class="toc-wrap">
+<nav class="toc-side" aria-label="Índice deste guia">
+  <span class="lbl">📑 Neste guia</span>
+  <ol>
+    <li><a href="#os-3-sistemas-e-o-que-cada-um-custa">Os 3 sistemas — e o que cada um custa</a></li>
+    <li><a href="#creche-feliz-a-creche-pode-ser-totalmente-gratuita">Creche Feliz: a creche pode ser totalmente gratuita</a></li>
+    <li><a href="#escaloes-ipss-como-e-calculada-a-mensalidade">Escalões IPSS: como é calculada a mensalidade</a></li>
+    <li><a href="#mensalidades-medias-de-creches-privadas-por-distrito">Mensalidades médias de creches privadas por distrito</a></li>
+    <li><a href="#a-fatura-tipica-de-uma-creche-privada">A fatura típica de uma creche privada</a></li>
+    <li><a href="#como-pagar-menos-pela-creche">Como pagar menos pela creche</a></li>
+    <li><a href="#faq">Perguntas frequentes sobre custos das creches</a></li>
+    <li><a href="#proximo-passo">Próximo passo</a></li>
+  </ol>
+</nav>
 <article>
 
   <div class="breadcrumb">
@@ -204,7 +229,7 @@ footer a:hover{color:var(--c-coral)}
   <p class="lede">A mensalidade que vês anunciada raramente é o que vais pagar. Este guia mostra-te os preços reais por tipo de creche, explica os escalões IPSS, detalha o programa Creche Feliz (gratuito) e dá-te a estrutura completa de uma fatura mensal típica em Portugal.</p>
   <div class="meta">Atualizado em maio de 2026 · Por Creches.app</div>
 
-  <h2>Os 3 sistemas — e o que cada um custa</h2>
+  <h2 id="os-3-sistemas-e-o-que-cada-um-custa">Os 3 sistemas — e o que cada um custa</h2>
   <p>Em Portugal há três modelos de creche, e o preço varia drasticamente entre eles. Antes de procurares, é essencial saber distingui-los — porque uma creche privada pode custar 5 a 10 vezes mais que uma IPSS em iguais condições.</p>
 
   <table class="compare-tbl">
@@ -234,7 +259,7 @@ footer a:hover{color:var(--c-coral)}
   </table>
   <p style="font-size:13px;color:var(--ink-faint)">*JI público é gratuito quanto à frequência, mas paga-se refeições e prolongamento de horário.</p>
 
-  <h2>Creche Feliz: a creche pode ser totalmente gratuita</h2>
+  <h2 id="creche-feliz-a-creche-pode-ser-totalmente-gratuita">Creche Feliz: a creche pode ser totalmente gratuita</h2>
   <p>Esta é a notícia que muitos pais ainda desconhecem. Desde <strong>1 de setembro de 2022</strong>, o programa Creche Feliz tornou a frequência de creche <strong>totalmente gratuita</strong> em todas as IPSS com acordo de cooperação com a Segurança Social — <em>independentemente do rendimento da família</em>.</p>
 
   <div class="callout win">
@@ -253,7 +278,7 @@ footer a:hover{color:var(--c-coral)}
     <li><strong>Materiais individuais</strong> (fraldas, leite específico) — variável</li>
   </ul>
 
-  <h2>Escalões IPSS: como é calculada a mensalidade</h2>
+  <h2 id="escaloes-ipss-como-e-calculada-a-mensalidade">Escalões IPSS: como é calculada a mensalidade</h2>
   <p>Se a tua creche é IPSS mas o teu filho não está abrangido pelo Creche Feliz (nasceu antes de set/2022), a mensalidade é calculada pelo <strong>escalão de rendimento</strong>. O rendimento per capita do agregado familiar (rendimentos totais ÷ número de pessoas) define o escalão:</p>
 
   <table class="compare-tbl">
@@ -276,7 +301,7 @@ footer a:hover{color:var(--c-coral)}
     <p>Soma todos os rendimentos do teu agregado (salários, subsídios, prestações sociais) e divide pelo número de pessoas. Compara com a tabela acima. A IPSS pode também pedir-te a declaração de IRS do ano anterior para confirmar.</p>
   </div>
 
-  <h2>Mensalidades médias de creches privadas por distrito</h2>
+  <h2 id="mensalidades-medias-de-creches-privadas-por-distrito">Mensalidades médias de creches privadas por distrito</h2>
   <p>Nas creches privadas, o valor é definido livremente pela instituição. As médias variam bastante por localização:</p>
 
   <table class="compare-tbl">
@@ -295,7 +320,7 @@ footer a:hover{color:var(--c-coral)}
     </tbody>
   </table>
 
-  <h2>A fatura típica de uma creche privada</h2>
+  <h2 id="a-fatura-tipica-de-uma-creche-privada">A fatura típica de uma creche privada</h2>
   <p>Para teres uma ideia realista do que vais gastar, aqui está o exemplo de uma fatura mensal típica de uma creche privada em Lisboa, em setembro (mês inicial, com inscrição):</p>
 
   <div class="fatura-card">
@@ -312,6 +337,22 @@ footer a:hover{color:var(--c-coral)}
 
   <p>Nos meses seguintes, sem a inscrição anual, a fatura desce para cerca de <strong>668€/mês</strong>. Em agosto, muitas creches cobram o valor inteiro mesmo encerrando 2-3 semanas — pergunta sempre se há "mês curto" ou desconto.</p>
 
+  <h3 style="font-size:18px;margin:24px 0 8px">E fora de Lisboa? Exemplo de Braga / Coimbra</h3>
+  <p>As mensalidades fora dos grandes centros costumam ser <strong>30-45% mais baixas</strong>. Aqui está a mesma estrutura de fatura para uma creche privada média em Braga ou Coimbra:</p>
+
+  <div class="fatura-card">
+    <h4>📄 Exemplo: setembro de 2026, creche privada em Braga ou Coimbra</h4>
+    <div class="fatura-row"><span class="lbl">Mensalidade base (8h às 18h)</span><span class="val">320€</span></div>
+    <div class="fatura-row"><span class="lbl">Refeições (almoço + 2 lanches)</span><span class="val">60€</span></div>
+    <div class="fatura-row"><span class="lbl">Atividades extracurriculares (1-2)</span><span class="val">30€</span></div>
+    <div class="fatura-row"><span class="lbl">Material didático (mensal)</span><span class="val">10€</span></div>
+    <div class="fatura-row"><span class="lbl">Seguro escolar (anual / 12)</span><span class="val">3€</span></div>
+    <div class="fatura-row"><span class="lbl">Inscrição anual (única)</span><span class="val">80€</span></div>
+    <div class="fatura-row"><span class="lbl">Total mês 1</span><span class="val">503€</span></div>
+  </div>
+
+  <p>Nos meses seguintes, fica em cerca de <strong>423€/mês</strong>. Em <strong>concelhos rurais ou IPSS comunitárias</strong>, o valor pode descer ainda mais — em algumas zonas do Alentejo ou Trás-os-Montes a mensalidade de creche IPSS fica abaixo dos 100€ para famílias com escalão IRS médio.</p>
+
   <div class="callout warn">
     <span class="callout-title">⚠️ Atenção aos extras "escondidos"</span>
     <p>Pede sempre uma <strong>fatura típica completa</strong> antes de inscreveres. Algumas creches anunciam só a mensalidade base (ex: 450€) mas no fim do mês a fatura passa dos 700€. As coisas que aparecem mais frequentemente: refeições obrigatórias, atividades "padrão" não optativas, prolongamento de horário (entrada antes 8h ou saída depois 18h, 5-10€/hora), e taxas de "instalação" no início do ano letivo.</p>
@@ -323,7 +364,7 @@ footer a:hover{color:var(--c-coral)}
     <a href="/app" class="btn">🍼 Abrir o mapa →</a>
   </div>
 
-  <h2>Como pagar menos pela creche</h2>
+  <h2 id="como-pagar-menos-pela-creche">Como pagar menos pela creche</h2>
   <p>Algumas estratégias reais para reduzir o custo da creche em Portugal:</p>
 
   <h3>1. Inscreve-te em IPSS desde a gravidez</h3>
@@ -385,7 +426,7 @@ footer a:hover{color:var(--c-coral)}
 
   </div>
 
-  <h2>Próximo passo</h2>
+  <h2 id="proximo-passo">Próximo passo</h2>
   <p>Agora que sabes os custos reais, podes comparar creches concretas na tua zona — IPSS, privadas e JI público todos no mesmo mapa do <strong>Creches<span class="brand-tld">.app</span></strong>. Filtra por tipo, distrito e idade, e usa a ferramenta de pipeline para organizares as candidaturas.</p>
 
   <div class="cta-box">
@@ -410,6 +451,7 @@ footer a:hover{color:var(--c-coral)}
   </div>
 
 </article>
+</div>
 
 <footer>
   <p>
