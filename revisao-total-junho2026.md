@@ -47,6 +47,9 @@
 > - ✅ #29 **Press Kit no /imprensa expandido** — 6 cards (era 4), com PNG directo, link "Capturar ao vivo" para screenshots, cartões Vídeo/B-roll e Press Release. Mailtos pré-preenchidos com template
 > - ✅ Filtros /app — auditoria desactualizada: filtros JÁ estão colapsados por defeito (só morada/GPS no hero, resto sob "Mais filtros ▼")
 >
+> **Onda 8:**
+> - ✅ #30 **"2591" → "mais de 2.500"** em todos os textos visíveis (8 ficheiros: index, app, sobre, imprensa, roadmap, para-creches, 4 guias). Schemas mantêm número onde apropriado. Constraint dos números vagos cumprido em todo o site.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Refactor /app interno: extrair CSS/JS para ficheiros separados (cache 1 ano)
