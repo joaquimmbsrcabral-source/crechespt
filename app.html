@@ -1770,6 +1770,72 @@ function normalizeOperador(t){
   return "Desconhecido";
 }
 
+// Infere tipo (Pública/IPSS/Privada) a partir de markers no nome+operador.
+// Usado em complemento de normalizeOperador para corrigir a sub-classificação
+// de IPSS (a maioria das creches em PT são IPSS, não Pública/Privada).
+// Cross-referenciado com a Carta Social (GEP-MTSSS).
+function inferTipoFromName(nome, operador){
+  const blob = ` ${String(nome||"").toLowerCase()} ${String(operador||"").toLowerCase()} `;
+
+  // IPSS markers (instituições particulares de solidariedade social)
+  const IPSS_MARKERS = [
+    "santa casa","misericórdia","misericordia",
+    "centro social","centro paroquial","centro pastoral",
+    "centro comunitário","centro comunitario",
+    "centro de bem estar","centro de bem-estar","centro de bem-estar social",
+    "centro infantil",
+    "centro de apoio","centro de assistência","centro de assistencia",
+    "centro de educação","centro de educacao","centro educativo",
+    "associação","associacao",
+    "fundação","fundacao",
+    "cooperativa",
+    "cáritas","caritas",
+    "casa do povo",
+    "casa da criança","casa da crianca",
+    "irmandade","obra social","patronato",
+    "paroquial",
+    " ipss",
+    "instituição particular","instituicao particular",
+    "cruz vermelha","lar de jesus",
+    "congregação","congregacao",
+  ];
+  for(const m of IPSS_MARKERS){
+    if(blob.includes(m)) return "IPSS";
+  }
+
+  // Pública markers (estabelecimentos do Estado / autarquia)
+  const PUBLICA_MARKERS = [
+    "eb1/ji","eb1ji","eb-1/ji","eb 1/ji",
+    "agrupamento de escolas","agrupamento vertical","agrupamento horizontal",
+    "ji n.º","ji nº","ji n. º",
+    "jardim de infância n.º","jardim de infancia n.º",
+    "jardim de infância nº","jardim de infancia nº",
+    "escola básica","escola basica",
+    " eb1 "," eb 1 ",
+    "pré-escolar público","pre-escolar publico",
+    "creche municipal","jardim municipal",
+    "câmara municipal","camara municipal",
+  ];
+  for(const m of PUBLICA_MARKERS){
+    if(blob.includes(m)) return "Pública";
+  }
+
+  // Privada markers
+  const PRIVADA_MARKERS = [
+    "colégio","colegio","externato",
+    " international "," internacional ",
+    " school "," kindergarten "," academy ",
+    "bilingual",
+    "montessori","waldorf","pestalozzi",
+    "creche privada",
+  ];
+  for(const m of PRIVADA_MARKERS){
+    if(blob.includes(m)) return "Privada";
+  }
+
+  return null; // sem sinal forte — manter classificação original
+}
+
 async function loadDataset(){
   const b64 = document.getElementById("dataset").textContent.trim();
   const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
@@ -1779,8 +1845,10 @@ async function loadDataset(){
   // Reescrita client-side da inferência de idades (algoritmo melhorado)
   const cleaned = [];
   for(const c of raw){
-    // Preserva o tipo de operador (Pública/Privada/IPSS) ANTES de overwrite
-    c.tipo_oper = normalizeOperador(c.tipo || c.operador);
+    // Preserva o tipo de operador (Pública/Privada/IPSS) ANTES de overwrite.
+    // Estratégia: 1) markers no nome (mais fiável); 2) fallback ao tipo/operador OSM.
+    const inferredTipo = inferTipoFromName(c.nome, c.operador);
+    c.tipo_oper = inferredTipo || normalizeOperador(c.tipo || c.operador);
     const r = inferAges(c.nome || "", c.tipo || "");
     if(r.exclude) continue;
     c.tipo = r.tipo;                         // resposta social principal (retrocompat)
