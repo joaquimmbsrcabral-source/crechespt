@@ -72,6 +72,9 @@
 > **Onda 14:**
 > - ✅ #40 **Popup detail do /app redesenhado** — quando carregas numa creche no mapa, abre agora um popup com HERO GRADIENT COLORIDO por tipo + AVATAR EMOJI grande (👶/🎨/🎒/🧸/🍼) + chips com backdrop-blur + título branco sobre gradient. Match visual com as fichas estáticas /creche/. Em mobile fica como bottom-sheet com mesmo design.
 >
+> **Onda 15:**
+> - ✅ #41 **Destaque CONTACTOS no popup /app** — 4 CTAs GIGANTES coloridos no TOPO do body (📞 Ligar com nº visível / ✉ Email com template / 🌐 Site / 🗺 Direcções Google Maps). Disabled cinzentos quando faltam dados. Foco principal: contactar, não tracking. Tracking colapsado sob `<details>📋 Acompanhar a minha inscrição (opcional)`.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)

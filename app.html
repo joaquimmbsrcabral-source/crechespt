@@ -440,12 +440,29 @@
       </div>
     </div>
     <div class="body">
+      <!-- CTAs GRANDES de contacto no TOPO (foco principal) -->
+      <div class="d-contact-ctas" id="d-contact-ctas">
+        <a id="d-cta-tel" class="d-cta-big" href="#" aria-label="Ligar">
+          <span class="ic">📞</span><span class="lb" id="d-cta-tel-lb">Ligar</span>
+        </a>
+        <a id="d-cta-mail" class="d-cta-big" href="#" aria-label="Email">
+          <span class="ic">✉</span><span class="lb">Email</span>
+        </a>
+        <a id="d-cta-site" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Site">
+          <span class="ic">🌐</span><span class="lb">Site</span>
+        </a>
+        <a id="d-cta-dir" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Direcções">
+          <span class="ic">🗺</span><span class="lb">Direcções</span>
+        </a>
+      </div>
+
       <div class="section">
-        <h3>Ficha</h3>
+        <h3>Detalhes</h3>
         <div id="d-info" class="kv"></div>
       </div>
-      <div class="section">
-        <h3>O meu acompanhamento</h3>
+      <details class="d-tracking">
+        <summary>📋 Acompanhar a minha inscrição <span class="hint">(opcional)</span></summary>
+      <div class="section" style="margin-top:14px">
         <div class="frow">
           <label for="d-status">Estado</label>
           <select id="d-status">
@@ -500,12 +517,13 @@
           <textarea id="d-notas" placeholder="Notas, impressões, contactos da pessoa que atendeu…"></textarea>
         </div>
       </div>
+      </details>
     </div>
     <div class="toolbar">
-      <button id="d-call" class="btn">📞 Ligar</button>
-      <button id="d-email" class="btn">✉ Email</button>
-      <button id="d-site" class="btn">🌐 Website</button>
-      <button id="d-route" class="btn">🗺 Mapa</button>
+      <button id="d-route" class="btn" style="display:none">🗺 Mapa</button>
+      <button id="d-call" class="btn" style="display:none">📞 Ligar</button>
+      <button id="d-email" class="btn" style="display:none">✉ Email</button>
+      <button id="d-site" class="btn" style="display:none">🌐 Website</button>
       <button id="d-share" class="btn">🔗 Partilhar</button>
       <span style="flex:1"></span>
       <button id="d-reset" class="btn danger">Limpar</button>
@@ -1690,20 +1708,37 @@ function openDetail(id){
   renderStars(u.prio||0);
 
   const tel = (c.telefone||"").trim();
-  document.getElementById("d-call").disabled = !tel;
-  document.getElementById("d-call").onclick = ()=>{ if(tel) window.location.href = "tel:"+tel; };
   const em = (c.email||"").trim();
-  document.getElementById("d-email").disabled = !em;
-  document.getElementById("d-email").onclick = ()=>{
-    if(em){
-      const subj = "Inscrição em creche — pedido de informação";
-      const body = "Bom dia,\n\nGostaria de saber se têm vagas e como funciona a inscrição na vossa creche para o próximo ano letivo.\n\nObrigado.";
-      window.location.href = `mailto:${em}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
-    }
-  };
   const site = (c.website||"").trim();
-  document.getElementById("d-site").disabled = !site;
-  document.getElementById("d-site").onclick = ()=>{ if(site) window.open(site, "_blank","noopener"); };
+
+  // CTAs grandes no topo do body (foco principal)
+  const subj = "Inscrição em creche — pedido de informação";
+  const body = "Bom dia,\n\nGostaria de saber se têm vagas e como funciona a inscrição na vossa creche para o próximo ano letivo.\n\nObrigado.";
+  const ctaTel = document.getElementById("d-cta-tel");
+  if(ctaTel){
+    if(tel){ ctaTel.href = "tel:"+tel; ctaTel.classList.remove("disabled"); document.getElementById("d-cta-tel-lb").textContent = tel.replace(/\s+/g,' ').slice(0,18); }
+    else { ctaTel.href = "#"; ctaTel.classList.add("disabled"); document.getElementById("d-cta-tel-lb").textContent = "Sem telefone"; ctaTel.onclick = (e)=>e.preventDefault(); }
+  }
+  const ctaMail = document.getElementById("d-cta-mail");
+  if(ctaMail){
+    if(em){ ctaMail.href = `mailto:${em}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`; ctaMail.classList.remove("disabled"); }
+    else { ctaMail.href = "#"; ctaMail.classList.add("disabled"); ctaMail.onclick = (e)=>e.preventDefault(); }
+  }
+  const ctaSite = document.getElementById("d-cta-site");
+  if(ctaSite){
+    if(site){ ctaSite.href = site; ctaSite.classList.remove("disabled"); }
+    else { ctaSite.href = "#"; ctaSite.classList.add("disabled"); ctaSite.onclick = (e)=>e.preventDefault(); }
+  }
+  const ctaDir = document.getElementById("d-cta-dir");
+  if(ctaDir){
+    ctaDir.href = `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}`;
+    ctaDir.classList.remove("disabled");
+  }
+
+  // Botões legacy da toolbar (mantidos hidden, mas wire-up para retro-compatibilidade)
+  const dCall = document.getElementById("d-call"); if(dCall){ dCall.disabled = !tel; dCall.onclick = ()=>{ if(tel) window.location.href = "tel:"+tel; }; }
+  const dEmail = document.getElementById("d-email"); if(dEmail){ dEmail.disabled = !em; dEmail.onclick = ()=>{ if(em) window.location.href = `mailto:${em}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`; }; }
+  const dSite = document.getElementById("d-site"); if(dSite){ dSite.disabled = !site; dSite.onclick = ()=>{ if(site) window.open(site,"_blank","noopener"); }; }
   document.getElementById("d-route").onclick = ()=>{
     closeDetail();
     switchView("map");
