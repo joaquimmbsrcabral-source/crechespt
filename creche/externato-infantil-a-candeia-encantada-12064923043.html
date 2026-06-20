@@ -20,96 +20,152 @@
 <meta name="twitter:image" content="https://creches.app/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--c-coral:#FF6B9D;--c-coral-soft:#FFE3EE;--c-peach:#FF9F68;--c-peach-soft:#FFE8D6;--c-turquoise:#48D1CC;
---c-turquoise-soft:#D8F5F4;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-yellow:#FFD166;--c-yellow-soft:#FFF3D6;--bg:#FFF6EE;--ink:#2C2356;
---ink-soft:#6E6989;--ink-faint:#9B97B5;--line:rgba(60,40,90,.08);--r-pill:999px;--r-md:14px;--r-card:18px;
+:root{--c-coral:#FF6B9D;--c-coral-soft:#FFE3EE;--c-coral-dk:#C2185B;--c-peach:#FF9F68;--c-peach-soft:#FFE8D6;
+--c-turquoise:#48D1CC;--c-turquoise-soft:#D8F5F4;--c-turquoise-dk:#1d7d78;
+--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-mint-dk:#2f7d3b;
+--c-yellow:#FFD166;--c-yellow-soft:#FFF3D6;--c-purple:#A78BFA;--c-purple-soft:#EDE9FE;
+--bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--ink-faint:#9B97B5;
+--line:rgba(60,40,90,.08);--r-pill:999px;--r-md:14px;--r-card:20px;--r-lg:28px;
 --sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
---sh-2:0 4px 12px rgba(60,40,90,.08),0 16px 32px rgba(60,40,90,.06)}
+--sh-2:0 4px 12px rgba(60,40,90,.08),0 16px 32px rgba(60,40,90,.06);
+--sh-3:0 8px 24px rgba(60,40,90,.10),0 24px 48px rgba(60,40,90,.08);
+--g-coral:linear-gradient(135deg,#FF6B9D,#FF9F68);
+--g-ipss:linear-gradient(135deg,#48D1CC,#7DD389);
+--g-publica:linear-gradient(135deg,#7DD389,#FFD166);
+--g-privada:linear-gradient(135deg,#FF6B9D,#FF9F68);
+--g-outro:linear-gradient(135deg,#A78BFA,#FF6B9D)}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
-body{background:radial-gradient(900px 600px at 10% 0%,var(--c-peach-soft) 0%,transparent 55%),
-radial-gradient(800px 600px at 100% 0%,var(--c-coral-soft) 0%,transparent 55%),var(--bg);color:var(--ink);
-font-family:"Quicksand",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;min-height:100vh}
-h1,h2,h3{font-family:"Fredoka";font-weight:600;letter-spacing:-.01em;line-height:1.25;color:var(--ink)}
+*:focus-visible{outline:3px solid var(--c-peach);outline-offset:3px;border-radius:6px}
+body{background:
+  radial-gradient(1100px 700px at -10% -10%,var(--c-coral-soft) 0%,transparent 55%),
+  radial-gradient(900px 600px at 110% 5%,var(--c-turquoise-soft) 0%,transparent 60%),
+  radial-gradient(900px 700px at 50% 110%,var(--c-yellow-soft) 0%,transparent 60%),
+  var(--bg);color:var(--ink);
+  font-family:"Quicksand",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;min-height:100vh}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
 a{color:var(--c-coral);text-decoration:none}a:hover{text-decoration:underline}
-.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
-header.top{display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand-tld{background:var(--g-coral);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* === HEADER === */
+header.top{display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .brand{display:flex;align-items:center;gap:10px;color:inherit}
-.logo{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px}
+.logo{width:40px;height:40px;border-radius:50%;background:var(--g-coral);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.3)}
 .brand-name b{font-family:"Fredoka";font-size:19px;display:block;line-height:1}
 .brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
 header .spacer{flex:1}header nav{display:flex;gap:6px;align-items:center}
 header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
 header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
-header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+header .cta{background:var(--g-coral);color:#fff;font-weight:700;padding:10px 20px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
 header .cta:hover{filter:brightness(1.05);color:#fff;text-decoration:none}
-main{max-width:760px;margin:0 auto;padding:26px 24px 60px}
-.breadcrumb{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}.breadcrumb a{color:var(--ink-soft)}.breadcrumb a:hover{color:var(--c-coral)}
-h1.nome{font-size:32px;margin:6px 0 10px}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
-.badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:var(--r-pill);background:#fff;box-shadow:var(--sh-1);color:var(--ink-soft)}
-.badge.tipo-IPSS{background:var(--c-turquoise-soft);color:#1d7d78}
-.badge.tipo-Privada{background:var(--c-coral-soft);color:#c2447a}
-.badge.tipo-Pública,.badge.tipo-Publica{background:var(--c-mint-soft);color:#2f7d3b}
-.badge.tipo-Desconhecido{background:#F0EBF8;color:#6E6989}
 
-/* === HERO CARD === */
-.hero-creche{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-2);padding:22px 24px;margin:14px 0 16px;border-top:4px solid var(--c-peach)}
-.hero-creche .top{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
-.hero-creche .avatar{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Fredoka";font-size:26px;font-weight:700;flex-shrink:0;box-shadow:0 4px 12px rgba(255,107,157,.3)}
-.hero-creche .info{flex:1;min-width:0}
-.hero-creche h1{font-size:26px;margin:0 0 6px;line-height:1.2}
-.hero-creche .badges{margin:0}
+/* === MAIN — wide canvas === */
+main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+.breadcrumb{font-size:13px;color:var(--ink-soft);margin-bottom:18px;letter-spacing:.01em}
+.breadcrumb a{color:var(--ink-soft);font-weight:600}
+.breadcrumb a:hover{color:var(--c-coral)}
 
-/* CTAs grandes */
-.ctas-big{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
-.cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 8px;border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s;text-align:center}
-.cta-big:hover{transform:translateY(-2px);text-decoration:none;color:#fff}
-.cta-big.disabled{background:#F0EBF8;color:#9B97B5;box-shadow:none;cursor:not-allowed;pointer-events:none}
-.cta-big .ic{font-size:20px;line-height:1}
-.cta-big .lb{font-size:12.5px;font-weight:700;letter-spacing:.02em}
+/* === HERO — gradient background, ENORME === */
+.hero{position:relative;border-radius:var(--r-lg);padding:36px 40px 32px;margin:0 0 22px;color:#fff;overflow:hidden;box-shadow:var(--sh-3)}
+.hero.tipo-IPSS{background:var(--g-ipss)}
+.hero.tipo-Privada{background:var(--g-privada)}
+.hero.tipo-Publica,.hero.tipo-Pública{background:var(--g-publica)}
+.hero.tipo-Desconhecido,.hero.tipo-{background:var(--g-outro)}
+.hero::after{content:"";position:absolute;top:-40%;right:-15%;width:60%;height:200%;background:radial-gradient(circle at center,rgba(255,255,255,.16) 0%,transparent 60%);pointer-events:none}
+.hero .row1{display:flex;gap:22px;align-items:flex-start;position:relative;z-index:1}
+.hero .av{width:96px;height:96px;border-radius:26px;background:rgba(255,255,255,.22);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:54px;flex-shrink:0;border:2px solid rgba(255,255,255,.4);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.hero .info{flex:1;min-width:0}
+.hero h1{font-size:36px;color:#fff;margin:0 0 10px;line-height:1.15;text-shadow:0 1px 2px rgba(0,0,0,.08);font-weight:700}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:6px}
+.hero .chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.22);color:#fff;font-weight:700;font-size:12.5px;padding:5px 12px;border-radius:var(--r-pill);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25)}
+.hero .chip.tipo{background:#fff;color:var(--ink)}
+@media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
-/* Banner qualidade de dados */
-.q-banner{padding:11px 16px;border-radius:12px;font-size:13px;margin:14px 0;display:flex;align-items:center;gap:10px;font-weight:600}
-.q-banner.warn{background:var(--c-yellow-soft);color:#856404;border-left:3px solid var(--c-yellow)}
-.q-banner.ok{background:var(--c-mint-soft);color:#2f7d3b;border-left:3px solid var(--c-mint)}
+/* === CTAs grandes (sempre coloridos, mesmo disabled) === */
+.ctas-big{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:22px 0 14px;position:relative;z-index:1}
+.cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
+.cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
+.cta-big .ic{font-size:24px;line-height:1}
+.cta-big .lb{font-size:13px;font-weight:700;letter-spacing:.02em}
+.cta-big.primary{background:#fff;color:var(--c-coral-dk)}
+.cta-big.disabled{background:rgba(255,255,255,.5);color:rgba(60,40,90,.45);box-shadow:none;cursor:not-allowed;pointer-events:none}
+@media(max-width:640px){.ctas-big{gap:8px}.cta-big{padding:14px 6px;border-radius:14px}.cta-big .ic{font-size:20px}.cta-big .lb{font-size:11.5px}}
+
+/* === LAYOUT 2 colunas em desktop === */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+@media(max-width:880px){.split{grid-template-columns:1fr}}
+
+/* === Stats cards === */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0 6px}
+.stat-card{background:#fff;border-radius:var(--r-md);padding:14px 12px;text-align:center;box-shadow:var(--sh-1);border:1px solid rgba(60,40,90,.04)}
+.stat-card .ic{font-size:22px;line-height:1;margin-bottom:6px}
+.stat-card .k{display:block;font-size:10px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.stat-card .v{display:block;color:var(--ink);font-weight:700;font-size:13.5px;line-height:1.3}
+.stat-card .v a{color:inherit}
+.stat-card .v a:hover{color:var(--c-coral)}
+@media(max-width:560px){.stats-grid{grid-template-columns:1fr 1fr}}
+
+/* === Banner qualidade === */
+.q-banner{padding:14px 18px;border-radius:14px;font-size:13.5px;margin:14px 0;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:var(--sh-1)}
+.q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
+.q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
 
-.card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:20px 22px;margin:16px 0}
-.card h2{font-size:18px;margin:0 0 14px}
+/* === Cards === */
+.card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
+.card-h{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-family:"Fredoka";font-weight:600;color:var(--ink);font-size:18px;letter-spacing:-.01em}
+.card-h .pin{width:30px;height:30px;border-radius:8px;background:var(--c-coral-soft);color:var(--c-coral-dk);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.card-h .pin.green{background:var(--c-mint-soft);color:var(--c-mint-dk)}
+.card-h .pin.blue{background:var(--c-turquoise-soft);color:var(--c-turquoise-dk)}
+.card-h .pin.purple{background:var(--c-purple-soft);color:#6D28D9}
 
-/* Grelha 2 colunas para dados */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
-.grid2 .item .k{display:block;color:var(--ink-faint);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
-.grid2 .item .v{color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.45}
-.grid2 .item.wide{grid-column:1 / -1}
-@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+/* === Mapa hero — 380px === */
+.mapa-card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-2);padding:0;overflow:hidden;margin:18px 0}
+.mapa-embed{border:0;width:100%;height:380px;display:block}
+.mapa-foot{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:#fff;font-size:13.5px;border-top:1px solid var(--line)}
+.mapa-foot a{font-weight:700}
+@media(max-width:640px){.mapa-embed{height:280px}.mapa-foot{flex-direction:column;gap:6px;text-align:center}}
 
-.mapa-embed{border:0;width:100%;height:280px;border-radius:var(--r-card);box-shadow:var(--sh-1);display:block}
-
-/* Creches próximas — mini-cards */
-.prox{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:12px 14px;transition:transform .15s}
-.prox li:hover{transform:translateY(-1px);box-shadow:var(--sh-2)}
-.prox li a.nm{color:var(--ink);font-weight:700;font-size:14.5px;text-decoration:none;display:block;margin-bottom:4px}
+/* === Creches próximas — grid 2 colunas === */
+.prox{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(max-width:640px){.prox{grid-template-columns:1fr}}
+.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:14px 16px;transition:transform .18s, box-shadow .18s;border-left:3px solid transparent}
+.prox li:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+.prox li.t-ipss{border-left-color:var(--c-turquoise)}
+.prox li.t-privada{border-left-color:var(--c-coral)}
+.prox li.t-publica{border-left-color:var(--c-mint)}
+.prox li.t-outro{border-left-color:var(--c-purple)}
+.prox li a.nm{color:var(--ink);font-weight:700;font-size:14.5px;text-decoration:none;display:block;margin-bottom:6px;line-height:1.3}
 .prox li a.nm:hover{color:var(--c-coral);text-decoration:none}
 .prox .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.prox .pill{display:inline-block;padding:2px 9px;border-radius:var(--r-pill);font-weight:700;font-size:10.5px;letter-spacing:.02em}
-.prox .pill.tipo-IPSS,.prox .pill.tipo-ipss{background:var(--c-turquoise-soft);color:#1d7d78}
-.prox .pill.tipo-Privada,.prox .pill.tipo-privada{background:var(--c-coral-soft);color:#c2447a}
-.prox .pill.tipo-Publica,.prox .pill.tipo-Pública,.prox .pill.tipo-publica{background:var(--c-mint-soft);color:#2f7d3b}
-.prox .pill.tipo-Desconhecido,.prox .pill.tipo-outro{background:#F0EBF8;color:#6E6989}
-.prox .d{color:var(--ink-faint);font-size:12px;font-weight:700;margin-left:auto}
-.faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:13px 16px;margin:9px 0;cursor:pointer}
-.faq summary{font-weight:700;font-family:"Fredoka";font-size:15.5px;list-style:none}
+.prox .pill{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase}
+.prox .pill.tipo-IPSS,.prox .pill.tipo-ipss{background:var(--c-turquoise-soft);color:var(--c-turquoise-dk)}
+.prox .pill.tipo-Privada,.prox .pill.tipo-privada{background:var(--c-coral-soft);color:var(--c-coral-dk)}
+.prox .pill.tipo-Publica,.prox .pill.tipo-Pública,.prox .pill.tipo-publica{background:var(--c-mint-soft);color:var(--c-mint-dk)}
+.prox .pill.tipo-Desconhecido,.prox .pill.tipo-outro{background:var(--c-purple-soft);color:#6D28D9}
+.prox .d{color:var(--ink-faint);font-size:12.5px;font-weight:700;margin-left:auto}
+
+/* === FAQ === */
+.faq{display:grid;gap:12px}
+.faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:16px 20px;cursor:pointer;transition:box-shadow .18s}
+.faq details[open]{box-shadow:var(--sh-2)}
+.faq summary{font-weight:700;font-family:"Fredoka";font-size:16px;list-style:none;color:var(--ink);display:flex;align-items:center;gap:10px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";float:right;color:var(--c-coral);font-size:20px;line-height:.8}
+.faq summary::before{content:"?";flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--c-coral-soft);color:var(--c-coral-dk);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.faq summary::after{content:"+";margin-left:auto;color:var(--c-coral);font-size:24px;line-height:.8;font-weight:300}
 .faq details[open] summary::after{content:"−"}
-.faq p{margin:8px 0 2px;font-size:14px;color:var(--ink-soft)}
-.aviso{font-size:12.5px;color:var(--ink-faint);margin-top:26px;border-top:1px solid var(--line);padding-top:16px}
-footer{background:#fff;border-top:1px solid var(--line);padding:26px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:50px}
+.faq p{margin:12px 0 2px;font-size:14.5px;color:var(--ink-soft);padding-left:34px}
+
+/* === Aviso/footer === */
+.aviso{font-size:12.5px;color:var(--ink-faint);margin-top:30px;padding:18px 20px;background:rgba(255,255,255,.6);border-radius:var(--r-md);text-align:center;line-height:1.7}
+.aviso a{color:var(--c-coral);font-weight:600}
+footer{background:#fff;border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:60px}
 footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
-@media(max-width:640px){main{padding:20px 16px 40px}h1.nome{font-size:25px}header nav a:not(.cta){display:none}.brand-name span{display:none}.drow{flex-direction:column;gap:2px}.drow .k{min-width:0}}
+
+@media(max-width:640px){
+  main{padding:18px 14px 40px}
+  header nav a:not(.cta){display:none}
+  .brand-name span{display:none}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Externato Infantil \"A Candeia Encantada\"", "url": "https://creches.app/creche/externato-infantil-a-candeia-encantada-12064923043", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Avenida João XXI 5", "postalCode": "1000-297", "addressLocality": "Lisboa", "addressRegion": "Lisboa"}, "geo": {"@type": "GeoCoordinates", "latitude": 38.742087, "longitude": -9.134821}, "sameAs": "https://www.openstreetmap.org/node/12064923043", "telephone": "+351 218498851", "email": "ext.acandeia@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Lisboa", "item": "https://creches.app/creches/lisboa"}, {"@type": "ListItem", "position": 4, "name": "Externato Infantil \"A Candeia Encantada\"", "item": "https://creches.app/creche/externato-infantil-a-candeia-encantada-12064923043"}]}</script>
@@ -125,48 +181,64 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <nav><a href="/guias">Guias</a><a href="/creches">Por distrito</a><a href="/app" class="cta">Abrir mapa</a></nav>
 </header>
 <main>
-  <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a> › <a href="/creches/lisboa">Lisboa</a> › Externato Infantil &quot;A Candeia Encantada&quot;</div>
+  <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a> › <a href="/creches/lisboa">Lisboa</a> › <span style="color:var(--ink);font-weight:700">Externato Infantil &quot;A Candeia Encantada&quot;</span></div>
 
-  <!-- HERO CARD: avatar + nome + badges + 3 CTAs grandes -->
-  <div class="hero-creche">
-    <div class="top">
-      <div class="avatar" aria-hidden="true">E</div>
+  <!-- HERO GIGANTE — gradient colorido por tipo + avatar emoji enorme -->
+  <section class="hero tipo-Privada">
+    <div class="row1">
+      <div class="av" aria-hidden="true">🎨</div>
       <div class="info">
         <h1>Externato Infantil &quot;A Candeia Encantada&quot;</h1>
-        <div class="badges"><span class="badge tipo-Privada">Privada</span><span class="badge">Jardim de Infância</span><span class="badge">👶 Dos 3 anos aos 5 anos</span><span class="badge">📍 Lisboa</span></div>
+        <div class="meta-row">
+          <span class="chip tipo">Privada</span>
+          <span class="chip">🏠 Jardim de Infância</span>
+          <span class="chip">🎂 Dos 3 anos aos 5 anos</span>
+          <span class="chip">📍 Lisboa</span>
+        </div>
       </div>
     </div>
+    <!-- 3 CTAs GIGANTES sempre visíveis -->
     <div class="ctas-big"><a class="cta-big" href="tel:+351218498851" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ext.acandeia@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Externato%20Infantil%20%22A%20Candeia%20Encantada%22&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.742087,-9.134821" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div>
-  </div>
+  </section>
 
   <div class="q-banner ok">✓ Contactos verificados</div>
 
+  <!-- Stats cards visuais -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="ic">📍</div><span class="k">Distrito</span><span class="v"><a href="/creches/lisboa">Lisboa</a></span></div>
+<div class="stat-card"><div class="ic">🎂</div><span class="k">Idades</span><span class="v">Dos 3 anos aos 5 anos</span></div>
+<div class="stat-card"><div class="ic">🏠</div><span class="k">Resposta</span><span class="v">Jardim de Infância</span></div>
+  </div>
+
+  <!-- Card morada + site -->
+  <div class="card"><div class="card-h"><div class="pin">📍</div>Morada</div><p style="margin:0;font-size:15px;color:var(--ink);font-weight:500;line-height:1.6">Avenida João XXI 5, 1000-297 Lisboa</p></div>
+
+  <!-- Mapa GRANDE em destaque -->
+  <div class="mapa-card">
+    <iframe class="mapa-embed" loading="lazy" title="Mapa de Externato Infantil &quot;A Candeia Encantada&quot;" src="https://www.openstreetmap.org/export/embed.html?bbox=-9.14282%2C38.73709%2C-9.12682%2C38.74709&amp;layer=mapnik&amp;marker=38.742087%2C-9.134821"></iframe>
+    <div class="mapa-foot">
+      <span style="color:var(--ink-soft);font-weight:600">🗺 Localização exacta</span>
+      <a href="/app#creche-osm-node-12064923043">Ver no mapa interactivo →</a>
+    </div>
+  </div>
+
+  <!-- Creches próximas em grid 2 colunas -->
   <div class="card">
-    <h2>Detalhes</h2>
-    <div class="grid2"><div class="item wide"><span class="k">Morada</span><span class="v">Avenida João XXI 5, 1000-297 Lisboa</span></div>
-<div class="item"><span class="k">Distrito</span><span class="v"><a href="/creches/lisboa">Lisboa</a></span></div>
-<div class="item"><span class="k">Resposta social</span><span class="v">Jardim de Infância</span></div></div>
-  </div>
-
-  <div class="card" style="padding:10px">
-    <iframe class="mapa-embed" loading="lazy" title="Mapa: Externato Infantil &quot;A Candeia Encantada&quot;" src="https://www.openstreetmap.org/export/embed.html?bbox=-9.14282%2C38.73709%2C-9.12682%2C38.74709&amp;layer=mapnik&amp;marker=38.742087%2C-9.134821"></iframe>
-    <p style="margin:10px 4px 4px;font-size:13px;color:var(--ink-soft);text-align:center">
-      <a href="/app#creche-osm-node-12064923043" style="font-weight:700">→ Ver área completa no mapa interativo</a>
-    </p>
-  </div>
-
-  <h2 style="font-size:18px;margin:28px 0 10px">Creches perto desta</h2>
-  <ul class="prox">
+    <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
+    <ul class="prox">
 <li><a class="nm" href="/creche/centro-infantil-maria-de-monserrate-245565235">Centro Infantil Maria de Monserrate</a><div class="meta"><span class="pill tipo-Desconhecido">Desconhecido</span><span class="d">0.3 km</span></div></li>
 <li><a class="nm" href="/creche/externato-santa-maria-do-mar-1302865882">Externato Santa Maria do Mar</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-alvalade-139191177">Jardim de Infância de Alvalade</a><div class="meta"><span class="pill tipo-Desconhecido">Desconhecido</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-antonio-jose-de-almeida-12066232226">Jardim de Infância António José de Almeida</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/colegio-do-largo-1302865881">Colégio do Largo</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.7 km</span></div></li>
 <li><a class="nm" href="/creche/externato-santa-teresinha-de-lisieux-12066232231">Externato &quot;Santa Teresinha de Lisieux&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.8 km</span></div></li>
-  </ul>
-  <p style="font-size:14px;color:var(--ink-soft);margin-top:10px">Compara todas as creches da zona, com filtros por idade e tipo, no <a href="/app">mapa interativo</a> — ou vê a <a href="/creches/lisboa">lista completa de creches em Lisboa</a>.</p>
+    </ul>
+    <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
+      <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/lisboa" style="font-weight:700">Lista completa em Lisboa</a>
+    </p>
+  </div>
 
-  <h2 style="font-size:18px;margin:28px 0 6px">Perguntas frequentes</h2>
+  <h2 style="font-size:22px;margin:32px 0 14px;display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:10px;background:var(--c-coral-soft);color:var(--c-coral-dk);display:inline-flex;align-items:center;justify-content:center;font-size:16px">?</span>Perguntas frequentes</h2>
   <div class="faq">
     <details><summary>A Externato Infantil &quot;A Candeia Encantada&quot; é gratuita?</summary><p>A Externato Infantil &quot;A Candeia Encantada&quot; é privada. As creches privadas só são gratuitas se forem <strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. Confirma a adesão e o valor da mensalidade diretamente com a creche.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 3 anos aos 5 anos — funciona como jardim de infância. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
