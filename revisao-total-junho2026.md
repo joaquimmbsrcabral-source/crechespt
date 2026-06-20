@@ -78,8 +78,8 @@
 > **Onda 16:**
 > - ✅ #42 **Filtros + morada todos escondidos por defeito** — `_relocateHeroForMobile()` agora move sempre o hero (morada+GPS) para dentro do collapse, desktop e mobile. Botão único "🔍 Procurar / Filtros" mais óbvio (era "⚙ Mais filtros"). Foco no mapa.
 >
-> **Onda 17:**
-> - ✅ #43 **Toggle "Ver lista" / "Esconder lista" + viewport sync** — lista escondida por defeito em desktop. Botão flutuante "📋 Ver lista" no canto sup-esq do mapa. Click abre lista + sincroniza com viewport actual. Quando aberta: ao mover/zoom mapa, lista filtra-se às creches visíveis (debounce 350ms). Contador "[42]" actualiza-se. Performance-safe: viewport filter só aplicado se lista visível (skip total se hide-list).
+> **Onda 17 (REVERTIDA):**
+> - ❌ Toggle "Ver lista" + viewport sync — implementação não convenceu o user, revertida.
 >
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
