@@ -2167,12 +2167,11 @@ function wireUp(){
     filtersCollapse.setAttribute("aria-hidden", open ? "false" : "true");
     filtersCollapse.classList.toggle("open", open);
     const lbl = filtersToggle.querySelector(".ft-label");
-    if(lbl) lbl.textContent = open ? "Esconder filtros" : "Mais filtros";
+    if(lbl) lbl.textContent = open ? "Esconder filtros" : "Procurar / Filtros";
   }
 
-  // Default: aberto em desktop, fechado em mobile (<980px)
-  const isMobile = () => window.matchMedia("(max-width: 980px)").matches;
-  setFiltersOpen(!isMobile());
+  // Default: SEMPRE fechado (desktop + mobile). Só abre se utilizador carregar.
+  setFiltersOpen(false);
 
   filtersToggle.addEventListener("click", ()=>{
     const isOpen = filtersToggle.getAttribute("aria-expanded") === "true";
