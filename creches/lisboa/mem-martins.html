@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -83,76 +102,76 @@
 <div class="list-wrap">
   <ul class="creche-list">
     <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-dim-dam-dum-quot-1302095445">Colégio &quot;Dim Dam Dum&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-dim-dam-dum-1302095445">Colégio &quot;Dim Dam Dum&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida da Bela Vista 2725-236</div>
-  <div class="tel">📞 +351 939596158</div>
+  <div class="tel">📞 <a href="tel:+351939596158">+351 939596158</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-herdeiros-do-futuro-quot-259445923">Colégio &quot;Herdeiros do Futuro&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-herdeiros-do-futuro-259445923">Colégio &quot;Herdeiros do Futuro&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Teresa Gomes 2725-177</div>
-  <div class="tel">📞 +351 219263543</div>
+  <div class="tel">📞 <a href="tel:+351219263543">+351 219263543</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-o-tapadinhas-ii-quot-1193397132">Colégio &quot;O Tapadinhas II&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-o-tapadinhas-ii-1193397132">Colégio &quot;O Tapadinhas II&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Peninha 2725-655</div>
-  <div class="tel">📞 +351 219221698</div>
+  <div class="tel">📞 <a href="tel:+351219221698">+351 219221698</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/externato-quot-o-mundo-dos-sentidos-quot-261742240">Externato &quot;O Mundo dos Sentidos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/externato-o-mundo-dos-sentidos-261742240">Externato &quot;O Mundo dos Sentidos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Domingos Saraiva 2725-286</div>
-  <div class="tel">📞 +351 219 200 011</div>
+  <div class="tel">📞 <a href="tel:+351219200011">+351 219 200 011</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-a-nossa-escola-quot-1302095454">Jardim de Infância &quot;A Nossa Escola&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-a-nossa-escola-1302095454">Jardim de Infância &quot;A Nossa Escola&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua João Maria Magalhães Ferraz 2725-338</div>
-  <div class="tel">📞 +351 219260176</div>
+  <div class="tel">📞 <a href="tel:+351219260176">+351 219260176</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-gente-pequena-quot-1302095446">Jardim de Infância &quot;Gente Pequena&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-gente-pequena-1302095446">Jardim de Infância &quot;Gente Pequena&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida Professor Bento de Jesus Caraça 2725-032</div>
-  <div class="tel">📞 +351 219263073</div>
+  <div class="tel">📞 <a href="tel:+351219263073">+351 219263073</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-maca-azul-quot-12059871971">Jardim de Infância &quot;Maçã Azul&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-maca-azul-12059871971">Jardim de Infância &quot;Maçã Azul&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Damião de Góis 2725-548</div>
-  <div class="tel">📞 +351 219208179</div>
+  <div class="tel">📞 <a href="tel:+351219208179">+351 219208179</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-ninho-maternal-quot-1302095447">Jardim de Infância &quot;Ninho Maternal&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-ninho-maternal-1302095447">Jardim de Infância &quot;Ninho Maternal&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Engenheiro Júlio Gomes da Silva 2725-075</div>
-  <div class="tel">📞 +351 219208321</div>
+  <div class="tel">📞 <a href="tel:+351219208321">+351 219208321</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-o-pirilampo-do-cruzeiro-quot-2951411654">Jardim de Infância &quot;O Pirilampo do Cruzeiro&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-o-pirilampo-do-cruzeiro-2951411654">Jardim de Infância &quot;O Pirilampo do Cruzeiro&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Bento Goncalves 2725-239</div>
-  <div class="tel">📞 +351 219215823</div>
+  <div class="tel">📞 <a href="tel:+351219215823">+351 219215823</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-vem-brincar-quot-1302095448">Jardim de Infância &quot;Vem Brincar!&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-vem-brincar-1302095448">Jardim de Infância &quot;Vem Brincar!&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Mercado 2725-091</div>
-  <div class="tel">📞 +351 219204254</div>
+  <div class="tel">📞 <a href="tel:+351219204254">+351 219204254</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-n-3-de-mem-martins-sintra-262723817">Jardim de Infância n.º 3 de Mem Martins, Sintra</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 R. das Eiras 2725-294</div>
-  <div class="tel">📞 +351 219 262 290</div>
+  <div class="tel">📞 <a href="tel:+351219262290">+351 219 262 290</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-os-brincalhoes-quot-1302095451">Jardim Infantil &quot;Os Brincalhões&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-os-brincalhoes-1302095451">Jardim Infantil &quot;Os Brincalhões&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Malva Rosa 2725-369</div>
-  <div class="tel">📞 +351 219219800</div>
+  <div class="tel">📞 <a href="tel:+351219219800">+351 219219800</a></div>
 </li>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,73 +103,73 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/centro-de-infancia-arte-e-qualidade-506659701">Centro de Infância Arte e Qualidade</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Campus Universitário de Santiago 3810-193</div>
-  <div class="tel">📞 +351 234381666</div>
+  <div class="tel">📞 <a href="tel:+351234381666">+351 234381666</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/escola-pequeno-cidadao-1290253886">Escola Pequeno Cidadão</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Direita 3810-028</div>
-  <div class="tel">📞 +351 234386072</div>
+  <div class="tel">📞 <a href="tel:+351234386072">+351 234386072</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/escolinha-capitao-lebre-168522918">Escolinha Capitão Lebre</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Travessa do Capitão Lebre 3810-384</div>
-  <div class="tel">📞 +351 914483737</div>
+  <div class="tel">📞 <a href="tel:+351914483737">+351 914483737</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-quinta-dos-pequenotes-quot-7346765831">Jardim de Infância &quot;Quinta dos Pequenotes&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quinta-dos-pequenotes-7346765831">Jardim de Infância &quot;Quinta dos Pequenotes&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Urbanização Quinta do Cruzeiro 3800-000</div>
-  <div class="tel">📞 +351 234308075</div>
+  <div class="tel">📞 <a href="tel:+351234308075">+351 234308075</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-da-associacao-de-solidariedade-e-accao-social-asas-santa-joana-11962804271">Jardim de Infância da Associação de Solidariedade e Acção Social - ASAS Santa Joana</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Caminho da Grinélândia 3810-343</div>
-  <div class="tel">📞 +351 234305100</div>
+  <div class="tel">📞 <a href="tel:+351234305100">+351 234305100</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-de-cabo-luis-1273488661">Jardim de Infância de Cabo Luís</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua da Bela Vista 3800-113</div>
-  <div class="tel">📞 +351 234316558</div>
+  <div class="tel">📞 <a href="tel:+351234316558">+351 234316558</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-de-quinta-do-picado-1273488667">Jardim de Infância de Quinta do Picado</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua do Carocho 3810-473</div>
-  <div class="tel">📞 +351 234384257</div>
+  <div class="tel">📞 <a href="tel:+351234384257">+351 234384257</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-de-quintas-1273488668">Jardim de Infância de Quintãs</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua do Sol 3810-832</div>
-  <div class="tel">📞 +351 961274351</div>
+  <div class="tel">📞 <a href="tel:+351961274351">+351 961274351</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-tra-la-la-11962804254">Jardim de Infância Trá-Lá-Lá</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Angola 3800-008</div>
-  <div class="tel">📞 +351 234421187</div>
+  <div class="tel">📞 <a href="tel:+351234421187">+351 234421187</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-tagarela-quot-1799579126">Jardim Infantil &quot;O Tagarela&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-tagarela-1799579126">Jardim Infantil &quot;O Tagarela&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Carmo 3800-128</div>
-  <div class="tel">📞 +351 234383030</div>
+  <div class="tel">📞 <a href="tel:+351234383030">+351 234383030</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-infantil-do-centro-paroquial-de-sao-bernardo-11962804260">Jardim Infantil do Centro Paroquial de São Bernardo</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Largo da Igreja 3810-089</div>
-  <div class="tel">📞 +351 231340130</div>
+  <div class="tel">📞 <a href="tel:+351231340130">+351 231340130</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/pequinitates-e-companhia-1362965511">Pequinitates e Companhia</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Rua Doutor Mário Sacramento </div>
   
 </li>

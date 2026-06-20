@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,57 +103,57 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/brincadeiras-ao-cubo-1039141139">Brincadeiras ao Cubo</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida Escola dos Fuzileiros Navais 2830-150</div>
-  <div class="tel">📞 +351 212160277;+351 962610980</div>
+  <div class="tel">📞 <a href="tel:+351212160277;+351962610980">+351 212160277;+351 962610980</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-do-bairro-25-de-abril-1205944039">Jardim de Infância do Bairro 25 de Abril</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua da Resistência ao Fascismo 2830-122</div>
-  <div class="tel">📞 +351 910899480;+351 962696685</div>
+  <div class="tel">📞 <a href="tel:+351910899480;+351962696685">+351 910899480;+351 962696685</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-do-bairro-das-palmeiras-11761556380">Jardim de Infância do Bairro das Palmeiras</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua 1º de Maio 2830-131</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-dom-pedro-v-a-colmeia-1095008186">Jardim de Infância Dom Pedro V - A Colmeia</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Professor Egas Moniz 2830-357</div>
-  <div class="tel">📞 +351 212075499</div>
+  <div class="tel">📞 <a href="tel:+351212075499">+351 212075499</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-dom-pedro-v-o-comboio-1100824764">Jardim de Infância Dom Pedro V - O Comboio</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Doutor Sampaio e Melo 2830-281</div>
-  <div class="tel">📞 +351 212078820</div>
+  <div class="tel">📞 <a href="tel:+351212078820">+351 212078820</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-n-1-do-alto-do-seixalinho-11761556382">Jardim de Infância n.º 1 do Alto do Seixalinho</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Cabo Verde 2830-060</div>
-  <div class="tel">📞 +351 212091082</div>
+  <div class="tel">📞 <a href="tel:+351212091082">+351 212091082</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-n-2-de-verderena-11761556383">Jardim de Infância n.º 2 de Verderena</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Almirante José Mendes Cabeçadas 2830-272</div>
-  <div class="tel">📞 +351 212170745</div>
+  <div class="tel">📞 <a href="tel:+351212170745">+351 212170745</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-n-3-do-alto-do-seixalinho-11761556381">Jardim de Infância n.º 3 do Alto do Seixalinho</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Diogo Cão 2830-066</div>
-  <div class="tel">📞 +351 212052612</div>
+  <div class="tel">📞 <a href="tel:+351212052612">+351 212052612</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/recreio-das-gargalhadas-1094768990">Recreio das Gargalhadas</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Largo do Palácio do Coimbra 2830-317</div>
-  <div class="tel">📞 +351 215 969 343;+351 913206025</div>
+  <div class="tel">📞 <a href="tel:+351215969343;+351913206025">+351 215 969 343;+351 913206025</a></div>
 </li>
   </ul>
 </div>

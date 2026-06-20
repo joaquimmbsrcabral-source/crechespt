@@ -65,10 +65,12 @@ DIST_SLUG = {"Lisboa":"lisboa","Porto":"porto","Braga":"braga","Setúbal":"setub
 
 STYLE = """<style>
 :root{--c-coral:#FF6B9D;--c-coral-soft:#FFE3EE;--c-peach:#FF9F68;--c-peach-soft:#FFE8D6;--c-turquoise:#48D1CC;
---c-turquoise-soft:#D8F5F4;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-yellow:#FFD166;--bg:#FFF6EE;--ink:#2C2356;
+--c-turquoise-soft:#D8F5F4;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-yellow:#FFD166;--c-yellow-soft:#FFF3D6;--bg:#FFF6EE;--ink:#2C2356;
 --ink-soft:#6E6989;--ink-faint:#9B97B5;--line:rgba(60,40,90,.08);--r-pill:999px;--r-md:14px;--r-card:18px;
---sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05)}
+--sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
+--sh-2:0 4px 12px rgba(60,40,90,.08),0 16px 32px rgba(60,40,90,.06)}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
+*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
 body{background:radial-gradient(900px 600px at 10% 0%,var(--c-peach-soft) 0%,transparent 55%),
 radial-gradient(800px 600px at 100% 0%,var(--c-coral-soft) 0%,transparent 55%),var(--bg);color:var(--ink);
 font-family:"Quicksand",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;min-height:100vh}
@@ -93,20 +95,55 @@ h1.nome{font-size:32px;margin:6px 0 10px}
 .badge.tipo-IPSS{background:var(--c-turquoise-soft);color:#1d7d78}
 .badge.tipo-Privada{background:var(--c-coral-soft);color:#c2447a}
 .badge.tipo-Pública,.badge.tipo-Publica{background:var(--c-mint-soft);color:#2f7d3b}
+.badge.tipo-Desconhecido{background:#F0EBF8;color:#6E6989}
+
+/* === HERO CARD === */
+.hero-creche{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-2);padding:22px 24px;margin:14px 0 16px;border-top:4px solid var(--c-peach)}
+.hero-creche .top{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.hero-creche .avatar{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Fredoka";font-size:26px;font-weight:700;flex-shrink:0;box-shadow:0 4px 12px rgba(255,107,157,.3)}
+.hero-creche .info{flex:1;min-width:0}
+.hero-creche h1{font-size:26px;margin:0 0 6px;line-height:1.2}
+.hero-creche .badges{margin:0}
+
+/* CTAs grandes */
+.ctas-big{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 8px;border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s;text-align:center}
+.cta-big:hover{transform:translateY(-2px);text-decoration:none;color:#fff}
+.cta-big.disabled{background:#F0EBF8;color:#9B97B5;box-shadow:none;cursor:not-allowed;pointer-events:none}
+.cta-big .ic{font-size:20px;line-height:1}
+.cta-big .lb{font-size:12.5px;font-weight:700;letter-spacing:.02em}
+
+/* Banner qualidade de dados */
+.q-banner{padding:11px 16px;border-radius:12px;font-size:13px;margin:14px 0;display:flex;align-items:center;gap:10px;font-weight:600}
+.q-banner.warn{background:var(--c-yellow-soft);color:#856404;border-left:3px solid var(--c-yellow)}
+.q-banner.ok{background:var(--c-mint-soft);color:#2f7d3b;border-left:3px solid var(--c-mint)}
+.q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:20px 22px;margin:16px 0}
-.card h2{font-size:19px;margin:0 0 12px}
-.drow{display:flex;gap:10px;padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
-.drow:last-child{border-bottom:none}
-.drow .k{min-width:110px;color:var(--ink-faint);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;padding-top:2px}
-.drow .v{color:var(--ink);font-weight:600}
-.acts{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
-.btn{display:inline-block;padding:11px 20px;border-radius:var(--r-pill);font-weight:700;font-size:14px;background:#fff;box-shadow:var(--sh-1);color:var(--ink)}
-.btn:hover{text-decoration:none;transform:translateY(-1px)}
-.btn.primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;box-shadow:0 6px 16px rgba(255,107,157,.35)}
-.mapa-embed{border:0;width:100%;height:300px;border-radius:var(--r-card);box-shadow:var(--sh-1);display:block}
-.prox{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:11px 14px;font-size:14px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.prox .d{color:var(--ink-faint);font-size:12.5px;white-space:nowrap;font-weight:700}
+.card h2{font-size:18px;margin:0 0 14px}
+
+/* Grelha 2 colunas para dados */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.grid2 .item .k{display:block;color:var(--ink-faint);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.grid2 .item .v{color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.45}
+.grid2 .item.wide{grid-column:1 / -1}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+
+.mapa-embed{border:0;width:100%;height:280px;border-radius:var(--r-card);box-shadow:var(--sh-1);display:block}
+
+/* Creches próximas — mini-cards */
+.prox{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:12px 14px;transition:transform .15s}
+.prox li:hover{transform:translateY(-1px);box-shadow:var(--sh-2)}
+.prox li a.nm{color:var(--ink);font-weight:700;font-size:14.5px;text-decoration:none;display:block;margin-bottom:4px}
+.prox li a.nm:hover{color:var(--c-coral);text-decoration:none}
+.prox .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.prox .pill{display:inline-block;padding:2px 9px;border-radius:var(--r-pill);font-weight:700;font-size:10.5px;letter-spacing:.02em}
+.prox .pill.tipo-IPSS,.prox .pill.tipo-ipss{background:var(--c-turquoise-soft);color:#1d7d78}
+.prox .pill.tipo-Privada,.prox .pill.tipo-privada{background:var(--c-coral-soft);color:#c2447a}
+.prox .pill.tipo-Publica,.prox .pill.tipo-Pública,.prox .pill.tipo-publica{background:var(--c-mint-soft);color:#2f7d3b}
+.prox .pill.tipo-Desconhecido,.prox .pill.tipo-outro{background:#F0EBF8;color:#6E6989}
+.prox .d{color:var(--ink-faint);font-size:12px;font-weight:700;margin-left:auto}
 .faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:13px 16px;margin:9px 0;cursor:pointer}
 .faq summary{font-weight:700;font-family:"Fredoka";font-size:15.5px;list-style:none}
 .faq summary::-webkit-details-marker{display:none}
@@ -133,9 +170,21 @@ FOOTER = """<footer>
   <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Dados: <a href="https://www.openstreetmap.org/copyright" rel="nofollow noopener">OpenStreetMap</a> (ODbL)</p>
 </footer>"""
 
+# Filtro Escolas Básicas — não gerar fichas para EB1, agrupamentos, etc.
+_EB_RX = [re.compile(p, re.I) for p in [
+    r"^escola\s*b[aá]sica\b", r"^eb\b",
+    r"^agrupamento\s*de\s*escolas",
+    r"\beb\s*[1-3]\s*[/,]\s*ji\b",
+]]
+def _is_eb(nm): return any(p.search(nm or "") for p in _EB_RX)
+
 os.makedirs("creche", exist_ok=True)
 urls = []
+n_skip_eb = 0
 for c in creches:
+    if _is_eb(c.get("nome","")):
+        n_skip_eb += 1
+        continue
     slug = slugs[c["id"]]
     url = f"{BASE}/creche/{slug}"
     nome, tipo = c["nome"], c.get("tipo","")
@@ -176,26 +225,69 @@ for c in creches:
     crumbs.append({"@type":"ListItem","position":len(crumbs)+1,"name":nome,"item":url})
     ldbc = json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":crumbs}, ensure_ascii=False)
 
-    # dados
-    rows = []
+    # === Avatar inicial ===
+    inicial = (nome or "?")[:1].upper()
+
+    # === Dados em grelha 2 colunas (sem duplicar info do hero) ===
+    items = []
     if morada or cp:
         end = esc(morada) + (f", {esc(cp)}" if cp else "")
         if local: end += f" {el}"
-        rows.append(("Morada", end))
-    elif local: rows.append(("Localidade", el))
-    if distrito: rows.append(("Distrito", f'<a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else esc(distrito)))
-    rows.append(("Idades", esc(fx)))
-    rows.append(("Resposta", esc(resposta)))
-    if oper: rows.append(("Operador", esc(oper)))
-    if tel:  rows.append(("Telefone", f'<a href="tel:{esc(tel.replace(" ",""))}">{esc(tel)}</a>'))
-    if mail: rows.append(("Email", f'<a href="mailto:{esc(mail)}">{esc(mail)}</a>'))
-    if site: rows.append(("Website", f'<a href="{esc(site)}" rel="nofollow noopener" target="_blank">{esc(site[:60])}</a>'))
-    drows = "\n".join(f'<div class="drow"><span class="k">{k}</span><span class="v">{v}</span></div>' for k,v in rows)
+        items.append(("Morada", end, True))
+    if distrito:
+        items.append(("Distrito", f'<a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else esc(distrito), False))
+    items.append(("Resposta social", esc(resposta), False))
+    if oper:
+        items.append(("Operador", esc(oper), False))
+    if site:
+        items.append(("Site", f'<a href="{esc(site)}" rel="nofollow noopener" target="_blank">{esc(site[:50])}↗</a>', False))
+    drows = "\n".join(
+        f'<div class="item{" wide" if wide else ""}"><span class="k">{k}</span><span class="v">{v}</span></div>'
+        for k,v,wide in items)
 
-    # vizinhas
+    # === CTAs grandes — 3 sempre visíveis (disabled se faltar dado) ===
+    tel_clean = tel.replace(" ","").replace("/","")
+    if tel:
+        cta_tel = f'<a class="cta-big" href="tel:{esc(tel_clean)}" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a>'
+    else:
+        cta_tel = '<span class="cta-big disabled" aria-label="Sem telefone registado"><span class="ic">📞</span><span class="lb">Sem telefone</span></span>'
+
+    if mail:
+        # Email template pré-preenchido (sem dados pessoais sensíveis no client; o pai pode editar)
+        subj = f"Pedido de informação — {nome}"
+        body_tpl = (f"Olá,\n\nGostaria de saber se têm vaga para a próxima época "
+                    f"e qual o procedimento de inscrição.\n\nObrigado(a)")
+        import urllib.parse as _u
+        href = f"mailto:{mail}?subject={_u.quote(subj)}&body={_u.quote(body_tpl)}"
+        cta_mail = f'<a class="cta-big" href="{esc(href)}" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a>'
+    else:
+        cta_mail = '<span class="cta-big disabled" aria-label="Sem email registado"><span class="ic">✉</span><span class="lb">Sem email</span></span>'
+
+    # Direcções via Google Maps (sempre temos lat/lon)
+    dir_url = f"https://www.google.com/maps/dir/?api=1&destination={lat},{lon}"
+    cta_dir = f'<a class="cta-big" href="{dir_url}" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a>'
+
+    ctas_html = f'<div class="ctas-big">{cta_tel}{cta_mail}{cta_dir}</div>'
+
+    # === Banner qualidade de dados ===
+    missing = []
+    if not tel: missing.append("telefone")
+    if not mail: missing.append("email")
+    if missing:
+        what = " e ".join(missing)
+        banner = (f'<div class="q-banner warn">⚠ Faltam-nos os contactos desta creche ({what}). '
+                  f'<a href="mailto:geral@creches.app?subject=Contacto%20{esc(nome).replace(" ","%20")}">Sabes? Ajuda outros pais →</a></div>')
+    else:
+        banner = '<div class="q-banner ok">✓ Contactos verificados</div>'
+
+    # === Creches próximas — mini-cards com pills coloridos ===
     viz = vizinhas(c)
     vlis = "\n".join(
-        f'<li><a href="/creche/{slugs[o["id"]]}">{esc(o["nome"])}</a><span class="d">{esc(o.get("tipo",""))} · {d:.1f} km</span></li>'
+        f'<li><a class="nm" href="/creche/{slugs[o["id"]]}">{esc(o["nome"])}</a>'
+        f'<div class="meta">'
+        f'<span class="pill tipo-{esc(o.get("tipo","Desconhecido") or "Desconhecido")}">{esc(o.get("tipo","Desconhecido") or "Desconhecido")}</span>'
+        f'<span class="d">{d:.1f} km</span>'
+        f'</div></li>'
         for o,d in viz)
 
     # FAQ condicional
@@ -242,33 +334,42 @@ for c in creches:
 {HEADER}
 <main>
   <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a>{f' › <a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else ''} › {en}</div>
-  <h1 class="nome">{en}</h1>
-  <div class="badges">{f'<span class="badge tipo-{esc(tipo)}">{etipo}</span>' if tipo else ''}<span class="badge">{esc(resposta)}</span><span class="badge">👶 {esc(fx)}</span>{f'<span class="badge">📍 {el}</span>' if local else ''}</div>
 
-  <div class="card">
-    <h2>Dados e contactos</h2>
-    {drows}
+  <!-- HERO CARD: avatar + nome + badges + 3 CTAs grandes -->
+  <div class="hero-creche">
+    <div class="top">
+      <div class="avatar" aria-hidden="true">{esc(inicial)}</div>
+      <div class="info">
+        <h1>{en}</h1>
+        <div class="badges">{f'<span class="badge tipo-{esc(tipo) or "Desconhecido"}">{etipo or "Sem classificação"}</span>'}<span class="badge">{esc(resposta)}</span><span class="badge">👶 {esc(fx)}</span>{f'<span class="badge">📍 {el}</span>' if local else ''}</div>
+      </div>
+    </div>
+    {ctas_html}
   </div>
 
-  <div class="acts">
-    <a class="btn primary" href="/app#creche-{c['id']}">🗺 Abrir no mapa interativo</a>
-    {f'<a class="btn" href="tel:{esc(tel.replace(" ",""))}">📞 Ligar</a>' if tel else ''}
-    {f'<a class="btn" href="mailto:{esc(mail)}">✉ Email</a>' if mail else ''}
+  {banner}
+
+  <div class="card">
+    <h2>Detalhes</h2>
+    <div class="grid2">{drows}</div>
   </div>
 
   <div class="card" style="padding:10px">
     <iframe class="mapa-embed" loading="lazy" title="Mapa: {en}" src="https://www.openstreetmap.org/export/embed.html?bbox={lon-0.008:.5f}%2C{lat-0.005:.5f}%2C{lon+0.008:.5f}%2C{lat+0.005:.5f}&amp;layer=mapnik&amp;marker={lat:.6f}%2C{lon:.6f}"></iframe>
+    <p style="margin:10px 4px 4px;font-size:13px;color:var(--ink-soft);text-align:center">
+      <a href="/app#creche-{c['id']}" style="font-weight:700">→ Ver área completa no mapa interativo</a>
+    </p>
   </div>
 
-  <h2 style="font-size:21px;margin:28px 0 10px">Creches próximas</h2>
+  <h2 style="font-size:18px;margin:28px 0 10px">Creches perto desta</h2>
   <ul class="prox">
 {vlis}
   </ul>
-  <p style="font-size:14px;color:var(--ink-soft)">Compara todas as creches da zona, com filtros por idade e tipo, no <a href="/app">mapa interativo</a>{f' — ou vê a <a href="/creches/{dslug}">lista completa de creches em {esc(distrito)}</a>' if dslug else ''}.</p>
+  <p style="font-size:14px;color:var(--ink-soft);margin-top:10px">Compara todas as creches da zona, com filtros por idade e tipo, no <a href="/app">mapa interativo</a>{f' — ou vê a <a href="/creches/{dslug}">lista completa de creches em {esc(distrito)}</a>' if dslug else ''}.</p>
 
-  <h2 style="font-size:21px;margin:28px 0 6px">Perguntas frequentes</h2>
+  <h2 style="font-size:18px;margin:28px 0 6px">Perguntas frequentes</h2>
   <div class="faq">
-    <details><summary>A {en} é gratuita?</summary><p>{grat}</p></details>
+    <details><summary>{('A ' + en) if not nome.lower().startswith('a ') else en} é gratuita?</summary><p>{grat}</p></details>
     <details><summary>Que idades aceita?</summary><p>{esc(fx)}{' — funciona como ' + esc(resposta.lower()) if resposta else ''}. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
     <details><summary>Como posso contactar ou visitar?</summary><p>{contacto_faq} Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
@@ -285,12 +386,16 @@ for c in creches:
         f.write(page)
     urls.append(url)
 
+print(f"✓ Geradas {len(urls)} fichas")
+print(f"  Saltadas (Escolas Básicas): {n_skip_eb}")
+
 # sitemap-creches.xml
 with open("sitemap-creches.xml","w",encoding="utf-8") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for u in urls:
         f.write(f"  <url><loc>{u}</loc><lastmod>{HOJE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>\n")
     f.write("</urlset>\n")
+print(f"✓ sitemap-creches.xml: {len(urls)} URLs")
 
 # mapping id->slug para outros scripts
 json.dump(slugs, open("scripts/slugs.json","w",encoding="utf-8"), ensure_ascii=False, indent=0)

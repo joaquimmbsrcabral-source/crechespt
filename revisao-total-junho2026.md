@@ -1,0 +1,408 @@
+# Revisão Total Creches.app — Junho 2026
+
+> 3 auditorias paralelas (UX/UI, técnica, copy/fluxos) cruzadas e priorizadas para acção.
+> Foco do dono: **simples e prático na ótica do utilizador**.
+
+> ## ✅ STATUS DE EXECUÇÃO (20 Jun 2026)
+>
+> **Concluído nesta sessão:**
+> - ✅ #1 **Ficha de creche redesenhada** (PRIORIDADE Nº1) — 2578 fichas regeneradas com hero card, 3 CTAs grandes, banner qualidade, grelha 2 colunas, mini-cards próximas com pills coloridos
+> - ✅ #2 Pills de tipo coloridos (IPSS turquesa, Pública verde, Privada coral, Desconhecido cinza)
+> - ✅ #3 Esconder lixo nas listas (Inactivo, Datacool, ≤3 chars)
+> - ✅ #4 Capitalize concelhos (LISBOA → Lisboa) com Title Case PT-aware
+> - ✅ #5 Form /para-creches: 11 → 4 campos obrigatórios + "Mais detalhes" colapsável
+> - ✅ #6 Email template pré-preenchido nas fichas
+> - ✅ #7 viewport `maximum-scale=5` removido (WCAG 1.4.4 fix)
+> - ✅ #8 focus-visible global no /app + fichas (acessibilidade teclado)
+> - ✅ #9 lang="pt-PT" em 284 ficheiros
+> - ✅ #10 console.warn protegido por __DEV__
+> - ✅ #11 Filtro Escolas Básicas — 13 EBs removidas das fichas + filtro client-side no app.html
+> - ✅ #12 Header consistente nas páginas /creches/:distrito/:concelho (regeneradas)
+> - ✅ #13 "A A Casa Amarela" FAQ duplicação corrigida
+>
+> **Próximos (não nesta sessão):**
+> - ⏳ Header unificado nas restantes páginas top-level (index, sobre, imprensa, roadmap, privacidade)
+> - ⏳ Foto real do Joaquim (precisa upload do user)
+> - ⏳ Refactor /app: extrair CSS/JS, reduzir filtros 12→3, onboarding skip-by-default
+> - ⏳ Press Kit ZIP no /imprensa
+> - ⏳ TOC sticky nos guias
+> - ⏳ Schema WebApplication no /app
+
+---
+
+## TL;DR — Veredicto em 5 linhas
+
+**O melhor:** conteúdo (guias, /sobre, /imprensa, /metodologia), tom genuíno do fundador, transparência, prova social (NiT + Público), arquitectura SEO sólida (sitemaps, schemas, llms.txt).
+
+**O pior:** execução visual fragmentada — parece feita por pessoas diferentes. **Headers diferentes em cada página, ficha individual de creche é pobre, /app sobrecarregada com 12+ filtros e 3 ecrãs de onboarding antes do mapa.**
+
+**O mais importante a mudar (1 dia de trabalho):** redesenhar a ficha individual de creche `/creche/...` — é a página de aterragem mais rica em SEO e onde a decisão acontece, e hoje é fraca.
+
+---
+
+## 🔥 Top 5 problemas CRÍTICOS
+
+| # | Problema | Onde | Status |
+|---|---|---|---|
+| 1 | **Ficha individual de creche é pobre** | `/creche/...` (2.578 páginas) | ✅ **REDESENHADA** |
+| 2 | **Header inconsistente** | Todas | ⏳ parcial (só concelhos) |
+| 3 | **/app monolítico 422 KB** | `/app` | ⏳ pendente |
+| 4 | **Onboarding 3 ecrãs** | `/app` mobile | ⏳ pendente |
+| 5 | **`maximum-scale=5`** bloqueia zoom (WCAG fail) | `/app` | ✅ **CORRIGIDO** |
+
+---
+
+## ⚡ Top 10 Quick Wins (alto impacto, < 1 dia cada)
+
+### 1. **Header unificado** — 2h  ⏳ parcial (só /creches/:distrito/:concelho regeneradas)
+Hoje: cada página (`/`, `/sobre`, `/app`, `/imprensa`, `/para-creches`, `/privacidade`, `/creches/lisboa/lisboa`) tem um header diferente. Algumas só têm "← Início", outras nada.
+**Fix:** componente HTML único, sempre o mesmo: logo · 4 links (Mapa · Guias · Sobre · Para creches) · CTA "Abrir mapa →"
+
+### 2. **Pills de tipo coloridos** — 2h  ✅ FEITO
+Aplicado em `/creches/:distrito/:concelho` (regeneradas) e nas mini-cards "Creches próximas" da ficha individual. IPSS turquesa, Pública verde mint, Privada coral, Desconhecido cinza.
+
+### 3. **Reduzir filtros do /app** — 3h  ⏳ pendente (refactor maior)
+
+### 4. **Esconder lixo nos distritos** — 1h  ✅ FEITO
+Filtros aplicados em `generate-concelhos.py` com `is_lixo()` (nomes ≤3 chars, "Inactivo", "Datacool", "test"). 156 páginas concelho regeneradas.
+
+### 5. **Foto real do Joaquim** — 30 min  ⏳ pendente (precisa upload do user)
+
+### 6. **Capitalize concelhos** — 30 min  ✅ FEITO
+Helper `title_case_pt()` aplicado: "LISBOA" → "Lisboa", "VILA NOVA DE GAIA" → "Vila Nova de Gaia" (mantém preposições em minúscula).
+
+### 7. **Form /para-creches: 11 → 5 campos** — 1h  ✅ FEITO
+Reduzido para 4 obrigatórios (Nome, Tipo, Distrito, Email, Telefone) com `<details>` collapse "Mais detalhes (opcional)" para website, horário, nº crianças, mensagem.
+
+### 8. **Press Kit ZIP num clique** — 1h  ⏳ pendente
+
+### 9. **Onboarding skip-by-default** — 2h  ⏳ pendente (refactor maior)
+
+### 10. **Email template pré-preenchido** — 30 min  ✅ FEITO
+Botão "✉ Email" na ficha agora abre mailto com `subject="Pedido de informação — {nome}"` + body template pronto a editar.
+
+---
+
+## 🩹 Quick Wins TÉCNICOS (< 1h cada)
+
+- ✅ Fix 1: WCAG 1.4.4 viewport — `maximum-scale=5` removido do /app
+- ✅ Fix 2: Focus visível global — `*:focus-visible{outline:2px solid #FF9F68}` aplicado em /app + fichas
+- ✅ Fix 3: `lang="pt-PT"` em 284 ficheiros (era `lang="pt"`)
+- ✅ Fix 4: ARIA labels nos CTAs das fichas (Ligar / Email / Direcções / Sem telefone / Sem email)
+- ✅ Fix 5: console.warn protegido (usa helper `_w()` com flag `__DEV__`)
+- ⏳ Fix 6: cache headers `.js` em vercel.json (pendente)
+
+---
+
+## 📄 Por página — o que está bem, mal, e como melhorar
+
+### `/` (Home — Landing pais) ★★★☆☆
+
+**✅ Bom:** copy genuíno ("Sabemos como é. Estás grávida..."), FAQ útil, números grandes (2591/20/0€/3min), lista distritos no fundo (SEO+utilidade).
+
+**❌ Mal:**
+- H1 "Creches em Portugal: todas as 2591 num só mapa" → optimiza para Google, não para o pai ansioso
+- Mockup hero ("Casinha dos Sonhos" etc.) parece clicável mas não é
+- "🇵🇹 Grátis · 2591 creches · todo o país" **repete-se 3 vezes em 200px**
+- 2 CTAs competem em força no hero
+
+**🎯 Fixes:**
+- **Headline:** `"Encontra creche para o teu filho sem perder a cabeça."` (sub: "Mapa com mais de 2.500 creches. Filtros por idade, IPSS ou privada, distância a pé. Grátis.")
+- 1 CTA primário forte + 1 link de texto "Ver como funciona"
+- Mockup → screenshot real ou nota "exemplo"
+- "3 min para começares" → **"3 min para teres 15 creches da tua zona organizadas"**
+- "Procurar por distrito" subir mais alto (é o mental model)
+
+---
+
+### `/app` (Mapa principal) ★★☆☆☆ — PRECISA TRABALHO
+
+**✅ Bom:** mapa Leaflet funciona, geolocalização, filtros existem, login opcional bem-feito.
+
+**❌ Mal (crítico):**
+- **422 KB HTML monolítico** (3.762 linhas, CSS+JS+HTML tudo inline)
+- **Onboarding 3 ecrãs** força fricção antes da mãe ver o mapa
+- **12+ filtros expostos** sempre = cognitive overload
+- **`maximum-scale=5`** bloqueia zoom (WCAG fail)
+- **9 scripts externos** render-blocking (Leaflet+plugins+Firebase) sem `defer` nem `preconnect`
+- **0 schemas JSON-LD** no `/app`
+- **Modal de login** com 3 frases de copy + checkbox de privacidade (1 botão Google chega)
+
+**🎯 Fixes:**
+- Extrair CSS → `app.css`, JS → `app.js` (cache 1 ano)
+- Onboarding: skip-by-default, mostra mapa imediatamente
+- Filtros: 3 primários (idade · distância · tipo) + collapse "Mais"
+- Remover `maximum-scale=5`
+- `defer` em todos os scripts externos + `preconnect`
+- Adicionar `WebApplication` schema
+- "Em processo" e "Favoritas" → tabs (Mapa · Em processo · Favoritas), não filtros
+
+---
+
+### `/creche/...` (Ficha individual) ★☆☆☆☆ — **PRIORIDADE Nº 1**
+
+**Esta é a página que mais perde valor. É a aterragem SEO mais rica e onde a decisão acontece.**
+
+**❌ Mal:**
+- Sem foto da creche (nem placeholder bonito)
+- Sem CTAs primários grandes (`📞 Ligar` · `✉ Email` · `🗺 Direcções`)
+- Mapa em **iframe OSM raw** — feio, sem branding, sem marker custom
+- Lista chave-valor (Morada/Distrito/Idades/Resposta) **duplica info do H2**
+- "Creches próximas" é lista pura, sem distância destacada, sem mini-cards
+- FAQ gerada por template tem nomes duplicados ("A A Casa Amarela é gratuita?")
+- Quando faltam contactos, **não diz nada visualmente** — devia ter banner "Sabes o telefone? Ajuda-nos."
+
+**🎯 REDESENHAR (1 dia):**
+
+```
+┌─────────────────────────────────────────────────┐
+│  [FOTO ou placeholder colorido com inicial]      │
+│  A Casa Amarela          [⭐ Guardar]            │
+│  [Privada] [JI] [3-5 anos] [📍 Lisboa]          │
+│                                                  │
+│  [📞 Ligar]  [✉ Email]  [🗺 Direcções]         │
+│  (cinzentos disabled se faltarem dados,         │
+│   mas visíveis para sinalizar lacuna)           │
+└─────────────────────────────────────────────────┘
+
+⚠ Banner: "Sabes o telefone desta creche? Ajuda-nos
+            a completar →"
+
+┌─ Detalhes (grelha 2 colunas) ──┬──────────────┐
+│ Morada                          │ Resposta     │
+│ Rua General Henriques de Carva… │ Jardim Inf.  │
+│                                 │              │
+│ Idades                          │ Operador     │
+│ 3-5 anos                        │ Particular   │
+└─────────────────────────────────┴──────────────┘
+
+┌─ Mapa (Leaflet, 300px alt., marker custom) ────┐
+│        🗺                                        │
+│  "Ver área no mapa interativo →"                │
+└─────────────────────────────────────────────────┘
+
+┌─ Creches próximas (mini-cards) ────────────────┐
+│ ● [IPSS]  Centro Social X     350m   📞 ✉      │
+│ ● [Priv]  Externato Y         420m   📞        │
+│ ● [Pub]   JI Z                580m              │
+│ [Comparar selecionadas →]                       │
+└─────────────────────────────────────────────────┘
+
+[Sobre os dados] (small print): "Dados de OpenStreetMap
++ Carta Social GEP. Verificados em 12 Jun 2026."
+```
+
+---
+
+### `/creches/:distrito` (página por distrito) ★★★☆☆
+
+**✅ Bom:** stats por tipo, lista filtrada, link para outros distritos.
+
+**❌ Mal:**
+- Tabela "91 públicas · 11 IPSS · 286 privadas" = 388 — **faltam 109 "desconhecido"** mas não mostra
+- "Datacool", "ATL", "Inactivo", duplicadas — **dados sujos visíveis**
+- "+ Ver as outras 437 no mapa" — sem paginação, lista interminável
+- Texto SEO fundo "incluindo 286 privada, 109 desconhecido" — singular/plural errado
+
+**🎯 Fixes:**
+- Paginação real (50/página) + filtros laterais
+- Sanitização client-side de lixo
+- Mostrar 4ª categoria (Desconhecido) ou esconder
+
+---
+
+### `/creches/:distrito/:concelho` (concelho) ★★☆☆☆
+
+**❌ Mal:**
+- **7 creches só** para "Lisboa cidade"? — problema de cobertura de dados (mas user lê como bug)
+- "LISBOA" em CAPS no breadcrumb e chip = parece grito
+- Sem header de branding
+- Wall of text de outras zonas separadas por `·`
+
+**🎯 Fixes:**
+- Capitalize concelhos (Title Case sempre)
+- Header padrão (igual a outras páginas)
+- Outras zonas: grid de chips
+- Investigar cobertura de dados (talvez seja freguesia vs concelho)
+
+---
+
+### `/sobre` (História pessoal) ★★★★☆
+
+**✅ Bom:** copy autêntico, vulnerável, humano. "Numa noite, com o portátil ao colo enquanto a minha mulher dormia" — ouro. Promessa pública gratuita = confiança alta.
+
+**⚠ Pode melhorar:**
+- Sem foto real do Joaquim (só inicial "JC") — crítico para confiança pessoal
+- Mid-page CTA ausente (1500+ palavras sem botão até ao fim)
+
+**🎯 Fixes:** foto real + 1 vídeo curto 60s embedded com voz dele + CTA mid-page após "Foi assim que nasceu o Creches.app"
+
+---
+
+### `/sobre/metodologia` ★★★★★
+
+**✅ Excelente:** TL;DR, tabela fontes, tabela inferência, limitações conhecidas. Modelo para AI visibility / jornalistas.
+
+**⚠ Muito densa para pais comuns.** Considerar toggle "Resumo / Detalhe técnico" ou esconder link das navs principais (mover para footer).
+
+---
+
+### `/guias` (índice) ★★☆☆☆
+
+**❌ Mal:**
+- 4 cards sem hierarquia visual — todos iguais
+- "8 min de leitura" enterrado
+- Sem imagens/ilustrações nos cards
+
+**🎯 Fixes:** cards com cores/ícones distintos por categoria (💰 custos / 🍼 escolha / ⚖ comparação), thumbnails visuais.
+
+---
+
+### `/guias/...` (artigos individuais) ★★★★☆
+
+**✅ Excelente:** conteúdo de altíssimo valor, tabelas, checklists, tom prático.
+
+**❌ Mal:**
+- Sem TOC sticky lateral (perde-se em 8 min de leitura)
+- CTA "Abrir o mapa →" repetido 3× — no fundo aparece DUAS vezes seguidas
+- `/creche-feliz` sem TL;DR no topo (pais ansiosos não leem 2000 palavras)
+- `/quanto-custa` exemplo só Lisboa — adicionar Braga/Coimbra
+
+**🎯 Fixes:** TOC lateral desktop, TL;DR em todos os guias, CTAs variados (não só "Abrir o mapa").
+
+---
+
+### `/imprensa` ★★★★★
+
+**✅ Excelente:** modelo de press kit. Stats, quotes, ângulos, ficha técnica, SLA de resposta, background reading. Das melhores partes do site.
+
+**❌ Mal:**
+- "3 guias gratuitos" desactualizado (já são 4)
+- Foto/screenshots/dados pedidos por email = fricção para jornalista com prazo
+- Link "Logo SVG" aponta para `/favicon.svg` (favicon não é logo)
+
+**🎯 Fixes:** 1 link "Press Kit ZIP" com tudo + actualizar contagens.
+
+---
+
+### `/roadmap` ★★★★☆
+
+**✅ Bom:** secção "Provavelmente nunca" é jogada genial — define identidade. Tom de transparência.
+
+**⚠ Pode melhorar:** lista vertical longa, sem filtros por categoria, sem indicador de progresso visual nos "Em curso".
+
+**🎯 Fixes:** barras de progresso (🟢 Live / 🟡 60% / 🔵 Em estudo) + voto público nas explorações.
+
+---
+
+### `/para-creches` ★★☆☆☆
+
+**❌ Mal:**
+- Header reduzido a "← Início" — perde branding completo
+- 2/3 do value prop ainda "Em breve" — vendedor fraco
+- **Form de 11 campos** para "Quero saber mais" = bounce garantido
+- Botão "Quero saber quando lançarem →" não bate com promessa "perfil verificado"
+- Sem auto-resposta de email (utilizador sai sem saber se chegou)
+
+**🎯 Fixes:**
+- Form 5 campos (nome creche, tipo, distrito, email, telefone)
+- Confirmação: "Recebes email em 5-10 dias úteis com link para validares o teu perfil."
+- Auto-reply email
+- Inverter value props (começar pelo que JÁ funciona)
+
+---
+
+### `/privacidade` ★★★★☆
+
+**✅ Bom:** clara, RGPD-compliant.
+
+**⚠** Header inconsistente. Data hardcoded "21 maio 2026" mas outras dizem "Junho 2026".
+
+---
+
+## 🌐 Padrões transversais (problemas que se repetem)
+
+### 1. **Inconsistência de header / branding**
+Cada página tem nav diferente. Algumas só "← Início", outras nada.
+**Fix global:** 1 componente header reutilizável.
+
+### 2. **Excesso de emojis a fingir de ícones**
+🍼 🗺 📍 👶 🎂 🎒 ⭐ ✏️ em TUDO. Funciona em texto humano, mas como UI de filtros/H2 baralha visualmente.
+**Fix:** SVG mono-line discreto em UI, emojis só em copy emocional.
+
+### 3. **Paleta inconsistente**
+Theme `#FF9F68` (laranja) mas UI usa amarelo, verde, azul, magenta sem sistema claro.
+**Fix:** documentar 4 cores funcionais (primária / sucesso / atenção / info) + tons.
+
+### 4. **Tu vs vós inconsistente**
+"tu" na home, "vos" no /sobre, "vocês" no roadmap. **Escolher: tu sempre** (mais íntimo, condiz com pai-para-pai).
+
+### 5. **Footers diferentes**
+Alguns têm Roadmap/Imprensa, outros não.
+
+### 6. **Números inconsistentes**
+"2591" vs "+2.500" vs "mais de 2500". Standardizar: **"mais de 2.500"** em todo o lado (já pedido nos constraints).
+
+### 7. **Acessibilidade fraca em /app**
+Só 2 `:focus-visible`, 12 `aria-label` para 69 botões, viewport bloqueia zoom, contraste `#999` falha AA.
+
+---
+
+## 🚦 Plano de execução sugerido
+
+### **Esta semana — quick wins UX (1 dia total)**
+1. Header unificado (2h)
+2. Capitalize concelhos (30 min)
+3. Esconder lixo nos distritos (1h)
+4. Foto real Joaquim (30 min)
+5. Form /para-creches 11→5 campos (1h)
+6. Remover `maximum-scale=5` + focus-visible global (10 min)
+7. ARIA labels nos botões emoji (30 min)
+8. Email template pré-preenchido na ficha (30 min)
+
+### **Próxima semana — REDESIGN ficha de creche (1-2 dias)**
+A página mais importante para SEO + decisão. Hoje é a mais fraca.
+
+### **Depois (2 semanas) — refactor /app**
+1. Extrair CSS/JS para ficheiros separados (cache 1 ano)
+2. Onboarding skip-by-default
+3. Filtros 12 → 3 + collapse
+4. Tabs Mapa/Em processo/Favoritas
+5. Schema WebApplication
+
+### **Sempre adiar (para depois de tudo isto)**
+- TOC sticky nos guias
+- Press Kit ZIP
+- Roadmap com voto
+- Comparador lado-a-lado
+
+---
+
+## 📊 Avaliação final por dimensão
+
+| Dimensão | Nota | Comentário |
+|---|---:|---|
+| **Conteúdo** | 9/10 | Guias, /sobre, /metodologia, /imprensa são exemplares |
+| **Copy** | 7/10 | Tom genuíno, mas hierarquia emocional fraca; CTAs neutros |
+| **Design visual** | 5/10 | Inconsistente, fragmentado, sem sistema |
+| **UX flows** | 6/10 | Fluxos funcionam mas com fricção evitável |
+| **Performance** | 4/10 | /app 422 KB inline mata-te |
+| **Acessibilidade** | 5/10 | Viewport bloqueia zoom, focus invisível, ARIA fraco |
+| **SEO técnico** | 9/10 | Sitemaps, schemas, llms.txt — modelo |
+| **Mobile** | 6/10 | Funciona mas filtros podem wrap mal, onboarding é demais |
+| **Confiança** | 8/10 | Transparência genuína, mas falta foto real do fundador |
+| **Diferenciação** | 9/10 | "Provavelmente nunca", gratuito, sem ads = identidade forte |
+
+**Média ponderada: 6.8/10** — produto sólido com fundação excelente, mas com execução visual e ficha individual a precisar de carinho urgente.
+
+---
+
+## 💡 Recomendação estratégica
+
+**Não toques na home esta semana.** A home está OK e há coisas mais urgentes:
+
+1. **Redesenha a ficha individual** (`/creche/...`) — é a aterragem mais comum vinda do Google
+2. **Unifica o header** — fricção zero, ganho de coerência massivo
+3. **Reduz fricção na /app** (onboarding + filtros) — mães em pânico precisam ver o mapa em 3 segundos
+
+Tudo o resto é polimento. Mas estes 3 movimentos viram o produto.

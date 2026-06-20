@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -83,92 +102,92 @@
 <div class="list-wrap">
   <ul class="creche-list">
     <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-galaxia-branca-quot-1302366915">Colégio &quot;Galáxia Branca&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-galaxia-branca-1302366915">Colégio &quot;Galáxia Branca&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Dom Diniz 2745-262</div>
-  <div class="tel">📞 +351 214376273</div>
+  <div class="tel">📞 <a href="tel:+351214376273">+351 214376273</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-o-teu-jardim-quot-12062079836">Colégio &quot;O Teu Jardim&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-o-teu-jardim-12062079836">Colégio &quot;O Teu Jardim&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida do Miradouro 2745-305</div>
-  <div class="tel">📞 +351 214390126</div>
+  <div class="tel">📞 <a href="tel:+351214390126">+351 214390126</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/colegio-dona-maria-ii-1302345210">Colégio Dona Maria II</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Direita de Massamá 2745-757</div>
-  <div class="tel">📞 +351 214377249</div>
+  <div class="tel">📞 <a href="tel:+351214377249">+351 214377249</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/externato-quot-os-coelhinhos-quot-1302366916">Externato &quot;Os Coelhinhos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/externato-os-coelhinhos-1302366916">Externato &quot;Os Coelhinhos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Dom Diniz 2745-262</div>
-  <div class="tel">📞 +351 214304367</div>
+  <div class="tel">📞 <a href="tel:+351214304367">+351 214304367</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/externato-fernando-pessoa-1302366913">Externato Fernando Pessoa</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Sousa Pinto 2745-335</div>
-  <div class="tel">📞 +351 214304133</div>
+  <div class="tel">📞 <a href="tel:+351214304133">+351 214304133</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/infantario-do-povo-de-massama-848440685">Infantário do Povo de Massamá</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Infantário do Povo 2745-792</div>
-  <div class="tel">📞 +351 214 378 050;+351 968424977</div>
+  <div class="tel">📞 <a href="tel:+351214378050;+351968424977">+351 214 378 050;+351 968424977</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/infantario-e-jardim-de-infancia-quot-a-colmeia-quot-1302345206">Infantário e Jardim de Infância &quot;A Colmeia&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/infantario-e-jardim-de-infancia-a-colmeia-1302345206">Infantário e Jardim de Infância &quot;A Colmeia&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua das Indústrias 2745-838</div>
-  <div class="tel">📞 +351 214377388</div>
+  <div class="tel">📞 <a href="tel:+351214377388">+351 214377388</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-as-quatro-estacoes-quot-1540818149">Jardim de Infância &quot;As Quatro Estações&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-as-quatro-estacoes-1540818149">Jardim de Infância &quot;As Quatro Estações&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Professor Doutor Reinaldo dos Santos 2745-836</div>
-  <div class="tel">📞 +351 214371445</div>
+  <div class="tel">📞 <a href="tel:+351214371445">+351 214371445</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-giz-magico-quot-1302345207">Jardim de Infância &quot;Giz Mágico&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-giz-magico-1302345207">Jardim de Infância &quot;Giz Mágico&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida 25 de Abril 2745-864</div>
-  <div class="tel">📞 +351 214397807</div>
+  <div class="tel">📞 <a href="tel:+351214397807">+351 214397807</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-o-barco-do-mimo-quot-182098259">Jardim de Infância &quot;O Barco do Mimo&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-o-barco-do-mimo-182098259">Jardim de Infância &quot;O Barco do Mimo&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Tomás da Anunciação 2745-698</div>
-  <div class="tel">📞 +351 214375451</div>
+  <div class="tel">📞 <a href="tel:+351214375451">+351 214375451</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-o-farol-quot-12061888725">Jardim de Infância &quot;O Farol&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-o-farol-12061888725">Jardim de Infância &quot;O Farol&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Largo Padre Américo 2745-000</div>
-  <div class="tel">📞 +351 214371506</div>
+  <div class="tel">📞 <a href="tel:+351214371506">+351 214371506</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-girassol-dourado-quot-12062079835">Jardim Infantil &quot;O Girassol Dourado&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-girassol-dourado-12062079835">Jardim Infantil &quot;O Girassol Dourado&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida Joaquim Luís 2745-287</div>
-  <div class="tel">📞 +351 214377338</div>
+  <div class="tel">📞 <a href="tel:+351214377338">+351 214377338</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-rezingao-quot-1302366914">Jardim Infantil &quot;O Rezingão&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-rezingao-1302366914">Jardim Infantil &quot;O Rezingão&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Sousa Pinto 2745-335</div>
-  <div class="tel">📞 +351 214373045</div>
+  <div class="tel">📞 <a href="tel:+351214373045">+351 214373045</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/tesouros-e-aventuras-12062079837">Tesouros e Aventuras</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Luís Simões 2745-035</div>
-  <div class="tel">📞 +351 214392918</div>
+  <div class="tel">📞 <a href="tel:+351214392918">+351 214392918</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/the-great-kids-1302345205">The Great Kids</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua das Indústrias 2745-838</div>
   
 </li>

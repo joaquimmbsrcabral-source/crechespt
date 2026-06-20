@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -83,28 +102,28 @@
 <div class="list-wrap">
   <ul class="creche-list">
     <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-oficina-dos-sonhos-quot-1276615463">Colégio &quot;Oficina dos Sonhos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-oficina-dos-sonhos-1276615463">Colégio &quot;Oficina dos Sonhos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 EM 510, Rua 30 2835-804</div>
-  <div class="tel">📞 +351 212130258</div>
+  <div class="tel">📞 <a href="tel:+351212130258">+351 212130258</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/colegio-quinta-do-visconde-1300609223">Colégio Quinta do Visconde</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Luís de Camões 2835-655</div>
-  <div class="tel">📞 +351 21 089 7164;+351 21 216 9359</div>
+  <div class="tel">📞 <a href="tel:+351210897164;+351212169359">+351 21 089 7164;+351 21 216 9359</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/doce-chupeta-12046710507">Doce Chupeta</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Algarve 2835-465</div>
-  <div class="tel">📞 +351 968232167</div>
+  <div class="tel">📞 <a href="tel:+351968232167">+351 968232167</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/infantario-quot-canto-alegre-quot-1300571508">Infantário &quot;Canto Alegre&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/infantario-canto-alegre-1300571508">Infantário &quot;Canto Alegre&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua 21 2835-603</div>
-  <div class="tel">📞 +351 212131712</div>
+  <div class="tel">📞 <a href="tel:+351212131712">+351 212131712</a></div>
 </li>
   </ul>
 </div>

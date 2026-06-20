@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,141 +103,141 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/associacao-de-solidariedade-social-mouta-azenha-nova-611317454">Associação de Solidariedade Social Mouta - Azenha Nova</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Heróis do Ultramar 4470-447</div>
-  <div class="tel">📞 +351 229028251</div>
+  <div class="tel">📞 <a href="tel:+351229028251">+351 229028251</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/centro-de-animacao-de-infancia-de-vermoim-1296673242">Centro de Animação de Infância de Vermoim</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua Central do Sobreiro 4470-272</div>
-  <div class="tel">📞 +351 22 948 86 80</div>
+  <div class="tel">📞 <a href="tel:+351229488680">+351 22 948 86 80</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-o-pimpolho-quot-1278789244">Colégio &quot;O Pimpolho&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-o-pimpolho-1278789244">Colégio &quot;O Pimpolho&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua dos Carvalhos 4470-258</div>
-  <div class="tel">📞 +351 229413544</div>
+  <div class="tel">📞 <a href="tel:+351229413544">+351 229413544</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-infantil-quot-os-ratinhos-quot-215528923">Colégio Infantil &quot;Os Ratinhos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-infantil-os-ratinhos-215528923">Colégio Infantil &quot;Os Ratinhos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Padre Abílio Sampaio 4475-001</div>
-  <div class="tel">📞 +351 229442598</div>
+  <div class="tel">📞 <a href="tel:+351229442598">+351 229442598</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-e-pre-escolar-de-gondim-1493413126">Creche e Pré-Escolar de Gondim</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua São Salvador de Gondim 4470-000</div>
-  <div class="tel">📞 +351 22 981 39 68</div>
+  <div class="tel">📞 <a href="tel:+351229813968">+351 22 981 39 68</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-e-pre-escolar-de-aguas-santas-ii-854320998">Creche e Pré-Escolar de Águas Santas II</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua José Régio 4425-111</div>
-  <div class="tel">📞 +351 22 973 03 85</div>
+  <div class="tel">📞 <a href="tel:+351229730385">+351 22 973 03 85</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-infantario-de-milheiros-11289627735">Creche Infantário de Milheirós</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua da Vessada 4475-385</div>
-  <div class="tel">📞 +351 22 960 21 60</div>
+  <div class="tel">📞 <a href="tel:+351229602160">+351 22 960 21 60</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-pre-escolar-de-catassol-1418103671">Creche Pré-Escolar de Catassol</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Praceta da Coopermaia 4470-025</div>
-  <div class="tel">📞 +351 22 944 19 64</div>
+  <div class="tel">📞 <a href="tel:+351229441964">+351 22 944 19 64</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-pre-escolar-de-nogueira-11289627734">Creche Pré-Escolar de Nogueira</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua do Rio 4475-493</div>
-  <div class="tel">📞 +351 22 960 07 14</div>
+  <div class="tel">📞 <a href="tel:+351229600714">+351 22 960 07 14</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-pre-escolar-de-pedroucos-443631619">Creche Pré-Escolar de Pedrouços</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua António Simões 4425-619</div>
-  <div class="tel">📞 +351 22 901 09 90</div>
+  <div class="tel">📞 <a href="tel:+351229010990">+351 22 901 09 90</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-pre-escolar-de-crestins-285800059">Creche/Pré-Escolar de Crestins</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Estrada 4470-600</div>
-  <div class="tel">📞 +351 22 941 76 64</div>
+  <div class="tel">📞 <a href="tel:+351229417664">+351 22 941 76 64</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-pre-escolar-de-sao-pedro-fins-151267239">Creche/Pré-Escolar de São Pedro Fins</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Avenida de São Fins 4425-536</div>
-  <div class="tel">📞 +351 22 968 15 87</div>
+  <div class="tel">📞 <a href="tel:+351229681587">+351 22 968 15 87</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/externato-limiar-1279662305">Externato Limiar</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Bernardino Machado 4475-001</div>
-  <div class="tel">📞 +351 229414338</div>
+  <div class="tel">📞 <a href="tel:+351229414338">+351 229414338</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-o-gatinho-quot-1279662304">Jardim de Infância &quot;O Gatinho&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-o-gatinho-1279662304">Jardim de Infância &quot;O Gatinho&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Padre Luis Campos 4470-324</div>
-  <div class="tel">📞 +351 229439500</div>
+  <div class="tel">📞 <a href="tel:+351229439500">+351 229439500</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-ternura-inesgotavel-quot-1279769545">Jardim de Infância &quot;Ternura Inesgotável&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-ternura-inesgotavel-1279769545">Jardim de Infância &quot;Ternura Inesgotável&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Ponte Parada 4425-176</div>
-  <div class="tel">📞 +351 220997234</div>
+  <div class="tel">📞 <a href="tel:+351220997234">+351 220997234</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-tintin-quot-1205356988">Jardim de Infância &quot;TinTin&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-tintin-1205356988">Jardim de Infância &quot;TinTin&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua B da Urbanização da Bouça Grande 4470-740</div>
-  <div class="tel">📞 +351 22 944 4931</div>
+  <div class="tel">📞 <a href="tel:+351229444931">+351 22 944 4931</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-d-x27-o-lar-do-comercio-1279662302">Jardim de Infância d&#x27;O Lar do Comércio</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-d-o-lar-do-comercio-1279662302">Jardim de Infância d&#x27;O Lar do Comércio</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Catassol 4470-001</div>
-  <div class="tel">📞 +351 229430700</div>
+  <div class="tel">📞 <a href="tel:+351229430700">+351 229430700</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-da-campa-do-preto-634786088">Jardim de Infância da Campa do Preto</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua da Igreja 4475-131</div>
-  <div class="tel">📞 +351 229820975</div>
+  <div class="tel">📞 <a href="tel:+351229820975">+351 229820975</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-do-centro-social-das-guardeiras-13029684244">Jardim de Infância do Centro Social das Guardeiras</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Santo Lenho de Moreira 4470-613</div>
-  <div class="tel">📞 +351 229486865</div>
+  <div class="tel">📞 <a href="tel:+351229486865">+351 229486865</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-sorriso-quot-1279662300">Jardim Infantil &quot;O Sorriso&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-sorriso-1279662300">Jardim Infantil &quot;O Sorriso&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Dom Afonso Henriques 4470-000</div>
-  <div class="tel">📞 +351 229720545</div>
+  <div class="tel">📞 <a href="tel:+351229720545">+351 229720545</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/kids-i-1279690024">Kids.i</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Capitão Salgueiro Maia 4470-117</div>
-  <div class="tel">📞 +351 939036303</div>
+  <div class="tel">📞 <a href="tel:+351939036303">+351 939036303</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/o-mundo-pula-1279662303">O Mundo Pula</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Engenheiro Duarte Pacheco 4470-174</div>
-  <div class="tel">📞 +351 220176083;+351 918 351 525</div>
+  <div class="tel">📞 <a href="tel:+351220176083;+351918351525">+351 220176083;+351 918 351 525</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/os-morangos-1279662299">Os Morangos</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Calvário 4425-035</div>
-  <div class="tel">📞 +351 914 215 045</div>
+  <div class="tel">📞 <a href="tel:+351914215045">+351 914 215 045</a></div>
 </li>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,33 +103,33 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/bebes-fidalgos-1027226827">Bebés Fidalgos</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Quinta da Lapinha 2835-316</div>
-  <div class="tel">📞 +351 212 041 913;+351 962686672</div>
+  <div class="tel">📞 <a href="tel:+351212041913;+351962686672">+351 212 041 913;+351 962686672</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/centro-infantil-do-lavradio-quot-o-barquinho-quot-1300609221">Centro Infantil do Lavradio &quot;O Barquinho&quot;</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <a class="nm" href="https://creches.app/creche/centro-infantil-do-lavradio-o-barquinho-1300609221">Centro Infantil do Lavradio &quot;O Barquinho&quot;</a>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Cândido Manuel Pereira 2835-440</div>
-  <div class="tel">📞 +351 212044117</div>
+  <div class="tel">📞 <a href="tel:+351212044117">+351 212044117</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/colegio-quot-o-carinho-quot-1300609220">Colégio &quot;O Carinho&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/colegio-o-carinho-1300609220">Colégio &quot;O Carinho&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍  2835-303</div>
-  <div class="tel">📞 +351 212167068</div>
+  <div class="tel">📞 <a href="tel:+351212167068">+351 212167068</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-dos-principes-1096720362">Jardim dos Príncipes</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua José Inocêncio Pereira 2835-444</div>
-  <div class="tel">📞 +351 212051906</div>
+  <div class="tel">📞 <a href="tel:+351212051906">+351 212051906</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-xi-coracao-quot-1027226767">Jardim Infantil &quot;Xi-Coração&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-xi-coracao-1027226767">Jardim Infantil &quot;Xi-Coração&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Augusto Pereira Valegas 2835-309</div>
-  <div class="tel">📞 +351 212026860</div>
+  <div class="tel">📞 <a href="tel:+351212026860">+351 212026860</a></div>
 </li>
   </ul>
 </div>

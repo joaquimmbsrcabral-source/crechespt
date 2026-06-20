@@ -42,6 +42,53 @@ def slugify(text):
     return text or "sem-nome"
 
 
+# Title Case PT-aware. "LISBOA" -> "Lisboa", "AMADORA" -> "Amadora".
+# Mantém preposições em minúscula. "VILA NOVA DE GAIA" -> "Vila Nova de Gaia".
+_LOWER_WORDS = {"de", "da", "do", "das", "dos", "e"}
+def title_case_pt(s):
+    if not s: return s
+    parts = s.lower().split()
+    return " ".join(
+        p if (i > 0 and p in _LOWER_WORDS) else p[:1].upper() + p[1:]
+        for i, p in enumerate(parts)
+    )
+
+
+# Identifica nomes que NÃO são creches/JI puros (escolas básicas, agrupamentos).
+_EB_PATTERNS = [
+    re.compile(r"^escola\s*b[aá]sica\b", re.I),
+    re.compile(r"^eb\b", re.I),
+    re.compile(r"^agrupamento\s*de\s*escolas", re.I),
+    re.compile(r"\beb\s*[1-3]\s*[/,]\s*ji\b", re.I),
+]
+def is_escola_basica(nome):
+    n = (nome or "").strip()
+    if not n: return False
+    return any(p.search(n) for p in _EB_PATTERNS)
+
+
+# Filtra creches "lixo" — nomes <= 3 chars, "Inactivo", "Datacool", etc.
+_LIXO_PATTERNS = [
+    re.compile(r"inactiv", re.I),
+    re.compile(r"^datacool", re.I),
+    re.compile(r"^test", re.I),
+]
+def is_lixo(creche):
+    nome = (creche.get("nome") or "").strip()
+    if len(nome) <= 3: return True
+    if any(p.search(nome) for p in _LIXO_PATTERNS): return True
+    return False
+
+
+# CSS class por tipo para pills coloridos
+def tipo_class(tipo):
+    t = (tipo or "").strip().lower()
+    if "ipss" in t: return "tipo-ipss"
+    if "publica" in t or "pública" in t: return "tipo-publica"
+    if "privada" in t: return "tipo-privada"
+    return "tipo-outro"
+
+
 def load_dataset():
     with open(os.path.join(ROOT, "app.html")) as f:
         html = f.read()
@@ -57,6 +104,11 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
     """Renderiza HTML de uma página de concelho."""
     distrito_slug = slugify(distrito)
     localidade_slug = slugify(localidade)
+    # Normaliza nomes para Title Case (LISBOA -> Lisboa)
+    distrito = title_case_pt(distrito)
+    localidade = title_case_pt(localidade)
+    # Filtra lixo e escolas básicas
+    creches = [c for c in creches if not is_lixo(c) and not is_escola_basica(c.get("nome", ""))]
     n = len(creches)
     url = f"{BASE}/creches/{distrito_slug}/{localidade_slug}"
 
@@ -73,16 +125,17 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
         morada = escape(c.get("morada", ""))
         cp = escape(c.get("codigo_postal", ""))
         tel = escape(c.get("telefone", ""))
-        tipo = escape(c.get("tipo", "Desconhecido"))
-        slug_creche = slugify(nome) + "-" + str(c.get("id", "")).replace("osm-node-","").replace("osm-way-","")
-        # use existing slug if possible
+        tipo_raw = c.get("tipo", "Desconhecido") or "Desconhecido"
+        tipo = escape(tipo_raw)
+        t_cls = tipo_class(tipo_raw)
+        slug_creche = slugify(c.get("nome","")) + "-" + str(c.get("id", "")).replace("osm-node-","").replace("osm-way-","")
         slug = c.get("slug") or slug_creche
         url_creche = f"{BASE}/creche/{slug}"
-        tel_block = f'<div class="tel">📞 {tel}</div>' if tel else ""
+        tel_block = f'<div class="tel">📞 <a href="tel:{tel.replace(" ","")}">{tel}</a></div>' if tel else ""
         morada_block = f'<div class="addr">📍 {morada} {cp}</div>' if morada or cp else ""
         list_html.append(f'''<li class="row">
   <a class="nm" href="{url_creche}">{nome}</a>
-  <div class="meta"><span class="tipo">{tipo}</span></div>
+  <div class="meta"><span class="tipo {t_cls}">{tipo}</span></div>
   {morada_block}
   {tel_block}
 </li>''')
@@ -142,7 +195,7 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
     }
 
     html = f'''<!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -185,8 +238,14 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
   .creche-list .nm{{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}}
   .creche-list .nm:hover{{color:var(--c-coral)}}
   .creche-list .meta{{font-size:12px;color:var(--ink-soft);margin-top:4px}}
-  .creche-list .tipo{{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}}
+  .creche-list .tipo{{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}}
+  .creche-list .tipo.tipo-ipss{{background:#D8F5F4;color:#1d7d78}}
+  .creche-list .tipo.tipo-publica{{background:#DEF5E1;color:#2f7d3b}}
+  .creche-list .tipo.tipo-privada{{background:#FFE3EE;color:#c2447a}}
+  .creche-list .tipo.tipo-outro{{background:#F0EBF8;color:#6E6989}}
+  .creche-list .tel a{{color:inherit;text-decoration:none}}
+  .creche-list .tel a:hover{{color:var(--c-coral)}}
+  *:focus-visible{{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}}
   .creche-list .addr{{font-size:12px;color:var(--ink-soft);margin-top:6px}}
   .creche-list .tel{{font-size:12px;color:var(--ink-soft);margin-top:2px}}
   .sister{{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -205,6 +264,19 @@ def render_page(distrito, localidade, creches, all_localidades_in_distrito):
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "076bc362f2104b70ba542774beb4a274"}}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →

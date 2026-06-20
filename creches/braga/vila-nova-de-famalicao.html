@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,45 +103,45 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/acb-associacao-cultural-de-famalicao-1442182145">ACB - Associação Cultural de Famalicão</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Álvaro Castelões 4760-117</div>
-  <div class="tel">📞 +351 252 310659</div>
+  <div class="tel">📞 <a href="tel:+351252310659">+351 252 310659</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/catl-da-casa-do-pessoal-1436491086">CATL da Casa do Pessoal</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Rua de Olivença 4760-130</div>
-  <div class="tel">📞 +351 252 317738</div>
+  <div class="tel">📞 <a href="tel:+351252317738">+351 252 317738</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-da-nossa-senhora-da-lapa-537807519">Creche da Nossa Senhora da Lapa</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Doutor Francisco Alves 4760-108</div>
-  <div class="tel">📞 +351 252 372239</div>
+  <div class="tel">📞 <a href="tel:+351252372239">+351 252 372239</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/escola-das-lameiras-1267567602">Escola das Lameiras</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Associação de Moradores das Lameiras 4760-026</div>
-  <div class="tel">📞 +351 252318015</div>
+  <div class="tel">📞 <a href="tel:+351252318015">+351 252318015</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-de-alem-1267579324">Jardim de Infância de Além</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua de Valdoi 4760-413</div>
-  <div class="tel">📞 +351 252375462</div>
+  <div class="tel">📞 <a href="tel:+351252375462">+351 252375462</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-de-lage-1267492032">Jardim de Infância de Lage</a>
-  <div class="meta"><span class="tipo">Pública</span></div>
+  <div class="meta"><span class="tipo tipo-publica">Pública</span></div>
   <div class="addr">📍 Rua Rodrigues Sampaio 4760-000</div>
-  <div class="tel">📞 +351 252377595</div>
+  <div class="tel">📞 <a href="tel:+351252377595">+351 252377595</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-infantil-da-casa-do-pessoal-1434586947">Jardim Infantil da Casa do Pessoal</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Rua Amadeu Mesquita 4760-119</div>
-  <div class="tel">📞 +351 252 317738</div>
+  <div class="tel">📞 <a href="tel:+351252317738">+351 252 317738</a></div>
 </li>
   </ul>
 </div>

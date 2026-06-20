@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,8 +42,14 @@
   .creche-list .nm{font-weight:700;color:var(--ink);font-size:15px;text-decoration:none;display:block}
   .creche-list .nm:hover{color:var(--c-coral)}
   .creche-list .meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
-  .creche-list .tipo{display:inline-block;background:var(--c-coral-soft);color:var(--c-coral);
-    padding:2px 8px;border-radius:var(--r-pill);font-weight:600;font-size:11px}
+  .creche-list .tipo{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font-weight:700;font-size:11px;letter-spacing:.02em}
+  .creche-list .tipo.tipo-ipss{background:#D8F5F4;color:#1d7d78}
+  .creche-list .tipo.tipo-publica{background:#DEF5E1;color:#2f7d3b}
+  .creche-list .tipo.tipo-privada{background:#FFE3EE;color:#c2447a}
+  .creche-list .tipo.tipo-outro{background:#F0EBF8;color:#6E6989}
+  .creche-list .tel a{color:inherit;text-decoration:none}
+  .creche-list .tel a:hover{color:var(--c-coral)}
+  *:focus-visible{outline:2px solid #FF9F68;outline-offset:2px;border-radius:6px}
   .creche-list .addr{font-size:12px;color:var(--ink-soft);margin-top:6px}
   .creche-list .tel{font-size:12px;color:var(--ink-soft);margin-top:2px}
   .sister{background:rgba(255,255,255,.7);border-radius:var(--r-md);padding:16px 20px;margin:20px auto;
@@ -62,6 +68,19 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
+
+<header style="display:flex;align-items:center;gap:14px;padding:14px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px">🍼</div>
+    <div><b style="font-family:Fredoka;font-size:19px;display:block;line-height:1">Creches<span style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent">.app</span></b><span style="font-size:11px;color:var(--ink-soft);font-weight:600">Mapa de creches</span></div>
+  </a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:6px;align-items:center">
+    <a href="/guias" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Guias</a>
+    <a href="/creches" style="color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill);text-decoration:none">Distritos</a>
+    <a href="/app" style="background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;border-radius:var(--r-pill);box-shadow:0 6px 16px rgba(255,107,157,.35);text-decoration:none">Abrir mapa</a>
+  </nav>
+</header>
 
 <nav class="breadcrumb">
   <a href="/">Início</a> →
@@ -84,207 +103,207 @@
   <ul class="creche-list">
     <li class="row">
   <a class="nm" href="https://creches.app/creche/cantinho-da-alegria-1283016489">Cantinho da Alegria</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Alegria 4200-027</div>
-  <div class="tel">📞 +351 225096854</div>
+  <div class="tel">📞 <a href="tel:+351225096854">+351 225096854</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/centro-antonio-candido-1283660759">Centro António Cândido</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua António Cândido 4200-077</div>
-  <div class="tel">📞 +351 225092471</div>
+  <div class="tel">📞 <a href="tel:+351225092471">+351 225092471</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/colegio-cebes-kids-1283025298">Colégio CEBES Kids</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida Marechal Gomes da Costa 4150-359</div>
-  <div class="tel">📞 +351 226182619</div>
+  <div class="tel">📞 <a href="tel:+351226182619">+351 226182619</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/colegio-do-amial-1283016487">Colégio do Amial</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Amial 4200-056</div>
-  <div class="tel">📞 +351 225511190</div>
+  <div class="tel">📞 <a href="tel:+351225511190">+351 225511190</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-da-liga-dos-combatentes-710522705">Creche da Liga dos Combatentes</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Quinta Amarela 4050-499</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/creche-e-educacao-pre-escolar-da-associacao-crianca-e-vida-285419178">Creche e Educação Pré-Escolar da Associação Criança e Vida</a>
-  <div class="meta"><span class="tipo">IPSS</span></div>
+  <div class="meta"><span class="tipo tipo-ipss">IPSS</span></div>
   <div class="addr">📍 Rua de Miguel Bombarda 4050-380</div>
-  <div class="tel">📞 +351 222 084936</div>
+  <div class="tel">📞 <a href="tel:+351222084936">+351 222 084936</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/creche-infantario-quot-flor-de-abril-quot-11910423154">Creche Infantário &quot;Flor de Abril&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/creche-infantario-flor-de-abril-11910423154">Creche Infantário &quot;Flor de Abril&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Santo Ildefonso 4000-466</div>
-  <div class="tel">📞 +351 225366856</div>
+  <div class="tel">📞 <a href="tel:+351225366856">+351 225366856</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/escola-montessori-do-porto-polo-2-1283025296">Escola Montessori do Porto - Pólo 2</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida do Doutor Antunes Guimarães 4100-080</div>
-  <div class="tel">📞 +351 967748424</div>
+  <div class="tel">📞 <a href="tel:+351967748424">+351 967748424</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/externato-infantil-quot-a-flor-quot-1283620543">Externato Infantil &quot;A Flor&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/externato-infantil-a-flor-1283620543">Externato Infantil &quot;A Flor&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Carvalhido 4250-102</div>
-  <div class="tel">📞 +351 228312325</div>
+  <div class="tel">📞 <a href="tel:+351228312325">+351 228312325</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/externato-infantil-quot-o-petiz-quot-1283660761">Externato Infantil &quot;O Petiz&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/externato-infantil-o-petiz-1283660761">Externato Infantil &quot;O Petiz&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Miguel Bombarda 4050-382</div>
-  <div class="tel">📞 +351 226099522</div>
+  <div class="tel">📞 <a href="tel:+351226099522">+351 226099522</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/infantario-a-toquinha-13529574200">Infantário A Toquinha</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Praça da República 4050-498</div>
-  <div class="tel">📞 +351 223 324 520</div>
+  <div class="tel">📞 <a href="tel:+351223324520">+351 223 324 520</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/infantario-leonardo-coimbra-1283025295">Infantário Leonardo Coimbra</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Serralves 4150-708</div>
-  <div class="tel">📞 +351 226174870</div>
+  <div class="tel">📞 <a href="tel:+351226174870">+351 226174870</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-a-crianca-do-seculo-xxi-quot-1283620545">Jardim de infância &quot;A Criança do Século XXI&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-a-crianca-do-seculo-xxi-1283620545">Jardim de infância &quot;A Criança do Século XXI&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Oliveira Monteiro 4050-441</div>
-  <div class="tel">📞 +351 220937616</div>
+  <div class="tel">📞 <a href="tel:+351220937616">+351 220937616</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-criancas-e-companhia-quot-1283016477">Jardim de Infância &quot;Crianças e Companhia&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-criancas-e-companhia-1283016477">Jardim de Infância &quot;Crianças e Companhia&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Faial 4150-308</div>
-  <div class="tel">📞 +351 226161660</div>
+  <div class="tel">📞 <a href="tel:+351226161660">+351 226161660</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-joao-e-maria-quot-890998165">Jardim de Infância &quot;João e Maria&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-joao-e-maria-890998165">Jardim de Infância &quot;João e Maria&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Teatro 4150-072</div>
-  <div class="tel">📞 +351 919590080</div>
+  <div class="tel">📞 <a href="tel:+351919590080">+351 919590080</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-o-nosso-futuro-quot-962984276">Jardim de Infância &quot;O Nosso Futuro&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-o-nosso-futuro-962984276">Jardim de Infância &quot;O Nosso Futuro&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Fonte Moura 4100-250</div>
-  <div class="tel">📞 +351 226182782</div>
+  <div class="tel">📞 <a href="tel:+351226182782">+351 226182782</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-os-rabinos-quot-1283025293">Jardim de infância &quot;Os Rabinos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-os-rabinos-1283025293">Jardim de infância &quot;Os Rabinos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de António Patrício 4150-100</div>
-  <div class="tel">📞 +351 226068621</div>
+  <div class="tel">📞 <a href="tel:+351226068621">+351 226068621</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-pezinhos-de-la-quot-1283620546">Jardim de Infância &quot;Pezinhos de Lã&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-pezinhos-de-la-1283620546">Jardim de Infância &quot;Pezinhos de Lã&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Nossa Senhora de Fátima 4050-427</div>
   
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-quot-sete-ventos-quot-1283660756">Jardim de Infância &quot;Sete Ventos&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-de-infancia-sete-ventos-1283660756">Jardim de Infância &quot;Sete Ventos&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Praça do Marquês 4000-391</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-chapeu-de-palha-1283025297">Jardim de Infância Chapéu de Palha</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Fez 4150-328</div>
-  <div class="tel">📞 +351 226167350</div>
+  <div class="tel">📞 <a href="tel:+351226167350">+351 226167350</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-da-associacao-nova-aurora-na-reabilitacao-e-reintegracao-psicossocial-1283016484">Jardim de Infância da Associação Nova Aurora na Reabilitação e Reintegração Psicossocial</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Professor Agostinho da Silva 4250-017</div>
-  <div class="tel">📞 +351 225504394</div>
+  <div class="tel">📞 <a href="tel:+351225504394">+351 225504394</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-do-complexo-social-nossa-senhora-da-paz-da-liga-dos-combatentes-6680293208">Jardim de Infância do Complexo Social Nossa Senhora da Paz da Liga dos Combatentes</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua da Quinta Amarela 4050-499</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-de-infancia-palmo-e-meio-571754599">Jardim de Infância Palmo e Meio</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Álvares Cabral 4050-041</div>
-  <div class="tel">📞 +351 22 208 9717</div>
+  <div class="tel">📞 <a href="tel:+351222089717">+351 22 208 9717</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-mundo-magico-quot-1212021379">Jardim Infantil &quot;O Mundo Mágico&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-mundo-magico-1212021379">Jardim Infantil &quot;O Mundo Mágico&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Buçaco 4350-008</div>
-  <div class="tel">📞 +351 225379014</div>
+  <div class="tel">📞 <a href="tel:+351225379014">+351 225379014</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-pom-pom-quot-337209795">Jardim Infantil &quot;O Pom-Pom&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-pom-pom-337209795">Jardim Infantil &quot;O Pom-Pom&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Antero de Quental 4200-066</div>
-  <div class="tel">📞 +351 225507146</div>
+  <div class="tel">📞 <a href="tel:+351225507146">+351 225507146</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-popas-quot-1283016490">Jardim Infantil &quot;O Popas&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-popas-1283016490">Jardim Infantil &quot;O Popas&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Costa Cabral 4200-224</div>
-  <div class="tel">📞 +351 225506378</div>
+  <div class="tel">📞 <a href="tel:+351225506378">+351 225506378</a></div>
 </li>
 <li class="row">
-  <a class="nm" href="https://creches.app/creche/jardim-infantil-quot-o-principezinho-encantado-quot-1283228482">Jardim Infantil &quot;O Principezinho Encantado&quot;</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <a class="nm" href="https://creches.app/creche/jardim-infantil-o-principezinho-encantado-1283228482">Jardim Infantil &quot;O Principezinho Encantado&quot;</a>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Lima Júnior 4200-368</div>
-  <div class="tel">📞 +351 225024743</div>
+  <div class="tel">📞 <a href="tel:+351225024743">+351 225024743</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-infantil-da-associacao-de-promocao-social-da-populacao-do-bairro-do-aleixo-480494960">Jardim Infantil da Associação de Promoção Social da População do Bairro do Aleixo</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua de Âncora 4150-066</div>
-  <div class="tel">📞 +351 226171451;+351 934988922</div>
+  <div class="tel">📞 <a href="tel:+351226171451;+351934988922">+351 226171451;+351 934988922</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-infantil-do-centro-social-da-foz-do-douro-11905255207">Jardim Infantil do Centro Social da Foz do Douro</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua Príncipe Dom Luís Filipe 4150-472</div>
-  <div class="tel">📞 +351 226181036</div>
+  <div class="tel">📞 <a href="tel:+351226181036">+351 226181036</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/jardim-infantil-do-centro-social-paroquial-senhora-da-conceicao-11956139762">Jardim Infantil do Centro Social Paroquial Senhora da Conceição</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Praça do Marquês de Pombal 4000-391</div>
-  <div class="tel">📞 +351 225072190</div>
+  <div class="tel">📞 <a href="tel:+351225072190">+351 225072190</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/maple-bear-757376699">Maple Bear</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Praça do Império 4150-758</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/novo-colegio-chupetao-906539970">Novo Colégio Chupetão</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Rua do Lidador 4100-305</div>
-  <div class="tel">📞 +351 226182107</div>
+  <div class="tel">📞 <a href="tel:+351226182107">+351 226182107</a></div>
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/sao-vicente-de-paulo-627537611">São Vicente de Paulo</a>
-  <div class="meta"><span class="tipo">Desconhecido</span></div>
+  <div class="meta"><span class="tipo tipo-outro">Desconhecido</span></div>
   <div class="addr">📍 Rua de Gonçalo Cristóvão 4000-263</div>
   
 </li>
 <li class="row">
   <a class="nm" href="https://creches.app/creche/tangerina-educacao-e-ensino-975003730">Tangerina - Educação e Ensino</a>
-  <div class="meta"><span class="tipo">Privada</span></div>
+  <div class="meta"><span class="tipo tipo-privada">Privada</span></div>
   <div class="addr">📍 Avenida da Boavista 4150-331</div>
-  <div class="tel">📞 +351 226187829</div>
+  <div class="tel">📞 <a href="tel:+351226187829">+351 226187829</a></div>
 </li>
   </ul>
 </div>

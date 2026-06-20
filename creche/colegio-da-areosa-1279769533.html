@@ -21,10 +21,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--c-coral:#FF6B9D;--c-coral-soft:#FFE3EE;--c-peach:#FF9F68;--c-peach-soft:#FFE8D6;--c-turquoise:#48D1CC;
---c-turquoise-soft:#D8F5F4;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-yellow:#FFD166;--bg:#FFF6EE;--ink:#2C2356;
+--c-turquoise-soft:#D8F5F4;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;--c-yellow:#FFD166;--c-yellow-soft:#FFF3D6;--bg:#FFF6EE;--ink:#2C2356;
 --ink-soft:#6E6989;--ink-faint:#9B97B5;--line:rgba(60,40,90,.08);--r-pill:999px;--r-md:14px;--r-card:18px;
---sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05)}
+--sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
+--sh-2:0 4px 12px rgba(60,40,90,.08),0 16px 32px rgba(60,40,90,.06)}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
+*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
 body{background:radial-gradient(900px 600px at 10% 0%,var(--c-peach-soft) 0%,transparent 55%),
 radial-gradient(800px 600px at 100% 0%,var(--c-coral-soft) 0%,transparent 55%),var(--bg);color:var(--ink);
 font-family:"Quicksand",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;min-height:100vh}
@@ -49,20 +51,55 @@ h1.nome{font-size:32px;margin:6px 0 10px}
 .badge.tipo-IPSS{background:var(--c-turquoise-soft);color:#1d7d78}
 .badge.tipo-Privada{background:var(--c-coral-soft);color:#c2447a}
 .badge.tipo-Pública,.badge.tipo-Publica{background:var(--c-mint-soft);color:#2f7d3b}
+.badge.tipo-Desconhecido{background:#F0EBF8;color:#6E6989}
+
+/* === HERO CARD === */
+.hero-creche{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-2);padding:22px 24px;margin:14px 0 16px;border-top:4px solid var(--c-peach)}
+.hero-creche .top{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.hero-creche .avatar{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Fredoka";font-size:26px;font-weight:700;flex-shrink:0;box-shadow:0 4px 12px rgba(255,107,157,.3)}
+.hero-creche .info{flex:1;min-width:0}
+.hero-creche h1{font-size:26px;margin:0 0 6px;line-height:1.2}
+.hero-creche .badges{margin:0}
+
+/* CTAs grandes */
+.ctas-big{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 8px;border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s;text-align:center}
+.cta-big:hover{transform:translateY(-2px);text-decoration:none;color:#fff}
+.cta-big.disabled{background:#F0EBF8;color:#9B97B5;box-shadow:none;cursor:not-allowed;pointer-events:none}
+.cta-big .ic{font-size:20px;line-height:1}
+.cta-big .lb{font-size:12.5px;font-weight:700;letter-spacing:.02em}
+
+/* Banner qualidade de dados */
+.q-banner{padding:11px 16px;border-radius:12px;font-size:13px;margin:14px 0;display:flex;align-items:center;gap:10px;font-weight:600}
+.q-banner.warn{background:var(--c-yellow-soft);color:#856404;border-left:3px solid var(--c-yellow)}
+.q-banner.ok{background:var(--c-mint-soft);color:#2f7d3b;border-left:3px solid var(--c-mint)}
+.q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:20px 22px;margin:16px 0}
-.card h2{font-size:19px;margin:0 0 12px}
-.drow{display:flex;gap:10px;padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
-.drow:last-child{border-bottom:none}
-.drow .k{min-width:110px;color:var(--ink-faint);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;padding-top:2px}
-.drow .v{color:var(--ink);font-weight:600}
-.acts{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
-.btn{display:inline-block;padding:11px 20px;border-radius:var(--r-pill);font-weight:700;font-size:14px;background:#fff;box-shadow:var(--sh-1);color:var(--ink)}
-.btn:hover{text-decoration:none;transform:translateY(-1px)}
-.btn.primary{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;box-shadow:0 6px 16px rgba(255,107,157,.35)}
-.mapa-embed{border:0;width:100%;height:300px;border-radius:var(--r-card);box-shadow:var(--sh-1);display:block}
-.prox{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:11px 14px;font-size:14px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.prox .d{color:var(--ink-faint);font-size:12.5px;white-space:nowrap;font-weight:700}
+.card h2{font-size:18px;margin:0 0 14px}
+
+/* Grelha 2 colunas para dados */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.grid2 .item .k{display:block;color:var(--ink-faint);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.grid2 .item .v{color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.45}
+.grid2 .item.wide{grid-column:1 / -1}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+
+.mapa-embed{border:0;width:100%;height:280px;border-radius:var(--r-card);box-shadow:var(--sh-1);display:block}
+
+/* Creches próximas — mini-cards */
+.prox{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.prox li{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:12px 14px;transition:transform .15s}
+.prox li:hover{transform:translateY(-1px);box-shadow:var(--sh-2)}
+.prox li a.nm{color:var(--ink);font-weight:700;font-size:14.5px;text-decoration:none;display:block;margin-bottom:4px}
+.prox li a.nm:hover{color:var(--c-coral);text-decoration:none}
+.prox .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.prox .pill{display:inline-block;padding:2px 9px;border-radius:var(--r-pill);font-weight:700;font-size:10.5px;letter-spacing:.02em}
+.prox .pill.tipo-IPSS,.prox .pill.tipo-ipss{background:var(--c-turquoise-soft);color:#1d7d78}
+.prox .pill.tipo-Privada,.prox .pill.tipo-privada{background:var(--c-coral-soft);color:#c2447a}
+.prox .pill.tipo-Publica,.prox .pill.tipo-Pública,.prox .pill.tipo-publica{background:var(--c-mint-soft);color:#2f7d3b}
+.prox .pill.tipo-Desconhecido,.prox .pill.tipo-outro{background:#F0EBF8;color:#6E6989}
+.prox .d{color:var(--ink-faint);font-size:12px;font-weight:700;margin-left:auto}
 .faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:13px 16px;margin:9px 0;cursor:pointer}
 .faq summary{font-weight:700;font-family:"Fredoka";font-size:15.5px;list-style:none}
 .faq summary::-webkit-details-marker{display:none}
@@ -77,7 +114,6 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Colégio da Areosa", "url": "https://www.colegiodaareosa.pt/", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Dona Filipa de Lencastre 170", "postalCode": "4435-254", "addressLocality": "Rio Tinto", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.183248, "longitude": -8.579427}, "sameAs": "https://www.openstreetmap.org/way/1279769533", "email": "geral@colegiodaareosa.pt", "mainEntityOfPage": "https://creches.app/creche/colegio-da-areosa-1279769533"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Porto", "item": "https://creches.app/creches/porto"}, {"@type": "ListItem", "position": 4, "name": "Colégio da Areosa", "item": "https://creches.app/creche/colegio-da-areosa-1279769533"}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
 <body>
 <header class="top">
@@ -90,41 +126,48 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </header>
 <main>
   <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a> › <a href="/creches/porto">Porto</a> › Colégio da Areosa</div>
-  <h1 class="nome">Colégio da Areosa</h1>
-  <div class="badges"><span class="badge tipo-Privada">Privada</span><span class="badge">Jardim de Infância</span><span class="badge">👶 Dos 3 anos aos 5 anos</span><span class="badge">📍 Rio Tinto</span></div>
 
-  <div class="card">
-    <h2>Dados e contactos</h2>
-    <div class="drow"><span class="k">Morada</span><span class="v">Rua Dona Filipa de Lencastre 170, 4435-254 Rio Tinto</span></div>
-<div class="drow"><span class="k">Distrito</span><span class="v"><a href="/creches/porto">Porto</a></span></div>
-<div class="drow"><span class="k">Idades</span><span class="v">Dos 3 anos aos 5 anos</span></div>
-<div class="drow"><span class="k">Resposta</span><span class="v">Jardim de Infância</span></div>
-<div class="drow"><span class="k">Email</span><span class="v"><a href="mailto:geral@colegiodaareosa.pt">geral@colegiodaareosa.pt</a></span></div>
-<div class="drow"><span class="k">Website</span><span class="v"><a href="https://www.colegiodaareosa.pt/" rel="nofollow noopener" target="_blank">https://www.colegiodaareosa.pt/</a></span></div>
+  <!-- HERO CARD: avatar + nome + badges + 3 CTAs grandes -->
+  <div class="hero-creche">
+    <div class="top">
+      <div class="avatar" aria-hidden="true">C</div>
+      <div class="info">
+        <h1>Colégio da Areosa</h1>
+        <div class="badges"><span class="badge tipo-Privada">Privada</span><span class="badge">Jardim de Infância</span><span class="badge">👶 Dos 3 anos aos 5 anos</span><span class="badge">📍 Rio Tinto</span></div>
+      </div>
+    </div>
+    <div class="ctas-big"><span class="cta-big disabled" aria-label="Sem telefone registado"><span class="ic">📞</span><span class="lb">Sem telefone</span></span><a class="cta-big" href="mailto:geral@colegiodaareosa.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Col%C3%A9gio%20da%20Areosa&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.183248,-8.579427" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div>
   </div>
 
-  <div class="acts">
-    <a class="btn primary" href="/app#creche-osm-way-1279769533">🗺 Abrir no mapa interativo</a>
-    
-    <a class="btn" href="mailto:geral@colegiodaareosa.pt">✉ Email</a>
+  <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone). <a href="mailto:geral@creches.app?subject=Contacto%20Colégio%20da%20Areosa">Sabes? Ajuda outros pais →</a></div>
+
+  <div class="card">
+    <h2>Detalhes</h2>
+    <div class="grid2"><div class="item wide"><span class="k">Morada</span><span class="v">Rua Dona Filipa de Lencastre 170, 4435-254 Rio Tinto</span></div>
+<div class="item"><span class="k">Distrito</span><span class="v"><a href="/creches/porto">Porto</a></span></div>
+<div class="item"><span class="k">Resposta social</span><span class="v">Jardim de Infância</span></div>
+<div class="item"><span class="k">Site</span><span class="v"><a href="https://www.colegiodaareosa.pt/" rel="nofollow noopener" target="_blank">https://www.colegiodaareosa.pt/↗</a></span></div></div>
   </div>
 
   <div class="card" style="padding:10px">
     <iframe class="mapa-embed" loading="lazy" title="Mapa: Colégio da Areosa" src="https://www.openstreetmap.org/export/embed.html?bbox=-8.58743%2C41.17825%2C-8.57143%2C41.18825&amp;layer=mapnik&amp;marker=41.183248%2C-8.579427"></iframe>
+    <p style="margin:10px 4px 4px;font-size:13px;color:var(--ink-soft);text-align:center">
+      <a href="/app#creche-osm-way-1279769533" style="font-weight:700">→ Ver área completa no mapa interativo</a>
+    </p>
   </div>
 
-  <h2 style="font-size:21px;margin:28px 0 10px">Creches próximas</h2>
+  <h2 style="font-size:18px;margin:28px 0 10px">Creches perto desta</h2>
   <ul class="prox">
-<li><a href="/creche/academia-ramos-pinto-1278799759">Academia Ramos Pinto</a><span class="d">Privada · 0.1 km</span></li>
-<li><a href="/creche/jardim-infantil-a-girafa-1279769535">Jardim Infantil &quot;A Girafa&quot;</a><span class="d">Privada · 0.5 km</span></li>
-<li><a href="/creche/jardim-de-infancia-de-santegaos-1190277485">Jardim de Infância de Santegãos</a><span class="d">Pública · 1.2 km</span></li>
-<li><a href="/creche/creche-pre-escolar-de-pedroucos-443631619">Creche Pré-Escolar de Pedrouços</a><span class="d">IPSS · 1.2 km</span></li>
-<li><a href="/creche/centro-social-e-paroquial-de-santo-antonio-de-corim-483324178">Centro Social e Paroquial de Santo António de Corim</a><span class="d">Privada · 1.4 km</span></li>
-<li><a href="/creche/o-amanha-da-crianca-infantario-443788678">O Amanhã da Criança - Infantário</a><span class="d">IPSS · 1.5 km</span></li>
+<li><a class="nm" href="/creche/academia-ramos-pinto-1278799759">Academia Ramos Pinto</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-infantil-a-girafa-1279769535">Jardim Infantil &quot;A Girafa&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.5 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-de-santegaos-1190277485">Jardim de Infância de Santegãos</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.2 km</span></div></li>
+<li><a class="nm" href="/creche/creche-pre-escolar-de-pedroucos-443631619">Creche Pré-Escolar de Pedrouços</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.2 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-e-paroquial-de-santo-antonio-de-corim-483324178">Centro Social e Paroquial de Santo António de Corim</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.4 km</span></div></li>
+<li><a class="nm" href="/creche/o-amanha-da-crianca-infantario-443788678">O Amanhã da Criança - Infantário</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.5 km</span></div></li>
   </ul>
-  <p style="font-size:14px;color:var(--ink-soft)">Compara todas as creches da zona, com filtros por idade e tipo, no <a href="/app">mapa interativo</a> — ou vê a <a href="/creches/porto">lista completa de creches em Porto</a>.</p>
+  <p style="font-size:14px;color:var(--ink-soft);margin-top:10px">Compara todas as creches da zona, com filtros por idade e tipo, no <a href="/app">mapa interativo</a> — ou vê a <a href="/creches/porto">lista completa de creches em Porto</a>.</p>
 
-  <h2 style="font-size:21px;margin:28px 0 6px">Perguntas frequentes</h2>
+  <h2 style="font-size:18px;margin:28px 0 6px">Perguntas frequentes</h2>
   <div class="faq">
     <details><summary>A Colégio da Areosa é gratuita?</summary><p>A Colégio da Areosa é privada. As creches privadas só são gratuitas se forem <strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. Confirma a adesão e o valor da mensalidade diretamente com a creche.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 3 anos aos 5 anos — funciona como jardim de infância. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>

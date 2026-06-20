@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -337,31 +337,33 @@ footer a{color:var(--ink-soft)}
           <label for="i-email">Email de contacto <span class="req">*</span></label>
           <input id="i-email" name="email" type="email" required maxlength="120" placeholder="responsavel@creche.pt">
         </div>
-        <div class="form-grid2">
-          <div class="form-row">
-            <label for="i-tel">Telefone <span class="req">*</span></label>
-            <input id="i-tel" name="telefone" type="tel" required maxlength="40" placeholder="Ex.: 21 000 0000">
-          </div>
+        <div class="form-row">
+          <label for="i-tel">Telefone <span class="req">*</span></label>
+          <input id="i-tel" name="telefone" type="tel" required maxlength="40" placeholder="Ex.: 21 000 0000">
+        </div>
+        <details style="margin-top:6px;padding:10px 14px;background:rgba(255,255,255,.5);border-radius:12px;border:1px dashed rgba(60,40,90,.12)">
+          <summary style="cursor:pointer;font-weight:600;color:var(--ink-soft);font-size:13.5px;list-style:none">+ Mais detalhes (opcional)</summary>
+          <p style="font-size:12px;color:var(--ink-faint);margin:8px 0 14px">Se quiseres, podes preencher já estes campos — mas não é obrigatório.</p>
           <div class="form-row">
             <label for="i-site">Website ou Facebook</label>
             <input id="i-site" name="website" type="url" maxlength="200" placeholder="https://...">
           </div>
-        </div>
-        <div class="form-grid2">
-          <div class="form-row">
-            <label for="i-horario">Horário</label>
-            <input id="i-horario" name="horario" type="text" maxlength="60" placeholder="Ex.: 07:30-19:00">
+          <div class="form-grid2">
+            <div class="form-row">
+              <label for="i-horario">Horário</label>
+              <input id="i-horario" name="horario" type="text" maxlength="60" placeholder="Ex.: 07:30-19:00">
+            </div>
+            <div class="form-row">
+              <label for="i-criancas">Nº de crianças</label>
+              <input id="i-criancas" name="criancas" type="text" maxlength="20" placeholder="Ex.: 60">
+            </div>
           </div>
           <div class="form-row">
-            <label for="i-criancas">Nº de crianças</label>
-            <input id="i-criancas" name="criancas" type="text" maxlength="20" placeholder="Ex.: 60">
+            <label for="i-msg">Algo a acrescentar?</label>
+            <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Algo que queiras que saibamos — horário especial, particularidades, etc."></textarea>
           </div>
-        </div>
-        <div class="form-row">
-          <label for="i-msg">Algo a acrescentar?</label>
-          <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Algo que queiras que saibamos — horário especial, particularidades, etc."></textarea>
-        </div>
-        <button id="i-submit" class="form-submit" type="submit">Quero saber quando lançarem →</button>
+        </details>
+        <button id="i-submit" class="form-submit" type="submit" style="margin-top:14px">Quero saber quando lançarem →</button>
         <div id="i-error" class="form-error"></div>
         <p class="form-note">
           Ao enviar, aceitas que te contactemos por email a propósito do Creches.app.
