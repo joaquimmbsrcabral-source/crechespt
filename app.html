@@ -276,10 +276,10 @@
         <button id="f-near-me" class="chip toggle-near chip-gps"><span>📍</span>Usar GPS</button>
       </div>
 
-      <!-- Toggle dos filtros avançados -->
+      <!-- Toggle de filtros — TUDO escondido por defeito (morada + idade + tipo + ...) -->
       <button id="filters-toggle" class="filters-toggle" type="button" aria-expanded="false" aria-controls="filters-collapse">
-        <span class="ft-icon">⚙</span>
-        <span class="ft-label">Mais filtros</span>
+        <span class="ft-icon">🔍</span>
+        <span class="ft-label">Procurar / Filtros</span>
         <span class="ft-count" id="filters-count" style="display:none">0</span>
         <span class="ft-arrow">▼</span>
       </button>
@@ -1992,19 +1992,15 @@ function escapeHtml(s){ if(s==null) return ""; return String(s)
 function escapeAttr(s){ return escapeHtml(s).replace(/`/g,"&#96;"); }
 
 /* ===== Listeners ===== */
-// Mobile: reposicionar a linha "Morada + GPS" para dentro do bloco "Mais filtros"
-// para libertar espaço no topo. Em desktop fica fora (sempre visível).
+// Mover a linha "Morada + GPS" para dentro do bloco "Filtros" (mobile + desktop).
+// Tudo começa escondido por defeito — só se o user clicar "Filtros" é que abre.
 function _relocateHeroForMobile(){
   const hero = document.querySelector('.filter-row-hero');
-  const toggle = document.getElementById('filters-toggle');
   const collapse = document.getElementById('filters-collapse');
-  if(!hero || !toggle || !collapse) return;
-  const isMobile = window.innerWidth <= 768;
+  if(!hero || !collapse) return;
   const insideCollapse = collapse.contains(hero);
-  if(isMobile && !insideCollapse){
+  if(!insideCollapse){
     collapse.insertBefore(hero, collapse.firstChild);
-  } else if(!isMobile && insideCollapse){
-    toggle.parentNode.insertBefore(hero, toggle);
   }
 }
 

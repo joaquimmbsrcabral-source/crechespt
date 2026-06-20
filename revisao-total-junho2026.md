@@ -75,6 +75,9 @@
 > **Onda 15:**
 > - ✅ #41 **Destaque CONTACTOS no popup /app** — 4 CTAs GIGANTES coloridos no TOPO do body (📞 Ligar com nº visível / ✉ Email com template / 🌐 Site / 🗺 Direcções Google Maps). Disabled cinzentos quando faltam dados. Foco principal: contactar, não tracking. Tracking colapsado sob `<details>📋 Acompanhar a minha inscrição (opcional)`.
 >
+> **Onda 16:**
+> - ✅ #42 **Filtros + morada todos escondidos por defeito** — `_relocateHeroForMobile()` agora move sempre o hero (morada+GPS) para dentro do collapse, desktop e mobile. Botão único "🔍 Procurar / Filtros" mais óbvio (era "⚙ Mais filtros"). Foco no mapa.
+>
 > **Próximos (não nesta sessão):**
 > - ⏳ Foto real do Joaquim (precisa upload do user)
 > - ⏳ Extrair JS do /app (CSS já feito; JS é mais arriscado, precisa testes)
