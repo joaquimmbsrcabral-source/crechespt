@@ -318,6 +318,13 @@ table tr:hover{background:rgba(255,243,214,.4)}
             <p style="font-size:11.5px;color:var(--ink-soft);margin:6px 0 4px">Vaga marcada expira automaticamente em 30 dias. Marca de novo quando confirmares.</p>
             <div id="ef-vaga-since" style="font-size:11px;color:var(--ink-soft);margin-top:4px"></div>
           </div>
+          <div style="grid-column:span 2;background:linear-gradient(135deg,#FFE3EE,#FFE8D6);border-radius:12px;padding:14px 16px;margin-top:6px">
+            <div style="font-weight:700;color:#C2185B;font-size:13px;margin-bottom:8px">🆓 Programa Creche Feliz</div>
+            <label style="display:flex;gap:8px;align-items:center;font-weight:600;color:var(--ink);font-size:13px;margin-bottom:8px">
+              <input id="ef-creche-feliz" type="checkbox" style="width:18px;height:18px"> Esta creche aderiu ao programa <b>Creche Feliz</b> (gratuita para famílias elegíveis)
+            </label>
+            <p style="font-size:11.5px;color:var(--ink-soft);margin:6px 0 4px">Programa da Segurança Social que torna a frequência gratuita em creches IPSS com acordo. Verifica em seg-social.pt antes de marcar.</p>
+          </div>
         </div>
 
         <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
@@ -1492,6 +1499,7 @@ async function openEditor(source, id, docId){
     document.getElementById("ef-max").value = creche.idade_max_meses ?? "";
     document.getElementById("ef-hidden").checked = !!creche.hidden;
     document.getElementById("ef-tem-vaga").checked = !!creche.tem_vaga;
+    document.getElementById("ef-creche-feliz").checked = !!creche.creche_feliz;
     const vagaSinceEl = document.getElementById("ef-vaga-since");
     if(creche.vaga_atualizada_em){
       const ts = creche.vaga_atualizada_em.toDate ? creche.vaga_atualizada_em.toDate() : new Date(creche.vaga_atualizada_em);
@@ -1566,6 +1574,9 @@ document.getElementById("ef-save").addEventListener("click", async ()=>{
     } else {
       payload.vaga_atualizada_em = null;
     }
+
+    // Creche Feliz
+    payload.creche_feliz = document.getElementById("ef-creche-feliz").checked;
 
     // Remover keys vazias (para não sobrescrever com null no Firestore)
     Object.keys(payload).forEach(k => {

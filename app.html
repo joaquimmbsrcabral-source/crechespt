@@ -459,6 +459,9 @@ header.topbar{
 .vaga-pill{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:var(--r-pill);
   background:linear-gradient(135deg,#7DD389,#5BC07A);color:#fff;font-weight:700;font-size:11px;
   box-shadow:0 2px 6px rgba(125,211,137,.35);animation:pulse-vaga 2.5s ease-in-out infinite}
+.cf-pill{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:var(--r-pill);
+  background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;font-weight:700;font-size:11px;
+  box-shadow:0 2px 6px rgba(255,107,157,.35);cursor:help}
 @keyframes pulse-vaga{0%,100%{box-shadow:0 2px 6px rgba(125,211,137,.35)}50%{box-shadow:0 2px 14px rgba(125,211,137,.6)}}
 .vagas-banner{margin:0 0 12px;animation:vagas-slide-down .4s ease}
 .vagas-banner-inner{display:flex;align-items:center;gap:12px;padding:11px 14px;
@@ -1210,6 +1213,7 @@ header.topbar{
         <!-- LINHA 6: Vistas pessoais + limpar -->
         <div class="filter-row">
           <button id="f-only-vaga" class="chip toggle-vaga" title="🆕 Em fase inicial — mostra as creches que já sinalizaram ter vaga disponível agora"><span>🟢</span>Com vaga</button>
+          <button id="f-only-creche-feliz" class="chip toggle-cf" title="Mostra só creches aderentes ao programa Creche Feliz (Segurança Social) — pode ser gratuita"><span>🆓</span>Creche Feliz</button>
           <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
           <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
           <button id="f-clear" class="chip-clear">↺ Limpar tudo</button>
@@ -1644,7 +1648,7 @@ const State = {
     q:"", distrito:"", concelho:"",
     tipo:new Set(), status:new Set(),
     idade:new Set(), idadeAnos:"",  // buckets (set de chaves) + idade específica em anos (string "" ou "0".."6")
-    onlyTracked:false, onlyFav:false, onlyVaga:false,
+    onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false,
     sort:"name",
   },
   // restrição extra por área desenhada ou cluster clicado (Set de ids ou null)
@@ -1898,6 +1902,9 @@ async function loadDataset(){
                 cleaned[i]._vaga = false;  // expirou
               }
             }
+            // Creche Feliz (aderente ao programa Segurança Social)
+            if(o.creche_feliz === true) cleaned[i].creche_feliz = true;
+            else if(o.creche_feliz === false) cleaned[i].creche_feliz = false;
           }
         }
       }
@@ -1933,6 +1940,8 @@ async function loadDataset(){
                 ext._vaga_dias = Math.floor(days);
               }
             }
+            // Creche Feliz
+            if(x.creche_feliz === true) ext.creche_feliz = true;
             cleaned.push(ext);
           }
         });
@@ -2131,6 +2140,7 @@ function applyFilters(){
     if(f.onlyTracked && !isTracked(c.id)) return false;
     if(f.onlyFav && !(State.userData.creches[c.id]||{}).fav) return false;
     if(f.onlyVaga && !c._vaga) return false;
+    if(f.onlyCrecheFeliz && !c.creche_feliz) return false;
     if(f.idade.size){
       const mn = c.idade_min_meses, mx = c.idade_max_meses;
       if(mn==null || mx==null) return false;
@@ -2281,6 +2291,7 @@ function renderList(){
       <div class="meta">
         <span class="statusdot s-${status}" title="${STATUS_LABEL[status]}"></span>
         ${c._vaga ? `<span class="vaga-pill" title="Vaga sinalizada há ${c._vaga_dias} dia${c._vaga_dias===1?"":"s"}">🟢 Vaga disponível</span>` : ""}
+        ${c.creche_feliz ? `<span class="cf-pill" title="Aderente ao programa Creche Feliz (Segurança Social) — pode ser gratuita para famílias elegíveis">🆓 Creche Feliz</span>` : ""}
         ${(c.tipos||[c.tipo||"Desconhecido"]).map(t => `<span class="minitag tipo-${t}">${t}</span>`).join("")}
         ${resp ? `<span class="resp-pill" title="Tipo de resposta">${escapeHtml(resp)}</span>` : ""}
         ${ageTxt ? `<span class="age-pill" title="Faixa etária">🎂 ${ageTxt}</span>` : ""}
@@ -3009,6 +3020,15 @@ function wireUp(){
     e.currentTarget.classList.toggle("active", State.filters.onlyVaga); applyFilters();
   });
 
+  // Filtro só Creche Feliz
+  const cfBtn = document.getElementById("f-only-creche-feliz");
+  if(cfBtn){
+    cfBtn.addEventListener("click", (e)=>{
+      State.filters.onlyCrecheFeliz = !State.filters.onlyCrecheFeliz;
+      e.currentTarget.classList.toggle("active", State.filters.onlyCrecheFeliz); applyFilters();
+    });
+  }
+
   // Banner "Em breve — vagas em tempo real" (one-time, dispensável)
   try{
     const BK = "crechespt/vagas_banner_dismissed_v1";
@@ -3029,7 +3049,7 @@ function wireUp(){
   document.getElementById("f-clear").addEventListener("click", ()=>{
     State.filters = { q:"", distrito:"", concelho:"", tipo:new Set(), status:new Set(),
       idade:new Set(), idadeAnos:"",
-      onlyTracked:false, onlyFav:false, onlyVaga:false, sort: State.filters.sort };
+      onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false, sort: State.filters.sort };
     document.getElementById("q").value="";
     document.getElementById("f-distrito").value="";
     document.getElementById("f-idade-anos").value="";
