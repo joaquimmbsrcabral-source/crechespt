@@ -55,9 +55,12 @@
       #cookie-banner .cb-accept:hover{transform:translateY(-1px);filter:brightness(1.05)}
       #cookie-banner.fade{opacity:0;pointer-events:none;transition:opacity .2s}
       @media (max-width:540px){
-        #cookie-banner{flex-direction:column;align-items:flex-start;padding:16px}
-        #cookie-banner .cb-actions{width:100%}
-        #cookie-banner .cb-actions button{flex:1}
+        #cookie-banner{flex-direction:column;align-items:flex-start;padding:14px;left:10px;right:10px;bottom:10px;border-radius:14px;gap:10px}
+        #cookie-banner .cb-icon{font-size:22px}
+        #cookie-banner .cb-text b{font-size:13.5px}
+        #cookie-banner .cb-text small{font-size:11.5px;line-height:1.4}
+        #cookie-banner .cb-actions{width:100%;gap:6px}
+        #cookie-banner .cb-actions button{flex:1;padding:9px 10px;font-size:12.5px}
       }
     `;
     const style = document.createElement("style");

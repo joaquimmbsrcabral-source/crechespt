@@ -485,3 +485,24 @@ A página mais importante para SEO + decisão. Hoje é a mais fraca.
 3. **Reduz fricção na /app** (onboarding + filtros) — mães em pânico precisam ver o mapa em 3 segundos
 
 Tudo o resto é polimento. Mas estes 3 movimentos viram o produto.
+
+---
+
+## 🌊 Onda 23 — URGENTE: Fix UX mobile (feedback da amiga do Joaquim)
+
+Feedback recebido: "banners enchem o ecrã, mapa confuso ao por código postal, ou então só lista para quem quiser"
+
+### Mudanças
+
+56. ✅ **Esconder banner "Em breve — vagas em tempo real" em mobile** (`@media(max-width:768px){.vagas-banner{display:none}}`)
+57. ✅ **Cookie banner mais compacto em mobile** — padding menor, font menor, botões mais pequenos
+58. ✅ **Default mobile = LISTA** (não mapa) — feedback "muito mais simples começar pela lista"
+59. ✅ **mob-toggle MAIS visível** — bigger, com glow ring + pulse animation 2x no início (atrai olho)
+60. ✅ **Pill "📮 A partir de [endereço]"** no topo da lista quando há localização activa — feedback claro de que CP foi aceite + botão ✕ para limpar
+
+### Resultado esperado
+- Mobile primeira impressão: lista de creches limpa, sem banners a entupir
+- Botão grande coral pulsa "Ver no mapa · 2.585 creches" → impossível não ver
+- Ao por CP/morada: o input está dentro dos filtros, pill aparece confirmando ("📮 A partir de 1000-001")
+- Sem mais "onde é que ele encontrou o CP?" — feedback visual claro
+

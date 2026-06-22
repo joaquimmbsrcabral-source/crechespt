@@ -379,6 +379,11 @@
           <span id="area-msg">creches dentro da área desenhada</span>
           <span class="clear" id="area-clear">limpar seleção</span>
         </div>
+        <div id="userloc-pill" class="userloc-pill" style="display:none">
+          <span class="userloc-icon">📮</span>
+          <span class="userloc-text" id="userloc-text">—</span>
+          <button type="button" id="userloc-clear" class="userloc-clear" aria-label="Limpar localização">✕</button>
+        </div>
         <div id="list-scroll" class="list-scroll">
           <div class="loading"><span class="spinner"></span>A carregar creches…</div>
         </div>
@@ -2097,6 +2102,8 @@ function wireUp(){
         State.filters.sort = "dist";
         document.getElementById("sort").value = "dist";
         btn.classList.add("active");
+        State.userPosLabel = "A tua localização";
+        _updateUserlocPill();
         applyFilters();
         if(tDismiss) tDismiss();
         toast("Mostro as creches mais perto de ti","ok");
@@ -2110,6 +2117,43 @@ function wireUp(){
       { enableHighAccuracy:false, timeout:8000, maximumAge:60000 }
     );
   });
+  // === Pill "📮 A partir de [endereço]" no topo da lista (feedback visual) ===
+  function _updateUserlocPill(){
+    const pill = document.getElementById("userloc-pill");
+    const txt = document.getElementById("userloc-text");
+    if(!pill || !txt) return;
+    if(State.userPos){
+      const lbl = State.userPosLabel || "A tua localização";
+      // Mostrar só o primeiro segmento (mais curto e legível)
+      txt.textContent = "A partir de " + (lbl.split(",")[0] || lbl);
+      pill.style.display = "flex";
+    } else {
+      pill.style.display = "none";
+    }
+  }
+  window._updateUserlocPill = _updateUserlocPill;
+  // Botão ✕ no pill → limpar localização
+  document.addEventListener("DOMContentLoaded", function(){
+    const clr = document.getElementById("userloc-clear");
+    if(clr){
+      clr.addEventListener("click", ()=>{
+        State.userPos = null;
+        State.userPosLabel = null;
+        if(State.userMarker){ try{ State.map.removeLayer(State.userMarker); }catch(e){} State.userMarker = null; }
+        const nm = document.getElementById("f-near-me");
+        if(nm) nm.classList.remove("active");
+        const ai = document.getElementById("addr-input");
+        if(ai){ ai.classList.remove("addr-active"); ai.value = ""; }
+        State.filters.sort = "name";
+        const so = document.getElementById("sort");
+        if(so) so.value = "name";
+        _updateUserlocPill();
+        applyFilters();
+        toast("Localização limpa","ok");
+      });
+    }
+  });
+
   // === Pesquisa por morada/código postal (input inline na linha hero) ===
   // Geocoding via Nominatim (OpenStreetMap) — gratuito, sem API key
   async function geocodePT(query){
@@ -2148,6 +2192,8 @@ function wireUp(){
       State.filters.sort = "dist";
       document.getElementById("sort").value = "dist";
       addrInput.classList.add("addr-active");
+      // Mostrar pill no topo da lista para confirmar visualmente
+      _updateUserlocPill();
       applyFilters();
       toast("A mostrar creches mais próximas de " + (loc.label.split(",")[0]||q),"ok",{duration:4000});
     }catch(e){
@@ -2298,10 +2344,9 @@ function wireUp(){
       updateMobToggleLabel();
       if(!showingList) forceMapInvalidate();
     });
-    // Inicial: mostrar MAPA em mobile (maioria dos pais quer ver geograficamente primeiro)
+    // Inicial: mostrar LISTA em mobile (Jun 2026: feedback de utilizadores — mapa é confuso, lista é mais clara)
     if(window.matchMedia && window.matchMedia("(max-width: 820px)").matches){
-      // Default: mapa (não lista). Botão dirá "Ver lista".
-      document.getElementById("view-map").classList.remove("mob-list");
+      document.getElementById("view-map").classList.add("mob-list");
     }
     updateMobToggleLabel();
   }

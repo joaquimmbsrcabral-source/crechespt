@@ -1,3 +1,16 @@
+/* Userloc pill — mostra endereço/CP usado na pesquisa, dentro da list-card */
+.userloc-pill{display:flex;align-items:center;gap:10px;margin:10px 14px 0;padding:10px 14px;
+  background:linear-gradient(135deg,#FFE9D6,#FFDDC2);border-radius:14px;
+  border:1.5px solid rgba(255,107,157,.25);
+  font-size:13.5px;color:#5A3A1A;font-weight:600;animation:userloc-in .3s ease}
+@keyframes userloc-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.userloc-icon{font-size:18px;line-height:1;flex-shrink:0}
+.userloc-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.userloc-clear{background:rgba(255,255,255,.7);border:none;width:26px;height:26px;border-radius:50%;
+  cursor:pointer;font-size:14px;color:#5A3A1A;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .15s}
+.userloc-clear:hover{background:#fff;transform:scale(1.08)}
+
 :root{
   --bg:#FFF6EE;
   --bg2:#FFEFE3;
@@ -438,6 +451,8 @@ header.topbar{
   box-shadow:0 2px 6px rgba(255,107,157,.35);cursor:help}
 @keyframes pulse-vaga{0%,100%{box-shadow:0 2px 6px rgba(125,211,137,.35)}50%{box-shadow:0 2px 14px rgba(125,211,137,.6)}}
 .vagas-banner{margin:0 0 12px;animation:vagas-slide-down .4s ease}
+/* Em mobile, esconder o banner "em breve" — ocupa demasiado espaço */
+@media(max-width:768px){.vagas-banner{display:none !important}}
 .vagas-banner-inner{display:flex;align-items:center;gap:12px;padding:11px 14px;
   background:linear-gradient(135deg,#E5F8E9 0%,#DAF3E0 100%);
   border:1px solid #B5E2C0;border-radius:14px;box-shadow:0 2px 8px rgba(91,192,122,.15);
@@ -838,15 +853,20 @@ header.topbar{
   #view-map #map-wrap{display:block;flex:1;min-height:0;height:auto;width:100%}
   /* Toggle FAB no canto inferior centrado: mais visível, com badge contagem */
   .mob-toggle{
-    display:flex;align-items:center;justify-content:center;gap:8px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
     position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1200;
     background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
-    border-radius:var(--r-pill);padding:13px 26px;font-weight:700;font-size:14.5px;
-    box-shadow:0 12px 28px rgba(255,107,157,.5);border:none;
-    min-width:200px;
+    border-radius:var(--r-pill);padding:15px 30px;font-weight:800;font-size:15.5px;
+    box-shadow:0 14px 32px rgba(255,107,157,.55),0 0 0 3px rgba(255,255,255,.85);border:none;
+    min-width:220px;
+    animation:mob-toggle-attn 2.8s ease-in-out 1.5s 2;
   }
-  .mob-toggle:active{transform:translateX(-50%) scale(.97)}
-  .mob-toggle .ic{font-size:18px}
+  @keyframes mob-toggle-attn{
+    0%,100%{transform:translateX(-50%) scale(1)}
+    50%{transform:translateX(-50%) scale(1.06);box-shadow:0 18px 38px rgba(255,107,157,.7),0 0 0 5px rgba(255,255,255,.95)}
+  }
+  .mob-toggle:active{transform:translateX(-50%) scale(.97);animation:none}
+  .mob-toggle .ic{font-size:19px}
   /* Quando colapsável aberto, limita altura e torna scrollável (não come o ecrã) */
   .filters-collapse.open{
     max-height:50vh;overflow-y:auto;
