@@ -506,3 +506,22 @@ Feedback recebido: "banners enchem o ecrã, mapa confuso ao por código postal, 
 - Ao por CP/morada: o input está dentro dos filtros, pill aparece confirmando ("📮 A partir de 1000-001")
 - Sem mais "onde é que ele encontrou o CP?" — feedback visual claro
 
+
+---
+
+## 🌊 Onda 24 — Filtros fecham após "Procurar" + botão "Ver X creches"
+
+Feedback do user: "quando carrego em Procurar devia desaparecer os filtros e mostrar logo a lista"
+
+### Mudanças
+
+61. ✅ **Após carregar "Procurar" (morada/CP)** → `setFiltersOpen(false)` + `scrollIntoView` para a lista
+62. ✅ **Após GPS aceitar localização** → mesmo comportamento (fecha filtros + scroll para lista)
+63. ✅ **Botão grande coral "✓ Ver 2.585 creches ↓"** no fundo do painel de filtros — contagem dinâmica via `_updateApplyBtnCount()`, fecha filtros + scroll
+64. ✅ Contagem actualizada automaticamente em `applyFilters()` (igual ao mob-toggle label)
+
+### Resultado esperado
+- User põe CP → carrega "Procurar" → filtros desaparecem → vê logo lista ordenada por distância + pill 📮
+- User abre filtros, marca IPSS + idade 2 anos → vê em tempo real "Ver 423 creches ↓" → carrega → fecha + vê lista
+- Sem mais "onde está a lista?" — fluxo natural até resultado
+

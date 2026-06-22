@@ -1,3 +1,19 @@
+/* "Ver X creches ↓" — botão grande no fundo do painel de filtros */
+.filters-apply-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;margin:14px 0 4px;padding:14px 20px;
+  background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;
+  border:none;border-radius:999px;font-weight:800;font-size:15.5px;
+  font-family:"Quicksand",system-ui,sans-serif;letter-spacing:.2px;
+  box-shadow:0 8px 22px rgba(255,107,157,.4);cursor:pointer;
+  transition:all .18s;
+}
+.filters-apply-btn:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 12px 28px rgba(255,107,157,.5)}
+.filters-apply-btn:active{transform:translateY(0) scale(.98)}
+.filters-apply-btn .fa-ic{font-size:18px;line-height:1}
+.filters-apply-btn .fa-arrow{font-size:16px;opacity:.85}
+.filters-apply-btn strong{font-weight:900;font-size:17px}
+
 /* Userloc pill — mostra endereço/CP usado na pesquisa, dentro da list-card */
 .userloc-pill{display:flex;align-items:center;gap:10px;margin:10px 14px 0;padding:10px 14px;
   background:linear-gradient(135deg,#FFE9D6,#FFDDC2);border-radius:14px;

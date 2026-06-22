@@ -352,6 +352,13 @@
           <button id="f-clear" class="chip-clear">↺ Limpar tudo</button>
         </div>
 
+        <!-- Botão grande para fechar filtros e ver lista de resultados -->
+        <button id="filters-apply" type="button" class="filters-apply-btn">
+          <span class="fa-ic">✓</span>
+          <span>Ver <strong id="filters-apply-count">2.585</strong> creches</span>
+          <span class="fa-arrow">↓</span>
+        </button>
+
       </div>
     </div>
 
@@ -1374,6 +1381,7 @@ function applyFilters(){
   updateAreaBanner();
   if(typeof window.refreshFiltersCount === "function") window.refreshFiltersCount();
   if(typeof window._updateMobToggleLabel === "function") window._updateMobToggleLabel();
+  if(typeof window._updateApplyBtnCount === "function") window._updateApplyBtnCount((State.filtered||[]).length);
 }
 
 function updateHeader(){
@@ -2105,6 +2113,10 @@ function wireUp(){
         State.userPosLabel = "A tua localização";
         _updateUserlocPill();
         applyFilters();
+        // Fechar painel de filtros + scroll para lista
+        try{ setFiltersOpen(false); }catch(_){}
+        const ls2 = document.getElementById("list-scroll");
+        if(ls2){ try{ ls2.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){} }
         if(tDismiss) tDismiss();
         toast("Mostro as creches mais perto de ti","ok");
       },
@@ -2195,6 +2207,10 @@ function wireUp(){
       // Mostrar pill no topo da lista para confirmar visualmente
       _updateUserlocPill();
       applyFilters();
+      // Fechar painel de filtros + scroll para a lista (UX: ver logo o resultado)
+      try{ setFiltersOpen(false); }catch(_){}
+      const ls = document.getElementById("list-scroll");
+      if(ls){ try{ ls.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){} }
       toast("A mostrar creches mais próximas de " + (loc.label.split(",")[0]||q),"ok",{duration:4000});
     }catch(e){
       _e(e);
@@ -2227,6 +2243,21 @@ function wireUp(){
     const isOpen = filtersToggle.getAttribute("aria-expanded") === "true";
     setFiltersOpen(!isOpen);
   });
+
+  // Botão "Ver X creches ↓" — fecha filtros + faz scroll para a lista
+  const _applyBtn = document.getElementById("filters-apply");
+  if(_applyBtn){
+    _applyBtn.addEventListener("click", ()=>{
+      setFiltersOpen(false);
+      const ls = document.getElementById("list-scroll");
+      if(ls){ try{ ls.scrollIntoView({behavior:"smooth", block:"start"}); }catch(_){} }
+    });
+  }
+  // Helper exposto para actualizar a contagem (chamado dentro de applyFilters)
+  window._updateApplyBtnCount = function(n){
+    const el = document.getElementById("filters-apply-count");
+    if(el){ el.textContent = (n||0).toLocaleString("pt-PT"); }
+  };
 
   // Contador de filtros ativos — atualiza sempre que applyFilters() corre
   function countActiveFilters(){
