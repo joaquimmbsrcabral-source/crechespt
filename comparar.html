@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>Comparar creches lado-a-lado — Creches.app</title>
-<meta name="description" content="Compara até 3 creches em Portugal lado-a-lado: tipo, idades, mensalidade, distância, contactos. Gratuito.">
+<meta name="description" content="Compara até 3 creches em Portugal lado-a-lado: distância, mensalidade estimada, idades, contactos e Creche Feliz. Gratuito.">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://creches.app/comparar">
 <meta name="theme-color" content="#FF9F68">
 <meta property="og:title" content="Comparar creches lado-a-lado — Creches.app">
-<meta property="og:description" content="Tabela lado-a-lado com as creches que escolheste. Gratuito.">
+<meta property="og:description" content="Tabela lado-a-lado: distância, mensalidade, idades, contactos. Gratuito.">
 <meta property="og:image" content="https://creches.app/og-image.png">
 <link rel="icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
@@ -18,7 +18,8 @@
 <style>
 :root{
   --c-coral:#FF6B9D; --c-peach:#FF9F68; --c-coral-soft:#FFE3EE; --c-peach-soft:#FFE8D6;
-  --c-ipss:#48D1CC; --c-publica:#7DD389; --c-privada:#FF6B9D;
+  --c-mint:#7DD389; --c-mint-soft:#DEF5E1; --c-turq:#48D1CC; --c-turq-soft:#D8F5F4;
+  --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
   --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5; --line:#F1E6D9; --panel:#FFFFFF;
   --r-card:24px; --r-pill:999px; --sh-1:0 4px 14px rgba(60,40,90,.08); --sh-2:0 12px 32px rgba(60,40,90,.12);
 }
@@ -36,10 +37,22 @@ header nav a{color:var(--ink-soft);font-weight:600}
 header nav a:hover{color:var(--c-coral);text-decoration:none}
 header nav a.cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;padding:9px 16px;border-radius:99px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
 .logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
-main{max-width:1200px;margin:0 auto;padding:30px 20px 140px}
-.hero{text-align:center;margin-bottom:36px}
-.hero h1{font-size:36px;margin:0 0 10px;font-weight:700}
-.hero p{color:var(--ink-soft);font-size:16px;max-width:620px;margin:0 auto}
+main{max-width:1280px;margin:0 auto;padding:30px 20px 140px}
+.hero{text-align:center;margin-bottom:24px}
+.hero h1{font-size:34px;margin:0 0 10px;font-weight:700}
+.hero p{color:var(--ink-soft);font-size:15px;max-width:680px;margin:0 auto}
+
+/* Localização do user */
+.loc-bar{background:#fff;border-radius:18px;padding:14px 18px;box-shadow:var(--sh-1);margin:0 0 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.loc-bar-label{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);font-size:14px;flex-shrink:0}
+.loc-bar-input{flex:1;min-width:200px;display:flex;gap:6px;align-items:center}
+.loc-bar-input input{flex:1;background:var(--bg);border:1.5px solid var(--line);border-radius:99px;padding:9px 16px;font-family:inherit;font-size:13.5px;color:var(--ink);min-width:0}
+.loc-bar-input input:focus{outline:none;border-color:var(--c-coral)}
+.loc-bar-btn{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:none;border-radius:99px;padding:9px 16px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.loc-bar-btn-gps{background:transparent;color:var(--ink-soft);border:1.5px solid var(--line)}
+.loc-bar-btn-gps:hover{border-color:var(--c-coral);color:var(--c-coral)}
+.loc-active{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-coral-soft));border-radius:99px;padding:6px 14px;font-size:13px;color:#5A3A1A;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.loc-active button{background:transparent;border:none;color:#5A3A1A;cursor:pointer;font-size:14px;padding:0;line-height:1}
 
 /* Estado vazio */
 .empty{background:#fff;border-radius:var(--r-card);padding:60px 30px;text-align:center;box-shadow:var(--sh-1);max-width:600px;margin:30px auto}
@@ -51,24 +64,27 @@ main{max-width:1200px;margin:0 auto;padding:30px 20px 140px}
 /* Tabela */
 .compare-wrap{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-2)}
 .compare-cards{display:grid;gap:0}
-@media(min-width:760px){
+@media(min-width:880px){
   .compare-cards.cols-2{grid-template-columns:200px 1fr 1fr}
   .compare-cards.cols-3{grid-template-columns:200px 1fr 1fr 1fr}
 }
-.cmp-row{display:contents}
-.cmp-cell{padding:14px 16px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.4}
+.cmp-cell{padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.45}
 .cmp-label{font-weight:700;color:var(--ink-soft);background:rgba(255,107,157,.04);font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
 .cmp-label .ic{font-size:16px}
-.cmp-val{color:var(--ink);font-weight:500}
+.cmp-val{color:var(--ink);font-weight:500;position:relative}
 .cmp-val.empty-val{color:var(--ink-faint);font-style:italic;font-weight:400}
-.cmp-val.big{font-size:18px;font-weight:700}
+.cmp-val.big{font-size:16px;font-weight:700}
+.cmp-val.best{background:linear-gradient(135deg,var(--c-mint-soft),#F0FBF2)}
+.cmp-val.best::before{content:"🏆";position:absolute;top:6px;right:8px;font-size:14px;line-height:1}
+.cmp-val a{color:var(--c-coral);font-weight:600;text-decoration:none;border-bottom:1px dashed currentColor}
+.cmp-val a:hover{text-decoration:none;border-bottom-style:solid}
 
 /* Header da coluna creche */
 .cmp-head{background:linear-gradient(135deg,#FFF6EE,#FFEFE3);padding:18px 16px;border-bottom:2px solid var(--c-peach);position:relative}
 .cmp-head .tipo-pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-bottom:8px}
-.cmp-head .tipo-IPSS{background:#D8F5F4;color:#1A6A65}
+.cmp-head .tipo-IPSS{background:var(--c-turq-soft);color:#1A6A65}
 .cmp-head .tipo-Privada{background:var(--c-coral-soft);color:#A03C6C}
-.cmp-head .tipo-Pública{background:#DEF5E1;color:#1F6E37}
+.cmp-head .tipo-Publica,.cmp-head .tipo-Pública{background:var(--c-mint-soft);color:#1F6E37}
 .cmp-head .tipo-Desconhecido{background:#F0EBF8;color:var(--ink-soft)}
 .cmp-head h3{font-size:17px;margin:0 0 4px;line-height:1.25}
 .cmp-head .loc{font-size:12.5px;color:var(--ink-soft)}
@@ -76,25 +92,28 @@ main{max-width:1200px;margin:0 auto;padding:30px 20px 140px}
 .cmp-head .remove-btn:hover{background:#fff;color:var(--c-coral);transform:scale(1.08)}
 
 /* Mobile: cards em vez de tabela */
-@media(max-width:759px){
-  .compare-cards{grid-template-columns:1fr !important;gap:18px;background:transparent;box-shadow:none;border-radius:0}
+@media(max-width:879px){
   .compare-wrap{background:transparent;box-shadow:none;border-radius:0}
-  .cmp-row{display:block;background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--sh-1)}
-  .cmp-row.label-row{display:none}
+  .compare-cards{grid-template-columns:1fr !important;gap:18px}
+  .cmp-mobile-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--sh-1)}
+  .cmp-label-mobile{display:none}
+  .cmp-cell[data-mobile-label]::before{content:attr(data-mobile-label);display:block;font-size:10.5px;font-weight:700;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
   .cmp-cell{border-bottom:1px solid var(--line)}
-  .cmp-cell:last-child{border-bottom:none}
-  .cmp-cell[data-mobile-label]::before{content:attr(data-mobile-label);display:block;font-size:11px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+  .cmp-mobile-card .cmp-cell:last-child{border-bottom:none}
   .cmp-head{border-bottom:none;border-radius:0}
   .cmp-head h3{font-size:18px}
+  .cmp-val.best::before{position:static;display:inline-block;margin-right:6px}
 }
 
 /* CTAs no fundo */
-.cmp-ctas{display:grid;gap:8px;padding:12px;background:rgba(255,107,157,.04);border-top:1px solid var(--line)}
-.cmp-ctas a{display:flex;align-items:center;justify-content:center;gap:7px;background:#fff;color:var(--ink);padding:10px 8px;border-radius:12px;font-weight:600;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .15s}
-.cmp-ctas a:hover{transform:translateY(-1px);text-decoration:none;color:var(--ink)}
-.cmp-ctas a.disabled{opacity:.45;pointer-events:none}
+.cmp-ctas{display:grid;gap:6px;padding:8px;background:rgba(255,107,157,.04);border-top:1px solid var(--line)}
+.cmp-ctas a, .cmp-ctas button{display:flex;align-items:center;justify-content:center;gap:6px;background:#fff;color:var(--ink);padding:9px 8px;border-radius:10px;font-weight:600;font-size:12.5px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:all .15s;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.cmp-ctas a:hover, .cmp-ctas button:hover{transform:translateY(-1px);text-decoration:none;color:var(--ink);box-shadow:0 4px 10px rgba(0,0,0,.1)}
+.cmp-ctas a.disabled{opacity:.35;pointer-events:none}
+.cmp-ctas .cta-call{background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff}
+.cmp-ctas .cta-call:hover{color:#fff}
 
-/* Resumo de decisão */
+/* Resumo */
 .cmp-summary{background:#fff;border-radius:var(--r-card);padding:24px;margin-top:30px;box-shadow:var(--sh-1)}
 .cmp-summary h3{margin:0 0 14px;font-size:18px;display:flex;align-items:center;gap:8px}
 .cmp-summary ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:14px}
@@ -104,6 +123,10 @@ main{max-width:1200px;margin:0 auto;padding:30px 20px 140px}
 .loading::before{content:"⏳";display:block;font-size:36px;margin-bottom:10px}
 
 footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:60px}
+
+/* Legenda dos highlights */
+.legend{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:14px}
+.legend span{background:var(--c-mint-soft);padding:2px 8px;border-radius:99px;font-weight:600;color:#1F6E37}
 </style>
 </head>
 <body>
@@ -123,7 +146,18 @@ footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;bo
 <main>
   <div class="hero">
     <h1>📊 Comparar creches</h1>
-    <p>Lado a lado: tipo, idades, contactos e distância. Marca até 3 creches no mapa ou nas fichas, depois compara aqui.</p>
+    <p>Lado a lado: distância, mensalidade estimada, idades, contactos. Marca até 3 creches no mapa ou nas fichas.</p>
+  </div>
+
+  <!-- Barra de localização -->
+  <div id="loc-bar" class="loc-bar" style="display:none">
+    <div class="loc-bar-label">📍 Distância a:</div>
+    <div class="loc-bar-input">
+      <input id="loc-input" type="text" placeholder="A tua morada ou código postal (ex: 1100-001)" inputmode="search">
+      <button id="loc-search" class="loc-bar-btn">Procurar</button>
+      <button id="loc-gps" class="loc-bar-btn loc-bar-btn-gps" title="Usar GPS">📍 GPS</button>
+    </div>
+    <div id="loc-active" style="display:none"></div>
   </div>
 
   <div id="cmp-content"><div class="loading">A carregar creches…</div></div>
@@ -134,9 +168,11 @@ footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;bo
       <li><b>Idades:</b> confirma que aceita a idade do teu filho no início do ano lectivo</li>
       <li><b>Tipo:</b> IPSS tem mensalidade por escalão (rendimento), Privada tem preço fixo, Pública é gratuita</li>
       <li><b>Distância:</b> menos de 15min do trabalho ou casa é razoável para 2 viagens/dia</li>
-      <li><b>Contactos:</b> liga a todas para confirmar vagas reais e visitar — não decidas só pelo que vês online</li>
+      <li><b>Contactos:</b> liga a todas para confirmar vagas reais e visitar — não decidas só pelo online</li>
       <li><b>Visita:</b> usa o nosso <a href="/guias/como-escolher-creche">guia das 15 perguntas a fazer na visita</a></li>
+      <li><b>Calculadora de custo:</b> não sabes o que vais pagar? <a href="/calculadora">Calcula aqui</a></li>
     </ul>
+    <p class="legend"><span>🏆 = melhor opção</span> em cada categoria (mais perto / mais barata / mais informação)</p>
   </div>
 </main>
 
@@ -147,12 +183,206 @@ footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;bo
 
 <script src="/compare.js"></script>
 <script>
-function renderCompare(){
-  const list = (window.Compare && window.Compare.list()) || [];
+// ============================================================
+// Estado partilhado: dados completos das creches + localização do user
+// ============================================================
+const State = {
+  fullData: null,        // creches_pt.json indexed by id
+  userPos: null,         // {lat, lon, label}
+  userPosLabel: null
+};
+
+// Tentar restaurar localização guardada
+try {
+  const saved = JSON.parse(localStorage.getItem("crechespt/cmp/userPos") || "null");
+  if(saved && saved.lat && saved.lon){
+    State.userPos = saved;
+    State.userPosLabel = saved.label || "";
+  }
+} catch(e){}
+
+// ============================================================
+// Utilitários
+// ============================================================
+function hav(a, b){
+  if(!a || !b || !a.lat || !a.lon || !b.lat || !b.lon) return null;
+  const R=6371;
+  const lat1 = a.lat*Math.PI/180, lat2 = b.lat*Math.PI/180;
+  const dlat = (b.lat-a.lat)*Math.PI/180;
+  const dlon = (b.lon-a.lon)*Math.PI/180;
+  const h = Math.sin(dlat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dlon/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+function distFmt(km){
+  if(km == null) return null;
+  if(km < 1) return Math.round(km*1000) + " m";
+  if(km < 10) return km.toFixed(1) + " km";
+  return Math.round(km) + " km";
+}
+
+function idadeTxt(m){
+  if(m == null) return null;
+  if(m === 0) return "0m";
+  if(m < 12) return m + "m";
+  return Math.floor(m/12) + "a" + (m%12 ? " " + (m%12) + "m" : "");
+}
+function faixaTxt(c){
+  const mi = c.idade_min_meses, ma = c.idade_max_meses;
+  if(mi == null && ma == null) return null;
+  return (idadeTxt(mi) || "?") + " — " + (idadeTxt(ma) || "?");
+}
+
+// Estimativa de mensalidade — heurística simples (não substitui /calculadora)
+function mensalEstimada(c){
+  if(c.creche_feliz === true) return { v: 0, txt: "Gratuita (Creche Feliz)", best:true };
+  const t = (c.tipo||"").toLowerCase();
+  if(t === "pública" || t === "publica") return { v: 0, txt: "Gratuita (Pública)", best:true };
+  if(t === "ipss") return { v: 200, txt: "~30€–380€ (por escalão)", note:"calcula em /calculadora" };
+  if(t === "privada"){
+    const dist = (c.distrito||"").toLowerCase();
+    if(dist === "lisboa") return { v: 575, txt: "~450€–700€" };
+    if(["setúbal","setubal","leiria","santarém","santarem"].includes(dist)) return { v: 450, txt: "~350€–550€" };
+    return { v: 365, txt: "~280€–450€" };
+  }
+  return null;
+}
+
+function slugify(s, id){
+  const slug = (s||"creche").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const nid = (id||"").replace(/\D/g,"") || id;
+  return slug + "-" + nid;
+}
+
+// ============================================================
+// Carregar dataset completo (cached)
+// ============================================================
+async function ensureData(){
+  if(State.fullData) return State.fullData;
+  try {
+    const res = await fetch("/creches_pt.json", { cache: "force-cache" });
+    const arr = await res.json();
+    const map = {};
+    arr.forEach(c => { map[c.id] = c; });
+    State.fullData = map;
+    return map;
+  } catch(e){
+    console.error("Falha a carregar creches_pt.json", e);
+    return {};
+  }
+}
+
+function mergeFullData(stub){
+  const full = State.fullData && State.fullData[stub.id];
+  if(!full) return stub;
+  return Object.assign({}, full, {
+    // stub tem dados mais recentes (eventualmente Firestore override)
+    nome: stub.nome || full.nome,
+    tipo: stub.tipo || full.tipo,
+    distrito: stub.distrito || full.distrito,
+    localidade: stub.localidade || full.localidade,
+    lat: stub.lat || full.lat,
+    lon: stub.lon || full.lon
+  });
+}
+
+// ============================================================
+// Geocoding (mesmo método que /app)
+// ============================================================
+async function geocodePT(q){
+  let query = q.trim();
+  if(/^\d{4}(-\d{3})?$/.test(query)) query += ", Portugal";
+  else if(!/portugal/i.test(query)) query += ", Portugal";
+  const url = "https://nominatim.openstreetmap.org/search?q=" + encodeURIComponent(query)
+    + "&format=json&limit=1&countrycodes=pt&accept-language=pt-PT";
+  const res = await fetch(url, { headers: {"Accept":"application/json"} });
+  if(!res.ok) throw new Error("Servidor indisponível");
+  const data = await res.json();
+  if(!data || !data.length) throw new Error("Morada não encontrada");
+  return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon), label: data[0].display_name || query };
+}
+
+function setUserPos(pos){
+  State.userPos = pos;
+  State.userPosLabel = pos ? pos.label : null;
+  try { localStorage.setItem("crechespt/cmp/userPos", JSON.stringify(pos || null)); } catch(e){}
+  updateLocBar();
+  renderCompare();
+}
+
+function updateLocBar(){
+  const active = document.getElementById("loc-active");
+  const input = document.getElementById("loc-input");
+  if(State.userPos){
+    active.style.display = "inline-flex";
+    active.className = "loc-active";
+    const shortLabel = (State.userPos.label || "morada").split(",")[0];
+    active.innerHTML = `📮 ${shortLabel} <button id="loc-clear" title="Limpar">✕</button>`;
+    document.getElementById("loc-clear").onclick = () => setUserPos(null);
+    if(input) input.value = "";
+  } else {
+    active.style.display = "none";
+  }
+}
+
+// ============================================================
+// Wire location bar
+// ============================================================
+function wireLocBar(){
+  const input = document.getElementById("loc-input");
+  const btn = document.getElementById("loc-search");
+  const gps = document.getElementById("loc-gps");
+  if(!btn) return;
+  async function doSearch(){
+    const q = (input.value||"").trim();
+    if(q.length < 4){ alert("Escreve uma morada ou código postal"); return; }
+    btn.disabled = true;
+    const old = btn.textContent;
+    btn.textContent = "A procurar…";
+    try {
+      const pos = await geocodePT(q);
+      setUserPos(pos);
+    } catch(e){
+      alert(e.message || "Não foi possível encontrar essa morada");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = old;
+    }
+  }
+  btn.addEventListener("click", doSearch);
+  input.addEventListener("keydown", e => { if(e.key === "Enter") doSearch(); });
+  gps.addEventListener("click", () => {
+    if(!navigator.geolocation){ alert("GPS não suportado"); return; }
+    gps.disabled = true;
+    gps.textContent = "📍 A obter…";
+    navigator.geolocation.getCurrentPosition(
+      p => {
+        setUserPos({ lat: p.coords.latitude, lon: p.coords.longitude, label: "A tua localização" });
+        gps.disabled = false;
+        gps.textContent = "📍 GPS";
+      },
+      err => {
+        alert("Não foi possível obter a tua localização. Permite o acesso ou usa uma morada.");
+        gps.disabled = false;
+        gps.textContent = "📍 GPS";
+      },
+      { enableHighAccuracy:false, timeout:8000, maximumAge:60000 }
+    );
+  });
+}
+
+// ============================================================
+// Render principal
+// ============================================================
+async function renderCompare(){
+  const stubs = (window.Compare && window.Compare.list()) || [];
   const root = document.getElementById("cmp-content");
   const summary = document.getElementById("cmp-summary");
+  const locBar = document.getElementById("loc-bar");
 
-  if(list.length === 0){
+  if(stubs.length === 0){
+    locBar.style.display = "none";
     root.innerHTML = `
       <div class="empty">
         <div class="ic">📋</div>
@@ -163,84 +393,183 @@ function renderCompare(){
     summary.style.display = "none";
     return;
   }
-  if(list.length === 1){
+  if(stubs.length === 1){
+    locBar.style.display = "none";
     root.innerHTML = `
       <div class="empty">
         <div class="ic">📋</div>
         <h2>Marcaste 1 creche</h2>
         <p>Precisas de pelo menos 2 para comparar. Vai ao mapa adicionar mais.</p>
         <a class="btn" href="/app">🗺 Ir adicionar mais</a>
-        <p style="margin-top:14px;font-size:13px"><b>Marcada:</b> ${list[0].nome}</p>
+        <p style="margin-top:14px;font-size:13px"><b>Marcada:</b> ${stubs[0].nome}</p>
       </div>`;
     summary.style.display = "none";
     return;
   }
 
-  // Render tabela
-  const cols = `cols-${list.length}`;
-  const tipo = c => (c.tipo || "Desconhecido").replace("ú","u").replace("ó","o").replace("í","i");
-  const slug = c => c.slug || ((c.nome||"").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + "-" + (c.id||"").replace(/\D/g,''));
-  const dirUrl = c => (c.lat && c.lon) ? `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}` : "#";
+  locBar.style.display = "flex";
 
-  // Cabeçalho com nome+tipo+remove
-  const headers = list.map(c => `
-    <div class="cmp-row cmp-card" data-id="${c.id}">
-      <div class="cmp-cell cmp-head">
-        <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
-        <span class="tipo-pill tipo-${tipo(c)}">${c.tipo || "—"}</span>
-        <h3>${c.nome || "—"}</h3>
-        <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
-      </div>
+  // Carregar dados completos + merge
+  await ensureData();
+  const list = stubs.map(mergeFullData);
+
+  // Calcular distância (se temos posição user)
+  const dists = list.map(c => State.userPos ? hav(State.userPos, c) : null);
+  const mensals = list.map(mensalEstimada);
+
+  // Computar "melhor" por categoria
+  const validDists = dists.map((d,i) => d != null ? {i, v:d} : null).filter(Boolean);
+  const minDistIdx = validDists.length ? validDists.reduce((a,b) => a.v < b.v ? a : b).i : -1;
+  const validMensals = mensals.map((m,i) => m && m.v != null ? {i, v:m.v} : null).filter(Boolean);
+  const minMensalIdx = validMensals.length ? validMensals.reduce((a,b) => a.v < b.v ? a : b).i : -1;
+
+  // Helpers para tipo (matching CSS class names)
+  const tipoCls = c => (c.tipo || "Desconhecido").replace("ú","u").replace("ó","o").replace("í","i");
+  const dirUrl = c => (c.lat && c.lon) ? `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}` : "#";
+  const fichaUrl = c => `/creche/${slugify(c.nome, c.id)}`;
+  const telClean = t => (t||"").replace(/[\s\/]+/g,"");
+
+  const cols = `cols-${list.length}`;
+
+  // Headers (uma célula por creche)
+  const headCells = list.map(c => `
+    <div class="cmp-cell cmp-head" data-id="${c.id}">
+      <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
+      <span class="tipo-pill tipo-${tipoCls(c)}">${c.tipo || "—"}</span>
+      <h3>${c.nome || "—"}</h3>
+      <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
     </div>
   `).join("");
 
-  // Rows
-  const row = (label, icon, mobLab, vals) => {
-    const cells = vals.map((v,i) => `<div class="cmp-cell cmp-val ${!v ? 'empty-val' : ''}" data-mobile-label="${mobLab}">${v || "—"}</div>`).join("");
-    return `
-      <div class="cmp-row label-row"><div class="cmp-cell cmp-label"><span class="ic">${icon}</span>${label}</div>${"<div></div>".repeat(list.length-1)}</div>
-      ${cells}
-    `;
+  // Row helper
+  const row = (icon, label, mobLab, vals, opts={}) => {
+    return `<div class="cmp-cell cmp-label cmp-label-mobile"><span class="ic">${icon}</span>${label}</div>` +
+      vals.map((html,i) => {
+        const bestIdx = opts.bestIdx;
+        const isBest = (bestIdx === i && vals.length > 1);
+        const empty = !html || html === "—";
+        return `<div class="cmp-cell cmp-val ${empty?'empty-val':''} ${isBest?'best':''}" data-mobile-label="${mobLab}">${html || "—"}</div>`;
+      }).join("");
   };
 
-  // Esta tabela usa CSS grid display:contents para alinhar — mobile usa cards
-  const desktopGrid = `
-    <div class="compare-wrap">
-      <div class="compare-cards ${cols}">
-        <div class="cmp-cell cmp-label"></div>
-        ${list.map(c => `
-          <div class="cmp-cell cmp-head" data-id="${c.id}">
-            <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
-            <span class="tipo-pill tipo-${tipo(c)}">${c.tipo || "—"}</span>
-            <h3>${c.nome || "—"}</h3>
-            <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
-          </div>
-        `).join("")}
+  // Linhas
+  const rowDist = State.userPos
+    ? row("📏", "Distância", "Distância",
+        dists.map(d => d != null ? `<b>${distFmt(d)}</b>` : null),
+        { bestIdx: minDistIdx })
+    : `<div class="cmp-cell cmp-label cmp-label-mobile"><span class="ic">📏</span>Distância</div>` +
+      list.map(() => `<div class="cmp-cell cmp-val empty-val" data-mobile-label="Distância">Indica a tua morada acima ↑</div>`).join("");
 
-        <div class="cmp-cell cmp-label"><span class="ic">🏷</span>Tipo</div>
-        ${list.map(c => `<div class="cmp-cell cmp-val">${c.tipo || "—"}</div>`).join("")}
+  const rowMensal = row("💰", "Mensalidade estimada", "Mensalidade",
+    mensals.map(m => m ? `<b>${m.txt}</b>${m.note ? `<br><small style="color:#9B97B5;font-weight:400">${m.note}</small>` : ''}` : null),
+    { bestIdx: minMensalIdx });
 
-        <div class="cmp-cell cmp-label"><span class="ic">📍</span>Localidade</div>
-        ${list.map(c => `<div class="cmp-cell cmp-val">${c.localidade || "—"}</div>`).join("")}
+  const rowIdades = row("🎂", "Idades aceites", "Idades",
+    list.map(c => faixaTxt(c)));
 
-        <div class="cmp-cell cmp-label"><span class="ic">🗺</span>Distrito</div>
-        ${list.map(c => `<div class="cmp-cell cmp-val">${c.distrito || "—"}</div>`).join("")}
+  const rowResposta = row("👶", "Resposta social", "Resposta",
+    list.map(c => c.resposta || null));
 
-        <div class="cmp-cell cmp-label"><span class="ic">🔗</span>Ficha</div>
-        ${list.map(c => `<div class="cmp-cell cmp-val"><a href="/creche/${slug(c)}" target="_blank">Ver ficha completa →</a></div>`).join("")}
+  const rowCF = row("🆓", "Creche Feliz", "Creche Feliz",
+    list.map(c => c.creche_feliz === true ? "✅ Sim, aderente" :
+                   c.creche_feliz === false ? "✗ Não aderente" : null));
 
-        <div class="cmp-cell cmp-label"><span class="ic">⚡</span>Acções</div>
-        ${list.map(c => `
-          <div class="cmp-cell cmp-ctas">
-            <a href="${dirUrl(c)}" target="_blank" rel="noopener">🗺 Como chegar</a>
-            <a href="/creche/${slug(c)}" target="_blank">📋 Ficha completa</a>
-          </div>
-        `).join("")}
+  const rowMorada = row("🏠", "Morada", "Morada",
+    list.map(c => c.morada || null));
+
+  const rowCP = row("📮", "Código postal", "Código postal",
+    list.map(c => c.codigo_postal || null));
+
+  const rowTel = row("📞", "Telefone", "Telefone",
+    list.map(c => c.telefone ? `<a href="tel:${telClean(c.telefone)}">${c.telefone}</a>` : null));
+
+  const rowMail = row("✉", "Email", "Email",
+    list.map(c => c.email ? `<a href="mailto:${c.email}?subject=${encodeURIComponent('Pedido de informação — '+c.nome)}">${c.email}</a>` : null));
+
+  const rowSite = row("🌐", "Website", "Website",
+    list.map(c => c.website ? `<a href="${c.website}" target="_blank" rel="noopener">Abrir →</a>` : null));
+
+  const rowOperador = row("🏢", "Operador", "Operador",
+    list.map(c => c.operador || null));
+
+  // CTAs
+  const rowCtas = `<div class="cmp-cell cmp-label cmp-label-mobile"><span class="ic">⚡</span>Acções</div>` +
+    list.map(c => `
+      <div class="cmp-cell cmp-ctas" data-mobile-label="Acções">
+        ${c.telefone ? `<a class="cta-call" href="tel:${telClean(c.telefone)}">📞 Ligar</a>` : ''}
+        <a href="${dirUrl(c)}" target="_blank" rel="noopener">🗺 Como chegar</a>
+        <a href="${fichaUrl(c)}" target="_blank">📋 Ficha completa</a>
       </div>
-    </div>
-  `;
+    `).join("");
 
-  root.innerHTML = desktopGrid;
+  // Montar grid (mobile: cards)
+  const isMobile = window.matchMedia("(max-width:879px)").matches;
+
+  if(isMobile){
+    // Em mobile, cada creche é um card vertical com TODAS as linhas
+    root.innerHTML = `
+      <div class="compare-cards">
+        ${list.map((c,i) => {
+          const dist = dists[i], mens = mensals[i];
+          const distHTML = State.userPos
+            ? (dist != null ? `<b>${distFmt(dist)}</b>` : "—")
+            : `<span style="color:#9B97B5">Indica morada acima</span>`;
+          const cells = [
+            ["📏","Distância", distHTML, (i === minDistIdx && dist != null)],
+            ["💰","Mensalidade", mens ? `<b>${mens.txt}</b>${mens.note?'<br><small style="color:#9B97B5">'+mens.note+'</small>':''}` : "—", (i === minMensalIdx && mens && mens.v != null)],
+            ["🎂","Idades", faixaTxt(c) || "—"],
+            ["👶","Resposta", c.resposta || "—"],
+            ["🆓","Creche Feliz", c.creche_feliz === true ? "✅ Sim" : c.creche_feliz === false ? "✗ Não" : "—"],
+            ["🏠","Morada", c.morada || "—"],
+            ["📮","Código postal", c.codigo_postal || "—"],
+            ["📞","Telefone", c.telefone ? `<a href="tel:${telClean(c.telefone)}">${c.telefone}</a>` : "—"],
+            ["✉","Email", c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : "—"],
+            ["🌐","Website", c.website ? `<a href="${c.website}" target="_blank" rel="noopener">Abrir →</a>` : "—"],
+            ["🏢","Operador", c.operador || "—"]
+          ];
+          return `<div class="cmp-mobile-card">
+            <div class="cmp-cell cmp-head" data-id="${c.id}">
+              <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
+              <span class="tipo-pill tipo-${tipoCls(c)}">${c.tipo || "—"}</span>
+              <h3>${c.nome || "—"}</h3>
+              <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
+            </div>
+            ${cells.map(([ic,lb,html,best]) => `
+              <div class="cmp-cell cmp-val ${html==='—'?'empty-val':''} ${best?'best':''}" data-mobile-label="${ic} ${lb}">${html}</div>
+            `).join("")}
+            <div class="cmp-cell cmp-ctas" data-mobile-label="⚡ Acções">
+              ${c.telefone ? `<a class="cta-call" href="tel:${telClean(c.telefone)}">📞 Ligar</a>` : ''}
+              <a href="${dirUrl(c)}" target="_blank" rel="noopener">🗺 Como chegar</a>
+              <a href="${fichaUrl(c)}" target="_blank">📋 Ficha completa</a>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    `;
+  } else {
+    // Desktop: tabela grid
+    root.innerHTML = `
+      <div class="compare-wrap">
+        <div class="compare-cards ${cols}">
+          <div class="cmp-cell cmp-label"></div>
+          ${headCells}
+          ${rowDist}
+          ${rowMensal}
+          ${rowIdades}
+          ${rowResposta}
+          ${rowCF}
+          ${rowMorada}
+          ${rowCP}
+          ${rowTel}
+          ${rowMail}
+          ${rowSite}
+          ${rowOperador}
+          ${rowCtas}
+        </div>
+      </div>
+    `;
+  }
+
   summary.style.display = "block";
 
   // Wire remove buttons
@@ -252,11 +581,27 @@ function renderCompare(){
   });
 }
 
-document.addEventListener("compareChange", renderCompare);
-if(document.readyState === "loading"){
-  document.addEventListener("DOMContentLoaded", renderCompare);
-} else {
+// ============================================================
+// Init
+// ============================================================
+function init(){
+  wireLocBar();
+  updateLocBar();
   renderCompare();
+}
+
+document.addEventListener("compareChange", renderCompare);
+window.addEventListener("resize", () => {
+  // re-render on breakpoint changes
+  if(window._lastIsMobile === undefined) window._lastIsMobile = window.matchMedia("(max-width:879px)").matches;
+  const now = window.matchMedia("(max-width:879px)").matches;
+  if(now !== window._lastIsMobile){ window._lastIsMobile = now; renderCompare(); }
+});
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
 }
 </script>
 </body>

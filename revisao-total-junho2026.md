@@ -588,3 +588,45 @@ pais comparar creches em tabela antes de decidir.
 - **Lock-in feature** — depois de marcares 2-3, vais voltar
 - **SEO target novo**: "comparar creches portugal"
 
+
+---
+
+## 🌊 Onda 28 — Comparador ENRIQUECIDO (distância, mensalidade, 11 linhas)
+
+Feedback: "Para comparar era bom aparecer mais coisas como a distância
+a casa etc..."
+
+### Mudanças
+
+78. ✅ **Carrega dados completos** via `creches_pt.json` (cached) e
+    faz merge com stubs do localStorage
+79. ✅ **Barra de localização** no topo: input morada/CP + botão GPS,
+    pill "📮 [endereço] ✕" quando activa, persistente em localStorage
+80. ✅ **Distância calculada** (Haversine) à morada/CP/GPS do user com
+    formato inteligente (m, km, arredondado)
+81. ✅ **Mensalidade estimada** por tipo+zona:
+    - Pública/Creche Feliz → 0€
+    - IPSS → 30€–380€ (escalão, link calculadora)
+    - Privada Lisboa → 450€–700€
+    - Privada Grande Lisboa → 350€–550€
+    - Privada resto → 280€–450€
+82. ✅ **11 linhas de comparação**: distância · mensalidade · idades ·
+    resposta · Creche Feliz · morada · CP · telefone · email ·
+    website · operador
+83. ✅ **Highlight "🏆 melhor"** automático na mais perto e mais barata
+    (verde menta soft + emoji troféu)
+84. ✅ **CTAs por creche**: 📞 Ligar (coral) · 🗺 Como chegar · 📋 Ficha
+85. ✅ **Mobile redesign**: cards verticais um por creche em vez de
+    tabela (legibilidade ↑↑↑ em ecrã pequeno)
+86. ✅ **Resize handler**: re-render automático ao mudar breakpoint
+87. ✅ **Email/telefone clicáveis** directo (tel: / mailto: com subject
+    pré-preenchido)
+
+### Resultado
+Tabela rica antes (5 linhas) → agora (11 linhas + 3 CTAs por creche +
+highlights de melhor). Pai vê de relance:
+- Qual é mais perto
+- Qual é mais barata
+- Qual tem mais informação completa
+- Pode ligar directo sem sair da página
+
