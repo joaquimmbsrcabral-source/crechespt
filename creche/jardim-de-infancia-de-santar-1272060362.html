@@ -81,9 +81,13 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 @media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
-.ctas-big{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:22px 0 14px;position:relative;z-index:1}
+.ctas-big{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 14px;position:relative;z-index:1}
+@media(max-width:640px){.ctas-big{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
 .cta-big.cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer}
 .cta-big.cta-share:hover{color:#fff;filter:brightness(1.06)}
+.cta-big.cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer}
+.cta-big.cta-compare:hover{color:#fff;filter:brightness(1.08)}
+.cta-big.cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
@@ -201,7 +205,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <div class="ctas-big"><a class="cta-big" href="tel:+351232940144" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ji.santar@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20de%20Santar&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.570088,-7.895602" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a><button type="button" class="cta-big cta-share" data-share-name="Jardim de Infância de Santar" data-share-slug="jardim-de-infancia-de-santar-1272060362" aria-label="Partilhar com outros pais"><span class="ic">💬</span><span class="lb">Partilhar</span></button></div>
+    <div class="ctas-big"><a class="cta-big" href="tel:+351232940144" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ji.santar@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20de%20Santar&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.570088,-7.895602" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a><button type="button" class="cta-big cta-share" data-share-name="Jardim de Infância de Santar" data-share-slug="jardim-de-infancia-de-santar-1272060362" aria-label="Partilhar com outros pais"><span class="ic">💬</span><span class="lb">Partilhar</span></button><button type="button" class="cta-big cta-compare" data-cmp-id="osm-way-1272060362" data-cmp-name="Jardim de Infância de Santar" data-cmp-slug="jardim-de-infancia-de-santar-1272060362" data-cmp-tipo="Pública" data-cmp-distrito="Guarda" data-cmp-localidade="Nelas" data-cmp-lat="40.570088" data-cmp-lon="-7.895602" aria-label="Adicionar a comparar"><span class="ic">📊</span><span class="lb">Comparar</span></button></div>
   </section>
 
   <div class="q-banner ok">✓ Contactos verificados</div>
@@ -258,28 +262,58 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <p><a href="/">Início</a> ·<a href="/app">Mapa</a> ·<a href="/guias">Guias</a> ·<a href="/para-creches">Para creches</a> ·<a href="/privacidade">Privacidade</a> ·<a href="/termos">Termos</a></p>
   <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Dados: <a href="https://www.openstreetmap.org/copyright" rel="nofollow noopener">OpenStreetMap</a> (ODbL)</p>
 </footer>
+<script src="/compare.js" defer></script>
 <script>
 // === Botão Partilhar: Web Share API com fallback WhatsApp ===
-(function(){
-  document.addEventListener("click", function(e){
-    const btn = e.target.closest(".cta-share");
-    if(!btn) return;
-    e.preventDefault();
-    const nome = btn.getAttribute("data-share-name") || "esta creche";
-    const slug = btn.getAttribute("data-share-slug") || "";
-    const url = "https://creches.app/creche/" + slug;
-    const txt = "Olá! Achei esta creche que pode interessar-te: " + nome + " 🍼\n\n" + url + "\n\nVi no creches.app — o mapa de creches em Portugal.";
-    // Tentar Web Share API nativo (mobile)
-    if(navigator.share){
-      navigator.share({ title: nome + " — Creches.app", text: txt, url: url })
-        .catch(function(){ /* user cancelou — silêncio */ });
-    } else {
-      // Fallback desktop: abrir WhatsApp Web
-      const waUrl = "https://wa.me/?text=" + encodeURIComponent(txt);
-      window.open(waUrl, "_blank", "noopener");
-    }
+document.addEventListener("click", function(e){
+  const btn = e.target.closest(".cta-share");
+  if(!btn) return;
+  e.preventDefault();
+  const nome = btn.getAttribute("data-share-name") || "esta creche";
+  const slug = btn.getAttribute("data-share-slug") || "";
+  const url = "https://creches.app/creche/" + slug;
+  const txt = "Olá! Achei esta creche que pode interessar-te: " + nome + " 🍼\n\n" + url + "\n\nVi no creches.app — o mapa de creches em Portugal.";
+  if(navigator.share){
+    navigator.share({ title: nome + " — Creches.app", text: txt, url: url })
+      .catch(function(){});
+  } else {
+    window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank", "noopener");
+  }
+});
+
+// === Botão Comparar: adiciona/remove da lista global ===
+function _syncCmpBtn(btn){
+  if(!btn || !window.Compare) return;
+  const id = btn.getAttribute("data-cmp-id");
+  const isIn = window.Compare.has(id);
+  btn.classList.toggle("active", isIn);
+  const lb = btn.querySelector(".lb");
+  if(lb) lb.textContent = isIn ? "Remover" : "Comparar";
+}
+document.addEventListener("click", function(e){
+  const btn = e.target.closest(".cta-compare");
+  if(!btn || !window.Compare) return;
+  e.preventDefault();
+  const lat = parseFloat(btn.getAttribute("data-cmp-lat")) || null;
+  const lon = parseFloat(btn.getAttribute("data-cmp-lon")) || null;
+  window.Compare.toggle({
+    id: btn.getAttribute("data-cmp-id"),
+    nome: btn.getAttribute("data-cmp-name"),
+    slug: btn.getAttribute("data-cmp-slug"),
+    tipo: btn.getAttribute("data-cmp-tipo") || null,
+    distrito: btn.getAttribute("data-cmp-distrito") || null,
+    localidade: btn.getAttribute("data-cmp-localidade") || null,
+    lat, lon
   });
-})();
+  _syncCmpBtn(btn);
+});
+// Sync inicial quando carrega
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".cta-compare").forEach(_syncCmpBtn);
+});
+document.addEventListener("compareChange", function(){
+  document.querySelectorAll(".cta-compare").forEach(_syncCmpBtn);
+});
 </script>
 </body>
 </html>

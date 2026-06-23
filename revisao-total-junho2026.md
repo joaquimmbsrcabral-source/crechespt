@@ -554,3 +554,37 @@ pais via WhatsApp/SMS/qualquer app.
 - **SEO ↑** — links partilhados em WhatsApp/SMS geram tráfego direto
 - **Brand awareness ↑** — cada partilha tem "creches.app" na mensagem
 
+
+---
+
+## 🌊 Onda 27 — Comparador lado-a-lado (até 3 creches)
+
+Goal: diferenciador chave vs Carta Social/CrecheFácil — permitir aos
+pais comparar creches em tabela antes de decidir.
+
+### Mudanças
+
+70. ✅ **Estado partilhado `compare.js`** — localStorage até 3 creches,
+    API `window.Compare.{add, remove, has, toggle, list, count, clear}`,
+    evento `compareChange` para sincronização
+71. ✅ **Sticky bar global** no fundo (gradient navy) — mostra "Marcaste
+    X creches" + nomes truncados + botões "Limpar" e "Comparar →"
+    (desabilitado se < 2)
+72. ✅ **Página `/comparar`** com tabela responsiva grid 3 colunas
+    (desktop) → cards (mobile <760px). Linhas: tipo, localidade,
+    distrito, ficha, acções
+73. ✅ **Botão "📊 Comparar" no popup `/app`** — 6º CTA navy gradient,
+    fica coral-peach quando activo
+74. ✅ **Botão "📊 Comparar" em cada ficha estática** — verde→navy gradient,
+    label muda para "Remover" quando activo
+75. ✅ **Sync entre páginas** — abres ficha A, marcas; abres ficha B,
+    marcas; vais a /comparar; vês as 2
+76. ✅ **`/comparar` no sitemap** com priority 0.9
+77. ✅ **Resumo "Como decidir?"** no fundo da /comparar com 5 dicas
+
+### Impacto esperado
+- **Decisão guiada** — pais já não decidem no escuro
+- **Diferenciador competitivo** — nem Carta Social nem CrecheFácil têm
+- **Lock-in feature** — depois de marcares 2-3, vais voltar
+- **SEO target novo**: "comparar creches portugal"
+

@@ -125,9 +125,13 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 @media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
-.ctas-big{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:22px 0 14px;position:relative;z-index:1}
+.ctas-big{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 14px;position:relative;z-index:1}
+@media(max-width:640px){.ctas-big{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
 .cta-big.cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer}
 .cta-big.cta-share:hover{color:#fff;filter:brightness(1.06)}
+.cta-big.cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer}
+.cta-big.cta-compare:hover{color:#fff;filter:brightness(1.08)}
+.cta-big.cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
@@ -380,7 +384,19 @@ for c in creches:
         f'<span class="ic">💬</span><span class="lb">Partilhar</span></button>'
     )
 
-    ctas_html = f'<div class="ctas-big">{cta_tel}{cta_mail}{cta_dir}{cta_share}</div>'
+    # Comparar — adicionar à lista de comparação (sticky bar global)
+    cta_cmp = (
+        f'<button type="button" class="cta-big cta-compare" '
+        f'data-cmp-id="{esc(c["id"])}" data-cmp-name="{esc(nome)}" '
+        f'data-cmp-slug="{esc(slug)}" data-cmp-tipo="{esc(c.get("tipo") or "")}" '
+        f'data-cmp-distrito="{esc(c.get("distrito") or "")}" '
+        f'data-cmp-localidade="{esc(c.get("localidade") or "")}" '
+        f'data-cmp-lat="{lat}" data-cmp-lon="{lon}" '
+        f'aria-label="Adicionar a comparar">'
+        f'<span class="ic">📊</span><span class="lb">Comparar</span></button>'
+    )
+
+    ctas_html = f'<div class="ctas-big">{cta_tel}{cta_mail}{cta_dir}{cta_share}{cta_cmp}</div>'
 
     # === Banner qualidade de dados ===
     missing = []
@@ -510,28 +526,58 @@ for c in creches:
   </div>
 </main>
 {FOOTER}
+<script src="/compare.js" defer></script>
 <script>
 // === Botão Partilhar: Web Share API com fallback WhatsApp ===
-(function(){{
-  document.addEventListener("click", function(e){{
-    const btn = e.target.closest(".cta-share");
-    if(!btn) return;
-    e.preventDefault();
-    const nome = btn.getAttribute("data-share-name") || "esta creche";
-    const slug = btn.getAttribute("data-share-slug") || "";
-    const url = "https://creches.app/creche/" + slug;
-    const txt = "Olá! Achei esta creche que pode interessar-te: " + nome + " 🍼\\n\\n" + url + "\\n\\nVi no creches.app — o mapa de creches em Portugal.";
-    // Tentar Web Share API nativo (mobile)
-    if(navigator.share){{
-      navigator.share({{ title: nome + " — Creches.app", text: txt, url: url }})
-        .catch(function(){{ /* user cancelou — silêncio */ }});
-    }} else {{
-      // Fallback desktop: abrir WhatsApp Web
-      const waUrl = "https://wa.me/?text=" + encodeURIComponent(txt);
-      window.open(waUrl, "_blank", "noopener");
-    }}
+document.addEventListener("click", function(e){{
+  const btn = e.target.closest(".cta-share");
+  if(!btn) return;
+  e.preventDefault();
+  const nome = btn.getAttribute("data-share-name") || "esta creche";
+  const slug = btn.getAttribute("data-share-slug") || "";
+  const url = "https://creches.app/creche/" + slug;
+  const txt = "Olá! Achei esta creche que pode interessar-te: " + nome + " 🍼\\n\\n" + url + "\\n\\nVi no creches.app — o mapa de creches em Portugal.";
+  if(navigator.share){{
+    navigator.share({{ title: nome + " — Creches.app", text: txt, url: url }})
+      .catch(function(){{}});
+  }} else {{
+    window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank", "noopener");
+  }}
+}});
+
+// === Botão Comparar: adiciona/remove da lista global ===
+function _syncCmpBtn(btn){{
+  if(!btn || !window.Compare) return;
+  const id = btn.getAttribute("data-cmp-id");
+  const isIn = window.Compare.has(id);
+  btn.classList.toggle("active", isIn);
+  const lb = btn.querySelector(".lb");
+  if(lb) lb.textContent = isIn ? "Remover" : "Comparar";
+}}
+document.addEventListener("click", function(e){{
+  const btn = e.target.closest(".cta-compare");
+  if(!btn || !window.Compare) return;
+  e.preventDefault();
+  const lat = parseFloat(btn.getAttribute("data-cmp-lat")) || null;
+  const lon = parseFloat(btn.getAttribute("data-cmp-lon")) || null;
+  window.Compare.toggle({{
+    id: btn.getAttribute("data-cmp-id"),
+    nome: btn.getAttribute("data-cmp-name"),
+    slug: btn.getAttribute("data-cmp-slug"),
+    tipo: btn.getAttribute("data-cmp-tipo") || null,
+    distrito: btn.getAttribute("data-cmp-distrito") || null,
+    localidade: btn.getAttribute("data-cmp-localidade") || null,
+    lat, lon
   }});
-}})();
+  _syncCmpBtn(btn);
+}});
+// Sync inicial quando carrega
+document.addEventListener("DOMContentLoaded", function(){{
+  document.querySelectorAll(".cta-compare").forEach(_syncCmpBtn);
+}});
+document.addEventListener("compareChange", function(){{
+  document.querySelectorAll(".cta-compare").forEach(_syncCmpBtn);
+}});
 </script>
 </body>
 </html>"""

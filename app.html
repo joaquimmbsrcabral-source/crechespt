@@ -473,6 +473,9 @@
         <button type="button" id="d-cta-share" class="d-cta-big d-cta-share" aria-label="Partilhar com outros pais">
           <span class="ic">💬</span><span class="lb">Partilhar</span>
         </button>
+        <button type="button" id="d-cta-compare" class="d-cta-big d-cta-compare" aria-label="Adicionar a comparar">
+          <span class="ic">📊</span><span class="lb" id="d-cta-compare-lb">Comparar</span>
+        </button>
       </div>
 
       <div class="section">
@@ -1769,6 +1772,33 @@ function openDetail(id){
       }
     };
   }
+  // Comparar — adicionar/remover da lista de comparação (sticky bar global)
+  const ctaCmp = document.getElementById("d-cta-compare");
+  const ctaCmpLb = document.getElementById("d-cta-compare-lb");
+  function _syncCmpBtn(){
+    if(!ctaCmp || !window.Compare) return;
+    const isIn = window.Compare.has(c.id);
+    ctaCmp.classList.toggle("active", isIn);
+    if(ctaCmpLb) ctaCmpLb.textContent = isIn ? "Remover" : "Comparar";
+  }
+  if(ctaCmp && window.Compare){
+    _syncCmpBtn();
+    ctaCmp.onclick = ()=>{
+      const slug = (typeof slugify==="function") ? slugify(c.nome||"creche") : (c.nome||"creche").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      const nid = (c.id||"").replace(/\D/g,"") || c.id || "";
+      window.Compare.toggle({
+        id: c.id,
+        nome: c.nome,
+        slug: `${slug}-${nid}`,
+        tipo: c.tipo,
+        distrito: c.distrito,
+        localidade: c.localidade,
+        lat: c.lat,
+        lon: c.lon
+      });
+      _syncCmpBtn();
+    };
+  }
 
   // Botões legacy da toolbar (mantidos hidden, mas wire-up para retro-compatibilidade)
   const dCall = document.getElementById("d-call"); if(dCall){ dCall.disabled = !tel; dCall.onclick = ()=>{ if(tel) window.location.href = "tel:"+tel; }; }
@@ -3033,5 +3063,6 @@ function renderUserChip(user){
 })();
 </script>
 <script src="/cookies.js" defer></script>
+<script src="/compare.js" defer></script>
 </body>
 </html>

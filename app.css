@@ -735,10 +735,13 @@ header.topbar{
 .detail .body{overflow:auto;padding:18px 22px;flex:1;min-height:0}
 
 /* === CTAs grandes de contacto no topo do body (FOCO PRINCIPAL) === */
-.d-contact-ctas{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:0 0 18px}
-@media(max-width:520px){.d-contact-ctas{grid-template-columns:repeat(3,1fr) !important}}
+.d-contact-ctas{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:0 0 18px}
+@media(max-width:680px){.d-contact-ctas{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
 .d-cta-big.d-cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer;border:none}
 .d-cta-big.d-cta-share:hover{color:#fff;filter:brightness(1.06);box-shadow:0 8px 18px rgba(37,211,102,.4)}
+.d-cta-big.d-cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer;border:none}
+.d-cta-big.d-cta-compare:hover{color:#fff;filter:brightness(1.08);box-shadow:0 8px 18px rgba(44,35,86,.4)}
+.d-cta-big.d-cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68);box-shadow:0 8px 18px rgba(255,107,157,.4)}
 .d-cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:14px 6px;
   border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;
   font-size:12.5px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s,box-shadow .15s;
