@@ -525,3 +525,32 @@ Feedback do user: "quando carrego em Procurar devia desaparecer os filtros e mos
 - User abre filtros, marca IPSS + idade 2 anos → vê em tempo real "Ver 423 creches ↓" → carrega → fecha + vê lista
 - Sem mais "onde está a lista?" — fluxo natural até resultado
 
+
+---
+
+## 🌊 Onda 25 — Botão Partilhar com pais (WhatsApp/Web Share)
+
+Goal: transformar utilizadores em distribuidores — em vez de só pesquisar
+e usar, agora cada pai pode em 1 clique mandar uma creche para outros
+pais via WhatsApp/SMS/qualquer app.
+
+### Mudanças
+
+65. ✅ **Botão "💬 Partilhar" verde WhatsApp** em cada ficha de creche
+    (`/creche/{slug}.html` × 2578)
+66. ✅ **Botão "💬 Partilhar" no popup `/app`** (5º CTA grande, mobile
+    cai para 3 col)
+67. ✅ **Web Share API** nativo em mobile (sheet do iOS/Android com
+    todas as apps)
+68. ✅ **Fallback WhatsApp Web** (`wa.me/?text=...`) em desktop
+69. ✅ **Mensagem pré-preenchida** com nome da creche + link + assinatura:
+    > Olá! Achei esta creche que pode interessar-te: [Nome] 🍼
+    > [link]
+    > Vi no creches.app — o mapa de creches em Portugal.
+
+### Impacto esperado
+- **Viral coefficient ↑** — pais já partilham creches em grupos WhatsApp,
+  agora é com link directo + branding
+- **SEO ↑** — links partilhados em WhatsApp/SMS geram tráfego direto
+- **Brand awareness ↑** — cada partilha tem "creches.app" na mensagem
+

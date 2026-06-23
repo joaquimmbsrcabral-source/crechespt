@@ -470,6 +470,9 @@
         <a id="d-cta-dir" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Direcções">
           <span class="ic">🗺</span><span class="lb">Direcções</span>
         </a>
+        <button type="button" id="d-cta-share" class="d-cta-big d-cta-share" aria-label="Partilhar com outros pais">
+          <span class="ic">💬</span><span class="lb">Partilhar</span>
+        </button>
       </div>
 
       <div class="section">
@@ -1750,6 +1753,21 @@ function openDetail(id){
   if(ctaDir){
     ctaDir.href = `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}`;
     ctaDir.classList.remove("disabled");
+  }
+  // Partilhar — Web Share API com fallback WhatsApp wa.me
+  const ctaShare = document.getElementById("d-cta-share");
+  if(ctaShare){
+    ctaShare.onclick = ()=>{
+      const slug = (typeof slugify==="function") ? slugify(c.nome||"creche") : (c.nome||"creche").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      const nid = (c.id||"").replace(/\D/g,"") || c.id || "";
+      const url = `https://creches.app/creche/${slug}-${nid}`;
+      const txt = `Olá! Achei esta creche que pode interessar-te: ${c.nome} 🍼\n\n${url}\n\nVi no creches.app — o mapa de creches em Portugal.`;
+      if(navigator.share){
+        navigator.share({ title: c.nome + " — Creches.app", text: txt, url }).catch(()=>{});
+      } else {
+        window.open("https://wa.me/?text="+encodeURIComponent(txt), "_blank", "noopener");
+      }
+    };
   }
 
   // Botões legacy da toolbar (mantidos hidden, mas wire-up para retro-compatibilidade)

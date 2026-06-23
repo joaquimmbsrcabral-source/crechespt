@@ -735,7 +735,10 @@ header.topbar{
 .detail .body{overflow:auto;padding:18px 22px;flex:1;min-height:0}
 
 /* === CTAs grandes de contacto no topo do body (FOCO PRINCIPAL) === */
-.d-contact-ctas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 18px}
+.d-contact-ctas{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:0 0 18px}
+@media(max-width:520px){.d-contact-ctas{grid-template-columns:repeat(3,1fr) !important}}
+.d-cta-big.d-cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer;border:none}
+.d-cta-big.d-cta-share:hover{color:#fff;filter:brightness(1.06);box-shadow:0 8px 18px rgba(37,211,102,.4)}
 .d-cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:14px 6px;
   border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;
   font-size:12.5px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s,box-shadow .15s;
