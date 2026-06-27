@@ -709,3 +709,69 @@ Agora **qualquer creche** (ficha estática OU popup do mapa) tem
 botão para reportar vaga. Pais que entram pelo mapa (a maioria
 dos utilizadores) agora vêem-no logo.
 
+
+---
+
+## 🌊 Onda 31 — FIX filtro "🟢 Com vaga" (não carregava do Firestore)
+
+User reportou: "Reportei vaga mas filtro Com vaga não mostra"
+
+**Causa:** o filtro do mapa procurava em `c._vaga` (campo legado
+das creche_extras), não na collection `vagas` do Firestore.
+
+### Mudanças
+
+103. ✅ **`State.vagasAtivas`** (Set de creche_ids) inicializado vazio
+104. ✅ **`_loadVagasAtivas()`** corre 2s após load do /app — query
+     `vagas where expires_at > now`, popula Set
+105. ✅ **Filtro `f.onlyVaga`** agora verifica `State.vagasAtivas.has(c.id)
+     || c._vaga` (compat com creche_extras antigas)
+106. ✅ **Update instantâneo após reportar** — vaga nova entra logo
+     na Set, filtro re-aplica sem reload
+107. ✅ **Console log** "Vagas activas carregadas: N" para debug
+
+### Resultado
+Filtro funciona com vagas reais reportadas. Funciona para vagas
+das fichas estáticas + popup do mapa (ambas escrevem na mesma
+collection).
+
+
+---
+
+## 🌊 Onda 32 — Creche Feliz Reports (mesmo padrão das vagas)
+
+User: "Deveriamos fazer o mesmo procedimento para Creche Feliz?"
+
+**Sim:** mesma arquitectura, sem expiração (adesão é estável).
+
+### Mudanças
+
+108. ✅ **`creche-feliz.js`** lib (5.8KB) — getActive, report,
+     badgeHTML, daysAgo, renderBadgeInto. Rate limit 10/dia/pai
+109. ✅ **Botão "🆓 É Creche Feliz — reportar"** no popup /app
+     (logo abaixo do botão de vaga)
+110. ✅ **Slot `d-cf-slot`** auto-renderiza badge mint se houver
+     reports válidos OU se `creche_feliz: true` no dataset
+111. ✅ **Modal pai** "🆓 Sim, é Creche Feliz" — 1 click submit
+     (não precisa de mais info)
+112. ✅ **`State.crecheFelizAtivos` Set** + `_loadCrecheFelizAtivos()`
+     query Firestore no boot (2.2s delay)
+113. ✅ **Filtro `f.onlyCrecheFeliz`** verifica `c.creche_feliz ||
+     State.crecheFelizAtivos.has(c.id)`
+114. ✅ **Firestore rules** nova collection `creche_feliz_reports`
+     com mesma estrutura segurança das vagas
+115. ✅ **Update instantâneo** após submit — Set adicionada local,
+     filtro re-aplica
+116. ✅ **Badge mostra source** — "✓ Confirmada" vs "ℹ Reportada
+     por N pais"
+
+### Resultado
+Pais podem distribuir o trabalho de marcar Creche Feliz, que o
+Joaquim antes tinha de fazer 1-a-1 no /admin para 2.500+ creches.
+Crowd-sourcing acelerado massivamente.
+
+### Pendente
+- Regenerar fichas estáticas com botão CF (próxima — vou fazer)
+- Página dedicada `/creche-feliz-adesao` para creches (futuro)
+- Firestore rules deploy (manual)
+

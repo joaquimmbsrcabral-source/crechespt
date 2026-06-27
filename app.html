@@ -480,11 +480,18 @@
 
       <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
       <div id="d-vaga-slot"></div>
+      <!-- 🆓 Creche Feliz — slot preenchido se houver report ou marcação -->
+      <div id="d-cf-slot"></div>
 
-      <!-- Botão grande para reportar vaga -->
-      <button id="d-vaga-report" type="button" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:none;border-radius:14px;padding:13px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.35);margin:0 0 18px">
-        🟢 Sei que esta creche tem vaga — reportar
-      </button>
+      <!-- Botões de report — 2 colunas em desktop -->
+      <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:0 0 18px" id="d-report-actions">
+        <button id="d-vaga-report" type="button" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:none;border-radius:14px;padding:13px 18px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.35)">
+          🟢 Sei de vaga aqui — reportar
+        </button>
+        <button id="d-cf-report" type="button" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#1F4F2A;border:1.5px solid #7DD389;border-radius:14px;padding:13px 18px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit">
+          🆓 É Creche Feliz — reportar
+        </button>
+      </div>
 
       <div class="section">
         <h3>Detalhes</h3>
@@ -822,6 +829,8 @@ function _e(){ if(__DEV__ && typeof console !== "undefined") console.error.apply
 const State = {
   creches: [],
   filtered: [],
+  vagasAtivas: new Set(),  // Set de creche_ids com vaga activa no Firestore (Onda 31)
+  crecheFelizAtivos: new Set(),  // Set de creche_ids reportados como Creche Feliz (Onda 32)
   page: 0,
   view: "map",
   filters: {
@@ -1336,8 +1345,14 @@ function applyFilters(){
     }
     if(f.onlyTracked && !isTracked(c.id)) return false;
     if(f.onlyFav && !(State.userData.creches[c.id]||{}).fav) return false;
-    if(f.onlyVaga && !c._vaga) return false;
-    if(f.onlyCrecheFeliz && !c.creche_feliz) return false;
+    if(f.onlyVaga){
+      const hasVagaFirestore = State.vagasAtivas && State.vagasAtivas.has(c.id);
+      if(!hasVagaFirestore && !c._vaga) return false;
+    }
+    if(f.onlyCrecheFeliz){
+      const hasFromReports = State.crecheFelizAtivos && State.crecheFelizAtivos.has(c.id);
+      if(!c.creche_feliz && !hasFromReports) return false;
+    }
     if(f.idade.size){
       const mn = c.idade_min_meses, mx = c.idade_max_meses;
       if(mn==null || mx==null) return false;
@@ -1820,6 +1835,24 @@ function openDetail(id){
     dVagaReport.onclick = ()=>{
       if(typeof _openVagaModalApp === "function"){
         _openVagaModalApp(c.id, c.nome);
+      } else {
+        alert("A app ainda está a carregar — tenta em 3 segundos.");
+      }
+    };
+  }
+  // === Creche Feliz badge + reportar ===
+  const dCfSlot = document.getElementById("d-cf-slot");
+  if(dCfSlot){
+    dCfSlot.innerHTML = "";
+    if(window.CrecheFelizReports){
+      window.CrecheFelizReports.renderBadgeInto(dCfSlot, c.id, c.creche_feliz === true);
+    }
+  }
+  const dCfReport = document.getElementById("d-cf-report");
+  if(dCfReport){
+    dCfReport.onclick = ()=>{
+      if(typeof _openCfModalApp === "function"){
+        _openCfModalApp(c.id, c.nome);
       } else {
         alert("A app ainda está a carregar — tenta em 3 segundos.");
       }
@@ -3091,7 +3124,128 @@ function renderUserChip(user){
 <script src="/cookies.js" defer></script>
 <script src="/compare.js" defer></script>
 <script src="/vagas.js" defer></script>
+<script src="/creche-feliz.js" defer></script>
 <script>
+// === Carregar Creche Feliz reports do Firestore para filtro "🆓" ===
+async function _loadCrecheFelizAtivos(){
+  if(!window.firebase || !firebase.apps.length){
+    setTimeout(_loadCrecheFelizAtivos, 1500);
+    return;
+  }
+  try {
+    const fdb = firebase.firestore();
+    const snap = await fdb.collection("creche_feliz_reports").get();
+    const ids = new Set();
+    snap.forEach(doc => {
+      const v = doc.data();
+      if(v.valido !== false && v.creche_id) ids.add(v.creche_id);
+    });
+    if(typeof State !== "undefined"){
+      State.crecheFelizAtivos = ids;
+    }
+    console.log("Creche Feliz reports activos:", ids.size);
+    if(State && State.filters && State.filters.onlyCrecheFeliz && typeof applyFilters === "function"){
+      applyFilters();
+    }
+  } catch(e){
+    console.warn("Falha a carregar creche feliz reports:", e);
+  }
+}
+window.addEventListener('load', () => setTimeout(_loadCrecheFelizAtivos, 2200));
+
+// === Modal pai para reportar Creche Feliz ===
+function _openCfModalApp(crecheId, nome){
+  let modal = document.getElementById("_cf-modal-app");
+  if(modal){ modal.remove(); }
+  modal = document.createElement("div");
+  modal.id = "_cf-modal-app";
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)" id="_cfm-scrim">
+      <div style="background:#fff;border-radius:24px;padding:26px;max-width:440px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
+          <div>
+            <h3 style="margin:0 0 4px;font-family:Fredoka,sans-serif;font-size:20px;color:#2C2356">🆓 É Creche Feliz?</h3>
+            <div style="font-size:13px;color:#6E6989">${nome || "esta creche"}</div>
+          </div>
+          <button type="button" id="_cfm-x" style="background:none;border:0;font-size:24px;color:#9B97B5;cursor:pointer;line-height:1">✕</button>
+        </div>
+        <div style="background:#DEF5E1;border-left:4px solid #7DD389;padding:10px 12px;border-radius:10px;font-size:12.5px;color:#1F4F2A;margin-bottom:16px;line-height:1.5">
+          Sabes que esta creche aderiu ao programa <b>Creche Feliz</b>? Reporta para outros pais também saberem.
+          <br><br>
+          ⚠ Em caso de dúvida, <b>confirma com a creche</b> que aceita gratuitidade ao abrigo do programa.
+        </div>
+        <button type="button" id="_cfm-submit" style="width:100%;padding:13px;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:0;border-radius:99px;font-weight:800;font-size:14.5px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.4)">
+          🆓 Sim, é Creche Feliz
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  function close(){ modal.remove(); }
+  modal.querySelector("#_cfm-x").addEventListener("click", close);
+  modal.querySelector("#_cfm-scrim").addEventListener("click", close);
+
+  modal.querySelector("#_cfm-submit").addEventListener("click", async () => {
+    if(!window.CrecheFelizReports){ alert("A app ainda está a carregar — tenta em 5s."); return; }
+    const btn = modal.querySelector("#_cfm-submit");
+    btn.disabled = true;
+    btn.innerHTML = "⏳ A guardar…";
+    try {
+      await window.CrecheFelizReports.report({
+        creche_id: crecheId,
+        nome_creche: nome,
+        source: "pai"
+      });
+      btn.innerHTML = "✓ Obrigado!";
+      const slot = document.getElementById("d-cf-slot");
+      if(slot && window.CrecheFelizReports){
+        setTimeout(() => window.CrecheFelizReports.renderBadgeInto(slot, crecheId), 600);
+      }
+      if(State && State.crecheFelizAtivos) State.crecheFelizAtivos.add(crecheId);
+      if(State && State.filters && State.filters.onlyCrecheFeliz && typeof applyFilters === "function") applyFilters();
+      setTimeout(close, 1500);
+    } catch(err){
+      alert("Erro: " + (err.message || err));
+      btn.disabled = false;
+      btn.innerHTML = "🆓 Sim, é Creche Feliz";
+    }
+  });
+}
+
+// === Carregar vagas activas do Firestore no boot para o filtro "Com vaga" ===
+async function _loadVagasAtivas(){
+  if(!window.firebase || !firebase.apps.length){
+    setTimeout(_loadVagasAtivas, 1500);  // retry se Firebase ainda não inicializou
+    return;
+  }
+  try {
+    const fdb = firebase.firestore();
+    const now = Date.now();
+    const snap = await fdb.collection("vagas").get();
+    const ids = new Set();
+    snap.forEach(doc => {
+      const v = doc.data();
+      const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
+      if(exp > now && v.creche_id){
+        ids.add(v.creche_id);
+      }
+    });
+    if(typeof State !== "undefined"){
+      State.vagasAtivas = ids;
+    }
+    console.log("Vagas activas carregadas:", ids.size);
+    // Re-render se o filtro estiver activo
+    if(State && State.filters && State.filters.onlyVaga && typeof applyFilters === "function"){
+      applyFilters();
+    }
+  } catch(e){
+    console.warn("Falha a carregar vagas activas:", e);
+  }
+}
+// Disparar 3 segundos depois do load (depois do Firebase init)
+window.addEventListener('load', () => setTimeout(_loadVagasAtivas, 2000));
+
 // === Modal para reportar vaga (pais anónimos) — disparado pelo popup do mapa ===
 function _openVagaModalApp(crecheId, nome){
   let modal = document.getElementById("_vaga-modal-app");
@@ -3166,6 +3320,9 @@ function _openVagaModalApp(crecheId, nome){
       if(slot && window.Vagas){
         setTimeout(() => window.Vagas.renderBadgeInto(slot, crecheId), 600);
       }
+      // Adicionar à Set para o filtro funcionar logo
+      if(State && State.vagasAtivas) State.vagasAtivas.add(crecheId);
+      if(State && State.filters && State.filters.onlyVaga && typeof applyFilters === "function") applyFilters();
       setTimeout(close, 1500);
     } catch(err){
       alert("Erro: " + (err.message || err));

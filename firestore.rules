@@ -156,6 +156,30 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    // ─── Creche Feliz Reports (Onda 32 — Jun 2026) ───
+    // Pais e creches podem reportar adesão ao programa Creche Feliz.
+    // Sem expiração (adesão é estável). Admin pode marcar valido=false
+    // se for falso positivo.
+    match /creche_feliz_reports/{reportId} {
+      // Leitura pública — qualquer um pode ver
+      allow read: if true;
+
+      // Qualquer pessoa pode criar (anónimo ou autenticado)
+      allow create: if
+           request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
+        && request.resource.data.source in ['creche', 'pai']
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() < 100
+        && request.resource.data.creche_id.size() > 0
+        && (!('nome_creche' in request.resource.data) ||
+            (request.resource.data.nome_creche is string &&
+             request.resource.data.nome_creche.size() <= 200))
+        && request.resource.data.valido == true;
+
+      // Só admin actualiza (marca falso positivo) ou apaga
+      allow update, delete: if isAdmin();
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;
