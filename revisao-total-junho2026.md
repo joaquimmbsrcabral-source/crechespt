@@ -680,3 +680,32 @@ Sistema **dual-source** para resolver o cold-start:
 - Admin pode marcar manualmente `verificado: true` via Firestore
   console enquanto não há Cloud Function
 
+
+---
+
+## 🌊 Onda 30 — Botão "Reportar vaga" no popup /app (FIX gap)
+
+User reportou: "Quando abro o mapa carrego numa creche, aparece
+o card mas não aparece o reportar vaga"
+
+**Causa:** o botão de vaga só estava nas fichas estáticas
+(/creche/...) — o popup do /app não tinha. Esquecimento na Onda 29.
+
+### Mudanças
+
+98. ✅ **Botão grande verde "🟢 Sei que esta creche tem vaga"**
+    no popup do /app (entre os 6 CTAs grandes e o tracking)
+99. ✅ **Slot `d-vaga-slot`** — auto-renderiza badge se houver vaga
+    activa para a creche aberta
+100. ✅ **`_openVagaModalApp()`** — função global, reutiliza o modal
+     anónimo das fichas (mesma UX em todo o lado)
+101. ✅ **`vagas.js` carregado defer** no /app
+102. ✅ **Render automático da badge** após submit do modal —
+     mostra logo o "🟢 vaga aberta (agora mesmo)" sem precisar
+     fechar/reabrir
+
+### Resultado
+Agora **qualquer creche** (ficha estática OU popup do mapa) tem
+botão para reportar vaga. Pais que entram pelo mapa (a maioria
+dos utilizadores) agora vêem-no logo.
+

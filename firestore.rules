@@ -127,6 +127,35 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // ─── Vagas em tempo real (Onda 29 — Jun 2026) ───
+    // Dual-source: creches reportam (verificado por email) e pais reportam
+    // anonimamente. Auto-expiração via TTL no campo expires_at (7 dias).
+    match /vagas/{vagaId} {
+      // Leitura pública — qualquer um pode ver vagas activas
+      allow read: if true;
+
+      // Qualquer pessoa pode criar (anónimo ou autenticado)
+      // Validação básica: campos obrigatórios, source válido, tamanhos máx.
+      allow create: if
+           request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
+        && request.resource.data.source in ['creche', 'pai']
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() < 100
+        && request.resource.data.creche_id.size() > 0
+        && (!('notas' in request.resource.data) ||
+            (request.resource.data.notas is string &&
+             request.resource.data.notas.size() < 280))
+        && (!('nome_creche' in request.resource.data) ||
+            (request.resource.data.nome_creche is string &&
+             request.resource.data.nome_creche.size() <= 200))
+        && (!('idades' in request.resource.data) ||
+            (request.resource.data.idades is list &&
+             request.resource.data.idades.size() <= 5));
+
+      // Só admin pode actualizar (confirmar vaga, etc.) ou apagar
+      allow update, delete: if isAdmin();
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;
