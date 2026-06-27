@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Marcar vaga aberta — Creches.app</title>
+<meta name="description" content="És responsável por uma creche em Portugal? Marca aqui que tens vaga aberta. Aparece destacada para os pais. Grátis. 30 segundos.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://creches.app/vagas">
+<meta name="theme-color" content="#7DD389">
+<meta property="og:title" content="Marca vaga aberta — Creches.app">
+<meta property="og:description" content="Para responsáveis de creches em Portugal. Marca vaga, aparece destacada para os pais.">
+<meta property="og:image" content="https://creches.app/og-image.png">
+<link rel="icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-peach:#FF9F68; --c-coral-soft:#FFE3EE; --c-peach-soft:#FFE8D6;
+  --c-mint:#7DD389; --c-mint-dk:#5BC077; --c-mint-soft:#DEF5E1;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5; --line:#F1E6D9; --panel:#FFFFFF;
+  --r-card:24px; --r-pill:999px; --sh-1:0 4px 14px rgba(60,40,90,.08); --sh-2:0 12px 32px rgba(60,40,90,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Quicksand",system-ui,-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Fredoka","Quicksand",sans-serif;font-weight:600;color:var(--ink);line-height:1.2}
+
+header{background:var(--panel);padding:14px 20px;display:flex;align-items:center;gap:20px;box-shadow:var(--sh-1);position:sticky;top:0;z-index:50}
+header .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none}
+header .brand-name{font-family:"Fredoka",sans-serif;font-size:18px}
+header .brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+header nav{display:flex;gap:18px;align-items:center;flex:1;justify-content:flex-end;font-size:14px}
+header nav a{color:var(--ink-soft);font-weight:600}
+header nav a:hover{color:var(--c-coral);text-decoration:none}
+header nav a.cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;padding:9px 16px;border-radius:99px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+
+main{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+
+.hero{text-align:center;margin-bottom:40px}
+.hero .pill-new{display:inline-flex;align-items:center;gap:6px;background:var(--c-mint-soft);color:#1F6E37;padding:6px 14px;border-radius:99px;font-size:12.5px;font-weight:700;margin-bottom:14px}
+.hero h1{font-size:38px;margin:0 0 14px;font-weight:700}
+.hero h1 .acc{background:linear-gradient(135deg,var(--c-mint),var(--c-mint-dk));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--ink-soft);font-size:17px;max-width:560px;margin:0 auto;line-height:1.5}
+
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 40px}
+@media(max-width:640px){.benefits{grid-template-columns:1fr;gap:10px}}
+.benefit{background:#fff;border-radius:16px;padding:16px 14px;text-align:center;box-shadow:var(--sh-1)}
+.benefit .ic{font-size:28px;line-height:1;margin-bottom:6px}
+.benefit b{display:block;font-size:13.5px;color:var(--ink);font-weight:700;margin-bottom:3px}
+.benefit small{color:var(--ink-soft);font-size:12px;line-height:1.4}
+
+.form-card{background:#fff;border-radius:var(--r-card);padding:30px;box-shadow:var(--sh-2);margin-bottom:24px}
+.form-card h2{margin:0 0 20px;font-size:22px}
+
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;color:var(--ink);font-size:13.5px;margin-bottom:6px}
+.field label small{color:var(--ink-soft);font-weight:500;font-size:12px;margin-left:4px}
+.field input, .field textarea, .field select{
+  width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;
+  padding:11px 14px;font-family:inherit;font-size:14px;color:var(--ink);transition:border .15s;
+}
+.field input:focus, .field textarea:focus, .field select:focus{outline:none;border-color:var(--c-mint)}
+.field textarea{resize:vertical;min-height:70px}
+
+.chips-grid{display:flex;flex-wrap:wrap;gap:8px}
+.chip-idade{background:var(--bg);border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink-soft);transition:all .15s;font-family:inherit}
+.chip-idade:hover{border-color:var(--c-mint);color:var(--c-mint-dk)}
+.chip-idade.active{background:var(--c-mint);color:#fff;border-color:var(--c-mint)}
+
+.submit-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:15px 20px;margin-top:8px;
+  background:linear-gradient(135deg,var(--c-mint),var(--c-mint-dk));color:#fff;
+  border:none;border-radius:99px;font-weight:800;font-size:15.5px;font-family:inherit;
+  cursor:pointer;box-shadow:0 8px 22px rgba(125,211,137,.4);transition:all .18s;
+}
+.submit-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.notice{background:var(--c-peach-soft);border-left:4px solid var(--c-peach);padding:14px 16px;border-radius:12px;font-size:13.5px;color:#5A3A1A;line-height:1.5;margin:18px 0}
+
+.success-card{display:none;background:linear-gradient(135deg,var(--c-mint-soft),#F0FBF2);border-radius:var(--r-card);padding:40px 30px;text-align:center;border:2px solid var(--c-mint)}
+.success-card .ic{font-size:64px;margin-bottom:10px;line-height:1}
+.success-card h2{margin:0 0 12px;color:#1F6E37}
+.success-card p{color:#2C5733;font-size:15px;margin:0 0 6px}
+
+.faq{margin-top:40px}
+.faq details{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:10px;box-shadow:var(--sh-1)}
+.faq summary{font-weight:700;font-size:14.5px;color:var(--ink);cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;font-size:20px;color:var(--c-mint);font-weight:700;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:10px 0 0;color:var(--ink-soft);font-size:14px;line-height:1.6}
+
+footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:60px}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/">
+    <div class="logo">🍼</div>
+    <div class="brand-name">Creches<span class="brand-tld">.app</span></div>
+  </a>
+  <nav>
+    <a href="/app">Mapa</a>
+    <a href="/para-creches">Para creches</a>
+    <a href="/app" class="cta">Abrir mapa →</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="pill-new">🟢 NOVO</span>
+    <h1>Tens uma <span class="acc">vaga aberta</span>?<br>Diz aos pais.</h1>
+    <p>Em 30 segundos. Aparece destacada no mapa, ordenada acima das outras creches. Grátis, sem catch.</p>
+  </section>
+
+  <section class="benefits">
+    <div class="benefit">
+      <div class="ic">🟢</div>
+      <b>Destaque imediato</b>
+      <small>Pino verde a pulsar no mapa + lista no topo</small>
+    </div>
+    <div class="benefit">
+      <div class="ic">📞</div>
+      <b>Pais ligam directo</b>
+      <small>Tens contactos a chegar sem teres de gastar em marketing</small>
+    </div>
+    <div class="benefit">
+      <div class="ic">⏱</div>
+      <b>30 segundos</b>
+      <small>Form rápido, validamos por email, fica activo 7 dias</small>
+    </div>
+  </section>
+
+  <div id="form-section" class="form-card">
+    <h2>Marcar vaga aberta</h2>
+    <form id="vaga-form">
+      <div class="field">
+        <label for="v-creche">Nome da tua creche <small>(começa a escrever para procurar)</small></label>
+        <input id="v-creche" type="text" placeholder="Ex.: Centro Infantil O Caracol" autocomplete="off" required>
+        <input type="hidden" id="v-creche-id">
+      </div>
+
+      <div class="field">
+        <label>Para que idades tens vaga? <small>(escolhe uma ou várias)</small></label>
+        <div class="chips-grid" id="v-idades">
+          <button type="button" class="chip-idade" data-v="berçário">👶 Berçário (0-1)</button>
+          <button type="button" class="chip-idade" data-v="creche">🍼 Creche (1-3)</button>
+          <button type="button" class="chip-idade" data-v="ji">🎨 JI (3-6)</button>
+          <button type="button" class="chip-idade" data-v="atl">🎒 ATL (6+)</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="v-email">Email da creche <small>(para confirmarmos que és tu)</small></label>
+        <input id="v-email" type="email" placeholder="responsavel@minhacrechejardim.pt" required>
+      </div>
+
+      <div class="field">
+        <label for="v-notas">Observações <small>(opcional, máx 280)</small></label>
+        <textarea id="v-notas" maxlength="280" placeholder="Ex.: Vaga para entrada imediata. Berçário tem 1 vaga, creche dos 2 anos tem 2 vagas."></textarea>
+      </div>
+
+      <button id="v-submit" class="submit-btn" type="submit">
+        <span>🟢</span> Marcar vaga aberta
+      </button>
+
+      <div class="notice">
+        <b>Como funciona:</b> enviamos um email para o endereço que indicaste, com um link de confirmação. Clicas → vaga fica visível imediatamente para os pais. Sem link confirmado, fica em queue de validação manual.
+      </div>
+    </form>
+  </div>
+
+  <div id="success-section" class="success-card">
+    <div class="ic">✓</div>
+    <h2>Recebido!</h2>
+    <p>Enviámos um email para o endereço que indicaste.</p>
+    <p>Confirma o link e a vaga aparece destacada para os pais.</p>
+    <p style="margin-top:18px;font-size:13px;color:#1F6E37">Se não vires o email em 5 minutos, vê o spam ou escreve-nos para <a href="mailto:geral@creches.app" style="color:#1F6E37;font-weight:700">geral@creches.app</a></p>
+  </div>
+
+  <section class="faq">
+    <h2 style="margin:30px 0 16px;font-size:22px">Perguntas frequentes</h2>
+
+    <details>
+      <summary>É mesmo grátis?</summary>
+      <p>Sim. Creches.app é gratuito para pais e para creches, para sempre. Não há plano premium, não há "destacar pago", não há ads.</p>
+    </details>
+
+    <details>
+      <summary>Porque é que precisam do meu email?</summary>
+      <p>Para confirmarmos que és mesmo responsável pela creche. Só aceitamos emails que estejam no dataset oficial das creches em Portugal. Isto evita que a concorrência reporte vagas falsas em teu nome.</p>
+    </details>
+
+    <details>
+      <summary>O meu email não foi reconhecido. Como faço?</summary>
+      <p>Escreve-nos para <a href="mailto:geral@creches.app">geral@creches.app</a> com o nome da creche, NIF e o teu cargo. Validamos manualmente em 24-48h.</p>
+    </details>
+
+    <details>
+      <summary>Quanto tempo fica a vaga visível?</summary>
+      <p>7 dias. Depois expira automaticamente. Para manteres a vaga visível, marca novamente quando ainda for válida.</p>
+    </details>
+
+    <details>
+      <summary>E se a vaga já foi preenchida?</summary>
+      <p>Podes desactivar em qualquer momento — vamos enviar-te o link de gestão no email de confirmação.</p>
+    </details>
+
+    <details>
+      <summary>Os pais podem reportar vagas que viram pelo telefone?</summary>
+      <p>Sim. Pais podem reportar anonimamente vagas que descobrem ao ligar. Essas vagas aparecem marcadas como "ℹ Reportada por pai" — para distinguires da informação verificada por ti.</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div>Creches.app — gratuito · sem ads · sem venda de dados</div>
+  <div style="margin-top:6px"><a href="/privacidade">Privacidade</a> · <a href="/termos">Termos</a> · <a href="/sobre">Sobre</a></div>
+</footer>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script>
+// Configuração Firebase (mesma do /app)
+const firebaseConfig = {
+  apiKey: "AIzaSyDjs9ZmZS3aaVQDFXp_lFsKfNa5Yc-LjbA",
+  authDomain: "creches-pt.firebaseapp.com",
+  projectId: "creches-pt",
+  storageBucket: "creches-pt.firebasestorage.app",
+  messagingSenderId: "568867127907",
+  appId: "1:568867127907:web:62c8f3b34c2c41a8e89c9e"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+<script src="/vagas.js"></script>
+<script>
+// ─── Estado ───
+let crechesData = null;
+const selectedIdades = new Set();
+
+// ─── Carregar dataset para autocomplete ───
+async function loadCreches(){
+  try {
+    const r = await fetch("/creches_pt.json", { cache: "force-cache" });
+    crechesData = await r.json();
+  } catch(e){ console.warn("Falha a carregar creches", e); }
+}
+loadCreches();
+
+// ─── Autocomplete creche ───
+const inpCreche = document.getElementById("v-creche");
+const inpCrecheId = document.getElementById("v-creche-id");
+let suggestBox = null;
+
+function ensureSuggestBox(){
+  if(suggestBox) return suggestBox;
+  suggestBox = document.createElement("div");
+  suggestBox.style.cssText = "position:absolute;background:#fff;border:1.5px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(60,40,90,.18);max-height:260px;overflow-y:auto;z-index:1000;display:none";
+  inpCreche.parentElement.style.position = "relative";
+  inpCreche.parentElement.appendChild(suggestBox);
+  return suggestBox;
+}
+
+function showSuggestions(matches){
+  const box = ensureSuggestBox();
+  if(!matches.length){ box.style.display = "none"; return; }
+  box.style.width = inpCreche.offsetWidth + "px";
+  box.style.left = "0";
+  box.style.top = (inpCreche.offsetTop + inpCreche.offsetHeight + 4) + "px";
+  box.innerHTML = matches.slice(0, 8).map(c => `
+    <div class="sg-item" data-id="${c.id}" data-nome="${c.nome.replace(/"/g,'&quot;')}" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid #F4EBE0;font-size:13.5px">
+      <b style="color:#2C2356">${c.nome}</b><br>
+      <small style="color:#6E6989">${c.localidade || ''} · ${c.distrito || ''} · ${c.tipo || ''}</small>
+    </div>
+  `).join("");
+  box.style.display = "block";
+  box.querySelectorAll(".sg-item").forEach(el => {
+    el.addEventListener("mousedown", e => {
+      e.preventDefault();
+      inpCreche.value = el.dataset.nome;
+      inpCrecheId.value = el.dataset.id;
+      box.style.display = "none";
+    });
+  });
+}
+
+inpCreche.addEventListener("input", () => {
+  inpCrecheId.value = "";
+  const q = inpCreche.value.trim().toLowerCase();
+  if(q.length < 3 || !crechesData){ showSuggestions([]); return; }
+  const matches = crechesData.filter(c => (c.nome||"").toLowerCase().includes(q)).slice(0, 8);
+  showSuggestions(matches);
+});
+
+inpCreche.addEventListener("blur", () => setTimeout(()=>{ if(suggestBox) suggestBox.style.display="none"; }, 200));
+
+// ─── Chips de idades ───
+document.querySelectorAll("#v-idades .chip-idade").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const v = btn.dataset.v;
+    if(selectedIdades.has(v)){
+      selectedIdades.delete(v);
+      btn.classList.remove("active");
+    } else {
+      selectedIdades.add(v);
+      btn.classList.add("active");
+    }
+  });
+});
+
+// ─── Submit ───
+const form = document.getElementById("vaga-form");
+const submitBtn = document.getElementById("v-submit");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  if(!inpCrecheId.value){
+    alert("Escolhe uma creche da lista. Começa a escrever o nome e selecciona uma sugestão.");
+    return;
+  }
+  if(selectedIdades.size === 0){
+    alert("Escolhe pelo menos uma idade com vaga.");
+    return;
+  }
+
+  const email = document.getElementById("v-email").value.trim();
+  const notas = document.getElementById("v-notas").value.trim();
+  const nomeCreche = inpCreche.value.trim();
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span>⏳</span> A guardar…';
+
+  try {
+    await Vagas.report({
+      creche_id: inpCrecheId.value,
+      nome_creche: nomeCreche,
+      source: "creche",
+      idades: Array.from(selectedIdades),
+      notas,
+      email
+    });
+    // Sucesso
+    document.getElementById("form-section").style.display = "none";
+    document.getElementById("success-section").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch(err){
+    alert("Erro a guardar: " + (err.message || err));
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>🟢</span> Marcar vaga aberta';
+  }
+});
+
+// ─── Confirmar via link de email ───
+const url = new URL(window.location.href);
+if(url.searchParams.get("ok") === "1"){
+  document.getElementById("form-section").style.display = "none";
+  const succ = document.getElementById("success-section");
+  succ.style.display = "block";
+  succ.querySelector("h2").textContent = "✓ Vaga confirmada!";
+  succ.querySelector("p").textContent = "A tua vaga está agora visível no mapa para os pais.";
+}
+</script>
+</body>
+</html>

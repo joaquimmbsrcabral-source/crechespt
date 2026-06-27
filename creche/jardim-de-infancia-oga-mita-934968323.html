@@ -208,6 +208,19 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="ctas-big"><a class="cta-big" href="tel:+351226184536;+351226168050" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ogamita@sapo.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20%22Og%C3%A1-Mit%C3%A1%22&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.172624,-8.660079" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a><button type="button" class="cta-big cta-share" data-share-name="Jardim de Infância &quot;Ogá-Mitá&quot;" data-share-slug="jardim-de-infancia-oga-mita-934968323" aria-label="Partilhar com outros pais"><span class="ic">💬</span><span class="lb">Partilhar</span></button><button type="button" class="cta-big cta-compare" data-cmp-id="osm-way-934968323" data-cmp-name="Jardim de Infância &quot;Ogá-Mitá&quot;" data-cmp-slug="jardim-de-infancia-oga-mita-934968323" data-cmp-tipo="Privada" data-cmp-distrito="Porto" data-cmp-localidade="Aldoar" data-cmp-lat="41.172624" data-cmp-lon="-8.660079" aria-label="Adicionar a comparar"><span class="ic">📊</span><span class="lb">Comparar</span></button></div>
   </section>
 
+  <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
+  <div id="vaga-slot" data-creche-id="osm-way-934968323" data-creche-nome="Jardim de Infância &quot;Ogá-Mitá&quot;"></div>
+
+  <!-- Botão para pais reportarem vaga descoberta -->
+  <div style="text-align:center;margin:14px 0 20px">
+    <button type="button" class="vaga-report-btn"
+            data-vaga-creche-id="osm-way-934968323"
+            data-vaga-creche-nome="Jardim de Infância &quot;Ogá-Mitá&quot;"
+            style="background:#fff;border:1.5px solid #7DD389;color:#1F6E37;padding:11px 22px;border-radius:99px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .15s">
+      🟢 Sei que esta creche tem vaga — reporta
+    </button>
+  </div>
+
   <div class="q-banner ok">✓ Contactos verificados</div>
 
   <!-- Stats cards visuais -->
@@ -262,6 +275,24 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <p><a href="/">Início</a> ·<a href="/app">Mapa</a> ·<a href="/guias">Guias</a> ·<a href="/para-creches">Para creches</a> ·<a href="/privacidade">Privacidade</a> ·<a href="/termos">Termos</a></p>
   <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Dados: <a href="https://www.openstreetmap.org/copyright" rel="nofollow noopener">OpenStreetMap</a> (ODbL)</p>
 </footer>
+<!-- Firebase para vagas (lazy) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js" defer></script>
+<script defer>
+window.addEventListener('load', function(){
+  if(typeof firebase !== 'undefined' && !firebase.apps.length){
+    firebase.initializeApp({
+      apiKey: "AIzaSyDjs9ZmZS3aaVQDFXp_lFsKfNa5Yc-LjbA",
+      authDomain: "creches-pt.firebaseapp.com",
+      projectId: "creches-pt",
+      storageBucket: "creches-pt.firebasestorage.app",
+      messagingSenderId: "568867127907",
+      appId: "1:568867127907:web:62c8f3b34c2c41a8e89c9e"
+    });
+  }
+});
+</script>
+<script src="/vagas.js" defer></script>
 <script src="/compare.js" defer></script>
 <script>
 // === Botão Partilhar: Web Share API com fallback WhatsApp ===
@@ -314,6 +345,104 @@ document.addEventListener("DOMContentLoaded", function(){
 document.addEventListener("compareChange", function(){
   document.querySelectorAll(".cta-compare").forEach(_syncCmpBtn);
 });
+
+// === Vagas em tempo real ===
+// Renderiza badge "vaga aberta" se houver, e wire do botão "Sei de vaga"
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    if(!window.Vagas) return;
+    const slot = document.getElementById("vaga-slot");
+    if(slot){
+      window.Vagas.renderBadgeInto(slot, slot.dataset.crecheId);
+    }
+  }, 800);  // delay para Firebase init
+});
+
+// Modal pai: "🟢 Sei de vaga aqui"
+document.addEventListener("click", function(e){
+  const btn = e.target.closest(".vaga-report-btn");
+  if(!btn) return;
+  const crecheId = btn.getAttribute("data-vaga-creche-id");
+  const nome = btn.getAttribute("data-vaga-creche-nome");
+  _openVagaModal(crecheId, nome);
+});
+
+function _openVagaModal(crecheId, nome){
+  let modal = document.getElementById("_vaga-modal");
+  if(modal){ modal.remove(); }
+  modal = document.createElement("div");
+  modal.id = "_vaga-modal";
+  modal.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)" id="_vaga-scrim">
+      <div style="background:#fff;border-radius:24px;padding:28px;max-width:440px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
+        <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
+          <div>
+            <h3 style="margin:0 0 4px;font-family:Fredoka,sans-serif;font-size:20px;color:#2C2356">🟢 Reportar vaga</h3>
+            <div style="font-size:13px;color:#6E6989">${nome}</div>
+          </div>
+          <button type="button" id="_vaga-x" style="background:none;border:0;font-size:24px;color:#9B97B5;cursor:pointer;line-height:1">✕</button>
+        </div>
+        <div style="background:#FFF3D6;border-left:4px solid #FFD166;padding:10px 12px;border-radius:10px;font-size:12.5px;color:#7B5500;margin-bottom:16px;line-height:1.45">
+          ⚠ Reportada por pais — aparece como "não verificada". A creche pode confirmar via creches.app/vagas.
+        </div>
+        <div style="margin-bottom:14px">
+          <label style="display:block;font-weight:700;color:#2C2356;font-size:13px;margin-bottom:6px">Para que idades sabes que há vaga?</label>
+          <div id="_v-idades-pai" style="display:flex;flex-wrap:wrap;gap:6px">
+            <button type="button" class="_vi" data-v="berçário" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">👶 Berçário</button>
+            <button type="button" class="_vi" data-v="creche" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">🍼 Creche</button>
+            <button type="button" class="_vi" data-v="ji" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">🎨 JI</button>
+            <button type="button" class="_vi" data-v="atl" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">🎒 ATL</button>
+          </div>
+        </div>
+        <div style="margin-bottom:14px">
+          <label style="display:block;font-weight:700;color:#2C2356;font-size:13px;margin-bottom:6px">Como soubeste? <small style="color:#6E6989;font-weight:500">(opcional)</small></label>
+          <textarea id="_v-notas-pai" maxlength="280" rows="2" placeholder="Ex.: Liguei hoje e disseram-me que têm vaga para Setembro" style="width:100%;background:#FFF6EE;border:1.5px solid #F1E6D9;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:13px;color:#2C2356;resize:vertical"></textarea>
+        </div>
+        <button type="button" id="_v-submit-pai" style="width:100%;padding:13px;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:0;border-radius:99px;font-weight:800;font-size:14.5px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.4)">
+          🟢 Reportar vaga
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const idadesSel = new Set();
+  modal.querySelectorAll("._vi").forEach(b => {
+    b.addEventListener("click", () => {
+      const v = b.dataset.v;
+      if(idadesSel.has(v)){ idadesSel.delete(v); b.style.background="#F4EBE0"; b.style.color="#6E6989"; b.style.borderColor="#F1E6D9"; }
+      else { idadesSel.add(v); b.style.background="#7DD389"; b.style.color="#fff"; b.style.borderColor="#7DD389"; }
+    });
+  });
+
+  function close(){ modal.remove(); }
+  modal.querySelector("#_vaga-x").addEventListener("click", close);
+  modal.querySelector("#_vaga-scrim").addEventListener("click", close);
+
+  modal.querySelector("#_v-submit-pai").addEventListener("click", async () => {
+    if(idadesSel.size === 0){ alert("Escolhe pelo menos uma idade."); return; }
+    if(!window.Vagas){ alert("A app ainda está a carregar — tenta em 5 segundos."); return; }
+    const notas = modal.querySelector("#_v-notas-pai").value.trim();
+    const btn = modal.querySelector("#_v-submit-pai");
+    btn.disabled = true;
+    btn.innerHTML = "⏳ A guardar…";
+    try {
+      await window.Vagas.report({
+        creche_id: crecheId,
+        nome_creche: nome,
+        source: "pai",
+        idades: Array.from(idadesSel),
+        notas
+      });
+      btn.innerHTML = "✓ Obrigado!";
+      setTimeout(() => { close(); location.reload(); }, 1200);
+    } catch(err){
+      alert("Erro: " + (err.message || err));
+      btn.disabled = false;
+      btn.innerHTML = "🟢 Reportar vaga";
+    }
+  });
+}
 </script>
 </body>
 </html>

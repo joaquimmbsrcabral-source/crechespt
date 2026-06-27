@@ -630,3 +630,53 @@ highlights de melhor). Pai vê de relance:
 - Qual tem mais informação completa
 - Pode ligar directo sem sair da página
 
+
+---
+
+## 🌊 Onda 29 — Vagas em tempo real (MVP dual-source)
+
+Feedback do user: "Como é que as creches conseguem dizer que há vagas?
+Os pais também podem reportar para abrangirmos mais creches"
+
+### Estratégia
+
+Sistema **dual-source** para resolver o cold-start:
+1. **Creches** reportam via `/vagas` (com verificação email)
+2. **Pais** reportam anonimamente via modal na ficha
+3. Cada vaga **expira em 7 dias** (força refresh)
+4. UI distingue **"✓ Confirmada"** vs **"ℹ Reportada por pai"**
+
+### Mudanças
+
+88. ✅ **`vagas.js`** — lib core: getActive, report, badgeHTML,
+    daysAgo, freshness, rate-limit client-side 5/dia
+89. ✅ **`/vagas.html`** — landing page para creches (autocomplete
+    sobre dataset, idades, email, observações)
+90. ✅ **Botão "🟢 Sei que esta creche tem vaga"** em todas as
+    2.578 fichas estáticas
+91. ✅ **Modal anónimo para pais** — verde menta com badge "⚠
+    Reportada por pais" para transparência
+92. ✅ **Slot `vaga-slot`** em cada ficha — auto-render badge se
+    houver vaga activa
+93. ✅ **Firebase init lazy** nas fichas (compat-CDN)
+94. ✅ **Rewrite vercel.json** `/vagas` → `/vagas.html`
+95. ✅ **Sitemap** entrada `/vagas` priority 0.9 + changefreq daily
+96. ✅ **DESIGN doc** completo (schema Firestore, security rules,
+    Cloud Function envio email) para backend ser deployed
+97. ✅ **FAQ** página /vagas (6 perguntas comuns)
+
+### Pendente (Fase 2 — backend)
+
+- [ ] Firestore security rules deploy
+- [ ] Cloud Function `sendVacancyVerification` (envia email com link)
+- [ ] Cloud Function `confirmVacancy` (endpoint do link)
+- [ ] TTL config Firestore Console (expires_at)
+- [ ] `/admin/vagas` queue de validação manual
+
+### Estado actual
+- UI completa funciona — pais já podem reportar
+- Reports de creches ficam pendentes até backend de validação estar
+  deployed
+- Admin pode marcar manualmente `verificado: true` via Firestore
+  console enquanto não há Cloud Function
+
