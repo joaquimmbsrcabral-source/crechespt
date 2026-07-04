@@ -480,12 +480,29 @@ async function loadDashboard(user){
   // Totais REAIS via aggregation count() — os .get() acima têm .limit(),
   // por isso snap.size fica preso no limite (bug: "500 registados" congelado).
   // count() conta no servidor, sem descarregar documentos.
-  const cnt = c => {
+  // Nota: o build compat 10.13.2 NÃO expõe Query.count(), por isso usamos a
+  // REST API de agregação (conta no servidor, mesmas security rules, 1 leitura).
+  const cnt = async (c) => {
     try {
       const q = db.collection(c);
-      if (typeof q.count !== "function") return Promise.resolve(null); // SDK sem count(): usa fallback
-      return q.count().get().then(s=>s.data().count).catch(e=>{console.warn("count "+c, e);return null;});
-    } catch(e){ console.warn("count "+c, e); return Promise.resolve(null); }
+      if (typeof q.count === "function") {
+        return await q.count().get().then(s=>s.data().count);
+      }
+      const token = await auth.currentUser.getIdToken();
+      const pid = firebase.app().options.projectId;
+      const res = await fetch("https://firestore.googleapis.com/v1/projects/" + pid + "/databases/(default)/documents:runAggregationQuery", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        body: JSON.stringify({ structuredAggregationQuery: {
+          structuredQuery: { from: [{ collectionId: c }] },
+          aggregations: [{ alias: "total", count: {} }]
+        }})
+      });
+      if (!res.ok) { console.warn("count " + c + " HTTP " + res.status, await res.text()); return null; }
+      const data = await res.json();
+      const row = (data || []).find(r => r.result && r.result.aggregateFields && r.result.aggregateFields.total);
+      return row ? parseInt(row.result.aggregateFields.total.integerValue, 10) : null;
+    } catch(e){ console.warn("count " + c, e); return null; }
   };
   const [usersTotal, ciTotal, fbTotal] = await Promise.all([
     cnt("users"), cnt("creche_interest"), cnt("feedback")
@@ -501,7 +518,7 @@ async function loadDashboard(user){
       const t = u.lastSeen && u.lastSeen.toDate ? u.lastSeen.toDate().getTime() : 0;
       if(t > weekAgo) activeCount++;
     });
-    $("m-users").textContent = (usersTotal != null ? usersTotal : users.length);
+    $("m-users").textContent = (usersTotal != null ? usersTotal : (users.length >= 500 ? "500+" : users.length));
     $("m-active").textContent = activeCount;
   } else {
     $("m-users").textContent = (usersTotal != null ? usersTotal : "?");
