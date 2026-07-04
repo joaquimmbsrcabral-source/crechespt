@@ -671,5 +671,6 @@ footer.foot .row{margin-bottom:8px}
 <script src="/newsletter.js" defer></script>
 <script>document.addEventListener("DOMContentLoaded", function(){ if(window.mountNewsletter) mountNewsletter(document.getElementById("newsletter-home"), { source: "home" }); });</script>
 <script src="/cookies.js" defer></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
 </body>
 </html>

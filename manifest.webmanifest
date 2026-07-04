@@ -1,7 +1,7 @@
 {
   "name": "Creches.app",
   "short_name": "Creches.app",
-  "description": "Encontra a creche certa para o teu filho — mapa interativo com 2591 creches em Portugal.",
+  "description": "Encontra a creche certa para o teu filho — mapa interativo com mais de 2.500 creches em Portugal.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFF6EE",

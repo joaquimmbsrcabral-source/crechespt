@@ -1,0 +1,43 @@
+# .vercelignore — Creches.app
+# Impede que ficheiros internos/de trabalho sejam publicados no site.
+# (Sem isto, TODOS os ficheiros do repo ficam acessíveis publicamente,
+#  ex: creches.app/press-contacts-junho2026.md — corrigido em Jul 2026.)
+
+# --- Documentos internos e estratégia (NUNCA publicar) ---
+*.md
+*.docx
+*.pptx
+*.xlsx
+CONFIDENCIAL-*
+Fundacao-*
+
+# --- Scripts e dados de trabalho ---
+*.py
+*.csv
+scripts/
+analyze-tipo.py
+firestore.rules
+deploy.sh
+.tools/
+
+# --- Vídeos e materiais de marketing em bruto ---
+*.mp4
+instagram-posts/
+remotion-video/
+slide3.png
+slide4.png
+overlay-1500-pais.png
+post-1500-pais-final.png
+reel-end-frame.png
+foto-gemini.png
+
+# --- Drafts de email/DMs (contactos de jornalistas!) ---
+gmail-drafts-*.html
+instagram-dms-*.html
+test-stats.html
+
+# --- Sistema ---
+.DS_Store
+.git/
+node_modules/
+outputs/

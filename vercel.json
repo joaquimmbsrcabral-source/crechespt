@@ -2,128 +2,281 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/app", "destination": "/app.html" },
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/admin/import-cs", "destination": "/admin-import-cs.html" },
-    { "source": "/calculadora", "destination": "/calculadora.html" },
-    { "source": "/comparar", "destination": "/comparar.html" },
-    { "source": "/vagas", "destination": "/vagas.html" },
-    { "source": "/sobre", "destination": "/sobre.html" },
-    { "source": "/sobre/metodologia", "destination": "/sobre/metodologia.html" },
-    { "source": "/roadmap", "destination": "/roadmap.html" },
-    { "source": "/imprensa", "destination": "/imprensa.html" },
-    { "source": "/para-creches", "destination": "/para-creches.html" },
-    { "source": "/privacidade", "destination": "/privacidade.html" },
-    { "source": "/cookies", "destination": "/cookies.html" },
-    { "source": "/termos", "destination": "/termos.html" },
-    { "source": "/creches", "destination": "/creches/index.html" },
-    { "source": "/creches/:distrito/:concelho", "destination": "/creches/:distrito/:concelho.html" },
-    { "source": "/creches/:slug", "destination": "/creches/:slug.html" },
-    { "source": "/creche/:slug", "destination": "/creche/:slug.html" },
-    { "source": "/guias", "destination": "/guias/index.html" },
-    { "source": "/guias/:slug", "destination": "/guias/:slug.html" }
+    {
+      "source": "/app",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    },
+    {
+      "source": "/admin/import-cs",
+      "destination": "/admin-import-cs.html"
+    },
+    {
+      "source": "/calculadora",
+      "destination": "/calculadora.html"
+    },
+    {
+      "source": "/comparar",
+      "destination": "/comparar.html"
+    },
+    {
+      "source": "/vagas",
+      "destination": "/vagas.html"
+    },
+    {
+      "source": "/sobre",
+      "destination": "/sobre.html"
+    },
+    {
+      "source": "/sobre/metodologia",
+      "destination": "/sobre/metodologia.html"
+    },
+    {
+      "source": "/roadmap",
+      "destination": "/roadmap.html"
+    },
+    {
+      "source": "/imprensa",
+      "destination": "/imprensa.html"
+    },
+    {
+      "source": "/para-creches",
+      "destination": "/para-creches.html"
+    },
+    {
+      "source": "/privacidade",
+      "destination": "/privacidade.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/cookies.html"
+    },
+    {
+      "source": "/termos",
+      "destination": "/termos.html"
+    },
+    {
+      "source": "/creches",
+      "destination": "/creches/index.html"
+    },
+    {
+      "source": "/creches/:distrito/:concelho",
+      "destination": "/creches/:distrito/:concelho.html"
+    },
+    {
+      "source": "/creches/:slug",
+      "destination": "/creches/:slug.html"
+    },
+    {
+      "source": "/creche/:slug",
+      "destination": "/creche/:slug.html"
+    },
+    {
+      "source": "/guias",
+      "destination": "/guias/index.html"
+    },
+    {
+      "source": "/guias/:slug",
+      "destination": "/guias/:slug.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(self)" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(self)"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*).js",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/(.*).css",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/creche/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/manifest.webmanifest",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/sitemap(.*).xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/index.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, stale-while-revalidate=86400"
+        }
       ]
     },
     {
       "source": "/app.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, stale-while-revalidate=86400"
+        }
       ]
     },
     {
       "source": "/guias/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/creches/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/(.*).png",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*).svg",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, immutable"
+        }
       ]
     },
     {
       "source": "/googlea7f7e895f1730c2f.html",
       "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
       ]
     },
     {
       "source": "/llms.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/llms-full.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/creches_pt.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/security.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
       ]
     }
   ]
