@@ -480,7 +480,13 @@ async function loadDashboard(user){
   // Totais REAIS via aggregation count() — os .get() acima têm .limit(),
   // por isso snap.size fica preso no limite (bug: "500 registados" congelado).
   // count() conta no servidor, sem descarregar documentos.
-  const cnt = c => db.collection(c).count().get().then(s=>s.data().count).catch(e=>{console.warn("count "+c, e);return null;});
+  const cnt = c => {
+    try {
+      const q = db.collection(c);
+      if (typeof q.count !== "function") return Promise.resolve(null); // SDK sem count(): usa fallback
+      return q.count().get().then(s=>s.data().count).catch(e=>{console.warn("count "+c, e);return null;});
+    } catch(e){ console.warn("count "+c, e); return Promise.resolve(null); }
+  };
   const [usersTotal, ciTotal, fbTotal] = await Promise.all([
     cnt("users"), cnt("creche_interest"), cnt("feedback")
   ]);
@@ -1874,7 +1880,10 @@ auth.onAuthStateChanged(async (user)=>{
     return;
   }
   showScreen("dashboard");
-  loadDashboard(user);
+  loadDashboard(user).catch(e=>{
+    console.error("loadDashboard falhou:", e);
+    alert("Erro a carregar o dashboard: " + (e && e.message || e) + "\nVê a consola (F12) para detalhe.");
+  });
 });
 </script>
 </body>
