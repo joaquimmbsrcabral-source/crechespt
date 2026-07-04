@@ -477,6 +477,14 @@ async function loadDashboard(user){
     db.collection("newsletter_subscribers").orderBy("ts","desc").limit(1000).get().catch(e=>{console.warn("nl",e);return null;}),
   ]);
 
+  // Totais REAIS via aggregation count() — os .get() acima têm .limit(),
+  // por isso snap.size fica preso no limite (bug: "500 registados" congelado).
+  // count() conta no servidor, sem descarregar documentos.
+  const cnt = c => db.collection(c).count().get().then(s=>s.data().count).catch(e=>{console.warn("count "+c, e);return null;});
+  const [usersTotal, ciTotal, fbTotal] = await Promise.all([
+    cnt("users"), cnt("creche_interest"), cnt("feedback")
+  ]);
+
   // --- Utilizadores
   let users = [];
   let activeCount = 0;
@@ -487,10 +495,10 @@ async function loadDashboard(user){
       const t = u.lastSeen && u.lastSeen.toDate ? u.lastSeen.toDate().getTime() : 0;
       if(t > weekAgo) activeCount++;
     });
-    $("m-users").textContent = users.length;
+    $("m-users").textContent = (usersTotal != null ? usersTotal : users.length);
     $("m-active").textContent = activeCount;
   } else {
-    $("m-users").textContent = "?";
+    $("m-users").textContent = (usersTotal != null ? usersTotal : "?");
     $("m-active").textContent = "?";
   }
 
@@ -498,15 +506,15 @@ async function loadDashboard(user){
   let creches = [];
   if(ciSnap){
     ciSnap.forEach(d=>{ const x = d.data(); x.id=d.id; creches.push(x); });
-    $("m-creches").textContent = creches.length;
-  } else { $("m-creches").textContent = "?"; }
+    $("m-creches").textContent = (ciTotal != null ? ciTotal : creches.length);
+  } else { $("m-creches").textContent = (ciTotal != null ? ciTotal : "?"); }
 
   // --- Feedback
   let feedbacks = [];
   if(fbSnap){
     fbSnap.forEach(d=>{ const x = d.data(); x.id=d.id; feedbacks.push(x); });
-    $("m-feedback").textContent = feedbacks.length;
-  } else { $("m-feedback").textContent = "?"; }
+    $("m-feedback").textContent = (fbTotal != null ? fbTotal : feedbacks.length);
+  } else { $("m-feedback").textContent = (fbTotal != null ? fbTotal : "?"); }
 
   // --- Reports de idade
   let reports = [];
