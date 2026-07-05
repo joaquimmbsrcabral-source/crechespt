@@ -7,6 +7,10 @@
       "destination": "/app.html"
     },
     {
+      "source": "/painel",
+      "destination": "/painel.html"
+    },
+    {
       "source": "/admin",
       "destination": "/admin.html"
     },

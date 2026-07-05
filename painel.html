@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<meta name="robots" content="noindex">
+<title>Painel da Creche — Creches.app</title>
+<meta name="description" content="Área reservada às creches: edite o vosso perfil, marquem vagas, adiram ao Creche Feliz e recebam famílias.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--c-coral:#FF6B9D;--c-coral-soft:#FFE2EC;--c-peach:#FF9F68;--c-peach-soft:#FFE3D2;
+--c-turquoise:#5EC0B7;--c-turquoise-soft:#D9F2EF;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;
+--c-lilac:#B197FC;--c-lilac-soft:#ECE4FF;--c-yellow:#FFC857;--c-yellow-soft:#FFF1D6;
+--bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--ink-faint:#9B97B5;--line:rgba(60,40,90,.08);
+--r-md:14px;--r-card:18px;--sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
+--sh-2:0 8px 24px rgba(60,40,90,.12)}
+*{box-sizing:border-box}*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
+html,body{margin:0;padding:0}
+body{background:
+  radial-gradient(900px 600px at 10% 0%,var(--c-coral-soft) 0%,transparent 55%),
+  radial-gradient(800px 600px at 100% 0%,var(--c-turquoise-soft) 0%,transparent 55%),
+  radial-gradient(900px 700px at 50% 110%,var(--c-yellow-soft) 0%,transparent 60%),
+  var(--bg);
+  color:var(--ink);font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;min-height:100vh}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;letter-spacing:-.01em;line-height:1.25;margin:0}
+a{color:var(--c-coral);text-decoration:none;font-weight:600}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 80px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 22px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Fredoka";font-weight:600;font-size:1.15rem;color:var(--ink)}
+.brand img{width:36px;height:36px;border-radius:10px}
+.badge-painel{background:var(--c-lilac-soft);color:var(--ink);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.userchip{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--ink-soft)}
+.userchip button{background:none;border:none;color:var(--c-coral);font-weight:700;cursor:pointer;font-family:inherit;font-size:.82rem}
+.card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:26px;margin-bottom:18px}
+.card h2{font-size:1.25rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.card .sub{color:var(--ink-soft);font-size:.92rem;margin:0 0 18px}
+.emoji-chip{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;font-size:1.15rem;flex:none}
+.center{text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;
+  font-family:"Quicksand";font-weight:700;font-size:.95rem;padding:13px 22px;border-radius:var(--r-md);transition:transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--c-coral);color:#fff;box-shadow:var(--sh-1)}
+.btn-secondary{background:var(--c-peach-soft);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--c-coral)}
+.btn-google{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:var(--sh-1)}
+.btn[disabled]{opacity:.55;cursor:default}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.8rem;font-weight:700;color:var(--ink-soft);margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;
+  font-family:"Quicksand";font-size:.95rem;color:var(--ink);background:#FFFDFB}
+.field textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.row2{grid-template-columns:1fr}}
+.hint{font-size:.78rem;color:var(--ink-faint);margin-top:4px}
+.msg{padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;margin:12px 0;display:none}
+.msg.err{background:var(--c-coral-soft);color:#B4255C;display:block}
+.msg.ok{background:var(--c-mint-soft);color:#1F7A3D;display:block}
+.divider{display:flex;align-items:center;gap:12px;color:var(--ink-faint);font-size:.8rem;margin:18px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.screen{display:none}.screen.active{display:block}
+.search-res{max-height:300px;overflow-y:auto;border:1.5px solid var(--line);border-radius:12px;margin-top:8px;display:none}
+.search-res.open{display:block}
+.search-item{padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+.search-item:hover{background:var(--c-peach-soft)}
+.search-item .n{font-weight:700}
+.search-item .l{font-size:.8rem;color:var(--ink-soft)}
+.selected-creche{background:var(--c-turquoise-soft);border-radius:12px;padding:14px 16px;margin:10px 0;display:none}
+.selected-creche.show{display:block}
+.pill-status{display:inline-block;padding:4px 14px;border-radius:999px;font-size:.78rem;font-weight:700}
+.pill-pending{background:var(--c-yellow-soft);color:#8a6d1a}
+.pill-ok{background:var(--c-mint-soft);color:#1F7A3D}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-row .t{font-weight:700}
+.toggle-row .d{font-size:.8rem;color:var(--ink-soft)}
+.switch{position:relative;width:52px;height:30px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#E7E3F2;border-radius:999px;transition:.2s;cursor:pointer}
+.slider::before{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:var(--sh-1)}
+.switch input:checked + .slider{background:var(--c-mint)}
+.switch input:checked + .slider::before{transform:translateX(22px)}
+.seg3{display:flex;gap:8px;flex-wrap:wrap}
+.seg3 button{flex:1;min-width:100px;padding:10px;border-radius:12px;border:1.5px solid var(--line);background:#fff;
+  font-family:"Quicksand";font-weight:700;font-size:.85rem;color:var(--ink-soft);cursor:pointer}
+.seg3 button.on-sim{background:var(--c-mint-soft);border-color:var(--c-mint);color:#1F7A3D}
+.seg3 button.on-nao{background:var(--c-coral-soft);border-color:var(--c-coral);color:#B4255C}
+.fotos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
+.fotos-grid .ph{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--c-peach-soft)}
+.fotos-grid img{width:100%;height:100%;object-fit:cover}
+.fotos-grid .st{position:absolute;left:6px;bottom:6px;font-size:.62rem;font-weight:800;background:rgba(255,255,255,.92);padding:2px 8px;border-radius:999px}
+.footer-note{text-align:center;color:var(--ink-faint);font-size:.78rem;margin-top:30px}
+.savebar{position:sticky;bottom:14px;text-align:center;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="brand" href="/"><img src="/icon-192.png" alt=""> Creches.app <span class="badge-painel">Painel da Creche</span></a>
+    <div class="userchip" id="userchip" style="display:none">
+      <span id="user-email"></span>
+      <button id="btn-logout">Sair</button>
+    </div>
+  </div>
+
+  <!-- ══════════ ECRÃ: LOADING ══════════ -->
+  <div class="screen active" id="s-loading">
+    <div class="card center"><p>⏳ A carregar…</p></div>
+  </div>
+
+  <!-- ══════════ ECRÃ: LOGIN ══════════ -->
+  <div class="screen" id="s-login">
+    <div class="card" style="max-width:480px;margin:0 auto">
+      <div class="center" style="margin-bottom:6px;font-size:2.2rem">🏫</div>
+      <h2 style="justify-content:center">Área das Creches</h2>
+      <p class="sub center">Gira o perfil da tua creche, marca vagas e recebe famílias — gratuito, sem custos escondidos.</p>
+      <button class="btn btn-google" id="btn-google" style="width:100%">🔵 Entrar com Google</button>
+      <div class="divider">ou com email</div>
+      <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" autocomplete="email" placeholder="geral@minhacreche.pt"></div>
+      <div class="field"><label for="li-pass">Palavra-passe</label><input id="li-pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+      <div class="msg err" id="login-err"></div>
+      <div class="row2">
+        <button class="btn btn-primary" id="btn-login">Entrar</button>
+        <button class="btn btn-secondary" id="btn-registar">Criar conta</button>
+      </div>
+      <p class="center" style="margin-top:10px"><button class="btn btn-ghost" id="btn-reset" style="padding:4px;font-size:.82rem">Esqueci-me da palavra-passe</button></p>
+    </div>
+    <p class="footer-note">És pai ou mãe? A app para famílias está em <a href="/app">creches.app/app</a> 🍼</p>
+  </div>
+
+  <!-- ══════════ ECRÃ: RECLAMAR CRECHE ══════════ -->
+  <div class="screen" id="s-claim">
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-turquoise-soft)">🔎</span> Encontra a tua creche</h2>
+      <p class="sub">Procura pelo nome ou localidade. Depois de confirmarmos que és mesmo da creche (24-48h), ganhas acesso ao painel.</p>
+      <div class="field">
+        <label for="claim-q">Nome da creche</label>
+        <input id="claim-q" type="search" placeholder="Ex.: Jardim Escola João de Deus, Lisboa" autocomplete="off">
+        <div class="search-res" id="claim-res"></div>
+      </div>
+      <div class="selected-creche" id="claim-sel">
+        <div style="font-weight:800" id="claim-sel-nome"></div>
+        <div style="font-size:.82rem;color:var(--ink-soft)" id="claim-sel-loc"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="claim-nome">O teu nome</label><input id="claim-nome" placeholder="Maria Santos"></div>
+        <div class="field"><label for="claim-cargo">Cargo</label>
+          <select id="claim-cargo"><option>Direção</option><option>Coordenação pedagógica</option><option>Secretaria/Administrativo</option><option>Outro</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="claim-tel">Telefone da creche (para verificação)</label><input id="claim-tel" type="tel" placeholder="21 xxx xx xx"></div>
+      <div class="field"><label for="claim-msg">Mensagem (opcional)</label><textarea id="claim-msg" style="min-height:70px" placeholder="Algo que nos ajude a confirmar que és da creche"></textarea></div>
+      <div class="msg err" id="claim-err"></div>
+      <button class="btn btn-primary" id="btn-claim" style="width:100%">Pedir acesso ao painel →</button>
+      <p class="hint center" style="margin-top:10px">A verificação é manual e gratuita. Normalmente confirmamos por telefone para o número oficial da creche.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ ECRÃ: PENDENTE ══════════ -->
+  <div class="screen" id="s-pending">
+    <div class="card center" style="max-width:520px;margin:0 auto">
+      <div style="font-size:2.6rem">⏳</div>
+      <h2 style="justify-content:center;margin:8px 0">Pedido em análise</h2>
+      <p class="sub">Pediste acesso a <b id="pending-nome"></b>.<br>Vamos confirmar contigo em 24-48h — normalmente por telefone para o número oficial da creche. Recebes email quando estiver aprovado.</p>
+      <span class="pill-status pill-pending">A aguardar verificação</span>
+      <p style="margin-top:16px;font-size:.85rem">Enganaste-te na creche? <a href="#" id="btn-claim-outro">Pedir para outra creche</a></p>
+    </div>
+  </div>
+
+  <!-- ══════════ ECRÃ: DASHBOARD ══════════ -->
+  <div class="screen" id="s-dash">
+
+    <div class="card" style="background:linear-gradient(135deg,#fff 0%,var(--c-mint-soft) 100%)">
+      <h2><span class="emoji-chip" style="background:#fff">🏫</span> <span id="dash-nome">A tua creche</span></h2>
+      <p class="sub" style="margin-bottom:8px"><span class="pill-status pill-ok">✓ Perfil gerido pela creche</span></p>
+      <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardares aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a></p>
+    </div>
+
+    <!-- VAGAS -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
+      <p class="sub">Diz aos pais onde tens lugar. É a informação mais valiosa da plataforma — atualiza sempre que mudar.</p>
+      <div class="toggle-row"><div><div class="t">Berçário (0-12 meses)</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-b0"><span class="slider"></span></label></div>
+      <div class="toggle-row"><div><div class="t">Sala 1-2 anos</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-m12"><span class="slider"></span></label></div>
+      <div class="toggle-row"><div><div class="t">Sala 2-3 anos</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-m24"><span class="slider"></span></label></div>
+      <p class="hint" id="vagas-atualizado"></p>
+    </div>
+
+    <!-- CRECHE FELIZ -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">🍼</span> Creche Feliz</h2>
+      <p class="sub">A vossa creche adere ao programa de creches gratuitas? Os pais filtram por isto.</p>
+      <div class="seg3" id="cf-seg">
+        <button data-v="true">✓ Sim, aderimos</button>
+        <button data-v="false">✗ Não aderimos</button>
+        <button data-v="null">Não sei / Em processo</button>
+      </div>
+    </div>
+
+    <!-- PERFIL -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-lilac-soft)">📝</span> O vosso perfil</h2>
+      <p class="sub">Apresentem-se às famílias — projeto pedagógico, espaços, equipa, o que vos torna especiais.</p>
+      <div class="field"><label for="p-desc">Descrição para os pais</label>
+        <textarea id="p-desc" maxlength="1500" placeholder="Somos uma creche de bairro com 30 anos de história, horta pedagógica e uma equipa que…"></textarea>
+        <div class="hint"><span id="desc-count">0</span>/1500</div></div>
+      <div class="row2">
+        <div class="field"><label for="p-horario">Horário</label><input id="p-horario" maxlength="120" placeholder="7h30 – 19h00, seg. a sex."></div>
+        <div class="field"><label for="p-website">Website / Instagram</label><input id="p-website" maxlength="200" placeholder="https://…"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="p-mmin">Mensalidade desde (€)</label><input id="p-mmin" type="number" min="0" max="2000" placeholder="180"></div>
+        <div class="field"><label for="p-mmax">Mensalidade até (€)</label><input id="p-mmax" type="number" min="0" max="3000" placeholder="450"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="p-email">Email para famílias</label><input id="p-email" type="email" maxlength="120" placeholder="geral@…"></div>
+        <div class="field"><label for="p-tel">Telefone para famílias</label><input id="p-tel" type="tel" maxlength="30" placeholder="21 xxx xx xx"></div>
+      </div>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-yellow-soft)">📷</span> Fotografias</h2>
+      <p class="sub">Mostra os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evita fotos com crianças identificáveis.</p>
+      <input type="file" id="foto-file" accept="image/*" style="display:none">
+      <button class="btn btn-secondary" id="btn-foto">＋ Adicionar fotografia</button>
+      <div class="msg err" id="foto-err"></div>
+      <div class="msg ok" id="foto-ok"></div>
+      <div class="fotos-grid" id="fotos-grid"></div>
+    </div>
+
+    <div class="msg err" id="save-err"></div>
+    <div class="msg ok" id="save-ok"></div>
+    <div class="savebar">
+      <button class="btn btn-primary" id="btn-save" style="min-width:260px;box-shadow:var(--sh-2)">💾 Guardar alterações</button>
+    </div>
+  </div>
+
+  <p class="footer-note">Dúvidas? Escreve-nos: <a href="mailto:geral@creches.app">geral@creches.app</a> · 100% gratuito, sem publicidade, sem venda de dados.</p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+<script>
+firebase.initializeApp({
+  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+  authDomain: "crechespt.firebaseapp.com",
+  projectId: "crechespt",
+  storageBucket: "crechespt.firebasestorage.app",
+  messagingSenderId: "470551729340",
+  appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
+});
+const auth = firebase.auth();
+const db = firebase.firestore();
+const $ = id => document.getElementById(id);
+const show = id => { document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active")); $(id).classList.add("active"); };
+const err = (id,m) => { const e=$(id); e.textContent=m||""; e.className = m ? "msg err" : "msg"; };
+const ok  = (id,m) => { const e=$(id); e.textContent=m||""; e.className = m ? "msg ok" : "msg"; };
+
+let ME = null;          // user
+let MY_CRECHE = null;   // { id, nome } via creche_managers
+let PROFILE = {};       // creche_profiles doc
+let DATASET = null;     // creches_pt.json (lazy, para pesquisa no claim)
+
+// ─────────── AUTH ───────────
+$("btn-google").onclick = () => {
+  const p = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(p).catch(e => err("login-err", e.message));
+};
+$("btn-login").onclick = () => {
+  err("login-err");
+  auth.signInWithEmailAndPassword($("li-email").value.trim(), $("li-pass").value)
+    .catch(e => err("login-err", traduzAuth(e)));
+};
+$("btn-registar").onclick = () => {
+  err("login-err");
+  const em = $("li-email").value.trim(), pw = $("li-pass").value;
+  if(pw.length < 8) return err("login-err","A palavra-passe precisa de pelo menos 8 caracteres.");
+  auth.createUserWithEmailAndPassword(em, pw)
+    .catch(e => err("login-err", traduzAuth(e)));
+};
+$("btn-reset").onclick = () => {
+  const em = $("li-email").value.trim();
+  if(!em) return err("login-err","Escreve o teu email primeiro e volta a clicar.");
+  auth.sendPasswordResetEmail(em).then(()=>{
+    const e=$("login-err"); e.textContent="✓ Email de recuperação enviado — vê a caixa de entrada."; e.className="msg ok";
+  }).catch(e => err("login-err", traduzAuth(e)));
+};
+$("btn-logout").onclick = () => auth.signOut().then(()=>location.reload());
+
+function traduzAuth(e){
+  const c = e.code || "";
+  if(c.includes("invalid-credential") || c.includes("wrong-password")) return "Email ou palavra-passe errados.";
+  if(c.includes("user-not-found")) return "Não existe conta com este email — usa «Criar conta».";
+  if(c.includes("email-already-in-use")) return "Já existe conta com este email — usa «Entrar».";
+  if(c.includes("invalid-email")) return "Esse email não parece válido.";
+  if(c.includes("weak-password")) return "Palavra-passe demasiado fraca (mínimo 8 caracteres).";
+  return e.message || "Erro inesperado.";
+}
+
+auth.onAuthStateChanged(async user => {
+  if(!user){ show("s-login"); return; }
+  ME = user;
+  $("userchip").style.display = "flex";
+  $("user-email").textContent = user.email || "";
+  try {
+    // Sou gestor aprovado?
+    const mgr = await db.doc("creche_managers/" + user.uid).get();
+    if(mgr.exists){
+      MY_CRECHE = { id: mgr.data().creche_id, nome: mgr.data().creche_nome || "A tua creche" };
+      await abrirDashboard();
+      return;
+    }
+    // Tenho claim pendente?
+    const claims = await db.collection("creche_claims").where("uid","==",user.uid).get();
+    let pend = null;
+    claims.forEach(d => { const c = d.data(); if(c.status === "pending") pend = c; });
+    if(pend){
+      $("pending-nome").textContent = pend.creche_nome;
+      show("s-pending");
+      return;
+    }
+    show("s-claim");
+  } catch(e){
+    console.error(e);
+    show("s-claim");
+  }
+});
+
+// ─────────── CLAIM: pesquisa no dataset ───────────
+let SEL = null;
+$("claim-q").addEventListener("input", async function(){
+  const q = this.value.trim().toLowerCase();
+  const box = $("claim-res");
+  if(q.length < 3){ box.classList.remove("open"); return; }
+  if(!DATASET){
+    box.innerHTML = '<div class="search-item">⏳ A carregar lista de creches…</div>';
+    box.classList.add("open");
+    try { DATASET = await fetch("/creches_pt.json").then(r=>r.json()); }
+    catch(e){ box.innerHTML = '<div class="search-item">Erro a carregar. Recarrega a página.</div>'; return; }
+  }
+  const terms = q.split(/\s+/);
+  const hits = DATASET.filter(c => {
+    const hay = ((c.nome||"") + " " + (c.localidade||"") + " " + (c.distrito||"")).toLowerCase();
+    return terms.every(t => hay.includes(t));
+  }).slice(0, 12);
+  box.innerHTML = hits.length
+    ? hits.map(c => `<div class="search-item" data-id="${c.id}"><div class="n">${escapeHtml(c.nome)}</div><div class="l">${escapeHtml(c.localidade||"")} · ${escapeHtml(c.distrito||"")}</div></div>`).join("")
+    : '<div class="search-item">Nenhuma creche encontrada — tenta só uma palavra do nome. Se a creche não está no mapa, escreve-nos: geral@creches.app</div>';
+  box.classList.add("open");
+  box.querySelectorAll(".search-item[data-id]").forEach(el => el.onclick = () => {
+    const c = DATASET.find(x => String(x.id) === el.dataset.id);
+    SEL = c;
+    $("claim-sel-nome").textContent = c.nome;
+    $("claim-sel-loc").textContent = (c.localidade||"") + " · " + (c.distrito||"");
+    $("claim-sel").classList.add("show");
+    box.classList.remove("open");
+    $("claim-q").value = c.nome;
+  });
+});
+function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+$("btn-claim").onclick = async () => {
+  err("claim-err");
+  if(!SEL) return err("claim-err","Escolhe primeiro a tua creche na pesquisa.");
+  const nome = $("claim-nome").value.trim(), tel = $("claim-tel").value.trim();
+  if(nome.length < 3) return err("claim-err","Escreve o teu nome.");
+  if(tel.length < 6) return err("claim-err","Escreve o telefone da creche (usamo-lo para confirmar).");
+  const btn = $("btn-claim"); btn.disabled = true; btn.textContent = "⏳ A enviar…";
+  try {
+    await db.collection("creche_claims").add({
+      uid: ME.uid,
+      email: ME.email || "",
+      creche_id: String(SEL.id),
+      creche_nome: SEL.nome,
+      nome_responsavel: nome,
+      cargo: $("claim-cargo").value,
+      telefone: tel,
+      mensagem: ($("claim-msg").value || "").slice(0, 500),
+      status: "pending",
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    $("pending-nome").textContent = SEL.nome;
+    show("s-pending");
+  } catch(e){
+    err("claim-err","Erro: " + (e.message || e));
+  }
+  btn.disabled = false; btn.textContent = "Pedir acesso ao painel →";
+};
+$("btn-claim-outro").onclick = (e) => { e.preventDefault(); show("s-claim"); };
+
+// ─────────── DASHBOARD ───────────
+async function abrirDashboard(){
+  $("dash-nome").textContent = MY_CRECHE.nome;
+  // Link para a ficha pública (slug aproximado via pesquisa no /app)
+  $("dash-ver-ficha").href = "/app#" + encodeURIComponent(MY_CRECHE.id);
+  try {
+    const snap = await db.doc("creche_profiles/" + MY_CRECHE.id).get();
+    PROFILE = snap.exists ? snap.data() : {};
+  } catch(e){ PROFILE = {}; }
+  // Preencher form
+  $("p-desc").value = PROFILE.descricao || "";
+  $("desc-count").textContent = ($("p-desc").value || "").length;
+  $("p-horario").value = PROFILE.horario || "";
+  $("p-website").value = PROFILE.website || "";
+  $("p-mmin").value = PROFILE.mensalidade_min ?? "";
+  $("p-mmax").value = PROFILE.mensalidade_max ?? "";
+  $("p-email").value = PROFILE.contacto_email || "";
+  $("p-tel").value = PROFILE.contacto_telefone || "";
+  const v = PROFILE.vagas || {};
+  $("vaga-b0").checked = !!v.b0;
+  $("vaga-m12").checked = !!v.m12;
+  $("vaga-m24").checked = !!v.m24;
+  if(v.atualizado && v.atualizado.toDate) $("vagas-atualizado").textContent = "Última atualização: " + v.atualizado.toDate().toLocaleDateString("pt-PT");
+  setCF(PROFILE.creche_feliz);
+  carregarFotos();
+  show("s-dash");
+}
+
+$("p-desc").addEventListener("input", function(){ $("desc-count").textContent = this.value.length; });
+
+// Creche Feliz segmented
+let CF_VAL = null;
+function setCF(v){
+  CF_VAL = (v === true || v === false) ? v : null;
+  document.querySelectorAll("#cf-seg button").forEach(b => {
+    b.classList.remove("on-sim","on-nao");
+    const bv = b.dataset.v;
+    if(bv === "true" && CF_VAL === true) b.classList.add("on-sim");
+    if(bv === "false" && CF_VAL === false) b.classList.add("on-nao");
+    if(bv === "null" && CF_VAL === null) b.classList.add("on-sim");
+  });
+}
+document.querySelectorAll("#cf-seg button").forEach(b => b.onclick = () => {
+  setCF(b.dataset.v === "true" ? true : b.dataset.v === "false" ? false : null);
+});
+
+// Guardar
+$("btn-save").onclick = async () => {
+  err("save-err"); ok("save-ok");
+  const btn = $("btn-save"); btn.disabled = true; btn.textContent = "⏳ A guardar…";
+  const data = {
+    descricao: $("p-desc").value.slice(0,1500),
+    horario: $("p-horario").value.slice(0,120),
+    website: $("p-website").value.slice(0,200),
+    contacto_email: $("p-email").value.slice(0,120),
+    contacto_telefone: $("p-tel").value.slice(0,30),
+    creche_feliz: CF_VAL,
+    vagas: {
+      b0: $("vaga-b0").checked,
+      m12: $("vaga-m12").checked,
+      m24: $("vaga-m24").checked,
+      atualizado: firebase.firestore.Timestamp.now()
+    },
+    updated_at: firebase.firestore.FieldValue.serverTimestamp(),
+    updated_by: ME.uid
+  };
+  const mmin = parseInt($("p-mmin").value,10), mmax = parseInt($("p-mmax").value,10);
+  if(!isNaN(mmin)) data.mensalidade_min = mmin;
+  if(!isNaN(mmax)) data.mensalidade_max = mmax;
+  try {
+    await db.doc("creche_profiles/" + MY_CRECHE.id).set(data, { merge: true });
+    ok("save-ok","✓ Guardado! As alterações já estão visíveis para os pais.");
+    $("vagas-atualizado").textContent = "Última atualização: agora mesmo";
+  } catch(e){
+    err("save-err","Erro a guardar: " + (e.message || e));
+  }
+  btn.disabled = false; btn.textContent = "💾 Guardar alterações";
+};
+
+// ─────────── FOTOS ───────────
+$("btn-foto").onclick = () => $("foto-file").click();
+$("foto-file").addEventListener("change", async function(){
+  const f = this.files[0];
+  if(!f) return;
+  err("foto-err"); ok("foto-ok");
+  if(f.size > 5*1024*1024) return err("foto-err","A foto é demasiado grande (máx. 5 MB).");
+  if(!f.type.startsWith("image/")) return err("foto-err","Escolhe uma imagem (JPG/PNG).");
+  const btn = $("btn-foto"); btn.disabled = true; btn.textContent = "⏳ A enviar…";
+  try {
+    const path = "creches/" + MY_CRECHE.id + "/" + Date.now() + "-" + f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+    const ref = firebase.storage().ref(path);
+    await ref.put(f, { contentType: f.type });
+    const url = await ref.getDownloadURL();
+    await db.collection("creche_fotos").add({
+      creche_id: MY_CRECHE.id,
+      uid: ME.uid,
+      url: url,
+      status: "pending",
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    ok("foto-ok","✓ Foto enviada! Fica pública depois da revisão (24-48h).");
+    carregarFotos();
+  } catch(e){
+    err("foto-err","Erro no envio: " + (e.message || e) + (String(e).includes("storage") ? " — o armazenamento de fotos pode ainda não estar ativo; contacta geral@creches.app" : ""));
+  }
+  btn.disabled = false; btn.textContent = "＋ Adicionar fotografia";
+  this.value = "";
+});
+
+async function carregarFotos(){
+  const grid = $("fotos-grid");
+  grid.innerHTML = "";
+  const items = [];
+  // Aprovadas (no perfil) + minhas pendentes
+  (PROFILE.fotos || []).forEach(u => items.push({ url: u, st: "✓ pública", cls:"" }));
+  try {
+    const snap = await db.collection("creche_fotos").where("uid","==",ME.uid).get();
+    snap.forEach(d => {
+      const x = d.data();
+      if(x.status === "pending") items.push({ url: x.url, st: "⏳ em revisão" });
+      if(x.status === "rejected") items.push({ url: x.url, st: "✗ recusada" });
+    });
+  } catch(e){}
+  grid.innerHTML = items.map(i => `<div class="ph"><img src="${i.url}" alt="" loading="lazy"><span class="st">${i.st}</span></div>`).join("");
+}
+</script>
+</body>
+</html>

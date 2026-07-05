@@ -240,6 +240,22 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <section class="panel">
+      <h3>🏫 Painel das creches — pedidos de acesso <span class="count" id="cp-claims-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Creches que pediram acesso ao painel. Confirma por telefone (para o número oficial da ficha) antes de aprovar.
+      </p>
+      <div id="cp-claims-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+    </section>
+
+    <section class="panel">
+      <h3>📷 Fotos de creches — por rever <span class="count" id="cp-fotos-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Aprovadas ficam públicas na ficha. Recusa fotos com crianças identificáveis, má qualidade ou conteúdo fora do contexto.
+      </p>
+      <div id="cp-fotos-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+    </section>
+
+    <section class="panel">
       <h3>📝 Editar qualquer creche</h3>
       <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
         Pesquisa por nome, morada, telefone ou distrito (mínimo 3 letras). Carrega numa para editar todos os campos.
@@ -1901,7 +1917,91 @@ auth.onAuthStateChanged(async (user)=>{
     console.error("loadDashboard falhou:", e);
     alert("Erro a carregar o dashboard: " + (e && e.message || e) + "\nVê a consola (F12) para detalhe.");
   });
+  loadCrechesPainel().catch(e=>console.warn("painel creches:", e));
 });
+
+// ═══════════ PAINEL DAS CRECHES — moderação (claims + fotos) ═══════════
+function cpEsc(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+async function loadCrechesPainel(){
+  await Promise.all([cpLoadClaims(), cpLoadFotos()]);
+}
+
+async function cpLoadClaims(){
+  const host = $("cp-claims-host");
+  const snap = await db.collection("creche_claims").where("status","==","pending").get();
+  const rows = [];
+  snap.forEach(d => rows.push({ id: d.id, ...d.data() }));
+  rows.sort((a,b) => (b.ts && b.ts.toMillis ? b.ts.toMillis() : 0) - (a.ts && a.ts.toMillis ? a.ts.toMillis() : 0));
+  $("cp-claims-count").textContent = rows.length;
+  if(!rows.length){ host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Sem pedidos pendentes 🎉</div>'; return; }
+  host.innerHTML = rows.map(r => `
+    <div style="border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px">
+      <div style="font-weight:800">${cpEsc(r.creche_nome)} <span style="font-weight:400;font-size:11px;color:var(--ink-soft);font-family:monospace">${cpEsc(r.creche_id)}</span></div>
+      <div style="font-size:13px;color:var(--ink-soft);margin:4px 0 8px">
+        👤 ${cpEsc(r.nome_responsavel)} (${cpEsc(r.cargo||"—")}) · ✉️ ${cpEsc(r.email)} · 📞 ${cpEsc(r.telefone)}
+        ${r.mensagem ? "<br>💬 " + cpEsc(r.mensagem) : ""}
+      </div>
+      <button class="cp-aprovar" data-id="${r.id}" style="background:var(--c-mint,#7DD389);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-weight:700;cursor:pointer;font-family:inherit">✓ Aprovar acesso</button>
+      <button class="cp-rejeitar" data-id="${r.id}" style="background:#FFE2EC;color:#B4255C;border:none;border-radius:10px;padding:8px 16px;font-weight:700;cursor:pointer;font-family:inherit;margin-left:8px">✕ Rejeitar</button>
+    </div>`).join("");
+  host.querySelectorAll(".cp-aprovar").forEach(b => b.onclick = async () => {
+    const r = rows.find(x => x.id === b.dataset.id);
+    if(!confirm("Aprovar " + r.nome_responsavel + " como gestor de «" + r.creche_nome + "»?\n\nConfirmaste por telefone?")) return;
+    b.disabled = true; b.textContent = "⏳…";
+    try {
+      const batch = db.batch();
+      batch.set(db.doc("creche_managers/" + r.uid), {
+        creche_id: r.creche_id, creche_nome: r.creche_nome,
+        email: r.email || "", aprovado_em: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      batch.update(db.doc("creche_claims/" + r.id), { status: "approved" });
+      await batch.commit();
+      b.closest("div[style]").style.opacity = .4; b.textContent = "✓ Aprovado";
+      cpLoadClaims();
+    } catch(e){ alert("Erro: " + e.message); b.disabled = false; b.textContent = "✓ Aprovar acesso"; }
+  });
+  host.querySelectorAll(".cp-rejeitar").forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    try { await db.doc("creche_claims/" + b.dataset.id).update({ status: "rejected" }); cpLoadClaims(); }
+    catch(e){ alert("Erro: " + e.message); b.disabled = false; }
+  });
+}
+
+async function cpLoadFotos(){
+  const host = $("cp-fotos-host");
+  const snap = await db.collection("creche_fotos").where("status","==","pending").get();
+  const rows = [];
+  snap.forEach(d => rows.push({ id: d.id, ...d.data() }));
+  $("cp-fotos-count").textContent = rows.length;
+  if(!rows.length){ host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Sem fotos por rever 🎉</div>'; return; }
+  host.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px">' + rows.map(r => `
+    <div style="border:1.5px solid var(--line);border-radius:12px;overflow:hidden">
+      <a href="${cpEsc(r.url)}" target="_blank" rel="noopener"><img src="${cpEsc(r.url)}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block"></a>
+      <div style="padding:8px 10px">
+        <div style="font-size:11px;color:var(--ink-soft);font-family:monospace;margin-bottom:6px">${cpEsc(r.creche_id)}</div>
+        <button class="cp-foto-ok" data-id="${r.id}" style="background:var(--c-mint,#7DD389);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12px">✓ Aprovar</button>
+        <button class="cp-foto-no" data-id="${r.id}" style="background:#FFE2EC;color:#B4255C;border:none;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12px;margin-left:4px">✕</button>
+      </div>
+    </div>`).join("") + '</div>';
+  host.querySelectorAll(".cp-foto-ok").forEach(b => b.onclick = async () => {
+    const r = rows.find(x => x.id === b.dataset.id);
+    b.disabled = true; b.textContent = "⏳";
+    try {
+      const batch = db.batch();
+      batch.update(db.doc("creche_fotos/" + r.id), { status: "approved" });
+      batch.set(db.doc("creche_profiles/" + r.creche_id),
+        { fotos: firebase.firestore.FieldValue.arrayUnion(r.url) }, { merge: true });
+      await batch.commit();
+      cpLoadFotos();
+    } catch(e){ alert("Erro: " + e.message); b.disabled = false; b.textContent = "✓ Aprovar"; }
+  });
+  host.querySelectorAll(".cp-foto-no").forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    try { await db.doc("creche_fotos/" + b.dataset.id).update({ status: "rejected" }); cpLoadFotos(); }
+    catch(e){ alert("Erro: " + e.message); b.disabled = false; }
+  });
+}
 </script>
 </body>
 </html>

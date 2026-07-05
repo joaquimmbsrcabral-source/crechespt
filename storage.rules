@@ -1,0 +1,23 @@
+rules_version = '2';
+
+// Firebase Storage — fotos das creches
+// Upload apenas por gestores aprovados (verificado via Firestore),
+// leitura pública (as URLs aprovadas aparecem nas fichas).
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /creches/{crecheId}/{file} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && firestore.exists(/databases/(default)/documents/creche_managers/$(request.auth.uid))
+        && firestore.get(/databases/(default)/documents/creche_managers/$(request.auth.uid)).data.creche_id == crecheId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -180,6 +180,79 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    // ═══════════════ CONTAS DE CRECHES (painel) ═══════════════
+
+    // Helper: o utilizador é o gestor aprovado desta creche?
+    function isManagerOf(cid) {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/creche_managers/$(request.auth.uid))
+        && get(/databases/$(database)/documents/creche_managers/$(request.auth.uid)).data.creche_id == cid;
+    }
+
+    // Pedidos de acesso ("a minha creche é esta") — aprovados manualmente no /admin
+    match /creche_claims/{id} {
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','email','creche_id','creche_nome','nome_responsavel','cargo','telefone','mensagem','status','ts'])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() > 0
+        && request.resource.data.creche_id.size() < 100
+        && request.resource.data.creche_nome is string
+        && request.resource.data.creche_nome.size() <= 200
+        && request.resource.data.nome_responsavel is string
+        && request.resource.data.nome_responsavel.size() <= 120
+        && request.resource.data.telefone is string
+        && request.resource.data.telefone.size() <= 30;
+      allow read: if request.auth != null
+        && (resource.data.uid == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
+    // Quem gere que creche — escrito APENAS pelo admin ao aprovar um claim
+    match /creche_managers/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // Perfil editável da creche — leitura PÚBLICA (alimenta fichas e /app)
+    match /creche_profiles/{cid} {
+      allow read: if true;
+      allow create, update: if (isManagerOf(cid) || isAdmin())
+        && request.resource.data.keys().hasOnly(['descricao','horario','mensalidade_min','mensalidade_max','creche_feliz','vagas','contacto_email','contacto_telefone','website','fotos','updated_at','updated_by'])
+        && (!('descricao' in request.resource.data) ||
+            (request.resource.data.descricao is string && request.resource.data.descricao.size() <= 1500))
+        && (!('horario' in request.resource.data) ||
+            (request.resource.data.horario is string && request.resource.data.horario.size() <= 120))
+        && (!('website' in request.resource.data) ||
+            (request.resource.data.website is string && request.resource.data.website.size() <= 200))
+        && (!('contacto_email' in request.resource.data) ||
+            (request.resource.data.contacto_email is string && request.resource.data.contacto_email.size() <= 120))
+        && (!('contacto_telefone' in request.resource.data) ||
+            (request.resource.data.contacto_telefone is string && request.resource.data.contacto_telefone.size() <= 30))
+        // Fotos publicadas: só o admin altera (aprovação); gestor não mexe neste campo
+        && (isAdmin()
+            || !('fotos' in request.resource.data)
+            || (resource != null && 'fotos' in resource.data && request.resource.data.fotos == resource.data.fotos));
+      allow delete: if isAdmin();
+    }
+
+    // Fotos submetidas pelas creches — ficam pendentes até aprovação no /admin
+    match /creche_fotos/{id} {
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && isManagerOf(request.resource.data.creche_id)
+        && request.resource.data.keys().hasOnly(['creche_id','uid','url','legenda','status','ts'])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.url is string
+        && request.resource.data.url.size() <= 500
+        && (!('legenda' in request.resource.data) ||
+            (request.resource.data.legenda is string && request.resource.data.legenda.size() <= 140));
+      allow read: if request.auth != null
+        && (resource.data.uid == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;
