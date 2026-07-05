@@ -344,17 +344,27 @@ $("claim-q").addEventListener("input", async function(){
   if(!DATASET){
     box.innerHTML = '<div class="search-item">⏳ A carregar lista de creches…</div>';
     box.classList.add("open");
-    try { DATASET = await fetch("/creches_pt.json").then(r=>r.json()); }
+    try {
+      // Dataset estático + creches adicionadas depois via admin/para-creches (Firestore)
+      const [base, extras] = await Promise.all([
+        fetch("/creches_pt.json").then(r=>r.json()),
+        db.collection("creche_extras").get().then(s=>{
+          const a=[]; s.forEach(d=>{ const x=d.data(); x.id = x.id || d.id; a.push(x); }); return a;
+        }).catch(()=>[])
+      ]);
+      const vistos = new Set(base.map(c => String(c.id)));
+      DATASET = base.concat(extras.filter(x => !vistos.has(String(x.id))));
+    }
     catch(e){ box.innerHTML = '<div class="search-item">Erro a carregar. Recarrega a página.</div>'; return; }
   }
   const terms = q.split(/\s+/);
   const hits = DATASET.filter(c => {
-    const hay = ((c.nome||"") + " " + (c.localidade||"") + " " + (c.distrito||"")).toLowerCase();
+    const hay = ((c.nome||"") + " " + (c.localidade||"") + " " + (c.morada||"") + " " + (c.distrito||"")).toLowerCase();
     return terms.every(t => hay.includes(t));
   }).slice(0, 12);
   box.innerHTML = hits.length
-    ? hits.map(c => `<div class="search-item" data-id="${c.id}"><div class="n">${escapeHtml(c.nome)}</div><div class="l">${escapeHtml(c.localidade||"")} · ${escapeHtml(c.distrito||"")}</div></div>`).join("")
-    : '<div class="search-item">Nenhuma creche encontrada — tenta só uma palavra do nome. Se a creche não está no mapa, escreve-nos: geral@creches.app</div>';
+    ? hits.map(c => `<div class="search-item" data-id="${c.id}"><div class="n">${escapeHtml(c.nome)}</div><div class="l">${escapeHtml(c.localidade||c.morada||"")} · ${escapeHtml(c.distrito||"")}</div></div>`).join("")
+    : '<div class="search-item" style="cursor:default"><b>Nenhuma creche encontrada</b> — tenta só uma palavra do nome.<br><span style="font-size:.8rem;color:var(--ink-soft)">A tua creche ainda não está no mapa? <a href="/para-creches#registo">Regista-a primeiro aqui</a> — depois de aprovada (24-48h), volta cá para pedir o acesso ao painel. Se acabaste de a registar, é normal: está em análise.</span></div>';
   box.classList.add("open");
   box.querySelectorAll(".search-item[data-id]").forEach(el => el.onclick = () => {
     const c = DATASET.find(x => String(x.id) === el.dataset.id);
