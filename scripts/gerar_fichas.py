@@ -549,10 +549,10 @@ for c in creches:
 window.addEventListener('load', function(){{
   if(typeof firebase !== 'undefined' && !firebase.apps.length){{
     firebase.initializeApp({{
-      apiKey: "AIzaSyDjs9ZmZS3aaVQDFXp_lFsKfNa5Yc-LjbA",
-      authDomain: "creches-pt.firebaseapp.com",
-      projectId: "creches-pt",
-      storageBucket: "creches-pt.firebasestorage.app",
+      apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+      authDomain: "crechespt.firebaseapp.com",
+      projectId: "crechespt",
+      storageBucket: "crechespt.firebasestorage.app",
       messagingSenderId: "568867127907",
       appId: "1:568867127907:web:62c8f3b34c2c41a8e89c9e"
     }});
