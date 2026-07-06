@@ -775,3 +775,45 @@ Crowd-sourcing acelerado massivamente.
 - Página dedicada `/creche-feliz-adesao` para creches (futuro)
 - Firestore rules deploy (manual)
 
+
+---
+
+## 🌊 Onda 35 — Fixes técnicos pós-audit Fable 5
+
+### Mudanças
+
+117. ✅ **[CRÍTICO] Firebase project fix** — fichas (2578) e vagas.html
+     apontavam para `creches-pt` inexistente → todos os reports
+     falhavam silenciosamente. Corrigido para `crechespt` +
+     regenerado
+118. ✅ **`sw.js` precache** — removido `/app.css` (não existe, CSS
+     está inline) + bump versão v1 → v2
+119. ✅ **2 `console.log` em produção** — `app.html:3146` e `:3237`
+     passaram por `_w()` (wrapper `__DEV__`)
+
+---
+
+## 🌊 Onda 36 #1 — Perfil da creche no popup /app
+
+### Mudanças
+
+120. ✅ **`d-perfil-slot`** adicionado no popup entre `d-vaga-slot` e
+     `d-cf-slot`
+121. ✅ **`_renderPerfilCrechePopup()`** — função global que lê
+     `creche_profiles/{crecheId}` e renderiza cartão verde com:
+     - Vagas por sala (Berçário/1-2/2-3) com data
+     - Creche Feliz sim/não
+     - Mensalidade min-max
+     - Horário
+     - Descrição (até 380 chars)
+     - Até 4 fotos em grid
+     - Contactos preferidos (tel/email/site)
+122. ✅ Chamada automática ao abrir popup — chamada perto do
+     `d-vaga-slot`
+123. ✅ Clear entre creches diferentes (`innerHTML = ""`)
+
+### Resultado
+Quando a creche preenche o Painel `/painel`, os dados aparecem tanto
+na ficha estática (Fable 5) como no popup do mapa (agora). ROI do
+Painel duplicado.
+

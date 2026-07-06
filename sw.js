@@ -4,13 +4,13 @@
  *  - Assets estáticos (css/js/img/manifest): stale-while-revalidate
  *  - Nunca intercepta /admin, /api nem pedidos cross-origin (Firebase, tiles, etc.)
  */
-const VERSION = 'v1-2026-07-03';
+const VERSION = 'v2-2026-07-06';
 const STATIC_CACHE = `static-${VERSION}`;
 const PAGES_CACHE = `pages-${VERSION}`;
 
+// PRECACHE: apenas assets que EXISTEM (o CSS está inline no app.html)
 const PRECACHE = [
   '/offline.html',
-  '/app.css',
   '/favicon.svg',
   '/icon-192.png'
 ];
