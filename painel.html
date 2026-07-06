@@ -179,6 +179,18 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardares aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a></p>
     </div>
 
+    <!-- ANALYTICS — visualizações da ficha (Onda 36 #3) -->
+    <div class="card" id="card-analytics" style="display:none">
+      <h2><span class="emoji-chip" style="background:#FFF3D6">📊</span> Últimos 7 dias</h2>
+      <p class="sub">Pais que abriram a vossa ficha esta semana no creches.app.</p>
+      <div style="display:flex;align-items:baseline;gap:14px;margin:12px 0 8px">
+        <div style="font-size:2.4rem;font-weight:800;color:#2C2356;line-height:1" id="a-total">—</div>
+        <div style="font-size:.9rem;color:var(--ink-soft)">visualizações da vossa ficha nos últimos 7 dias</div>
+      </div>
+      <div id="a-bars" style="display:flex;align-items:flex-end;gap:6px;height:52px;margin:12px 0 4px"></div>
+      <div id="a-labels" style="display:flex;gap:6px;font-size:.7rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.04em"></div>
+    </div>
+
     <!-- VAGAS -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
@@ -432,7 +444,50 @@ async function abrirDashboard(){
   if(v.atualizado && v.atualizado.toDate) $("vagas-atualizado").textContent = "Última atualização: " + v.atualizado.toDate().toLocaleDateString("pt-PT");
   setCF(PROFILE.creche_feliz);
   carregarFotos();
+  carregarAnalytics();
   show("s-dash");
+}
+
+// Onda 36 #3 — Carregar visualizações últimos 7 dias
+async function carregarAnalytics(){
+  const card = $("card-analytics");
+  if(!card) return;
+  try {
+    const dias = [];
+    const now = new Date();
+    for(let i = 6; i >= 0; i--){
+      const d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dias.push(d.toISOString().slice(0, 10));
+    }
+    const promises = dias.map(day =>
+      db.doc("creche_views/" + MY_CRECHE.id + "/days/" + day).get().catch(() => null)
+    );
+    const snaps = await Promise.all(promises);
+    const counts = snaps.map(s => (s && s.exists) ? (s.data().count || 0) : 0);
+    const total = counts.reduce((a, b) => a + b, 0);
+    if(total === 0){
+      card.style.display = "block";
+      $("a-total").textContent = "0";
+      $("a-bars").innerHTML = '<div style="color:var(--ink-faint);font-size:.85rem">Ainda não há visualizações. Partilhem a vossa página nas redes!</div>';
+      $("a-labels").innerHTML = "";
+      return;
+    }
+    const max = Math.max(1, ...counts);
+    $("a-total").textContent = total.toLocaleString("pt-PT");
+    $("a-bars").innerHTML = counts.map(c => {
+      const h = Math.max(4, Math.round((c / max) * 48));
+      return '<div style="flex:1;background:linear-gradient(180deg,#FF6B9D,#FF9F68);height:' + h + 'px;border-radius:4px 4px 0 0;position:relative"><span style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;color:#2C2356">' + (c > 0 ? c : "") + '</span></div>';
+    }).join("");
+    const wd = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+    $("a-labels").innerHTML = dias.map(d => {
+      const dt = new Date(d + "T00:00:00");
+      return '<div style="flex:1;text-align:center">' + wd[dt.getDay()] + '</div>';
+    }).join("");
+    card.style.display = "block";
+  } catch(e){
+    card.style.display = "none";
+  }
 }
 
 $("p-desc").addEventListener("input", function(){ $("desc-count").textContent = this.value.length; });

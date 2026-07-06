@@ -156,6 +156,20 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    // ─── Creche Views (Onda 36 #3 — Jul 2026) ───
+    // Contador anónimo de visualizações por creche por dia, para dashboard do painel.
+    // Estrutura: creche_views/{crecheId}/days/{yyyy-mm-dd} { count, ts }
+    match /creche_views/{crecheId}/days/{day} {
+      // Leitura pública (mostrar na página pública ou no painel)
+      allow read: if true;
+      // Criar/incrementar sem auth — só o campo count com increment(1) e ts serverTimestamp
+      allow create, update: if request.resource.data.keys().hasOnly(['count','ts']);
+    }
+    // (bloqueia acesso ao documento intermédio)
+    match /creche_views/{crecheId} {
+      allow read, write: if false;
+    }
+
     // ─── Creche Feliz Reports (Onda 32 — Jun 2026) ───
     // Pais e creches podem reportar adesão ao programa Creche Feliz.
     // Sem expiração (adesão é estável). Admin pode marcar valido=false

@@ -817,3 +817,30 @@ Quando a creche preenche o Painel `/painel`, os dados aparecem tanto
 na ficha estática (Fable 5) como no popup do mapa (agora). ROI do
 Painel duplicado.
 
+
+---
+
+## 🌊 Onda 36 #2 + #3 — Email boas-vindas + Analytics no painel
+
+### Mudanças
+
+124. ✅ **Email automático ao aprovar claim** (`_sendClaimApprovedEmail`)
+     — abre Gmail compose com email pré-preenchido: boas-vindas + lista
+     do que a creche pode fazer no painel + link creches.app/painel
+125. ✅ **Tracking anónimo de views** nas 2578 fichas — rate-limit por
+     sessão (sessionStorage), escreve em `creche_views/{id}/days/
+     {yyyy-mm-dd}` com FieldValue.increment(1). Delay 1.5s para não
+     bloquear render.
+126. ✅ **Firestore rules** `/creche_views/{crecheId}/days/{day}` —
+     leitura pública, escrita pública apenas count+ts
+127. ✅ **Widget "Últimos 7 dias"** no dashboard do /painel:
+     - Total grande com número de visualizações
+     - Gráfico de barras verticais com dias da semana (Dom-Sáb)
+     - Empty state se ainda não há dados
+128. ✅ **carregarAnalytics()** chamada em `abrirDashboard()`
+
+### Resultado
+Creches vêem quantos pais estão a olhar para elas — motivação para
+manter o perfil actualizado. Fecha o loop: painel gera valor (perfil
+visível → mais views → confirmação de valor no dashboard).
+

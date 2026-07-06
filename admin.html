@@ -1958,6 +1958,8 @@ async function cpLoadClaims(){
       batch.update(db.doc("creche_claims/" + r.id), { status: "approved" });
       await batch.commit();
       b.closest("div[style]").style.opacity = .4; b.textContent = "✓ Aprovado";
+      // Onda 36 #2 — Enviar email de boas-vindas via Gmail compose
+      _sendClaimApprovedEmail(r);
       cpLoadClaims();
     } catch(e){ alert("Erro: " + e.message); b.disabled = false; b.textContent = "✓ Aprovar acesso"; }
   });
@@ -1967,6 +1969,46 @@ async function cpLoadClaims(){
     catch(e){ alert("Erro: " + e.message); b.disabled = false; }
   });
 }
+
+// === Onda 36 #2 — Email boas-vindas ao aprovar claim ===
+// Abre Gmail compose pré-preenchido; envia de geral@creches.app (alias no Gmail)
+function _sendClaimApprovedEmail(r){
+  if(!r || !r.email) return;
+  const nome = (r.nome_responsavel || "").split(" ")[0] || "";
+  const subj = "Bem-vindo(a) ao Creches.app — o teu painel está activo";
+  const body = [
+    "Olá" + (nome ? " " + nome : "") + ",",
+    "",
+    "Boas notícias — o teu pedido para gerir o perfil de «" + (r.creche_nome || "a tua creche") + "» no Creches.app foi aprovado. Já podes entrar no painel para começar:",
+    "",
+    "https://creches.app/painel",
+    "",
+    "O que podes fazer agora:",
+    "",
+    "🟢 Marcar vagas em tempo real (Berçário / 1-2 / 2-3 anos)",
+    "🍼 Confirmar se aderes ao Creche Feliz (creche gratuita)",
+    "✍️ Adicionar descrição do teu projecto pedagógico",
+    "🕐 Horário e mensalidades (min-max)",
+    "📸 Adicionar fotos (até 6, aprovadas por nós)",
+    "📞 Contactos preferidos para os pais te chegarem directo",
+    "",
+    "Tudo o que preencheres aparece no cartão verde \"✓ INFORMAÇÃO DA CRECHE\" na tua ficha pública, e nos filtros do mapa.",
+    "",
+    "Se precisares de ajuda ou tiveres dúvidas, é só responder a este email.",
+    "",
+    "Obrigado por fazerem parte disto.",
+    "",
+    "Joaquim Cabral",
+    "Creches.app · geral@creches.app"
+  ].join("\n");
+  const url = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(r.email) +
+              "&su=" + encodeURIComponent(subj) +
+              "&body=" + encodeURIComponent(body);
+  // Abre em nova aba (o admin pode não estar a esperar)
+  try { window.open(url, "_blank", "noopener"); }
+  catch(e){ /* silêncio se pop-up bloqueado */ }
+}
+
 
 async function cpLoadFotos(){
   const host = $("cp-fotos-host");

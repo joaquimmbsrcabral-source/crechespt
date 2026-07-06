@@ -287,6 +287,23 @@ window.addEventListener('load', function(){
       appId: "1:568867127907:web:62c8f3b34c2c41a8e89c9e"
     });
   }
+  // === Onda 36 #3 — Tracking anónimo de views por creche (para painel) ===
+  // Rate-limited: max 1 view por creche por sessão (localStorage)
+  setTimeout(function(){
+    try {
+      var vagaSlot = document.getElementById("vaga-slot");
+      var crecheId = vagaSlot && vagaSlot.dataset.crecheId;
+      if(!crecheId || !firebase.firestore) return;
+      var today = new Date().toISOString().slice(0,10);
+      var seenKey = "cpview/" + crecheId + "/" + today;
+      if(sessionStorage.getItem(seenKey)) return;
+      sessionStorage.setItem(seenKey, "1");
+      // Incrementar creche_views/{creche_id}/days/{yyyy-mm-dd}
+      var docRef = firebase.firestore().doc("creche_views/" + crecheId + "/days/" + today);
+      docRef.set({ count: firebase.firestore.FieldValue.increment(1), ts: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
+        .catch(function(){});
+    } catch(e){}
+  }, 1500);  // delay para não bloquear render
 });
 </script>
 <script src="/vagas.js" defer></script>
