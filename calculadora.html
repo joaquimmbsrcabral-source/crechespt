@@ -247,7 +247,7 @@ footer a{color:var(--ink-soft);margin:0 7px}
     });
   });
   document.getElementById('renda').addEventListener('input', e=>{
-    state.renda = parseFloat(e.target.value) || null;
+    state.renda = Math.max(0, parseFloat(e.target.value) || 0) || null;
     document.getElementById('step-agregado').style.display = (state.tipo==='ipss' && state.renda) ? '' : 'none';
     compute();
   });

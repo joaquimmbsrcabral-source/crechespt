@@ -100,9 +100,20 @@
   }
 
   function choose(accept){
+    const antes = read();
     write({ analytics: !!accept, ts: new Date().toISOString(), v: 1 });
     hideBanner();
-    if(accept) loadAnalytics();
+    if(accept){ loadAnalytics(); return; }
+    // Revogação efetiva: desliga o GA na sessão e apaga cookies _ga*
+    if(antes && antes.analytics){
+      try{ if(window.gtag) gtag('consent','update',{ analytics_storage:'denied' }); }catch(e){}
+      try{
+        document.cookie.split(';').forEach(function(c){
+          var n = c.split('=')[0].trim();
+          if(n.indexOf('_ga') === 0) document.cookie = n + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.creches.app';
+        });
+      }catch(e){}
+    }
   }
 
   function init(){

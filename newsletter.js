@@ -95,7 +95,7 @@
           <div style="background:linear-gradient(135deg,#DEF5E1 0%,#D8F5F4 100%);border-radius:18px;padding:24px 26px;max-width:520px;margin:20px auto;text-align:center">
             <div style="font-size:34px;margin-bottom:8px">🎉</div>
             <h3 style="font-family:'Fredoka',inherit;font-size:20px;color:#2C2356;margin:0 0 6px;font-weight:600">Obrigado!</h3>
-            <p style="color:#6E6989;font-size:14px;margin:0">Vais receber novidades em <b style="color:#2C2356">${email}</b>. Verifica a pasta de spam se não chegar nada.</p>
+            <p style="color:#6E6989;font-size:14px;margin:0">Vais receber novidades em <b style="color:#2C2356">${String(email).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; })}</b>. Verifica a pasta de spam se não chegar nada.</p>
           </div>
         `;
       }catch(err){

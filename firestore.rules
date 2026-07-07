@@ -51,7 +51,13 @@ service cloud.firestore {
         && request.resource.data.email is string && request.resource.data.email.size() <= 120
         && request.resource.data.tipo is string && request.resource.data.tipo.size() <= 20
         && request.resource.data.distrito is string && request.resource.data.distrito.size() <= 60
-        && request.resource.data.morada is string && request.resource.data.morada.size() <= 200;
+        && request.resource.data.morada is string && request.resource.data.morada.size() <= 200
+        && (!('website' in request.resource.data) ||
+            (request.resource.data.website is string && request.resource.data.website.size() <= 200))
+        && (!('horario' in request.resource.data) ||
+            (request.resource.data.horario is string && request.resource.data.horario.size() <= 120))
+        && (!('mensagem' in request.resource.data) ||
+            (request.resource.data.mensagem is string && request.resource.data.mensagem.size() <= 1000));
       allow read:   if isAdmin();
       allow update: if isAdmin();  // marca como aprovado/rejeitado
       allow delete: if false;
@@ -61,6 +67,7 @@ service cloud.firestore {
     // O próprio cria; só admin lê.
     match /feedback/{id} {
       allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid','email','displayName','category','message','url','user_agent','ts'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.message is string
         && request.resource.data.message.size() <= 2000;
@@ -72,6 +79,7 @@ service cloud.firestore {
     // Qualquer utilizador autenticado cria; só admin lê e atualiza.
     match /creche_reports/{id} {
       allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid','email','creche_id','creche_name','report_type','claimed_age','correction','note','current_tipo','current_min','current_max','current_telefone','url','ts'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.creche_name is string
         && request.resource.data.creche_name.size() <= 200
@@ -104,10 +112,16 @@ service cloud.firestore {
     match /daily_stats/{date} {
       allow read: if isAdmin();
       allow create: if
-        request.resource.data.keys().hasOnly(['app_views','site_views','updated_at']);
+        request.resource.data.keys().hasOnly(['app_views','site_views','updated_at'])
+        && (!('app_views' in request.resource.data) || (request.resource.data.app_views is int && request.resource.data.app_views >= 0 && request.resource.data.app_views <= 5))
+        && (!('site_views' in request.resource.data) || (request.resource.data.site_views is int && request.resource.data.site_views >= 0 && request.resource.data.site_views <= 5));
       allow update: if
         request.resource.data.diff(resource.data).affectedKeys()
-          .hasOnly(['app_views','site_views','updated_at']);
+          .hasOnly(['app_views','site_views','updated_at'])
+        && (!('app_views' in request.resource.data) || !('app_views' in resource.data)
+            || (request.resource.data.app_views >= resource.data.app_views && request.resource.data.app_views <= resource.data.app_views + 5))
+        && (!('site_views' in request.resource.data) || !('site_views' in resource.data)
+            || (request.resource.data.site_views >= resource.data.site_views && request.resource.data.site_views <= resource.data.site_views + 5));
       allow delete: if false;
     }
 
@@ -115,7 +129,8 @@ service cloud.firestore {
     // Qualquer pessoa (autenticada ou não) pode pedir; só admin lê.
     match /creche_removals/{id} {
       allow create: if
-           request.resource.data.creche_name is string
+           request.resource.data.keys().hasOnly(['creche_id','creche_name','relationship','requester_email','reason','url','user_agent','uid','ts'])
+        && request.resource.data.creche_name is string
         && request.resource.data.creche_name.size() <= 200
         && request.resource.data.relationship is string
         && request.resource.data.relationship.size() <= 30
@@ -137,8 +152,12 @@ service cloud.firestore {
       // Qualquer pessoa pode criar (anónimo ou autenticado)
       // Validação básica: campos obrigatórios, source válido, tamanhos máx.
       allow create: if
-           request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
+           request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'idades', 'notas', 'reportado_em', 'expires_at', 'reportado_por'])
+        && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em', 'expires_at'])
         && request.resource.data.source in ['creche', 'pai']
+        && request.resource.data.verificado == false
+        && request.resource.data.expires_at is timestamp
+        && request.resource.data.expires_at <= request.time + duration.value(8, 'd')
         && request.resource.data.creche_id is string
         && request.resource.data.creche_id.size() < 100
         && request.resource.data.creche_id.size() > 0
@@ -163,7 +182,13 @@ service cloud.firestore {
       // Leitura pública (mostrar na página pública ou no painel)
       allow read: if true;
       // Criar/incrementar sem auth — só o campo count com increment(1) e ts serverTimestamp
-      allow create, update: if request.resource.data.keys().hasOnly(['count','ts']);
+      allow create: if request.resource.data.keys().hasOnly(['count','ts'])
+        && request.resource.data.count is int
+        && request.resource.data.count >= 1 && request.resource.data.count <= 3;
+      allow update: if request.resource.data.keys().hasOnly(['count','ts'])
+        && request.resource.data.count is int
+        && request.resource.data.count > resource.data.count
+        && request.resource.data.count <= resource.data.count + 3;
     }
     // (bloqueia acesso ao documento intermédio)
     match /creche_views/{crecheId} {
@@ -180,8 +205,10 @@ service cloud.firestore {
 
       // Qualquer pessoa pode criar (anónimo ou autenticado)
       allow create: if
-           request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
+           request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'valido', 'reportado_em', 'reportado_por'])
+        && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
         && request.resource.data.source in ['creche', 'pai']
+        && request.resource.data.verificado == false
         && request.resource.data.creche_id is string
         && request.resource.data.creche_id.size() < 100
         && request.resource.data.creche_id.size() > 0
@@ -244,6 +271,7 @@ service cloud.firestore {
             (request.resource.data.contacto_email is string && request.resource.data.contacto_email.size() <= 120))
         && (!('contacto_telefone' in request.resource.data) ||
             (request.resource.data.contacto_telefone is string && request.resource.data.contacto_telefone.size() <= 30))
+        && (isAdmin() || !('updated_by' in request.resource.data) || request.resource.data.updated_by == request.auth.uid)
         // Fotos publicadas: só o admin altera (aprovação); gestor não mexe neste campo
         && (isAdmin()
             || !('fotos' in request.resource.data)

@@ -11,7 +11,7 @@
 <meta property="og:description" content="Tabela lado-a-lado: distância, mensalidade, idades, contactos. Gratuito.">
 <meta property="og:image" content="https://creches.app/og-image.png">
 <link rel="icon" href="/favicon.svg">
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -247,6 +247,13 @@ function mensalEstimada(c){
   return null;
 }
 
+function esc(s){ return String(s??"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function safeUrl(u){ if(!u) return null; const s=String(u).trim(); return /^https?:\/\//i.test(s) ? s : (/^[\w.-]+\.[a-z]{2,}([\/?].*)?$/i.test(s) ? "https://"+s : null); }
+function fichaHref(c){
+  return String(c.id||"").startsWith("extra_")
+    ? "/app#creche-" + encodeURIComponent(c.id)
+    : `/creche/${slugify(c.nome, c.id)}`;
+}
 function slugify(s, id){
   const slug = (s||"creche").toLowerCase()
     .normalize("NFD").replace(/[̀-ͯ]/g,"")
@@ -258,17 +265,62 @@ function slugify(s, id){
 // ============================================================
 // Carregar dataset completo (cached)
 // ============================================================
+const FS_BASE = "https://firestore.googleapis.com/v1/projects/crechespt/databases/(default)/documents";
+const FS_KEY = "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI";
+function fsVal(v){ // converte um value tipado do Firestore REST em JS
+  if(v == null) return null;
+  if("stringValue" in v) return v.stringValue;
+  if("integerValue" in v) return parseInt(v.integerValue,10);
+  if("doubleValue" in v) return v.doubleValue;
+  if("booleanValue" in v) return v.booleanValue;
+  if("nullValue" in v) return null;
+  if("arrayValue" in v) return (v.arrayValue.values||[]).map(fsVal);
+  if("mapValue" in v){ const o={}; Object.entries(v.mapValue.fields||{}).forEach(([k,x])=>o[k]=fsVal(x)); return o; }
+  return null;
+}
+async function fsList(coll){ // lista docs de uma coleção pública (até 3 páginas de 300)
+  const out = {};
+  let pageToken = "", pages = 0;
+  try{
+    do {
+      const url = `${FS_BASE}/${coll}?pageSize=300${pageToken?`&pageToken=${pageToken}`:""}&key=${FS_KEY}`;
+      const r = await fetch(url);
+      if(!r.ok) break;
+      const j = await r.json();
+      (j.documents||[]).forEach(doc => {
+        const id = doc.name.split("/").pop();
+        const o = {}; Object.entries(doc.fields||{}).forEach(([k,v])=>o[k]=fsVal(v));
+        out[id] = o;
+      });
+      pageToken = j.nextPageToken || "";
+    } while(pageToken && ++pages < 3);
+  }catch(e){ console.warn("fsList "+coll, e); }
+  return out;
+}
 async function ensureData(){
   if(State.fullData) return State.fullData;
   try {
-    const res = await fetch("/creches_pt.json", { cache: "force-cache" });
+    const [res, overrides, extras] = await Promise.all([
+      fetch("/creches_pt.json", { cache: "force-cache" }),
+      fsList("creche_overrides"),
+      fsList("creche_extras")
+    ]);
     const arr = await res.json();
     const map = {};
     arr.forEach(c => { map[c.id] = c; });
+    // Aplica correções do admin (mesma fonte que a app usa)
+    Object.entries(overrides).forEach(([id, ov]) => {
+      if(map[id]) Object.assign(map[id], ov);
+    });
+    // Junta creches adicionadas depois do dataset (convenção extra_<docId>)
+    Object.entries(extras).forEach(([docId, x]) => {
+      const id = "extra_" + docId;
+      if(!map[id]) map[id] = Object.assign({ id }, x, { operador: x.tipo_oper || x.operador });
+    });
     State.fullData = map;
     return map;
   } catch(e){
-    console.error("Falha a carregar creches_pt.json", e);
+    console.error("Falha a carregar dataset do comparador", e);
     return {};
   }
 }
@@ -426,7 +478,7 @@ async function renderCompare(){
   // Helpers para tipo (matching CSS class names)
   const tipoCls = c => (c.tipo || "Desconhecido").replace("ú","u").replace("ó","o").replace("í","i");
   const dirUrl = c => (c.lat && c.lon) ? `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}` : "#";
-  const fichaUrl = c => `/creche/${slugify(c.nome, c.id)}`;
+  const fichaUrl = c => fichaHref(c);
   const telClean = t => (t||"").replace(/[\s\/]+/g,"");
 
   const cols = `cols-${list.length}`;
@@ -436,7 +488,7 @@ async function renderCompare(){
     <div class="cmp-cell cmp-head" data-id="${c.id}">
       <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
       <span class="tipo-pill tipo-${tipoCls(c)}">${c.tipo || "—"}</span>
-      <h3>${c.nome || "—"}</h3>
+      <h3>${esc(c.nome) || "—"}</h3>
       <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
     </div>
   `).join("");
@@ -475,22 +527,22 @@ async function renderCompare(){
                    c.creche_feliz === false ? "✗ Não aderente" : null));
 
   const rowMorada = row("🏠", "Morada", "Morada",
-    list.map(c => c.morada || null));
+    list.map(c => esc(c.morada) || null));
 
   const rowCP = row("📮", "Código postal", "Código postal",
     list.map(c => c.codigo_postal || null));
 
   const rowTel = row("📞", "Telefone", "Telefone",
-    list.map(c => c.telefone ? `<a href="tel:${telClean(c.telefone)}">${c.telefone}</a>` : null));
+    list.map(c => c.telefone ? `<a href="tel:${esc(telClean(c.telefone))}">${esc(c.telefone)}</a>` : null));
 
   const rowMail = row("✉", "Email", "Email",
-    list.map(c => c.email ? `<a href="mailto:${c.email}?subject=${encodeURIComponent('Pedido de informação — '+c.nome)}">${c.email}</a>` : null));
+    list.map(c => c.email ? `<a href="mailto:${esc(c.email)}?subject=${encodeURIComponent('Pedido de informação — '+c.nome)}">${esc(c.email)}</a>` : null));
 
   const rowSite = row("🌐", "Website", "Website",
-    list.map(c => c.website ? `<a href="${c.website}" target="_blank" rel="noopener">Abrir →</a>` : null));
+    list.map(c => safeUrl(c.website) ? `<a href="${esc(safeUrl(c.website))}" target="_blank" rel="noopener">Abrir →</a>` : null));
 
   const rowOperador = row("🏢", "Operador", "Operador",
-    list.map(c => c.operador || null));
+    list.map(c => esc(c.operador) || null));
 
   // CTAs
   const rowCtas = `<div class="cmp-cell cmp-label cmp-label-mobile"><span class="ic">⚡</span>Acções</div>` +
@@ -520,18 +572,18 @@ async function renderCompare(){
             ["🎂","Idades", faixaTxt(c) || "—"],
             ["👶","Resposta", c.resposta || "—"],
             ["🆓","Creche Feliz", c.creche_feliz === true ? "✅ Sim" : c.creche_feliz === false ? "✗ Não" : "—"],
-            ["🏠","Morada", c.morada || "—"],
+            ["🏠","Morada", esc(c.morada) || "—"],
             ["📮","Código postal", c.codigo_postal || "—"],
-            ["📞","Telefone", c.telefone ? `<a href="tel:${telClean(c.telefone)}">${c.telefone}</a>` : "—"],
-            ["✉","Email", c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : "—"],
-            ["🌐","Website", c.website ? `<a href="${c.website}" target="_blank" rel="noopener">Abrir →</a>` : "—"],
-            ["🏢","Operador", c.operador || "—"]
+            ["📞","Telefone", c.telefone ? `<a href="tel:${esc(telClean(c.telefone))}">${esc(c.telefone)}</a>` : "—"],
+            ["✉","Email", c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : "—"],
+            ["🌐","Website", safeUrl(c.website) ? `<a href="${esc(safeUrl(c.website))}" target="_blank" rel="noopener">Abrir →</a>` : "—"],
+            ["🏢","Operador", esc(c.operador) || "—"]
           ];
           return `<div class="cmp-mobile-card">
             <div class="cmp-cell cmp-head" data-id="${c.id}">
               <button class="remove-btn" data-rm="${c.id}" title="Remover">✕</button>
               <span class="tipo-pill tipo-${tipoCls(c)}">${c.tipo || "—"}</span>
-              <h3>${c.nome || "—"}</h3>
+              <h3>${esc(c.nome) || "—"}</h3>
               <div class="loc">📍 ${[c.localidade, c.distrito].filter(Boolean).join(", ") || "—"}</div>
             </div>
             ${cells.map(([ic,lb,html,best]) => `

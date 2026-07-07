@@ -136,3 +136,8 @@
     renderBar();
   }
 })();
+
+// Sincronizar barra entre tabs/janelas
+window.addEventListener("storage", function(e){
+  if(e.key === KEY && window.Compare && Compare.renderBar) Compare.renderBar();
+});

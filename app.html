@@ -916,7 +916,13 @@ async function loadUserDataFromFirestore(){
     const doc = await FB.db.collection("users").doc(FB.user.uid).collection("data").doc("tracking").get();
     if(doc.exists){
       const d = doc.data();
-      State.userData = { creches: d.creches||{}, settings: d.settings||{} };
+      // MERGE: preserva creches marcadas como convidado antes do login
+      // (servidor ganha em conflito por creche; locais-only são mantidas e sobem)
+      const localCreches = State.userData && State.userData.creches || {};
+      const merged = Object.assign({}, localCreches, d.creches||{});
+      const hadLocalOnly = Object.keys(localCreches).some(k => !(d.creches||{})[k]);
+      State.userData = { creches: merged, settings: Object.assign({}, State.userData && State.userData.settings || {}, d.settings||{}) };
+      if(hadLocalOnly) saveUserData();  // sobe as locais para o servidor
     } else {
       // primeira vez: se houver dados locais, sobe-os para o servidor
       if(Object.keys(State.userData.creches||{}).length){
@@ -1507,7 +1513,7 @@ function renderList(){
         <span class="statusdot s-${status}" title="${STATUS_LABEL[status]}"></span>
         ${c._vaga ? `<span class="vaga-pill" title="Vaga sinalizada há ${c._vaga_dias} dia${c._vaga_dias===1?"":"s"}">🟢 Vaga disponível</span>` : ""}
         ${c.creche_feliz ? `<span class="cf-pill" title="Aderente ao programa Creche Feliz (Segurança Social) — pode ser gratuita para famílias elegíveis">🆓 Creche Feliz</span>` : ""}
-        ${(c.tipos||[c.tipo||"Desconhecido"]).map(t => `<span class="minitag tipo-${t}">${t}</span>`).join("")}
+        ${(c.tipos||[c.tipo||"Desconhecido"]).map(t => `<span class="minitag tipo-${escapeAttr(String(t))}">${escapeHtml(String(t))}</span>`).join("")}
         ${resp ? `<span class="resp-pill" title="Tipo de resposta">${escapeHtml(resp)}</span>` : ""}
         ${ageTxt ? `<span class="age-pill" title="Faixa etária">🎂 ${ageTxt}</span>` : ""}
         ${distTxt ? `<span class="dist-pill" title="Distância a partir de ti">📍 ${distTxt}</span>` : ""}
@@ -1632,7 +1638,7 @@ function renderMap(){
     const m = L.marker([c.lat, c.lon], { icon });
     m._crecheId = c.id;
     m.on("click", ()=>openDetail(c.id));
-    m.bindTooltip(c.nome, {direction:"top", offset:[0,-6]});
+    m.bindTooltip(escapeHtml(c.nome), {direction:"top", offset:[0,-6]});
     State.markerById.set(c.id, m);
     markers.push(m);
   }
@@ -1742,7 +1748,7 @@ function openDetail(id){
     rows.push(["Distância", `<span class="dist-pill">📍 ${fmtDist(d)} a partir de ti</span>`]);
   }
   rows.push(["Coordenadas", `${c.lat.toFixed(5)}, ${c.lon.toFixed(5)} · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}">▶ direções</a>`]);
-  rows.push(["Fonte", `<a target="_blank" rel="noopener" href="${c.osm_url}">OpenStreetMap</a> · <a href="#" class="remove-creche-btn" data-noopen="1" title="Sou desta creche e quero ser removida do mapa">esta é a minha creche → pedir remoção</a>`]);
+  rows.push(["Fonte", `${c.osm_url ? `<a target="_blank" rel="noopener" href="${escapeAttr(c.osm_url)}">OpenStreetMap</a>` : "Submissão directa"} · <a href="#" class="remove-creche-btn" data-noopen="1" title="Sou desta creche e quero ser removida do mapa">esta é a minha creche → pedir remoção</a>`]);
   kv.innerHTML = rows.map(([k,v])=>`<div class="k">${k}</div><div>${v}</div>`).join("");
 
   document.getElementById("d-status").value = u.status || "todo";
@@ -1774,7 +1780,8 @@ function openDetail(id){
   }
   const ctaSite = document.getElementById("d-cta-site");
   if(ctaSite){
-    if(site){ ctaSite.href = site; ctaSite.classList.remove("disabled"); }
+    if(site && /^https?:\/\//i.test(site)){ ctaSite.href = site; ctaSite.classList.remove("disabled"); }
+    else if(site && /^[\w.-]+\.[a-z]{2,}/i.test(site)){ ctaSite.href = "https://" + site; ctaSite.classList.remove("disabled"); }
     else { ctaSite.href = "#"; ctaSite.classList.add("disabled"); ctaSite.onclick = (e)=>e.preventDefault(); }
   }
   const ctaDir = document.getElementById("d-cta-dir");
@@ -2048,7 +2055,7 @@ function renderPipeline(){
           return `<div class="pcard" data-id="${escapeAttr(c.id)}">
             <div class="nm">${u.fav?"⭐ ":""}${escapeHtml(c.nome)}</div>
             <div class="mt">
-              ${tipos.map(t => `<span class="minitag tipo-${t}">${t}</span>`).join("")}
+              ${tipos.map(t => `<span class="minitag tipo-${escapeAttr(String(t))}">${escapeHtml(String(t))}</span>`).join("")}
               ${ageTxt ? `<span class="age-pill">🎂 ${ageTxt}</span>` : ""}
               ${c.distrito?`<span>${escapeHtml(c.distrito)}</span>`:""}
               ${c.localidade?`<span>· ${escapeHtml(c.localidade)}</span>`:""}
@@ -3249,7 +3256,7 @@ function _openCfModalApp(crecheId, nome){
         <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
           <div>
             <h3 style="margin:0 0 4px;font-family:Fredoka,sans-serif;font-size:20px;color:#2C2356">🆓 É Creche Feliz?</h3>
-            <div style="font-size:13px;color:#6E6989">${nome || "esta creche"}</div>
+            <div style="font-size:13px;color:#6E6989">${escapeHtml(nome) || "esta creche"}</div>
           </div>
           <button type="button" id="_cfm-x" style="background:none;border:0;font-size:24px;color:#9B97B5;cursor:pointer;line-height:1">✕</button>
         </div>
@@ -3342,7 +3349,7 @@ function _openVagaModalApp(crecheId, nome){
         <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
           <div>
             <h3 style="margin:0 0 4px;font-family:Fredoka,sans-serif;font-size:20px;color:#2C2356">🟢 Reportar vaga</h3>
-            <div style="font-size:13px;color:#6E6989">${nome || "esta creche"}</div>
+            <div style="font-size:13px;color:#6E6989">${escapeHtml(nome) || "esta creche"}</div>
           </div>
           <button type="button" id="_vam-x" style="background:none;border:0;font-size:24px;color:#9B97B5;cursor:pointer;line-height:1">✕</button>
         </div>

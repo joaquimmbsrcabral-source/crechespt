@@ -87,6 +87,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
   font-family:"Quicksand";font-weight:700;font-size:.85rem;color:var(--ink-soft);cursor:pointer}
 .seg3 button.on-sim{background:var(--c-mint-soft);border-color:var(--c-mint);color:#1F7A3D}
 .seg3 button.on-nao{background:var(--c-coral-soft);border-color:var(--c-coral);color:#B4255C}
+.seg3 button.on-neutro{background:var(--c-lilac-soft);border-color:var(--c-lilac);color:var(--ink)}
 .fotos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
 .fotos-grid .ph{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--c-peach-soft)}
 .fotos-grid img{width:100%;height:100%;object-fit:cover}
@@ -343,7 +344,8 @@ auth.onAuthStateChanged(async user => {
     show("s-claim");
   } catch(e){
     console.error(e);
-    show("s-claim");
+    $("s-loading").innerHTML = '<div class="card center"><div style="font-size:2rem">😕</div><p><b>Não foi possível carregar a tua conta.</b><br><span style="font-size:.85rem;color:var(--ink-soft)">Verifica a ligação à internet.</span></p><button class="btn btn-primary" onclick="location.reload()">Tentar novamente</button></div>';
+    show("s-loading");
   }
 });
 
@@ -361,7 +363,8 @@ $("claim-q").addEventListener("input", async function(){
       const [base, extras] = await Promise.all([
         fetch("/creches_pt.json").then(r=>r.json()),
         db.collection("creche_extras").get().then(s=>{
-          const a=[]; s.forEach(d=>{ const x=d.data(); x.id = x.id || d.id; a.push(x); }); return a;
+          // id com prefixo "extra_" — MESMA convenção do app.html/admin (crítico: sem isto os perfis iam para o doc errado)
+          const a=[]; s.forEach(d=>{ const x=d.data(); x.id = "extra_" + d.id; a.push(x); }); return a;
         }).catch(()=>[])
       ]);
       const vistos = new Set(base.map(c => String(c.id)));
@@ -398,6 +401,15 @@ $("btn-claim").onclick = async () => {
   if(tel.length < 6) return err("claim-err","Escreve o telefone da creche (usamo-lo para confirmar).");
   const btn = $("btn-claim"); btn.disabled = true; btn.textContent = "⏳ A enviar…";
   try {
+    // Evitar pedidos duplicados do mesmo utilizador
+    const dup = await db.collection("creche_claims").where("uid","==",ME.uid).get();
+    let jaTem = false;
+    dup.forEach(d => { if(d.data().status === "pending") jaTem = true; });
+    if(jaTem){
+      err("claim-err","Já tens um pedido em análise. Aguarda a nossa confirmação (24-48h) ou escreve para geral@creches.app.");
+      btn.disabled = false; btn.textContent = "Pedir acesso ao painel →";
+      return;
+    }
     await db.collection("creche_claims").add({
       uid: ME.uid,
       email: ME.email || "",
@@ -423,7 +435,7 @@ $("btn-claim-outro").onclick = (e) => { e.preventDefault(); show("s-claim"); };
 async function abrirDashboard(){
   $("dash-nome").textContent = MY_CRECHE.nome;
   // Link para a ficha pública (slug aproximado via pesquisa no /app)
-  $("dash-ver-ficha").href = "/app#" + encodeURIComponent(MY_CRECHE.id);
+  $("dash-ver-ficha").href = "/app#creche-" + encodeURIComponent(MY_CRECHE.id);
   try {
     const snap = await db.doc("creche_profiles/" + MY_CRECHE.id).get();
     PROFILE = snap.exists ? snap.data() : {};
@@ -497,11 +509,11 @@ let CF_VAL = null;
 function setCF(v){
   CF_VAL = (v === true || v === false) ? v : null;
   document.querySelectorAll("#cf-seg button").forEach(b => {
-    b.classList.remove("on-sim","on-nao");
+    b.classList.remove("on-sim","on-nao","on-neutro");
     const bv = b.dataset.v;
     if(bv === "true" && CF_VAL === true) b.classList.add("on-sim");
     if(bv === "false" && CF_VAL === false) b.classList.add("on-nao");
-    if(bv === "null" && CF_VAL === null) b.classList.add("on-sim");
+    if(bv === "null" && CF_VAL === null) b.classList.add("on-neutro");
   });
 }
 document.querySelectorAll("#cf-seg button").forEach(b => b.onclick = () => {
@@ -529,8 +541,8 @@ $("btn-save").onclick = async () => {
     updated_by: ME.uid
   };
   const mmin = parseInt($("p-mmin").value,10), mmax = parseInt($("p-mmax").value,10);
-  if(!isNaN(mmin)) data.mensalidade_min = mmin;
-  if(!isNaN(mmax)) data.mensalidade_max = mmax;
+  data.mensalidade_min = isNaN(mmin) ? firebase.firestore.FieldValue.delete() : Math.max(0, Math.min(3000, mmin));
+  data.mensalidade_max = isNaN(mmax) ? firebase.firestore.FieldValue.delete() : Math.max(0, Math.min(3000, mmax));
   try {
     await db.doc("creche_profiles/" + MY_CRECHE.id).set(data, { merge: true });
     ok("save-ok","✓ Guardado! As alterações já estão visíveis para os pais.");
@@ -575,18 +587,24 @@ async function carregarFotos(){
   const grid = $("fotos-grid");
   grid.innerHTML = "";
   const items = [];
-  // Aprovadas (no perfil) + minhas pendentes
-  (PROFILE.fotos || []).forEach(u => items.push({ url: u, st: "✓ pública", cls:"" }));
+  // Refresca o perfil (para apanhar fotos aprovadas durante a sessão)
+  try {
+    const psnap = await db.doc("creche_profiles/" + MY_CRECHE.id).get();
+    if(psnap.exists) PROFILE = psnap.data();
+  } catch(e){}
+  const publicas = new Set(PROFILE.fotos || []);
+  publicas.forEach(u => items.push({ url: u, st: "✓ pública" }));
   try {
     const snap = await db.collection("creche_fotos").where("uid","==",ME.uid).get();
     snap.forEach(d => {
       const x = d.data();
-      if(x.status === "pending") items.push({ url: x.url, st: "⏳ em revisão" });
+      if(x.status === "pending" && !publicas.has(x.url)) items.push({ url: x.url, st: "⏳ em revisão" });
       if(x.status === "rejected") items.push({ url: x.url, st: "✗ recusada" });
     });
   } catch(e){}
-  grid.innerHTML = items.map(i => `<div class="ph"><img src="${i.url}" alt="" loading="lazy"><span class="st">${i.st}</span></div>`).join("");
+  grid.innerHTML = items.map(i => `<div class="ph"><img src="${escapeHtml(i.url)}" alt="" loading="lazy"><span class="st">${i.st}</span></div>`).join("");
 }
+function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 </script>
 </body>
 </html>

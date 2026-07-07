@@ -16,7 +16,7 @@ Fundacao-*
 *.csv
 scripts/
 analyze-tipo.py
-firestore.rules
+*.rules
 deploy.sh
 .tools/
 

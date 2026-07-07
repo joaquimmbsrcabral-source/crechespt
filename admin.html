@@ -489,7 +489,7 @@ async function loadDashboard(user){
     db.collection("feedback").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("fb",e);return null;}),
     db.collection("creche_reports").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rp",e);return null;}),
     db.collection("creche_removals").orderBy("ts","desc").limit(200).get().catch(e=>{console.warn("rm",e);return null;}),
-    db.collection("daily_stats").limit(60).get().catch(e=>{console.warn("stats",e);return null;}),
+    db.collection("daily_stats").orderBy(firebase.firestore.FieldPath.documentId(), "desc").limit(60).get().catch(e=>{console.warn("stats",e);return null;}),
     db.collection("newsletter_subscribers").orderBy("ts","desc").limit(1000).get().catch(e=>{console.warn("nl",e);return null;}),
   ]);
 
@@ -559,7 +559,7 @@ async function loadDashboard(user){
   let reports = [];
   if(rpSnap){
     rpSnap.forEach(d=>{ const x = d.data(); x.id=d.id; reports.push(x); });
-    $("m-reports").textContent = reports.length;
+    $("m-reports").textContent = reports.filter(r => !r.status || r.status === "pending").length;
   } else { $("m-reports").textContent = "?"; }
 
   // --- Pedidos de remoção
@@ -794,7 +794,7 @@ function renderCreches(rows){
             <td><span class="pill">${escapeHtml(r.tipo||"")}</span>${r.idade_min_meses!=null?`<br><small style="color:#888">${r.idade_min_meses}–${r.idade_max_meses}m</small>`:""}</td>
             <td>${escapeHtml(r.distrito||"—")}</td>
             <td>${escapeHtml(r.criancas||"—")}</td>
-            <td class="msg">${r.website?`<a href="${escapeHtml(r.website)}" target="_blank" rel="noopener">🌐 site</a><br>`:""}${escapeHtml(r.mensagem||"").slice(0,180)}</td>
+            <td class="msg">${r.website && /^https?:\/\//i.test(r.website)?`<a href="${escapeHtml(r.website)}" target="_blank" rel="noopener">🌐 site</a><br>`:""}${escapeHtml(r.mensagem||"").slice(0,180)}</td>
             <td>
               <button class="btn-approve-ci">✓ Aprovar</button>
               <button class="btn-reject-ci">✕ Rejeitar</button>
@@ -1124,7 +1124,10 @@ async function approveInterest(tr){
   if(tipos.length === 0) tipos = [tipoFinal];
 
   try{
-    await db.collection("creche_extras").add({
+    // Batch atómico: extra + resolução do interesse ou tudo ou nada (evita duplicados)
+    const _batch = db.batch();
+    const _extraRef = db.collection("creche_extras").doc();
+    _batch.set(_extraRef, {
       nome, morada, distrito,
       lat, lon,
       tipo: tipos[0],          // tipo principal (retrocompat)
@@ -1141,11 +1144,12 @@ async function approveInterest(tr){
       added_at: firebase.firestore.FieldValue.serverTimestamp(),
       added_by: auth.currentUser.email
     });
-    await db.collection("creche_interest").doc(iid).update({
+    _batch.update(db.collection("creche_interest").doc(iid), {
       status: "approved",
       resolved_at: firebase.firestore.FieldValue.serverTimestamp(),
       resolved_by: auth.currentUser.email
     });
+    await _batch.commit();
     tr.remove();
 
     if(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
@@ -1626,9 +1630,9 @@ document.getElementById("ef-save").addEventListener("click", async ()=>{
     // Creche Feliz
     payload.creche_feliz = document.getElementById("ef-creche-feliz").checked;
 
-    // Remover keys vazias (para não sobrescrever com null no Firestore)
+    // Campos esvaziados são APAGADOS no Firestore (permite limpar telefone/email errados)
     Object.keys(payload).forEach(k => {
-      if(payload[k] === "" || (payload[k] === null && k !== "vaga_atualizada_em")) delete payload[k];
+      if(payload[k] === "" || (payload[k] === null && k !== "vaga_atualizada_em")) payload[k] = firebase.firestore.FieldValue.delete();
     });
 
     // Metadata
@@ -1950,6 +1954,19 @@ async function cpLoadClaims(){
     if(!confirm("Aprovar " + r.nome_responsavel + " como gestor de «" + r.creche_nome + "»?\n\nConfirmaste por telefone?")) return;
     b.disabled = true; b.textContent = "⏳…";
     try {
+      // Guardas: o uid já gere outra creche? A creche já tem gestor?
+      const jaGere = await db.doc("creche_managers/" + r.uid).get();
+      if(jaGere.exists && jaGere.data().creche_id !== r.creche_id){
+        if(!confirm("⚠️ Este utilizador JÁ é gestor de «" + (jaGere.data().creche_nome||jaGere.data().creche_id) + "».\nAprovar substitui esse acesso pelo desta creche. Continuar?")){
+          b.disabled = false; b.textContent = "✓ Aprovar acesso"; return;
+        }
+      }
+      const outroGestor = await db.collection("creche_managers").where("creche_id","==",r.creche_id).get();
+      if(!outroGestor.empty && outroGestor.docs[0].id !== r.uid){
+        if(!confirm("⚠️ Esta creche JÁ tem um gestor aprovado (" + (outroGestor.docs[0].data().email||outroGestor.docs[0].id) + ").\nAprovar cria um SEGUNDO gestor... na verdade substitui nada — ambos ficam a editar o mesmo perfil. Continuar mesmo assim?")){
+          b.disabled = false; b.textContent = "✓ Aprovar acesso"; return;
+        }
+      }
       const batch = db.batch();
       batch.set(db.doc("creche_managers/" + r.uid), {
         creche_id: r.creche_id, creche_nome: r.creche_nome,
