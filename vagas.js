@@ -56,8 +56,10 @@
             out.push({ id: doc.id, ...v });
           }
         });
-        // Ordenar mais recente primeiro
+        // Ordenar: verificadas pela creche (painel) primeiro, depois mais recentes
         out.sort((a,b) => {
+          const va = a.verificado ? 1 : 0, vb = b.verificado ? 1 : 0;
+          if(va !== vb) return vb - va;
           const ta = a.reportado_em && a.reportado_em.toMillis ? a.reportado_em.toMillis() : 0;
           const tb = b.reportado_em && b.reportado_em.toMillis ? b.reportado_em.toMillis() : 0;
           return tb - ta;
@@ -90,6 +92,8 @@
 
     /** Diz se uma vaga está "fresh" (< 5 dias) ou "old" (5-7 dias) */
     freshness(vaga){
+      // Vagas geridas pela creche no painel: sempre "fresh" (a creche controla e expira aos 31d)
+      if(vaga.source === "painel" && vaga.verificado) return "fresh";
       const ts = vaga.reportado_em && vaga.reportado_em.toMillis
         ? vaga.reportado_em.toMillis() : 0;
       const days = (nowMs() - ts) / 86400000;

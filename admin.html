@@ -1987,10 +1987,27 @@ async function cpLoadClaims(){
   });
 }
 
-// === Onda 36 #2 — Email boas-vindas ao aprovar claim ===
-// Abre Gmail compose pré-preenchido; envia de geral@creches.app (alias no Gmail)
-function _sendClaimApprovedEmail(r){
+// === Fase 0 (0.3) — Email boas-vindas AUTOMÁTICO ao aprovar claim ===
+// Tenta enviar via /api/notify (Resend). Se falhar, cai no Gmail compose manual.
+async function _sendClaimApprovedEmail(r){
   if(!r || !r.email) return;
+  try {
+    const token = await auth.currentUser.getIdToken();
+    const resp = await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+      body: JSON.stringify({
+        template: "claim_approved",
+        to: r.email,
+        data: { nome: (r.nome_responsavel || "").split(" ")[0], creche_name: r.creche_nome }
+      })
+    });
+    if(resp.ok){ console.log("Email de aprovação enviado automaticamente ✓"); return; }
+    console.warn("notify falhou (" + resp.status + ") — a abrir Gmail compose como fallback");
+  } catch(e){ console.warn("notify erro — fallback Gmail:", e); }
+  _gmailComposeClaimApproved(r);
+}
+function _gmailComposeClaimApproved(r){
   const nome = (r.nome_responsavel || "").split(" ")[0] || "";
   const subj = "Bem-vindo(a) ao Creches.app — o teu painel está activo";
   const body = [

@@ -15,6 +15,46 @@ import { getFirestore } from "firebase-admin/firestore";
 
 // ===== Templates =====
 const TEMPLATES = {
+  // Quando aprovas um claim de acesso ao painel (0.3 — Fase 0 do painel)
+  claim_approved: {
+    subject: (d) => `O painel da ${d.creche_name || "vossa creche"} está ativo — creches.app`,
+    text: (d) => `Olá${d.nome ? " " + d.nome : ""},
+
+Boas notícias — o pedido para gerir a página de «${d.creche_name || "a vossa creche"}» no creches.app foi aprovado. Já podes entrar no painel:
+
+https://creches.app/painel
+
+O que podes fazer agora:
+• Marcar vagas em tempo real (berçário / 1-2 / 2-3 anos) — aparecem logo no mapa
+• Confirmar a adesão ao Creche Feliz
+• Descrição, horário e mensalidades
+• Adicionar fotografias (revistas por nós antes de publicar)
+• Contactos preferidos para as famílias
+
+Tudo o que preencheres aparece na vossa página pública com o selo "✓ Informação da creche".
+
+Dúvidas? Responde a este email.
+
+— Joaquim Cabral
+creches.app · geral@creches.app`,
+    html: (d) => `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:540px;color:#2C2356;line-height:1.55">
+  <p>Olá${d.nome ? " " + escapeHtml(d.nome) : ""},</p>
+  <p>Boas notícias — o pedido para gerir a página de <b>«${escapeHtml(d.creche_name || "a vossa creche")}»</b> no creches.app foi <b style="color:#1F7A3D">aprovado</b>. Já podes entrar no painel:</p>
+  <p><a href="https://creches.app/painel" style="display:inline-block;background:#FF6B9D;color:#fff;padding:12px 24px;border-radius:20px;text-decoration:none;font-weight:600">Abrir o painel</a></p>
+  <div style="background:#FFF6EE;border-radius:10px;padding:14px 16px;margin:16px 0">
+    <b>O que podes fazer agora:</b><br>
+    🟢 Marcar vagas em tempo real — aparecem logo no mapa<br>
+    🍼 Confirmar a adesão ao Creche Feliz<br>
+    ✍️ Descrição, horário e mensalidades<br>
+    📸 Fotografias (revistas por nós antes de publicar)<br>
+    📞 Contactos preferidos para as famílias
+  </div>
+  <p>Tudo o que preencheres aparece na vossa página pública com o selo <b style="color:#1F7A3D">✓ Informação da creche</b>.</p>
+  <p>Dúvidas? Responde a este email.</p>
+  <p>— Joaquim Cabral<br><a href="https://creches.app" style="color:#FF6B9D">creches.app</a> · geral@creches.app</p>
+</div>`
+  },
+
   // Quando aplicas uma correção de idade reportada por um utilizador
   report_applied: {
     subject: (d) => `A tua correção em "${d.creche_name}" foi aplicada — obrigado!`,

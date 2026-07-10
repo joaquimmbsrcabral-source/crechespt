@@ -339,6 +339,13 @@ auth.onAuthStateChanged(async user => {
     if(pend){
       $("pending-nome").textContent = pend.creche_nome;
       show("s-pending");
+      // Fase 0 (0.4) — Realtime: mal o admin aprove, o dashboard abre sozinho
+      db.doc("creche_managers/" + user.uid).onSnapshot(s => {
+        if(s.exists && !MY_CRECHE){
+          MY_CRECHE = { id: s.data().creche_id, nome: s.data().creche_nome || "A tua creche" };
+          abrirDashboard();
+        }
+      }, () => {});
       return;
     }
     show("s-claim");
@@ -545,6 +552,9 @@ $("btn-save").onclick = async () => {
   data.mensalidade_max = isNaN(mmax) ? firebase.firestore.FieldValue.delete() : Math.max(0, Math.min(3000, mmax));
   try {
     await db.doc("creche_profiles/" + MY_CRECHE.id).set(data, { merge: true });
+    // Fase 0 (0.2) — Fonte única de vagas: sincronizar com a coleção `vagas`
+    // (é dela que vêm os badges 🟢 do mapa/fichas e o filtro "Com vaga")
+    try { await sincronizarVagaPublica(data.vagas); } catch(e){ console.warn("sync vaga:", e); }
     ok("save-ok","✓ Guardado! As alterações já estão visíveis para os pais.");
     $("vagas-atualizado").textContent = "Última atualização: agora mesmo";
   } catch(e){
@@ -552,6 +562,30 @@ $("btn-save").onclick = async () => {
   }
   btn.disabled = false; btn.textContent = "💾 Guardar alterações";
 };
+
+// Fase 0 (0.2) — Escreve/apaga a vaga verificada no doc `vagas/painel_<creche_id>`
+async function sincronizarVagaPublica(v){
+  const ref = db.doc("vagas/painel_" + MY_CRECHE.id);
+  const salas = [];
+  if(v.b0)  salas.push("Berçário (0-12 m)");
+  if(v.m12) salas.push("1-2 anos");
+  if(v.m24) salas.push("2-3 anos");
+  if(salas.length === 0){
+    await ref.delete().catch(()=>{});  // sem vagas → remove o badge
+    return;
+  }
+  await ref.set({
+    creche_id: MY_CRECHE.id,
+    nome_creche: MY_CRECHE.nome || null,
+    source: "painel",
+    verificado: true,
+    idades: salas,
+    notas: "",
+    reportado_em: firebase.firestore.FieldValue.serverTimestamp(),
+    expires_at: firebase.firestore.Timestamp.fromMillis(Date.now() + 31 * 86400000),
+    reportado_por: { email: (ME.email || "").toLowerCase() }
+  });
+}
 
 // ─────────── FOTOS ───────────
 $("btn-foto").onclick = () => $("foto-file").click();

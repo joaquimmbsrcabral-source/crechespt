@@ -173,6 +173,35 @@ service cloud.firestore {
 
       // Só admin pode actualizar (confirmar vaga, etc.) ou apagar
       allow update, delete: if isAdmin();
+
+      // Fase 0 (0.2) — Gestor da creche publica vaga VERIFICADA no doc determinístico
+      // "painel_<creche_id>". Fonte única: o mesmo doc alimenta badges e filtro "Com vaga".
+      allow create, update: if request.auth != null
+        && isManagerOf(request.resource.data.creche_id)
+        && vagaId == 'painel_' + request.resource.data.creche_id
+        && request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'idades', 'notas', 'reportado_em', 'expires_at', 'reportado_por'])
+        && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em', 'expires_at'])
+        && request.resource.data.source == 'painel'
+        && request.resource.data.verificado == true
+        && request.resource.data.expires_at is timestamp
+        && request.resource.data.expires_at <= request.time + duration.value(32, 'd')
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() > 0
+        && request.resource.data.creche_id.size() < 100
+        && (!('nome_creche' in request.resource.data) ||
+            (request.resource.data.nome_creche is string &&
+             request.resource.data.nome_creche.size() <= 200))
+        && (!('notas' in request.resource.data) ||
+            (request.resource.data.notas is string &&
+             request.resource.data.notas.size() < 280))
+        && (!('idades' in request.resource.data) ||
+            (request.resource.data.idades is list &&
+             request.resource.data.idades.size() <= 5));
+      // Gestor pode apagar a própria vaga do painel (desligou todos os toggles)
+      allow delete: if request.auth != null
+        && resource != null
+        && vagaId == 'painel_' + resource.data.creche_id
+        && isManagerOf(resource.data.creche_id);
     }
 
     // ─── Creche Views (Onda 36 #3 — Jul 2026) ───
