@@ -245,6 +245,10 @@ table tr:hover{background:rgba(255,243,214,.4)}
         Creches que pediram acesso ao painel. Confirma por telefone (para o número oficial da ficha) antes de aprovar.
       </p>
       <div id="cp-claims-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)">
+        <button id="btn-fix-prefixos" style="background:var(--c-lilac-soft,#ECE4FF);color:var(--ink);border:none;border-radius:10px;padding:8px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12.5px">🛠 Corrigir IDs sem prefixo «extra_» (gestores antigos)</button>
+        <span style="font-size:11.5px;color:var(--ink-soft);margin-left:8px">Migra gestores/perfis aprovados antes da correção de Jul 2026.</span>
+      </div>
     </section>
 
     <section class="panel">
@@ -1967,9 +1971,17 @@ async function cpLoadClaims(){
           b.disabled = false; b.textContent = "✓ Aprovar acesso"; return;
         }
       }
+      // Normalizar ID: creches extra têm de levar o prefixo "extra_" (claims antigos podem não ter)
+      let cidNorm = r.creche_id;
+      if(!/^(osm-|extra_)/.test(cidNorm)){
+        cidNorm = "extra_" + cidNorm;
+        if(!confirm("ℹ️ O ID desta creche não tinha o prefixo «extra_» (claim antigo).\nVou aprovar com o ID corrigido: " + cidNorm + "\n\nContinuar?")) {
+          b.disabled = false; b.textContent = "✓ Aprovar acesso"; return;
+        }
+      }
       const batch = db.batch();
       batch.set(db.doc("creche_managers/" + r.uid), {
-        creche_id: r.creche_id, creche_nome: r.creche_nome,
+        creche_id: cidNorm, creche_nome: r.creche_nome,
         email: r.email || "", aprovado_em: firebase.firestore.FieldValue.serverTimestamp()
       });
       batch.update(db.doc("creche_claims/" + r.id), { status: "approved" });
@@ -1986,6 +1998,50 @@ async function cpLoadClaims(){
     catch(e){ alert("Erro: " + e.message); b.disabled = false; }
   });
 }
+
+// === Manutenção — corrigir gestores com creche_id sem prefixo «extra_» ===
+// (claims de creches extra aprovados antes da correção de Jul 2026 apontam para
+//  o doc errado: o painel gravava em creche_profiles/<id> mas o site lê extra_<id>)
+document.getElementById("btn-fix-prefixos").onclick = async () => {
+  const btn = document.getElementById("btn-fix-prefixos");
+  btn.disabled = true; btn.textContent = "⏳ A verificar…";
+  try {
+    const mgrs = await db.collection("creche_managers").get();
+    const maus = [];
+    mgrs.forEach(d => {
+      const x = d.data();
+      if(!/^(osm-|extra_)/.test(x.creche_id || "")) maus.push({ uid: d.id, ...x });
+    });
+    if(!maus.length){ alert("Tudo certo — não há IDs por corrigir 🎉"); return; }
+    if(!confirm("Encontrei " + maus.length + " gestor(es) com ID sem prefixo:\n\n" +
+      maus.map(m => "• " + (m.creche_nome||"?") + "  (" + m.creche_id + " → extra_" + m.creche_id + ")").join("\n") +
+      "\n\nCorrigir agora? (migra também o perfil; a vaga antiga é removida — a creche volta a guardar no painel)")) return;
+    for(const m of maus){
+      const antigo = m.creche_id, novo = "extra_" + antigo;
+      const batch = db.batch();
+      batch.update(db.doc("creche_managers/" + m.uid), { creche_id: novo });
+      // migrar o perfil para o doc certo
+      const p = await db.doc("creche_profiles/" + antigo).get();
+      if(p.exists){
+        batch.set(db.doc("creche_profiles/" + novo), p.data(), { merge: true });
+        batch.delete(db.doc("creche_profiles/" + antigo));
+      }
+      // vaga do painel no ID antigo: apagar (o gestor recria ao guardar — regras só deixam o próprio criar)
+      batch.delete(db.doc("vagas/painel_" + antigo));
+      await batch.commit();
+      // claims associados (cosmético, para consistência)
+      const cls = await db.collection("creche_claims").where("uid","==",m.uid).get();
+      for(const c of cls.docs){
+        if(!/^(osm-|extra_)/.test(c.data().creche_id || "")) await c.ref.update({ creche_id: novo });
+      }
+    }
+    alert("✓ Corrigido: " + maus.length + " gestor(es).\n\nPede à creche para abrir o /painel e carregar em «Guardar» — o perfil e a vaga ficam logo visíveis no mapa.");
+  } catch(e){
+    alert("Erro: " + (e.message || e));
+  } finally {
+    btn.disabled = false; btn.textContent = "🛠 Corrigir IDs sem prefixo «extra_» (gestores antigos)";
+  }
+};
 
 // === Fase 0 (0.3) — Email boas-vindas AUTOMÁTICO ao aprovar claim ===
 // Tenta enviar via /api/notify (Resend). Se falhar, cai no Gmail compose manual.
