@@ -289,7 +289,14 @@ service cloud.firestore {
     match /creche_profiles/{cid} {
       allow read: if true;
       allow create, update: if (isManagerOf(cid) || isAdmin())
-        && request.resource.data.keys().hasOnly(['descricao','horario','mensalidade_min','mensalidade_max','creche_feliz','vagas','contacto_email','contacto_telefone','website','fotos','updated_at','updated_by'])
+        && request.resource.data.keys().hasOnly(['descricao','horario','mensalidade_min','mensalidade_max','creche_feliz','vagas','contacto_email','contacto_telefone','website','fotos','updated_at','updated_by','capacidade','linguas','valencias'])
+        && (!('capacidade' in request.resource.data) ||
+            (request.resource.data.capacidade is int &&
+             request.resource.data.capacidade >= 1 && request.resource.data.capacidade <= 500))
+        && (!('linguas' in request.resource.data) ||
+            (request.resource.data.linguas is string && request.resource.data.linguas.size() <= 80))
+        && (!('valencias' in request.resource.data) ||
+            (request.resource.data.valencias is list && request.resource.data.valencias.size() <= 6))
         && (!('descricao' in request.resource.data) ||
             (request.resource.data.descricao is string && request.resource.data.descricao.size() <= 1500))
         && (!('horario' in request.resource.data) ||

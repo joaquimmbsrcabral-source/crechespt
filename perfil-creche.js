@@ -40,6 +40,9 @@
       extra.push(m);
     }
     if(p.horario) extra.push("🕐 " + esc(p.horario));
+    if(p.capacidade != null) extra.push("👶 Capacidade: " + esc(String(p.capacidade)) + " crianças");
+    if(p.valencias && p.valencias.length) extra.push("🏫 " + esc(p.valencias.join(" · ")));
+    if(p.linguas) extra.push("🗣 " + esc(p.linguas));
     if(extra.length) h += '<div style="margin:6px 0;font-size:.9rem">' + extra.join(" &nbsp;·&nbsp; ") + '</div>';
 
     // Descrição
@@ -84,7 +87,8 @@
         var tem = p.descricao || p.horario || (p.fotos && p.fotos.length) ||
                   p.creche_feliz === true || p.creche_feliz === false ||
                   (p.vagas && (p.vagas.b0 || p.vagas.m12 || p.vagas.m24 || p.vagas.atualizado)) ||
-                  p.mensalidade_min != null;
+                  p.mensalidade_min != null || p.capacidade != null ||
+                  (p.valencias && p.valencias.length) || p.linguas;
         if(tem) render(slot, p);
       }).catch(function(){});
     } catch(e){}

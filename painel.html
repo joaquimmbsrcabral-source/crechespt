@@ -180,16 +180,17 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardares aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a></p>
     </div>
 
-    <!-- ANALYTICS — visualizações da ficha (Onda 36 #3) -->
+    <!-- ANALYTICS — visualizações da ficha (F1: 30 dias + tendência) -->
     <div class="card" id="card-analytics" style="display:none">
-      <h2><span class="emoji-chip" style="background:#FFF3D6">📊</span> Últimos 7 dias</h2>
-      <p class="sub">Pais que abriram a vossa ficha esta semana no creches.app.</p>
-      <div style="display:flex;align-items:baseline;gap:14px;margin:12px 0 8px">
+      <h2><span class="emoji-chip" style="background:#FFF3D6">📊</span> A vossa página</h2>
+      <p class="sub">Pais que abriram a vossa ficha no creches.app.</p>
+      <div style="display:flex;align-items:baseline;gap:14px;margin:12px 0 8px;flex-wrap:wrap">
         <div style="font-size:2.4rem;font-weight:800;color:#2C2356;line-height:1" id="a-total">—</div>
-        <div style="font-size:.9rem;color:var(--ink-soft)">visualizações da vossa ficha nos últimos 7 dias</div>
+        <div style="font-size:.9rem;color:var(--ink-soft)">visualizações nos últimos 7 dias <span id="a-trend" style="font-weight:800"></span></div>
       </div>
       <div id="a-bars" style="display:flex;align-items:flex-end;gap:6px;height:52px;margin:12px 0 4px"></div>
       <div id="a-labels" style="display:flex;gap:6px;font-size:.7rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.04em"></div>
+      <p class="hint" id="a-mes" style="margin-top:10px"></p>
     </div>
 
     <!-- VAGAS -->
@@ -234,6 +235,18 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <div class="row2">
         <div class="field"><label for="p-email">Email para famílias</label><input id="p-email" type="email" maxlength="120" placeholder="geral@…"></div>
         <div class="field"><label for="p-tel">Telefone para famílias</label><input id="p-tel" type="tel" maxlength="30" placeholder="21 xxx xx xx"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="p-capacidade">Capacidade total (crianças)</label><input id="p-capacidade" type="number" min="1" max="500" placeholder="45"></div>
+        <div class="field"><label for="p-linguas">Línguas faladas</label><input id="p-linguas" maxlength="80" placeholder="Português, Inglês"></div>
+      </div>
+      <div class="field"><label>Valências (escolhe as que oferecem)</label>
+        <div class="seg3" id="val-seg">
+          <button data-v="Berçário">Berçário</button>
+          <button data-v="Creche">Creche</button>
+          <button data-v="Jardim de Infância">Jardim de Infância</button>
+          <button data-v="ATL">ATL</button>
+        </div>
       </div>
     </div>
 
@@ -456,36 +469,65 @@ async function abrirDashboard(){
   $("p-mmax").value = PROFILE.mensalidade_max ?? "";
   $("p-email").value = PROFILE.contacto_email || "";
   $("p-tel").value = PROFILE.contacto_telefone || "";
+  $("p-capacidade").value = PROFILE.capacidade ?? "";
+  $("p-linguas").value = PROFILE.linguas || "";
+  setValencias(PROFILE.valencias || []);
   const v = PROFILE.vagas || {};
   $("vaga-b0").checked = !!v.b0;
   $("vaga-m12").checked = !!v.m12;
   $("vaga-m24").checked = !!v.m24;
-  if(v.atualizado && v.atualizado.toDate) $("vagas-atualizado").textContent = "Última atualização: " + v.atualizado.toDate().toLocaleDateString("pt-PT");
+  // F1 — Nudge de frescura: vagas atualizadas há >30 dias pedem reconfirmação
+  if(v.atualizado && v.atualizado.toDate){
+    const el = $("vagas-atualizado");
+    const diasDesde = Math.floor((Date.now() - v.atualizado.toMillis()) / 86400000);
+    if(diasDesde > 30){
+      el.innerHTML = '⚠️ <b>Atualizado há ' + diasDesde + ' dias — ainda está certo?</b> Confirma os interruptores e carrega em Guardar para reconfirmar.';
+      el.style.color = "#8a6d1a";
+    } else {
+      el.textContent = "Última atualização: " + v.atualizado.toDate().toLocaleDateString("pt-PT");
+      el.style.color = "";
+    }
+  }
   setCF(PROFILE.creche_feliz);
   carregarFotos();
   carregarAnalytics();
   show("s-dash");
 }
 
-// Onda 36 #3 — Carregar visualizações últimos 7 dias
+// F1 — Visualizações: 30 dias, com tendência semana vs semana anterior
 async function carregarAnalytics(){
   const card = $("card-analytics");
   if(!card) return;
   try {
-    const dias = [];
+    const dias30 = [];
     const now = new Date();
-    for(let i = 6; i >= 0; i--){
+    for(let i = 29; i >= 0; i--){
       const d = new Date(now);
       d.setDate(d.getDate() - i);
-      dias.push(d.toISOString().slice(0, 10));
+      dias30.push(d.toISOString().slice(0, 10));
     }
-    const promises = dias.map(day =>
+    const snaps30 = await Promise.all(dias30.map(day =>
       db.doc("creche_views/" + MY_CRECHE.id + "/days/" + day).get().catch(() => null)
-    );
-    const snaps = await Promise.all(promises);
-    const counts = snaps.map(s => (s && s.exists) ? (s.data().count || 0) : 0);
+    ));
+    const counts30 = snaps30.map(s => (s && s.exists) ? (s.data().count || 0) : 0);
+    const total30 = counts30.reduce((a, b) => a + b, 0);
+    const dias = dias30.slice(-7);
+    const counts = counts30.slice(-7);
     const total = counts.reduce((a, b) => a + b, 0);
-    if(total === 0){
+    const prev7 = counts30.slice(-14, -7).reduce((a, b) => a + b, 0);
+    // Tendência semana vs semana anterior
+    const trendEl = $("a-trend");
+    if(trendEl){
+      if(prev7 === 0 && total > 0) trendEl.textContent = "· novo 🎉";
+      else if(prev7 > 0){
+        const pct = Math.round(((total - prev7) / prev7) * 100);
+        trendEl.textContent = pct >= 0 ? ("· ▲ +" + pct + "% vs semana anterior") : ("· ▼ " + pct + "% vs semana anterior");
+        trendEl.style.color = pct >= 0 ? "#1F7A3D" : "#B4255C";
+      } else trendEl.textContent = "";
+    }
+    const mesEl = $("a-mes");
+    if(mesEl) mesEl.textContent = total30 > 0 ? ("Últimos 30 dias: " + total30.toLocaleString("pt-PT") + " visualizações no total.") : "";
+    if(total === 0 && total30 === 0){
       card.style.display = "block";
       $("a-total").textContent = "0";
       $("a-bars").innerHTML = '<div style="color:var(--ink-faint);font-size:.85rem">Ainda não há visualizações. Partilhem a vossa página nas redes!</div>';
@@ -510,6 +552,19 @@ async function carregarAnalytics(){
 }
 
 $("p-desc").addEventListener("input", function(){ $("desc-count").textContent = this.value.length; });
+
+// F1 — Valências (multi-seleção)
+let VAL_SET = new Set();
+function setValencias(arr){
+  VAL_SET = new Set(Array.isArray(arr) ? arr : []);
+  document.querySelectorAll("#val-seg button").forEach(b => {
+    b.classList.toggle("on-sim", VAL_SET.has(b.dataset.v));
+  });
+}
+document.querySelectorAll("#val-seg button").forEach(b => b.onclick = () => {
+  if(VAL_SET.has(b.dataset.v)) VAL_SET.delete(b.dataset.v); else VAL_SET.add(b.dataset.v);
+  setValencias([...VAL_SET]);
+});
 
 // Creche Feliz segmented
 let CF_VAL = null;
@@ -550,6 +605,12 @@ $("btn-save").onclick = async () => {
   const mmin = parseInt($("p-mmin").value,10), mmax = parseInt($("p-mmax").value,10);
   data.mensalidade_min = isNaN(mmin) ? firebase.firestore.FieldValue.delete() : Math.max(0, Math.min(3000, mmin));
   data.mensalidade_max = isNaN(mmax) ? firebase.firestore.FieldValue.delete() : Math.max(0, Math.min(3000, mmax));
+  // F1 — Campos novos do perfil
+  const cap = parseInt($("p-capacidade").value,10);
+  data.capacidade = isNaN(cap) ? firebase.firestore.FieldValue.delete() : Math.max(1, Math.min(500, cap));
+  const ling = $("p-linguas").value.trim().slice(0,80);
+  data.linguas = ling ? ling : firebase.firestore.FieldValue.delete();
+  data.valencias = VAL_SET.size ? [...VAL_SET].slice(0,6) : firebase.firestore.FieldValue.delete();
   try {
     await db.doc("creche_profiles/" + MY_CRECHE.id).set(data, { merge: true });
     // Fase 0 (0.2) — Fonte única de vagas: sincronizar com a coleção `vagas`
