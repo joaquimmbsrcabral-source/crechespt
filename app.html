@@ -1504,14 +1504,29 @@ function renderList(){
     const actions = [];
     if(c.telefone) actions.push(`<a href="tel:${escapeAttr(c.telefone)}" data-noopen="1" title="Ligar" aria-label="Ligar para ${escapeAttr(c.nome)}">📞</a>`);
     actions.push(`<a href="https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}" target="_blank" rel="noopener" data-noopen="1" title="Direções" aria-label="Direções para ${escapeAttr(c.nome)}">🗺</a>`);
+    // Vaga: overrides antigos (c._vaga) OU coleção `vagas` do Firestore (pais + painel das creches)
+    const temVagaFS = State.vagasAtivas && State.vagasAtivas.has(c.id);
+    const vagaVerif = State.vagasVerif && State.vagasVerif.has(c.id);
+    const vagaDias = c._vaga ? c._vaga_dias : (State.vagasDias ? State.vagasDias.get(c.id) : null);
+    const vagaTitle = vagaVerif ? "Confirmada pela creche" + (vagaDias != null ? " há " + vagaDias + " dia" + (vagaDias===1?"":"s") : "")
+                                : "Vaga sinalizada" + (vagaDias != null ? " há " + vagaDias + " dia" + (vagaDias===1?"":"s") : "");
+    const vagaPill = (c._vaga || temVagaFS)
+      ? `<span class="vaga-pill" title="${escapeAttr(vagaTitle)}">🟢 Vaga disponível${vagaVerif ? " ✓" : ""}</span>` : "";
+    // Foto do perfil gerido pela creche (thumb) + selo ✓
+    const foto = State.profileFoto && State.profileFoto.get(c.id);
+    const gerida = State.profileGeridas && State.profileGeridas.has(c.id);
+    if(foto) row.classList.add("has-thumb");
     row.innerHTML = `
+      ${foto ? `<div class="card-thumb"><img src="${escapeAttr(foto)}" alt="" loading="lazy"></div>` : ""}
+      <div class="card-main">
       <div class="name">
         ${highlightTerm(c.nome, q)}
+        ${gerida ? '<span class="verif-pill" title="Informação gerida pela própria creche">✓</span>' : ""}
         ${u.fav ? '<span class="fav" title="Favorita">⭐</span>' : ""}
       </div>
       <div class="meta">
         <span class="statusdot s-${status}" title="${STATUS_LABEL[status]}"></span>
-        ${c._vaga ? `<span class="vaga-pill" title="Vaga sinalizada há ${c._vaga_dias} dia${c._vaga_dias===1?"":"s"}">🟢 Vaga disponível</span>` : ""}
+        ${vagaPill}
         ${c.creche_feliz ? `<span class="cf-pill" title="Aderente ao programa Creche Feliz (Segurança Social) — pode ser gratuita para famílias elegíveis">🆓 Creche Feliz</span>` : ""}
         ${(c.tipos||[c.tipo||"Desconhecido"]).map(t => `<span class="minitag tipo-${escapeAttr(String(t))}">${escapeHtml(String(t))}</span>`).join("")}
         ${resp ? `<span class="resp-pill" title="Tipo de resposta">${escapeHtml(resp)}</span>` : ""}
@@ -1520,6 +1535,7 @@ function renderList(){
         ${nextBadge}
         ${c.distrito ? `<span>${escapeHtml(c.distrito)}</span>` : ""}
         ${c.localidade ? `<span>· ${escapeHtml(c.localidade)}</span>` : ""}
+      </div>
       </div>
       <div class="card-actions">${actions.join("")}</div>`;
     row.addEventListener("click", (e)=>{
@@ -1618,15 +1634,17 @@ function markerHtml(c){
   const color = TIPO_COLOR[c.tipo_oper||"Desconhecido"] || TIPO_COLOR.Desconhecido;
   const u = State.userData.creches[c.id] || {};
   const sCol = u.status && u.status!=="todo" ? STATUS_COLOR[u.status] : null;
+  // Vaga: overrides antigos OU coleção `vagas` (pais + painel das creches)
+  const temVaga = c._vaga || (State.vagasAtivas && State.vagasAtivas.has(c.id));
   // Prioridade: vaga (verde) > status do user > nada
   let ring = "";
-  if(c._vaga){
+  if(temVaga){
     ring = `box-shadow:0 0 0 3px #5BC07A, 0 0 0 6px rgba(125,211,137,.4), 0 1px 4px rgba(60,40,90,.35);`;
   } else if(sCol){
     ring = `box-shadow:0 0 0 3px ${sCol}, 0 1px 4px rgba(60,40,90,.35);`;
   }
   const favCls = u.fav ? " fav" : "";
-  return `<div class="creche-marker${favCls}${c._vaga?' vaga':''}" style="background:${color};${ring}"></div>`;
+  return `<div class="creche-marker${favCls}${temVaga?' vaga':''}" style="background:${color};${ring}"></div>`;
 }
 function renderMap(){
   if(!State.cluster) return;
@@ -3304,7 +3322,7 @@ function _openCfModalApp(crecheId, nome){
   });
 }
 
-// === Carregar vagas activas do Firestore no boot para o filtro "Com vaga" ===
+// === Carregar vagas activas + perfis das creches no boot (cards, markers e filtro) ===
 async function _loadVagasAtivas(){
   if(!window.firebase || !firebase.apps.length){
     setTimeout(_loadVagasAtivas, 1500);  // retry se Firebase ainda não inicializou
@@ -3313,25 +3331,45 @@ async function _loadVagasAtivas(){
   try {
     const fdb = firebase.firestore();
     const now = Date.now();
-    const snap = await fdb.collection("vagas").get();
-    const ids = new Set();
+    const [snap, profSnap] = await Promise.all([
+      fdb.collection("vagas").get(),
+      fdb.collection("creche_profiles").get().catch(() => null)
+    ]);
+    // Vagas: ids activos + dias desde o report + quais são verificadas (painel/creche)
+    const ids = new Set(), dias = new Map(), verif = new Set();
     snap.forEach(doc => {
       const v = doc.data();
       const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
       if(exp > now && v.creche_id){
         ids.add(v.creche_id);
+        const ts = v.reportado_em && v.reportado_em.toMillis ? v.reportado_em.toMillis() : now;
+        const d = Math.max(0, Math.floor((now - ts) / 86400000));
+        if(!dias.has(v.creche_id) || d < dias.get(v.creche_id)) dias.set(v.creche_id, d);
+        if(v.verificado) verif.add(v.creche_id);
       }
+    });
+    // Perfis geridos pelas creches: 1.ª foto aprovada (thumb no card) + selo "✓"
+    const fotos = new Map(), geridas = new Set();
+    if(profSnap) profSnap.forEach(doc => {
+      const p = doc.data() || {};
+      const tem = p.descricao || p.horario || p.mensalidade_min != null ||
+                  (p.fotos && p.fotos.length) || p.creche_feliz === true || p.creche_feliz === false ||
+                  (p.vagas && p.vagas.atualizado);
+      if(tem) geridas.add(doc.id);
+      if(p.fotos && p.fotos.length) fotos.set(doc.id, p.fotos[0]);
     });
     if(typeof State !== "undefined"){
       State.vagasAtivas = ids;
+      State.vagasDias = dias;
+      State.vagasVerif = verif;
+      State.profileFoto = fotos;
+      State.profileGeridas = geridas;
     }
-    _w("Vagas activas carregadas:", ids.size);
-    // Re-render se o filtro estiver activo
-    if(State && State.filters && State.filters.onlyVaga && typeof applyFilters === "function"){
-      applyFilters();
-    }
+    _w("Vagas activas:", ids.size, "· perfis geridos:", geridas.size);
+    // Re-render sempre: os cards e markers passam a mostrar vagas/fotos/selo
+    if(typeof applyFilters === "function") applyFilters();
   } catch(e){
-    console.warn("Falha a carregar vagas activas:", e);
+    console.warn("Falha a carregar vagas/perfis:", e);
   }
 }
 // Disparar 3 segundos depois do load (depois do Firebase init)
