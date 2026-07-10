@@ -1,9 +1,111 @@
 /* Creches.app — Perfil verificado da creche (público)
    Lê creche_profiles/{id} do Firestore (leitura pública) e injecta
    um cartão "gerido pela creche" na ficha, por baixo do vaga-slot.
+   Inclui o módulo CrecheLeads ("Tenho interesse 💌") — partilhado com o /app.
    Requer firebase app+firestore compat já carregados na página. */
 (function(){
   function esc(s){ return String(s||"").replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+  // ═══════ CrecheLeads — famílias deixam contacto a creches geridas (Fase 2) ═══════
+  var LEADS_RATE_KEY = "crechespt/leads/rate";
+  function _leadsCanSend(){
+    try {
+      var raw = JSON.parse(localStorage.getItem(LEADS_RATE_KEY) || "{}");
+      var today = new Date().toISOString().slice(0,10);
+      return raw.day !== today || (raw.count || 0) < 3;
+    } catch(e){ return true; }
+  }
+  function _leadsBump(){
+    try {
+      var today = new Date().toISOString().slice(0,10);
+      var raw = JSON.parse(localStorage.getItem(LEADS_RATE_KEY) || "{}");
+      localStorage.setItem(LEADS_RATE_KEY, JSON.stringify(
+        raw.day === today ? { day: today, count: (raw.count||0)+1 } : { day: today, count: 1 }
+      ));
+    } catch(e){}
+  }
+  window.CrecheLeads = {
+    open: function(crecheId, crecheNome){
+      var old = document.getElementById("lead-modal-cp");
+      if(old) old.remove();
+      var ov = document.createElement("div");
+      ov.id = "lead-modal-cp";
+      ov.style.cssText = "position:fixed;inset:0;background:rgba(44,35,86,.45);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px";
+      ov.innerHTML =
+        '<div style="background:#fff;border-radius:18px;max-width:440px;width:100%;max-height:92vh;overflow:auto;padding:24px;font-family:Quicksand,system-ui,sans-serif;color:#2C2356;line-height:1.5" role="dialog" aria-modal="true">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">' +
+          '<h3 style="margin:0;font-size:1.15rem">💌 Tenho interesse</h3>' +
+          '<button id="lead-x" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:#6E6989" aria-label="Fechar">✕</button></div>' +
+        '<p style="margin:0 0 14px;font-size:.85rem;color:#6E6989">Deixa o teu contacto a <b>' + esc(crecheNome || "esta creche") + '</b> — a creche recebe os teus dados no painel e contacta-te diretamente.</p>' +
+        '<label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">O teu nome *</label>' +
+        '<input id="lead-nome" maxlength="120" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem">' +
+        '<label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Email *</label>' +
+        '<input id="lead-email" type="email" maxlength="120" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem">' +
+        '<label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Telefone (opcional)</label>' +
+        '<input id="lead-tel" type="tel" maxlength="30" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem">' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">' +
+          '<div><label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Idade da criança</label>' +
+          '<select id="lead-idade" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem">' +
+            '<option>Ainda não nasceu</option><option>0-12 meses</option><option>1-2 anos</option><option>2-3 anos</option></select></div>' +
+          '<div><label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Entrada desejada</label>' +
+          '<input id="lead-mes" maxlength="40" placeholder="Ex.: Setembro 2026" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem"></div></div>' +
+        '<label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Mensagem (opcional)</label>' +
+        '<textarea id="lead-msg" maxlength="400" style="width:100%;box-sizing:border-box;min-height:64px;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem;resize:vertical"></textarea>' +
+        '<label style="display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:#6E6989;margin:12px 0">' +
+          '<input id="lead-rgpd" type="checkbox" style="margin-top:2px;flex:none">' +
+          '<span>Autorizo a partilha destes dados com a creche, apenas para me contactar sobre vagas e inscrição. Os dados nunca são vendidos nem usados para publicidade. *</span></label>' +
+        '<div id="lead-err" style="display:none;background:#FFE2EC;color:#B4255C;font-size:.85rem;font-weight:600;padding:10px 14px;border-radius:10px;margin-bottom:10px"></div>' +
+        '<button id="lead-send" style="width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:13px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">Enviar à creche 💌</button>' +
+        '</div>';
+      document.body.appendChild(ov);
+      ov.addEventListener("click", function(e){ if(e.target === ov) ov.remove(); });
+      document.getElementById("lead-x").onclick = function(){ ov.remove(); };
+      document.getElementById("lead-send").onclick = function(){
+        var errEl = document.getElementById("lead-err");
+        function fail(m){ errEl.textContent = m; errEl.style.display = "block"; }
+        errEl.style.display = "none";
+        var nome = document.getElementById("lead-nome").value.trim();
+        var email = document.getElementById("lead-email").value.trim();
+        if(nome.length < 2) return fail("Escreve o teu nome.");
+        if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Escreve um email válido — é assim que a creche te responde.");
+        if(!document.getElementById("lead-rgpd").checked) return fail("Para enviarmos o contacto à creche, precisas de autorizar a partilha dos dados.");
+        if(!_leadsCanSend()) return fail("Já enviaste 3 pedidos hoje. Tenta amanhã.");
+        var btn = this; btn.disabled = true; btn.textContent = "⏳ A enviar…";
+        try {
+          // Campos opcionais são OMITIDOS (não null) — as regras validam "is string" quando presentes
+          var payload = {
+            creche_id: String(crecheId),
+            nome: nome.slice(0,120),
+            email: email.slice(0,120),
+            idade_crianca: document.getElementById("lead-idade").value,
+            consentimento: true,
+            status: "novo",
+            ts: firebase.firestore.FieldValue.serverTimestamp()
+          };
+          if(crecheNome) payload.creche_nome = String(crecheNome).slice(0,200);
+          var tel = document.getElementById("lead-tel").value.trim().slice(0,30);
+          if(tel) payload.telefone = tel;
+          var mes = document.getElementById("lead-mes").value.trim().slice(0,40);
+          if(mes) payload.mes_entrada = mes;
+          var msg = document.getElementById("lead-msg").value.trim().slice(0,400);
+          if(msg) payload.mensagem = msg;
+          firebase.firestore().collection("creche_leads").add(payload).then(function(){
+            _leadsBump();
+            ov.firstChild.innerHTML = '<div style="text-align:center;padding:26px 10px">' +
+              '<div style="font-size:2.4rem">💌</div><h3 style="margin:10px 0 6px;color:#2C2356">Enviado!</h3>' +
+              '<p style="font-size:.9rem;color:#6E6989;margin:0">A creche recebeu o teu contacto e vai responder-te diretamente. Boa sorte! 🍀</p>' +
+              '<button onclick="document.getElementById(\'lead-modal-cp\').remove()" style="margin-top:16px;background:#FFE3D2;color:#2C2356;border:none;border-radius:12px;padding:11px 26px;font-family:inherit;font-weight:700;cursor:pointer">Fechar</button></div>';
+          }).catch(function(e){
+            fail("Não foi possível enviar: " + (e.message || e));
+            btn.disabled = false; btn.textContent = "Enviar à creche 💌";
+          });
+        } catch(e){
+          fail("Não foi possível enviar. Tenta novamente.");
+          btn.disabled = false; btn.textContent = "Enviar à creche 💌";
+        }
+      };
+    }
+  };
 
   function render(slot, p){
     var box = document.createElement("div");
@@ -71,8 +173,21 @@
     }
     if(ct.length) h += '<div style="margin-top:10px;font-size:.9rem;display:flex;gap:16px;flex-wrap:wrap">' + ct.join("") + '</div>';
 
+    // Fase 2 — Botão "Tenho interesse": o lead chega ao painel da creche
+    h += '<button id="btn-lead-cp" style="margin-top:14px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
+
     box.innerHTML = h;
     slot.insertAdjacentElement("afterend", box);
+    var lb = document.getElementById("btn-lead-cp");
+    if(lb) lb.onclick = function(){
+      var nome = "";
+      try { nome = document.querySelector("h1") ? document.querySelector("h1").textContent.trim() : ""; } catch(e){}
+      window.CrecheLeads.open(slotCrecheId(), nome);
+    };
+  }
+  function slotCrecheId(){
+    var slot = document.getElementById("vaga-slot");
+    return slot ? slot.dataset.crecheId : "";
   }
 
   function init(){

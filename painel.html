@@ -193,6 +193,13 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p class="hint" id="a-mes" style="margin-top:10px"></p>
     </div>
 
+    <!-- LEADS — famílias interessadas (Fase 2) -->
+    <div class="card" id="card-leads" style="display:none">
+      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">💌</span> Famílias interessadas <span id="leads-novo-pill" class="pill-status pill-pending" style="display:none"></span></h2>
+      <p class="sub">Pais que deixaram contacto na vossa página. Respondam depressa — é meia inscrição feita. 😉</p>
+      <div id="leads-list"></div>
+    </div>
+
     <!-- VAGAS -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
@@ -491,7 +498,57 @@ async function abrirDashboard(){
   setCF(PROFILE.creche_feliz);
   carregarFotos();
   carregarAnalytics();
+  carregarLeads();
   show("s-dash");
+}
+
+// Fase 2 — Famílias interessadas (leads)
+const LEAD_ST = { novo: ["🆕 Novo","var(--c-yellow-soft)","#8a6d1a"], contactado: ["📞 Contactado","var(--c-turquoise-soft)","#1F6E66"], fechado: ["✓ Fechado","var(--c-mint-soft)","#1F7A3D"] };
+async function carregarLeads(){
+  const card = $("card-leads");
+  if(!card) return;
+  try {
+    const snap = await db.collection("creche_leads").where("creche_id","==",MY_CRECHE.id).get();
+    const rows = [];
+    snap.forEach(d => rows.push({ id: d.id, ...d.data() }));
+    if(!rows.length){ card.style.display = "none"; return; }
+    rows.sort((a,b) => (b.ts && b.ts.toMillis ? b.ts.toMillis() : 0) - (a.ts && a.ts.toMillis ? a.ts.toMillis() : 0));
+    const novos = rows.filter(r => (r.status||"novo") === "novo").length;
+    const pill = $("leads-novo-pill");
+    if(novos > 0){ pill.textContent = novos + " novo" + (novos===1?"":"s"); pill.style.display = "inline-block"; }
+    else pill.style.display = "none";
+    $("leads-list").innerHTML = rows.map(r => {
+      const st = LEAD_ST[r.status || "novo"] || LEAD_ST.novo;
+      const quando = r.ts && r.ts.toDate ? r.ts.toDate().toLocaleDateString("pt-PT") : "";
+      const detalhes = [
+        r.idade_crianca ? "👶 " + escapeHtml(r.idade_crianca) : "",
+        r.mes_entrada ? "📅 Entrada: " + escapeHtml(r.mes_entrada) : ""
+      ].filter(Boolean).join(" · ");
+      const contactos = [
+        '✉️ <a href="mailto:' + escapeHtml(r.email) + '">' + escapeHtml(r.email) + '</a>',
+        r.telefone ? '📞 <a href="tel:' + escapeHtml(String(r.telefone).replace(/\s+/g,"")) + '">' + escapeHtml(r.telefone) + '</a>' : ""
+      ].filter(Boolean).join(" &nbsp;·&nbsp; ");
+      return '<div style="border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">' +
+          '<div style="font-weight:800">' + escapeHtml(r.nome) + ' <span style="font-weight:400;font-size:.75rem;color:var(--ink-faint)">' + quando + '</span></div>' +
+          '<span class="pill-status" style="background:' + st[1] + ';color:' + st[2] + '">' + st[0] + '</span></div>' +
+        (detalhes ? '<div style="font-size:.82rem;color:var(--ink-soft);margin-top:4px">' + detalhes + '</div>' : "") +
+        '<div style="font-size:.85rem;margin-top:6px">' + contactos + '</div>' +
+        (r.mensagem ? '<div style="font-size:.85rem;color:var(--ink-soft);margin-top:6px;background:var(--bg);border-radius:10px;padding:8px 12px">💬 ' + escapeHtml(r.mensagem) + '</div>' : "") +
+        '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
+          Object.keys(LEAD_ST).filter(k => k !== (r.status||"novo")).map(k =>
+            '<button class="lead-st" data-id="' + r.id + '" data-st="' + k + '" style="background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--ink-soft);cursor:pointer">Marcar ' + LEAD_ST[k][0] + '</button>'
+          ).join("") + '</div></div>';
+    }).join("");
+    document.querySelectorAll(".lead-st").forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try { await db.doc("creche_leads/" + b.dataset.id).update({ status: b.dataset.st }); carregarLeads(); }
+      catch(e){ alert("Erro: " + (e.message || e)); b.disabled = false; }
+    });
+    card.style.display = "block";
+  } catch(e){
+    card.style.display = "none";
+  }
 }
 
 // F1 — Visualizações: 30 dias, com tendência semana vs semana anterior

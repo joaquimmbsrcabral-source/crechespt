@@ -3159,6 +3159,7 @@ function renderUserChip(user){
 <script src="/cookies.js" defer></script>
 <script src="/compare.js" defer></script>
 <script src="/vagas.js" defer></script>
+<script src="/perfil-creche.js" defer></script><!-- fornece window.CrecheLeads; o init de ficha é inofensivo aqui (sem #vaga-slot) -->
 <script src="/creche-feliz.js" defer></script>
 <script>
 // === Perfil verificado da creche (via Painel) — no popup do /app (Onda 36 #1) ===
@@ -3233,7 +3234,15 @@ function _renderPerfilCrechePopup(crecheId, slot){
       }
       if(ct.length) h += '<div style="margin-top:10px;font-size:13px;display:flex;gap:14px;flex-wrap:wrap">' + ct.join("") + '</div>';
 
+      // Fase 2 — Botão "Tenho interesse" (leads para o painel da creche)
+      h += '<button id="btn-lead-app" style="margin-top:12px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
+
       slot.innerHTML = '<div style="margin:0 0 14px;padding:16px 18px;background:linear-gradient(135deg,#fff 0%,#DEF5E1 140%);border:1.5px solid #7DD389;border-radius:16px;font-family:inherit">' + h + '</div>';
+      var lb = document.getElementById("btn-lead-app");
+      if(lb) lb.onclick = function(){
+        var c = (typeof State !== "undefined" && State.creches) ? State.creches.find(function(x){ return String(x.id) === String(crecheId); }) : null;
+        if(window.CrecheLeads) window.CrecheLeads.open(crecheId, c ? c.nome : "");
+      };
     }).catch(function(e){ /* silêncio */ });
   } catch(e){}
 }

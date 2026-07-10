@@ -331,6 +331,48 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    // ─── Leads de famílias (Fase 2 — Jul 2026) ───
+    // Pais deixam contacto a creches com perfil gerido ("Tenho interesse 💌").
+    // RGPD: consentimento explícito obrigatório; leitura SÓ pelo gestor da creche/admin;
+    // nunca listável publicamente.
+    match /creche_leads/{id} {
+      allow create: if
+           request.resource.data.keys().hasOnly(['creche_id','creche_nome','nome','email','telefone','idade_crianca','mes_entrada','mensagem','consentimento','status','ts'])
+        && request.resource.data.keys().hasAll(['creche_id','nome','email','consentimento','status','ts'])
+        && request.resource.data.consentimento == true
+        && request.resource.data.status == 'novo'
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() > 0
+        && request.resource.data.creche_id.size() < 100
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() >= 2
+        && request.resource.data.nome.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() >= 5
+        && request.resource.data.email.size() <= 120
+        && request.resource.data.email.matches('[^@\\s]+@[^@\\s]+\\.[^@\\s]+')
+        && (!('creche_nome' in request.resource.data) ||
+            (request.resource.data.creche_nome is string && request.resource.data.creche_nome.size() <= 200))
+        && (!('telefone' in request.resource.data) ||
+            (request.resource.data.telefone is string && request.resource.data.telefone.size() <= 30))
+        && (!('idade_crianca' in request.resource.data) ||
+            (request.resource.data.idade_crianca is string && request.resource.data.idade_crianca.size() <= 40))
+        && (!('mes_entrada' in request.resource.data) ||
+            (request.resource.data.mes_entrada is string && request.resource.data.mes_entrada.size() <= 40))
+        && (!('mensagem' in request.resource.data) ||
+            (request.resource.data.mensagem is string && request.resource.data.mensagem.size() <= 400));
+      // Só o gestor da creche em causa (ou admin) pode ler
+      allow read: if request.auth != null
+        && (isAdmin() || isManagerOf(resource.data.creche_id));
+      // Gestor só pode mudar o estado do lead
+      allow update: if request.auth != null
+        && (isAdmin() ||
+            (isManagerOf(resource.data.creche_id)
+             && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+             && request.resource.data.status in ['novo','contactado','fechado']));
+      allow delete: if isAdmin();
+    }
+
     // Tudo o resto bloqueado
     match /{document=**} {
       allow read, write: if false;
