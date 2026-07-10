@@ -346,6 +346,7 @@
         <!-- LINHA 6: Vistas pessoais + limpar -->
         <div class="filter-row">
           <button id="f-only-vaga" class="chip toggle-vaga" title="🆕 Em fase inicial — mostra as creches que já sinalizaram ter vaga disponível agora"><span>🟢</span>Com vaga</button>
+          <button id="f-only-geridas" class="chip" title="Creches que gerem a sua página no creches.app — informação confirmada e podes deixar-lhes o teu contacto pela app"><span>✓</span>Aderentes</button>
           <button id="f-only-creche-feliz" class="chip toggle-cf" title="Mostra só creches aderentes ao programa Creche Feliz (Segurança Social) — pode ser gratuita"><span>🆓</span>Creche Feliz</button>
           <button id="f-only-tracked" class="chip toggle-tracked"><span>📒</span>Em processo</button>
           <button id="f-only-fav" class="chip toggle-fav"><span>⭐</span>Favoritas</button>
@@ -839,7 +840,7 @@ const State = {
     q:"", distrito:"", concelho:"",
     tipo:new Set(), status:new Set(),
     idade:new Set(), idadeAnos:"",  // buckets (set de chaves) + idade específica em anos (string "" ou "0".."6")
-    onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false,
+    onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false, onlyGeridas:false,
     sort:"name",
   },
   // restrição extra por área desenhada ou cluster clicado (Set de ids ou null)
@@ -1361,6 +1362,7 @@ function applyFilters(){
       const hasFromReports = State.crecheFelizAtivos && State.crecheFelizAtivos.has(c.id);
       if(!c.creche_feliz && !hasFromReports) return false;
     }
+    if(f.onlyGeridas && !(State.profileGeridas && State.profileGeridas.has(c.id))) return false;
     if(f.idade.size){
       const mn = c.idade_min_meses, mx = c.idade_max_meses;
       if(mn==null || mx==null) return false;
@@ -1512,12 +1514,15 @@ function renderList(){
                                 : "Vaga sinalizada" + (vagaDias != null ? " há " + vagaDias + " dia" + (vagaDias===1?"":"s") : "");
     const vagaPill = (c._vaga || temVagaFS)
       ? `<span class="vaga-pill" title="${escapeAttr(vagaTitle)}">🟢 Vaga disponível${vagaVerif ? " ✓" : ""}</span>` : "";
-    // Foto do perfil gerido pela creche (thumb) + selo ✓
+    // Foto do perfil gerido pela creche (thumb) + selo ✓ — estilos inline (imune a CSS em cache)
     const foto = State.profileFoto && State.profileFoto.get(c.id);
     const gerida = State.profileGeridas && State.profileGeridas.has(c.id);
-    if(foto) row.classList.add("has-thumb");
+    if(foto){
+      row.classList.add("has-thumb");
+      row.style.flexDirection = "row"; row.style.alignItems = "center"; row.style.gap = "12px";
+    }
     row.innerHTML = `
-      ${foto ? `<div class="card-thumb"><img src="${escapeAttr(foto)}" alt="" loading="lazy"></div>` : ""}
+      ${foto ? `<div class="card-thumb" style="flex:none;width:54px;height:54px;border-radius:10px;overflow:hidden;background:#FFE3D2"><img src="${escapeAttr(foto)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>` : ""}
       <div class="card-main">
       <div class="name">
         ${highlightTerm(c.nome, q)}
@@ -2414,6 +2419,7 @@ function wireUp(){
     if(f.onlyTracked) n++;
     if(f.onlyFav) n++;
     if(f.onlyVaga) n++;
+    if(f.onlyGeridas) n++;
     return n;
   }
   function refreshFiltersCount(){
@@ -2435,6 +2441,15 @@ function wireUp(){
     State.filters.onlyVaga = !State.filters.onlyVaga;
     e.currentTarget.classList.toggle("active", State.filters.onlyVaga); applyFilters();
   });
+
+  // Filtro só creches aderentes (gerem a página no creches.app)
+  const gerBtn = document.getElementById("f-only-geridas");
+  if(gerBtn){
+    gerBtn.addEventListener("click", (e)=>{
+      State.filters.onlyGeridas = !State.filters.onlyGeridas;
+      e.currentTarget.classList.toggle("active", State.filters.onlyGeridas); applyFilters();
+    });
+  }
 
   // Filtro só Creche Feliz
   const cfBtn = document.getElementById("f-only-creche-feliz");
@@ -2465,7 +2480,7 @@ function wireUp(){
   document.getElementById("f-clear").addEventListener("click", ()=>{
     State.filters = { q:"", distrito:"", concelho:"", tipo:new Set(), status:new Set(),
       idade:new Set(), idadeAnos:"",
-      onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false, sort: State.filters.sort };
+      onlyTracked:false, onlyFav:false, onlyVaga:false, onlyCrecheFeliz:false, onlyGeridas:false, sort: State.filters.sort };
     document.getElementById("q").value="";
     document.getElementById("f-distrito").value="";
     document.getElementById("f-idade-anos").value="";
@@ -3176,9 +3191,16 @@ function _renderPerfilCrechePopup(crecheId, slot){
                 (p.vagas && (p.vagas.b0 || p.vagas.m12 || p.vagas.m24 || p.vagas.atualizado)) ||
                 p.mensalidade_min != null || p.capacidade != null ||
                 (p.valencias && p.valencias.length) || p.linguas;
-      if(!tem) return;
+      if(!tem){
+        // Creche NÃO aderente — nudge suave para pais e creches
+        slot.innerHTML = '<div style="margin:0 0 14px;padding:10px 14px;background:#FFF6EE;border-radius:12px;font-size:12.5px;color:#6E6989;font-family:inherit">' +
+          '💡 Esta creche ainda não gere a sua página. Nas creches aderentes <span style="background:#7DD389;color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px">✓</span> podes deixar o teu contacto pela app. ' +
+          'És desta creche? <a href="/painel" style="color:#FF6B9D;font-weight:700">Adere gratuitamente</a>.</div>';
+        return;
+      }
 
-      var h = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">' +
+      // ── Layout compacto: essencial à vista, resto em "Mais sobre a creche" ──
+      var h = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
         '<span style="background:#7DD389;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px">✓ INFORMAÇÃO DA CRECHE</span>' +
         '<span style="font-size:11px;color:#6E6989">atualizada pela própria creche</span></div>';
 
@@ -3190,13 +3212,27 @@ function _renderPerfilCrechePopup(crecheId, slot){
       var quando = "";
       try { if(v.atualizado && v.atualizado.toDate) quando = " · " + v.atualizado.toDate().toLocaleDateString("pt-PT"); } catch(e){}
       if(salas.length){
-        h += '<div style="margin:6px 0;font-weight:700;color:#1F7A3D;font-size:14px">🟢 Vagas abertas: ' + esc(salas.join(" · ")) + '<span style="font-weight:400;font-size:12px;color:#6E6989">' + quando + '</span></div>';
+        h += '<div style="margin:4px 0;font-weight:700;color:#1F7A3D;font-size:14px">🟢 Vagas: ' + esc(salas.join(" · ")) + '<span style="font-weight:400;font-size:12px;color:#6E6989">' + quando + '</span></div>';
       } else if(v.atualizado){
-        h += '<div style="margin:6px 0;font-weight:700;color:#B4255C;font-size:14px">🔴 Sem vagas de momento<span style="font-weight:400;font-size:12px;color:#6E6989">' + quando + '</span></div>';
+        h += '<div style="margin:4px 0;font-weight:700;color:#B4255C;font-size:14px">🔴 Sem vagas de momento<span style="font-weight:400;font-size:12px;color:#6E6989">' + quando + '</span></div>';
       }
 
-      if(p.creche_feliz === true)  h += '<div style="margin:6px 0;font-size:13.5px">🍼 <b>Adere ao Creche Feliz</b> (creche gratuita para elegíveis)</div>';
-      if(p.creche_feliz === false) h += '<div style="margin:6px 0;font-size:13.5px;color:#6E6989">🍼 Não adere ao programa Creche Feliz</div>';
+      // Factos-chave numa linha de pills compactas
+      var pills = [];
+      if(p.creche_feliz === true) pills.push('🍼 Creche Feliz');
+      if(p.mensalidade_min != null || p.mensalidade_max != null){
+        var pm = "💶 ";
+        if(p.mensalidade_min != null) pm += p.mensalidade_min + "€";
+        if(p.mensalidade_min != null && p.mensalidade_max != null) pm += "–";
+        if(p.mensalidade_max != null) pm += p.mensalidade_max + "€";
+        pills.push(pm);
+      }
+      if(p.horario) pills.push("🕐 " + esc(p.horario));
+      if(p.valencias && p.valencias.length) pills.push("🏫 " + esc(p.valencias.join(" · ")));
+      if(pills.length){
+        h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px">' +
+          pills.map(function(t){ return '<span style="background:#fff;border:1px solid rgba(60,40,90,.1);border-radius:999px;padding:3px 11px;font-size:11.5px;font-weight:700;color:#2C2356">' + t + '</span>'; }).join("") + '</div>';
+      }
 
       var extra = [];
       if(p.mensalidade_min != null || p.mensalidade_max != null){
@@ -3205,21 +3241,21 @@ function _renderPerfilCrechePopup(crecheId, slot){
         if(p.mensalidade_max != null) m += " até " + p.mensalidade_max + "€";
         extra.push(m);
       }
-      if(p.horario) extra.push("🕐 " + esc(p.horario));
-      if(p.capacidade != null) extra.push("👶 Capacidade: " + esc(String(p.capacidade)) + " crianças");
-      if(p.valencias && p.valencias.length) extra.push("🏫 " + esc(p.valencias.join(" · ")));
-      if(p.linguas) extra.push("🗣 " + esc(p.linguas));
-      if(extra.length) h += '<div style="margin:6px 0;font-size:13.5px">' + extra.join(" &nbsp;·&nbsp; ") + '</div>';
-
+      // ── O resto vai para dentro de "Mais sobre a creche" (colapsado) ──
+      var det = "";
       if(p.descricao){
         var d = String(p.descricao);
         if(d.length > 380) d = d.slice(0, 380) + "…";
-        h += '<p style="margin:10px 0 6px;font-size:13.5px;line-height:1.5;color:#2C2356">' + esc(d) + '</p>';
+        det += '<p style="margin:8px 0 6px;font-size:13.5px;line-height:1.5;color:#2C2356">' + esc(d) + '</p>';
       }
+      var extraDet = [];
+      if(p.capacidade != null) extraDet.push("👶 Capacidade: " + esc(String(p.capacidade)) + " crianças");
+      if(p.linguas) extraDet.push("🗣 " + esc(p.linguas));
+      if(extraDet.length) det += '<div style="margin:6px 0;font-size:13px;color:#6E6989">' + extraDet.join(" &nbsp;·&nbsp; ") + '</div>';
 
       var fotos = (p.fotos || []).slice(0, 4);
       if(fotos.length){
-        h += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px;margin-top:10px">' +
+        det += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px;margin-top:8px">' +
           fotos.map(function(u){
             return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="Fotografia" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block"></a>';
           }).join("") + '</div>';
@@ -3232,12 +3268,18 @@ function _renderPerfilCrechePopup(crecheId, slot){
         var w = p.website.indexOf("http") === 0 ? p.website : "https://" + p.website;
         ct.push('<a href="' + esc(w) + '" target="_blank" rel="noopener" style="color:#FF6B9D;font-weight:700;text-decoration:none">🌐 Website</a>');
       }
-      if(ct.length) h += '<div style="margin-top:10px;font-size:13px;display:flex;gap:14px;flex-wrap:wrap">' + ct.join("") + '</div>';
+      if(ct.length) det += '<div style="margin-top:8px;font-size:13px;display:flex;gap:14px;flex-wrap:wrap">' + ct.join("") + '</div>';
+
+      if(det){
+        h += '<details style="margin-top:8px">' +
+          '<summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#5EC0B7;list-style:none;user-select:none">▾ Mais sobre a creche (descrição, fotos, contactos)</summary>' +
+          det + '</details>';
+      }
 
       // Fase 2 — Botão "Tenho interesse" (leads para o painel da creche)
-      h += '<button id="btn-lead-app" style="margin-top:12px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
+      h += '<button id="btn-lead-app" style="margin-top:10px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
 
-      slot.innerHTML = '<div style="margin:0 0 14px;padding:16px 18px;background:linear-gradient(135deg,#fff 0%,#DEF5E1 140%);border:1.5px solid #7DD389;border-radius:16px;font-family:inherit">' + h + '</div>';
+      slot.innerHTML = '<div style="margin:0 0 14px;padding:14px 16px;background:linear-gradient(135deg,#fff 0%,#DEF5E1 140%);border:1.5px solid #7DD389;border-radius:16px;font-family:inherit">' + h + '</div>';
       var lb = document.getElementById("btn-lead-app");
       if(lb) lb.onclick = function(){
         var c = (typeof State !== "undefined" && State.creches) ? State.creches.find(function(x){ return String(x.id) === String(crecheId); }) : null;

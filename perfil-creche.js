@@ -196,15 +196,19 @@
     if(!slot || !slot.dataset.crecheId) return;
     try {
       firebase.firestore().doc("creche_profiles/" + slot.dataset.crecheId).get().then(function(snap){
-        if(!snap.exists) return;
-        var p = snap.data();
-        // Só mostra se houver conteúdo relevante
+        var p = snap.exists ? snap.data() : {};
+        // Só mostra o cartão se houver conteúdo relevante
         var tem = p.descricao || p.horario || (p.fotos && p.fotos.length) ||
                   p.creche_feliz === true || p.creche_feliz === false ||
                   (p.vagas && (p.vagas.b0 || p.vagas.m12 || p.vagas.m24 || p.vagas.atualizado)) ||
                   p.mensalidade_min != null || p.capacidade != null ||
                   (p.valencias && p.valencias.length) || p.linguas;
-        if(tem) render(slot, p);
+        if(tem){ render(slot, p); return; }
+        // Creche não aderente — nudge suave (pais sabem o que perdem; creches sabem o caminho)
+        var note = document.createElement("div");
+        note.style.cssText = "margin:14px 0;padding:10px 14px;background:#FFF6EE;border-radius:12px;font-size:.82rem;color:#6E6989;font-family:inherit";
+        note.innerHTML = '💡 Esta creche ainda não gere a sua página no creches.app. Nas creches aderentes <span style="background:#7DD389;color:#fff;font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:999px">✓</span> podes deixar o teu contacto diretamente pela app. É desta creche? <a href="/painel" style="color:#FF6B9D;font-weight:700">Adira gratuitamente</a>.';
+        slot.insertAdjacentElement("afterend", note);
       }).catch(function(){});
     } catch(e){}
   }
