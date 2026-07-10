@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Creches.app — Proposta FJM</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF6EE;--ink:#2C2356;--soft:#6E6989;--coral:#FF6B9D;--corals:#FFE2EC;--peach:#FF9F68;--peachs:#FFE3D2;
+--turq:#5EC0B7;--turqs:#D9F2EF;--mint:#7DD389;--mints:#DEF5E1;--lilac:#B197FC;--lilacs:#ECE4FF;--yells:#FFF1D6;
+--sh:0 4px 18px rgba(60,40,90,.10)}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Quicksand",sans-serif;color:var(--ink);background:#1e1840;overflow:hidden}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;line-height:1.2}
+.slide{position:absolute;inset:0;display:none;padding:5vh 6vw;background:
+ radial-gradient(60vw 45vh at 8% 0%,var(--corals) 0%,transparent 55%),
+ radial-gradient(55vw 42vh at 100% 0%,var(--turqs) 0%,transparent 55%),
+ radial-gradient(60vw 48vh at 50% 110%,var(--yells) 0%,transparent 60%),var(--bg)}
+.slide.active{display:flex;flex-direction:column}
+.center{align-items:center;justify-content:center;text-align:center}
+.stitle{font-size:clamp(26px,4.2vw,46px);margin-bottom:.5vh}
+.ssub{color:var(--soft);font-size:clamp(13px,1.5vw,18px);margin-bottom:3vh}
+.cards{display:flex;gap:1.6vw;flex:1;align-items:stretch}
+.rows{display:flex;flex-direction:column;gap:1.6vh;flex:1;justify-content:center}
+.card{background:#fff;border-radius:18px;box-shadow:var(--sh);padding:2.2vh 1.6vw;flex:1}
+.row{background:#fff;border-radius:16px;box-shadow:var(--sh);padding:1.6vh 1.6vw;display:flex;align-items:center;gap:1.4vw}
+.chip{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
+.big{font-size:clamp(24px,3.2vw,38px);font-family:"Fredoka";font-weight:700}
+.lbl{color:var(--soft);font-size:clamp(11px,1.25vw,14px);margin-top:.6vh}
+.rt{font-family:"Fredoka";font-weight:600;font-size:clamp(15px,1.7vw,20px);min-width:15vw}
+.rd{color:var(--soft);font-size:clamp(12px,1.35vw,15px)}
+.note{margin-top:2.4vh;text-align:center;font-weight:700;font-style:italic;color:var(--coral);font-size:clamp(12px,1.45vw,16px)}
+.pill{display:inline-block;padding:8px 22px;border-radius:999px;font-weight:700;font-size:clamp(12px,1.4vw,15px);margin:0 6px}
+.foot{position:fixed;bottom:14px;right:20px;color:#fff;opacity:.55;font-size:13px;z-index:9}
+.nav{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:9}
+.dot{width:9px;height:9px;border-radius:50%;background:#fff;opacity:.35;cursor:pointer}
+.dot.on{opacity:1;background:var(--coral)}
+@media print{.slide{display:flex!important;position:relative;height:100vh;page-break-after:always}.nav,.foot{display:none}}
+</style>
+</head>
+<body>
+
+<!-- 1 CAPA -->
+<section class="slide center active">
+  <div style="font-size:clamp(48px,7vw,84px)">🍼</div>
+  <h1 style="font-size:clamp(40px,7vw,84px)">Creches.app</h1>
+  <h2 style="color:var(--coral);font-size:clamp(20px,3vw,34px);margin-top:1vh">Proposta à Fundação Jerónimo Martins</h2>
+  <p class="ssub" style="margin-top:1.5vh">Um boost para arrancar · um caminho claro para a autonomia</p>
+  <div style="margin-top:2vh">
+    <span class="pill" style="background:var(--mints)">💛 Grátis para os pais</span>
+    <span class="pill" style="background:var(--corals)">🚫 Sem anúncios</span>
+    <span class="pill" style="background:var(--turqs)">🌱 Sustentável</span>
+  </div>
+  <p style="margin-top:5vh;color:var(--soft);font-size:14px">Joaquim Cabral · Julho 2026 · Confidencial</p>
+</section>
+
+<!-- 2 PROVADO -->
+<section class="slide">
+  <h1 class="stitle">O produto está provado</h1>
+  <p class="ssub">Construído por uma pessoa, sem financiamento — o capital vai escalar, não experimentar</p>
+  <div class="cards" style="flex:0 0 auto;margin-bottom:2.2vh">
+    <div class="card" style="text-align:center"><div class="big" style="color:var(--coral)">2.800+</div><div class="lbl">creches no mapa — o dataset mais completo do país</div></div>
+    <div class="card" style="text-align:center"><div class="big" style="color:var(--turq)">500+</div><div class="lbl">famílias registadas e a crescer</div></div>
+    <div class="card" style="text-align:center"><div class="big">NiT · Público</div><div class="lbl">imprensa nacional + 1.º no Gemini</div></div>
+  </div>
+  <div class="rows" style="flex:1">
+    <div class="row"><div class="chip" style="background:var(--turqs)">🗺</div><div class="rd" style="color:var(--ink);font-weight:600">Mapa + calculadora de custos + comparador — nem a Carta Social tem</div></div>
+    <div class="row"><div class="chip" style="background:var(--mints)">🟢</div><div class="rd" style="color:var(--ink);font-weight:600">Vagas em tempo real — a primeira ferramenta do género em Portugal</div></div>
+    <div class="row"><div class="chip" style="background:var(--peachs)">🏫</div><div class="rd" style="color:var(--ink);font-weight:600">Painel das creches lançado: login, perfil editável, fotos, vagas + integração Creche Feliz</div></div>
+  </div>
+</section>
+
+<!-- 3 MOMENTO -->
+<section class="slide">
+  <h1 class="stitle">E o momento é agora</h1>
+  <p class="ssub">Mais bebés do que em toda a década — e um sistema opaco na corrida às vagas</p>
+  <div class="cards" style="flex:0 0 auto">
+    <div class="card" style="text-align:center;padding-top:4vh"><div class="big" style="color:var(--turq)">87.732</div><div class="lbl">bebés em 2025 — máximo da década (INE)</div></div>
+    <div class="card" style="text-align:center;padding-top:4vh"><div class="big" style="color:var(--coral)">~250 mil</div><div class="lbl">crianças 0-3 anos com direito a creche gratuita</div></div>
+    <div class="card" style="text-align:center;padding-top:4vh"><div class="big">~50%</div><div class="lbl">das que precisam ficam fora das vagas gratuitas</div></div>
+  </div>
+  <p style="margin:auto;max-width:70ch;text-align:center;color:var(--soft);font-size:clamp(14px,1.7vw,19px)">Todos os anos, dezenas de milhares de famílias telefonam a 20 creches às cegas.<br><b style="color:var(--ink)">Nós já começámos a resolver — falta escalar.</b></p>
+</section>
+
+<!-- 4 MODELO -->
+<section class="slide">
+  <h1 class="stitle">Um modelo em dois tempos</h1>
+  <p class="ssub">A FJM financia a construção do ativo; o ativo financia a missão</p>
+  <div class="cards">
+    <div class="card"><h3 style="color:var(--coral);margin-bottom:1.5vh">TEMPO 1 · Ano 1</h3>
+      <p style="font-weight:700;margin-bottom:1vh">A FJM financia (~€250 mil)</p>
+      <p class="rd">Equipa mínima + app nativa + 500 creches com conta + 100 mil visitas/mês. Sem receitas: é o laboratório onde validamos preços e produtos com betas gratuitas junto de creches, câmaras e empresas.</p></div>
+    <div class="card" style="background:var(--mints)"><h3 style="color:#1F7A3D;margin-bottom:1.5vh">TEMPO 2 · Ano 2+</h3>
+      <p style="font-weight:700;margin-bottom:1vh">O modelo autofinancia-se</p>
+      <p class="rd" style="color:var(--ink)">Serviços PRO às creches, observatórios de dados para câmaras, childcare benefit para empresas e produtos de dados agregados. A FJM passa a rede de segurança decrescente — nunca cliente cativo.</p></div>
+  </div>
+  <p class="note">Modelo deliberadamente aberto: os preços e o mix são hipóteses a validar no terreno — vamos aprender antes de fechar.</p>
+</section>
+
+<!-- 5 SUSTENTO -->
+<section class="slide">
+  <h1 class="stitle">Como nos sustentamos (sem trair a missão)</h1>
+  <p class="ssub">Paga quem tem orçamento — nunca os pais; o ranking nunca está à venda</p>
+  <div class="cards">
+    <div class="card" style="text-align:center"><div class="chip" style="background:var(--turqs);margin:0 auto 1.5vh">🏫</div><h3>Creches PRO</h3><p class="rd" style="margin-top:1vh">Gestão de lista de espera, candidaturas e comunicação com famílias. Perfil base grátis para sempre — paga-se por funcionalidades, nunca por visibilidade.</p></div>
+    <div class="card" style="text-align:center"><div class="chip" style="background:var(--lilacs);margin:0 auto 1.5vh">🏛</div><h3>Câmaras</h3><p class="rd" style="margin-top:1vh">Observatório municipal: procura vs. oferta por freguesia, tempos de espera — dados que nenhuma autarquia tem para planear investimento.</p></div>
+    <div class="card" style="text-align:center"><div class="chip" style="background:var(--peachs);margin:0 auto 1.5vh">🏢</div><h3>Empresas</h3><p class="rd" style="margin-top:1vh">Childcare benefit: apoio concierge aos colaboradores na procura de creche + relatórios de dados agregados e anonimizados (nunca dados pessoais).</p></div>
+  </div>
+  <p class="note" style="color:#1F7A3D">Meta: break-even operacional no ano 2 · em estatuto: sem ads, sem venda de dados pessoais, sem pay-to-rank</p>
+</section>
+
+<!-- 6 EQUIPA -->
+<section class="slide">
+  <h1 class="stitle">A equipa mínima que faz isto acontecer</h1>
+  <p class="ssub">Três pessoas a tempo inteiro + freelancers — nem mais um euro do que o necessário</p>
+  <div class="rows">
+    <div class="row"><div class="chip" style="background:var(--corals)">👨‍🍼</div><div class="rt">Joaquim (fundador)</div><div class="rd">Produto, parcerias, vendas B2G e rosto público — a tempo inteiro no projeto</div></div>
+    <div class="row"><div class="chip" style="background:var(--turqs)">💻</div><div class="rt">Developer</div><div class="rd">App nativa com alertas de vaga, painel das creches à escala, produto PRO</div></div>
+    <div class="row" style="background:var(--mints)"><div class="chip" style="background:#fff">🚗</div><div class="rt">Braço direito · Operações</div><div class="rd" style="color:var(--ink)">Faz de tudo um pouco, mas sobretudo o contacto com as creches: visita, telefona, ativa contas, recolhe feedback — o motor da rede</div></div>
+    <div class="row"><div class="chip" style="background:var(--lilacs)">🎨</div><div class="rt">Freelancers</div><div class="rd">Redes sociais, design e vídeo à tarefa — flexível, sem custo fixo</div></div>
+  </div>
+  <p class="note">Ano 1 completo: ~€250 mil — pessoas ~€165 mil · freelancers e marketing ~€33 mil · operação e legal ~€28 mil · reserva ~€24 mil</p>
+</section>
+
+<!-- 7 PEDIDO -->
+<section class="slide">
+  <h1 class="stitle">O que peço à Fundação</h1>
+  <p class="ssub">Smart money vale mais do que só money</p>
+  <div class="rows">
+    <div class="row"><div class="chip" style="background:var(--yells)">💶</div><div class="rt">Boost inicial ~€250 mil</div><div class="rd">Cobre o ano 1 por inteiro; tranches com KPIs trimestrais. Backstop decrescente nos anos 2-3 se a rampa de receitas demorar</div></div>
+    <div class="row"><div class="chip" style="background:var(--lilacs)">🧭</div><div class="rt">Mentoria + aceleradora</div><div class="rd">Mentor sénior da vossa órbita (1h/mês) e entrada num programa de impacto — MAZE X, Casa do Impacto ou NOVA SBE. <b style="color:var(--ink)">Há algum onde a vossa rede possa facilitar a entrada?</b></div></div>
+    <div class="row"><div class="chip" style="background:var(--turqs)">🚪</div><div class="rt">Portas e clientes-piloto</div><div class="rd">Introduções: Segurança Social/GEP, ANMP e câmaras; e 2-3 empresas do grupo como pilotos do childcare benefit</div></div>
+  </div>
+  <p class="note" style="color:var(--soft);font-weight:500">A Fundação fica nos bastidores, sem branding no produto — como conversado.</p>
+</section>
+
+<!-- 8 METAS -->
+<section class="slide">
+  <h1 class="stitle">O que me comprometo a entregar</h1>
+  <p class="ssub">Metas verificáveis, reportadas trimestralmente</p>
+  <div class="rows">
+    <div class="row"><div class="rt" style="color:var(--coral);min-width:9vw">Ano 1</div><div class="rd" style="color:var(--ink)">100 mil visitas/mês · 500 creches com conta · app nativa · 10 creches beta PRO · 3 cartas de intenção de câmaras</div></div>
+    <div class="row"><div class="rt" style="color:var(--coral);min-width:9vw">Ano 2</div><div class="rd" style="color:var(--ink)">Break-even operacional: PRO lançado, primeiras câmaras e empresas pagantes · 220 mil visitas/mês</div></div>
+    <div class="row" style="background:var(--mints)"><div class="rt" style="color:#1F7A3D;min-width:9vw">Ano 3+</div><div class="rd" style="color:var(--ink)"><b>Autonomia total</b> — a FJM sai como financiadora e fica como madrinha de uma infraestrutura cívica que se paga a si própria</div></div>
+  </div>
+  <p class="note" style="color:var(--ink)">«O produto existe. Os pais já cá estão. Com este arranque, em 3 anos Portugal tem uma plataforma pública que não custa nada ao país.» 🍼</p>
+</section>
+
+<div class="nav" id="nav"></div>
+<div class="foot">← → navegar · F ecrã inteiro</div>
+
+<script>
+const slides=[...document.querySelectorAll(".slide")];let i=0;
+const nav=document.getElementById("nav");
+slides.forEach((_,k)=>{const d=document.createElement("div");d.className="dot"+(k===0?" on":"");d.onclick=()=>go(k);nav.appendChild(d);});
+function go(n){i=Math.max(0,Math.min(slides.length-1,n));
+ slides.forEach((s,k)=>s.classList.toggle("active",k===i));
+ [...nav.children].forEach((d,k)=>d.classList.toggle("on",k===i));}
+addEventListener("keydown",e=>{
+ if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown")go(i+1);
+ if(e.key==="ArrowLeft"||e.key==="PageUp")go(i-1);
+ if(e.key.toLowerCase()==="f")document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();});
+addEventListener("click",e=>{if(!e.target.closest(".nav"))go(e.clientX>innerWidth/2?i+1:i-1);});
+</script>
+</body>
+</html>
