@@ -91,6 +91,8 @@
           if(msg) payload.mensagem = msg;
           firebase.firestore().collection("creche_leads").add(payload).then(function(){
             _leadsBump();
+            // Avisar a app (se estiver aberta): marca a creche como "Contactada" no pipeline do pai
+            try { window.dispatchEvent(new CustomEvent("creches:lead", { detail: { creche_id: String(crecheId) } })); } catch(e){}
             ov.firstChild.innerHTML = '<div style="text-align:center;padding:26px 10px">' +
               '<div style="font-size:2.4rem">💌</div><h3 style="margin:10px 0 6px;color:#2C2356">Enviado!</h3>' +
               '<p style="font-size:.9rem;color:#6E6989;margin:0">A creche recebeu o teu contacto e vai responder-te diretamente. Boa sorte! 🍀</p>' +

@@ -639,8 +639,8 @@ function renderStats(stats){
   const todayEntry = stats.find(s => s.date === todayISO);
   const todayViews = todayEntry ? todayEntry.app_views : 0;
 
-  // Soma últimos 7 dias (inclui hoje)
-  const sevenDaysAgo = new Date(Date.now() - 7*24*60*60*1000).toISOString().slice(0,10);
+  // Soma últimos 7 dias (hoje + 6 anteriores — antes somava 8 dias)
+  const sevenDaysAgo = new Date(Date.now() - 6*24*60*60*1000).toISOString().slice(0,10);
   const last7 = stats.filter(s => s.date >= sevenDaysAgo);
   const sum7 = last7.reduce((acc, s) => acc + (s.app_views||0), 0);
 

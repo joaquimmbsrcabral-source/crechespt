@@ -1450,19 +1450,34 @@ function updatePipelineBadge(){
   document.getElementById("tab-badge").textContent = inProcess;
 }
 
+// Lead enviado (💌) → a creche entra no pipeline do pai como "Contactada"
+window.addEventListener("creches:lead", (e) => {
+  try {
+    const id = e.detail && e.detail.creche_id;
+    if(!id) return;
+    if(!State.userData.creches[id]) State.userData.creches[id] = {};
+    const u = State.userData.creches[id];
+    if(!u.status || u.status === "todo") u.status = "contactada";
+    u.last_contact = new Date().toISOString().slice(0,10);
+    if(typeof saveUserData === "function") saveUserData();
+    updatePipelineBadge();
+    if(typeof applyFilters === "function") applyFilters();
+  } catch(err){}
+});
+
 /* ===== Lista ===== */
 function pageRows(){ const start = State.page*PAGE_SIZE; return State.filtered.slice(start, start+PAGE_SIZE); }
 
 function highlightTerm(s, term){
   if(!s) return "";
-  if(!term) return escapeHtml(s);
-  const safe = escapeHtml(s);
-  const t = term.trim().toLowerCase();
-  if(!t) return safe;
-  // case-insensitive replace preservando original
-  const idx = safe.toLowerCase().indexOf(t);
-  if(idx === -1) return safe;
-  return safe.slice(0, idx) + '<span class="hl">' + safe.slice(idx, idx+t.length) + '</span>' + safe.slice(idx+t.length);
+  const t = (term || "").trim().toLowerCase();
+  if(!t) return escapeHtml(s);
+  // Procurar no texto ORIGINAL e escapar cada segmento — nunca corta entidades HTML a meio
+  const idx = String(s).toLowerCase().indexOf(t);
+  if(idx === -1) return escapeHtml(s);
+  return escapeHtml(String(s).slice(0, idx)) +
+    '<span class="hl">' + escapeHtml(String(s).slice(idx, idx + t.length)) + '</span>' +
+    escapeHtml(String(s).slice(idx + t.length));
 }
 function renderList(){
   const wrap = document.getElementById("list-scroll");
@@ -1658,15 +1673,30 @@ function renderMap(){
   if(!State.cluster) return;
   State.cluster.clearLayers();
   State.markerById.clear();
+  // Perf: reutilizar objetos L.marker entre renders — só recriar o ícone quando
+  // o aspeto muda (tipo/status/fav/vaga/selo). Evita reconstruir 2.600 markers
+  // + tooltips a cada filtro/tecla.
+  if(!State._markerCache) State._markerCache = new Map();
   const markers = [];
   for(const c of State.filtered){
-    const icon = L.divIcon({ html: markerHtml(c), className:"", iconSize:[20,20] });
-    const m = L.marker([c.lat, c.lon], { icon });
-    m._crecheId = c.id;
-    m.on("click", ()=>openDetail(c.id));
-    m.bindTooltip(escapeHtml(c.nome), {direction:"top", offset:[0,-6]});
-    State.markerById.set(c.id, m);
-    markers.push(m);
+    const u = State.userData.creches[c.id] || {};
+    const temVaga = c._vaga || (State.vagasAtivas && State.vagasAtivas.has(c.id));
+    const gerida = State.profileGeridas && State.profileGeridas.has(c.id);
+    const sig = (c.tipo_oper||"?") + "|" + (u.status||"") + "|" + (u.fav?1:0) + "|" + (temVaga?1:0) + "|" + (gerida?1:0);
+    let entry = State._markerCache.get(c.id);
+    if(!entry){
+      const m = L.marker([c.lat, c.lon], { icon: L.divIcon({ html: markerHtml(c), className:"", iconSize:[20,20] }) });
+      m._crecheId = c.id;
+      m.on("click", ()=>openDetail(c.id));
+      m.bindTooltip(escapeHtml(c.nome), {direction:"top", offset:[0,-6]});
+      entry = { m, sig };
+      State._markerCache.set(c.id, entry);
+    } else if(entry.sig !== sig){
+      entry.m.setIcon(L.divIcon({ html: markerHtml(c), className:"", iconSize:[20,20] }));
+      entry.sig = sig;
+    }
+    State.markerById.set(c.id, entry.m);
+    markers.push(entry.m);
   }
   State.cluster.addLayers(markers);
 }
