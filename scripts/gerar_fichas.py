@@ -12,6 +12,20 @@ def slugify(s):
     s = re.sub(r"[^a-zA-Z0-9]+","-", s).strip("-").lower()
     return re.sub(r"-{2,}","-", s)[:70].rstrip("-")
 
+
+# Artigo definido correto para o nome da creche ("O Jardim…", "A Creche…")
+_MASC = ("jardim","centro","externato","infantario","infantário","colegio","colégio",
+         "atl","lar","patronato","complexo","espaco","espaço","instituto","nucleo","núcleo",
+         "berçario","berçário","bercario")
+def com_artigo(nome):
+    n = (nome or "").strip()
+    low = n.lower()
+    if low.startswith(("o ","a ","os ","as ")): return n          # já tem artigo
+    import re as _re
+    primeira = _re.split(r"[\s\-]", low)[0] if low else ""
+    if primeira in _MASC or primeira.startswith("jardim"): return "O " + n
+    return "A " + n
+
 def esc(s): return html.escape(str(s), quote=True) if s else ""
 
 def idade_txt(m):
@@ -228,8 +242,8 @@ HEADER = """<header class="top">
 </header>"""
 
 FOOTER = """<footer>
-  <p><a href="/">Início</a> ·<a href="/app">Mapa</a> ·<a href="/guias">Guias</a> ·<a href="/para-creches">Para creches</a> ·<a href="/privacidade">Privacidade</a> ·<a href="/termos">Termos</a></p>
-  <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Dados: <a href="https://www.openstreetmap.org/copyright" rel="nofollow noopener">OpenStreetMap</a> (ODbL)</p>
+  <p><a href="/">Início</a> ·<a href="/app">Mapa</a> ·<a href="/comparar">Comparar</a> ·<a href="/vagas">Vagas</a> ·<a href="/guias">Guias</a> ·<a href="/para-creches">Para creches</a> ·<a href="/privacidade">Privacidade</a> ·<a href="/termos">Termos</a></p>
+  <p style="margin-top:8px">Creches<span class="brand-tld">.app</span> © 2026 · Gratuito · Sem anúncios · Sem venda de dados · Dados: <a href="https://www.openstreetmap.org/copyright" rel="nofollow noopener">OpenStreetMap</a> (ODbL)</p>
 </footer>"""
 
 # Filtro Escolas Básicas — não gerar fichas para EB1, agrupamentos, etc.
@@ -265,7 +279,8 @@ for c in creches:
     bits = [b for b in [etipo or None, f"{esc(resposta)} em {el}" if local else None,
             f"tel. {esc(tel)}" if tel else None] if b]
     desc = f"{en}: " + ", ".join(bits) + f". Morada, contactos, idades e creches próximas. Vê no mapa gratuito do Creches.app."
-    desc = desc[:158]
+    if len(desc) > 158:
+        desc = desc[:158].rsplit(" ", 1)[0].rstrip(",.;") + "…"
 
     # JSON-LD ChildCare
     ld = {"@context":"https://schema.org","@type":"ChildCare","name":nome,"url":url,
@@ -288,12 +303,14 @@ for c in creches:
     ldbc = json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":crumbs}, ensure_ascii=False)
 
     # FAQPage schema — rich snippet com perguntas frequentes
-    nome_q = ('A ' + nome) if not nome.lower().startswith('a ') else nome
+    nome_q = com_artigo(nome)
     faq_q1 = f"{nome_q} é gratuita?"
     if tipo in ("IPSS","Pública"):
         faq_a1 = (f"{nome_q} integra a rede {'solidária (IPSS)' if tipo=='IPSS' else 'pública'}. Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga.")
+    elif tipo == "Desconhecido" or not tipo:
+        faq_a1 = (f"Ainda não temos a classificação (pública, IPSS ou privada) confirmada para {nome_q[0].lower() + nome_q[1:]}. Se for IPSS ou aderente ao Creche Feliz, pode ser gratuita para crianças nascidas a partir de 1 de setembro de 2021 — confirma diretamente com a creche.")
     else:
-        faq_a1 = (f"{nome_q} é {tipo.lower() if tipo else 'privada'}. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona.")
+        faq_a1 = (f"{nome_q} é {tipo.lower()}. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona.")
     faq_a2 = f"{fx}. Funciona como {resposta.lower()}." if resposta else fx
     faq_a3 = (f"Telefone: {tel}." if tel else "Não temos contacto registado para esta creche.") + (f" Email: {mail}." if mail else "")
     ldfaq = json.dumps({
@@ -417,19 +434,24 @@ for c in creches:
     vlis = "\n".join(
         f'<li><a class="nm" href="/creche/{slugs[o["id"]]}">{esc(o["nome"])}</a>'
         f'<div class="meta">'
-        f'<span class="pill tipo-{esc(o.get("tipo","Desconhecido") or "Desconhecido")}">{esc(o.get("tipo","Desconhecido") or "Desconhecido")}</span>'
+        f'<span class="pill tipo-{esc(o.get("tipo","Desconhecido") or "Desconhecido")}">{"Sem classificação" if (o.get("tipo") or "Desconhecido") == "Desconhecido" else esc(o.get("tipo"))}</span>'
         f'<span class="d">{d:.1f} km</span>'
         f'</div></li>'
         for o,d in viz)
 
     # FAQ condicional
+    en_q = esc(com_artigo(nome))
     if tipo in ("IPSS","Pública"):
-        grat = (f"A {en} integra a rede {'solidária (IPSS)' if tipo=='IPSS' else 'pública'}. "
+        grat = (f"{en_q} integra a rede {'solidária (IPSS)' if tipo=='IPSS' else 'pública'}. "
                 "Para crianças nascidas a partir de 1 de setembro de 2021, a frequência de creche pode ser gratuita ao abrigo do programa "
                 '<a href="/guias/creche-feliz">Creche Feliz</a>, se a instituição integrar a rede aderente e tiver vaga. '
                 "Confirma diretamente com a instituição ou na app oficial da Segurança Social.")
+    elif tipo == "Desconhecido" or not tipo:
+        grat = (f"Ainda não temos a classificação (pública, IPSS ou privada) confirmada para {en_q[0].lower() + en_q[1:]}. "
+                'Se for IPSS ou aderente ao programa <a href="/guias/creche-feliz">Creche Feliz</a>, pode ser gratuita para crianças nascidas a partir de 1 de setembro de 2021. '
+                "Confirma diretamente com a creche — e se souberes a resposta, <a href=\"mailto:geral@creches.app\">diz-nos</a> para ajudarmos outros pais.")
     else:
-        grat = (f"A {en} é {etipo.lower() if tipo else 'privada'}. As creches privadas só são gratuitas se forem "
+        grat = (f"{en_q} é {etipo.lower()}. As creches privadas só são gratuitas se forem "
                 '<strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. '
                 "Confirma a adesão e o valor da mensalidade diretamente com a creche.")
     contacto_faq = (f"Podes ligar para o <a href=\"tel:{esc(tel.replace(' ',''))}\">{esc(tel)}</a>" + (f" ou escrever para <a href=\"mailto:{esc(mail)}\">{esc(mail)}</a>" if mail else "") + "." if tel
@@ -475,7 +497,7 @@ for c in creches:
       <div class="info">
         <h1>{en}</h1>
         <div class="meta-row">
-          {f'<span class="chip tipo">{etipo or "Sem classificação"}</span>' if tipo else '<span class="chip tipo">Sem classificação</span>'}
+          {f'<span class="chip tipo">{"Sem classificação" if tipo == "Desconhecido" else etipo}</span>' if tipo else '<span class="chip tipo">Sem classificação</span>'}
           <span class="chip">🏠 {esc(resposta)}</span>
           <span class="chip">🎂 {esc(fx)}</span>
           {f'<span class="chip">📍 {el}</span>' if local else ''}
@@ -531,7 +553,7 @@ for c in creches:
 
   <h2 style="font-size:22px;margin:32px 0 14px;display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:10px;background:var(--c-coral-soft);color:var(--c-coral-dk);display:inline-flex;align-items:center;justify-content:center;font-size:16px">?</span>Perguntas frequentes</h2>
   <div class="faq">
-    <details><summary>{('A ' + en) if not nome.lower().startswith('a ') else en} é gratuita?</summary><p>{grat}</p></details>
+    <details><summary>{esc(com_artigo(nome))} é gratuita?</summary><p>{grat}</p></details>
     <details><summary>Que idades aceita?</summary><p>{esc(fx)}{' — funciona como ' + esc(resposta.lower()) if resposta else ''}. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
     <details><summary>Como posso contactar ou visitar?</summary><p>{contacto_faq} Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>

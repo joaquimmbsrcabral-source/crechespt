@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF9F68">
+<title>Listas de espera nas creches: como funcionam e quando te deves inscrever | Creches.app</title>
+<meta name="description" content="Como funcionam as listas de espera das creches em Portugal: IPSS vs privadas, critérios de prioridade, quando inscrever (dica: mais cedo do que pensas) e como acompanhar várias candidaturas. Atualizado em 2026.">
+<link rel="canonical" href="https://creches.app/guias/lista-de-espera-creche">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Listas de espera nas creches: como funcionam e quando te deves inscrever">
+<meta property="og:description" content="IPSS vs privadas, critérios de prioridade, quando inscrever e como gerir várias candidaturas em paralelo.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://creches.app/guias/lista-de-espera-creche">
+<meta property="og:image" content="https://creches.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creches.app — todas as creches de Portugal num só mapa">
+<meta name="twitter:image" content="https://creches.app/og-image.png">
+<meta property="og:locale" content="pt_PT">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --c-coral:#FF6B9D; --c-coral-soft:#FFE3EE; --c-peach:#FF9F68; --c-peach-soft:#FFE8D6;
+  --c-turquoise:#48D1CC; --c-turquoise-soft:#D8F5F4; --c-yellow:#FFD166; --c-yellow-soft:#FFF3D6;
+  --bg:#FFF6EE; --ink:#2C2356; --ink-soft:#6E6989; --ink-faint:#9B97B5;
+  --line:rgba(60,40,90,.08); --r-pill:999px; --r-md:14px; --r-card:18px;
+  --sh-1:0 1px 3px rgba(60,40,90,.06), 0 2px 8px rgba(60,40,90,.05);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 600px at 10% 0%, var(--c-peach-soft) 0%, transparent 55%),
+    radial-gradient(800px 600px at 100% 0%, var(--c-coral-soft) 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:"Quicksand",system-ui,-apple-system,sans-serif;
+  font-size:16px; line-height:1.7; min-height:100vh;
+}
+h1,h2,h3,h4{font-family:"Fredoka";font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.25}
+a{color:var(--c-coral);text-decoration:none}
+a:hover{text-decoration:underline}
+.brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+
+header.top{display:flex;align-items:center;gap:14px;padding:16px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,107,157,.35)}
+.brand-name b{font-family:"Fredoka";font-size:20px;display:block;line-height:1}
+.brand-name span{font-size:11px;color:var(--ink-soft);font-weight:600}
+header .spacer{flex:1}
+header nav{display:flex;gap:6px;align-items:center}
+header nav a{color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:var(--r-pill)}
+header nav a:hover{background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none}
+header .cta{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:9px 18px;box-shadow:0 6px 16px rgba(255,107,157,.35)}
+header .cta:hover{filter:brightness(1.05);text-decoration:none;color:#fff}
+
+article{max-width:760px;margin:0 auto;padding:30px 24px 60px}
+.breadcrumb{font-size:12.5px;color:var(--ink-soft);margin-bottom:16px}
+.breadcrumb a{color:var(--ink-soft)}
+.breadcrumb a:hover{color:var(--c-coral)}
+.kicker{display:inline-block;background:var(--c-turquoise-soft);color:#218985;padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+h1.title{font-size:42px;line-height:1.1;margin:0 0 18px}
+.lede{font-size:19px;color:var(--ink-soft);line-height:1.55;margin:0 0 22px}
+.meta{font-size:13px;color:var(--ink-faint);border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:28px}
+
+article h2{font-size:28px;margin:46px 0 14px}
+article h3{font-size:20px;margin:30px 0 10px}
+article p{margin:14px 0}
+article ul,article ol{padding-left:22px;margin:14px 0}
+article li{margin:6px 0}
+article strong{color:var(--ink);font-weight:700}
+article em{color:var(--ink)}
+
+.callout{background:#fff;border-radius:var(--r-card);padding:20px 22px;box-shadow:var(--sh-1);margin:24px 0;border-left:4px solid var(--c-coral)}
+.callout.tip{border-left-color:var(--c-turquoise)}
+.callout.warn{border-left-color:var(--c-yellow)}
+.callout p:first-child{margin-top:0}
+.callout p:last-child{margin-bottom:0}
+.callout-title{font-weight:700;color:var(--ink);display:block;margin-bottom:6px;font-family:"Fredoka"}
+
+.compare-tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-1);margin:22px 0}
+.compare-tbl th,.compare-tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+.compare-tbl th{background:var(--c-peach-soft);font-weight:700;color:var(--ink);font-family:"Fredoka"}
+.compare-tbl tr:last-child td{border-bottom:none}
+.compare-tbl td:first-child{font-weight:700;color:var(--ink)}
+
+.cta-box{background:linear-gradient(135deg,var(--c-coral-soft),var(--c-peach-soft));border-radius:var(--r-card);padding:28px;text-align:center;margin:34px 0}
+.cta-box h3{margin-top:0;font-size:22px}
+.cta-box .btn{display:inline-block;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:14px 28px;border-radius:var(--r-pill);font-size:15px;box-shadow:0 8px 20px rgba(255,107,157,.4);margin-top:10px}
+.cta-box .btn:hover{filter:brightness(1.05);text-decoration:none;color:#fff;transform:translateY(-1px)}
+
+.checklist{background:#fff;border-radius:var(--r-card);padding:22px 26px;box-shadow:var(--sh-1);margin:22px 0;list-style:none;padding-left:26px}
+.checklist li{position:relative;padding-left:14px;margin:10px 0;font-size:15px}
+.checklist li::before{content:"✓";position:absolute;left:-14px;color:var(--c-coral);font-weight:700;font-size:16px}
+
+.faq{margin-top:30px}
+.faq details{background:#fff;border-radius:var(--r-md);box-shadow:var(--sh-1);padding:14px 18px;margin:10px 0;cursor:pointer}
+.faq summary{font-weight:700;color:var(--ink);font-family:"Fredoka";font-size:17px;list-style:none;outline:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--c-coral);font-size:22px;line-height:.8;font-weight:600}
+.faq details[open] summary::after{content:"−"}
+.faq details[open] summary{margin-bottom:10px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.faq p{margin:8px 0}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:60px}
+footer a{color:var(--ink-soft);margin:0 8px}
+footer a:hover{color:var(--c-coral)}
+
+@media(max-width:640px){
+  article{padding:24px 18px 40px}
+  h1.title{font-size:32px}
+  article h2{font-size:24px;margin:36px 0 12px}
+  article h3{font-size:18px}
+  .lede{font-size:17px}
+  header.top{padding:14px 16px}
+  header nav a:not(.cta){display:none}
+  .brand-name span{display:none}
+}
+
+.toc-side{position:sticky;top:80px;align-self:start;max-width:240px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.toc-side .lbl{font-family:Fredoka;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:12px;display:block}
+.toc-side ol{list-style:none;padding:0;margin:0;border-left:2px solid rgba(60,40,90,.08)}
+.toc-side li{margin:0}
+.toc-side a{display:block;padding:7px 14px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;font-weight:500;transition:all .15s}
+.toc-side a:hover{color:var(--c-coral);border-left-color:var(--c-coral);background:rgba(255,107,157,.04);text-decoration:none}
+.toc-wrap{display:grid;grid-template-columns:240px 1fr;gap:50px;max-width:1080px;margin:0 auto;align-items:start;padding:30px 24px 0}
+@media(max-width:1100px){.toc-side{display:none}.toc-wrap{display:block;max-width:760px;padding:0}}
+html{scroll-behavior:smooth}
+h2[id]{scroll-margin-top:80px}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Listas de espera nas creches: como funcionam e quando te deves inscrever",
+  "description":"Como funcionam as listas de espera das creches em Portugal: IPSS vs privadas, critérios de prioridade, quando inscrever e como acompanhar várias candidaturas.",
+  "image":"https://creches.app/icon-512.png",
+  "datePublished":"2026-07-11",
+  "dateModified":"2026-07-11",
+  "author":{"@type":"Organization","name":"Creches.app","url":"https://creches.app"},
+  "publisher":{"@type":"Organization","@id":"https://creches.app/#org","name":"Creches.app","url":"https://creches.app","logo":{"@type":"ImageObject","url":"https://creches.app/icon-512.png"},"sameAs":["https://www.wikidata.org/wiki/Q140290655","https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023","https://www.nit.pt/fora-de-casa/este-engenheiro-portugues-criou-uma-plataforma-que-junta-todas-as-creches-de-portugal"]},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://creches.app/guias/lista-de-espera-creche"},
+  "inLanguage":"pt-PT"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Início","item":"https://creches.app/"},
+    {"@type":"ListItem","position":2,"name":"Guias","item":"https://creches.app/guias"},
+    {"@type":"ListItem","position":3,"name":"Listas de espera nas creches","item":"https://creches.app/guias/lista-de-espera-creche"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Quando me devo inscrever na lista de espera de uma creche?","acceptedAnswer":{"@type":"Answer","text":"O mais cedo possível. Em zonas urbanas (Lisboa, Porto, Cascais, Braga), a regra prática para berçário é inscrever ainda durante a gravidez — muitas famílias fazem-no no 2.º trimestre. Fora das grandes cidades, 6 a 12 meses antes da entrada pretendida costuma chegar. O pico de entradas é setembro, por isso as decisões de vagas concentram-se na primavera e início do verão."}},
+    {"@type":"Question","name":"Posso inscrever o meu filho em várias creches ao mesmo tempo?","acceptedAnswer":{"@type":"Answer","text":"Sim, e deves. Inscrever em 3 a 5 creches em paralelo é prática comum e aceite. Quando tiveres vaga garantida numa, avisa as outras para saíres da lista. Atenção apenas às taxas de inscrição de algumas privadas, que podem não ser reembolsáveis."}},
+    {"@type":"Question","name":"A inscrição na lista de espera é válida para sempre?","acceptedAnswer":{"@type":"Answer","text":"Normalmente não. Muitas creches, sobretudo IPSS, pedem renovação anual da inscrição (muitas vezes entre janeiro e abril). Se não renovares, podes sair da lista sem seres avisado. Confirma sempre com a creche se há renovação, quando é, e como se faz."}},
+    {"@type":"Question","name":"Como sei a minha posição na lista de espera?","acceptedAnswer":{"@type":"Answer","text":"Pergunta diretamente à creche. Nem todas divulgam a posição exata, mas a maioria diz-te quantas crianças estão à frente na tua faixa etária e quantas vagas costumam abrir por ano. Com esses dois números consegues estimar as tuas hipóteses reais."}},
+    {"@type":"Question","name":"Quem tem prioridade nas listas de espera das IPSS?","acceptedAnswer":{"@type":"Answer","text":"Cada IPSS define os seus critérios no regulamento interno, mas os mais comuns são: irmãos já a frequentar a instituição, filhos de funcionários, proximidade da residência ou do trabalho dos pais, situações de vulnerabilidade socioeconómica e famílias monoparentais. A ordem de inscrição costuma ser o critério de desempate. Pede sempre o regulamento para conheceres os critérios daquela creche."}}
+  ]
+}
+</script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="brand">
+    <div class="logo">🍼</div>
+    <div class="brand-name">
+      <b>Creches<span class="brand-tld">.app</span></b>
+      <span>Guia para pais</span>
+    </div>
+  </a>
+  <div class="spacer"></div>
+  <nav>
+    <a href="/guias">Guias</a>
+    <a href="/sobre">Sobre</a>
+    <a href="/roadmap">Roadmap</a>
+    <a href="/creches">Por distrito</a>
+    <a href="/app" class="cta">Abrir mapa</a>
+  </nav>
+</header>
+
+<div class="toc-wrap">
+<nav class="toc-side" aria-label="Índice deste guia">
+  <span class="lbl">📑 Neste guia</span>
+  <ol>
+    <li><a href="#como-funcionam-as-listas-de-espera">Como funcionam as listas de espera</a></li>
+    <li><a href="#criterios-de-prioridade-ipss">Critérios de prioridade nas IPSS</a></li>
+    <li><a href="#quando-te-deves-inscrever">Quando te deves inscrever</a></li>
+    <li><a href="#inscreve-te-em-varias-em-paralelo">Inscreve-te em várias em paralelo</a></li>
+    <li><a href="#renovacao-anual">Renovação anual: não te esqueças</a></li>
+    <li><a href="#o-que-perguntar-a-creche">O que perguntar à creche</a></li>
+    <li><a href="#creche-feliz-e-as-vagas">Creche Feliz e as vagas da rede</a></li>
+    <li><a href="#como-o-creches-app-ajuda">Como o Creches.app ajuda</a></li>
+    <li><a href="#faq">Perguntas frequentes</a></li>
+  </ol>
+</nav>
+<article>
+
+  <div class="breadcrumb">
+    <a href="/">Início</a> &rsaquo; <a href="/guias">Guias</a> &rsaquo; Listas de espera nas creches
+  </div>
+
+  <span class="kicker">🍼 Guia para pais · 7 min de leitura</span>
+  <h1 class="title">Listas de espera nas creches: como funcionam e quando te deves inscrever</h1>
+  <p class="lede">"Estamos com lista de espera" é provavelmente a frase que vais ouvir mais vezes na procura de creche. Este guia explica como as listas funcionam de verdade — nas IPSS e nas privadas —, quem tem prioridade, quando te deves inscrever e como acompanhar várias candidaturas sem enlouquecer.</p>
+  <div class="meta">Atualizado em julho de 2026 · Por Creches.app</div>
+
+  <h2 id="como-funcionam-as-listas-de-espera">Como funcionam as listas de espera</h2>
+  <p>Primeiro, uma nota importante: em Portugal <strong>não existe rede pública de creches</strong> como existe no pré-escolar. A oferta divide-se entre <strong>IPSS</strong> (instituições com acordo de cooperação com a Segurança Social) e <strong>creches privadas</strong> — e as listas de espera funcionam de forma diferente em cada uma.</p>
+
+  <h3>Nas IPSS</h3>
+  <p>As IPSS têm mensalidades por escalão de rendimento (ou gratuitas, ao abrigo do <a href="/guias/creche-feliz">Creche Feliz</a>) e, por isso, muita procura. A lista de espera <strong>não é uma fila simples por ordem de chegada</strong>: cada instituição aplica critérios de prioridade definidos no seu regulamento interno, e a ordem de inscrição costuma servir apenas como desempate. Ou seja, podes inscrever-te primeiro e ainda assim ver outra família entrar antes de ti, porque cumpre um critério com mais peso.</p>
+
+  <h3>Nas privadas</h3>
+  <p>As creches privadas gerem as listas com mais liberdade. Na prática, a maioria funciona por <strong>ordem de inscrição dentro de cada faixa etária</strong>, por vezes com prioridade para irmãos de crianças que já frequentam. As listas tendem a ser mais curtas do que nas IPSS, mas nas zonas mais procuradas (Lisboa, Cascais, Porto) também podem levar meses. Algumas cobram taxa de inscrição para entrar na lista — pergunta sempre se é reembolsável caso desistas.</p>
+
+  <div class="callout tip">
+    <span class="callout-title">💡 As vagas abrem por sala, não pela creche toda</span>
+    <p>Uma creche pode ter lista de espera enorme no berçário e vaga imediata na sala dos 2 anos. As vagas dependem da idade do teu filho e de quantas crianças "sobem" de sala em setembro. Por isso, pergunta sempre pela lista <em>da faixa etária do teu filho</em>, não pela lista em geral.</p>
+  </div>
+
+  <h2 id="criterios-de-prioridade-ipss">Critérios de prioridade nas IPSS</h2>
+  <p>Os critérios variam de instituição para instituição — estão no regulamento interno, que tens o direito de consultar. Os mais comuns são:</p>
+  <ul>
+    <li><strong>Irmãos já a frequentar</strong> a instituição (quase universal)</li>
+    <li><strong>Filhos de funcionários</strong> da instituição</li>
+    <li><strong>Proximidade</strong> da residência ou do local de trabalho dos pais</li>
+    <li><strong>Condição socioeconómica</strong> — famílias em situação de vulnerabilidade, sinalizadas pela Segurança Social ou com rendimentos mais baixos</li>
+    <li><strong>Famílias monoparentais</strong> ou com situações familiares específicas</li>
+    <li><strong>Crianças com necessidades especiais</strong></li>
+  </ul>
+  <p>A <strong>ordem de inscrição</strong> costuma ser o critério de desempate entre famílias em situação semelhante. Isto significa que inscrever cedo continua a valer a pena — só não garante, por si só, a vaga.</p>
+
+  <div class="callout warn">
+    <span class="callout-title">⚠️ Não assumas que os critérios são iguais em todo o lado</span>
+    <p>Cada IPSS define e pondera os seus critérios. Umas dão mais peso à proximidade, outras à condição socioeconómica. Pede o regulamento interno de cada creche onde te inscreveres — é a única forma de saberes onde estás de verdade.</p>
+  </div>
+
+  <h2 id="quando-te-deves-inscrever">Quando te deves inscrever</h2>
+  <p>A resposta curta: <strong>mais cedo do que achas</strong>. A resposta prática, por situação:</p>
+
+  <table class="compare-tbl">
+    <thead><tr><th>Situação</th><th>Quando inscrever</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Berçário em zona urbana (Lisboa, Porto, Cascais, Braga…)</td>
+        <td>Durante a gravidez — idealmente a partir do 2.º trimestre. Muitas creches aceitam pré-inscrição antes do nascimento.</td>
+      </tr>
+      <tr>
+        <td>Berçário fora das grandes cidades</td>
+        <td>6 a 12 meses antes da entrada pretendida</td>
+      </tr>
+      <tr>
+        <td>Sala de 1-2 anos ou 2-3 anos</td>
+        <td>6 a 9 meses antes; há mais rotação de vagas do que no berçário</td>
+      </tr>
+      <tr>
+        <td>Entrada a meio do ano letivo</td>
+        <td>Assim que souberes — as vagas fora de setembro são raras e vão a quem já está na lista</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Porquê tanta antecedência? Porque <strong>setembro é o pico</strong>: é quando as salas "rodam" (as crianças mais velhas sobem de sala ou saem para o pré-escolar) e abre a grande maioria das vagas do ano. As creches fecham as decisões na primavera e no início do verão — se te inscreveres em julho para setembro, provavelmente já vais apanhar a lista cheia.</p>
+
+  <h2 id="inscreve-te-em-varias-em-paralelo">Inscreve-te em várias em paralelo</h2>
+  <p>Estar numa lista de espera <strong>não é um compromisso</strong> — é uma opção em aberto. Por isso:</p>
+  <ul class="checklist">
+    <li>Inscreve-te em <strong>3 a 5 creches</strong> ao mesmo tempo, misturando IPSS e privadas se o orçamento o permitir</li>
+    <li>Ordena-as por preferência tua, mas não recuses entrar numa lista só porque não é a favorita</li>
+    <li>Quando tiveres vaga garantida numa, <strong>avisa as outras</strong> — libertas a posição para outra família</li>
+    <li>Guarda o comprovativo de cada inscrição (email ou papel) com a data</li>
+    <li>Anota as taxas de inscrição pagas e se são reembolsáveis</li>
+  </ul>
+  <p>Antes de escolheres em quais te inscreves, vale a pena rever os <a href="/guias/como-escolher-creche">critérios para escolher creche</a> e ter noção de <a href="/guias/quanto-custa-creche-portugal">quanto custa uma creche em Portugal</a> — assim não gastas inscrições em creches que não servem.</p>
+
+  <h2 id="renovacao-anual">Renovação anual: não te esqueças</h2>
+  <p>Este é o detalhe que apanha mais famílias desprevenidas: em muitas creches, sobretudo IPSS, <strong>a inscrição na lista de espera tem de ser renovada todos os anos</strong> — frequentemente entre janeiro e abril, antes da preparação do ano letivo seguinte. Se não renovares, podes ser removido da lista sem qualquer aviso.</p>
+  <p>Ao inscreveres-te, pergunta logo: <em>"A inscrição precisa de renovação? Quando e como se renova?"</em> — e põe um lembrete no telemóvel. É um minuto que pode salvar meses de espera.</p>
+
+  <h2 id="o-que-perguntar-a-creche">O que perguntar à creche</h2>
+  <p>Quando ligares ou visitares, faz estas perguntas — as respostas dizem-te se vale a pena esperar por aquela creche ou se precisas de mais alternativas:</p>
+  <ul class="checklist">
+    <li>Em que posição está o meu filho na lista <strong>da faixa etária dele</strong>?</li>
+    <li>Quantas vagas costumam abrir por ano nessa sala?</li>
+    <li>Quais são os critérios de prioridade? Posso ver o regulamento interno?</li>
+    <li>A inscrição tem custo? É reembolsável se desistir?</li>
+    <li>A inscrição precisa de renovação anual? Quando?</li>
+    <li>Como me avisam quando abrir vaga — e quanto tempo tenho para responder?</li>
+  </ul>
+  <p>A conta simples que deves fazer: se estás em 15.º na lista e abrem 4 vagas por ano, a espera realista é de anos, não de meses. Melhor saber já do que descobrir em agosto.</p>
+
+  <h2 id="creche-feliz-e-as-vagas">Creche Feliz e as vagas da rede</h2>
+  <p>O programa <a href="/guias/creche-feliz">Creche Feliz</a> tornou a creche gratuita para as crianças abrangidas, nas IPSS com acordo e em creches privadas aderentes — o que aumentou muito a procura pelas vagas da rede. Na prática, isto significa duas coisas para ti:</p>
+  <ul>
+    <li>As listas das IPSS ficaram <strong>ainda mais concorridas</strong>, sobretudo no berçário — mais uma razão para inscrever cedo;</li>
+    <li>Vale a pena perguntar às creches <strong>privadas</strong> da tua zona se aderiram ao programa: uma privada aderente pode dar-te vaga gratuita mais depressa do que uma IPSS com lista de dois anos.</li>
+  </ul>
+  <p>Os detalhes de elegibilidade, redes aderentes e como pedir estão no nosso <a href="/guias/creche-feliz">guia completo do Creche Feliz</a>.</p>
+
+  <h2 id="como-o-creches-app-ajuda">Como o Creches.app ajuda</h2>
+  <p>Gerir 4 ou 5 candidaturas em paralelo — quem contactaste, quem respondeu, onde estás na lista — rapidamente vira caos em notas soltas e emails perdidos. O <strong>Creches<span class="brand-tld">.app</span></strong> foi feito exatamente para isto:</p>
+  <ul>
+    <li><strong><a href="/app">Mapa</a></strong> com mais de 2.500 creches de Portugal, com filtros por zona, idade e tipo (IPSS/privada);</li>
+    <li><strong>Filtro "Com vaga"</strong> — vê primeiro as creches que reportaram vagas disponíveis, em vez de ligares às cegas;</li>
+    <li><strong>Pipeline pessoal</strong> — marca cada creche como "a contactar", "contactada", "em lista de espera" ou "visita marcada", e nunca mais perdes o fio às candidaturas;</li>
+    <li><strong><a href="/comparar">Comparador</a></strong> — põe as tuas finalistas lado a lado para decidires com cabeça.</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Começa as inscrições com método</h3>
+    <p>Encontra as creches da tua zona, filtra as que têm vaga e acompanha cada candidatura num só sítio. Gratuito e sem anúncios.</p>
+    <a href="/app" class="btn">🍼 Abrir o mapa de creches →</a>
+  </div>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <div class="faq">
+
+    <details>
+      <summary>Quando me devo inscrever na lista de espera de uma creche?</summary>
+      <p>O mais cedo possível. Em zonas urbanas (Lisboa, Porto, Cascais, Braga), a regra prática para berçário é inscrever ainda durante a gravidez — muitas famílias fazem-no no <strong>2.º trimestre</strong>. Fora das grandes cidades, 6 a 12 meses antes da entrada pretendida costuma chegar. O pico de entradas é setembro, por isso as decisões de vagas concentram-se na primavera e no início do verão.</p>
+    </details>
+
+    <details>
+      <summary>Posso inscrever o meu filho em várias creches ao mesmo tempo?</summary>
+      <p>Sim, e deves. Inscrever em <strong>3 a 5 creches em paralelo</strong> é prática comum e aceite. Quando tiveres vaga garantida numa, avisa as outras para saíres da lista. Atenção apenas às taxas de inscrição de algumas privadas, que podem não ser reembolsáveis.</p>
+    </details>
+
+    <details>
+      <summary>A inscrição na lista de espera é válida para sempre?</summary>
+      <p>Normalmente não. Muitas creches, sobretudo IPSS, pedem <strong>renovação anual</strong> da inscrição (muitas vezes entre janeiro e abril). Se não renovares, podes sair da lista sem seres avisado. Confirma sempre com a creche se há renovação, quando é, e como se faz.</p>
+    </details>
+
+    <details>
+      <summary>Como sei a minha posição na lista de espera?</summary>
+      <p>Pergunta diretamente à creche. Nem todas divulgam a posição exata, mas a maioria diz-te quantas crianças estão à frente na tua faixa etária e quantas vagas costumam abrir por ano. Com esses dois números consegues estimar as tuas hipóteses reais.</p>
+    </details>
+
+    <details>
+      <summary>Quem tem prioridade nas listas de espera das IPSS?</summary>
+      <p>Cada IPSS define os seus critérios no <strong>regulamento interno</strong>, mas os mais comuns são: irmãos já a frequentar, filhos de funcionários, proximidade da residência ou do trabalho dos pais, situações de vulnerabilidade socioeconómica e famílias monoparentais. A ordem de inscrição costuma ser o critério de desempate. Pede sempre o regulamento para conheceres os critérios daquela creche.</p>
+    </details>
+
+  </div>
+
+  <p style="font-size:13px;color:var(--ink-faint);margin-top:30px;border-top:1px solid var(--line);padding-top:20px">
+    Este artigo é informativo e não substitui aconselhamento personalizado. Os critérios de admissão variam de instituição para instituição e as condições do Creche Feliz podem ser revistas — confirma sempre os detalhes com cada creche e com a <a href="https://www.seg-social.pt/" rel="nofollow" target="_blank">Segurança Social</a>.
+  </p>
+
+  <div style="margin-top:30px;text-align:center">
+    <p style="color:var(--ink-soft);font-size:14px">Vê também:</p>
+    <p>
+      <a href="/guias/como-escolher-creche">Como escolher creche</a> ·
+      <a href="/guias/creche-feliz">Creche Feliz: creche gratuita</a> ·
+      <a href="/guias/quanto-custa-creche-portugal">Quanto custa uma creche</a> ·
+      <a href="/guias/adaptacao-creche">Adaptação à creche</a> ·
+      <a href="/guias">Outros guias</a>
+    </p>
+  </div>
+
+</article>
+</div>
+
+<footer>
+  <p>
+    <a href="/">Início</a> ·
+    <a href="/app">Mapa</a> ·
+    <a href="/guias">Guias</a> ·
+    <a href="/para-creches">Para creches</a> ·
+    <a href="/privacidade">Privacidade</a> ·
+    <a href="/cookies">Cookies</a> ·
+    <a href="/termos">Termos</a>
+  </p>
+  <p style="margin-top:10px">Creches<span class="brand-tld">.app</span> © 2026 · feito com ❤️ para famílias portuguesas</p>
+</footer>
+
+
+<section style="padding:0 24px 30px;max-width:760px;margin:0 auto">
+  <div id="newsletter-guia"></div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="/newsletter.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded", function(){ if(window.mountNewsletter) mountNewsletter(document.getElementById("newsletter-guia"), { source: "guia" }); });</script>
+
+</body>
+</html>

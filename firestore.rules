@@ -328,7 +328,12 @@ service cloud.firestore {
             (request.resource.data.legenda is string && request.resource.data.legenda.size() <= 140));
       allow read: if request.auth != null
         && (resource.data.uid == request.auth.uid || isAdmin());
-      allow update, delete: if isAdmin();
+      allow update: if isAdmin();
+      // A creche pode remover as próprias fotos ainda não aprovadas
+      allow delete: if isAdmin()
+        || (request.auth != null
+            && resource.data.uid == request.auth.uid
+            && resource.data.status != 'approved');
     }
 
     // ─── Leads de famílias (Fase 2 — Jul 2026) ───

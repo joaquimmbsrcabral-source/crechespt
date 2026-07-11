@@ -89,8 +89,16 @@
           if(mes) payload.mes_entrada = mes;
           var msg = document.getElementById("lead-msg").value.trim().slice(0,400);
           if(msg) payload.mensagem = msg;
-          firebase.firestore().collection("creche_leads").add(payload).then(function(){
+          firebase.firestore().collection("creche_leads").add(payload).then(function(ref){
             _leadsBump();
+            // Avisar a creche por email (best-effort; se o Resend não estiver configurado, 503 e segue)
+            try {
+              fetch("/api/lead-notify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ lead_id: ref.id })
+              }).catch(function(){});
+            } catch(e){}
             // Avisar a app (se estiver aberta): marca a creche como "Contactada" no pipeline do pai
             try { window.dispatchEvent(new CustomEvent("creches:lead", { detail: { creche_id: String(crecheId) } })); } catch(e){}
             ov.firstChild.innerHTML = '<div style="text-align:center;padding:26px 10px">' +
@@ -149,6 +157,10 @@
     if(p.linguas) extra.push("🗣 " + esc(p.linguas));
     if(extra.length) h += '<div style="margin:6px 0;font-size:.9rem">' + extra.join(" &nbsp;·&nbsp; ") + '</div>';
 
+    // Fase 2 — CTA primário: deixar contacto à creche (canal rastreável)
+    h += '<button id="btn-lead-cp" style="margin:12px 0 2px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">💌 Tenho interesse — deixar contacto</button>' +
+      '<div style="text-align:center;font-size:.72rem;color:#6E6989;margin-bottom:8px">A creche recebe o teu contacto e responde-te diretamente</div>';
+
     // Descrição
     if(p.descricao){
       var d = String(p.descricao);
@@ -174,9 +186,6 @@
       ct.push('<a href="' + esc(w) + '" target="_blank" rel="noopener" style="color:#FF6B9D;font-weight:700">🌐 Website</a>');
     }
     if(ct.length) h += '<div style="margin-top:10px;font-size:.9rem;display:flex;gap:16px;flex-wrap:wrap">' + ct.join("") + '</div>';
-
-    // Fase 2 — Botão "Tenho interesse": o lead chega ao painel da creche
-    h += '<button id="btn-lead-cp" style="margin-top:14px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
 
     box.innerHTML = h;
     slot.insertAdjacentElement("afterend", box);

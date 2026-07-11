@@ -2210,8 +2210,14 @@ async function cpLoadFotos(){
     } catch(e){ alert("Erro: " + e.message); b.disabled = false; b.textContent = "✓ Aprovar"; }
   });
   host.querySelectorAll(".cp-foto-no").forEach(b => b.onclick = async () => {
+    // Motivo (opcional) — a creche vê-o no painel e sabe o que corrigir
+    const motivo = prompt("Motivo da recusa (opcional — fica visível à creche):", "") ;
+    if(motivo === null) return;  // cancelou
     b.disabled = true;
-    try { await db.doc("creche_fotos/" + b.dataset.id).update({ status: "rejected" }); cpLoadFotos(); }
+    try {
+      await db.doc("creche_fotos/" + b.dataset.id).update({ status: "rejected", motivo: (motivo||"").slice(0,140) });
+      cpLoadFotos();
+    }
     catch(e){ alert("Erro: " + e.message); b.disabled = false; }
   });
 }

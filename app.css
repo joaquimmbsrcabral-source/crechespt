@@ -33,7 +33,7 @@
   --panel:#FFFFFF;
   --ink:#2C2356;
   --ink-soft:#6E6790;
-  --ink-faint:#A39DBE;
+  --ink-faint:#6E6790;
   --line:#F1E6D9;
   --line-strong:#E2D2BF;
 
@@ -297,6 +297,7 @@ header.topbar{
 }
 @media (prefers-reduced-motion: reduce){
   .logo .baby{animation:none !important}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
 .brand-name{display:flex;flex-direction:column;line-height:1.1}
 .brand-name b{font-family:"Fredoka";font-size:20px;letter-spacing:-.01em;color:var(--ink)}
@@ -861,7 +862,7 @@ header.topbar{
   /* Collapsible: chips e selects compactos */
   .filters-collapse .filter-row{flex-wrap:wrap;gap:5px}
   .filters-collapse .chip,
-  .filters-collapse .chip-select{padding:6px 11px;font-size:12px}
+  .filters-collapse .chip-select{padding:11px 13px;font-size:12.5px;min-height:44px}
   .filters-collapse .chip-select select{font-size:12px}
   .filters-collapse .filter-label{display:block;width:100%;margin-bottom:2px;font-size:10px}
   .search-wrap input{padding:9px 6px;font-size:13.5px}

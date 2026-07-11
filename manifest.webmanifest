@@ -2,16 +2,73 @@
   "name": "Creches.app",
   "short_name": "Creches.app",
   "description": "Encontra a creche certa para o teu filho — mapa interativo com mais de 2.500 creches em Portugal.",
-  "start_url": "/",
+  "start_url": "/app",
   "display": "standalone",
   "background_color": "#FFF6EE",
   "theme_color": "#FF9F68",
   "orientation": "any",
   "lang": "pt-PT",
   "icons": [
-    { "src": "/favicon.svg",  "sizes": "any",     "type": "image/svg+xml", "purpose": "any maskable" },
-    { "src": "/icon-180.png", "sizes": "180x180", "type": "image/png" },
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "/app",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Mapa de creches",
+      "url": "/app",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Comparar creches",
+      "url": "/comparar",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Vagas em tempo real",
+      "url": "/vagas",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "education",
+    "kids",
+    "lifestyle"
   ]
 }

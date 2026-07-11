@@ -2,26 +2,26 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://creches.app/sitemap-main.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://creches.app/sitemap-guias.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://creches.app/sitemap-distritos.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://creches.app/sitemap-concelhos.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://creches.app/sitemap-categorias.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://creches.app/sitemap-creches-1.xml</loc>
-    <lastmod>2026-06-18</lastmod>
+    <loc>https://creches.app/sitemap-creches.xml</loc>
+    <lastmod>2026-07-11</lastmod>
   </sitemap>
 </sitemapindex>

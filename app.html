@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FF9F68">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -25,7 +26,7 @@
   "applicationCategory":"LifestyleApplication",
   "operatingSystem":"Any (Web)",
   "browserRequirements":"Requires JavaScript and a modern browser",
-  "description":"Mapa interactivo com mais de 2.500 creches portuguesas. Filtros por idade, distrito, IPSS/Pública/Privada e distância. Gratuito, sem publicidade, sem venda de dados.",
+  "description":"Mapa interativo com mais de 2.500 creches portuguesas. Filtros por idade, distrito, IPSS/Pública/Privada e distância. Gratuito, sem publicidade, sem venda de dados.",
   "inLanguage":"pt-PT",
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
@@ -42,9 +43,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" integrity="sha384-wgw+aLYNQ7dlhK47ZPK7FRACiq7ROZwgFNg0m04avm4CaXS+Z9Y7nMu8yNjBKYC+" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" integrity="sha384-NZLkVuBRMEeB4VeZz27WwTRvlhec30biQ8Xx7zG7JJnkvEKRg5qi6BNbEXo9ydwv" crossorigin="anonymous">
 <link rel="stylesheet" href="/app.css">
 <meta property="og:image" content="https://creches.app/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -245,7 +246,7 @@
           <li>⭐ Marca favoritas para comparares mais tarde.</li>
           <li>🗺 Os pontos no mapa filtram a lista ao lado.</li>
           <li>📞 Toca no telefone para ligares logo.</li>
-          <li>🟢 <b>Em breve:</b> filtra por creches que têm vaga agora.</li>
+          <li>🟢 Usa o filtro <b>«Com vaga»</b> para veres onde há lugar agora.</li>
         </ul>
         <button id="ob-finish" style="width:100%;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;border:0;border-radius:14px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(255,107,157,.3)">Ver as creches perto de mim →</button>
       </div>
@@ -308,9 +309,9 @@
             📍 <select id="f-concelho"><option value="">Todas as localidades</option></select>
           </div>
           <div class="chip-select">
-            🎂 <select id="f-idade-anos">
-              <option value="">Qualquer idade</option>
-              <option value="0">Tem 0 anos</option>
+            🎂 <select id="f-idade-anos" title="Filtra creches que aceitam crianças com esta idade">
+              <option value="">Idade do meu filho</option>
+              <option value="0">Menos de 1 ano (bebé)</option>
               <option value="1">Tem 1 ano</option>
               <option value="2">Tem 2 anos</option>
               <option value="3">Tem 3 anos</option>
@@ -334,7 +335,7 @@
 
         <!-- LINHA 5: Faixa etária da resposta social -->
         <div class="filter-row">
-          <span class="filter-label">Resposta:</span>
+          <span class="filter-label" title="Valência = tipo de resposta educativa (berçário, creche, jardim de infância, ATL)">Valência:</span>
           <div id="f-idade" style="display:contents">
             <button class="chip chip-age" data-idade="bercario"><span>👶</span>Berçário 0-1</button>
             <button class="chip chip-age" data-idade="creche"><span>🍼</span>Creche 1-3</button>
@@ -356,7 +357,7 @@
         <!-- Botão grande para fechar filtros e ver lista de resultados -->
         <button id="filters-apply" type="button" class="filters-apply-btn">
           <span class="fa-ic">✓</span>
-          <span>Ver <strong id="filters-apply-count">2.585</strong> creches</span>
+          <span>Ver <strong id="filters-apply-count">2.591</strong> creches</span>
           <span class="fa-arrow">↓</span>
         </button>
 
@@ -468,8 +469,8 @@
         <a id="d-cta-site" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Site">
           <span class="ic">🌐</span><span class="lb">Site</span>
         </a>
-        <a id="d-cta-dir" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Direcções">
-          <span class="ic">🗺</span><span class="lb">Direcções</span>
+        <a id="d-cta-dir" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Direções">
+          <span class="ic">🗺</span><span class="lb">Direções</span>
         </a>
         <button type="button" id="d-cta-share" class="d-cta-big d-cta-share" aria-label="Partilhar com outros pais">
           <span class="ic">💬</span><span class="lb">Partilhar</span>
@@ -486,14 +487,11 @@
       <!-- 🆓 Creche Feliz — slot preenchido se houver report ou marcação -->
       <div id="d-cf-slot"></div>
 
-      <!-- Botões de report — 2 colunas em desktop -->
-      <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:0 0 18px" id="d-report-actions">
-        <button id="d-vaga-report" type="button" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:none;border-radius:14px;padding:13px 18px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.35)">
-          🟢 Sei de vaga aqui — reportar
-        </button>
-        <button id="d-cf-report" type="button" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#1F4F2A;border:1.5px solid #7DD389;border-radius:14px;padding:13px 18px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit">
-          🆓 É Creche Feliz — reportar
-        </button>
+      <!-- Contribuições da comunidade — discretas, não competem com a informação -->
+      <div style="margin:0 0 16px;padding:9px 13px;background:rgba(125,211,137,.10);border-radius:12px;font-size:12.5px;color:#4A4060" id="d-report-actions">
+        Sabes algo sobre esta creche?
+        <button id="d-vaga-report" type="button" style="background:none;border:none;color:#1F7A3D;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;padding:2px 4px;text-decoration:underline">🟢 Reportar vaga</button> ·
+        <button id="d-cf-report" type="button" style="background:none;border:none;color:#1F7A3D;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;padding:2px 4px;text-decoration:underline">🆓 É Creche Feliz</button>
       </div>
 
       <div class="section">
@@ -697,8 +695,8 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" integrity="sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js" integrity="sha384-JP5UPxIO2Tm2o79Fb0tGYMa44jkWar53aBoCbd8ah0+LcCDoohTIYr+zIXyfGIJN" crossorigin="anonymous"></script>
 
 <!-- Firebase SDK (compat — funciona com script tags simples) -->
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
@@ -1053,11 +1051,17 @@ function inferTipoFromName(nome, operador){
 }
 
 async function loadDataset(){
-  const b64 = document.getElementById("dataset").textContent.trim();
-  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
-  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
-  const text = await new Response(stream).text();
-  const raw = JSON.parse(text);
+  let raw;
+  if(typeof DecompressionStream === "function"){
+    const b64 = document.getElementById("dataset").textContent.trim();
+    const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+    const text = await new Response(stream).text();
+    raw = JSON.parse(text);
+  } else {
+    // Fallback (iOS/Safari < 16.4 sem DecompressionStream): buscar o JSON não comprimido
+    raw = await fetch("/creches_pt.json").then(r => r.json());
+  }
   // Reescrita client-side da inferência de idades (algoritmo melhorado)
   const cleaned = [];
   for(const c of raw){
@@ -1485,7 +1489,8 @@ function renderList(){
   if(!State.filtered.length){
     const hasFilters = State.filters.q || State.filters.distrito || State.filters.concelho ||
       State.filters.tipo.size || State.filters.status.size || State.filters.idade.size ||
-      State.filters.idadeAnos || State.filters.onlyTracked || State.filters.onlyFav || State.areaIds;
+      State.filters.idadeAnos || State.filters.onlyTracked || State.filters.onlyFav ||
+      State.filters.onlyVaga || State.filters.onlyGeridas || State.filters.onlyCrecheFeliz || State.areaIds;
     wrap.innerHTML = `<div class="empty illus">
       <div class="emoji">🤔</div>
       <h3>Nenhuma creche encontrada</h3>
@@ -1538,7 +1543,7 @@ function renderList(){
       row.style.flexDirection = "row"; row.style.alignItems = "center"; row.style.gap = "12px";
     }
     row.innerHTML = `
-      ${foto ? `<div class="card-thumb" style="flex:none;width:54px;height:54px;border-radius:10px;overflow:hidden;background:#FFE3D2"><img src="${escapeAttr(foto)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>` : ""}
+      ${foto ? `<div class="card-thumb" style="flex:none;width:54px;height:54px;border-radius:10px;overflow:hidden;background:#FFE3D2"><img src="${escapeAttr(foto)}" alt="${escapeAttr("Foto de " + c.nome)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>` : ""}
       <div class="card-main">
       <div class="name">
         ${highlightTerm(c.nome, q)}
@@ -1760,6 +1765,8 @@ function finishDrawWithLayer(layer){
 
 /* ===== Detalhe ===== */
 function openDetail(id){
+  document.body.style.overflow = "hidden";  // bloquear scroll do fundo (a11y/mobile)
+  setTimeout(() => { const x = document.getElementById("d-close"); if(x) x.focus({ preventScroll: true }); }, 80);
   State.selectedId = id;
   const c = State.creches.find(x=>x.id===id);
   if(!c) return;
@@ -1824,7 +1831,7 @@ function openDetail(id){
 
   // CTAs grandes no topo do body (foco principal)
   const subj = "Inscrição em creche — pedido de informação";
-  const body = "Bom dia,\n\nGostaria de saber se têm vagas e como funciona a inscrição na vossa creche para o próximo ano letivo.\n\nObrigado.";
+  const body = "Bom dia,\n\nGostaria de saber se têm vagas e como funciona a inscrição na vossa creche para o próximo ano letivo.\n\nObrigado(a).";
   const ctaTel = document.getElementById("d-cta-tel");
   if(ctaTel){
     if(tel){ ctaTel.href = "tel:"+tel; ctaTel.classList.remove("disabled"); document.getElementById("d-cta-tel-lb").textContent = tel.replace(/\s+/g,' ').slice(0,18); }
@@ -1955,7 +1962,10 @@ function renderStars(v){
     s.classList.toggle("on", Number(s.dataset.v) <= v);
   });
 }
-function closeDetail(){ document.getElementById("scrim").classList.remove("open"); }
+function closeDetail(){
+  document.getElementById("scrim").classList.remove("open");
+  document.body.style.overflow = "";  // repor scroll do fundo
+}
 function saveDetail(){
   const id = State.selectedId; if(!id) return;
   const u = userRec(id);
@@ -2690,7 +2700,18 @@ function wireUp(){
     const u = userRec(id); delete u.prio; renderStars(0);
   });
 
-  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDetail(); });
+  document.addEventListener("keydown", e=>{
+    if(e.key !== "Escape") return;
+    // fechar primeiro o modal mais "recente"
+    const lead = document.getElementById("lead-modal-cp"); if(lead){ lead.remove(); return; }
+    const vm = document.getElementById("_vaga-modal-app"); if(vm){ vm.remove(); return; }
+    const cm = document.getElementById("_cf-modal-app"); if(cm){ cm.remove(); return; }
+    for(const id of ["fb-host","rm-host","ra-host"]){
+      const el = document.getElementById(id);
+      if(el && el.style.display && el.style.display !== "none"){ el.style.display = "none"; return; }
+    }
+    closeDetail();
+  });
 
   // Leaflet draw events (depois do map criado)
   State.map.on(L.Draw.Event.CREATED, (e)=>{ finishDrawWithLayer(e.layer); });
@@ -2713,10 +2734,12 @@ function showAppShell(){
 
 // ===== Onboarding (3 passos, primeira visita) =====
 const ONBOARD_KEY = "crechespt/onboarded";
+window.addEventListener("load", () => setTimeout(() => { try { maybeShowOnboarding(false); } catch(e){} }, 900));
 const _onboardState = { idade: null, lat: null, lon: null };
 
-function maybeShowOnboarding(){
-  // skip-by-default (Jun 2026): só corre se explicitamente chamado (botão "Ver dicas")
+function maybeShowOnboarding(force){
+  // 1ª visita: mostra automaticamente (Jul 2026); depois só via chamada explícita
+  if(!force && localStorage.getItem(ONBOARD_KEY)) return;
   const host = document.getElementById("onboard-host");
   if(!host) return;
   host.style.display = "flex";
@@ -3311,14 +3334,15 @@ function _renderPerfilCrechePopup(crecheId, slot){
       }
       if(ct.length) det += '<div style="margin-top:8px;font-size:13px;display:flex;gap:14px;flex-wrap:wrap">' + ct.join("") + '</div>';
 
+      // Fase 2 — Botão "Tenho interesse" como CTA primário (canal rastreável)
+      h += '<button id="btn-lead-app" style="margin-top:10px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto</button>' +
+        '<div style="text-align:center;font-size:11px;color:#6E6989;margin-top:4px">A creche recebe o teu contacto e responde-te diretamente</div>';
+
       if(det){
         h += '<details style="margin-top:8px">' +
           '<summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#5EC0B7;list-style:none;user-select:none">▾ Mais sobre a creche (descrição, fotos, contactos)</summary>' +
           det + '</details>';
       }
-
-      // Fase 2 — Botão "Tenho interesse" (leads para o painel da creche)
-      h += '<button id="btn-lead-app" style="margin-top:10px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto à creche</button>';
 
       slot.innerHTML = '<div style="margin:0 0 14px;padding:14px 16px;background:linear-gradient(135deg,#fff 0%,#DEF5E1 140%);border:1.5px solid #7DD389;border-radius:16px;font-family:inherit">' + h + '</div>';
       var lb = document.getElementById("btn-lead-app");

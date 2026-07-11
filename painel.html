@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#FF9F68">
 <meta name="robots" content="noindex">
 <title>Painel da Creche — Creches.app</title>
-<meta name="description" content="Área reservada às creches: edite o vosso perfil, marquem vagas, adiram ao Creche Feliz e recebam famílias.">
+<meta name="description" content="Área reservada às creches: perfil editável, vagas em tempo real, Creche Feliz e famílias interessadas — gratuito.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--c-coral:#FF6B9D;--c-coral-soft:#FFE2EC;--c-peach:#FF9F68;--c-peach-soft:#FFE3D2;
 --c-turquoise:#5EC0B7;--c-turquoise-soft:#D9F2EF;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;
 --c-lilac:#B197FC;--c-lilac-soft:#ECE4FF;--c-yellow:#FFC857;--c-yellow-soft:#FFF1D6;
---bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--ink-faint:#9B97B5;--line:rgba(60,40,90,.08);
+--bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--ink-faint:#6E6790;--line:rgba(60,40,90,.08);
 --r-md:14px;--r-card:18px;--sh-1:0 1px 3px rgba(60,40,90,.06),0 2px 8px rgba(60,40,90,.05);
 --sh-2:0 8px 24px rgba(60,40,90,.12)}
 *{box-sizing:border-box}*:focus-visible{outline:2px solid var(--c-peach);outline-offset:2px;border-radius:6px}
@@ -117,7 +117,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <div class="card" style="max-width:480px;margin:0 auto">
       <div class="center" style="margin-bottom:6px;font-size:2.2rem">🏫</div>
       <h2 style="justify-content:center">Área das Creches</h2>
-      <p class="sub center">Gira o perfil da tua creche, marca vagas e recebe famílias — gratuito, sem custos escondidos.</p>
+      <p class="sub center">Giram a página da vossa creche, marcam vagas e recebem famílias — gratuito, sem custos escondidos.</p>
       <button class="btn btn-google" id="btn-google" style="width:100%">🔵 Entrar com Google</button>
       <div class="divider">ou com email</div>
       <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" autocomplete="email" placeholder="geral@minhacreche.pt"></div>
@@ -135,8 +135,8 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
   <!-- ══════════ ECRÃ: RECLAMAR CRECHE ══════════ -->
   <div class="screen" id="s-claim">
     <div class="card">
-      <h2><span class="emoji-chip" style="background:var(--c-turquoise-soft)">🔎</span> Encontra a tua creche</h2>
-      <p class="sub">Procura pelo nome ou localidade. Depois de confirmarmos que és mesmo da creche (24-48h), ganhas acesso ao painel.</p>
+      <h2><span class="emoji-chip" style="background:var(--c-turquoise-soft)">🔎</span> Encontrem a vossa creche</h2>
+      <p class="sub">Procurem pelo nome ou localidade. Depois de confirmarmos que são mesmo da creche (24-48h), ganham acesso ao painel.</p>
       <div class="field">
         <label for="claim-q">Nome da creche</label>
         <input id="claim-q" type="search" placeholder="Ex.: Jardim Escola João de Deus, Lisboa" autocomplete="off">
@@ -147,15 +147,35 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
         <div style="font-size:.82rem;color:var(--ink-soft)" id="claim-sel-loc"></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="claim-nome">O teu nome</label><input id="claim-nome" placeholder="Maria Santos"></div>
+        <div class="field"><label for="claim-nome">Nome do responsável</label><input id="claim-nome" placeholder="Maria Santos"></div>
         <div class="field"><label for="claim-cargo">Cargo</label>
           <select id="claim-cargo"><option>Direção</option><option>Coordenação pedagógica</option><option>Secretaria/Administrativo</option><option>Outro</option></select>
         </div>
       </div>
       <div class="field"><label for="claim-tel">Telefone da creche (para verificação)</label><input id="claim-tel" type="tel" placeholder="21 xxx xx xx"></div>
-      <div class="field"><label for="claim-msg">Mensagem (opcional)</label><textarea id="claim-msg" style="min-height:70px" placeholder="Algo que nos ajude a confirmar que és da creche"></textarea></div>
+      <div class="field"><label for="claim-msg">Mensagem (opcional)</label><textarea id="claim-msg" style="min-height:70px" placeholder="Algo que nos ajude a confirmar que são da creche"></textarea></div>
       <div class="msg err" id="claim-err"></div>
       <button class="btn btn-primary" id="btn-claim" style="width:100%">Pedir acesso ao painel →</button>
+      <div class="divider">a vossa creche não aparece na pesquisa?</div>
+      <details id="claim-nova">
+        <summary style="cursor:pointer;font-weight:700;color:var(--c-coral);font-size:.9rem">➕ Adicionar a nossa creche ao mapa</summary>
+        <div style="margin-top:12px">
+          <div class="row2">
+            <div class="field"><label for="cn-nome">Nome da creche</label><input id="cn-nome" maxlength="200"></div>
+            <div class="field"><label for="cn-tipo">Tipo</label>
+              <select id="cn-tipo"><option>Privada</option><option>IPSS</option><option>Pública</option><option value="Desconhecido">Não sei</option></select></div>
+          </div>
+          <div class="field"><label for="cn-morada">Morada completa</label><input id="cn-morada" maxlength="200" placeholder="Rua, número, código postal, localidade"></div>
+          <div class="row2">
+            <div class="field"><label for="cn-distrito">Distrito</label><input id="cn-distrito" maxlength="60"></div>
+            <div class="field"><label for="cn-tel">Telefone</label><input id="cn-tel" type="tel" maxlength="30"></div>
+          </div>
+          <div class="msg err" id="cn-err"></div>
+          <div class="msg ok" id="cn-ok"></div>
+          <button class="btn btn-secondary" id="btn-cn" style="width:100%">Enviar — adicionamos em 24-48h</button>
+          <p class="hint center" style="margin-top:8px">Depois de a creche estar no mapa, avisamos-vos por email para pedirem aqui o acesso ao painel.</p>
+        </div>
+      </details>
       <p class="hint center" style="margin-top:10px">A verificação é manual e gratuita. Normalmente confirmamos por telefone para o número oficial da creche.</p>
     </div>
   </div>
@@ -165,9 +185,9 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <div class="card center" style="max-width:520px;margin:0 auto">
       <div style="font-size:2.6rem">⏳</div>
       <h2 style="justify-content:center;margin:8px 0">Pedido em análise</h2>
-      <p class="sub">Pediste acesso a <b id="pending-nome"></b>.<br>Vamos confirmar contigo em 24-48h — normalmente por telefone para o número oficial da creche. Recebes email quando estiver aprovado.</p>
+      <p class="sub">Pediram acesso a <b id="pending-nome"></b>.<br>Vamos confirmar contigo em 24-48h — normalmente por telefone para o número oficial da creche. Recebes email quando estiver aprovado.</p>
       <span class="pill-status pill-pending">A aguardar verificação</span>
-      <p style="margin-top:16px;font-size:.85rem">Enganaste-te na creche? <a href="#" id="btn-claim-outro">Pedir para outra creche</a></p>
+      <p style="margin-top:16px;font-size:.85rem">Enganaram-se na creche? <a href="#" id="btn-claim-outro">Pedir para outra creche</a></p>
     </div>
   </div>
 
@@ -175,9 +195,17 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
   <div class="screen" id="s-dash">
 
     <div class="card" style="background:linear-gradient(135deg,#fff 0%,var(--c-mint-soft) 100%)">
-      <h2><span class="emoji-chip" style="background:#fff">🏫</span> <span id="dash-nome">A tua creche</span></h2>
+      <h2><span class="emoji-chip" style="background:#fff">🏫</span> <span id="dash-nome">A vossa creche</span></h2>
       <p class="sub" style="margin-bottom:8px"><span class="pill-status pill-ok">✓ Perfil gerido pela creche</span></p>
-      <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardares aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a></p>
+      <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardarem aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a></p>
+      <p style="font-size:.78rem;color:var(--ink-faint);margin:6px 0 0">Nome ou morada errados? <a href="mailto:geral@creches.app?subject=Corre%C3%A7%C3%A3o%20de%20nome%2Fmorada%20da%20creche">Digam-nos</a> — corrigimos em 24-48h.</p>
+    </div>
+
+    <!-- LEADS — famílias interessadas (Fase 2) -->
+    <div class="card" id="card-leads" style="display:none">
+      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">💌</span> Famílias interessadas <span id="leads-novo-pill" class="pill-status pill-pending" style="display:none"></span></h2>
+      <p class="sub">Pais que deixaram contacto na vossa página. Respondam depressa — é meia inscrição feita. 😉</p>
+      <div id="leads-list"></div>
     </div>
 
     <!-- ANALYTICS — visualizações da ficha (F1: 30 dias + tendência) -->
@@ -193,23 +221,17 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p class="hint" id="a-mes" style="margin-top:10px"></p>
     </div>
 
-    <!-- LEADS — famílias interessadas (Fase 2) -->
-    <div class="card" id="card-leads" style="display:none">
-      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">💌</span> Famílias interessadas <span id="leads-novo-pill" class="pill-status pill-pending" style="display:none"></span></h2>
-      <p class="sub">Pais que deixaram contacto na vossa página. Respondam depressa — é meia inscrição feita. 😉</p>
-      <div id="leads-list"></div>
-    </div>
-
     <!-- VAGAS -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
-      <p class="sub">Diz aos pais onde tens lugar. É a informação mais valiosa da plataforma — atualiza sempre que mudar.</p>
+      <p class="sub">Digam aos pais onde têm lugar. É a informação mais valiosa da plataforma — atualizem sempre que mudar.</p>
       <div class="toggle-row"><div><div class="t">Berçário (0-12 meses)</div></div>
         <label class="switch"><input type="checkbox" id="vaga-b0"><span class="slider"></span></label></div>
       <div class="toggle-row"><div><div class="t">Sala 1-2 anos</div></div>
         <label class="switch"><input type="checkbox" id="vaga-m12"><span class="slider"></span></label></div>
       <div class="toggle-row"><div><div class="t">Sala 2-3 anos</div></div>
         <label class="switch"><input type="checkbox" id="vaga-m24"><span class="slider"></span></label></div>
+      <p class="hint" id="vagas-estado"></p>
       <p class="hint" id="vagas-atualizado"></p>
     </div>
 
@@ -240,8 +262,8 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
         <div class="field"><label for="p-mmax">Mensalidade até (€)</label><input id="p-mmax" type="number" min="0" max="3000" placeholder="450"></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="p-email">Email para famílias</label><input id="p-email" type="email" maxlength="120" placeholder="geral@…"></div>
-        <div class="field"><label for="p-tel">Telefone para famílias</label><input id="p-tel" type="tel" maxlength="30" placeholder="21 xxx xx xx"></div>
+        <div class="field"><label for="p-email">Email para famílias</label><input id="p-email" type="email" maxlength="120" placeholder="geral@…"><div class="hint">Fica visível publicamente na vossa página</div></div>
+        <div class="field"><label for="p-tel">Telefone para famílias</label><input id="p-tel" type="tel" maxlength="30" placeholder="21 xxx xx xx"><div class="hint">Fica visível publicamente na vossa página</div></div>
       </div>
       <div class="row2">
         <div class="field"><label for="p-capacidade">Capacidade total (crianças)</label><input id="p-capacidade" type="number" min="1" max="500" placeholder="45"></div>
@@ -260,7 +282,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <!-- FOTOS -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-yellow-soft)">📷</span> Fotografias</h2>
-      <p class="sub">Mostra os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evita fotos com crianças identificáveis.</p>
+      <p class="sub">Mostrem os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evita fotos com crianças identificáveis.</p>
       <input type="file" id="foto-file" accept="image/*" style="display:none">
       <button class="btn btn-secondary" id="btn-foto">＋ Adicionar fotografia</button>
       <div class="msg err" id="foto-err"></div>
@@ -275,7 +297,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     </div>
   </div>
 
-  <p class="footer-note">Dúvidas? Escreve-nos: <a href="mailto:geral@creches.app">geral@creches.app</a> · 100% gratuito, sem publicidade, sem venda de dados.</p>
+  <p class="footer-note">Dúvidas? Escrevam-nos: <a href="mailto:geral@creches.app">geral@creches.app</a> · 100% gratuito, sem publicidade, sem venda de dados.</p>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
@@ -330,7 +352,7 @@ $("btn-registar").onclick = () => {
 };
 $("btn-reset").onclick = () => {
   const em = $("li-email").value.trim();
-  if(!em) return err("login-err","Escreve o teu email primeiro e volta a clicar.");
+  if(!em) return err("login-err","Escreve primeiro o email e volta a clicar.");
   auth.sendPasswordResetEmail(em).then(()=>{
     const e=$("login-err"); e.textContent="✓ Email de recuperação enviado — vê a caixa de entrada."; e.className="msg ok";
   }).catch(e => err("login-err", traduzAuth(e)));
@@ -356,7 +378,7 @@ auth.onAuthStateChanged(async user => {
     // Sou gestor aprovado?
     const mgr = await db.doc("creche_managers/" + user.uid).get();
     if(mgr.exists){
-      MY_CRECHE = { id: mgr.data().creche_id, nome: mgr.data().creche_nome || "A tua creche" };
+      MY_CRECHE = { id: mgr.data().creche_id, nome: mgr.data().creche_nome || "A vossa creche" };
       await abrirDashboard();
       return;
     }
@@ -370,7 +392,7 @@ auth.onAuthStateChanged(async user => {
       // Fase 0 (0.4) — Realtime: mal o admin aprove, o dashboard abre sozinho
       db.doc("creche_managers/" + user.uid).onSnapshot(s => {
         if(s.exists && !MY_CRECHE){
-          MY_CRECHE = { id: s.data().creche_id, nome: s.data().creche_nome || "A tua creche" };
+          MY_CRECHE = { id: s.data().creche_id, nome: s.data().creche_nome || "A vossa creche" };
           abrirDashboard();
         }
       }, () => {});
@@ -466,11 +488,50 @@ $("btn-claim").onclick = async () => {
 };
 $("btn-claim-outro").onclick = (e) => { e.preventDefault(); show("s-claim"); };
 
+// Adicionar creche nova a partir do claim (vai para creche_interest, como no /para-creches)
+$("btn-cn").onclick = async () => {
+  err("cn-err"); ok("cn-ok");
+  const nome = $("cn-nome").value.trim(), morada = $("cn-morada").value.trim(), distrito = $("cn-distrito").value.trim();
+  if(nome.length < 3) return err("cn-err","Escrevam o nome da creche.");
+  if(morada.length < 8) return err("cn-err","A morada completa ajuda-nos a colocá-la no sítio certo do mapa.");
+  if(distrito.length < 3) return err("cn-err","Indiquem o distrito.");
+  const btn = $("btn-cn"); btn.disabled = true; btn.textContent = "⏳ A enviar…";
+  try {
+    await db.collection("creche_interest").add({
+      nome: nome.slice(0,200),
+      tipo: $("cn-tipo").value.slice(0,20),
+      distrito: distrito.slice(0,60),
+      morada: morada.slice(0,200),
+      email: (ME && ME.email) || "",
+      telefone: $("cn-tel").value.trim().slice(0,30),
+      mensagem: "Pedido feito a partir do painel (claim) — quer gerir a página.",
+      source: "painel-claim",
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    ok("cn-ok","✓ Recebido! Adicionamos a creche ao mapa em 24-48h e avisamos por email para pedirem o acesso.");
+    btn.textContent = "Enviado ✓";
+  } catch(e){
+    err("cn-err","Erro: " + (e.message || e));
+    btn.disabled = false; btn.textContent = "Enviar — adicionamos em 24-48h";
+  }
+};
+
+// URL pública da creche: ficha estática rica para creches do dataset (osm-*);
+// as "extra" só existem no mapa (não têm ficha estática)
+function fichaPublicaURL(id, nome){
+  if(!/^osm-/.test(String(id))) return "/app#creche-" + encodeURIComponent(id);
+  const num = String(id).replace(/\D/g, "");
+  let slug = String(nome || "creche").normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase()
+    .replace(/-{2,}/g, "-").slice(0, 70).replace(/-+$/, "");
+  return "/creche/" + (slug || "creche") + "-" + num;
+}
+
 // ─────────── DASHBOARD ───────────
 async function abrirDashboard(){
   $("dash-nome").textContent = MY_CRECHE.nome;
   // Link para a ficha pública (slug aproximado via pesquisa no /app)
-  $("dash-ver-ficha").href = "/app#creche-" + encodeURIComponent(MY_CRECHE.id);
+  $("dash-ver-ficha").href = fichaPublicaURL(MY_CRECHE.id, MY_CRECHE.nome);
   try {
     const snap = await db.doc("creche_profiles/" + MY_CRECHE.id).get();
     PROFILE = snap.exists ? snap.data() : {};
@@ -504,6 +565,7 @@ async function abrirDashboard(){
     }
   }
   setCF(PROFILE.creche_feliz);
+  updateVagasEstado();
   carregarFotos();
   carregarAnalytics();
   carregarLeads();
@@ -618,6 +680,25 @@ async function carregarAnalytics(){
 
 $("p-desc").addEventListener("input", function(){ $("desc-count").textContent = this.value.length; });
 
+// Estado público das vagas — a creche vê SEMPRE o que os pais vão ver
+function updateVagasEstado(){
+  const el = $("vagas-estado");
+  if(!el) return;
+  const alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked;
+  const jaPublicou = PROFILE.vagas && PROFILE.vagas.atualizado;
+  if(alguma){
+    el.innerHTML = "Na vossa página e no mapa vai aparecer: <b style='color:#1F7A3D'>🟢 Vagas abertas</b>";
+    el.style.color = "";
+  } else if(jaPublicou){
+    el.innerHTML = "⚠️ Com tudo desligado, a vossa página mostra <b style='color:#B4255C'>🔴 Sem vagas de momento</b> aos pais.";
+    el.style.color = "#8a6d1a";
+  } else {
+    el.textContent = "Liguem as salas com vaga — aparece logo 🟢 no mapa e na vossa página.";
+    el.style.color = "";
+  }
+}
+["vaga-b0","vaga-m12","vaga-m24"].forEach(id => $(id).addEventListener("change", updateVagasEstado));
+
 // F1 — Valências (multi-seleção)
 let VAL_SET = new Set();
 function setValencias(arr){
@@ -629,6 +710,7 @@ function setValencias(arr){
 document.querySelectorAll("#val-seg button").forEach(b => b.onclick = () => {
   if(VAL_SET.has(b.dataset.v)) VAL_SET.delete(b.dataset.v); else VAL_SET.add(b.dataset.v);
   setValencias([...VAL_SET]);
+  if(typeof _setDirty === "function") _setDirty(true);
 });
 
 // Creche Feliz segmented
@@ -645,11 +727,17 @@ function setCF(v){
 }
 document.querySelectorAll("#cf-seg button").forEach(b => b.onclick = () => {
   setCF(b.dataset.v === "true" ? true : b.dataset.v === "false" ? false : null);
+  if(typeof _setDirty === "function") _setDirty(true);
 });
 
 // Guardar
 $("btn-save").onclick = async () => {
   err("save-err"); ok("save-ok");
+  // Confirmar publicação de "Sem vagas" (quando já tinha vagas publicadas)
+  const _alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked;
+  if(!_alguma && PROFILE.vagas && PROFILE.vagas.atualizado){
+    if(!confirm("Sem nenhuma sala ligada, a vossa página vai mostrar «🔴 Sem vagas de momento» aos pais.\n\nConfirmam?")) return;
+  }
   const btn = $("btn-save"); btn.disabled = true; btn.textContent = "⏳ A guardar…";
   const data = {
     descricao: $("p-desc").value.slice(0,1500),
@@ -678,6 +766,7 @@ $("btn-save").onclick = async () => {
   data.valencias = VAL_SET.size ? [...VAL_SET].slice(0,6) : firebase.firestore.FieldValue.delete();
   try {
     await db.doc("creche_profiles/" + MY_CRECHE.id).set(data, { merge: true });
+    _setDirty(false);
     // Fase 0 (0.2) — Fonte única de vagas: sincronizar com a coleção `vagas`
     // (é dela que vêm os badges 🟢 do mapa/fichas e o filtro "Com vaga")
     try { await sincronizarVagaPublica(data.vagas); } catch(e){ console.warn("sync vaga:", e); }
@@ -712,6 +801,23 @@ async function sincronizarVagaPublica(v){
     reportado_por: { email: (ME.email || "").toLowerCase() }
   });
 }
+
+// Alterações por guardar — o botão avisa e o browser confirma antes de sair
+let _DIRTY = false;
+function _setDirty(v){
+  _DIRTY = v;
+  const b = $("btn-save");
+  if(!b) return;
+  if(v){ b.textContent = "💾 Guardar alterações — por guardar!"; b.style.boxShadow = "0 0 0 3px var(--c-yellow), var(--sh-2)"; }
+  else { b.textContent = "💾 Guardar alterações"; b.style.boxShadow = "var(--sh-2)"; }
+}
+["input","change"].forEach(ev => $("s-dash").addEventListener(ev, (e) => {
+  if(e.target && e.target.id === "foto-file") return;  // upload de foto guarda-se sozinho
+  _setDirty(true);
+}));
+window.addEventListener("beforeunload", (e) => {
+  if(_DIRTY){ e.preventDefault(); e.returnValue = ""; }
+});
 
 // ─────────── FOTOS ───────────
 $("btn-foto").onclick = () => $("foto-file").click();
@@ -758,11 +864,17 @@ async function carregarFotos(){
     const snap = await db.collection("creche_fotos").where("uid","==",ME.uid).get();
     snap.forEach(d => {
       const x = d.data();
-      if(x.status === "pending" && !publicas.has(x.url)) items.push({ url: x.url, st: "⏳ em revisão" });
-      if(x.status === "rejected") items.push({ url: x.url, st: "✗ recusada" });
+      if(x.status === "pending" && !publicas.has(x.url)) items.push({ url: x.url, st: "⏳ em revisão", id: d.id });
+      if(x.status === "rejected") items.push({ url: x.url, st: "✗ recusada", id: d.id, motivo: x.motivo || "" });
     });
   } catch(e){}
-  grid.innerHTML = items.map(i => `<div class="ph"><img src="${escapeHtml(i.url)}" alt="" loading="lazy"><span class="st">${i.st}</span></div>`).join("");
+  grid.innerHTML = items.map(i => `<div class="ph"><img src="${escapeHtml(i.url)}" alt="Fotografia da creche" loading="lazy"><span class="st" ${i.motivo ? 'title="Motivo: ' + escapeHtml(i.motivo) + '"' : ""}>${i.st}</span>${i.id ? '<button class="ph-del" data-id="' + i.id + '" title="Remover" style="position:absolute;top:6px;right:6px;width:26px;height:26px;border:none;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;font-size:.8rem">🗑</button>' : ""}</div>${i.motivo ? '<div style="grid-column:1/-1;font-size:.72rem;color:#B4255C;margin:-6px 0 4px">Motivo da recusa: ' + escapeHtml(i.motivo) + '</div>' : ""}`).join("");
+  grid.querySelectorAll(".ph-del").forEach(b => b.onclick = async () => {
+    if(!confirm("Remover esta fotografia?")) return;
+    b.disabled = true;
+    try { await db.doc("creche_fotos/" + b.dataset.id).delete(); carregarFotos(); }
+    catch(e){ alert("Erro: " + (e.message || e)); b.disabled = false; }
+  });
 }
 function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 </script>
