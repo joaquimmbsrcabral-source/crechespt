@@ -428,6 +428,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
 </main>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-check-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 
@@ -443,6 +444,13 @@ const FIREBASE_CONFIG = {
 };
 
 const fbApp = firebase.initializeApp(FIREBASE_CONFIG);
+// ─── App Check (anti-abuso das APIs Firebase) ───
+// Para ativar: consola Firebase → App Check → registar a app web com reCAPTCHA v3
+// → colar aqui a SITE KEY → deploy. ⚠️ NÃO ligar o "enforcement" do Firestore
+// enquanto as fichas estáticas (/creche/*) e o /comparar (REST) não tiverem também App Check.
+const APP_CHECK_KEY = "6Lf4LU4tAAAAAN8u_d-RRf86qpEqu2pKJIJ17Yxi";
+if(APP_CHECK_KEY && firebase.appCheck){ try { firebase.appCheck().activate(APP_CHECK_KEY, true); } catch(e){} }
+
 const auth = firebase.auth();
 const db = firebase.firestore();
 

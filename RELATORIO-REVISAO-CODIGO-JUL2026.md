@@ -72,8 +72,11 @@
 - ~~FEITO~~ **Links de partilha/ficha para creches extra** — `id.replace(/\D/g,"")` produz slugs
   errados (`extra_aB3` → "3"); e `osm-node-123` vs `osm-way-123` colidem. Precisa de novo
   formato de slug + resolver.
-- **Rate-limiting real nos reports** — localStorage é contornável; considerar Firebase
-  App Check + limites por uid nas rules.
+- ~~PREPARADO~~ **Rate-limiting real (App Check)** — SDK carregado e código de ativação
+  pronto em app/painel/admin (constante `APP_CHECK_KEY` vazia). Falta: registar a app
+  no Firebase console (App Check + reCAPTCHA v3), colar a site key e deploy.
+  ⚠️ Só ligar o *enforcement* do Firestore depois de adicionar App Check também às
+  fichas estáticas (template `gerar_fichas.py`) e migrar o /comparar de REST para SDK.
 
 ### 🟡 Média
 - app.html: filtro "Com vaga" mostra creches sem badge (fontes inconsistentes entre filtro e render)
@@ -86,8 +89,11 @@
 - ~~FEITO~~ painel: erro de leitura no arranque manda gestor aprovado para o ecrã de claim (criar ecrã de erro)
 - ~~FEITO~~ painel: fotos aprovadas desaparecem da grelha até reload (PROFILE stale)
 - ~~FEITO~~ rules: `daily_stats`/`creche_views` sem validar incrementos (métricas infláveis)
-- **CSP + X-Frame-Options em falta** no vercel.json (defesa em profundidade; exige mexer
-  nos inline scripts — planear com calma)
+- ~~FEITO~~ **CSP no vercel.json** — allowlist completa (gstatic/unpkg/jsdelivr/fonts/
+  cartocdn/firestore/auth/storage/nominatim/GA/cloudflare/recaptcha), object-src none,
+  frame-ancestors self, form-action self. Nota: script-src mantém 'unsafe-inline'
+  (necessário para os inline scripts); ainda assim bloqueia scripts externos não
+  autorizados, exfiltração via connect-src e frames maliciosos.
 - api/notify.js: from `onboarding@resend.dev` → verificar domínio creches.app no Resend
 - ~~FEITO~~ cookies.js: revogar consentimento não desliga o GA na sessão (RGPD)
 
