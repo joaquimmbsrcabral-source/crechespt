@@ -525,9 +525,17 @@ async function loadDashboard(user){
       }
       const token = await auth.currentUser.getIdToken();
       const pid = firebase.app().options.projectId;
+      // App Check: anexar o token ao pedido REST (sem isto, o enforcement bloqueia)
+      const hdrs = { "Content-Type": "application/json", "Authorization": "Bearer " + token };
+      try {
+        if(firebase.appCheck){
+          const ac = await firebase.appCheck().getToken(false);
+          if(ac && ac.token) hdrs["X-Firebase-AppCheck"] = ac.token;
+        }
+      } catch(e){}
       const res = await fetch("https://firestore.googleapis.com/v1/projects/" + pid + "/databases/(default)/documents:runAggregationQuery", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        headers: hdrs,
         body: JSON.stringify({ structuredAggregationQuery: {
           structuredQuery: { from: [{ collectionId: c }] },
           aggregations: [{ alias: "total", count: {} }]

@@ -181,6 +181,25 @@ footer{text-align:center;padding:24px;color:var(--ink-faint);font-size:12.5px;bo
   <div style="margin-top:6px"><a href="/privacidade">Privacidade</a> · <a href="/termos">Termos</a> · <a href="/sobre">Sobre</a></div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-check-compat.js"></script>
+<script>
+// Firebase SDK (substitui as chamadas REST — necessário para o App Check)
+try {
+  if(typeof firebase !== "undefined" && !firebase.apps.length){
+    firebase.initializeApp({
+      apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+      authDomain: "crechespt.firebaseapp.com",
+      projectId: "crechespt",
+      storageBucket: "crechespt.firebasestorage.app",
+      messagingSenderId: "470551729340",
+      appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
+    });
+    if(firebase.appCheck) firebase.appCheck().activate("6Lf4LU4tAAAAAN8u_d-RRf86qpEqu2pKJIJ17Yxi", true);
+  }
+} catch(e){}
+</script>
 <script src="/compare.js"></script>
 <script>
 // ============================================================
@@ -278,8 +297,17 @@ function fsVal(v){ // converte um value tipado do Firestore REST em JS
   if("mapValue" in v){ const o={}; Object.entries(v.mapValue.fields||{}).forEach(([k,x])=>o[k]=fsVal(x)); return o; }
   return null;
 }
-async function fsList(coll){ // lista docs de uma coleção pública (até 3 páginas de 300)
+async function fsList(coll){ // lista docs de uma coleção pública
   const out = {};
+  // Preferir o SDK (leva token de App Check); REST fica como fallback
+  try {
+    if(typeof firebase !== "undefined" && firebase.apps.length && firebase.firestore){
+      const snap = await firebase.firestore().collection(coll).get();
+      snap.forEach(d => { out[d.id] = d.data(); });
+      return out;
+    }
+  } catch(e){ console.warn("fsList SDK " + coll, e); }
+  // Fallback REST (sem App Check — deixa de funcionar se o enforcement for ligado)
   let pageToken = "", pages = 0;
   try{
     do {

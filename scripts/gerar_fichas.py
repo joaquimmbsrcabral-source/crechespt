@@ -4,7 +4,7 @@
 Correr da raiz do projeto: python3 scripts/gerar_fichas.py"""
 import json, re, unicodedata, html, math, os, shutil
 
-HOJE = "2026-06-12"
+HOJE = "2026-07-11"
 BASE = "https://creches.app"
 
 def slugify(s):
@@ -545,6 +545,7 @@ for c in creches:
 <!-- Firebase para vagas (lazy) -->
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js" defer></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-check-compat.js" defer></script>
 <script defer>
 window.addEventListener('load', function(){{
   if(typeof firebase !== 'undefined' && !firebase.apps.length){{
@@ -553,9 +554,11 @@ window.addEventListener('load', function(){{
       authDomain: "crechespt.firebaseapp.com",
       projectId: "crechespt",
       storageBucket: "crechespt.firebasestorage.app",
-      messagingSenderId: "568867127907",
-      appId: "1:568867127907:web:62c8f3b34c2c41a8e89c9e"
+      messagingSenderId: "470551729340",
+      appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
     }});
+    // App Check (anti-abuso) — mesma chave do app/painel/admin
+    try {{ if(firebase.appCheck) firebase.appCheck().activate("6Lf4LU4tAAAAAN8u_d-RRf86qpEqu2pKJIJ17Yxi", true); }} catch(e){{}}
   }}
   // === Onda 36 #3 — Tracking anónimo de views por creche (para painel) ===
   // Rate-limited: max 1 view por creche por sessão (localStorage)
@@ -577,6 +580,7 @@ window.addEventListener('load', function(){{
 }});
 </script>
 <script src="/vagas.js" defer></script>
+<script src="/perfil-creche.js" defer></script>
 <script src="/compare.js" defer></script>
 <script>
 // === Botão Partilhar: Web Share API com fallback WhatsApp ===
