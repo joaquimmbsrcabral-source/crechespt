@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Creches.app — Apresentação</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF6EE;--ink:#2C2356;--soft:#6E6989;
+  --coral:#FF6B9D;--corals:#FFE2EC;--peach:#FF9F68;--peachs:#FFE3D2;
+  --turq:#5EC0B7;--turqs:#D9F2EF;--mint:#7DD389;--mints:#DEF5E1;
+  --lilac:#B197FC;--lilacs:#ECE4FF;--yell:#FFC857;--yells:#FFF1D6;
+  --sh:0 10px 40px rgba(60,40,90,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Quicksand",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;line-height:1.15}
+
+/* ── Palco ── */
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;
+  padding:6vh 7vw;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 8% 0%,var(--corals) 0%,transparent 55%),
+    radial-gradient(800px 600px at 100% 5%,var(--turqs) 0%,transparent 55%),
+    radial-gradient(900px 700px at 50% 115%,var(--yells) 0%,transparent 60%),
+    var(--bg)}
+.slide.active{display:flex}
+
+/* blobs flutuantes */
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none;animation:float 14s ease-in-out infinite}
+.b1{width:34vw;height:34vw;background:var(--corals);top:-12vh;left:-8vw}
+.b2{width:30vw;height:30vw;background:var(--turqs);top:-10vh;right:-6vw;animation-delay:-4s}
+.b3{width:36vw;height:36vw;background:var(--yells);bottom:-18vh;left:30vw;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(3.5vh) scale(1.06)}}
+
+/* ── Motion (estilo remotion: spring + stagger) ── */
+[data-a]{opacity:0;transform:translateY(34px) scale(.97)}
+.active [data-a]{animation:spring .85s cubic-bezier(.2,1.4,.3,1) forwards;animation-delay:calc(var(--d,0)*.14s)}
+@keyframes spring{to{opacity:1;transform:translateY(0) scale(1)}}
+@media (prefers-reduced-motion: reduce){
+  [data-a],.active [data-a]{animation:none!important;opacity:1!important;transform:none!important}
+  .blob{animation:none}
+}
+
+/* ── Tipografia ── */
+.kick{display:inline-block;background:#fff;border:1.5px solid var(--corals);color:var(--coral);
+  font-weight:700;font-size:clamp(11px,1.3vw,15px);padding:.5em 1.4em;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.h-hero{font-size:clamp(34px,6vw,74px);margin:2.5vh 0 1.5vh}
+.h-hero .accent{color:var(--coral)}
+.stitle{font-size:clamp(26px,4vw,48px);margin-bottom:1vh}
+.ssub{color:var(--soft);font-size:clamp(14px,1.7vw,21px);max-width:62ch;margin:0 auto}
+.note{position:absolute;bottom:7vh;left:7vw;right:7vw;color:var(--soft);font-size:clamp(11px,1.3vw,15px);font-weight:600}
+
+/* ── Componentes ── */
+.grid{display:grid;gap:2vw;width:100%;max-width:1200px;margin-top:4.5vh}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border-radius:22px;padding:3.2vh 1.6vw;box-shadow:var(--sh);text-align:center}
+.card h3{font-size:clamp(15px,1.7vw,22px);margin:1.2vh 0 .8vh}
+.card p{color:var(--soft);font-size:clamp(12px,1.35vw,16.5px);line-height:1.5}
+.ic{width:clamp(44px,4.6vw,64px);height:clamp(44px,4.6vw,64px);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(20px,2.3vw,30px);margin:0 auto}
+.big{font-family:"Fredoka";font-weight:700;font-size:clamp(34px,4.6vw,62px);line-height:1}
+.lbl{color:var(--soft);font-size:clamp(12px,1.35vw,16px);font-weight:600;margin-top:.8vh}
+.rows{width:100%;max-width:980px;margin-top:4vh;display:flex;flex-direction:column;gap:1.6vh;text-align:left}
+.row{display:flex;align-items:center;gap:1.4vw;background:#fff;border-radius:18px;padding:2vh 1.8vw;box-shadow:var(--sh)}
+.row .chip{width:clamp(40px,3.6vw,54px);height:clamp(40px,3.6vw,54px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(18px,1.9vw,26px);flex:none}
+.row .rt{font-family:"Fredoka";font-weight:600;font-size:clamp(15px,1.7vw,21px);min-width:14ch}
+.row .rd{color:var(--soft);font-size:clamp(12px,1.35vw,16px);line-height:1.45}
+.pill{display:inline-flex;align-items:center;gap:.5em;background:var(--mints);color:#1F7A3D;font-weight:700;
+  font-size:clamp(12px,1.4vw,16px);padding:.55em 1.3em;border-radius:999px;margin:0 .4em}
+.pill.rosa{background:var(--corals);color:#B4255C}
+
+/* flywheel */
+.fly{position:relative;width:min(46vh,420px);height:min(46vh,420px);margin-top:3vh}
+.fly svg{width:100%;height:100%;overflow:visible}
+.fly .ring{animation:spin 40s linear infinite;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fly .node{position:absolute;width:31%;background:#fff;border-radius:16px;box-shadow:var(--sh);padding:1.6vh .6vw;font-size:clamp(11px,1.25vw,15px);font-weight:700}
+.fly .node small{display:block;color:var(--soft);font-weight:600;font-size:.82em;margin-top:.2em}
+.n1{top:-6%;left:34.5%}.n2{top:38%;right:-9%}.n3{bottom:-6%;left:34.5%}.n4{top:38%;left:-9%}
+@media (prefers-reduced-motion: reduce){.fly .ring{animation:none}}
+
+/* gráfico financiamento */
+.chart{display:flex;align-items:flex-end;gap:2.4vw;height:34vh;margin-top:4vh}
+.cg{display:flex;flex-direction:column;align-items:center;gap:1vh;height:100%;justify-content:flex-end}
+.barpair{display:flex;align-items:flex-end;gap:.5vw;height:27vh}
+.bar{width:clamp(26px,3vw,44px);border-radius:10px 10px 4px 4px;transform:scaleY(0);transform-origin:bottom}
+.active .bar{animation:grow 1s cubic-bezier(.2,1.2,.3,1) forwards;animation-delay:calc(.35s + var(--d,0)*.16s)}
+@keyframes grow{to{transform:scaleY(1)}}
+.bar.fjm{background:linear-gradient(180deg,var(--lilac),var(--lilacs))}
+.bar.rev{background:linear-gradient(180deg,var(--mint),var(--mints))}
+.cg .yl{font-family:"Fredoka";font-weight:600;font-size:clamp(12px,1.4vw,17px)}
+.cg .vals{font-size:clamp(10px,1.15vw,13.5px);color:var(--soft);font-weight:700;line-height:1.3}
+.legend{display:flex;gap:2vw;justify-content:center;margin-top:2.2vh;font-size:clamp(12px,1.4vw,16px);font-weight:700;color:var(--soft)}
+.dot{display:inline-block;width:.85em;height:.85em;border-radius:4px;margin-right:.45em;vertical-align:-.08em}
+
+/* nav */
+.dots{position:fixed;bottom:2.6vh;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10}
+.dots button{width:10px;height:10px;border-radius:50%;border:none;background:#D9D2E8;cursor:pointer;transition:.25s}
+.dots button.on{background:var(--coral);transform:scale(1.45)}
+.prog{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--coral),var(--peach));z-index:10;transition:width .5s cubic-bezier(.2,1,.3,1)}
+.hint{position:fixed;bottom:2.2vh;right:2vw;color:var(--soft);font-size:12px;font-weight:600;opacity:.7;z-index:10}
+@media print{.slide{display:flex!important;position:relative;height:100vh;page-break-after:always}.dots,.prog,.hint{display:none}[data-a]{opacity:1!important;transform:none!important}.bar{transform:scaleY(1)!important}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<!-- 1 · CAPA -->
+<section class="slide active">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <img src="icon-192.png" alt="" data-a style="--d:0;width:clamp(72px,8vw,116px);border-radius:26px;box-shadow:var(--sh)">
+  <h1 class="h-hero" data-a style="--d:1">Creches<span class="accent">.app</span></h1>
+  <p class="ssub" data-a style="--d:2;font-size:clamp(17px,2.3vw,28px);font-weight:600">Encontrar creche <span style="color:var(--coral);font-weight:700">sem perder a cabeça</span> — para todas as famílias de Portugal</p>
+  <div data-a style="--d:3;margin-top:3.5vh">
+    <span class="pill">💛 Gratuito para famílias, para sempre</span>
+    <span class="pill rosa">🚫 Sem anúncios · sem venda de dados</span>
+  </div>
+  <p class="note" data-a style="--d:4;text-align:center">Joaquim Cabral · Julho 2026 · confidencial</p>
+</section>
+
+<!-- 2 · O PROBLEMA -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O problema</span>
+  <h2 class="stitle" data-a style="--d:1">Procurar creche em Portugal é telefonar às cegas</h2>
+  <p class="ssub" data-a style="--d:2">Listas de espera opacas, preços escondidos, zero comparação — no momento mais vulnerável da vida de uma família</p>
+  <div class="grid g3">
+    <div class="card" data-a style="--d:3"><div class="big" style="color:var(--coral)"><span class="cnt" data-to="250">0</span> mil</div><div class="lbl">crianças 0-3 anos com direito a creche gratuita (Creche Feliz)</div></div>
+    <div class="card" data-a style="--d:4"><div class="big" style="color:var(--peach)">setembro</div><div class="lbl">a corrida anual às vagas que as famílias enfrentam sozinhas</div></div>
+    <div class="card" data-a style="--d:5"><div class="big" style="color:var(--turq)">0</div><div class="lbl">plataformas nacionais que juntavam tudo — até agora</div></div>
+  </div>
+</section>
+
+<!-- 3 · PROVA DE EXECUÇÃO -->
+<section class="slide">
+  <div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O que já existe — construído por uma pessoa</span>
+  <h2 class="stitle" data-a style="--d:1">Isto não é um pitch de ideia</h2>
+  <div class="grid g4">
+    <div class="card" data-a style="--d:2"><div class="big" style="color:var(--coral)"><span class="cnt" data-to="2591">0</span></div><div class="lbl">creches num único mapa — IPSS, públicas e privadas</div></div>
+    <div class="card" data-a style="--d:3"><div class="big" style="color:var(--turq)"><span class="cnt" data-to="2578">0</span></div><div class="lbl">páginas indexadas — 1º lugar nas respostas do Gemini</div></div>
+    <div class="card" data-a style="--d:4"><div class="big" style="color:var(--mint)">2</div><div class="lbl">lados da plataforma: app das famílias + painel das creches</div></div>
+    <div class="card" data-a style="--d:5"><div class="big" style="color:var(--peach)">~0€</div><div class="lbl">de infraestrutura — construído com IA, auditado duas vezes</div></div>
+  </div>
+  <p class="note" data-a style="--d:6">Vagas em tempo real · famílias deixam contacto às creches (💌) · selo ✓ de perfil verificado · estatísticas · moderação — tudo a funcionar hoje · destacado na NiT e no Público</p>
+</section>
+
+<!-- 4 · FLYWHEEL -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">Porque é que isto ganha</span>
+  <h2 class="stitle" data-a style="--d:1">Um flywheel que ninguém apanha depressa</h2>
+  <div class="fly" data-a style="--d:2">
+    <svg viewBox="0 0 200 200">
+      <g class="ring">
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#FFD9E6" stroke-width="3" stroke-dasharray="6 9"/>
+        <path d="M100 28 l7 -9 M100 28 l7 9" stroke="var(--coral)" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(45 100 100)"/>
+        <path d="M100 28 l7 -9 M100 28 l7 9" stroke="var(--coral)" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(225 100 100)"/>
+      </g>
+      <circle cx="100" cy="100" r="30" fill="#fff" filter="drop-shadow(0 4px 10px rgba(60,40,90,.15))"/>
+      <text x="100" y="107" text-anchor="middle" font-size="20">🍼</text>
+    </svg>
+    <div class="node n1">🗺 Dados imbatíveis<small>o mapa mais completo do país</small></div>
+    <div class="node n2">👪 Famílias chegam<small>SEO + confiança + recomendação</small></div>
+    <div class="node n3">💌 Leads às creches<small>famílias reais, entregues de graça</small></div>
+    <div class="node n4">🏫 Creches ativam-se<small>e melhoram os dados</small></div>
+  </div>
+  <p class="note" data-a style="--d:3">Cada volta fortalece a seguinte. O fosso competitivo — dados + SEO + confiança — demora anos a replicar.</p>
+</section>
+
+<!-- 5 · MODELO EM DOIS TEMPOS -->
+<section class="slide">
+  <div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O modelo</span>
+  <h2 class="stitle" data-a style="--d:1">Dois tempos: primeiro a rede, depois a receita</h2>
+  <div class="grid g2" style="max-width:1050px">
+    <div class="card" data-a style="--d:2;text-align:left">
+      <h3 style="color:var(--coral)">TEMPO 1 · Ano 1 — REDE</h3>
+      <p style="margin-top:1vh"><b style="color:var(--ink)">Tudo gratuito.</b> 200 creches ativas, candidaturas na app, 10 mil famílias. Validamos a disposição a pagar com o <b style="color:var(--ink)">Programa Fundador</b>: compromissos de €19/mês — cobrados só no ano 2. Meta: 100 creches fundadoras.</p>
+    </div>
+    <div class="card" data-a style="--d:3;text-align:left;background:linear-gradient(135deg,#fff,var(--mints))">
+      <h3 style="color:#1F7A3D">TEMPO 2 · Ano 2+ — RECEITA</h3>
+      <p style="margin-top:1vh;color:var(--ink)">O <b>Creches.app PRO</b> lança (€29/mês, opcional) com as fundadoras a converter no dia 1. Somam-se observatórios para câmaras e dados agregados. A base gratuita mantém-se robusta — <b>o mapa nunca se compra</b>.</p>
+    </div>
+  </div>
+  <p class="note" data-a style="--d:4">Decidimos com dados, não com fé: 4 gates de decisão (out · jan · jul · jan) com critérios escritos — partilhados convosco.</p>
+</section>
+
+<!-- 6 · A CURVA (gráfico animado) -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Sustentabilidade</span>
+  <h2 class="stitle" data-a style="--d:1">O vosso apoio desce à medida que a receita sobe</h2>
+  <div class="chart" data-a style="--d:2">
+    <div class="cg"><div class="barpair"><div class="bar fjm" style="--d:0;height:62%"></div><div class="bar rev" style="--d:1;height:2%"></div></div><div class="yl">Ano 1</div><div class="vals">200k · ~0</div></div>
+    <div class="cg"><div class="barpair"><div class="bar fjm" style="--d:1;height:55%"></div><div class="bar rev" style="--d:2;height:20%"></div></div><div class="yl">Ano 2</div><div class="vals">175k · 65k</div></div>
+    <div class="cg"><div class="barpair"><div class="bar fjm" style="--d:2;height:39%"></div><div class="bar rev" style="--d:3;height:50%"></div></div><div class="yl">Ano 3</div><div class="vals">125k · 160k</div></div>
+    <div class="cg"><div class="barpair"><div class="bar fjm" style="--d:3;height:23%"></div><div class="bar rev" style="--d:4;height:80%"></div></div><div class="yl">Ano 4</div><div class="vals">75k · 255k</div></div>
+    <div class="cg"><div class="barpair"><div class="bar fjm" style="--d:4;height:8%"></div><div class="bar rev" style="--d:5;height:100%"></div></div><div class="yl">Ano 5</div><div class="vals">25k · 320k+</div></div>
+  </div>
+  <div class="legend" data-a style="--d:3">
+    <span><span class="dot" style="background:var(--lilac)"></span>Apoio da Fundação (€600k em 5 anos)</span>
+    <span><span class="dot" style="background:var(--mint)"></span>Receita própria (PRO + câmaras + dados)</span>
+  </div>
+  <p class="note" data-a style="--d:4">Autossuficiência total no ano 5 — o vosso apoio vira expansão, não sobrevivência. Tranches anuais condicionais a KPIs.</p>
+</section>
+
+<!-- 7 · EQUIPA -->
+<section class="slide">
+  <div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">A equipa do ano 1 · €200 mil, faseados</span>
+  <h2 class="stitle" data-a style="--d:1">Pequena de propósito — o software já está feito</h2>
+  <div class="rows">
+    <div class="row" data-a style="--d:2"><div class="chip" style="background:var(--corals)">👨‍🍼</div><div class="rt">Joaquim · Fundador</div><div class="rd">Produto, parcerias nacionais, relação convosco e rosto público — a tempo inteiro</div></div>
+    <div class="row" data-a style="--d:3;background:var(--mints)"><div class="chip" style="background:#fff">🚗</div><div class="rt">COO · Operações</div><div class="rd" style="color:var(--ink)">O motor da rede: ativa creche a creche, verifica, modera, reporta — e gere os freelancers</div></div>
+    <div class="row" data-a style="--d:4"><div class="chip" style="background:var(--turqs)">💻</div><div class="rt">Dev sénior</div><div class="rd">3 meses à prova antes do vínculo. Candidaturas e mensagens primeiro; PRO a seguir</div></div>
+    <div class="row" data-a style="--d:5"><div class="chip" style="background:var(--lilacs)">🎨</div><div class="rt">Freelancers</div><div class="rd">Redes, design e vídeo à tarefa — flexível, sem custo fixo</div></div>
+  </div>
+</section>
+
+<!-- 8 · PEDIDO -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O que pedimos</span>
+  <h2 class="stitle" data-a style="--d:1">Smart money vale mais do que só money</h2>
+  <div class="rows">
+    <div class="row" data-a style="--d:2"><div class="chip" style="background:var(--yells)">💶</div><div class="rt">€200 mil no ano 1</div><div class="rd">€600 mil em 5 anos, em curva decrescente (200→175→125→75→25) — tranches com KPIs e gates partilhados</div></div>
+    <div class="row" data-a style="--d:3"><div class="chip" style="background:var(--lilacs)">🧭</div><div class="rt">Mentoria + aceleradora</div><div class="rd">Mentor sénior da vossa órbita e entrada num programa de impacto — MAZE X, Casa do Impacto ou NOVA SBE. <b style="color:var(--ink)">Há algum onde a vossa rede possa facilitar a entrada?</b></div></div>
+    <div class="row" data-a style="--d:4"><div class="chip" style="background:var(--turqs)">🚪</div><div class="rt">Portas institucionais</div><div class="rd">Segurança Social/GEP, redes IPSS e 5 câmaras-piloto — as introduções que compram anos</div></div>
+  </div>
+  <p class="note" data-a style="--d:5">A Fundação fica nos bastidores, sem branding no produto — como conversado.</p>
+</section>
+
+<!-- 9 · VISÃO / FECHO -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <img src="icon-192.png" alt="" data-a style="--d:0;width:clamp(60px,6.5vw,96px);border-radius:22px;box-shadow:var(--sh)">
+  <h2 class="h-hero" data-a style="--d:1;font-size:clamp(28px,4.6vw,58px)">Daqui a 5 anos, procurar creche<br>em Portugal = abrir o <span class="accent">creches.app</span></h2>
+  <p class="ssub" data-a style="--d:2">Gratuito para quem procura, para sempre. Sustentado pelas creches a quem entrega famílias. Construído por um pai.</p>
+  <div data-a style="--d:3;margin-top:4vh">
+    <span class="pill" style="background:#fff;color:var(--ink);box-shadow:var(--sh)">Joaquim Cabral · geral@creches.app · 915 873 799</span>
+  </div>
+</section>
+
+<div class="dots" id="dots"></div>
+<div class="hint">← → navegar · F ecrã inteiro</div>
+
+<script>
+const slides = [...document.querySelectorAll(".slide")];
+const dots = document.getElementById("dots");
+const prog = document.getElementById("prog");
+let i = 0;
+slides.forEach((_, k) => {
+  const b = document.createElement("button");
+  b.setAttribute("aria-label", "Slide " + (k+1));
+  b.onclick = () => go(k);
+  dots.appendChild(b);
+});
+function animateCounters(slide){
+  slide.querySelectorAll(".cnt").forEach(el => {
+    const to = parseInt(el.dataset.to, 10);
+    const t0 = performance.now(), dur = 1300;
+    function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * ease).toLocaleString("pt-PT");
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+function go(n){
+  i = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, k) => {
+    s.classList.toggle("active", k === i);
+    if(k === i){
+      // re-disparar animações
+      s.querySelectorAll("[data-a]").forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; });
+      s.querySelectorAll(".bar").forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; });
+      animateCounters(s);
+    }
+  });
+  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
+  prog.style.width = ((i + 1) / slides.length * 100) + "%";
+}
+document.addEventListener("keydown", e => {
+  if(e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") go(i + 1);
+  else if(e.key === "ArrowLeft" || e.key === "PageUp") go(i - 1);
+  else if(e.key.toLowerCase() === "f"){
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  }
+});
+document.addEventListener("click", e => {
+  if(e.target.closest(".dots")) return;
+  (e.clientX > innerWidth / 2) ? go(i + 1) : go(i - 1);
+});
+// swipe
+let x0 = null;
+document.addEventListener("touchstart", e => x0 = e.touches[0].clientX);
+document.addEventListener("touchend", e => {
+  if(x0 == null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if(Math.abs(dx) > 40) dx < 0 ? go(i + 1) : go(i - 1);
+  x0 = null;
+});
+go(0);
+</script>
+</body>
+</html>

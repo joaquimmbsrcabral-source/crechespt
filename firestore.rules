@@ -223,6 +223,12 @@ service cloud.firestore {
     match /creche_views/{crecheId} {
       allow read, write: if false;
     }
+    // Collection-group "days": só admin pode listar TODAS as views de uma vez
+    // (para o top de creches visitadas no /admin; a leitura pública continua
+    //  a existir apenas pelo caminho direto creche_views/{id}/days/{day})
+    match /{path=**}/days/{day} {
+      allow read: if isAdmin();
+    }
 
     // ─── Creche Feliz Reports (Onda 32 — Jun 2026) ───
     // Pais e creches podem reportar adesão ao programa Creche Feliz.
