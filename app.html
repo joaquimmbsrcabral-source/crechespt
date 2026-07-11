@@ -162,8 +162,6 @@
     <div class="spacer"></div>
     <a href="/para-creches" class="iconbtn ghost" title="Para creches" style="text-decoration:none">🏫 Para creches</a>
     <span id="sync-status" class="sync-pill" style="display:none"><span class="dot"></span><span class="msg">Sincronizado</span></span>
-    <button id="btn-export" class="iconbtn ghost" title="Exportar os teus dados">↓ Exportar</button>
-    <button id="btn-import" class="iconbtn ghost" title="Importar dados">↑ Importar</button>
     <input id="file-import" type="file" accept="application/json" style="display:none">
     <button id="btn-login-quick" class="iconbtn" style="display:none;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;padding:8px 14px;border-radius:var(--r-pill);box-shadow:0 4px 12px rgba(255,107,157,.3)" title="Entrar para guardar entre dispositivos">
       <span style="margin-right:4px">🔑</span>Entrar
@@ -177,6 +175,8 @@
           <div class="em" id="user-email">—</div>
         </div>
         <button id="btn-feedback">💬 Enviar feedback</button>
+        <button id="btn-export">↓ Exportar os meus dados</button>
+        <button id="btn-import">↑ Importar dados</button>
         <button id="btn-logout">🚪 Terminar sessão</button>
         <div class="sep"></div>
         <a href="/privacidade" style="display:block;padding:6px 10px;font-size:12px;color:var(--ink-soft);text-decoration:none">Privacidade</a>
@@ -2897,7 +2897,11 @@ function renderUserChip(user){
   if(loginBtn) loginBtn.style.display = "none";
   const photo = user.photoURL || ("data:image/svg+xml;utf8,"+encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='#FF6B9D'/><text x='50%' y='55%' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='18' font-weight='600'>${(user.displayName||user.email||'?').slice(0,1).toUpperCase()}</text></svg>`));
-  document.getElementById("user-photo").src = photo;
+  const up = document.getElementById("user-photo");
+  const fallback = "data:image/svg+xml;utf8,"+encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='#FF6B9D'/><text x='50%' y='55%' text-anchor='middle' fill='#fff' font-family='system-ui' font-size='18' font-weight='600'>${(user.displayName||user.email||"?").slice(0,1).toUpperCase()}</text></svg>`);
+  up.onerror = () => { up.onerror = null; up.src = fallback; };
+  up.src = photo;
   document.getElementById("user-name").textContent = (user.displayName || user.email || "Utilizador").split(" ")[0];
   document.getElementById("user-name-2").textContent = user.displayName || "—";
   document.getElementById("user-email").textContent = user.email || "—";
