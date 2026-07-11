@@ -240,6 +240,13 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <section class="panel">
+      <h3>🌐 Rede de creches aderentes</h3>
+      <div id="rede-tiles" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px">
+        <div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div>
+      </div>
+    </section>
+
+    <section class="panel">
       <h3>🏫 Painel das creches — pedidos de acesso <span class="count" id="cp-claims-count">0</span></h3>
       <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
         Creches que pediram acesso ao painel. Confirma por telefone (para o número oficial da ficha) antes de aprovar.
@@ -1932,7 +1939,65 @@ auth.onAuthStateChanged(async (user)=>{
 function cpEsc(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
 async function loadCrechesPainel(){
-  await Promise.all([cpLoadClaims(), cpLoadFotos()]);
+  await Promise.all([cpLoadClaims(), cpLoadFotos(), cpLoadRede()]);
+}
+
+// === F2 — Dashboard de rede: a operação num relance (e os números para a Fundação) ===
+async function cpLoadRede(){
+  const host = $("rede-tiles");
+  if(!host) return;
+  try {
+    const agora = Date.now(), seteDias = agora - 7*86400000;
+    const [mgrsSnap, profsSnap, leadsSnap, vagasSnap, claimsSnap] = await Promise.all([
+      db.collection("creche_managers").get().catch(()=>null),
+      db.collection("creche_profiles").get().catch(()=>null),
+      db.collection("creche_leads").get().catch(()=>null),
+      db.collection("vagas").get().catch(()=>null),
+      db.collection("creche_claims").get().catch(()=>null)
+    ]);
+    // Aderentes = creches distintas com gestor
+    const crechesAderentes = new Set();
+    if(mgrsSnap) mgrsSnap.forEach(d => { const c = d.data().creche_id; if(c) crechesAderentes.add(c); });
+    // Perfis completos = descrição E mensalidade preenchidas
+    let perfis = 0, completos = 0;
+    if(profsSnap) profsSnap.forEach(d => {
+      perfis++;
+      const p = d.data();
+      if(p.descricao && (p.mensalidade_min != null || p.mensalidade_max != null)) completos++;
+    });
+    // Leads: total, novos 7 dias, por estado
+    let leads = 0, leads7 = 0, leadsNovos = 0;
+    if(leadsSnap) leadsSnap.forEach(d => {
+      leads++;
+      const x = d.data();
+      if((x.status||"novo") === "novo") leadsNovos++;
+      if(x.ts && x.ts.toMillis && x.ts.toMillis() > seteDias) leads7++;
+    });
+    // Vagas ativas por fonte
+    let vagasCreche = 0, vagasPais = 0;
+    if(vagasSnap) vagasSnap.forEach(d => {
+      const v = d.data();
+      const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : 0;
+      if(exp > agora){ if(v.source === "painel") vagasCreche++; else vagasPais++; }
+    });
+    // Claims: pendentes + tempo médio de aprovação (aprovados com ts)
+    let pend = 0;
+    if(claimsSnap) claimsSnap.forEach(d => { if(d.data().status === "pending") pend++; });
+    const tile = (emoji, num, label, cor) =>
+      '<div style="background:' + (cor||"var(--bg,#FFF6EE)") + ';border-radius:14px;padding:14px 16px">' +
+      '<div style="font-size:1.7rem;font-weight:800;color:var(--ink)">' + emoji + ' ' + num + '</div>' +
+      '<div style="font-size:12px;color:var(--ink-soft);font-weight:600">' + label + '</div></div>';
+    host.innerHTML =
+      tile("🏫", crechesAderentes.size, "creches aderentes", "#DEF5E1") +
+      tile("📝", completos + "/" + perfis, "perfis completos (descrição + preço)", "#ECE4FF") +
+      tile("💌", leads, "leads entregues" + (leads7 ? " (+" + leads7 + " esta semana)" : ""), "#FFE2EC") +
+      tile("🆕", leadsNovos, "leads por responder (creches)", "#FFF1D6") +
+      tile("🟢", vagasCreche, "vagas confirmadas por creches", "#DEF5E1") +
+      tile("👪", vagasPais, "vagas reportadas por pais", "#D9F2EF") +
+      tile("⏳", pend, "pedidos de acesso pendentes", pend > 0 ? "#FFE3D2" : "#DEF5E1");
+  } catch(e){
+    host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Erro a carregar a rede: ' + cpEsc(e.message||e) + '</div>';
+  }
 }
 
 async function cpLoadClaims(){

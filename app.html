@@ -1649,7 +1649,10 @@ function markerHtml(c){
     ring = `box-shadow:0 0 0 3px ${sCol}, 0 1px 4px rgba(60,40,90,.35);`;
   }
   const favCls = u.fav ? " fav" : "";
-  return `<div class="creche-marker${favCls}${temVaga?' vaga':''}" style="background:${color};${ring}"></div>`;
+  // Selo ✓ nos markers de creches aderentes (perfil gerido pela creche)
+  const gerida = State.profileGeridas && State.profileGeridas.has(c.id);
+  const selo = gerida ? `<span style="position:absolute;top:-5px;right:-5px;width:11px;height:11px;background:#7DD389;color:#fff;border:1.5px solid #fff;border-radius:50%;font-size:7.5px;line-height:11px;text-align:center;font-weight:800;font-family:system-ui">✓</span>` : "";
+  return `<div class="creche-marker${favCls}${temVaga?' vaga':''}" style="background:${color};${ring}position:relative">${selo}</div>`;
 }
 function renderMap(){
   if(!State.cluster) return;
