@@ -700,12 +700,23 @@ function _renderLeads(snap, card){
         (r.mensagem ? '<div style="font-size:.85rem;color:var(--ink-soft);margin-top:6px;background:var(--bg);border-radius:10px;padding:8px 12px">💬 ' + escapeHtml(r.mensagem) + '</div>' : "") +
         '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
           Object.keys(LEAD_ST).filter(k => k !== (r.status||"novo")).map(k =>
-            '<button class="lead-st" data-id="' + r.id + '" data-st="' + k + '" style="background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--ink-soft);cursor:pointer">Marcar ' + LEAD_ST[k][0] + '</button>'
+            '<button class="lead-st" data-id="' + r.id + '" data-token="' + escapeHtml(r.token || "") + '" data-st="' + k + '" style="background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--ink-soft);cursor:pointer">Marcar ' + LEAD_ST[k][0] + '</button>'
           ).join("") + '</div></div>';
     }).join("");
     document.querySelectorAll(".lead-st").forEach(b => b.onclick = async () => {
       b.disabled = true;
-      try { await db.doc("creche_leads/" + b.dataset.id).update({ status: b.dataset.st }); /* o onSnapshot re-renderiza */ }
+      try {
+        await db.doc("creche_leads/" + b.dataset.id).update({ status: b.dataset.st });
+        // Espelhar no estado público (a família vê em /candidatura) — best-effort
+        const tok = b.dataset.token;
+        if(tok){
+          db.doc("lead_status/" + tok).update({
+            estado: b.dataset.st,
+            atualizado: firebase.firestore.FieldValue.serverTimestamp()
+          }).catch(() => {});
+        }
+        /* o onSnapshot re-renderiza */
+      }
       catch(e){ err("save-err", "Erro ao atualizar o lead: " + (e.message || e)); b.disabled = false; }
     });
     card.style.display = "block";

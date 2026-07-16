@@ -71,6 +71,12 @@
         if(!document.getElementById("lead-rgpd").checked) return fail("Para enviarmos o contacto à creche, precisas de autorizar a partilha dos dados.");
         if(!_leadsCanSend()) return fail("Já enviaste 3 pedidos hoje. Tenta amanhã.");
         var btn = this; btn.disabled = true; btn.textContent = "⏳ A enviar…";
+        // Token privado (128 bits) — dá à família um link para acompanhar a candidatura
+        var tok = "";
+        try {
+          var arr = new Uint8Array(16); crypto.getRandomValues(arr);
+          for(var bi=0; bi<arr.length; bi++) tok += ("0"+arr[bi].toString(16)).slice(-2);
+        } catch(e){ tok = String(Date.now()) + Math.random().toString(36).slice(2,14); }
         try {
           // Campos opcionais são OMITIDOS (não null) — as regras validam "is string" quando presentes
           var payload = {
@@ -89,7 +95,17 @@
           if(mes) payload.mes_entrada = mes;
           var msg = document.getElementById("lead-msg").value.trim().slice(0,400);
           if(msg) payload.mensagem = msg;
+          payload.token = tok;
           firebase.firestore().collection("creche_leads").add(payload).then(function(ref){
+            // Espelho público SEM dados pessoais — é isto que a página /candidatura lê
+            try {
+              firebase.firestore().doc("lead_status/" + tok).set({
+                creche_id: String(crecheId),
+                creche_nome: crecheNome ? String(crecheNome).slice(0,200) : "",
+                estado: "novo",
+                atualizado: firebase.firestore.FieldValue.serverTimestamp()
+              }).catch(function(){});
+            } catch(e){}
             _leadsBump();
             // Avisar a creche por email (best-effort; se o Resend não estiver configurado, 503 e segue)
             try {
@@ -101,10 +117,24 @@
             } catch(e){}
             // Avisar a app (se estiver aberta): marca a creche como "Contactada" no pipeline do pai
             try { window.dispatchEvent(new CustomEvent("creches:lead", { detail: { creche_id: String(crecheId) } })); } catch(e){}
-            ov.firstChild.innerHTML = '<div style="text-align:center;padding:26px 10px">' +
+            var linkAcomp = location.origin + "/candidatura?c=" + tok;
+            ov.firstChild.innerHTML = '<div style="text-align:center;padding:22px 10px">' +
               '<div style="font-size:2.4rem">💌</div><h3 style="margin:10px 0 6px;color:#2C2356">Enviado!</h3>' +
-              '<p style="font-size:.9rem;color:#6E6989;margin:0">A creche recebeu o teu contacto e vai responder-te diretamente. Boa sorte! 🍀</p>' +
-              '<button onclick="document.getElementById(\'lead-modal-cp\').remove()" style="margin-top:16px;background:#FFE3D2;color:#2C2356;border:none;border-radius:12px;padding:11px 26px;font-family:inherit;font-weight:700;cursor:pointer">Fechar</button></div>';
+              '<p style="font-size:.9rem;color:#6E6989;margin:0 0 14px">A creche recebeu o teu contacto e vai responder-te diretamente. Boa sorte! 🍀</p>' +
+              '<div style="background:#FFF6EE;border-radius:12px;padding:12px 14px;text-align:left">' +
+                '<div style="font-size:.78rem;font-weight:700;color:#2C2356;margin-bottom:6px">📌 Acompanha a tua candidatura</div>' +
+                '<div style="font-size:.72rem;color:#6E6989;margin-bottom:8px">Guarda este link privado — mostra-te o estado (recebida, em análise…) sem precisares de conta:</div>' +
+                '<div style="display:flex;gap:6px">' +
+                  '<input id="lead-link" readonly value="' + linkAcomp + '" style="flex:1;min-width:0;padding:8px 10px;border:1.5px solid rgba(60,40,90,.12);border-radius:8px;font-family:inherit;font-size:.72rem;color:#6E6989">' +
+                  '<button id="lead-link-copy" style="flex:none;background:#FF6B9D;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer">Copiar</button>' +
+                '</div></div>' +
+              '<button onclick="document.getElementById(\'lead-modal-cp\').remove()" style="margin-top:14px;background:#FFE3D2;color:#2C2356;border:none;border-radius:12px;padding:11px 26px;font-family:inherit;font-weight:700;cursor:pointer">Fechar</button></div>';
+            var lc = document.getElementById("lead-link-copy");
+            if(lc) lc.onclick = function(){
+              var inp = document.getElementById("lead-link");
+              inp.select();
+              try { navigator.clipboard.writeText(inp.value); lc.textContent = "✓"; } catch(e){ document.execCommand("copy"); lc.textContent = "✓"; }
+            };
           }).catch(function(e){
             fail("Não foi possível enviar: " + (e.message || e));
             btn.disabled = false; btn.textContent = "Enviar à creche 💌";

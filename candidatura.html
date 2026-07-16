@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FF9F68">
+<meta name="robots" content="noindex,nofollow">
+<title>A minha candidatura — Creches.app</title>
+<meta name="description" content="Acompanha o estado do teu contacto com a creche — sem conta, sem complicações.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--c-coral:#FF6B9D;--c-coral-soft:#FFE2EC;--c-peach:#FF9F68;--c-peach-soft:#FFE3D2;
+--c-turquoise:#5EC0B7;--c-turquoise-soft:#D9F2EF;--c-mint:#7DD389;--c-mint-soft:#DEF5E1;
+--c-yellow:#FFC857;--c-yellow-soft:#FFF1D6;
+--bg:#FFF6EE;--ink:#2C2356;--ink-soft:#6E6989;--line:rgba(60,40,90,.08);
+--sh:0 1px 3px rgba(60,40,90,.06),0 8px 24px rgba(60,40,90,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:
+  radial-gradient(900px 600px at 10% 0%,var(--c-coral-soft) 0%,transparent 55%),
+  radial-gradient(800px 600px at 100% 0%,var(--c-turquoise-soft) 0%,transparent 55%),
+  radial-gradient(900px 700px at 50% 110%,var(--c-yellow-soft) 0%,transparent 60%),
+  var(--bg);
+  color:var(--ink);font-family:"Quicksand",system-ui,sans-serif;font-size:16px;line-height:1.6;min-height:100vh}
+h1,h2{font-family:"Fredoka";font-weight:600;line-height:1.25;margin:0}
+a{color:var(--c-coral);text-decoration:none;font-weight:600}
+.wrap{max-width:560px;margin:0 auto;padding:24px 16px 60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Fredoka";font-weight:600;font-size:1.1rem;color:var(--ink);margin-bottom:26px}
+.brand img{width:36px;height:36px;border-radius:10px}
+.card{background:#fff;border-radius:20px;box-shadow:var(--sh);padding:28px;margin-bottom:16px}
+.sub{color:var(--ink-soft);font-size:.92rem}
+.steps{margin:26px 0 6px;position:relative}
+.step{display:flex;gap:16px;position:relative;padding-bottom:26px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:17px;top:38px;bottom:-2px;width:2.5px;background:var(--line);border-radius:2px}
+.step:last-child::before{display:none}
+.step.done::before{background:var(--c-mint)}
+.dot{flex:none;width:36px;height:36px;border-radius:50%;background:#F1EFF7;color:var(--ink-soft);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;z-index:1}
+.step.done .dot{background:var(--c-mint);color:#fff}
+.step.now .dot{background:var(--c-coral);color:#fff;box-shadow:0 0 0 5px var(--c-coral-soft);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 5px var(--c-coral-soft)}50%{box-shadow:0 0 0 9px var(--c-coral-soft)}}
+@media (prefers-reduced-motion: reduce){.step.now .dot{animation:none}}
+.step .t{font-weight:800;font-size:.98rem}
+.step .d{color:var(--ink-soft);font-size:.85rem;line-height:1.5}
+.step.future{opacity:.45}
+.badge{display:inline-block;padding:5px 16px;border-radius:999px;font-size:.8rem;font-weight:800}
+.hint{font-size:.78rem;color:var(--ink-soft)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;text-decoration:none;
+  font-family:"Quicksand";font-weight:700;font-size:.9rem;padding:12px 20px;border-radius:14px}
+.btn.primary{background:var(--c-coral);color:#fff}
+.btn.soft{background:var(--c-peach-soft);color:var(--ink)}
+.center{text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/"><img src="/icon-192.png" alt=""> Creches.app</a>
+
+  <div class="card" id="loading">
+    <p class="center">⏳ A carregar a tua candidatura…</p>
+  </div>
+
+  <div class="card" id="notfound" style="display:none">
+    <h1 style="font-size:1.4rem">🤔 Não encontrámos esta candidatura</h1>
+    <p class="sub">Confirma que abriste o link completo que guardaste quando enviaste o contacto à creche. Se o problema continuar, escreve-nos para <a href="mailto:geral@creches.app">geral@creches.app</a>.</p>
+    <div class="btnrow"><a class="btn primary" href="/app">🗺 Voltar ao mapa</a></div>
+  </div>
+
+  <div id="found" style="display:none">
+    <div class="card">
+      <h1 style="font-size:1.5rem">💌 A tua candidatura</h1>
+      <p class="sub" style="margin:6px 0 2px"><b id="c-nome" style="color:var(--ink)"></b></p>
+      <p class="hint" id="c-atualizado"></p>
+
+      <div class="steps" id="steps">
+        <div class="step" id="st-1">
+          <div class="dot">1</div>
+          <div><div class="t">Contacto recebido</div>
+          <div class="d">A creche recebeu os teus dados no painel dela.</div></div>
+        </div>
+        <div class="step" id="st-2">
+          <div class="dot">2</div>
+          <div><div class="t">Em análise</div>
+          <div class="d">A creche viu o teu contacto e vai falar contigo (email ou telefone) — fica atenta.</div></div>
+        </div>
+        <div class="step" id="st-3">
+          <div class="dot">3</div>
+          <div><div class="t">Processo concluído</div>
+          <div class="d">A creche marcou este contacto como tratado. Se ficaste com vaga — parabéns! 🎉 Se não, continua a procurar no mapa: há vagas a abrir todas as semanas.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,#fff,var(--c-mint-soft))">
+      <p style="margin:0;font-size:.9rem"><b>💡 Enquanto esperas</b></p>
+      <p class="sub" style="margin:6px 0 0">O mais seguro é teres 3-5 candidaturas em paralelo. Vê mais creches perto de ti e ativa o filtro <b>🟢 Com vaga</b>.</p>
+      <div class="btnrow">
+        <a class="btn primary" href="/app">🗺 Ver o mapa</a>
+        <a class="btn soft" href="/guias/lista-de-espera-creche">📖 Guia das listas de espera</a>
+      </div>
+    </div>
+
+    <p class="hint center">Este link é privado — só o vês tu. Não mostra os teus dados pessoais a ninguém.<br>
+    <a href="/privacidade">Privacidade</a> · <a href="/">creches.app</a> — gratuito, sem anúncios, sem venda de dados</p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-check-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+firebase.initializeApp({
+  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
+  authDomain: "crechespt.firebaseapp.com",
+  projectId: "crechespt",
+  storageBucket: "crechespt.firebasestorage.app",
+  messagingSenderId: "470551729340",
+  appId: "1:470551729340:web:6e0843f7f4f0fc02f5e8a8"
+});
+try { if(firebase.appCheck) firebase.appCheck().activate("6Lf4LU4tAAAAAN8u_d-RRf86qpEqu2pKJIJ17Yxi", true); } catch(e){}
+
+const $ = id => document.getElementById(id);
+function mostrar(qual){
+  ["loading","notfound","found"].forEach(id => $(id).style.display = id === qual ? "" : "none");
+}
+
+(async function(){
+  const token = new URLSearchParams(location.search).get("c") || "";
+  if(!/^[a-zA-Z0-9]{20,64}$/.test(token)){ mostrar("notfound"); return; }
+  try {
+    // Realtime: se a creche mudar o estado com a página aberta, atualiza sozinho
+    firebase.firestore().doc("lead_status/" + token).onSnapshot(snap => {
+      if(!snap.exists){ mostrar("notfound"); return; }
+      const d = snap.data();
+      $("c-nome").textContent = d.creche_nome || "A creche";
+      try {
+        if(d.atualizado && d.atualizado.toDate){
+          $("c-atualizado").textContent = "Última atualização: " + d.atualizado.toDate().toLocaleDateString("pt-PT") +
+            " às " + d.atualizado.toDate().toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" });
+        }
+      } catch(e){}
+      // Estados: novo=1 · contactado=2 · fechado=3
+      const nivel = d.estado === "fechado" ? 3 : d.estado === "contactado" ? 2 : 1;
+      for(let i = 1; i <= 3; i++){
+        const el = $("st-" + i);
+        el.classList.remove("done","now","future");
+        if(i < nivel) el.classList.add("done");
+        else if(i === nivel) el.classList.add(i === 3 ? "done" : "now");
+        else el.classList.add("future");
+        if(i < nivel || (i === nivel && i === 3)) el.querySelector(".dot").textContent = "✓";
+        else el.querySelector(".dot").textContent = i;
+      }
+      mostrar("found");
+    }, () => mostrar("notfound"));
+  } catch(e){ mostrar("notfound"); }
+})();
+</script>
+</body>
+</html>

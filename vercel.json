@@ -31,6 +31,10 @@
       "destination": "/vagas.html"
     },
     {
+      "source": "/candidatura",
+      "destination": "/candidatura.html"
+    },
+    {
       "source": "/sobre",
       "destination": "/sobre.html"
     },
