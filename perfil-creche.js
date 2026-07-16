@@ -46,7 +46,7 @@
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">' +
           '<div><label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Idade da criança</label>' +
           '<select id="lead-idade" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem">' +
-            '<option>Ainda não nasceu</option><option>0-12 meses</option><option>1-2 anos</option><option>2-3 anos</option></select></div>' +
+            '<option>Ainda não nasceu</option><option>0-12 meses</option><option>1-2 anos</option><option>2-3 anos</option><option>3 anos ou mais</option></select></div>' +
           '<div><label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Entrada desejada</label>' +
           '<input id="lead-mes" maxlength="40" placeholder="Ex.: Setembro 2026" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem"></div></div>' +
         '<label style="display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px">Mensagem (opcional)</label>' +
@@ -131,6 +131,7 @@
     if(v.b0) salas.push("Berçário (0-12m)");
     if(v.m12) salas.push("1-2 anos");
     if(v.m24) salas.push("2-3 anos");
+    if(v.ji36) salas.push("3-6 anos (JI)");
     var quando = "";
     try { if(v.atualizado && v.atualizado.toDate) quando = " · " + v.atualizado.toDate().toLocaleDateString("pt-PT"); } catch(e){}
     if(salas.length){

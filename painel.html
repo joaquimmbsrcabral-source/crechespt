@@ -241,12 +241,15 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
       <p class="sub">Digam aos pais onde têm lugar. É a informação mais valiosa da plataforma — atualizem sempre que mudar.</p>
-      <div class="toggle-row"><div><div class="t">Berçário (0-12 meses)</div></div>
+      <div class="toggle-row" data-sala="b0"><div><div class="t">Berçário (0-12 meses)</div></div>
         <label class="switch"><input type="checkbox" id="vaga-b0" aria-label="Vaga no berçário (0-12 meses)"><span class="slider"></span></label></div>
-      <div class="toggle-row"><div><div class="t">Sala 1-2 anos</div></div>
+      <div class="toggle-row" data-sala="m12"><div><div class="t">Sala 1-2 anos</div></div>
         <label class="switch"><input type="checkbox" id="vaga-m12" aria-label="Vaga na sala 1-2 anos"><span class="slider"></span></label></div>
-      <div class="toggle-row"><div><div class="t">Sala 2-3 anos</div></div>
+      <div class="toggle-row" data-sala="m24"><div><div class="t">Sala 2-3 anos</div></div>
         <label class="switch"><input type="checkbox" id="vaga-m24" aria-label="Vaga na sala 2-3 anos"><span class="slider"></span></label></div>
+      <div class="toggle-row" data-sala="ji36"><div><div class="t">Jardim de Infância (3-6 anos)</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-ji36" aria-label="Vaga no jardim de infância (3-6 anos)"><span class="slider"></span></label></div>
+      <p class="hint" id="salas-hint" style="display:none">Só mostramos as salas das vossas valências — para mudar, ajustem as <b>Valências</b> no perfil, mais abaixo.</p>
       <p class="hint" id="vagas-estado"></p>
       <p class="hint" id="vagas-atualizado"></p>
     </div>
@@ -298,7 +301,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <!-- FOTOS -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-yellow-soft)">📷</span> Fotografias</h2>
-      <p class="sub">Mostrem os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evita fotos com crianças identificáveis.</p>
+      <p class="sub">Mostrem os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evitem fotos com crianças identificáveis. <b id="fotos-count"></b></p>
       <input type="file" id="foto-file" accept="image/*" style="display:none">
       <button class="btn btn-secondary" id="btn-foto">＋ Adicionar fotografia</button>
       <div class="msg err" id="foto-err"></div>
@@ -585,6 +588,7 @@ async function abrirDashboard(){
   $("vaga-b0").checked = !!v.b0;
   $("vaga-m12").checked = !!v.m12;
   $("vaga-m24").checked = !!v.m24;
+  $("vaga-ji36").checked = !!v.ji36;
   // F1 — Nudge de frescura: vagas atualizadas há >30 dias pedem reconfirmação
   if(v.atualizado && v.atualizado.toDate){
     const el = $("vagas-atualizado");
@@ -773,7 +777,7 @@ $("p-desc").addEventListener("input", function(){ $("desc-count").textContent = 
 function updateVagasEstado(){
   const el = $("vagas-estado");
   if(!el) return;
-  const alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked;
+  const alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked || $("vaga-ji36").checked;
   const jaPublicou = PROFILE.vagas && PROFILE.vagas.atualizado;
   if(alguma){
     el.innerHTML = "Na vossa página e no mapa vai aparecer: <b style='color:#1F7A3D'>🟢 Vagas abertas</b>";
@@ -786,7 +790,7 @@ function updateVagasEstado(){
     el.style.color = "";
   }
 }
-["vaga-b0","vaga-m12","vaga-m24"].forEach(id => $(id).addEventListener("change", updateVagasEstado));
+["vaga-b0","vaga-m12","vaga-m24","vaga-ji36"].forEach(id => $(id).addEventListener("change", updateVagasEstado));
 
 // F1 — Valências (multi-seleção)
 let VAL_SET = new Set();
@@ -795,6 +799,28 @@ function setValencias(arr){
   document.querySelectorAll("#val-seg button").forEach(b => {
     b.classList.toggle("on-sim", VAL_SET.has(b.dataset.v));
   });
+  syncSalasComValencias();
+}
+
+// As salas de vagas seguem as valências: um JI puro não tem berçário — e vice-versa.
+// Sem valências escolhidas mostramos tudo (a creche ainda não disse o que é).
+const SALA_POR_VALENCIA = { b0: ["Berçário"], m12: ["Creche"], m24: ["Creche"], ji36: ["Jardim de Infância"] };
+function syncSalasComValencias(){
+  const todas = VAL_SET.size === 0;
+  let escondeuAlguma = false;
+  document.querySelectorAll("[data-sala]").forEach(row => {
+    const sala = row.dataset.sala;
+    const mostra = todas || (SALA_POR_VALENCIA[sala] || []).some(v => VAL_SET.has(v));
+    row.style.display = mostra ? "" : "none";
+    if(!mostra){
+      escondeuAlguma = true;
+      const cb = row.querySelector("input[type=checkbox]");
+      if(cb && cb.checked){ cb.checked = false; if(typeof _setDirty === "function") _setDirty(true); }
+    }
+  });
+  const hint = $("salas-hint");
+  if(hint) hint.style.display = escondeuAlguma ? "block" : "none";
+  if(typeof updateVagasEstado === "function") updateVagasEstado();
 }
 document.querySelectorAll("#val-seg button").forEach(b => b.onclick = () => {
   if(VAL_SET.has(b.dataset.v)) VAL_SET.delete(b.dataset.v); else VAL_SET.add(b.dataset.v);
@@ -823,7 +849,7 @@ document.querySelectorAll("#cf-seg button").forEach(b => b.onclick = () => {
 $("btn-save").onclick = async () => {
   err("save-err"); ok("save-ok");
   // Confirmar publicação de "Sem vagas" (quando já tinha vagas publicadas)
-  const _alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked;
+  const _alguma = $("vaga-b0").checked || $("vaga-m12").checked || $("vaga-m24").checked || $("vaga-ji36").checked;
   if(!_alguma && PROFILE.vagas && PROFILE.vagas.atualizado){
     if(!confirm("Sem nenhuma sala ligada, a vossa página vai mostrar «🔴 Sem vagas de momento» aos pais.\n\nConfirmam?")) return;
   }
@@ -839,6 +865,7 @@ $("btn-save").onclick = async () => {
       b0: $("vaga-b0").checked,
       m12: $("vaga-m12").checked,
       m24: $("vaga-m24").checked,
+      ji36: $("vaga-ji36").checked,
       atualizado: firebase.firestore.Timestamp.now()
     },
     updated_at: firebase.firestore.FieldValue.serverTimestamp(),
@@ -880,9 +907,10 @@ $("btn-save").onclick = async () => {
 async function sincronizarVagaPublica(v){
   const ref = db.doc("vagas/painel_" + MY_CRECHE.id);
   const salas = [];
-  if(v.b0)  salas.push("Berçário (0-12 m)");
-  if(v.m12) salas.push("1-2 anos");
-  if(v.m24) salas.push("2-3 anos");
+  if(v.b0)   salas.push("Berçário (0-12 m)");
+  if(v.m12)  salas.push("1-2 anos");
+  if(v.m24)  salas.push("2-3 anos");
+  if(v.ji36) salas.push("3-6 anos (JI)");
   if(salas.length === 0){
     await ref.delete().catch(()=>{});  // sem vagas → remove o badge
     return;
@@ -968,6 +996,8 @@ async function carregarFotos(){
       if(x.status === "rejected") items.push({ url: x.url, st: "✗ recusada", id: d.id, motivo: x.motivo || "" });
     });
   } catch(e){}
+  const fc = $("fotos-count");
+  if(fc) fc.textContent = items.length ? items.length + "/10 fotografias" : "";
   grid.innerHTML = items.map(i => `<div class="ph"><img src="${escapeHtml(i.url)}" alt="Fotografia da creche" loading="lazy"><span class="st" ${i.motivo ? 'title="Motivo: ' + escapeHtml(i.motivo) + '"' : ""}>${i.st}</span>${i.id ? '<button class="ph-del" data-id="' + i.id + '" title="Remover" style="position:absolute;top:6px;right:6px;width:26px;height:26px;border:none;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;font-size:.8rem">🗑</button>' : ""}</div>${i.motivo ? '<div style="grid-column:1/-1;font-size:.72rem;color:#B4255C;margin:-6px 0 4px">Motivo da recusa: ' + escapeHtml(i.motivo) + '</div>' : ""}`).join("");
   grid.querySelectorAll(".ph-del").forEach(b => b.onclick = async () => {
     if(!confirm("Remover esta fotografia?")) return;

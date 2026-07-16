@@ -3277,6 +3277,7 @@ function _renderPerfilCrechePopup(crecheId, slot){
       if(v.b0) salas.push("Berçário (0-12m)");
       if(v.m12) salas.push("1-2 anos");
       if(v.m24) salas.push("2-3 anos");
+      if(v.ji36) salas.push("3-6 anos (JI)");
       var quando = "";
       try { if(v.atualizado && v.atualizado.toDate) quando = " · " + v.atualizado.toDate().toLocaleDateString("pt-PT"); } catch(e){}
       if(salas.length){
