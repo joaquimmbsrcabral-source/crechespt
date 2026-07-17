@@ -5,7 +5,7 @@
 */
 (function(){
   const COLL = "vagas";
-  const TTL_DAYS = 7;
+  const TTL_DAYS = 21;   // 3 semanas (ou até alguém reportar "sem vaga")
   const RATE_KEY = "crechespt/vagas/rate";
   const RATE_MAX_PER_DAY = 5;
 
@@ -49,12 +49,28 @@
           .get();
         const now = nowMs();
         const out = [];
+        // 1.ª passagem: último report "sem vaga" (não expirado) desta creche
+        let semVagaTs = 0;
         snap.forEach(doc => {
           const v = doc.data();
+          if(v.tipo !== "sem_vaga") return;
           const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
-          if(exp > now){
-            out.push({ id: doc.id, ...v });
+          if(exp <= now) return;
+          const ts = v.reportado_em && v.reportado_em.toMillis ? v.reportado_em.toMillis() : 0;
+          if(ts > semVagaTs) semVagaTs = ts;
+        });
+        // 2.ª passagem: vagas ativas — um "sem vaga" posterior cancela reports de pais
+        // (vagas confirmadas pela creche no painel mantêm-se: a creche é a autoridade)
+        snap.forEach(doc => {
+          const v = doc.data();
+          if(v.tipo === "sem_vaga") return;
+          const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
+          if(exp <= now) return;
+          if(!v.verificado && semVagaTs){
+            const ts = v.reportado_em && v.reportado_em.toMillis ? v.reportado_em.toMillis() : 0;
+            if(ts <= semVagaTs) return;   // cancelada por report "sem vaga" mais recente
           }
+          out.push({ id: doc.id, ...v });
         });
         // Ordenar: verificadas pela creche (painel) primeiro, depois mais recentes
         out.sort((a,b) => {
@@ -97,9 +113,9 @@
       const ts = vaga.reportado_em && vaga.reportado_em.toMillis
         ? vaga.reportado_em.toMillis() : 0;
       const days = (nowMs() - ts) / 86400000;
-      if(days < 3) return "fresh";   // verde brilhante
-      if(days < 5) return "normal";  // verde normal
-      return "old";                  // amarelo
+      if(days < 4) return "fresh";   // verde brilhante
+      if(days < 10) return "normal"; // verde normal
+      return "old";                  // amarelo (10-21 dias)
     },
 
     /** Reporta vaga — source pode ser "pai" ou "creche" */
@@ -139,6 +155,46 @@
       return ref.id;
     },
 
+    /** Reporta que AFINAL NÃO há vaga — cancela reports de pais anteriores.
+        Vagas confirmadas pela creche (painel) não são afetadas. */
+    async reportSemVaga(creche_id, nome_creche){
+      const fdb = db();
+      if(!fdb) throw new Error("Firebase não disponível");
+      if(!creche_id) throw new Error("creche_id obrigatório");
+      if(!_canReport()) throw new Error("Já reportaste 5 vezes hoje. Tenta amanhã.");
+
+      const doc = {
+        creche_id,
+        nome_creche: nome_creche || null,
+        source: "pai",
+        tipo: "sem_vaga",
+        verificado: false,
+        idades: [],
+        notas: "",
+        reportado_em: firebase.firestore.FieldValue.serverTimestamp(),
+        expires_at: firebase.firestore.Timestamp.fromMillis(nowMs() + TTL_DAYS * 86400000),
+        reportado_por: { nome: null }
+      };
+      const ref = await fdb.collection(COLL).add(doc);
+      _bumpRate();
+      return ref.id;
+    },
+
+    /** Prompt simples chamado a partir do badge ("Já não há vaga?") */
+    async semVagaPrompt(crecheId, nomeEnc){
+      const nome = nomeEnc ? decodeURIComponent(nomeEnc) : "";
+      if(!confirm(`Confirmas que ${nome || "esta creche"} já NÃO tem vaga?\n\nO aviso de vaga reportada por pais deixa de aparecer no mapa.`)) return;
+      try {
+        await this.reportSemVaga(crecheId, nome);
+        document.querySelectorAll(".vaga-badge").forEach(el => {
+          if(el.dataset.crecheId === crecheId) el.remove();
+        });
+        alert("Obrigado! O report foi registado e a vaga vai deixar de aparecer. 💛");
+      } catch(e){
+        alert("Erro: " + (e.message || e));
+      }
+    },
+
     /** Gera HTML do badge "vaga aberta" — para inserir em fichas/popups */
     badgeHTML(vaga){
       const fresh = this.freshness(vaga);
@@ -153,8 +209,14 @@
       const oldNote = fresh === "old"
         ? `<br><small style="opacity:.85">Pode já não estar disponível — liga para confirmar</small>`
         : "";
+      // Reports de pais podem ser cancelados por outro pai ("afinal não há")
+      const cid = (vaga.creche_id || "").replace(/"/g, "");
+      const nomeEnc = encodeURIComponent(vaga.nome_creche || "");
+      const semVagaLink = !vaga.verificado
+        ? `<div style="margin-top:7px"><a href="#" onclick="event.preventDefault();window.Vagas&&window.Vagas.semVagaPrompt('${cid}','${nomeEnc}')" style="font-size:11.5px;color:#9B97B5;text-decoration:underline">Ligaste e afinal não há vaga? Diz-nos</a></div>`
+        : "";
       return `
-        <div class="vaga-badge" style="background:${colorLight};border-left:4px solid ${colorBg};padding:12px 14px;border-radius:14px;margin:0 0 14px;font-size:14px;color:#2C2356;line-height:1.45">
+        <div class="vaga-badge" data-creche-id="${cid}" style="background:${colorLight};border-left:4px solid ${colorBg};padding:12px 14px;border-radius:14px;margin:0 0 14px;font-size:14px;color:#2C2356;line-height:1.45">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
             <span style="background:${colorBg};color:${colorTxt};padding:4px 10px;border-radius:99px;font-weight:700;font-size:12.5px;display:inline-flex;align-items:center;gap:5px">🟢 Vaga aberta</span>
             <small style="color:#5A4A20;font-weight:600">${when}</small>
@@ -162,6 +224,7 @@
           <div style="margin-top:6px;font-size:12.5px;color:#4A4060">
             ${sourceLabel}${oldNote}
           </div>
+          ${semVagaLink}
         </div>
       `;
     },

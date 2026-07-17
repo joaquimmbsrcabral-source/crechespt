@@ -575,16 +575,18 @@ async function loadVagasStats(){
   try {
     const snap = await db.collection("vagas").get();
     const now = Date.now();
-    let painel = 0, pais = 0, expiradas = 0;
+    let painel = 0, pais = 0, expiradas = 0, semVaga = 0;
     snap.forEach(d => {
       const v = d.data();
       const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : 0;
       if(exp <= now){ expiradas++; return; }
+      if(v.tipo === "sem_vaga"){ semVaga++; return; }
       if(v.source === "painel") painel++; else pais++;
     });
     host.innerHTML =
       '<div class="mini-stat" style="background:#DEF5E1"><b>' + painel + '</b><span>🏫 confirmadas por creches</span></div>' +
       '<div class="mini-stat" style="background:#D9F2EF"><b>' + pais + '</b><span>👪 reportadas por pais</span></div>' +
+      '<div class="mini-stat" style="background:#FFE2EC"><b>' + semVaga + '</b><span>❌ reports "sem vaga"</span></div>' +
       '<div class="mini-stat"><b>' + expiradas + '</b><span>expiradas (limpar c/ TTL)</span></div>';
   } catch(e){ host.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">' + cpEsc(e.message || e) + '</div>'; }
 }

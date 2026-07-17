@@ -3461,13 +3461,26 @@ async function _loadVagasAtivas(){
       fdb.collection("creche_profiles").get().catch(() => null)
     ]);
     // Vagas: ids activos + dias desde o report + quais são verificadas (painel/creche)
+    // 1.ª passagem: últimos reports "sem vaga" (cancelam reports de pais anteriores)
+    const semVaga = new Map();
+    snap.forEach(doc => {
+      const v = doc.data();
+      if(v.tipo !== "sem_vaga" || !v.creche_id) return;
+      const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
+      if(exp <= now) return;
+      const ts = v.reportado_em && v.reportado_em.toMillis ? v.reportado_em.toMillis() : 0;
+      if(ts > (semVaga.get(v.creche_id) || 0)) semVaga.set(v.creche_id, ts);
+    });
     const ids = new Set(), dias = new Map(), verif = new Set();
     snap.forEach(doc => {
       const v = doc.data();
+      if(v.tipo === "sem_vaga") return;
       const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : (v.expires_at || 0);
       if(exp > now && v.creche_id){
-        ids.add(v.creche_id);
         const ts = v.reportado_em && v.reportado_em.toMillis ? v.reportado_em.toMillis() : now;
+        // Report de pai cancelado por "sem vaga" mais recente (vagas do painel mantêm-se)
+        if(!v.verificado && semVaga.has(v.creche_id) && ts <= semVaga.get(v.creche_id)) return;
+        ids.add(v.creche_id);
         const d = Math.max(0, Math.floor((now - ts) / 86400000));
         if(!dias.has(v.creche_id) || d < dias.get(v.creche_id)) dias.set(v.creche_id, d);
         if(v.verificado) verif.add(v.creche_id);
