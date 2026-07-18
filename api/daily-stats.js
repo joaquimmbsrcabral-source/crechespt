@@ -12,9 +12,15 @@ import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth } from "firebase-admin/auth";
 
+function parseServiceAccount() {
+  const raw = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim();
+  if (raw.startsWith("{")) return JSON.parse(raw);  // JSON colado diretamente
+  return JSON.parse(Buffer.from(raw, "base64").toString("utf-8"));  // base64
+}
+
 function initFirebase() {
   if (getApps().length) return;
-  const sa = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString("utf-8"));
+  const sa = parseServiceAccount();
   initializeApp({ credential: cert(sa) });
 }
 

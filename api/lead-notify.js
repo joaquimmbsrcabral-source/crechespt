@@ -18,9 +18,15 @@ function escapeHtml(s) {
   return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
 }
 
+function parseServiceAccount() {
+  const raw = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim();
+  if (raw.startsWith("{")) return JSON.parse(raw);  // JSON colado diretamente
+  return JSON.parse(Buffer.from(raw, "base64").toString("utf-8"));  // base64
+}
+
 function initFirebase() {
   if (getApps().length) return;
-  const sa = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString("utf-8"));
+  const sa = parseServiceAccount();
   initializeApp({ credential: cert(sa) });
 }
 
