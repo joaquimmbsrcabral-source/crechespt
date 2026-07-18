@@ -1104,32 +1104,61 @@ $("btn-correcao").onclick = async () => {
   btn.disabled = false;
 };
 
-$("btn-remover").onclick = async () => {
+$("btn-remover").onclick = () => {
   const motivo = $("rem-motivo").value.trim();
   $("rem-err").textContent = ""; $("rem-ok").textContent = "";
   if(!MY_CRECHE || !ME) return;
   if(motivo.length < 5){ $("rem-err").textContent = "Digam-nos o motivo — ajuda-nos a perceber (e a melhorar)."; return; }
-  if(!confirm(`Confirmam o pedido de remoção da ${MY_CRECHE.nome || "vossa creche"} do mapa?\n\nVamos confirmar convosco antes de remover.`)) return;
-  const btn = $("btn-remover"); btn.disabled = true;
-  try {
-    await db.collection("creche_reports").add({
-      uid: ME.uid,
-      email: ME.email || "",
-      creche_id: String(MY_CRECHE.id),
-      creche_name: (MY_CRECHE.nome || "").slice(0, 200),
-      report_type: "remocao_painel",
-      claimed_age: "",
-      note: motivo.slice(0, 600),
-      url: "/painel",
-      ts: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    $("rem-ok").textContent = "✓ Pedido registado. Vamos confirmar convosco por email ou telefone antes de remover a página.";
-    $("rem-motivo").value = "";
-  } catch(e){
-    $("rem-err").textContent = "Erro a enviar: " + (e.message || e);
-  }
-  btn.disabled = false;
+  _abrirModalRemocao(motivo);
 };
+
+// Pop-up de confirmação explícito (dupla proteção contra remoções acidentais)
+function _abrirModalRemocao(motivo){
+  const old = document.getElementById("modal-remocao");
+  if(old) old.remove();
+  const m = document.createElement("div");
+  m.id = "modal-remocao";
+  m.innerHTML = `
+    <div style="position:fixed;inset:0;background:rgba(44,35,86,.6);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)" id="mr-scrim">
+      <div style="background:#fff;border-radius:22px;padding:28px;max-width:430px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3);text-align:center" onclick="event.stopPropagation()">
+        <div style="font-size:2.6rem">🗑</div>
+        <h2 style="margin:10px 0 6px;font-size:1.15rem">Têm a certeza?</h2>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin:0 0 6px">Estão a pedir a remoção da<br><b style="color:var(--ink)">${escapeHtml(MY_CRECHE.nome || "vossa creche")}</b><br>do mapa creches.app.</p>
+        <p style="font-size:.8rem;color:var(--ink-soft);background:var(--c-yellow-soft,#FFF1D6);border-radius:10px;padding:9px 12px;margin:12px 0">A página pública deixa de aparecer aos pais. Confirmamos convosco por email ou telefone antes de remover — e podem voltar quando quiserem.</p>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <button id="mr-cancelar" class="btn btn-secondary" style="flex:1">Cancelar</button>
+          <button id="mr-confirmar" class="btn" style="flex:1;background:#B4255C;color:#fff;border:none">Sim, pedir remoção</button>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(m);
+  document.getElementById("mr-scrim").onclick = () => m.remove();
+  document.getElementById("mr-cancelar").onclick = () => m.remove();
+  document.getElementById("mr-confirmar").onclick = async () => {
+    const b = document.getElementById("mr-confirmar");
+    b.disabled = true; b.textContent = "A enviar…";
+    try {
+      // Coleção dedicada de remoções — aparece no /admin em "Pedidos de remoção"
+      await db.collection("creche_removals").add({
+        creche_id: String(MY_CRECHE.id),
+        creche_name: (MY_CRECHE.nome || "").slice(0, 200),
+        relationship: "gestor-painel",
+        requester_email: (ME.email || "").slice(0, 120),
+        reason: motivo.slice(0, 800),
+        url: "/painel",
+        user_agent: navigator.userAgent.slice(0, 200),
+        uid: ME.uid,
+        ts: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      m.remove();
+      $("rem-ok").textContent = "✓ Pedido registado. Vamos confirmar convosco por email ou telefone antes de remover a página.";
+      $("rem-motivo").value = "";
+    } catch(e){
+      m.remove();
+      $("rem-err").textContent = "Erro a enviar: " + (e.message || e);
+    }
+  };
+}
 </script>
 </body>
 </html>
