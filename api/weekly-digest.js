@@ -13,9 +13,22 @@ import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
 function parseServiceAccount() {
-  const raw = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim();
-  if (raw.startsWith("{")) return JSON.parse(raw);  // JSON colado diretamente
-  return JSON.parse(Buffer.from(raw, "base64").toString("utf-8"));  // base64
+  let raw = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim();
+  if (!raw.startsWith("{")) raw = Buffer.from(raw, "base64").toString("utf-8").trim();  // base64
+  // Extrair o primeiro objeto JSON completo (tolera texto extra/colagem dupla)
+  const start = raw.indexOf("{");
+  let depth = 0, inStr = false, esc = false, end = -1;
+  for (let i = start; i < raw.length; i++) {
+    const ch = raw[i];
+    if (esc) { esc = false; continue; }
+    if (ch === "\\") { esc = true; continue; }
+    if (ch === '"') { inStr = !inStr; continue; }
+    if (inStr) continue;
+    if (ch === "{") depth++;
+    else if (ch === "}") { depth--; if (depth === 0) { end = i; break; } }
+  }
+  if (start < 0 || end < 0) throw new Error("FIREBASE_SERVICE_ACCOUNT: JSON invalido");
+  return JSON.parse(raw.slice(start, end + 1));
 }
 
 function initFirebase() {
