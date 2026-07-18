@@ -14,6 +14,11 @@
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
+// Remetente configurável: usa EMAIL_FROM (ex.: "Creches.app <geral@creches.app>")
+// assim que o domínio creches.app estiver verificado no Resend.
+// Até lá, cai no domínio de teste do Resend (funciona sempre, mas vai a spam com mais facilidade).
+const FROM_EMAIL = process.env.EMAIL_FROM || "Creches.app <onboarding@resend.dev>";
+
 function escapeHtml(s) {
   return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
 }
@@ -91,7 +96,7 @@ export default async function handler(req, res) {
     ].filter(Boolean).join("<br>");
 
     const payload = {
-      from: "Creches.app <onboarding@resend.dev>",
+      from: FROM_EMAIL,
       to: emails.slice(0, 3),
       reply_to: lead.email,
       subject: `💌 Família interessada na ${lead.creche_nome || "vossa creche"} — responder depressa vale ouro`,

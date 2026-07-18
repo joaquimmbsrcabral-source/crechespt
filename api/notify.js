@@ -13,6 +13,11 @@ import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 
+// Remetente configurável: usa EMAIL_FROM (ex.: "Creches.app <geral@creches.app>")
+// assim que o domínio creches.app estiver verificado no Resend.
+// Até lá, cai no domínio de teste do Resend (funciona sempre, mas vai a spam com mais facilidade).
+const FROM_EMAIL = process.env.EMAIL_FROM || "Creches.app <onboarding@resend.dev>";
+
 // ===== Templates =====
 const TEMPLATES = {
   // Quando aprovas um claim de acesso ao painel (0.3 — Fase 0 do painel)
@@ -223,7 +228,7 @@ export default async function handler(req, res) {
 
     const tpl = TEMPLATES[template];
     const payload = {
-      from: "Creches.app <onboarding@resend.dev>",
+      from: FROM_EMAIL,
       to: [to],
       reply_to: "geral@creches.app",
       subject: tpl.subject(data || {}),
