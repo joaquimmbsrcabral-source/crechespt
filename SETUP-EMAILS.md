@@ -167,3 +167,21 @@ no `/admin`.
 
 **Email vai para spam** → é normal com `onboarding@resend.dev`. Faz o upgrade
 para o teu domínio (secção acima).
+
+---
+
+## /api/daily-stats — briefing diário do fundador (18 jul 2026)
+
+Endpoint que alimenta o briefing matinal do Cowork com as métricas completas
+(utilizadores, leads, vagas, views, pendências).
+
+- **Env vars necessárias:** `FIREBASE_SERVICE_ACCOUNT` (base64) + `CRON_SECRET`.
+  NÃO precisa de RESEND_API_KEY (só lê dados).
+- **CRON_SECRET:** usa o valor que o Joaquim guardou na tarefa agendada
+  "briefing-diario-creches" do Cowork (o mesmo valor serve também o weekly-digest).
+- **Teste manual:**
+```bash
+curl -s -H "Authorization: Bearer O_TEU_CRON_SECRET" https://creches.app/api/daily-stats | python3 -m json.tool
+```
+Deves ver JSON com utilizadores/leads/vagas/rede/views. `401` = secret errado;
+`503` = falta FIREBASE_SERVICE_ACCOUNT.
