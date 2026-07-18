@@ -201,7 +201,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <h2><span class="emoji-chip" style="background:#fff">🏫</span> <span id="dash-nome">A vossa creche</span></h2>
       <p class="sub" style="margin-bottom:8px"><span class="pill-status pill-ok">✓ Perfil gerido pela creche</span></p>
       <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardarem aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a> · <a href="#" id="btn-copiar-link" style="cursor:pointer">Copiar link 🔗</a></p>
-      <p style="font-size:.78rem;color:var(--ink-faint);margin:6px 0 0">Nome ou morada errados? <a href="mailto:geral@creches.app?subject=Corre%C3%A7%C3%A3o%20de%20nome%2Fmorada%20da%20creche">Digam-nos</a> — corrigimos em 24-48h.</p>
+      <p style="font-size:.78rem;color:var(--ink-faint);margin:6px 0 0">Nome ou morada errados? <a href="#card-definicoes" onclick="document.getElementById('def-correcao').open=true">Corrijam aqui ↓</a> — aplicamos em 24-48h.</p>
     </div>
 
     <!-- PROGRESSO DO PERFIL -->
@@ -307,6 +307,34 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <div class="msg err" id="foto-err"></div>
       <div class="msg ok" id="foto-ok"></div>
       <div class="fotos-grid" id="fotos-grid"></div>
+    </div>
+
+    <!-- DEFINIÇÕES DA PÁGINA -->
+    <div class="card" id="card-definicoes">
+      <h2><span class="emoji-chip" style="background:#EDEBF7">⚙️</span> Definições da página</h2>
+      <p class="sub">Correções aos dados oficiais e opções da vossa presença no mapa.</p>
+      <details id="def-correcao">
+        <summary style="cursor:pointer;font-weight:700;font-size:.92rem">✏️ Corrigir nome ou morada</summary>
+        <div style="margin-top:12px">
+          <div class="field"><label for="cor-nome">Nome correto</label><input id="cor-nome" maxlength="200"></div>
+          <div class="field"><label for="cor-morada">Morada correta</label><input id="cor-morada" maxlength="240" placeholder="Rua, número, código postal, localidade"></div>
+          <div class="field"><label for="cor-nota">Nota (opcional)</label><input id="cor-nota" maxlength="300" placeholder="Ex.: mudámos de instalações em 2025"></div>
+          <div class="msg err" id="cor-err"></div>
+          <div class="msg ok" id="cor-ok"></div>
+          <button class="btn btn-secondary" id="btn-correcao">Enviar correção — aplicamos em 24-48h</button>
+          <p class="hint" style="margin-top:8px">Revemos manualmente para proteger a vossa página (o nome é a vossa identidade pública).</p>
+        </div>
+      </details>
+      <details style="margin-top:10px">
+        <summary style="cursor:pointer;font-weight:700;font-size:.92rem;color:#B4255C">🗑 Remover a nossa creche do mapa</summary>
+        <div style="margin-top:12px">
+          <p class="hint">A página pública e o perfil deixam de aparecer no creches.app. Confirmamos convosco antes de remover — e podem voltar quando quiserem.</p>
+          <div class="field"><label for="rem-motivo">Motivo</label><textarea id="rem-motivo" style="min-height:60px" maxlength="600" placeholder="Ex.: a creche encerrou / não queremos constar no mapa"></textarea></div>
+          <div class="msg err" id="rem-err"></div>
+          <div class="msg ok" id="rem-ok"></div>
+          <button class="btn" id="btn-remover" style="border:1.5px solid #B4255C;color:#B4255C;background:#fff">Pedir remoção do mapa</button>
+        </div>
+      </details>
     </div>
 
     <div class="msg err" id="save-err"></div>
@@ -421,6 +449,7 @@ auth.onAuthStateChanged(async user => {
       return;
     }
     show("s-claim");
+    _aplicarPrefill();
   } catch(e){
     console.error(e);
     $("s-loading").innerHTML = '<div class="card center"><div style="font-size:2rem">😕</div><p><b>Não foi possível carregar a vossa conta.</b><br><span style="font-size:.85rem;color:var(--ink-soft)">Verifiquem a ligação à internet e tentem novamente.</span><br><span style="font-size:.7rem;color:var(--ink-faint)">' + escapeHtml(String(e && e.message || "")) + '</span></p><button class="btn btn-primary" onclick="location.reload()">Tentar novamente</button></div>';
@@ -482,6 +511,29 @@ async function _claimSearch(){
   });
 }
 function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+// ─── Prefill vindo do /para-creches (?creche=<id> pré-seleciona · ?nova=<nome> abre criação) ───
+async function _aplicarPrefill(){
+  try {
+    const p = new URLSearchParams(location.search);
+    const nova = p.get("nova"), cid = p.get("creche");
+    if(nova){
+      const d = document.getElementById("claim-nova");
+      if(d){ d.open = true; $("cn-nome").value = nova.slice(0, 200); d.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      return;
+    }
+    if(!cid) return;
+    const r = await fetch("/creches_pt.json");
+    const ds = await r.json();
+    const c = ds.find(x => String(x.id) === String(cid));
+    if(!c) return;
+    SEL = c;
+    $("claim-q").value = c.nome;
+    $("claim-sel-nome").textContent = c.nome;
+    $("claim-sel-loc").textContent = (c.localidade||"") + " · " + (c.distrito||"");
+    $("claim-sel").classList.add("show");
+  } catch(e){ console.warn("prefill", e); }
+}
 
 $("btn-claim").onclick = async () => {
   err("claim-err");
@@ -1018,6 +1070,66 @@ async function carregarFotos(){
   });
 }
 function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+// ─────────── DEFINIÇÕES: correção nome/morada + remoção do mapa ───────────
+document.getElementById("def-correcao").addEventListener("toggle", function(){
+  // Pré-preencher com o nome atual para só corrigirem o que está mal
+  if(this.open && MY_CRECHE && !$("cor-nome").value) $("cor-nome").value = MY_CRECHE.nome || "";
+});
+
+$("btn-correcao").onclick = async () => {
+  const nome = $("cor-nome").value.trim(), morada = $("cor-morada").value.trim(), nota = $("cor-nota").value.trim();
+  $("cor-err").textContent = ""; $("cor-ok").textContent = "";
+  if(!MY_CRECHE || !ME) return;
+  if(!nome && !morada){ $("cor-err").textContent = "Preencham pelo menos o nome ou a morada."; return; }
+  if(nome && nome.length < 3){ $("cor-err").textContent = "O nome parece demasiado curto."; return; }
+  const btn = $("btn-correcao"); btn.disabled = true;
+  try {
+    const doc = {
+      creche_id: String(MY_CRECHE.id),
+      creche_nome_atual: MY_CRECHE.nome || "",
+      uid: ME.uid,
+      email: ME.email || "",
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    if(nome) doc.nome = nome.slice(0, 200);
+    if(morada) doc.morada = morada.slice(0, 240);
+    if(nota) doc.nota = nota.slice(0, 300);
+    await db.collection("creche_correcoes").doc(String(MY_CRECHE.id)).set(doc);
+    $("cor-ok").textContent = "✓ Correção enviada! Aplicamos em 24-48h e a página pública atualiza automaticamente.";
+    $("cor-nota").value = "";
+  } catch(e){
+    $("cor-err").textContent = "Erro a enviar: " + (e.message || e);
+  }
+  btn.disabled = false;
+};
+
+$("btn-remover").onclick = async () => {
+  const motivo = $("rem-motivo").value.trim();
+  $("rem-err").textContent = ""; $("rem-ok").textContent = "";
+  if(!MY_CRECHE || !ME) return;
+  if(motivo.length < 5){ $("rem-err").textContent = "Digam-nos o motivo — ajuda-nos a perceber (e a melhorar)."; return; }
+  if(!confirm(`Confirmam o pedido de remoção da ${MY_CRECHE.nome || "vossa creche"} do mapa?\n\nVamos confirmar convosco antes de remover.`)) return;
+  const btn = $("btn-remover"); btn.disabled = true;
+  try {
+    await db.collection("creche_reports").add({
+      uid: ME.uid,
+      email: ME.email || "",
+      creche_id: String(MY_CRECHE.id),
+      creche_name: (MY_CRECHE.nome || "").slice(0, 200),
+      report_type: "remocao_painel",
+      claimed_age: "",
+      note: motivo.slice(0, 600),
+      url: "/painel",
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    $("rem-ok").textContent = "✓ Pedido registado. Vamos confirmar convosco por email ou telefone antes de remover a página.";
+    $("rem-motivo").value = "";
+  } catch(e){
+    $("rem-err").textContent = "Erro a enviar: " + (e.message || e);
+  }
+  btn.disabled = false;
+};
 </script>
 </body>
 </html>

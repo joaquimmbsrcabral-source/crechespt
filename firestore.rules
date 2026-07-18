@@ -100,6 +100,24 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Correções de nome/morada propostas pelo GESTOR da creche (painel).
+    // Doc id = creche_id. Admin revê e aplica via creche_overrides.
+    match /creche_correcoes/{cid} {
+      allow create, update: if request.auth != null
+        && isManagerOf(cid)
+        && request.resource.data.keys().hasOnly(['creche_id','creche_nome_atual','nome','morada','nota','uid','email','ts'])
+        && request.resource.data.creche_id == cid
+        && request.resource.data.uid == request.auth.uid
+        && (!('nome' in request.resource.data) ||
+            (request.resource.data.nome is string && request.resource.data.nome.size() >= 3 && request.resource.data.nome.size() <= 200))
+        && (!('morada' in request.resource.data) ||
+            (request.resource.data.morada is string && request.resource.data.morada.size() <= 240))
+        && (!('nota' in request.resource.data) ||
+            (request.resource.data.nota is string && request.resource.data.nota.size() <= 300))
+        && ('nome' in request.resource.data || 'morada' in request.resource.data);
+      allow read, delete: if isAdmin();
+    }
+
     // Creches extra (não estavam no dataset original; submetidas via /para-creches e aprovadas).
     // Read público; write só admin.
     match /creche_extras/{eid} {

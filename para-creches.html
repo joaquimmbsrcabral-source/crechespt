@@ -304,94 +304,18 @@ footer a{color:var(--ink-soft)}
 
 <section id="registo" class="form">
   <div class="form-card">
-    <div id="form-fields">
-      <h2>A vossa creche ainda não está no mapa?</h2>
-      <p class="sub">Se não a encontram na pesquisa do <a href="/painel">painel</a>, preencham este formulário — adicionamos em 24-48h e avisamos por email para reclamarem a página. Sem spam, sem compromisso.</p>
-      <form id="interest-form" novalidate>
-        <div class="form-row">
-          <label for="i-nome">Nome da creche <span class="req">*</span></label>
-          <input id="i-nome" name="nome" type="text" required maxlength="200" placeholder="Ex.: Centro Infantil O Caracol">
-        </div>
-        <div class="form-grid2">
-          <div class="form-row">
-            <label for="i-tipo">Tipo <span class="req">*</span></label>
-            <select id="i-tipo" name="tipo" required>
-              <option value="">Escolhe…</option>
-              <option value="privada">Privada</option>
-              <option value="ipss">IPSS</option>
-              <option value="publica">Pública</option>
-              <option value="outro">Outro</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="i-distrito">Distrito <span class="req">*</span></label>
-            <select id="i-distrito" name="distrito" required>
-              <option value="">Escolhe…</option>
-              <option>Aveiro</option><option>Beja</option><option>Braga</option><option>Bragança</option>
-              <option>Castelo Branco</option><option>Coimbra</option><option>Évora</option><option>Faro</option>
-              <option>Guarda</option><option>Leiria</option><option>Lisboa</option><option>Portalegre</option>
-              <option>Porto</option><option>Santarém</option><option>Setúbal</option><option>Viana do Castelo</option>
-              <option>Vila Real</option><option>Viseu</option><option>Madeira</option><option>Açores</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="i-morada">Morada completa <span class="req">*</span></label>
-          <input id="i-morada" name="morada" type="text" required maxlength="200" placeholder="Ex.: Rua Augusta 100, 1100-053 Lisboa">
-        </div>
-        <div class="form-row">
-          <label>Idades atendidas <span class="req">*</span></label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14px;line-height:1.4">
-            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="bercario" style="width:18px;height:18px"> Berçário (0-12m)</label>
-            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="creche" style="width:18px;height:18px"> Creche (4-36m)</label>
-            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="ji" style="width:18px;height:18px"> JI (3-6 anos)</label>
-            <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="idades" value="atl" style="width:18px;height:18px"> ATL (6+ anos)</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="i-email">Email de contacto <span class="req">*</span></label>
-          <input id="i-email" name="email" type="email" required maxlength="120" placeholder="responsavel@creche.pt">
-        </div>
-        <div class="form-row">
-          <label for="i-tel">Telefone <span class="req">*</span></label>
-          <input id="i-tel" name="telefone" type="tel" required maxlength="40" placeholder="Ex.: 21 000 0000">
-        </div>
-        <details style="margin-top:6px;padding:10px 14px;background:rgba(255,255,255,.5);border-radius:12px;border:1px dashed rgba(60,40,90,.12)">
-          <summary style="cursor:pointer;font-weight:600;color:var(--ink-soft);font-size:13.5px;list-style:none">+ Mais detalhes (opcional)</summary>
-          <p style="font-size:12px;color:var(--ink-faint);margin:8px 0 14px">Se quiseres, podes preencher já estes campos — mas não é obrigatório.</p>
-          <div class="form-row">
-            <label for="i-site">Website ou Facebook</label>
-            <input id="i-site" name="website" type="url" maxlength="200" placeholder="https://...">
-          </div>
-          <div class="form-grid2">
-            <div class="form-row">
-              <label for="i-horario">Horário</label>
-              <input id="i-horario" name="horario" type="text" maxlength="60" placeholder="Ex.: 07:30-19:00">
-            </div>
-            <div class="form-row">
-              <label for="i-criancas">Nº de crianças</label>
-              <input id="i-criancas" name="criancas" type="text" maxlength="20" placeholder="Ex.: 60">
-            </div>
-          </div>
-          <div class="form-row">
-            <label for="i-msg">Algo a acrescentar?</label>
-            <textarea id="i-msg" name="mensagem" maxlength="600" placeholder="Algo que queiras que saibamos — horário especial, particularidades, etc."></textarea>
-          </div>
-        </details>
-        <button id="i-submit" class="form-submit" type="submit" style="margin-top:14px">Quero saber quando lançarem →</button>
-        <div id="i-error" class="form-error"></div>
-        <p class="form-note">
-          Ao enviar, aceitas que te contactemos por email a propósito do Creches.app.
-          Não partilhamos os teus dados com ninguém. Podes pedir para sermos retirados a qualquer momento.
-        </p>
-      </form>
+    <h2>Encontrem a vossa creche</h2>
+    <p class="sub">Escrevam o nome ou a localidade. Se já está no mapa, pedem acesso ao painel em 2 minutos. Se não está, criam a página na hora.</p>
+    <div class="form-row" style="position:relative">
+      <label for="pc-q">Nome da creche</label>
+      <input id="pc-q" type="search" autocomplete="off" placeholder="Ex.: Centro Infantil O Caracol, Oeiras">
+      <div id="pc-res" style="display:none;position:absolute;left:0;right:0;top:100%;z-index:20;background:#fff;border-radius:14px;box-shadow:0 14px 40px rgba(60,40,90,.18);max-height:280px;overflow:auto;margin-top:6px"></div>
     </div>
-    <div id="form-thanks" class="form-thanks">
-      <div class="emoji">🎉</div>
-      <h2>Recebido!</h2>
-      <p>Obrigado pelo teu interesse. Vamos avisar-te assim que estiverem disponíveis as funcionalidades para creches — sem spam, prometido.</p>
-      <p style="margin-top:14px"><a href="/app" class="btn ghost" style="font-size:13px;padding:9px 18px">Voltar à app</a></p>
+    <div id="pc-naoencontro" style="display:none;margin-top:14px;padding:16px 18px;background:var(--c-peach-soft,#FFE3D2);border-radius:14px">
+      <p style="margin:0 0 10px;font-size:14px"><b>Não encontram a vossa creche?</b> Criem a página agora — fica no mapa em 24-48h e o pedido de acesso ao painel segue logo junto.</p>
+      <a id="pc-criar" class="btn primary" href="/painel" style="display:inline-block">➕ Criar a página da nossa creche →</a>
     </div>
+    <p class="form-note">Gratuito, sem anúncios e sem venda de dados. A verificação é manual — normalmente confirmamos por telefone para o número oficial da creche.</p>
   </div>
 </section>
 
@@ -406,88 +330,42 @@ footer a{color:var(--ink-soft)}
 </footer>
 <script src="/cookies.js" defer></script>
 
-<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 <script>
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyCOGTFg5_gzSwjGWs8_B0QvUKLudcTvZXI",
-  authDomain: "crechespt.firebaseapp.com",
-  projectId: "crechespt",
-  storageBucket: "crechespt.firebasestorage.app",
-  messagingSenderId: "286409365255",
-  appId: "1:286409365255:web:0edecccfa2a954c40b57a2"
-};
-firebase.initializeApp(FIREBASE_CONFIG);
-const db = firebase.firestore();
-
-const form = document.getElementById("interest-form");
-const errEl = document.getElementById("i-error");
-const submitBtn = document.getElementById("i-submit");
-
-// Map idades (checkboxes) -> intervalo em meses
-function idadesToRange(idades){
-  if(!idades.length) return null;
-  const map = { bercario:[4,12], creche:[4,36], ji:[36,72], atl:[72,144] };
-  let min = Infinity, max = -Infinity;
-  for(const i of idades){
-    const r = map[i];
-    if(r){ if(r[0]<min) min=r[0]; if(r[1]>max) max=r[1]; }
+(function(){
+  const q = document.getElementById("pc-q");
+  const box = document.getElementById("pc-res");
+  const nao = document.getElementById("pc-naoencontro");
+  const criar = document.getElementById("pc-criar");
+  let DS = null, timer = null;
+  function esc(x){ return String(x||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  async function load(){
+    if(DS) return DS;
+    const r = await fetch("/creches_pt.json");
+    DS = await r.json();
+    return DS;
   }
-  return min===Infinity ? null : { min, max };
-}
-
-form.addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  errEl.textContent = "";
-  const fd = new FormData(form);
-  const data = Object.fromEntries(fd.entries());
-  // idades é multi-checkbox, recolho manualmente
-  const idadesSel = fd.getAll("idades").filter(Boolean);
-
-  // validação
-  if(!data.nome || data.nome.length < 2){ errEl.textContent="Indica o nome da creche."; return; }
-  if(!data.tipo){ errEl.textContent="Escolhe o tipo de creche."; return; }
-  if(!data.distrito){ errEl.textContent="Escolhe o distrito."; return; }
-  if(!data.morada || data.morada.length < 8){ errEl.textContent="Indica a morada completa (rua + número + código postal)."; return; }
-  if(!idadesSel.length){ errEl.textContent="Marca pelo menos uma idade atendida."; return; }
-  if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)){ errEl.textContent="Indica um email válido."; return; }
-  if(!data.telefone || data.telefone.replace(/\D/g,"").length < 9){ errEl.textContent="Indica um telefone com pelo menos 9 dígitos."; return; }
-
-  const range = idadesToRange(idadesSel);
-  if(!range){ errEl.textContent="Idades inválidas."; return; }
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = "A enviar…";
-  try{
-    await db.collection("creche_interest").add({
-      nome: data.nome,
-      tipo: data.tipo,
-      distrito: data.distrito,
-      morada: data.morada,
-      idades: idadesSel,
-      idade_min_meses: range.min,
-      idade_max_meses: range.max,
-      email: data.email,
-      telefone: data.telefone || "",
-      website: data.website || "",
-      horario: data.horario || "",
-      criancas: data.criancas || "",
-      mensagem: data.mensagem || "",
-      source: "para-creches",
-      user_agent: navigator.userAgent.slice(0,200),
-      lang: navigator.language || "",
-      ts: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    document.getElementById("form-fields").style.display = "none";
-    document.getElementById("form-thanks").classList.add("show");
-    window.scrollTo({top:document.getElementById("form-thanks").offsetTop-80, behavior:"smooth"});
-  }catch(err){
-    console.error(err);
-    errEl.textContent = "Não foi possível enviar. Verifica a tua ligação e tenta de novo.";
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Quero saber quando lançarem →";
+  async function search(){
+    const t = q.value.trim();
+    criar.href = "/painel?nova=" + encodeURIComponent(t);
+    if(t.length < 3){ box.style.display = "none"; nao.style.display = "none"; return; }
+    let ds; try { ds = await load(); } catch(e){ nao.style.display = "block"; return; }
+    const tl = t.toLowerCase();
+    const hits = ds.filter(c => ((c.nome||"")+" "+(c.localidade||"")+" "+(c.distrito||"")).toLowerCase().includes(tl)).slice(0, 8);
+    if(hits.length){
+      box.innerHTML = hits.map(c =>
+        '<a href="/painel?creche=' + encodeURIComponent(c.id) + '" style="display:block;padding:12px 16px;text-decoration:none;color:var(--ink);border-bottom:1px solid rgba(60,40,90,.06)">' +
+        '<div style="font-weight:700;font-size:14px">' + esc(c.nome) + '</div>' +
+        '<div style="font-size:12px;color:var(--ink-soft)">' + esc(c.localidade || c.morada || "") + ' · ' + esc(c.distrito||"") + ' — <b style="color:var(--c-coral)">pedir acesso ao painel →</b></div></a>'
+      ).join("");
+      box.style.display = "block";
+    } else {
+      box.style.display = "none";
+    }
+    nao.style.display = "block";
   }
-});
+  q.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(search, 200); });
+  document.addEventListener("click", e => { if(!e.target.closest("#registo")) box.style.display = "none"; });
+})();
 </script>
 </body>
 </html>

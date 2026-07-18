@@ -291,6 +291,14 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <section class="panel" data-pg="creches">
+      <h3>✏️ Correções de nome/morada <span class="count" id="cp-cor-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Propostas pelos gestores no painel. «Aplicar» escreve no override (mapa/app atualizam logo; as fichas estáticas na próxima regeneração).
+      </p>
+      <div id="cp-cor-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+    </section>
+
+    <section class="panel" data-pg="creches">
       <h3>📷 Fotos de creches — por rever <span class="count" id="cp-fotos-count">0</span></h3>
       <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
         Aprovadas ficam públicas na ficha. Recusa fotos com crianças identificáveis, má qualidade ou conteúdo fora do contexto.
@@ -2115,7 +2123,7 @@ auth.onAuthStateChanged(async (user)=>{
 function cpEsc(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
 async function loadCrechesPainel(){
-  await Promise.all([cpLoadClaims(), cpLoadFotos(), cpLoadRede()]);
+  await Promise.all([cpLoadClaims(), cpLoadFotos(), cpLoadRede(), cpLoadCorrecoes()]);
   // Admin v2: abrir a página do hash (ou início) + badge de pendências no separador
   admGo((location.hash || "#inicio").slice(1));
   try {
@@ -2180,6 +2188,53 @@ async function cpLoadRede(){
       tile("⏳", pend, "pedidos de acesso pendentes", pend > 0 ? "#FFE3D2" : "#DEF5E1");
   } catch(e){
     host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Erro a carregar a rede: ' + cpEsc(e.message||e) + '</div>';
+  }
+}
+
+// ─── Correções de nome/morada propostas pelos gestores (creche_correcoes) ───
+async function cpLoadCorrecoes(){
+  const host = $("cp-cor-host");
+  try {
+    const snap = await db.collection("creche_correcoes").get();
+    $("cp-cor-count").textContent = snap.size;
+    if(!snap.size){ host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Sem correções pendentes. 🎉</div>'; return; }
+    const rows = [];
+    snap.forEach(d => {
+      const c = d.data();
+      rows.push(
+        '<div class="item" style="border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px">' +
+        '<b>' + cpEsc(c.creche_nome_atual || d.id) + '</b> <span style="font-size:11px;color:var(--ink-soft)">(' + cpEsc(d.id) + ')</span><br>' +
+        (c.nome ? '✏️ Nome → <b>' + cpEsc(c.nome) + '</b><br>' : '') +
+        (c.morada ? '📍 Morada → <b>' + cpEsc(c.morada) + '</b><br>' : '') +
+        (c.nota ? '<span style="font-size:12px;color:var(--ink-soft)">💬 ' + cpEsc(c.nota) + '</span><br>' : '') +
+        '<span style="font-size:11px;color:var(--ink-soft)">por ' + cpEsc(c.email || c.uid || "?") + '</span>' +
+        '<div style="margin-top:8px;display:flex;gap:8px">' +
+        '<button class="cor-aplicar" data-id="' + cpEsc(d.id) + '" style="background:var(--c-mint,#7DD389);color:#fff;border:none;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12.5px">✓ Aplicar</button>' +
+        '<button class="cor-rejeitar" data-id="' + cpEsc(d.id) + '" style="background:#fff;color:#B4255C;border:1.5px solid #B4255C;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12.5px">✗ Rejeitar</button>' +
+        '</div></div>'
+      );
+    });
+    host.innerHTML = rows.join("");
+    host.querySelectorAll(".cor-aplicar").forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try {
+        const doc = await db.doc("creche_correcoes/" + b.dataset.id).get();
+        const c = doc.data() || {};
+        const ovr = { updated_at: firebase.firestore.FieldValue.serverTimestamp(), fonte_correcao: "painel" };
+        if(c.nome) ovr.nome = c.nome;
+        if(c.morada) ovr.morada = c.morada;
+        await db.collection("creche_overrides").doc(b.dataset.id).set(ovr, { merge: true });
+        await db.doc("creche_correcoes/" + b.dataset.id).delete();
+        cpLoadCorrecoes();
+      } catch(e){ alert("Erro: " + (e.message || e)); b.disabled = false; }
+    });
+    host.querySelectorAll(".cor-rejeitar").forEach(b => b.onclick = async () => {
+      if(!confirm("Rejeitar esta correção? (o gestor não é notificado — considera avisá-lo por email)")) return;
+      try { await db.doc("creche_correcoes/" + b.dataset.id).delete(); cpLoadCorrecoes(); }
+      catch(e){ alert("Erro: " + (e.message || e)); }
+    });
+  } catch(e){
+    host.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">' + cpEsc(e.message || e) + '</div>';
   }
 }
 
