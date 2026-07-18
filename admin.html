@@ -760,7 +760,7 @@ async function loadDashboard(user){
   // --- Pedidos de remoção
   let removals = [];
   if(rmSnap){
-    rmSnap.forEach(d=>{ const x = d.data(); x.id=d.id; removals.push(x); });
+    rmSnap.forEach(d=>{ const x = d.data(); x.id=d.id; if(x.estado !== "removida" && x.estado !== "ignorado") removals.push(x); });
     $("m-removals").textContent = removals.length;
   } else { $("m-removals").textContent = "?"; }
 
@@ -881,7 +881,7 @@ function renderRemovals(rows){
   $("rm-host").innerHTML = `
     <div class="tbl-wrap"><table>
       <thead><tr>
-        <th>Data</th><th>Creche</th><th>Função</th><th>Email contacto</th><th>Motivo</th>
+        <th>Data</th><th>Creche</th><th>Função</th><th>Email contacto</th><th>Motivo</th><th>Ação</th>
       </tr></thead>
       <tbody>
         ${rows.map(r=>`
@@ -891,10 +891,38 @@ function renderRemovals(rows){
             <td><span class="pill">${escapeHtml(relLabels[r.relationship]||r.relationship||"—")}</span></td>
             <td class="email-cell"><a href="mailto:${escapeHtml(r.requester_email||"")}">${escapeHtml(r.requester_email||"")}</a></td>
             <td class="msg">${escapeHtml(r.reason||"—")}</td>
+            <td style="white-space:nowrap">
+              <button class="rm-apply" data-id="${escapeHtml(r.id)}" data-cid="${escapeHtml(r.creche_id||"")}" data-nome="${escapeHtml(r.creche_name||"")}" style="background:#B4255C;color:#fff;border:none;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12px">🗑 Aceitar e remover</button>
+              <button class="rm-dismiss" data-id="${escapeHtml(r.id)}" style="background:#fff;color:var(--ink-soft);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer;font-family:inherit;font-size:12px;margin-left:4px">Ignorar</button>
+            </td>
           </tr>`).join("")}
       </tbody>
     </table></div>
   `;
+  // Aceitar e remover: oculta a creche do mapa (override oculta=true) e marca o pedido tratado
+  $("rm-host").querySelectorAll(".rm-apply").forEach(b => b.onclick = async () => {
+    const cid = b.dataset.cid, nome = b.dataset.nome || "esta creche";
+    if(!cid){ alert("Este pedido não tem creche_id — remove manualmente."); return; }
+    if(!confirm(`Remover a "${nome}" do mapa?\n\nA página pública deixa de aparecer aos pais no creches.app.\nPodes reverter no futuro apagando o campo "oculta" no override.`)) return;
+    b.disabled = true; b.textContent = "A remover…";
+    try {
+      await db.collection("creche_overrides").doc(String(cid)).set({
+        oculta: true,
+        oculta_em: firebase.firestore.FieldValue.serverTimestamp(),
+        oculta_motivo: "pedido de remoção aprovado no admin"
+      }, { merge: true });
+      await db.doc("creche_removals/" + b.dataset.id).set({ estado: "removida", tratado_em: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+      alert(`✓ "${nome}" removida do mapa. Atualiza a app para confirmar (as fichas estáticas saem na próxima regeneração).`);
+      loadDashboard(auth.currentUser);
+    } catch(e){ alert("Erro: " + (e.message || e)); b.disabled = false; b.textContent = "🗑 Aceitar e remover"; }
+  });
+  $("rm-host").querySelectorAll(".rm-dismiss").forEach(b => b.onclick = async () => {
+    if(!confirm("Ignorar este pedido? (não remove a creche)")) return;
+    try {
+      await db.doc("creche_removals/" + b.dataset.id).set({ estado: "ignorado", tratado_em: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+      loadDashboard(auth.currentUser);
+    } catch(e){ alert("Erro: " + (e.message || e)); }
+  });
 }
 
 // Mapeamento das idades claimed para min/max em meses (compatível com creche_overrides)

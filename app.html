@@ -1162,6 +1162,20 @@ async function loadDataset(){
       }
     }
   }catch(e){ _w("Overrides skipped:", e); }
+  // Remoções: overrides ou extras com oculta=true saem do mapa (admin aprovou a remoção)
+  try {
+    if(typeof firebase !== "undefined" && firebase.apps && firebase.apps.length){
+      const db = firebase.firestore();
+      const ovr = await db.collection("creche_overrides").where("oculta","==",true).get().catch(()=>null);
+      if(ovr && !ovr.empty){
+        const ocultas = new Set();
+        ovr.forEach(d => ocultas.add(String(d.id)));
+        for(let i = cleaned.length - 1; i >= 0; i--){
+          if(ocultas.has(String(cleaned[i].id))) cleaned.splice(i, 1);
+        }
+      }
+    }
+  } catch(e){ _w("Ocultas skipped:", e); }
   return cleaned;
 }
 

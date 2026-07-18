@@ -157,7 +157,8 @@ service cloud.firestore {
         && request.resource.data.reason is string
         && request.resource.data.reason.size() <= 800;
       allow read:   if isAdmin();
-      allow update, delete: if false;
+      allow update: if isAdmin();   // admin marca estado: removida / ignorado
+      allow delete: if false;
     }
 
     // ─── Vagas em tempo real (Onda 29 — Jun 2026) ───
