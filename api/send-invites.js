@@ -111,6 +111,45 @@ Joaquim Cabral · Fundador, creches.app
 (Se não quiserem receber estes emails, respondam "remover".)`;
 }
 
+function slugify(nome) {
+  return String(nome || "creche").normalize("NFKD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase()
+    .replace(/-{2,}/g, "-").slice(0, 70).replace(/-+$/, "");
+}
+
+// Calcula o próximo lote server-side: creches com email, não aderentes, não convidadas,
+// ordenadas por visualizações (desc). Devolve também quantas ficam por convidar.
+async function construirLoteAuto(db, limit) {
+  const [ds, mgrsSnap, invSnap, daysSnap] = await Promise.all([
+    fetch("https://creches.app/creches_pt.json").then((r) => r.json()).catch(() => []),
+    db.collection("creche_managers").get().catch(() => null),
+    db.collection("creche_invites").get().catch(() => null),
+    db.collectionGroup("days").get().catch(() => null),
+  ]);
+  const aderentes = new Set();
+  if (mgrsSnap) mgrsSnap.forEach((d) => aderentes.add(String(d.data().creche_id)));
+  const convidadas = new Set();
+  if (invSnap) invSnap.forEach((d) => { if (d.data().estado === "enviado") convidadas.add(String(d.id)); });
+  const views = new Map();
+  if (daysSnap) daysSnap.forEach((d) => {
+    if (d.ref.parent.id !== "days") return;
+    const p = d.ref.parent.parent; if (!p) return;
+    views.set(p.id, (views.get(p.id) || 0) + (d.data().count || 0));
+  });
+  const cand = ds
+    .filter((c) => c.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email))
+    .filter((c) => !aderentes.has(String(c.id)) && !convidadas.has(String(c.id)))
+    .map((c) => ({
+      id: String(c.id), nome: c.nome, email: c.email,
+      views: views.get(String(c.id)) || 0,
+      ficha: /^osm-/.test(String(c.id)) ? ("https://creches.app/creche/" + slugify(c.nome) + "-" + String(c.id).replace(/\D/g, "")) : "",
+    }))
+    .sort((a, b) => b.views - a.views);
+  const lote = cand.slice(0, limit);
+  lote._restantesAntes = cand.length;  // total elegível antes de enviar este lote
+  return lote;
+}
+
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
@@ -118,21 +157,39 @@ export default async function handler(req, res) {
     if (!process.env.FIREBASE_SERVICE_ACCOUNT) return res.status(503).json({ error: "FIREBASE_SERVICE_ACCOUNT missing" });
     initFirebase();
 
+    const db = getFirestore();
     const token = (req.headers.authorization || "").replace(/^Bearer\s+/i, "");
     if (!token) return res.status(401).json({ error: "Missing auth token" });
-    let decoded;
-    try { decoded = await getAuth().verifyIdToken(token); }
-    catch (e) { return res.status(401).json({ error: "Invalid token" }); }
-    const adminDoc = await getFirestore().doc(`admins/${decoded.uid}`).get();
-    if (!adminDoc.exists) return res.status(403).json({ error: "Not an admin" });
+
+    // Dois modos de autenticação: (a) token de admin (UI), (b) CRON_SECRET (briefing automático)
+    let quem = null;
+    const cronSecret = (process.env.CRON_SECRET || "").trim();
+    if (cronSecret && token === cronSecret) {
+      quem = "briefing-automatico";
+    } else {
+      let decoded;
+      try { decoded = await getAuth().verifyIdToken(token); }
+      catch (e) { return res.status(401).json({ error: "Invalid token" }); }
+      const adminDoc = await db.doc(`admins/${decoded.uid}`).get();
+      if (!adminDoc.exists) return res.status(403).json({ error: "Not an admin" });
+      quem = decoded.email || decoded.uid;
+    }
 
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
-    const recipients = Array.isArray(body.recipients) ? body.recipients : [];
     const dryRun = !!body.dryRun;
+    let recipients = Array.isArray(body.recipients) ? body.recipients : [];
+
+    // Modo automático: o servidor calcula o próximo lote (top views, não aderentes, não convidados)
+    if (body.auto) {
+      const limit = Math.min(MAX_BATCH, Math.max(1, parseInt(body.limit, 10) || 40));
+      recipients = await construirLoteAuto(db, limit);
+      if (!recipients.length) {
+        return res.status(200).json({ total: 0, enviados: 0, esgotado: true, restantes: 0, results: [] });
+      }
+    }
+
     if (!recipients.length) return res.status(400).json({ error: "No recipients" });
     if (recipients.length > MAX_BATCH) return res.status(400).json({ error: `Batch limit ${MAX_BATCH}` });
-
-    const db = getFirestore();
     const results = [];
     for (const r of recipients) {
       const id = String(r.id || r.email || "");
@@ -168,7 +225,7 @@ export default async function handler(req, res) {
           resend_id: jr.id || null,
           erro: ok ? null : (jr.message || `HTTP ${resp.status}`),
           enviado_em: new Date().toISOString(),
-          enviado_por: decoded.email || decoded.uid,
+          enviado_por: quem,
         }, { merge: true });
         results.push({ id, email, status: ok ? "enviado" : "falhou", erro: ok ? undefined : (jr.message || resp.status) });
       } catch (e) {
@@ -179,7 +236,11 @@ export default async function handler(req, res) {
     }
 
     const enviados = results.filter((r) => r.status === "enviado").length;
-    return res.status(200).json({ total: recipients.length, enviados, results });
+    // Quantas ficam por convidar depois deste lote (só calculável no modo auto)
+    const restantes = (recipients._restantesAntes != null)
+      ? Math.max(0, recipients._restantesAntes - enviados)
+      : null;
+    return res.status(200).json({ total: recipients.length, enviados, restantes, results });
   } catch (e) {
     console.error("send-invites error:", e);
     return res.status(500).json({ error: e.message || "internal" });
