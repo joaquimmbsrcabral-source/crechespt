@@ -194,6 +194,17 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     </div>
   </div>
 
+  <!-- ══════════ ECRÃ: CRECHE REMOVIDA ══════════ -->
+  <div class="screen" id="s-removida">
+    <div class="card center" style="max-width:520px;margin:0 auto">
+      <div style="font-size:2.6rem">👋</div>
+      <h2 style="justify-content:center;margin:8px 0">Página removida do mapa</h2>
+      <p class="sub">A pedido vosso, a <b id="removida-nome">vossa creche</b> deixou de aparecer no creches.app.<br>Se foi engano ou mudaram de ideias, é só dizer — voltamos a colocá-la em 24-48h.</p>
+      <p style="margin-top:16px"><a class="btn btn-primary" href="mailto:geral@creches.app?subject=Voltar%20ao%20mapa%20creches.app">Quero voltar ao mapa</a></p>
+      <p style="margin-top:10px;font-size:.82rem"><a href="#" id="btn-removida-sair">Terminar sessão</a></p>
+    </div>
+  </div>
+
   <!-- ══════════ ECRÃ: DASHBOARD ══════════ -->
   <div class="screen" id="s-dash">
 
@@ -615,8 +626,23 @@ function fichaPublicaURL(id, nome){
   return "/creche/" + (slug || "creche") + "-" + num;
 }
 
+// Creche removida do mapa — mostra ecrã dedicado em vez do dashboard
+function mostrarRemovida(){
+  const el = document.getElementById("removida-nome");
+  if(el) el.textContent = (MY_CRECHE && MY_CRECHE.nome) || "vossa creche";
+  const sair = document.getElementById("btn-removida-sair");
+  if(sair) sair.onclick = (e) => { e.preventDefault(); auth.signOut().then(() => location.reload()); };
+  show("s-removida");
+}
+
 // ─────────── DASHBOARD ───────────
 async function abrirDashboard(){
+  // Se a creche foi removida do mapa (override oculta=true), não abrir o dashboard
+  try {
+    const ovr = await db.doc("creche_overrides/" + MY_CRECHE.id).get();
+    if(ovr.exists && ovr.data().oculta === true){ mostrarRemovida(); return; }
+  } catch(e){ /* se falhar a leitura, deixa abrir (evita bloquear por erro de rede) */ }
+
   $("dash-nome").textContent = MY_CRECHE.nome;
   // Link para a ficha pública (slug aproximado via pesquisa no /app)
   $("dash-ver-ficha").href = fichaPublicaURL(MY_CRECHE.id, MY_CRECHE.nome);
