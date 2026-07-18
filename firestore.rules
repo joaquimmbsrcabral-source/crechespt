@@ -125,6 +125,13 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Registo de convites enviados às creches (campanha de ativação).
+    // Escrito só pelo servidor (Admin SDK, ignora estas regras). Cliente admin lê para dedupe/UI.
+    match /creche_invites/{id} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
     // Stats diários (page views agregados, sem dados pessoais)
     // Qualquer pessoa pode criar/incrementar; só admin lê.
     match /daily_stats/{date} {

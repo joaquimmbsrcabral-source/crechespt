@@ -212,6 +212,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
       <button data-nav="inicio" class="on">🏠 Início</button>
       <button data-nav="creches">🏫 Creches <span class="nbadge" id="nav-creches-badge" style="display:none">0</span></button>
       <button data-nav="stats">📊 Estatísticas</button>
+      <button data-nav="convidar">📨 Convidar creches</button>
       <button data-nav="comunidade">👥 Comunidade</button>
     </nav>
 
@@ -465,6 +466,24 @@ table tr:hover{background:rgba(255,243,214,.4)}
     </section>
 
     <!-- ═══ Admin v2: Estatísticas ═══ -->
+    <section class="panel" data-pg="convidar">
+      <h3>📨 Convidar creches a gerir a sua página</h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">
+        Envia o convite (via Resend, do <b>geral@creches.app</b>) para as creches com email conhecido, começando pelas <b>mais visitadas</b> e que <b>ainda não foram convidadas nem aderiram</b>. Lotes pequenos protegem a reputação do domínio — envia 1-2 lotes por dia.
+      </p>
+      <div id="inv-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+        <label style="font-size:13px;font-weight:700">Tamanho do lote:
+          <select id="inv-batch" style="font-family:inherit;padding:6px 10px;border-radius:8px;border:1.5px solid var(--line);margin-left:6px">
+            <option>20</option><option selected>40</option><option>60</option>
+          </select>
+        </label>
+        <button id="inv-preparar" style="background:var(--c-lilac-soft,#ECE4FF);color:var(--ink);border:none;border-radius:10px;padding:9px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px">🔍 Preparar próximo lote</button>
+        <button id="inv-enviar" style="background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px;display:none">📨 Enviar lote via Resend</button>
+      </div>
+      <div id="inv-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">Clica em «Preparar próximo lote» para ver quem vai ser convidado.</div></div>
+    </section>
+
     <section class="panel" data-pg="stats">
       <h3>🏆 Top creches mais visitadas <span class="count" id="top-total">—</span></h3>
       <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
@@ -501,12 +520,111 @@ function admGo(pg){
   document.querySelectorAll("#adm-nav [data-nav]").forEach(b => b.classList.toggle("on", b.dataset.nav === pg));
   try { history.replaceState(null, "", "#" + pg); } catch(e){}
   if(pg === "stats" && !_statsLoaded){ _statsLoaded = true; loadTopCreches(); loadLeadsStats(); loadVagasStats(); }
+  if(pg === "convidar" && !_invLoaded){
+    _invLoaded = true;
+    $("inv-preparar").onclick = invPrepararLote;
+    $("inv-enviar").onclick = invEnviarLote;
+    invRefreshStats();
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 document.addEventListener("click", e => {
   const b = e.target.closest("#adm-nav [data-nav]");
   if(b) admGo(b.dataset.nav);
 });
+
+// ═══════════ CONVIDAR CRECHES (campanha de ativação via Resend) ═══════════
+let _invLoaded = false;
+let _invLote = [];  // lote preparado, à espera de envio
+
+async function invRefreshStats(){
+  const host = $("inv-stats");
+  try {
+    const [ds, mgrsSnap, invSnap] = await Promise.all([
+      fetch("/creches_pt.json").then(r => r.json()).catch(() => []),
+      db.collection("creche_managers").get().catch(() => null),
+      db.collection("creche_invites").get().catch(() => null),
+    ]);
+    const comEmail = ds.filter(c => c.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)).length;
+    const aderentes = new Set(); if(mgrsSnap) mgrsSnap.forEach(d => aderentes.add(String(d.data().creche_id)));
+    let enviados = 0; if(invSnap) invSnap.forEach(d => { if(d.data().estado === "enviado") enviados++; });
+    const tile = (n, l, bg) => '<div class="mini-stat" style="background:' + bg + '"><b>' + n + '</b><span>' + l + '</span></div>';
+    host.innerHTML =
+      tile(comEmail.toLocaleString("pt-PT"), "creches com email", "#D9F2EF") +
+      tile(enviados.toLocaleString("pt-PT"), "já convidadas", "#DEF5E1") +
+      tile(aderentes.size.toLocaleString("pt-PT"), "já aderentes", "#FFE2EC") +
+      tile(Math.max(0, comEmail - enviados - aderentes.size).toLocaleString("pt-PT"), "por convidar", "#FFF1D6");
+  } catch(e){ host.innerHTML = '<div class="empty" style="color:#B4255C">' + cpEsc(e.message||e) + '</div>'; }
+}
+
+async function invPrepararLote(){
+  const host = $("inv-host");
+  const N = parseInt($("inv-batch").value, 10) || 40;
+  host.innerHTML = '<div class="empty" style="color:var(--ink-soft)">A calcular o próximo lote…</div>';
+  $("inv-enviar").style.display = "none";
+  try {
+    const [cgSnap, ds, mgrsSnap, invSnap] = await Promise.all([
+      db.collectionGroup("days").get().catch(() => null),
+      fetch("/creches_pt.json").then(r => r.json()),
+      db.collection("creche_managers").get().catch(() => null),
+      db.collection("creche_invites").get().catch(() => null),
+    ]);
+    // views por creche
+    const views = new Map();
+    if(cgSnap) cgSnap.forEach(d => {
+      if(d.ref.parent.id !== "days") return;
+      const p = d.ref.parent.parent; if(!p) return;
+      views.set(p.id, (views.get(p.id) || 0) + (d.data().count || 0));
+    });
+    const aderentes = new Set(); if(mgrsSnap) mgrsSnap.forEach(d => aderentes.add(String(d.data().creche_id)));
+    const convidadas = new Set(); if(invSnap) invSnap.forEach(d => { if(d.data().estado === "enviado") convidadas.add(String(d.id)); });
+    // candidatos: com email, não aderentes, não convidados, ordenados por views desc
+    const cand = ds
+      .filter(c => c.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email))
+      .filter(c => !aderentes.has(String(c.id)) && !convidadas.has(String(c.id)))
+      .map(c => ({ id: String(c.id), nome: c.nome, email: c.email, distrito: c.distrito || "", views: views.get(String(c.id)) || 0,
+                   ficha: /^osm-/.test(String(c.id)) ? ("https://creches.app/creche/" + invSlug(c.nome) + "-" + String(c.id).replace(/\D/g,"")) : "" }))
+      .sort((a, b) => b.views - a.views)
+      .slice(0, N);
+    _invLote = cand;
+    if(!cand.length){ host.innerHTML = '<div class="empty" style="color:var(--ink-soft)">🎉 Não há mais creches por convidar (com email conhecido).</div>'; return; }
+    host.innerHTML =
+      '<div style="font-size:13px;color:var(--ink-soft);margin-bottom:10px">Próximas <b>' + cand.length + '</b> creches a convidar (por visualizações):</div>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>#</th><th>Creche</th><th>Distrito</th><th>Email</th><th>Views</th></tr></thead><tbody>' +
+      cand.map((c, i) => '<tr><td>' + (i+1) + '</td><td><b>' + cpEsc(c.nome) + '</b></td><td>' + cpEsc(c.distrito) + '</td><td class="email-cell">' + cpEsc(c.email) + '</td><td>' + c.views + '</td></tr>').join("") +
+      '</tbody></table></div>';
+    $("inv-enviar").style.display = "inline-block";
+    $("inv-enviar").textContent = "📨 Enviar estas " + cand.length + " via Resend";
+  } catch(e){ host.innerHTML = '<div class="empty" style="color:#B4255C">' + cpEsc(e.message||e) + '</div>'; }
+}
+
+function invSlug(nome){
+  return String(nome||"creche").normalize("NFKD").replace(/[̀-ͯ]/g,"")
+    .replace(/[^a-zA-Z0-9]+/g,"-").replace(/^-+|-+$/g,"").toLowerCase().replace(/-{2,}/g,"-").slice(0,70).replace(/-+$/,"");
+}
+
+async function invEnviarLote(){
+  if(!_invLote.length) return;
+  if(!confirm("Enviar " + _invLote.length + " convites via Resend (do geral@creches.app)?\n\nCada creche recebe o email de ativação com o link do painel.")) return;
+  const btn = $("inv-enviar"); btn.disabled = true; btn.textContent = "A enviar… (não feches a página)";
+  try {
+    const token = await auth.currentUser.getIdToken();
+    const resp = await fetch("/api/send-invites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+      body: JSON.stringify({ recipients: _invLote.map(c => ({ id: c.id, nome: c.nome, email: c.email, ficha: c.ficha })) }),
+    });
+    const jr = await resp.json();
+    if(!resp.ok){ alert("Erro: " + (jr.error || resp.status)); btn.disabled = false; return; }
+    const falhas = (jr.results || []).filter(r => r.status !== "enviado");
+    alert("✓ " + jr.enviados + " de " + jr.total + " enviados." + (falhas.length ? "\n\n" + falhas.length + " não enviados (ver consola)." : ""));
+    if(falhas.length) console.table(falhas);
+    _invLote = [];
+    $("inv-host").innerHTML = '<div class="empty" style="color:var(--c-mint,#2A8)">Lote enviado. Prepara o próximo amanhã. 👍</div>';
+    btn.style.display = "none";
+    invRefreshStats();
+  } catch(e){ alert("Erro: " + (e.message||e)); btn.disabled = false; btn.textContent = "📨 Enviar via Resend"; }
+}
 
 // Top creches mais visitadas — collection group (regra: só admin)
 async function loadTopCreches(){
