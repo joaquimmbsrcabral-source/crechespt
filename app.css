@@ -712,6 +712,7 @@ header.topbar{
 }
 /* HERO GRADIENT no detail — match com fichas estáticas */
 .detail .dhead{
+  flex-shrink:0;  /* nunca comprimir o cabeçalho — só o corpo faz scroll */
   padding:22px 24px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
   background:linear-gradient(135deg,#FF6B9D,#FF9F68);
   color:#fff;position:relative;overflow:hidden;
@@ -814,10 +815,11 @@ header.topbar{
 .btn.danger:hover{background:var(--c-coral-soft)}
 
 .toolbar{
+  flex-shrink:0;
   display:flex;gap:8px;flex-wrap:wrap;padding:14px 22px;border-top:1px solid var(--line);
   background:#FFFAF4;
 }
-.notice{font-size:12px;color:var(--ink-soft);padding:10px 22px;background:#fff;
+.notice{flex-shrink:0;font-size:12px;color:var(--ink-soft);padding:10px 22px;background:#fff;
   border-top:1px dashed var(--line)}
 
 /* ============= Loading ============= */
