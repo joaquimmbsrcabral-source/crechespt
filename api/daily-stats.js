@@ -32,8 +32,9 @@ function lisbonDate(offsetDays = 0) {
 
 export default async function handler(req, res) {
   try {
-    if (!process.env.CRON_SECRET || (req.headers.authorization || "") !== `Bearer ${process.env.CRON_SECRET}`) {
-      return res.status(401).json({ error: "Unauthorized" });
+    const secret = (process.env.CRON_SECRET || "").trim();
+    if (!secret || (req.headers.authorization || "").trim() !== `Bearer ${secret}`) {
+      return res.status(401).json({ error: secret ? "Unauthorized" : "CRON_SECRET not configured" });
     }
     if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
       return res.status(503).json({ error: "FIREBASE_SERVICE_ACCOUNT not configured" });
