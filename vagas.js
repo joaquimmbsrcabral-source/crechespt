@@ -5,7 +5,7 @@
 */
 (function(){
   const COLL = "vagas";
-  const TTL_DAYS = 21;   // 3 semanas (ou até alguém reportar "sem vaga")
+  const TTL_DAYS = 30;   // 1 mês (ou até alguém reportar "sem vaga")
   const RATE_KEY = "crechespt/vagas/rate";
   const RATE_MAX_PER_DAY = 5;
 
@@ -113,9 +113,9 @@
       const ts = vaga.reportado_em && vaga.reportado_em.toMillis
         ? vaga.reportado_em.toMillis() : 0;
       const days = (nowMs() - ts) / 86400000;
-      if(days < 4) return "fresh";   // verde brilhante
-      if(days < 10) return "normal"; // verde normal
-      return "old";                  // amarelo (10-21 dias)
+      if(days < 5) return "fresh";   // verde brilhante
+      if(days < 14) return "normal"; // verde normal
+      return "old";                  // amarelo (14-30 dias)
     },
 
     /** Reporta vaga — source pode ser "pai" ou "creche" */

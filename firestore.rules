@@ -170,7 +170,7 @@ service cloud.firestore {
 
     // ─── Vagas em tempo real (Onda 29 — Jun 2026) ───
     // Dual-source: creches reportam (verificado por email) e pais reportam
-    // anonimamente. Auto-expiração via TTL no campo expires_at (21 dias),
+    // anonimamente. Auto-expiração via TTL no campo expires_at (30 dias),
     // ou cancelamento antecipado por report tipo='sem_vaga' de outro pai.
     match /vagas/{vagaId} {
       // Leitura pública — qualquer um pode ver vagas activas
@@ -186,7 +186,7 @@ service cloud.firestore {
         && (!('tipo' in request.resource.data) ||
             request.resource.data.tipo in ['vaga', 'sem_vaga'])
         && request.resource.data.expires_at is timestamp
-        && request.resource.data.expires_at <= request.time + duration.value(22, 'd')
+        && request.resource.data.expires_at <= request.time + duration.value(31, 'd')
         && request.resource.data.creche_id is string
         && request.resource.data.creche_id.size() < 100
         && request.resource.data.creche_id.size() > 0
