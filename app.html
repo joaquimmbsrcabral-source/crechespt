@@ -481,6 +481,8 @@
 
       <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
       <div id="d-vaga-slot"></div>
+      <!-- 🔔 Alerta de vaga — "Avisa-me quando abrir vaga" (se não houver vaga activa) -->
+      <div id="d-vaga-alert"></div>
       <!-- ✓ Perfil verificado da creche (Painel) — cartão gerido pela própria creche -->
       <div id="d-perfil-slot"></div>
       <!-- 🆓 Creche Feliz — slot preenchido se houver report ou marcação -->
@@ -1908,6 +1910,11 @@ function openDetail(id){
     if(window.Vagas){
       window.Vagas.renderBadgeInto(dVagaSlot, c.id);
     }
+  }
+  // === Alerta de vaga ("🔔 Avisa-me quando abrir vaga") ===
+  const dVagaAlert = document.getElementById("d-vaga-alert");
+  if(dVagaAlert && typeof _renderVagaAlertUI === "function"){
+    _renderVagaAlertUI(dVagaAlert, c);
   }
   // === Perfil verificado da creche (via Painel /painel) ===
   const dPerfilSlot = document.getElementById("d-perfil-slot");
@@ -3478,6 +3485,63 @@ async function _loadVagasAtivas(){
 }
 // Disparar 3 segundos depois do load (depois do Firebase init)
 window.addEventListener('load', () => setTimeout(_loadVagasAtivas, 2000));
+
+// === Alerta de vaga ("🔔 Avisa-me quando abrir vaga") — cartão de detalhe ===
+// Sem vaga activa: botão que abre mini-form (email + Ativar alerta).
+// Já subscrito (localStorage): mostra logo "✓ Alerta ativo".
+function _renderVagaAlertUI(slot, c){
+  if(!slot) return;
+  slot.innerHTML = "";
+  if(!c || !c.id || !window.Vagas || typeof window.Vagas.subscribeAlert !== "function") return;
+  const boxCss = "margin:0 0 14px;padding:11px 14px;background:#F4F2FB;border:1.5px solid #E6E1F4;border-radius:14px;font-size:13px;color:#2C2356;line-height:1.5";
+  const ativoHTML = `<div style="${boxCss}"><span style="color:#1F7A3D;font-weight:800">✓ Alerta ativo</span> — avisamos-te por email quando abrir vaga.</div>`;
+  if(window.Vagas.hasAlert(c.id)){
+    slot.innerHTML = ativoHTML;
+    return;
+  }
+  // Já há vaga activa? O badge verde diz tudo — o alerta não faz sentido agora.
+  if(typeof State !== "undefined" && State.vagasAtivas && State.vagasAtivas.has(c.id)) return;
+  slot.innerHTML = `
+    <div style="${boxCss}">
+      <button type="button" id="_va-open" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:800;color:#2C2356">🔔 Avisa-me quando abrir vaga</button>
+      <form id="_va-form" style="display:none;margin-top:9px;gap:7px;flex-wrap:wrap">
+        <input id="_va-email" type="email" required maxlength="120" placeholder="o-teu@email.pt" autocomplete="email" style="flex:1;min-width:150px;background:#fff;border:1.5px solid #E6E1F4;border-radius:12px;padding:8px 12px;font-family:inherit;font-size:13px;color:#2C2356;box-sizing:border-box">
+        <button type="submit" id="_va-go" style="background:#7DD389;color:#fff;border:none;border-radius:12px;padding:8px 14px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap">Ativar alerta</button>
+        <div id="_va-msg" style="display:none;flex-basis:100%;font-size:12px;color:#C0392B"></div>
+      </form>
+    </div>`;
+  const btn = slot.querySelector("#_va-open");
+  const form = slot.querySelector("#_va-form");
+  btn.addEventListener("click", ()=>{
+    btn.style.display = "none";
+    form.style.display = "flex";
+    const inp = slot.querySelector("#_va-email");
+    // Pré-preencher com o email do login Google, se houver
+    try {
+      const u = (window.FB && FB.auth && FB.auth.currentUser) ||
+                (window.firebase && firebase.auth && firebase.auth().currentUser);
+      if(u && u.email) inp.value = u.email;
+    } catch(e){}
+    inp.focus();
+  });
+  form.addEventListener("submit", async (ev)=>{
+    ev.preventDefault();
+    const go = slot.querySelector("#_va-go");
+    const email = slot.querySelector("#_va-email").value.trim();
+    go.disabled = true;
+    go.textContent = "⏳ A ativar…";
+    try {
+      await window.Vagas.subscribeAlert({ creche_id: c.id, nome_creche: c.nome, email });
+      slot.innerHTML = ativoHTML;
+    } catch(err){
+      go.disabled = false;
+      go.textContent = "Ativar alerta";
+      const msg = slot.querySelector("#_va-msg");
+      msg.style.display = "block";
+      msg.textContent = (err && err.message) || "Erro — tenta outra vez.";
+    }
+  });
+}
 
 // === Modal para reportar vaga (pais anónimos) — disparado pelo popup do mapa ===
 function _openVagaModalApp(crecheId, nome){

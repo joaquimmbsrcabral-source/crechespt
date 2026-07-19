@@ -1,12 +1,14 @@
 /* Creches.app — Vagas em tempo real (MVP)
    Lib JS para reportar vagas + mostrar estado actual.
    Usa Firebase Firestore (window.firebase deve estar carregado primeiro).
-   API global: window.Vagas.{get, getActive, report, hasActive, daysAgo}
+   API global: window.Vagas.{get, getActive, report, hasActive, daysAgo, subscribeAlert, hasAlert}
 */
 (function(){
   const COLL = "vagas";
+  const ALERTS_COLL = "vaga_alerts";
   const TTL_DAYS = 30;   // 1 mês (ou até alguém reportar "sem vaga")
   const RATE_KEY = "crechespt/vagas/rate";
+  const ALERTS_KEY = "crechespt/alertas";
   const RATE_MAX_PER_DAY = 5;
 
   function db(){
@@ -33,6 +35,21 @@
         ? { day: today, count: (raw.count || 0) + 1 }
         : { day: today, count: 1 };
       localStorage.setItem(RATE_KEY, JSON.stringify(next));
+    } catch(e){}
+  }
+
+  // ─── Alertas subscritos (localStorage, só para a UI mostrar "✓ Alerta ativo") ───
+  function _alertIds(){
+    try {
+      const raw = JSON.parse(localStorage.getItem(ALERTS_KEY) || "[]");
+      return Array.isArray(raw) ? raw : [];
+    } catch(e){ return []; }
+  }
+  function _rememberAlert(crecheId){
+    try {
+      const ids = _alertIds();
+      if(!ids.includes(crecheId)) ids.push(crecheId);
+      localStorage.setItem(ALERTS_KEY, JSON.stringify(ids.slice(-100)));
     } catch(e){}
   }
 
@@ -152,6 +169,16 @@
 
       if(source === "pai") _bumpRate();
 
+      // Avisar pais subscritos (alertas de vaga) — fire and forget, nunca bloqueia o report.
+      // (report() nunca cria docs tipo "sem_vaga" — esses vêm de reportSemVaga.)
+      try {
+        fetch("/api/vaga-alert-notify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ creche_id, vaga_id: ref.id })
+        }).catch(()=>{});
+      } catch(e){}
+
       return ref.id;
     },
 
@@ -192,6 +219,37 @@
         alert("Obrigado! O report foi registado e a vaga vai deixar de aparecer. 💛");
       } catch(e){
         alert("Erro: " + (e.message || e));
+      }
+    },
+
+    /** True se este browser já subscreveu alerta para esta creche */
+    hasAlert(crecheId){
+      return !!crecheId && _alertIds().includes(crecheId);
+    },
+
+    /** Subscreve alerta de vaga — o pai recebe email quando alguém reportar vaga.
+        Cria doc em vaga_alerts (só o Admin SDK lê) e memoriza em localStorage. */
+    async subscribeAlert({ creche_id, nome_creche, email }){
+      const fdb = db();
+      if(!fdb) throw new Error("A app ainda está a carregar — tenta daqui a uns segundos.");
+      if(!creche_id) throw new Error("creche_id obrigatório");
+      const mail = String(email || "").trim().toLowerCase();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) || mail.length > 120){
+        throw new Error("Esse email não parece válido — confirma e tenta outra vez.");
+      }
+      try {
+        await fdb.collection(ALERTS_COLL).add({
+          creche_id: String(creche_id).slice(0, 60),
+          nome_creche: nome_creche ? String(nome_creche).slice(0, 120) : null,
+          email: mail,
+          criado_em: firebase.firestore.FieldValue.serverTimestamp(),
+          notificado_em: null
+        });
+        _rememberAlert(creche_id);
+        return true;
+      } catch(e){
+        console.warn("Erro a criar alerta:", e);
+        throw new Error("Não conseguimos ativar o alerta. Verifica a ligação à internet e tenta outra vez.");
       }
     },
 

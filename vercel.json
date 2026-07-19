@@ -318,6 +318,10 @@
     {
       "path": "/api/weekly-digest",
       "schedule": "0 8 * * 1"
+    },
+    {
+      "path": "/api/lead-reminders",
+      "schedule": "0 10 * * *"
     }
   ]
 }

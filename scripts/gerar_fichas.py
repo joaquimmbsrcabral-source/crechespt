@@ -3,8 +3,9 @@
 """Gera fichas individuais /creche/{slug}.html + sitemap-creches.xml a partir de creches_pt.json.
 Correr da raiz do projeto: python3 scripts/gerar_fichas.py"""
 import json, re, unicodedata, html, math, os, shutil
+from datetime import date
 
-HOJE = "2026-07-11"
+HOJE = date.today().isoformat()
 BASE = "https://creches.app"
 
 def slugify(s):

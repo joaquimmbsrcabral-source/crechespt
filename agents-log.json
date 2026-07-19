@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "id": "seed-1",
+      "date": "2026-07-19",
+      "time": "10:15",
+      "agent": "Sistema",
+      "emoji": "🛠️",
+      "title": "Diário dos agents criado",
+      "summary": "A partir de amanhã de manhã, o briefing diário passa a escrever aqui um resumo do que fez — emails, convites enviados, alertas para ti.",
+      "status": "info"
+    }
+  ]
+}

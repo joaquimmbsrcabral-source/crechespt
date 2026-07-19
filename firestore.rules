@@ -132,6 +132,12 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Registo de ações do agente de operações (escrito só pelo Admin SDK)
+    match /ops_log/{id} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
     // Stats diários (page views agregados, sem dados pessoais)
     // Qualquer pessoa pode criar/incrementar; só admin lê.
     match /daily_stats/{date} {
@@ -231,6 +237,29 @@ service cloud.firestore {
         && resource != null
         && vagaId == 'painel_' + resource.data.creche_id
         && isManagerOf(resource.data.creche_id);
+    }
+
+    // ─── Alertas de vaga (Jul 2026) ───
+    // Pais subscrevem uma creche ("Avisa-me quando abrir vaga") e recebem email
+    // quando alguém reporta vaga (via api/vaga-alert-notify, Admin SDK).
+    // Create público; leitura/gestão SÓ pelo Admin SDK (nunca listável do cliente).
+    match /vaga_alerts/{id} {
+      allow create: if
+           request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'email', 'criado_em', 'notificado_em'])
+        && request.resource.data.keys().hasAll(['creche_id', 'email', 'criado_em', 'notificado_em'])
+        && request.resource.data.creche_id is string
+        && request.resource.data.creche_id.size() > 0
+        && request.resource.data.creche_id.size() <= 60
+        && request.resource.data.email is string
+        && request.resource.data.email.size() >= 5
+        && request.resource.data.email.size() <= 120
+        && request.resource.data.email.matches('^[^@]+@[^@]+\\.[^@]+$')
+        && (!('nome_creche' in request.resource.data) ||
+            (request.resource.data.nome_creche is string &&
+             request.resource.data.nome_creche.size() <= 120))
+        && request.resource.data.criado_em == request.time
+        && request.resource.data.notificado_em == null;
+      allow read, update, delete: if false;
     }
 
     // ─── Creche Views (Onda 36 #3 — Jul 2026) ───

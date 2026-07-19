@@ -48,6 +48,59 @@ function initFirebase() {
   initializeApp({ credential: cert(sa) });
 }
 
+// ── Email de confirmação ao pai (template da marca) ──────────────────────────
+function ackPaiHTML(lead, linkAcomp) {
+  const nome = escapeHtml((lead.nome || "").split(" ")[0] || "");
+  const creche = escapeHtml(lead.creche_nome || "creche");
+  const cta = linkAcomp
+    ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr><td align="center">
+      <a href="${escapeHtml(linkAcomp)}" style="display:inline-block;background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;font-weight:bold;font-size:16px;text-decoration:none;padding:15px 38px;border-radius:99px">Acompanhar a minha candidatura →</a>
+    </td></tr></table>
+    <p style="margin:14px 0 0;font-size:13px;color:#6E6989;text-align:center">Este link é privado — guarda-o para veres o estado do teu pedido a qualquer momento.</p>`
+    : "";
+  return `<!doctype html><html lang="pt-PT"><body style="margin:0;padding:0;background:#FFF6EE">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF6EE;padding:28px 12px">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(60,40,90,.1)">
+  <tr><td style="background:linear-gradient(135deg,#FF6B9D,#FF9F68);padding:30px 32px 26px">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td style="vertical-align:middle"><img src="https://creches.app/icon-192.png" width="46" height="46" style="border-radius:12px;display:block" alt="Creches.app"></td>
+      <td style="vertical-align:middle;padding-left:12px"><span style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:20px;font-weight:bold;color:#fff">Creches.app</span></td>
+    </tr></table>
+    <div style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:22px;font-weight:bold;color:#fff;line-height:1.3;margin-top:18px">✓ O teu pedido seguiu<br>para a ${creche}.</div>
+  </td></tr>
+  <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
+    <p style="margin:0 0 16px">Olá${nome ? " " + nome : ""} 👋</p>
+    <p style="margin:0 0 16px">O teu pedido de contacto foi enviado com sucesso à <b>${creche}</b>. Boa sorte! 🍀</p>
+    <div style="background:#FFF6EE;border-radius:14px;padding:18px 20px;margin:0 0 22px">
+      <div style="font-weight:bold;margin-bottom:8px;color:#2C2356">O que acontece a seguir?</div>
+      <div style="font-size:14.5px;color:#4A4060">A creche recebe o teu contacto e costuma responder em poucos dias — normalmente por email ou telefone, diretamente para ti.</div>
+    </div>
+    ${cta}
+    <p style="margin:22px 0 0;font-size:14px;color:#4A4060">Se não tiveres resposta em alguns dias, nós avisamos-te e sugerimos alternativas.</p>
+    <p style="margin:16px 0 0;font-size:14px">— A equipa do creches.app</p>
+  </td></tr>
+  <tr><td style="padding:16px 32px 26px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#9B97B5;border-top:1px solid #F0ECF6">
+    Recebes este email porque pediste contacto a uma creche no creches.app. Os teus dados só são partilhados com essa creche — nunca são vendidos nem usados para publicidade.
+  </td></tr>
+</table>
+</td></tr></table>
+</body></html>`;
+}
+
+function ackPaiText(lead, linkAcomp) {
+  const creche = lead.creche_nome || "creche";
+  return `Olá ${lead.nome || ""},
+
+O teu pedido de contacto foi enviado com sucesso à ${creche}. Boa sorte!
+
+O que acontece a seguir? A creche recebe o teu contacto e costuma responder em poucos dias — normalmente por email ou telefone, diretamente para ti.
+${linkAcomp ? `\nAcompanha a tua candidatura (link privado): ${linkAcomp}\n` : ""}
+Se não tiveres resposta em alguns dias, nós avisamos-te e sugerimos alternativas.
+
+— A equipa do creches.app`;
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://creches.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -121,7 +174,38 @@ export default async function handler(req, res) {
     }
 
     await snap.ref.update({ notificado: true });
-    return res.status(200).json({ ok: true });
+
+    // ── Acknowledgment ao pai (best-effort: o email à creche é o crítico) ──
+    // Se falhar, regista e segue — o pedido continua a contar como sucesso.
+    let ackPai = false;
+    if (lead.email && !lead.ack_pai_enviado) {
+      try {
+        const tok = (typeof lead.token === "string" && /^[a-zA-Z0-9]{20,64}$/.test(lead.token)) ? lead.token : "";
+        const linkAcomp = tok ? `https://creches.app/candidatura?c=${tok}` : "";
+        const ackResp = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: FROM_EMAIL,
+            to: [lead.email],
+            reply_to: "geral@creches.app",
+            subject: `✓ O teu pedido foi enviado à ${lead.creche_nome || "creche"}`,
+            html: ackPaiHTML(lead, linkAcomp),
+            text: ackPaiText(lead, linkAcomp)
+          })
+        });
+        if (ackResp.ok) {
+          await snap.ref.update({ ack_pai_enviado: true });
+          ackPai = true;
+        } else {
+          console.error("lead-notify ack pai falhou:", await ackResp.text());
+        }
+      } catch (e) {
+        console.error("lead-notify ack pai:", e);
+      }
+    }
+
+    return res.status(200).json({ ok: true, ack_pai: ackPai });
   } catch (e) {
     console.error("lead-notify:", e);
     return res.status(500).json({ error: e.message });
