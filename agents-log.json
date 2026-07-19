@@ -1,6 +1,16 @@
 {
   "entries": [
     {
+      "id": "2026-07-19-ops",
+      "date": "2026-07-19",
+      "time": "19:40",
+      "agent": "Agente de operações",
+      "emoji": "🛡️",
+      "title": "Sem pendências hoje",
+      "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
+      "status": "ok"
+    },
+    {
       "id": "seed-1",
       "date": "2026-07-19",
       "time": "10:15",
