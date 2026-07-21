@@ -768,9 +768,18 @@ function renderUserChip(user){
 }
 
 // === Login ===
-$("btn-login").addEventListener("click", ()=>{
+$("btn-login").addEventListener("click", async ()=>{
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider).catch(e=>{ alert("Erro no login: "+e.message); });
+  try{
+    await auth.signInWithPopup(provider);
+  }catch(e){
+    if(e.code === "auth/popup-blocked" || e.code === "auth/cancelled-popup-request" ||
+       e.code === "auth/operation-not-supported-in-this-environment"){
+      try{ await auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); return; }
+      catch(e2){ alert("Erro no login: "+e2.message); return; }
+    }
+    alert("Erro no login: "+e.message);
+  }
 });
 
 // === Verificação de admin ===

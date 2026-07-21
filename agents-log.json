@@ -1,6 +1,56 @@
 {
   "entries": [
     {
+      "id": "2026-07-21-briefing",
+      "date": "2026-07-21",
+      "time": "10:55",
+      "agent": "Briefing diário",
+      "emoji": "☕",
+      "title": "40 convites enviados, creche respondeu com entusiasmo",
+      "summary": "2 emails relevantes: a Bebés Fidalgos respondeu ao convite com entusiasmo (vai preencher o perfil) e o email à CNN Portugal falhou definitivamente após 3 dias de tentativas. Enviei 40 convites (0 falhas) — faltam 1610 creches por convidar. 1 claim pendente no /admin (Ouriços do Saber); sem opt-outs nem fotos por moderar.",
+      "status": "attention"
+    },
+    {
+      "id": "2026-07-21-ops",
+      "date": "2026-07-21",
+      "time": "09:19",
+      "agent": "Agente de operações",
+      "emoji": "🛡️",
+      "title": "1 claim pronto para aprovação rápida",
+      "summary": "Zero correções, reports, fotos e remoções pendentes. Há 1 claim: Fatima Karolia (Direção) reclama a creche 'Ouriços do Saber' — o email ouricosdosaber@gmail.com coincide com o do dataset e o nome bate, sinais fortes para aprovação rápida no /admin. Não aprovei nada, como combinado.",
+      "status": "attention"
+    },
+    {
+      "id": "2026-07-20-enriquecimento",
+      "date": "2026-07-20",
+      "time": "11:13",
+      "agent": "Enriquecimento de dados",
+      "emoji": "🔍",
+      "title": "Encontrei 16 emails novos em 24 pesquisas (2 lotes)",
+      "summary": "Pesquisei 24 creches Privadas/IPSS sem email em dois lotes (o de 19/07 tinha ficado aplicado mas por registar). Resultado: 16 emails, 11 websites e 6 telefones novos — ex.: Cartolinhas (Gaia), Os Trombinhas e Os Ilustres (Odivelas), Academia dos Pimpolhos (Viana), CSS Adémia (Coimbra), Casa da Criança da Misericórdia da Mealhada. As 2578 fichas e o sitemap foram regenerados com os dados novos. Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+      "status": "attention"
+    },
+    {
+      "id": "2026-07-20-briefing",
+      "date": "2026-07-20",
+      "time": "09:01",
+      "agent": "Briefing diário",
+      "emoji": "☕",
+      "title": "40 convites enviados, inbox calmo",
+      "summary": "Só 1 thread relevante nas últimas 24h (avisos de atraso na entrega do email à CNN Portugal). Enviei 40 convites a creches — faltam 1650 por convidar. Sem opt-outs, claims pendentes ou fotos por moderar.",
+      "status": "ok"
+    },
+    {
+      "id": "2026-07-20-ops",
+      "date": "2026-07-20",
+      "time": "09:00",
+      "agent": "Agente de operações",
+      "emoji": "🛡️",
+      "title": "Sem pendências hoje",
+      "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
+      "status": "ok"
+    },
+    {
       "id": "2026-07-19-ops",
       "date": "2026-07-19",
       "time": "19:40",

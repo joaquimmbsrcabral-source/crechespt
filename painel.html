@@ -392,10 +392,30 @@ let PROFILE = {};       // creche_profiles doc
 let DATASET = null;     // creches_pt.json (lazy, para pesquisa no claim)
 
 // ─────────── AUTH ───────────
-$("btn-google").onclick = () => {
+$("btn-google").onclick = async () => {
+  err("login-err");
+  // Browsers integrados (Instagram/Facebook…) bloqueiam o login Google
+  if(/FBAN|FBAV|FB_IAB|Instagram|Line\/|TikTok|musical_ly|WhatsApp/i.test(navigator.userAgent||"")){
+    err("login-err","Estás a abrir dentro de outra app. Toca no menu ⋯ e escolhe «Abrir no browser» para entrares.");
+    return;
+  }
   const p = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(p).catch(e => err("login-err", e.message));
+  try{
+    await auth.signInWithPopup(p);
+  }catch(e){
+    // Pop-up bloqueado → fluxo por redirecionamento (não precisa de pop-ups)
+    if(e.code === "auth/popup-blocked" || e.code === "auth/cancelled-popup-request" ||
+       e.code === "auth/operation-not-supported-in-this-environment"){
+      try{ await auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); return; }
+      catch(e2){ err("login-err", e2.message); return; }
+    }
+    err("login-err", e.code === "auth/popup-closed-by-user" ? "Pop-up fechado. Tenta de novo." : e.message);
+  }
 };
+// se o login foi por redirecionamento, apanha erros ao voltar
+auth.getRedirectResult().catch(e => {
+  if(e && e.code && e.code !== "auth/no-auth-event") err("login-err", e.message || e.code);
+});
 $("btn-login").onclick = () => {
   err("login-err");
   auth.signInWithEmailAndPassword($("li-email").value.trim(), $("li-pass").value)

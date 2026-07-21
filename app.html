@@ -2826,11 +2826,21 @@ function _wireOnboarding(){
   document.getElementById("ob-finish").addEventListener("click", obFinish);
 }
 
+// Browsers integrados (Instagram/Facebook/TikTok…) bloqueiam o login Google
+function _inAppBrowser(){
+  const ua = navigator.userAgent || "";
+  return /FBAN|FBAV|FB_IAB|Instagram|Line\/|TikTok|musical_ly|WhatsApp/i.test(ua);
+}
+
 async function signInGoogle(){
   if(!USE_FIREBASE){ toast("Firebase não está configurado","err"); return; }
   const btn = document.getElementById("btn-google");
   const errEl = document.getElementById("auth-error");
   errEl.textContent = "";
+  if(_inAppBrowser()){
+    errEl.textContent = "Estás a abrir dentro de outra app (Instagram/Facebook). Toca no menu ⋯ e escolhe «Abrir no browser» para entrares.";
+    return;
+  }
   btn.disabled = true;
   try{
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -2838,6 +2848,12 @@ async function signInGoogle(){
     await FB.auth.signInWithPopup(provider);
   }catch(e){
     _e(e);
+    // Pop-up bloqueado → tenta o fluxo por redirecionamento (não precisa de pop-ups)
+    if(e.code === "auth/popup-blocked" || e.code === "auth/cancelled-popup-request" ||
+       e.code === "auth/operation-not-supported-in-this-environment"){
+      try{ await FB.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); return; }
+      catch(e2){ _e(e2); }
+    }
     let msg = e.message || "Erro ao iniciar sessão";
     if(e.code === "auth/popup-blocked") msg = "O browser bloqueou o pop-up. Permite pop-ups para esta página e tenta de novo.";
     if(e.code === "auth/popup-closed-by-user") msg = "Pop-up fechado. Tenta de novo.";
@@ -2926,6 +2942,13 @@ if(APP_CHECK_KEY && firebase.appCheck){ try { firebase.appCheck().activate(APP_C
           }, { merge: true }).catch(e=>_w("stats write", e));
         }
       }catch(e){ _w("tracking skipped", e); }
+      // se o login foi por redirecionamento, apanha erros ao voltar
+      FB.auth.getRedirectResult().catch(e=>{
+        _e(e);
+        if(e && e.code && e.code !== "auth/no-auth-event"){
+          toast("Não foi possível entrar: " + (e.message || e.code), "err");
+        }
+      });
       // espera o callback inicial de auth
       FB.auth.onAuthStateChanged(async (user)=>{
         if(user){

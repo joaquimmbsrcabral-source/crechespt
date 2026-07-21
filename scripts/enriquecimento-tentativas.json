@@ -1,0 +1,124 @@
+{
+ "tentadas": {
+  "osm-node-1814710258": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "cssademia.com"
+  },
+  "osm-node-1988288505": {
+   "data": "2026-07-19",
+   "resultado": "telefone+site",
+   "fonte": "braga.cruzvermelha.pt"
+  },
+  "osm-node-2194531980": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "cics.pt"
+  },
+  "osm-node-2541717978": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "scmmealhada.pt"
+  },
+  "osm-node-2808881281": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "fundacaocpsssaveiro.pt"
+  },
+  "osm-node-5115491657": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "associacaosolnascente.pt"
+  },
+  "osm-node-5221426483": {
+   "data": "2026-07-19",
+   "resultado": "telefone",
+   "fonte": "pai.pt"
+  },
+  "osm-node-5720822112": {
+   "data": "2026-07-19",
+   "resultado": "nada",
+   "fonte": ""
+  },
+  "osm-node-5863089543": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "atrium7.pt / cm-almada.pt"
+  },
+  "osm-node-7882260544": {
+   "data": "2026-07-19",
+   "resultado": "email",
+   "fonte": "pequenosindios.pt"
+  },
+  "osm-node-8699540509": {
+   "data": "2026-07-19",
+   "resultado": "nada",
+   "fonte": "site oficial sem email"
+  },
+  "osm-node-11203601713": {
+   "data": "2026-07-19",
+   "resultado": "telefone",
+   "fonte": "misericordiasjm.org"
+  },
+  "osm-node-11303236774": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "servicospublicos.pt/guiapt.com"
+  },
+  "osm-node-11408632696": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "cartolinhas.pt / crechenaminharua.pt"
+  },
+  "osm-node-11453860481": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "site oficial sem email visível"
+  },
+  "osm-node-11835234052": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "diretórios sem email"
+  },
+  "osm-node-11835677799": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "ostrombinhas.pt / pai.pt"
+  },
+  "osm-node-11835677800": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "colegioosilustres.pt"
+  },
+  "osm-node-11835677813": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "pai.pt / directorioescolas.eu"
+  },
+  "osm-node-11835677814": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "duendemagico.pt"
+  },
+  "osm-node-11835677852": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "crechecolinasdocruzeiro.com"
+  },
+  "osm-node-11835677853": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "sem email em fontes fiáveis"
+  },
+  "osm-node-11879966764": {
+   "data": "2026-07-20",
+   "resultado": "email+facebook",
+   "fonte": "escoladevidro.pt / facebook"
+  },
+  "osm-node-11883403372": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "academiadospimpolhos.com"
+  }
+ }
+}

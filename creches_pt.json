@@ -1092,7 +1092,10 @@
   "osm_url": "https://www.openstreetmap.org/node/1814710258",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@cssademia.com",
+  "website": "https://www.cssademia.com",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-1816089757",
@@ -1219,7 +1222,10 @@
   "idade_min_meses": 4,
   "idade_max_meses": 36,
   "resposta": "Creche",
-  "tipo_inferido": true
+  "tipo_inferido": true,
+  "telefone": "+351 253 257 103",
+  "website": "https://www.bragacomacruzvermelha.pt/causas/creche.html",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-2001156148",
@@ -1401,7 +1407,10 @@
   "osm_url": "https://www.openstreetmap.org/node/2194531980",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "csocial@cics.pt",
+  "website": "https://cics.pt",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-2195511293",
@@ -1642,7 +1651,11 @@
   "distrito_inferido": true,
   "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Creche / Jardim de Infância"
+  "resposta": "Creche / Jardim de Infância",
+  "email": "casacrianca.atl@scmmealhada.pt",
+  "telefone": "+351 231 202 055",
+  "website": "https://scmmealhada.pt/educacao/",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-2545025392",
@@ -1748,7 +1761,11 @@
   "distrito_inferido": true,
   "idade_min_meses": 4,
   "idade_max_meses": 36,
-  "resposta": "Creche"
+  "resposta": "Creche",
+  "email": "ceapdirecaotecnica@fundacaocpsssaveiro.pt",
+  "telefone": "+351 234 345 410",
+  "website": "https://fundacaocpsssaveiro.pt/creches/",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-2812417724",
@@ -2201,7 +2218,11 @@
   "osm_url": "https://www.openstreetmap.org/node/5115491657",
   "idade_min_meses": 72,
   "idade_max_meses": 144,
-  "resposta": "ATL"
+  "resposta": "ATL",
+  "email": "solnascente98@sapo.pt",
+  "telefone": "+351 296 462 500",
+  "website": "https://associacaosolnascente.pt",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-5171091935",
@@ -2265,7 +2286,9 @@
   "osm_url": "https://www.openstreetmap.org/node/5221426483",
   "idade_min_meses": 72,
   "idade_max_meses": 144,
-  "resposta": "ATL"
+  "resposta": "ATL",
+  "telefone": "+351 296 486 247",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-5267859628",
@@ -2939,7 +2962,10 @@
   "osm_url": "https://www.openstreetmap.org/node/5863089543",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "atrium7@atrium7.pt",
+  "website": "https://www.atrium7.pt",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-5863089544",
@@ -3764,7 +3790,9 @@
   "osm_url": "https://www.openstreetmap.org/node/7882260544",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "info@pequenosindios.pt",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-8283416671",
@@ -4353,7 +4381,9 @@
   "idade_min_meses": 4,
   "idade_max_meses": 72,
   "resposta": "Infantário (IPSS)",
-  "tipo_inferido": true
+  "tipo_inferido": true,
+  "telefone": "+351 256 837 240",
+  "enriquecido_em": "2026-07-19"
  },
  {
   "id": "osm-node-11221266862",
@@ -4492,7 +4522,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11303236774",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "favo-de-mel@hotmail.com",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11407415513",
@@ -4527,7 +4559,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11408632696",
   "idade_min_meses": 4,
   "idade_max_meses": 36,
-  "resposta": "Creche"
+  "resposta": "Creche",
+  "email": "secretaria@cartolinhas.pt",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11425740505",
@@ -5418,7 +5452,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11835677799",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "info@ostrombinhas.pt",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11835677800",
@@ -5437,7 +5473,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11835677800",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@crecheosilustres.pt",
+  "website": "https://www.colegioosilustres.pt",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11835677801",
@@ -5518,7 +5557,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11835677813",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@pipos-e-bibas.pt",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11835677814",
@@ -5537,7 +5578,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11835677814",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@duendemagico.pt",
+  "website": "http://www.duendemagico.pt",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11835677839",
@@ -5595,7 +5639,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11835677852",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@crechecolinasdocruzeiro.com",
+  "website": "https://crechecolinasdocruzeiro.com",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11835677853",
@@ -5814,7 +5861,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11879966764",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "escolinhacampainha@gmail.com",
+  "website": "https://www.facebook.com/escolinhadacampainha/",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11883399461",
@@ -5876,7 +5926,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11883403372",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@academiadospimpolhos.com",
+  "enriquecido_em": "2026-07-20"
  },
  {
   "id": "osm-node-11884007402",
