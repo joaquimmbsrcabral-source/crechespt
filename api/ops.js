@@ -14,7 +14,11 @@
  *   {"action":"aplicar_report","id":"<report_id>"}     → réplica de applyReport do admin
  *   {"action":"rejeitar_report","id":"<report_id>"}    → réplica de rejectReport do admin
  *   {"action":"moderar_foto","id":"<foto_id>","decisao":"aprovar"|"rejeitar","motivo"?:"..."}
- *   {"action":"analisar_claim","id":"<claim_id>"}      → só analisa, NÃO aprova
+ *   {"action":"analisar_claim","id":"<claim_id>"}      → só analisa, não escreve nada
+ *   {"action":"aprovar_claim","id":"<claim_id>"}       → aprova SÓ se os sinais forem fortes
+ *                                                        (email/domínio coincide); replica o
+ *                                                        botão "Aprovar acesso" do /admin
+ *   {"action":"rejeitar_claim","id":"<claim_id>"}      → marca o claim como rejeitado
  *
  * Cada escrita fica registada em ops_log para auditoria.
  * Env vars: FIREBASE_SERVICE_ACCOUNT (base64 ou JSON), CRON_SECRET.
@@ -340,6 +344,74 @@ async function actionAnalisarClaim(db, id) {
   };
 }
 
+// ── Claims: aprovação automática com salvaguardas (réplica do botão do /admin) ──
+// Só aprova se a análise de legitimidade recomendar "aprovar" (email/domínio
+// coincide com o dataset). Qualquer situação ambígua devolve 409 para o agente
+// escalar ao Joaquim em vez de escrever.
+async function actionAprovarClaim(db, quem, id) {
+  const ref = db.doc(`creche_claims/${id}`);
+  const doc = await ref.get();
+  if (!doc.exists) return { status: 409, body: { error: "Claim não encontrado", id } };
+  const c = doc.data() || {};
+  if (c.status !== "pending") return { status: 409, body: { error: `Claim já tratado (status: ${c.status})`, id } };
+  if (!c.uid) return { status: 409, body: { error: "Claim sem uid — aprovação manual no /admin", id } };
+
+  // Reutiliza a análise de sinais; só avança com recomendação "aprovar"
+  const analise = await actionAnalisarClaim(db, id);
+  if (analise.status !== 200) return analise;
+  if (analise.body.recomendacao !== "aprovar") {
+    return { status: 409, body: { error: "Sinais insuficientes (recomendação: rever) — escalar ao admin", id, sinais: analise.body.sinais } };
+  }
+
+  // Guardas do /admin: uid já gere outra creche? A creche já tem gestor?
+  const jaGere = await db.doc(`creche_managers/${c.uid}`).get();
+  if (jaGere.exists && jaGere.data().creche_id !== c.creche_id) {
+    return { status: 409, body: { error: `Este utilizador já é gestor de outra creche (${jaGere.data().creche_nome || jaGere.data().creche_id}) — decisão manual no /admin`, id } };
+  }
+  const outroGestor = await db.collection("creche_managers").where("creche_id", "==", c.creche_id).get();
+  if (!outroGestor.empty && outroGestor.docs[0].id !== c.uid) {
+    return { status: 409, body: { error: `A creche já tem um gestor aprovado (${outroGestor.docs[0].data().email || outroGestor.docs[0].id}) — decisão manual no /admin`, id } };
+  }
+
+  // Normalizar ID: creches extra têm de levar o prefixo "extra_" (claims antigos podem não ter)
+  let cidNorm = String(c.creche_id || "");
+  if (!/^(osm-|extra_)/.test(cidNorm)) cidNorm = "extra_" + cidNorm;
+
+  const batch = db.batch();
+  batch.set(db.doc(`creche_managers/${c.uid}`), {
+    creche_id: cidNorm,
+    creche_nome: c.creche_nome || "",
+    email: c.email || "",
+    aprovado_em: FieldValue.serverTimestamp(),
+  });
+  batch.update(ref, { status: "approved", aprovado_por: quem });
+  await batch.commit();
+  await logOp(db, quem, "aprovar_claim", id, cidNorm, { uid: c.uid, email: c.email || null, sinais: analise.body.sinais });
+
+  return {
+    status: 200,
+    body: {
+      ok: true, action: "aprovar_claim", id,
+      creche_id: cidNorm,
+      nome_creche: c.creche_nome || null,
+      email: c.email || null,
+      nome: c.nome_responsavel || null,
+      sinais: analise.body.sinais,
+    },
+  };
+}
+
+async function actionRejeitarClaim(db, quem, id) {
+  const ref = db.doc(`creche_claims/${id}`);
+  const doc = await ref.get();
+  if (!doc.exists) return { status: 409, body: { error: "Claim não encontrado", id } };
+  const c = doc.data() || {};
+  if (c.status !== "pending") return { status: 409, body: { error: `Claim já tratado (status: ${c.status})`, id } };
+  await ref.update({ status: "rejected", rejeitado_por: quem });
+  await logOp(db, quem, "rejeitar_claim", id, c.creche_id || null, { email: c.email || null });
+  return { status: 200, body: { ok: true, action: "rejeitar_claim", id, email: c.email || null, nome: c.nome_responsavel || null, nome_creche: c.creche_nome || null } };
+}
+
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
@@ -369,7 +441,7 @@ export default async function handler(req, res) {
     const id = body.id != null ? String(body.id) : "";
 
     if (!action) return res.status(400).json({ error: 'Falta o campo "action"' });
-    const precisaId = ["aplicar_correcao", "rejeitar_correcao", "aplicar_report", "rejeitar_report", "moderar_foto", "analisar_claim"];
+    const precisaId = ["aplicar_correcao", "rejeitar_correcao", "aplicar_report", "rejeitar_report", "moderar_foto", "analisar_claim", "aprovar_claim", "rejeitar_claim"];
     if (precisaId.includes(action) && !id) return res.status(400).json({ error: 'Falta o campo "id"' });
 
     let out;
@@ -388,6 +460,10 @@ export default async function handler(req, res) {
         out = await actionModerarFoto(db, quem, id, String(body.decisao || ""), body.motivo); break;
       case "analisar_claim":
         out = await actionAnalisarClaim(db, id); break;
+      case "aprovar_claim":
+        out = await actionAprovarClaim(db, quem, id); break;
+      case "rejeitar_claim":
+        out = await actionRejeitarClaim(db, quem, id); break;
       default:
         return res.status(400).json({ error: `Ação desconhecida: ${action}` });
     }
