@@ -6247,7 +6247,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11939558015",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "stocondestavel@gmail.com",
+  "website": "https://www.stocondestavel.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11939600521",
@@ -6392,7 +6395,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11954645930",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@cspavidos.net",
+  "website": "https://www.cspavidos.net",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11954645931",
@@ -7168,7 +7174,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11962804178",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@solsil.pt",
+  "website": "https://solsil.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11962804230",
@@ -7293,7 +7302,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11962804271",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "asassantajoana@gmail.com",
+  "website": "https://asassantajoana.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11963019991",
@@ -7482,7 +7494,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11967812984",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral.cssaojoao@gmail.com",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11968072518",
@@ -7692,7 +7706,10 @@
   "osm_url": "https://www.openstreetmap.org/node/11970695439",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "infantario@obradofreigil.pt",
+  "website": "https://obradofreigil.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11970919334",
@@ -8342,7 +8359,9 @@
   "osm_url": "https://www.openstreetmap.org/node/11981301488",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "website": "https://www.scmtorresnovas.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-11981301493",
@@ -9748,7 +9767,10 @@
   "osm_url": "https://www.openstreetmap.org/node/12063147257",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "pequenosedivertidos@gmail.com",
+  "website": "https://pequenosedivertidos.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-12063384372",
@@ -10185,7 +10207,10 @@
   "osm_url": "https://www.openstreetmap.org/node/12064093073",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "amamacoelha@gmail.com",
+  "website": "http://www.amamacoelha.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-node-12064923041",
@@ -12546,7 +12571,9 @@
   "osm_url": "https://www.openstreetmap.org/way/146952375",
   "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Creche / Jardim de Infância"
+  "resposta": "Creche / Jardim de Infância",
+  "email": "geral.cie2@scme.pt",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-way-147261698",
@@ -13013,7 +13040,9 @@
   "osm_url": "https://www.openstreetmap.org/way/168522918",
   "idade_min_meses": 36,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância"
+  "resposta": "Jardim de Infância",
+  "email": "geral@escolinhacapitaolebre.com",
+  "enriquecido_em": "2026-07-22"
  },
  {
   "id": "osm-way-168735565",
