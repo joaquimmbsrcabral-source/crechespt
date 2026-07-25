@@ -185,3 +185,108 @@ curl -s -H "Authorization: Bearer O_TEU_CRON_SECRET" https://creches.app/api/dai
 ```
 Deves ver JSON com utilizadores/leads/vagas/rede/views. `401` = secret errado;
 `503` = falta FIREBASE_SERVICE_ACCOUNT.
+
+---
+
+## /api/resend-webhook — apanhar emails que não existem (bounces e spam)
+
+Quando enviamos convites às creches, uma parte dos emails do dataset já não
+existe (a creche mudou de endereço, o domínio expirou, etc.). O servidor de
+destino devolve um **bounce** e nós nunca ficamos a saber — a creche fica sem
+ser contactada e continuamos a gastar reputação a enviar para o vazio.
+
+Este webhook resolve isso: o Resend avisa-nos sempre que um email bate no
+vazio (`email.bounced`) ou é marcado como spam (`email.complained`), e nós
+guardamos o endereço na coleção `emails_invalidos` do Firestore. O agente de
+enriquecimento vai depois a essa lista procurar o email correto dessas creches.
+
+**Setup: ~4 minutos. Custo: 0 €.** É preciso fazer isto uma vez.
+
+### Passo 1 — Criar o webhook no Resend (2 min)
+
+1. Vai a [resend.com](https://resend.com) → entra com a conta do creches.app
+2. Menu esquerdo → **Webhooks** → botão **Add Webhook**
+3. No campo **Endpoint URL** cola exatamente:
+   ```
+   https://creches.app/api/resend-webhook
+   ```
+4. Em **Events**, seleciona **apenas estes dois**:
+   - `email.bounced`
+   - `email.complained`
+
+   (não marques os outros — só nos interessam os emails que falharam; se
+   marcares todos, o endpoint responde na mesma mas ignora-os)
+5. **Add** / **Create**
+
+### Passo 2 — Copiar o Signing Secret (30 seg)
+
+1. Ainda no Resend, clica no webhook que acabaste de criar
+2. Procura **Signing Secret** e carrega em **Reveal** / no ícone de copiar
+3. **Copia o valor** — começa por `whsec_...`
+   (é este segredo que prova que o pedido vem mesmo do Resend e não de um
+   impostor a inventar bounces)
+
+### Passo 3 — Variável de ambiente no Vercel (1 min)
+
+1. [vercel.com](https://vercel.com) → projeto **creches-app**
+2. **Settings** → **Environment Variables**
+3. Adiciona:
+
+   | Name | Value | Environment |
+   |---|---|---|
+   | `RESEND_WEBHOOK_SECRET` | o secret do passo 2 (`whsec_...`) | Production, Preview, Development |
+
+4. Save
+
+⚠️ Só cola o secret — sem espaços à frente ou atrás, e **com** o `whsec_`
+(o código trata do resto).
+
+### Passo 4 — Deploy
+
+```bash
+cd ~/Documents/Claude/Projects/CrechesPT
+./deploy.sh
+```
+
+Importante: as variáveis de ambiente só entram em vigor no **próximo deploy**.
+Se adicionaste a variável e não fizeste deploy, o endpoint responde `503`.
+
+### Passo 5 — Testar
+
+1. No Resend → **Webhooks** → clica no webhook → **Send test event** (ou
+   **Testing** → escolhe `email.bounced` → **Send**)
+2. Deve aparecer resposta **200** com `{"ok":true,...}` no histórico do webhook
+3. Se quiseres um teste a sério: envia um convite para um endereço que não
+   existe (ex.: `naoexisteisto123@creches.app`) e ao fim de ~1 minuto o
+   Firestore deve ter um doc novo em `emails_invalidos`
+
+### O que fica guardado
+
+Coleção **`emails_invalidos`** no Firestore, um documento por endereço:
+
+| Campo | O que é |
+|---|---|
+| `email` | o endereço que falhou |
+| `motivo` | `bounce` (não existe) ou `spam` (marcaram-nos como spam) |
+| `detalhe` | a explicação que o servidor de destino deu |
+| `ocorrencias` | quantas vezes já falhou |
+| `primeira_em` / `ultima_em` | quando foi a primeira e a última vez |
+| `creche_id` / `creche_nome` | a creche a que o email pertence (se a encontrarmos no mapa) |
+
+Só o admin consegue ler esta coleção; ninguém consegue escrever nela a partir
+do site (só o servidor).
+
+### Troubleshooting
+
+**`503 RESEND_WEBHOOK_SECRET não configurado`** → falta a variável no Vercel,
+ou puseste-a só em Production, ou não fizeste deploy depois de a adicionar.
+
+**`401 Assinatura inválida`** → o secret está errado (copiaste o de outro
+webhook?), tem espaços, ou o relógio está muito fora do sítio. O webhook só
+aceita eventos com menos de 5 minutos — se estiveres a reenviar um evento
+antigo à mão, vai dar 401 e é normal.
+
+**Resposta 200 mas nada aparece no Firestore** → o evento não era um bounce
+permanente (bounces temporários, tipo caixa cheia, são ignorados de propósito
+— o email pode estar bom), ou faltava `FIREBASE_SERVICE_ACCOUNT`. Vê os logs
+em Vercel → **Logs** → procura `resend-webhook`.

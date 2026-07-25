@@ -138,6 +138,14 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Emails que rebentaram (hard bounce) ou foram marcados como spam.
+    // Escrito só pelo servidor (api/resend-webhook.js, via webhook do Resend).
+    // O agente de enriquecimento lê daqui as creches que precisam de email novo.
+    match /emails_invalidos/{id} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
     // Stats diários (page views agregados, sem dados pessoais)
     // Qualquer pessoa pode criar/incrementar; só admin lê.
     match /daily_stats/{date} {
@@ -286,6 +294,16 @@ service cloud.firestore {
     //  a existir apenas pelo caminho direto creche_views/{id}/days/{day})
     match /{path=**}/days/{day} {
       allow read: if isAdmin();
+    }
+
+    // ─── Capacidade de resposta por creche (Jul 2026) ───
+    // Agregado das respostas dos pais ao follow-up "A creche respondeu?"
+    // (api/lead-feedback). Doc id = creche_id; campos respostas_sim /
+    // respostas_nao / respostas_total. Sem dados pessoais — leitura pública
+    // para poder aparecer nas fichas. Escrita SÓ pelo Admin SDK.
+    match /creche_stats/{cid} {
+      allow read:  if true;
+      allow write: if false;
     }
 
     // ─── Creche Feliz Reports (Onda 32 — Jun 2026) ───

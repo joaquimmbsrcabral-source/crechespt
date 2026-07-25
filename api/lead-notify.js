@@ -223,14 +223,20 @@ export default async function handler(req, res) {
     if (req.body && req.body.force === true) {
       const authz = req.headers.authorization || "";
       if (!authz.startsWith("Bearer ")) return res.status(401).json({ error: "Reenvio requer admin" });
-      try {
-        const { getAuth } = await import("firebase-admin/auth");
-        const dec = await getAuth().verifyIdToken(authz.slice(7).trim());
-        const adm = await db.doc(`admins/${dec.uid}`).get();
-        if (!adm.exists) return res.status(403).json({ error: "Não és admin" });
-        forcado = true;
-      } catch (e) {
-        return res.status(401).json({ error: "Token inválido" });
+      const bearer = authz.slice(7).trim();
+      const cronSecret = (process.env.CRON_SECRET || "").trim();
+      if (cronSecret && bearer === cronSecret) {
+        forcado = true;                       // varrimento automático (lead-reminders)
+      } else {
+        try {                                 // botão do admin no /admin
+          const { getAuth } = await import("firebase-admin/auth");
+          const dec = await getAuth().verifyIdToken(bearer);
+          const adm = await db.doc(`admins/${dec.uid}`).get();
+          if (!adm.exists) return res.status(403).json({ error: "Não és admin" });
+          forcado = true;
+        } catch (e) {
+          return res.status(401).json({ error: "Token inválido" });
+        }
       }
     }
     if (lead.notificado && !forcado) return res.status(200).json({ ok: true, skipped: "já notificado" });

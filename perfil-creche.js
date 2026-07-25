@@ -107,13 +107,26 @@
               }).catch(function(){});
             } catch(e){}
             _leadsBump();
-            // Avisar a creche por email (best-effort; se o Resend não estiver configurado, 503 e segue)
+            // Avisar a creche por email. sendBeacon sobrevive ao fecho da página —
+            // com fetch, se o pai fechasse o separador logo a seguir, o pedido morria
+            // e o aviso nunca chegava à creche. keepalive no fetch faz o mesmo papel.
             try {
-              fetch("/api/lead-notify", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ lead_id: ref.id })
-              }).catch(function(){});
+              var _body = JSON.stringify({ lead_id: ref.id });
+              var _enviado = false;
+              if(navigator.sendBeacon){
+                try {
+                  _enviado = navigator.sendBeacon("/api/lead-notify",
+                    new Blob([_body], { type: "application/json" }));
+                } catch(e){}
+              }
+              if(!_enviado){
+                fetch("/api/lead-notify", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: _body,
+                  keepalive: true
+                }).catch(function(){});
+              }
             } catch(e){}
             // Avisar a app (se estiver aberta): marca a creche como "Contactada" no pipeline do pai
             try { window.dispatchEvent(new CustomEvent("creches:lead", { detail: { creche_id: String(crecheId) } })); } catch(e){}
