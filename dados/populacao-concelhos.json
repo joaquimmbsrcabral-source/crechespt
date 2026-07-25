@@ -1,0 +1,4945 @@
+{
+  "_meta": {
+    "fonte": [
+      "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012450&lang=PT (INE, Nados-vivos por Local de residência da mãe (NUTS 2024) e Sexo, anual)",
+      "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&lang=PT (INE, Estimativas anuais da população residente por Local de residência (NUTS 2024), Sexo e Grupo etário)",
+      "https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_de_Portugal (população residente nos Censos 2021 do INE, https://ine.pt/scripts/db_censos_2021.html)",
+      "https://en.wikipedia.org/wiki/List_of_municipalities_of_Portugal (2.ª fonte, usada só para validar a população)",
+      "https://dados.gov.pt/ (catálogo usado para localizar os códigos de indicador do INE)"
+    ],
+    "ano_populacao": 2021,
+    "ano_nascimentos": 2024,
+    "gerado_em": "2026-07-25T18:20:01+00:00",
+    "notas": "Nascimentos obtidos diretamente da API JSON do INE (pindica.jsp, indicador 0012450). 'populacao' e 'populacao_censos_2021' = população residente nos Censos 2021 do INE, extraída da Wikipédia portuguesa e validada contra a Wikipédia inglesa (dos 306 concelhos com correspondência inequívoca de nome, nenhum diverge mais de 0,5% entre as duas fontes). Ressalva: a soma dos 308 valores dá 10 347 442, contra 10 343 066 do total definitivo oficial dos Censos 2021 — a tabela parece misturar resultados definitivos com alguns valores preliminares, pelo que erros ao nível do concelho da ordem de 0,1% são possíveis. As estimativas anuais mais recentes do INE (indicador 0012918, ano 2024) NÃO foram obtidas: a API do INE deixou de responder a meio da recolha. 'populacao_ano' indica o ano de cada valor e 'populacao_fonte' a sua origem. 'nascimentos_ano' = nados-vivos por local de residência da mãe no ano indicado em ano_nascimentos. 'nascimentos_por_ano' guarda a série completa recolhida. 'criancas_0_3' NÃO é um dado observado: é nascimentos_ano x 3, porque só foi possível recolher um ano de nados-vivos (2024) antes de a API do INE deixar de responder — aproximação à coorte 0-2 anos completos servida por creche. Por isso 'criancas_0_3_estimado' é sempre true. Não desconta mortalidade infantil nem migrações. 'criancas_0_4', quando presente, é o valor observado do grupo etário 0-4 anos das estimativas do INE. 'dico' é o código de município do INE/DICOFRE — chave de cruzamento mais fiável do que o nome. Campos a null significam que o dado não foi obtido; nenhum valor foi inventado ou interpolado."
+  },
+  "concelhos": [
+    {
+      "concelho": "Albergaria-a-Velha",
+      "slug": "albergaria-a-velha",
+      "distrito": "Aveiro",
+      "dico": "0102",
+      "populacao": 24841,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 24841,
+      "nascimentos_ano": 176,
+      "nascimentos_por_ano": {
+        "2024": 176
+      },
+      "criancas_0_3": 528,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Anadia",
+      "slug": "anadia",
+      "distrito": "Aveiro",
+      "dico": "0103",
+      "populacao": 27542,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 27542,
+      "nascimentos_ano": 177,
+      "nascimentos_por_ano": {
+        "2024": 177
+      },
+      "criancas_0_3": 531,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arouca",
+      "slug": "arouca",
+      "distrito": "Aveiro",
+      "dico": "0104",
+      "populacao": 21154,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21154,
+      "nascimentos_ano": 129,
+      "nascimentos_por_ano": {
+        "2024": 129
+      },
+      "criancas_0_3": 387,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Aveiro",
+      "slug": "aveiro",
+      "distrito": "Aveiro",
+      "dico": "0105",
+      "populacao": 80880,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 80880,
+      "nascimentos_ano": 647,
+      "nascimentos_por_ano": {
+        "2024": 647
+      },
+      "criancas_0_3": 1941,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castelo de Paiva",
+      "slug": "castelo-de-paiva",
+      "distrito": "Aveiro",
+      "dico": "0106",
+      "populacao": 15597,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15597,
+      "nascimentos_ano": 86,
+      "nascimentos_por_ano": {
+        "2024": 86
+      },
+      "criancas_0_3": 258,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Espinho",
+      "slug": "espinho",
+      "distrito": "Aveiro",
+      "dico": "0107",
+      "populacao": 31027,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 31027,
+      "nascimentos_ano": 161,
+      "nascimentos_por_ano": {
+        "2024": 161
+      },
+      "criancas_0_3": 483,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Estarreja",
+      "slug": "estarreja",
+      "distrito": "Aveiro",
+      "dico": "0108",
+      "populacao": 26229,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 26229,
+      "nascimentos_ano": 192,
+      "nascimentos_por_ano": {
+        "2024": 192
+      },
+      "criancas_0_3": 576,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mealhada",
+      "slug": "mealhada",
+      "distrito": "Aveiro",
+      "dico": "0111",
+      "populacao": 19358,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 19358,
+      "nascimentos_ano": 118,
+      "nascimentos_por_ano": {
+        "2024": 118
+      },
+      "criancas_0_3": 354,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Murtosa",
+      "slug": "murtosa",
+      "distrito": "Aveiro",
+      "dico": "0112",
+      "populacao": 10488,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10488,
+      "nascimentos_ano": 81,
+      "nascimentos_por_ano": {
+        "2024": 81
+      },
+      "criancas_0_3": 243,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oliveira de Azeméis",
+      "slug": "oliveira-de-azemeis",
+      "distrito": "Aveiro",
+      "dico": "0113",
+      "populacao": 66212,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 66212,
+      "nascimentos_ano": 433,
+      "nascimentos_por_ano": {
+        "2024": 433
+      },
+      "criancas_0_3": 1299,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oliveira do Bairro",
+      "slug": "oliveira-do-bairro",
+      "distrito": "Aveiro",
+      "dico": "0114",
+      "populacao": 23150,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 23150,
+      "nascimentos_ano": 188,
+      "nascimentos_por_ano": {
+        "2024": 188
+      },
+      "criancas_0_3": 564,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ovar",
+      "slug": "ovar",
+      "distrito": "Aveiro",
+      "dico": "0115",
+      "populacao": 54976,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 54976,
+      "nascimentos_ano": 413,
+      "nascimentos_por_ano": {
+        "2024": 413
+      },
+      "criancas_0_3": 1239,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Maria da Feira",
+      "slug": "santa-maria-da-feira",
+      "distrito": "Aveiro",
+      "dico": "0109",
+      "populacao": 136720,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 136720,
+      "nascimentos_ano": 993,
+      "nascimentos_por_ano": {
+        "2024": 993
+      },
+      "criancas_0_3": 2979,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sever do Vouga",
+      "slug": "sever-do-vouga",
+      "distrito": "Aveiro",
+      "dico": "0117",
+      "populacao": 11069,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11069,
+      "nascimentos_ano": 86,
+      "nascimentos_por_ano": {
+        "2024": 86
+      },
+      "criancas_0_3": 258,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São João da Madeira",
+      "slug": "sao-joao-da-madeira",
+      "distrito": "Aveiro",
+      "dico": "0116",
+      "populacao": 22162,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 22162,
+      "nascimentos_ano": 141,
+      "nascimentos_por_ano": {
+        "2024": 141
+      },
+      "criancas_0_3": 423,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vagos",
+      "slug": "vagos",
+      "distrito": "Aveiro",
+      "dico": "0118",
+      "populacao": 22905,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 22905,
+      "nascimentos_ano": 193,
+      "nascimentos_por_ano": {
+        "2024": 193
+      },
+      "criancas_0_3": 579,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vale de Cambra",
+      "slug": "vale-de-cambra",
+      "distrito": "Aveiro",
+      "dico": "0119",
+      "populacao": 21279,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21279,
+      "nascimentos_ano": 144,
+      "nascimentos_por_ano": {
+        "2024": 144
+      },
+      "criancas_0_3": 432,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Águeda",
+      "slug": "agueda",
+      "distrito": "Aveiro",
+      "dico": "0101",
+      "populacao": 46134,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 46134,
+      "nascimentos_ano": 346,
+      "nascimentos_por_ano": {
+        "2024": 346
+      },
+      "criancas_0_3": 1038,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ílhavo",
+      "slug": "ilhavo",
+      "distrito": "Aveiro",
+      "dico": "0110",
+      "populacao": 39241,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 39241,
+      "nascimentos_ano": 292,
+      "nascimentos_por_ano": {
+        "2024": 292
+      },
+      "criancas_0_3": 876,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Aljustrel",
+      "slug": "aljustrel",
+      "distrito": "Beja",
+      "dico": "0201",
+      "populacao": 8879,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8879,
+      "nascimentos_ano": 74,
+      "nascimentos_por_ano": {
+        "2024": 74
+      },
+      "criancas_0_3": 222,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Almodôvar",
+      "slug": "almodovar",
+      "distrito": "Beja",
+      "dico": "0202",
+      "populacao": 6709,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6709,
+      "nascimentos_ano": 40,
+      "nascimentos_por_ano": {
+        "2024": 40
+      },
+      "criancas_0_3": 120,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alvito",
+      "slug": "alvito",
+      "distrito": "Beja",
+      "dico": "0203",
+      "populacao": 2276,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2276,
+      "nascimentos_ano": 22,
+      "nascimentos_por_ano": {
+        "2024": 22
+      },
+      "criancas_0_3": 66,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Barrancos",
+      "slug": "barrancos",
+      "distrito": "Beja",
+      "dico": "0204",
+      "populacao": 1435,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 1435,
+      "nascimentos_ano": 9,
+      "nascimentos_por_ano": {
+        "2024": 9
+      },
+      "criancas_0_3": 27,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Beja",
+      "slug": "beja",
+      "distrito": "Beja",
+      "dico": "0205",
+      "populacao": 33401,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 33401,
+      "nascimentos_ano": 300,
+      "nascimentos_por_ano": {
+        "2024": 300
+      },
+      "criancas_0_3": 900,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castro Verde",
+      "slug": "castro-verde",
+      "distrito": "Beja",
+      "dico": "0206",
+      "populacao": 6878,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6878,
+      "nascimentos_ano": 55,
+      "nascimentos_por_ano": {
+        "2024": 55
+      },
+      "criancas_0_3": 165,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cuba",
+      "slug": "cuba",
+      "distrito": "Beja",
+      "dico": "0207",
+      "populacao": 4374,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4374,
+      "nascimentos_ano": 37,
+      "nascimentos_por_ano": {
+        "2024": 37
+      },
+      "criancas_0_3": 111,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ferreira do Alentejo",
+      "slug": "ferreira-do-alentejo",
+      "distrito": "Beja",
+      "dico": "0208",
+      "populacao": 7676,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7676,
+      "nascimentos_ano": 59,
+      "nascimentos_por_ano": {
+        "2024": 59
+      },
+      "criancas_0_3": 177,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Moura",
+      "slug": "moura",
+      "distrito": "Beja",
+      "dico": "0210",
+      "populacao": 13267,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13267,
+      "nascimentos_ano": 119,
+      "nascimentos_por_ano": {
+        "2024": 119
+      },
+      "criancas_0_3": 357,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mértola",
+      "slug": "mertola",
+      "distrito": "Beja",
+      "dico": "0209",
+      "populacao": 6205,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6205,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Odemira",
+      "slug": "odemira",
+      "distrito": "Beja",
+      "dico": "0211",
+      "populacao": 29523,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 29523,
+      "nascimentos_ano": 301,
+      "nascimentos_por_ano": {
+        "2024": 301
+      },
+      "criancas_0_3": 903,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ourique",
+      "slug": "ourique",
+      "distrito": "Beja",
+      "dico": "0212",
+      "populacao": 4842,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4842,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Serpa",
+      "slug": "serpa",
+      "distrito": "Beja",
+      "dico": "0213",
+      "populacao": 13768,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13768,
+      "nascimentos_ano": 90,
+      "nascimentos_por_ano": {
+        "2024": 90
+      },
+      "criancas_0_3": 270,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vidigueira",
+      "slug": "vidigueira",
+      "distrito": "Beja",
+      "dico": "0214",
+      "populacao": 5177,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5177,
+      "nascimentos_ano": 31,
+      "nascimentos_por_ano": {
+        "2024": 31
+      },
+      "criancas_0_3": 93,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Amares",
+      "slug": "amares",
+      "distrito": "Braga",
+      "dico": "0301",
+      "populacao": 18591,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 18591,
+      "nascimentos_ano": 127,
+      "nascimentos_por_ano": {
+        "2024": 127
+      },
+      "criancas_0_3": 381,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Barcelos",
+      "slug": "barcelos",
+      "distrito": "Braga",
+      "dico": "0302",
+      "populacao": 116777,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 116777,
+      "nascimentos_ano": 861,
+      "nascimentos_por_ano": {
+        "2024": 861
+      },
+      "criancas_0_3": 2583,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Braga",
+      "slug": "braga",
+      "distrito": "Braga",
+      "dico": "0303",
+      "populacao": 193333,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 193333,
+      "nascimentos_ano": 1581,
+      "nascimentos_por_ano": {
+        "2024": 1581
+      },
+      "criancas_0_3": 4743,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cabeceiras de Basto",
+      "slug": "cabeceiras-de-basto",
+      "distrito": "Braga",
+      "dico": "0304",
+      "populacao": 15566,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15566,
+      "nascimentos_ano": 101,
+      "nascimentos_por_ano": {
+        "2024": 101
+      },
+      "criancas_0_3": 303,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Celorico de Basto",
+      "slug": "celorico-de-basto",
+      "distrito": "Braga",
+      "dico": "0305",
+      "populacao": 17666,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17666,
+      "nascimentos_ano": 84,
+      "nascimentos_por_ano": {
+        "2024": 84
+      },
+      "criancas_0_3": 252,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Esposende",
+      "slug": "esposende",
+      "distrito": "Braga",
+      "dico": "0306",
+      "populacao": 35145,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 35145,
+      "nascimentos_ano": 312,
+      "nascimentos_por_ano": {
+        "2024": 312
+      },
+      "criancas_0_3": 936,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Fafe",
+      "slug": "fafe",
+      "distrito": "Braga",
+      "dico": "0307",
+      "populacao": 48502,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 48502,
+      "nascimentos_ano": 321,
+      "nascimentos_por_ano": {
+        "2024": 321
+      },
+      "criancas_0_3": 963,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Guimarães",
+      "slug": "guimaraes",
+      "distrito": "Braga",
+      "dico": "0308",
+      "populacao": 156852,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 156852,
+      "nascimentos_ano": 1128,
+      "nascimentos_por_ano": {
+        "2024": 1128
+      },
+      "criancas_0_3": 3384,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Póvoa de Lanhoso",
+      "slug": "povoa-de-lanhoso",
+      "distrito": "Braga",
+      "dico": "0309",
+      "populacao": 21787,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21787,
+      "nascimentos_ano": 166,
+      "nascimentos_por_ano": {
+        "2024": 166
+      },
+      "criancas_0_3": 498,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Terras de Bouro",
+      "slug": "terras-de-bouro",
+      "distrito": "Braga",
+      "dico": "0310",
+      "populacao": 6359,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6359,
+      "nascimentos_ano": 34,
+      "nascimentos_por_ano": {
+        "2024": 34
+      },
+      "criancas_0_3": 102,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vieira do Minho",
+      "slug": "vieira-do-minho",
+      "distrito": "Braga",
+      "dico": "0311",
+      "populacao": 11970,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11970,
+      "nascimentos_ano": 50,
+      "nascimentos_por_ano": {
+        "2024": 50
+      },
+      "criancas_0_3": 150,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Famalicão",
+      "slug": "vila-nova-de-famalicao",
+      "distrito": "Braga",
+      "dico": "0312",
+      "populacao": 133590,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 133590,
+      "nascimentos_ano": 1104,
+      "nascimentos_por_ano": {
+        "2024": 1104
+      },
+      "criancas_0_3": 3312,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Verde",
+      "slug": "vila-verde",
+      "distrito": "Braga",
+      "dico": "0313",
+      "populacao": 46474,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 46474,
+      "nascimentos_ano": 391,
+      "nascimentos_por_ano": {
+        "2024": 391
+      },
+      "criancas_0_3": 1173,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vizela",
+      "slug": "vizela",
+      "distrito": "Braga",
+      "dico": "0314",
+      "populacao": 23903,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 23903,
+      "nascimentos_ano": 206,
+      "nascimentos_por_ano": {
+        "2024": 206
+      },
+      "criancas_0_3": 618,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alfândega da Fé",
+      "slug": "alfandega-da-fe",
+      "distrito": "Bragança",
+      "dico": "0401",
+      "populacao": 4321,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4321,
+      "nascimentos_ano": 11,
+      "nascimentos_por_ano": {
+        "2024": 11
+      },
+      "criancas_0_3": 33,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Bragança",
+      "slug": "braganca",
+      "distrito": "Bragança",
+      "dico": "0402",
+      "populacao": 34580,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 34580,
+      "nascimentos_ano": 220,
+      "nascimentos_por_ano": {
+        "2024": 220
+      },
+      "criancas_0_3": 660,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Carrazeda de Ansiães",
+      "slug": "carrazeda-de-ansiaes",
+      "distrito": "Bragança",
+      "dico": "0403",
+      "populacao": 5494,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5494,
+      "nascimentos_ano": 12,
+      "nascimentos_por_ano": {
+        "2024": 12
+      },
+      "criancas_0_3": 36,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Freixo de Espada à Cinta",
+      "slug": "freixo-de-espada-a-cinta",
+      "distrito": "Bragança",
+      "dico": "0404",
+      "populacao": 3215,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3215,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Macedo de Cavaleiros",
+      "slug": "macedo-de-cavaleiros",
+      "distrito": "Bragança",
+      "dico": "0405",
+      "populacao": 14252,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14252,
+      "nascimentos_ano": 63,
+      "nascimentos_por_ano": {
+        "2024": 63
+      },
+      "criancas_0_3": 189,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Miranda do Douro",
+      "slug": "miranda-do-douro",
+      "distrito": "Bragança",
+      "dico": "0406",
+      "populacao": 6466,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6466,
+      "nascimentos_ano": 20,
+      "nascimentos_por_ano": {
+        "2024": 20
+      },
+      "criancas_0_3": 60,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mirandela",
+      "slug": "mirandela",
+      "distrito": "Bragança",
+      "dico": "0407",
+      "populacao": 21389,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21389,
+      "nascimentos_ano": 109,
+      "nascimentos_por_ano": {
+        "2024": 109
+      },
+      "criancas_0_3": 327,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mogadouro",
+      "slug": "mogadouro",
+      "distrito": "Bragança",
+      "dico": "0408",
+      "populacao": 8304,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8304,
+      "nascimentos_ano": 50,
+      "nascimentos_por_ano": {
+        "2024": 50
+      },
+      "criancas_0_3": 150,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Torre de Moncorvo",
+      "slug": "torre-de-moncorvo",
+      "distrito": "Bragança",
+      "dico": "0409",
+      "populacao": 6822,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6822,
+      "nascimentos_ano": 21,
+      "nascimentos_por_ano": {
+        "2024": 21
+      },
+      "criancas_0_3": 63,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Flor",
+      "slug": "vila-flor",
+      "distrito": "Bragança",
+      "dico": "0410",
+      "populacao": 6064,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6064,
+      "nascimentos_ano": 29,
+      "nascimentos_por_ano": {
+        "2024": 29
+      },
+      "criancas_0_3": 87,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vimioso",
+      "slug": "vimioso",
+      "distrito": "Bragança",
+      "dico": "0411",
+      "populacao": 4154,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4154,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vinhais",
+      "slug": "vinhais",
+      "distrito": "Bragança",
+      "dico": "0412",
+      "populacao": 7772,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7772,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Belmonte",
+      "slug": "belmonte",
+      "distrito": "Castelo Branco",
+      "dico": "0501",
+      "populacao": 6204,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6204,
+      "nascimentos_ano": 36,
+      "nascimentos_por_ano": {
+        "2024": 36
+      },
+      "criancas_0_3": 108,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castelo Branco",
+      "slug": "castelo-branco",
+      "distrito": "Castelo Branco",
+      "dico": "0502",
+      "populacao": 52272,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 52272,
+      "nascimentos_ano": 405,
+      "nascimentos_por_ano": {
+        "2024": 405
+      },
+      "criancas_0_3": 1215,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Covilhã",
+      "slug": "covilha",
+      "distrito": "Castelo Branco",
+      "dico": "0503",
+      "populacao": 46453,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 46453,
+      "nascimentos_ano": 295,
+      "nascimentos_por_ano": {
+        "2024": 295
+      },
+      "criancas_0_3": 885,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Fundão",
+      "slug": "fundao",
+      "distrito": "Castelo Branco",
+      "dico": "0504",
+      "populacao": 26521,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 26521,
+      "nascimentos_ano": 168,
+      "nascimentos_por_ano": {
+        "2024": 168
+      },
+      "criancas_0_3": 504,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Idanha-a-Nova",
+      "slug": "idanha-a-nova",
+      "distrito": "Castelo Branco",
+      "dico": "0505",
+      "populacao": 8340,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8340,
+      "nascimentos_ano": 49,
+      "nascimentos_por_ano": {
+        "2024": 49
+      },
+      "criancas_0_3": 147,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oleiros",
+      "slug": "oleiros",
+      "distrito": "Castelo Branco",
+      "dico": "0506",
+      "populacao": 4900,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4900,
+      "nascimentos_ano": 26,
+      "nascimentos_por_ano": {
+        "2024": 26
+      },
+      "criancas_0_3": 78,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penamacor",
+      "slug": "penamacor",
+      "distrito": "Castelo Branco",
+      "dico": "0507",
+      "populacao": 4764,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4764,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Proença-a-Nova",
+      "slug": "proenca-a-nova",
+      "distrito": "Castelo Branco",
+      "dico": "0508",
+      "populacao": 7147,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7147,
+      "nascimentos_ano": 32,
+      "nascimentos_por_ano": {
+        "2024": 32
+      },
+      "criancas_0_3": 96,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sertã",
+      "slug": "serta",
+      "distrito": "Castelo Branco",
+      "dico": "0509",
+      "populacao": 14748,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14748,
+      "nascimentos_ano": 84,
+      "nascimentos_por_ano": {
+        "2024": 84
+      },
+      "criancas_0_3": 252,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Velha de Ródão",
+      "slug": "vila-velha-de-rodao",
+      "distrito": "Castelo Branco",
+      "dico": "0511",
+      "populacao": 3287,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3287,
+      "nascimentos_ano": 23,
+      "nascimentos_por_ano": {
+        "2024": 23
+      },
+      "criancas_0_3": 69,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila de Rei",
+      "slug": "vila-de-rei",
+      "distrito": "Castelo Branco",
+      "dico": "0510",
+      "populacao": 3276,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3276,
+      "nascimentos_ano": 19,
+      "nascimentos_por_ano": {
+        "2024": 19
+      },
+      "criancas_0_3": 57,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arganil",
+      "slug": "arganil",
+      "distrito": "Coimbra",
+      "dico": "0601",
+      "populacao": 11067,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11067,
+      "nascimentos_ano": 59,
+      "nascimentos_por_ano": {
+        "2024": 59
+      },
+      "criancas_0_3": 177,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cantanhede",
+      "slug": "cantanhede",
+      "distrito": "Coimbra",
+      "dico": "0602",
+      "populacao": 34218,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 34218,
+      "nascimentos_ano": 247,
+      "nascimentos_por_ano": {
+        "2024": 247
+      },
+      "criancas_0_3": 741,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Coimbra",
+      "slug": "coimbra",
+      "distrito": "Coimbra",
+      "dico": "0603",
+      "populacao": 140796,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 140796,
+      "nascimentos_ano": 1097,
+      "nascimentos_por_ano": {
+        "2024": 1097
+      },
+      "criancas_0_3": 3291,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Condeixa-a-Nova",
+      "slug": "condeixa-a-nova",
+      "distrito": "Coimbra",
+      "dico": "0604",
+      "populacao": 16733,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 16733,
+      "nascimentos_ano": 139,
+      "nascimentos_por_ano": {
+        "2024": 139
+      },
+      "criancas_0_3": 417,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Figueira da Foz",
+      "slug": "figueira-da-foz",
+      "distrito": "Coimbra",
+      "dico": "0605",
+      "populacao": 58982,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 58982,
+      "nascimentos_ano": 418,
+      "nascimentos_por_ano": {
+        "2024": 418
+      },
+      "criancas_0_3": 1254,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Góis",
+      "slug": "gois",
+      "distrito": "Coimbra",
+      "dico": "0606",
+      "populacao": 3806,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3806,
+      "nascimentos_ano": 23,
+      "nascimentos_por_ano": {
+        "2024": 23
+      },
+      "criancas_0_3": 69,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lousã",
+      "slug": "lousa",
+      "distrito": "Coimbra",
+      "dico": "0607",
+      "populacao": 17012,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17012,
+      "nascimentos_ano": 108,
+      "nascimentos_por_ano": {
+        "2024": 108
+      },
+      "criancas_0_3": 324,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mira",
+      "slug": "mira",
+      "distrito": "Coimbra",
+      "dico": "0608",
+      "populacao": 12126,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12126,
+      "nascimentos_ano": 82,
+      "nascimentos_por_ano": {
+        "2024": 82
+      },
+      "criancas_0_3": 246,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Miranda do Corvo",
+      "slug": "miranda-do-corvo",
+      "distrito": "Coimbra",
+      "dico": "0609",
+      "populacao": 12014,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12014,
+      "nascimentos_ano": 68,
+      "nascimentos_por_ano": {
+        "2024": 68
+      },
+      "criancas_0_3": 204,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Montemor-o-Velho",
+      "slug": "montemor-o-velho",
+      "distrito": "Coimbra",
+      "dico": "0610",
+      "populacao": 24587,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 24587,
+      "nascimentos_ano": 178,
+      "nascimentos_por_ano": {
+        "2024": 178
+      },
+      "criancas_0_3": 534,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oliveira do Hospital",
+      "slug": "oliveira-do-hospital",
+      "distrito": "Coimbra",
+      "dico": "0611",
+      "populacao": 19421,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 19421,
+      "nascimentos_ano": 152,
+      "nascimentos_por_ano": {
+        "2024": 152
+      },
+      "criancas_0_3": 456,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Pampilhosa da Serra",
+      "slug": "pampilhosa-da-serra",
+      "distrito": "Coimbra",
+      "dico": "0612",
+      "populacao": 4067,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4067,
+      "nascimentos_ano": 13,
+      "nascimentos_por_ano": {
+        "2024": 13
+      },
+      "criancas_0_3": 39,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penacova",
+      "slug": "penacova",
+      "distrito": "Coimbra",
+      "dico": "0613",
+      "populacao": 13119,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13119,
+      "nascimentos_ano": 75,
+      "nascimentos_por_ano": {
+        "2024": 75
+      },
+      "criancas_0_3": 225,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penela",
+      "slug": "penela",
+      "distrito": "Coimbra",
+      "dico": "0614",
+      "populacao": 5443,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5443,
+      "nascimentos_ano": 31,
+      "nascimentos_por_ano": {
+        "2024": 31
+      },
+      "criancas_0_3": 93,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Soure",
+      "slug": "soure",
+      "distrito": "Coimbra",
+      "dico": "0615",
+      "populacao": 17264,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17264,
+      "nascimentos_ano": 85,
+      "nascimentos_por_ano": {
+        "2024": 85
+      },
+      "criancas_0_3": 255,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tábua",
+      "slug": "tabua",
+      "distrito": "Coimbra",
+      "dico": "0616",
+      "populacao": 11163,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11163,
+      "nascimentos_ano": 86,
+      "nascimentos_por_ano": {
+        "2024": 86
+      },
+      "criancas_0_3": 258,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Poiares",
+      "slug": "vila-nova-de-poiares",
+      "distrito": "Coimbra",
+      "dico": "0617",
+      "populacao": 6813,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6813,
+      "nascimentos_ano": 61,
+      "nascimentos_por_ano": {
+        "2024": 61
+      },
+      "criancas_0_3": 183,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Albufeira",
+      "slug": "albufeira",
+      "distrito": "Faro",
+      "dico": "0801",
+      "populacao": 44158,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 44158,
+      "nascimentos_ano": 524,
+      "nascimentos_por_ano": {
+        "2024": 524
+      },
+      "criancas_0_3": 1572,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alcoutim",
+      "slug": "alcoutim",
+      "distrito": "Faro",
+      "dico": "0802",
+      "populacao": 2521,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2521,
+      "nascimentos_ano": 6,
+      "nascimentos_por_ano": {
+        "2024": 6
+      },
+      "criancas_0_3": 18,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Aljezur",
+      "slug": "aljezur",
+      "distrito": "Faro",
+      "dico": "0803",
+      "populacao": 6046,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6046,
+      "nascimentos_ano": 58,
+      "nascimentos_por_ano": {
+        "2024": 58
+      },
+      "criancas_0_3": 174,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castro Marim",
+      "slug": "castro-marim",
+      "distrito": "Faro",
+      "dico": "0804",
+      "populacao": 6434,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6434,
+      "nascimentos_ano": 45,
+      "nascimentos_por_ano": {
+        "2024": 45
+      },
+      "criancas_0_3": 135,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Faro",
+      "slug": "faro",
+      "distrito": "Faro",
+      "dico": "0805",
+      "populacao": 67566,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 67566,
+      "nascimentos_ano": 579,
+      "nascimentos_por_ano": {
+        "2024": 579
+      },
+      "criancas_0_3": 1737,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lagoa",
+      "slug": "lagoa",
+      "distrito": "Faro",
+      "dico": "0806",
+      "populacao": 23718,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 23718,
+      "nascimentos_ano": 216,
+      "nascimentos_por_ano": {
+        "2024": 216
+      },
+      "criancas_0_3": 648,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lagos",
+      "slug": "lagos",
+      "distrito": "Faro",
+      "dico": "0807",
+      "populacao": 33514,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 33514,
+      "nascimentos_ano": 287,
+      "nascimentos_por_ano": {
+        "2024": 287
+      },
+      "criancas_0_3": 861,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Loulé",
+      "slug": "loule",
+      "distrito": "Faro",
+      "dico": "0808",
+      "populacao": 72373,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 72373,
+      "nascimentos_ano": 793,
+      "nascimentos_por_ano": {
+        "2024": 793
+      },
+      "criancas_0_3": 2379,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Monchique",
+      "slug": "monchique",
+      "distrito": "Faro",
+      "dico": "0809",
+      "populacao": 5465,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5465,
+      "nascimentos_ano": 46,
+      "nascimentos_por_ano": {
+        "2024": 46
+      },
+      "criancas_0_3": 138,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Olhão",
+      "slug": "olhao",
+      "distrito": "Faro",
+      "dico": "0810",
+      "populacao": 44639,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 44639,
+      "nascimentos_ano": 341,
+      "nascimentos_por_ano": {
+        "2024": 341
+      },
+      "criancas_0_3": 1023,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Portimão",
+      "slug": "portimao",
+      "distrito": "Faro",
+      "dico": "0811",
+      "populacao": 59896,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 59896,
+      "nascimentos_ano": 615,
+      "nascimentos_por_ano": {
+        "2024": 615
+      },
+      "criancas_0_3": 1845,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Silves",
+      "slug": "silves",
+      "distrito": "Faro",
+      "dico": "0813",
+      "populacao": 37813,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 37813,
+      "nascimentos_ano": 369,
+      "nascimentos_por_ano": {
+        "2024": 369
+      },
+      "criancas_0_3": 1107,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São Brás de Alportel",
+      "slug": "sao-bras-de-alportel",
+      "distrito": "Faro",
+      "dico": "0812",
+      "populacao": 11266,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11266,
+      "nascimentos_ano": 81,
+      "nascimentos_por_ano": {
+        "2024": 81
+      },
+      "criancas_0_3": 243,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tavira",
+      "slug": "tavira",
+      "distrito": "Faro",
+      "dico": "0814",
+      "populacao": 27536,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 27536,
+      "nascimentos_ano": 182,
+      "nascimentos_por_ano": {
+        "2024": 182
+      },
+      "criancas_0_3": 546,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Real de Santo António",
+      "slug": "vila-real-de-santo-antonio",
+      "distrito": "Faro",
+      "dico": "0816",
+      "populacao": 18828,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 18828,
+      "nascimentos_ano": 154,
+      "nascimentos_por_ano": {
+        "2024": 154
+      },
+      "criancas_0_3": 462,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila do Bispo",
+      "slug": "vila-do-bispo",
+      "distrito": "Faro",
+      "dico": "0815",
+      "populacao": 5722,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5722,
+      "nascimentos_ano": 51,
+      "nascimentos_por_ano": {
+        "2024": 51
+      },
+      "criancas_0_3": 153,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Aguiar da Beira",
+      "slug": "aguiar-da-beira",
+      "distrito": "Guarda",
+      "dico": "0901",
+      "populacao": 5228,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5228,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Almeida",
+      "slug": "almeida",
+      "distrito": "Guarda",
+      "dico": "0902",
+      "populacao": 5882,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5882,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Celorico da Beira",
+      "slug": "celorico-da-beira",
+      "distrito": "Guarda",
+      "dico": "0903",
+      "populacao": 6582,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6582,
+      "nascimentos_ano": 37,
+      "nascimentos_por_ano": {
+        "2024": 37
+      },
+      "criancas_0_3": 111,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Figueira de Castelo Rodrigo",
+      "slug": "figueira-de-castelo-rodrigo",
+      "distrito": "Guarda",
+      "dico": "0904",
+      "populacao": 5150,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5150,
+      "nascimentos_ano": 28,
+      "nascimentos_por_ano": {
+        "2024": 28
+      },
+      "criancas_0_3": 84,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Fornos de Algodres",
+      "slug": "fornos-de-algodres",
+      "distrito": "Guarda",
+      "dico": "0905",
+      "populacao": 4398,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4398,
+      "nascimentos_ano": 23,
+      "nascimentos_por_ano": {
+        "2024": 23
+      },
+      "criancas_0_3": 69,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Gouveia",
+      "slug": "gouveia",
+      "distrito": "Guarda",
+      "dico": "0906",
+      "populacao": 12221,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12221,
+      "nascimentos_ano": 60,
+      "nascimentos_por_ano": {
+        "2024": 60
+      },
+      "criancas_0_3": 180,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Guarda",
+      "slug": "guarda",
+      "distrito": "Guarda",
+      "dico": "0907",
+      "populacao": 40155,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 40155,
+      "nascimentos_ano": 271,
+      "nascimentos_por_ano": {
+        "2024": 271
+      },
+      "criancas_0_3": 813,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Manteigas",
+      "slug": "manteigas",
+      "distrito": "Guarda",
+      "dico": "0908",
+      "populacao": 2909,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2909,
+      "nascimentos_ano": 19,
+      "nascimentos_por_ano": {
+        "2024": 19
+      },
+      "criancas_0_3": 57,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mêda",
+      "slug": "meda",
+      "distrito": "Guarda",
+      "dico": "0909",
+      "populacao": 4632,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4632,
+      "nascimentos_ano": 24,
+      "nascimentos_por_ano": {
+        "2024": 24
+      },
+      "criancas_0_3": 72,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Pinhel",
+      "slug": "pinhel",
+      "distrito": "Guarda",
+      "dico": "0910",
+      "populacao": 8099,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8099,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sabugal",
+      "slug": "sabugal",
+      "distrito": "Guarda",
+      "dico": "0911",
+      "populacao": 11281,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11281,
+      "nascimentos_ano": 33,
+      "nascimentos_por_ano": {
+        "2024": 33
+      },
+      "criancas_0_3": 99,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Seia",
+      "slug": "seia",
+      "distrito": "Guarda",
+      "dico": "0912",
+      "populacao": 21759,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21759,
+      "nascimentos_ano": 132,
+      "nascimentos_por_ano": {
+        "2024": 132
+      },
+      "criancas_0_3": 396,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Trancoso",
+      "slug": "trancoso",
+      "distrito": "Guarda",
+      "dico": "0913",
+      "populacao": 8419,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8419,
+      "nascimentos_ano": 38,
+      "nascimentos_por_ano": {
+        "2024": 38
+      },
+      "criancas_0_3": 114,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Foz Côa",
+      "slug": "vila-nova-de-foz-coa",
+      "distrito": "Guarda",
+      "dico": "0914",
+      "populacao": 6304,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6304,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alcobaça",
+      "slug": "alcobaca",
+      "distrito": "Leiria",
+      "dico": "1001",
+      "populacao": 54981,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 54981,
+      "nascimentos_ano": 433,
+      "nascimentos_por_ano": {
+        "2024": 433
+      },
+      "criancas_0_3": 1299,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alvaiázere",
+      "slug": "alvaiazere",
+      "distrito": "Leiria",
+      "dico": "1002",
+      "populacao": 6227,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6227,
+      "nascimentos_ano": 35,
+      "nascimentos_por_ano": {
+        "2024": 35
+      },
+      "criancas_0_3": 105,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ansião",
+      "slug": "ansiao",
+      "distrito": "Leiria",
+      "dico": "1003",
+      "populacao": 11632,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11632,
+      "nascimentos_ano": 60,
+      "nascimentos_por_ano": {
+        "2024": 60
+      },
+      "criancas_0_3": 180,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Batalha",
+      "slug": "batalha",
+      "distrito": "Leiria",
+      "dico": "1004",
+      "populacao": 15553,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15553,
+      "nascimentos_ano": 117,
+      "nascimentos_por_ano": {
+        "2024": 117
+      },
+      "criancas_0_3": 351,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Bombarral",
+      "slug": "bombarral",
+      "distrito": "Leiria",
+      "dico": "1005",
+      "populacao": 12743,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12743,
+      "nascimentos_ano": 80,
+      "nascimentos_por_ano": {
+        "2024": 80
+      },
+      "criancas_0_3": 240,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Caldas da Rainha",
+      "slug": "caldas-da-rainha",
+      "distrito": "Leiria",
+      "dico": "1006",
+      "populacao": 50898,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 50898,
+      "nascimentos_ano": 386,
+      "nascimentos_por_ano": {
+        "2024": 386
+      },
+      "criancas_0_3": 1158,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castanheira de Pêra",
+      "slug": "castanheira-de-pera",
+      "distrito": "Leiria",
+      "dico": "1007",
+      "populacao": 2647,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2647,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Figueiró dos Vinhos",
+      "slug": "figueiro-dos-vinhos",
+      "distrito": "Leiria",
+      "dico": "1008",
+      "populacao": 5296,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5296,
+      "nascimentos_ano": 29,
+      "nascimentos_por_ano": {
+        "2024": 29
+      },
+      "criancas_0_3": 87,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Leiria",
+      "slug": "leiria",
+      "distrito": "Leiria",
+      "dico": "1009",
+      "populacao": 128640,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 128640,
+      "nascimentos_ano": 1073,
+      "nascimentos_por_ano": {
+        "2024": 1073
+      },
+      "criancas_0_3": 3219,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Marinha Grande",
+      "slug": "marinha-grande",
+      "distrito": "Leiria",
+      "dico": "1010",
+      "populacao": 39033,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 39033,
+      "nascimentos_ano": 299,
+      "nascimentos_por_ano": {
+        "2024": 299
+      },
+      "criancas_0_3": 897,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Nazaré",
+      "slug": "nazare",
+      "distrito": "Leiria",
+      "dico": "1011",
+      "populacao": 14889,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14889,
+      "nascimentos_ano": 136,
+      "nascimentos_por_ano": {
+        "2024": 136
+      },
+      "criancas_0_3": 408,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Pedrógão Grande",
+      "slug": "pedrogao-grande",
+      "distrito": "Leiria",
+      "dico": "1013",
+      "populacao": 3392,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3392,
+      "nascimentos_ano": 22,
+      "nascimentos_por_ano": {
+        "2024": 22
+      },
+      "criancas_0_3": 66,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Peniche",
+      "slug": "peniche",
+      "distrito": "Leiria",
+      "dico": "1014",
+      "populacao": 26419,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 26419,
+      "nascimentos_ano": 209,
+      "nascimentos_por_ano": {
+        "2024": 209
+      },
+      "criancas_0_3": 627,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Pombal",
+      "slug": "pombal",
+      "distrito": "Leiria",
+      "dico": "1015",
+      "populacao": 51178,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 51178,
+      "nascimentos_ano": 363,
+      "nascimentos_por_ano": {
+        "2024": 363
+      },
+      "criancas_0_3": 1089,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Porto de Mós",
+      "slug": "porto-de-mos",
+      "distrito": "Leiria",
+      "dico": "1016",
+      "populacao": 23211,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 23211,
+      "nascimentos_ano": 198,
+      "nascimentos_por_ano": {
+        "2024": 198
+      },
+      "criancas_0_3": 594,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Óbidos",
+      "slug": "obidos",
+      "distrito": "Leiria",
+      "dico": "1012",
+      "populacao": 11940,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11940,
+      "nascimentos_ano": 81,
+      "nascimentos_por_ano": {
+        "2024": 81
+      },
+      "criancas_0_3": 243,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alenquer",
+      "slug": "alenquer",
+      "distrito": "Lisboa",
+      "dico": "1101",
+      "populacao": 44428,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 44428,
+      "nascimentos_ano": 439,
+      "nascimentos_por_ano": {
+        "2024": 439
+      },
+      "criancas_0_3": 1317,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Amadora",
+      "slug": "amadora",
+      "distrito": "Lisboa",
+      "dico": "1115",
+      "populacao": 171719,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 171719,
+      "nascimentos_ano": 2132,
+      "nascimentos_por_ano": {
+        "2024": 2132
+      },
+      "criancas_0_3": 6396,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arruda dos Vinhos",
+      "slug": "arruda-dos-vinhos",
+      "distrito": "Lisboa",
+      "dico": "1102",
+      "populacao": 13983,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13983,
+      "nascimentos_ano": 125,
+      "nascimentos_por_ano": {
+        "2024": 125
+      },
+      "criancas_0_3": 375,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Azambuja",
+      "slug": "azambuja",
+      "distrito": "Lisboa",
+      "dico": "1103",
+      "populacao": 21421,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21421,
+      "nascimentos_ano": 179,
+      "nascimentos_por_ano": {
+        "2024": 179
+      },
+      "criancas_0_3": 537,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cadaval",
+      "slug": "cadaval",
+      "distrito": "Lisboa",
+      "dico": "1104",
+      "populacao": 13382,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13382,
+      "nascimentos_ano": 78,
+      "nascimentos_por_ano": {
+        "2024": 78
+      },
+      "criancas_0_3": 234,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cascais",
+      "slug": "cascais",
+      "distrito": "Lisboa",
+      "dico": "1105",
+      "populacao": 214134,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 214134,
+      "nascimentos_ano": 1725,
+      "nascimentos_por_ano": {
+        "2024": 1725
+      },
+      "criancas_0_3": 5175,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lisboa",
+      "slug": "lisboa",
+      "distrito": "Lisboa",
+      "dico": "1106",
+      "populacao": 544851,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 544851,
+      "nascimentos_ano": 5767,
+      "nascimentos_por_ano": {
+        "2024": 5767
+      },
+      "criancas_0_3": 17301,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Loures",
+      "slug": "loures",
+      "distrito": "Lisboa",
+      "dico": "1107",
+      "populacao": 201646,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 201646,
+      "nascimentos_ano": 2317,
+      "nascimentos_por_ano": {
+        "2024": 2317
+      },
+      "criancas_0_3": 6951,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lourinhã",
+      "slug": "lourinha",
+      "distrito": "Lisboa",
+      "dico": "1108",
+      "populacao": 26261,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 26261,
+      "nascimentos_ano": 228,
+      "nascimentos_por_ano": {
+        "2024": 228
+      },
+      "criancas_0_3": 684,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mafra",
+      "slug": "mafra",
+      "distrito": "Lisboa",
+      "dico": "1109",
+      "populacao": 86523,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 86523,
+      "nascimentos_ano": 751,
+      "nascimentos_por_ano": {
+        "2024": 751
+      },
+      "criancas_0_3": 2253,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Odivelas",
+      "slug": "odivelas",
+      "distrito": "Lisboa",
+      "dico": "1116",
+      "populacao": 148156,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 148156,
+      "nascimentos_ano": 1815,
+      "nascimentos_por_ano": {
+        "2024": 1815
+      },
+      "criancas_0_3": 5445,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oeiras",
+      "slug": "oeiras",
+      "distrito": "Lisboa",
+      "dico": "1110",
+      "populacao": 171802,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 171802,
+      "nascimentos_ano": 1386,
+      "nascimentos_por_ano": {
+        "2024": 1386
+      },
+      "criancas_0_3": 4158,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sintra",
+      "slug": "sintra",
+      "distrito": "Lisboa",
+      "dico": "1111",
+      "populacao": 385954,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 385954,
+      "nascimentos_ano": 4413,
+      "nascimentos_por_ano": {
+        "2024": 4413
+      },
+      "criancas_0_3": 13239,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sobral de Monte Agraço",
+      "slug": "sobral-de-monte-agraco",
+      "distrito": "Lisboa",
+      "dico": "1112",
+      "populacao": 10542,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10542,
+      "nascimentos_ano": 93,
+      "nascimentos_por_ano": {
+        "2024": 93
+      },
+      "criancas_0_3": 279,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Torres Vedras",
+      "slug": "torres-vedras",
+      "distrito": "Lisboa",
+      "dico": "1113",
+      "populacao": 83130,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 83130,
+      "nascimentos_ano": 738,
+      "nascimentos_por_ano": {
+        "2024": 738
+      },
+      "criancas_0_3": 2214,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Franca de Xira",
+      "slug": "vila-franca-de-xira",
+      "distrito": "Lisboa",
+      "dico": "1114",
+      "populacao": 137659,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 137659,
+      "nascimentos_ano": 1339,
+      "nascimentos_por_ano": {
+        "2024": 1339
+      },
+      "criancas_0_3": 4017,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alter do Chão",
+      "slug": "alter-do-chao",
+      "distrito": "Portalegre",
+      "dico": "1201",
+      "populacao": 3046,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3046,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arronches",
+      "slug": "arronches",
+      "distrito": "Portalegre",
+      "dico": "1202",
+      "populacao": 2789,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2789,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Avis",
+      "slug": "avis",
+      "distrito": "Portalegre",
+      "dico": "1203",
+      "populacao": 3813,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3813,
+      "nascimentos_ano": 21,
+      "nascimentos_por_ano": {
+        "2024": 21
+      },
+      "criancas_0_3": 63,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Campo Maior",
+      "slug": "campo-maior",
+      "distrito": "Portalegre",
+      "dico": "1204",
+      "populacao": 8045,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8045,
+      "nascimentos_ano": 40,
+      "nascimentos_por_ano": {
+        "2024": 40
+      },
+      "criancas_0_3": 120,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castelo de Vide",
+      "slug": "castelo-de-vide",
+      "distrito": "Portalegre",
+      "dico": "1205",
+      "populacao": 3121,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3121,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Crato",
+      "slug": "crato",
+      "distrito": "Portalegre",
+      "dico": "1206",
+      "populacao": 3225,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3225,
+      "nascimentos_ano": 16,
+      "nascimentos_por_ano": {
+        "2024": 16
+      },
+      "criancas_0_3": 48,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Elvas",
+      "slug": "elvas",
+      "distrito": "Portalegre",
+      "dico": "1207",
+      "populacao": 20753,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 20753,
+      "nascimentos_ano": 134,
+      "nascimentos_por_ano": {
+        "2024": 134
+      },
+      "criancas_0_3": 402,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Fronteira",
+      "slug": "fronteira",
+      "distrito": "Portalegre",
+      "dico": "1208",
+      "populacao": 2856,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2856,
+      "nascimentos_ano": 15,
+      "nascimentos_por_ano": {
+        "2024": 15
+      },
+      "criancas_0_3": 45,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Gavião",
+      "slug": "gaviao",
+      "distrito": "Portalegre",
+      "dico": "1209",
+      "populacao": 3398,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3398,
+      "nascimentos_ano": 13,
+      "nascimentos_por_ano": {
+        "2024": 13
+      },
+      "criancas_0_3": 39,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Marvão",
+      "slug": "marvao",
+      "distrito": "Portalegre",
+      "dico": "1210",
+      "populacao": 3023,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3023,
+      "nascimentos_ano": 22,
+      "nascimentos_por_ano": {
+        "2024": 22
+      },
+      "criancas_0_3": 66,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Monforte",
+      "slug": "monforte",
+      "distrito": "Portalegre",
+      "dico": "1211",
+      "populacao": 2990,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2990,
+      "nascimentos_ano": 26,
+      "nascimentos_por_ano": {
+        "2024": 26
+      },
+      "criancas_0_3": 78,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Nisa",
+      "slug": "nisa",
+      "distrito": "Portalegre",
+      "dico": "1212",
+      "populacao": 5951,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5951,
+      "nascimentos_ano": 30,
+      "nascimentos_por_ano": {
+        "2024": 30
+      },
+      "criancas_0_3": 90,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ponte de Sor",
+      "slug": "ponte-de-sor",
+      "distrito": "Portalegre",
+      "dico": "1213",
+      "populacao": 15253,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15253,
+      "nascimentos_ano": 103,
+      "nascimentos_por_ano": {
+        "2024": 103
+      },
+      "criancas_0_3": 309,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Portalegre",
+      "slug": "portalegre",
+      "distrito": "Portalegre",
+      "dico": "1214",
+      "populacao": 22368,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 22368,
+      "nascimentos_ano": 134,
+      "nascimentos_por_ano": {
+        "2024": 134
+      },
+      "criancas_0_3": 402,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sousel",
+      "slug": "sousel",
+      "distrito": "Portalegre",
+      "dico": "1215",
+      "populacao": 4358,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4358,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Amarante",
+      "slug": "amarante",
+      "distrito": "Porto",
+      "dico": "1301",
+      "populacao": 52131,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 52131,
+      "nascimentos_ano": 297,
+      "nascimentos_por_ano": {
+        "2024": 297
+      },
+      "criancas_0_3": 891,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Baião",
+      "slug": "baiao",
+      "distrito": "Porto",
+      "dico": "1302",
+      "populacao": 17527,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17527,
+      "nascimentos_ano": 95,
+      "nascimentos_por_ano": {
+        "2024": 95
+      },
+      "criancas_0_3": 285,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Felgueiras",
+      "slug": "felgueiras",
+      "distrito": "Porto",
+      "dico": "1303",
+      "populacao": 55883,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 55883,
+      "nascimentos_ano": 395,
+      "nascimentos_por_ano": {
+        "2024": 395
+      },
+      "criancas_0_3": 1185,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Gondomar",
+      "slug": "gondomar",
+      "distrito": "Porto",
+      "dico": "1304",
+      "populacao": 164255,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 164255,
+      "nascimentos_ano": 1149,
+      "nascimentos_por_ano": {
+        "2024": 1149
+      },
+      "criancas_0_3": 3447,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lousada",
+      "slug": "lousada",
+      "distrito": "Porto",
+      "dico": "1305",
+      "populacao": 47401,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 47401,
+      "nascimentos_ano": 366,
+      "nascimentos_por_ano": {
+        "2024": 366
+      },
+      "criancas_0_3": 1098,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Maia",
+      "slug": "maia",
+      "distrito": "Porto",
+      "dico": "1306",
+      "populacao": 134959,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 134959,
+      "nascimentos_ano": 978,
+      "nascimentos_por_ano": {
+        "2024": 978
+      },
+      "criancas_0_3": 2934,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Marco de Canaveses",
+      "slug": "marco-de-canaveses",
+      "distrito": "Porto",
+      "dico": "1307",
+      "populacao": 49563,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 49563,
+      "nascimentos_ano": 337,
+      "nascimentos_por_ano": {
+        "2024": 337
+      },
+      "criancas_0_3": 1011,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Matosinhos",
+      "slug": "matosinhos",
+      "distrito": "Porto",
+      "dico": "1308",
+      "populacao": 172669,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 172669,
+      "nascimentos_ano": 1152,
+      "nascimentos_por_ano": {
+        "2024": 1152
+      },
+      "criancas_0_3": 3456,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Paredes",
+      "slug": "paredes",
+      "distrito": "Porto",
+      "dico": "1310",
+      "populacao": 84414,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 84414,
+      "nascimentos_ano": 655,
+      "nascimentos_por_ano": {
+        "2024": 655
+      },
+      "criancas_0_3": 1965,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Paços de Ferreira",
+      "slug": "pacos-de-ferreira",
+      "distrito": "Porto",
+      "dico": "1309",
+      "populacao": 55623,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 55623,
+      "nascimentos_ano": 424,
+      "nascimentos_por_ano": {
+        "2024": 424
+      },
+      "criancas_0_3": 1272,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penafiel",
+      "slug": "penafiel",
+      "distrito": "Porto",
+      "dico": "1311",
+      "populacao": 69687,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 69687,
+      "nascimentos_ano": 521,
+      "nascimentos_por_ano": {
+        "2024": 521
+      },
+      "criancas_0_3": 1563,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Porto",
+      "slug": "porto",
+      "distrito": "Porto",
+      "dico": "1312",
+      "populacao": 231962,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 231962,
+      "nascimentos_ano": 1911,
+      "nascimentos_por_ano": {
+        "2024": 1911
+      },
+      "criancas_0_3": 5733,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Póvoa de Varzim",
+      "slug": "povoa-de-varzim",
+      "distrito": "Porto",
+      "dico": "1313",
+      "populacao": 64320,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 64320,
+      "nascimentos_ano": 531,
+      "nascimentos_por_ano": {
+        "2024": 531
+      },
+      "criancas_0_3": 1593,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santo Tirso",
+      "slug": "santo-tirso",
+      "distrito": "Porto",
+      "dico": "1314",
+      "populacao": 67785,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 67785,
+      "nascimentos_ano": 411,
+      "nascimentos_por_ano": {
+        "2024": 411
+      },
+      "criancas_0_3": 1233,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Trofa",
+      "slug": "trofa",
+      "distrito": "Porto",
+      "dico": "1318",
+      "populacao": 38612,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 38612,
+      "nascimentos_ano": 306,
+      "nascimentos_por_ano": {
+        "2024": 306
+      },
+      "criancas_0_3": 918,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Valongo",
+      "slug": "valongo",
+      "distrito": "Porto",
+      "dico": "1315",
+      "populacao": 94795,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 94795,
+      "nascimentos_ano": 715,
+      "nascimentos_por_ano": {
+        "2024": 715
+      },
+      "criancas_0_3": 2145,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Gaia",
+      "slug": "vila-nova-de-gaia",
+      "distrito": "Porto",
+      "dico": "1317",
+      "populacao": 304149,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 304149,
+      "nascimentos_ano": 2266,
+      "nascimentos_por_ano": {
+        "2024": 2266
+      },
+      "criancas_0_3": 6798,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila do Conde",
+      "slug": "vila-do-conde",
+      "distrito": "Porto",
+      "dico": "1316",
+      "populacao": 80921,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 80921,
+      "nascimentos_ano": 599,
+      "nascimentos_por_ano": {
+        "2024": 599
+      },
+      "criancas_0_3": 1797,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Calheta (Madeira)",
+      "slug": "calheta-madeira",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3101",
+      "populacao": 10913,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10913,
+      "nascimentos_ano": 78,
+      "nascimentos_por_ano": {
+        "2024": 78
+      },
+      "criancas_0_3": 234,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Câmara de Lobos",
+      "slug": "camara-de-lobos",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3102",
+      "populacao": 32175,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 32175,
+      "nascimentos_ano": 306,
+      "nascimentos_por_ano": {
+        "2024": 306
+      },
+      "criancas_0_3": 918,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Funchal",
+      "slug": "funchal",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3103",
+      "populacao": 105919,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 105919,
+      "nascimentos_ano": 701,
+      "nascimentos_por_ano": {
+        "2024": 701
+      },
+      "criancas_0_3": 2103,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Machico",
+      "slug": "machico",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3104",
+      "populacao": 19167,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 19167,
+      "nascimentos_ano": 123,
+      "nascimentos_por_ano": {
+        "2024": 123
+      },
+      "criancas_0_3": 369,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ponta do Sol",
+      "slug": "ponta-do-sol",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3105",
+      "populacao": 8367,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8367,
+      "nascimentos_ano": 65,
+      "nascimentos_por_ano": {
+        "2024": 65
+      },
+      "criancas_0_3": 195,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Porto Moniz",
+      "slug": "porto-moniz",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3106",
+      "populacao": 2521,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2521,
+      "nascimentos_ano": 14,
+      "nascimentos_por_ano": {
+        "2024": 14
+      },
+      "criancas_0_3": 42,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Porto Santo",
+      "slug": "porto-santo",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3201",
+      "populacao": 5158,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5158,
+      "nascimentos_ano": 34,
+      "nascimentos_por_ano": {
+        "2024": 34
+      },
+      "criancas_0_3": 102,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ribeira Brava",
+      "slug": "ribeira-brava",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3107",
+      "populacao": 12696,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12696,
+      "nascimentos_ano": 83,
+      "nascimentos_por_ano": {
+        "2024": 83
+      },
+      "criancas_0_3": 249,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Cruz",
+      "slug": "santa-cruz",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3108",
+      "populacao": 42262,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 42262,
+      "nascimentos_ano": 320,
+      "nascimentos_por_ano": {
+        "2024": 320
+      },
+      "criancas_0_3": 960,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santana",
+      "slug": "santana",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3109",
+      "populacao": 6558,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6558,
+      "nascimentos_ano": 32,
+      "nascimentos_por_ano": {
+        "2024": 32
+      },
+      "criancas_0_3": 96,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São Vicente",
+      "slug": "sao-vicente",
+      "distrito": "Região Autónoma da Madeira",
+      "dico": "3110",
+      "populacao": 4874,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4874,
+      "nascimentos_ano": 37,
+      "nascimentos_por_ano": {
+        "2024": 37
+      },
+      "criancas_0_3": 111,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Angra do Heroísmo",
+      "slug": "angra-do-heroismo",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4301",
+      "populacao": 33829,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 33829,
+      "nascimentos_ano": 220,
+      "nascimentos_por_ano": {
+        "2024": 220
+      },
+      "criancas_0_3": 660,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Calheta (Açores)",
+      "slug": "calheta-acores",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4501",
+      "populacao": 3441,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3441,
+      "nascimentos_ano": 23,
+      "nascimentos_por_ano": {
+        "2024": 23
+      },
+      "criancas_0_3": 69,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Corvo",
+      "slug": "corvo",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4901",
+      "populacao": 386,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 386,
+      "nascimentos_ano": 1,
+      "nascimentos_por_ano": {
+        "2024": 1
+      },
+      "criancas_0_3": 3,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Horta",
+      "slug": "horta",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4701",
+      "populacao": 14356,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14356,
+      "nascimentos_ano": 112,
+      "nascimentos_por_ano": {
+        "2024": 112
+      },
+      "criancas_0_3": 336,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lagoa (Açores)",
+      "slug": "lagoa-acores",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4201",
+      "populacao": 14194,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14194,
+      "nascimentos_ano": 131,
+      "nascimentos_por_ano": {
+        "2024": 131
+      },
+      "criancas_0_3": 393,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lajes das Flores",
+      "slug": "lajes-das-flores",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4801",
+      "populacao": 1408,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 1408,
+      "nascimentos_ano": 11,
+      "nascimentos_por_ano": {
+        "2024": 11
+      },
+      "criancas_0_3": 33,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lajes do Pico",
+      "slug": "lajes-do-pico",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4601",
+      "populacao": 4342,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4342,
+      "nascimentos_ano": 38,
+      "nascimentos_por_ano": {
+        "2024": 38
+      },
+      "criancas_0_3": 114,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Madalena",
+      "slug": "madalena",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4602",
+      "populacao": 6332,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6332,
+      "nascimentos_ano": 48,
+      "nascimentos_por_ano": {
+        "2024": 48
+      },
+      "criancas_0_3": 144,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Nordeste",
+      "slug": "nordeste",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4202",
+      "populacao": 4373,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4373,
+      "nascimentos_ano": 26,
+      "nascimentos_por_ano": {
+        "2024": 26
+      },
+      "criancas_0_3": 78,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ponta Delgada",
+      "slug": "ponta-delgada",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4203",
+      "populacao": 67287,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 67287,
+      "nascimentos_ano": 583,
+      "nascimentos_por_ano": {
+        "2024": 583
+      },
+      "criancas_0_3": 1749,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Povoação",
+      "slug": "povoacao",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4204",
+      "populacao": 5796,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5796,
+      "nascimentos_ano": 32,
+      "nascimentos_por_ano": {
+        "2024": 32
+      },
+      "criancas_0_3": 96,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ribeira Grande",
+      "slug": "ribeira-grande",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4205",
+      "populacao": 31414,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 31414,
+      "nascimentos_ano": 289,
+      "nascimentos_por_ano": {
+        "2024": 289
+      },
+      "criancas_0_3": 867,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Cruz da Graciosa",
+      "slug": "santa-cruz-da-graciosa",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4401",
+      "populacao": 4095,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4095,
+      "nascimentos_ano": 31,
+      "nascimentos_por_ano": {
+        "2024": 31
+      },
+      "criancas_0_3": 93,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Cruz das Flores",
+      "slug": "santa-cruz-das-flores",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4802",
+      "populacao": 2021,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2021,
+      "nascimentos_ano": 12,
+      "nascimentos_por_ano": {
+        "2024": 12
+      },
+      "criancas_0_3": 36,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São Roque do Pico",
+      "slug": "sao-roque-do-pico",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4603",
+      "populacao": 3221,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3221,
+      "nascimentos_ano": 19,
+      "nascimentos_por_ano": {
+        "2024": 19
+      },
+      "criancas_0_3": 57,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Velas",
+      "slug": "velas",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4502",
+      "populacao": 4940,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4940,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Franca do Campo",
+      "slug": "vila-franca-do-campo",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4206",
+      "populacao": 10326,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10326,
+      "nascimentos_ano": 81,
+      "nascimentos_por_ano": {
+        "2024": 81
+      },
+      "criancas_0_3": 243,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila da Praia da Vitória",
+      "slug": "vila-da-praia-da-vitoria",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4302",
+      "populacao": 19482,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 19482,
+      "nascimentos_ano": 145,
+      "nascimentos_por_ano": {
+        "2024": 145
+      },
+      "criancas_0_3": 435,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila do Porto",
+      "slug": "vila-do-porto",
+      "distrito": "Região Autónoma dos Açores",
+      "dico": "4101",
+      "populacao": 5414,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5414,
+      "nascimentos_ano": 42,
+      "nascimentos_por_ano": {
+        "2024": 42
+      },
+      "criancas_0_3": 126,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Abrantes",
+      "slug": "abrantes",
+      "distrito": "Santarém",
+      "dico": "1401",
+      "populacao": 34351,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 34351,
+      "nascimentos_ano": 237,
+      "nascimentos_por_ano": {
+        "2024": 237
+      },
+      "criancas_0_3": 711,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alcanena",
+      "slug": "alcanena",
+      "distrito": "Santarém",
+      "dico": "1402",
+      "populacao": 12478,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12478,
+      "nascimentos_ano": 89,
+      "nascimentos_por_ano": {
+        "2024": 89
+      },
+      "criancas_0_3": 267,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Almeirim",
+      "slug": "almeirim",
+      "distrito": "Santarém",
+      "dico": "1403",
+      "populacao": 22033,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 22033,
+      "nascimentos_ano": 163,
+      "nascimentos_por_ano": {
+        "2024": 163
+      },
+      "criancas_0_3": 489,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alpiarça",
+      "slug": "alpiarca",
+      "distrito": "Santarém",
+      "dico": "1404",
+      "populacao": 6986,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6986,
+      "nascimentos_ano": 61,
+      "nascimentos_por_ano": {
+        "2024": 61
+      },
+      "criancas_0_3": 183,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Benavente",
+      "slug": "benavente",
+      "distrito": "Santarém",
+      "dico": "1405",
+      "populacao": 29747,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 29747,
+      "nascimentos_ano": 286,
+      "nascimentos_por_ano": {
+        "2024": 286
+      },
+      "criancas_0_3": 858,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cartaxo",
+      "slug": "cartaxo",
+      "distrito": "Santarém",
+      "dico": "1406",
+      "populacao": 23211,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 23211,
+      "nascimentos_ano": 159,
+      "nascimentos_por_ano": {
+        "2024": 159
+      },
+      "criancas_0_3": 477,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Chamusca",
+      "slug": "chamusca",
+      "distrito": "Santarém",
+      "dico": "1407",
+      "populacao": 8536,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8536,
+      "nascimentos_ano": 69,
+      "nascimentos_por_ano": {
+        "2024": 69
+      },
+      "criancas_0_3": 207,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Constância",
+      "slug": "constancia",
+      "distrito": "Santarém",
+      "dico": "1408",
+      "populacao": 3801,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3801,
+      "nascimentos_ano": 27,
+      "nascimentos_por_ano": {
+        "2024": 27
+      },
+      "criancas_0_3": 81,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Coruche",
+      "slug": "coruche",
+      "distrito": "Santarém",
+      "dico": "1409",
+      "populacao": 17375,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17375,
+      "nascimentos_ano": 82,
+      "nascimentos_por_ano": {
+        "2024": 82
+      },
+      "criancas_0_3": 246,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Entroncamento",
+      "slug": "entroncamento",
+      "distrito": "Santarém",
+      "dico": "1410",
+      "populacao": 20140,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 20140,
+      "nascimentos_ano": 251,
+      "nascimentos_por_ano": {
+        "2024": 251
+      },
+      "criancas_0_3": 753,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ferreira do Zêzere",
+      "slug": "ferreira-do-zezere",
+      "distrito": "Santarém",
+      "dico": "1411",
+      "populacao": 7803,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7803,
+      "nascimentos_ano": 40,
+      "nascimentos_por_ano": {
+        "2024": 40
+      },
+      "criancas_0_3": 120,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Golegã",
+      "slug": "golega",
+      "distrito": "Santarém",
+      "dico": "1412",
+      "populacao": 5400,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5400,
+      "nascimentos_ano": 33,
+      "nascimentos_por_ano": {
+        "2024": 33
+      },
+      "criancas_0_3": 99,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mação",
+      "slug": "macao",
+      "distrito": "Santarém",
+      "dico": "1413",
+      "populacao": 6417,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6417,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ourém",
+      "slug": "ourem",
+      "distrito": "Santarém",
+      "dico": "1421",
+      "populacao": 44576,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 44576,
+      "nascimentos_ano": 330,
+      "nascimentos_por_ano": {
+        "2024": 330
+      },
+      "criancas_0_3": 990,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Rio Maior",
+      "slug": "rio-maior",
+      "distrito": "Santarém",
+      "dico": "1414",
+      "populacao": 21021,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21021,
+      "nascimentos_ano": 200,
+      "nascimentos_por_ano": {
+        "2024": 200
+      },
+      "criancas_0_3": 600,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Salvaterra de Magos",
+      "slug": "salvaterra-de-magos",
+      "distrito": "Santarém",
+      "dico": "1415",
+      "populacao": 21632,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 21632,
+      "nascimentos_ano": 147,
+      "nascimentos_por_ano": {
+        "2024": 147
+      },
+      "criancas_0_3": 441,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santarém",
+      "slug": "santarem",
+      "distrito": "Santarém",
+      "dico": "1416",
+      "populacao": 58770,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 58770,
+      "nascimentos_ano": 517,
+      "nascimentos_por_ano": {
+        "2024": 517
+      },
+      "criancas_0_3": 1551,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sardoal",
+      "slug": "sardoal",
+      "distrito": "Santarém",
+      "dico": "1417",
+      "populacao": 3526,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3526,
+      "nascimentos_ano": 17,
+      "nascimentos_por_ano": {
+        "2024": 17
+      },
+      "criancas_0_3": 51,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tomar",
+      "slug": "tomar",
+      "distrito": "Santarém",
+      "dico": "1418",
+      "populacao": 36444,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 36444,
+      "nascimentos_ano": 223,
+      "nascimentos_por_ano": {
+        "2024": 223
+      },
+      "criancas_0_3": 669,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Torres Novas",
+      "slug": "torres-novas",
+      "distrito": "Santarém",
+      "dico": "1419",
+      "populacao": 34149,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 34149,
+      "nascimentos_ano": 233,
+      "nascimentos_por_ano": {
+        "2024": 233
+      },
+      "criancas_0_3": 699,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova da Barquinha",
+      "slug": "vila-nova-da-barquinha",
+      "distrito": "Santarém",
+      "dico": "1420",
+      "populacao": 7035,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7035,
+      "nascimentos_ano": 70,
+      "nascimentos_por_ano": {
+        "2024": 70
+      },
+      "criancas_0_3": 210,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alcochete",
+      "slug": "alcochete",
+      "distrito": "Setúbal",
+      "dico": "1502",
+      "populacao": 19148,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 19148,
+      "nascimentos_ano": 165,
+      "nascimentos_por_ano": {
+        "2024": 165
+      },
+      "criancas_0_3": 495,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alcácer do Sal",
+      "slug": "alcacer-do-sal",
+      "distrito": "Setúbal",
+      "dico": "1501",
+      "populacao": 11125,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11125,
+      "nascimentos_ano": 63,
+      "nascimentos_por_ano": {
+        "2024": 63
+      },
+      "criancas_0_3": 189,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Almada",
+      "slug": "almada",
+      "distrito": "Setúbal",
+      "dico": "1503",
+      "populacao": 177400,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 177400,
+      "nascimentos_ano": 1728,
+      "nascimentos_por_ano": {
+        "2024": 1728
+      },
+      "criancas_0_3": 5184,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Barreiro",
+      "slug": "barreiro",
+      "distrito": "Setúbal",
+      "dico": "1504",
+      "populacao": 78362,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 78362,
+      "nascimentos_ano": 838,
+      "nascimentos_por_ano": {
+        "2024": 838
+      },
+      "criancas_0_3": 2514,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Grândola",
+      "slug": "grandola",
+      "distrito": "Setúbal",
+      "dico": "1505",
+      "populacao": 13827,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13827,
+      "nascimentos_ano": 142,
+      "nascimentos_por_ano": {
+        "2024": 142
+      },
+      "criancas_0_3": 426,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Moita",
+      "slug": "moita",
+      "distrito": "Setúbal",
+      "dico": "1506",
+      "populacao": 66326,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 66326,
+      "nascimentos_ano": 769,
+      "nascimentos_por_ano": {
+        "2024": 769
+      },
+      "criancas_0_3": 2307,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Montijo",
+      "slug": "montijo",
+      "distrito": "Setúbal",
+      "dico": "1507",
+      "populacao": 55732,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 55732,
+      "nascimentos_ano": 618,
+      "nascimentos_por_ano": {
+        "2024": 618
+      },
+      "criancas_0_3": 1854,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Palmela",
+      "slug": "palmela",
+      "distrito": "Setúbal",
+      "dico": "1508",
+      "populacao": 68879,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 68879,
+      "nascimentos_ano": 617,
+      "nascimentos_por_ano": {
+        "2024": 617
+      },
+      "criancas_0_3": 1851,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santiago do Cacém",
+      "slug": "santiago-do-cacem",
+      "distrito": "Setúbal",
+      "dico": "1509",
+      "populacao": 27801,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 27801,
+      "nascimentos_ano": 172,
+      "nascimentos_por_ano": {
+        "2024": 172
+      },
+      "criancas_0_3": 516,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Seixal",
+      "slug": "seixal",
+      "distrito": "Setúbal",
+      "dico": "1510",
+      "populacao": 166693,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 166693,
+      "nascimentos_ano": 1918,
+      "nascimentos_por_ano": {
+        "2024": 1918
+      },
+      "criancas_0_3": 5754,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sesimbra",
+      "slug": "sesimbra",
+      "distrito": "Setúbal",
+      "dico": "1511",
+      "populacao": 52465,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 52465,
+      "nascimentos_ano": 431,
+      "nascimentos_por_ano": {
+        "2024": 431
+      },
+      "criancas_0_3": 1293,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Setúbal",
+      "slug": "setubal",
+      "distrito": "Setúbal",
+      "dico": "1512",
+      "populacao": 123684,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 123684,
+      "nascimentos_ano": 1107,
+      "nascimentos_por_ano": {
+        "2024": 1107
+      },
+      "criancas_0_3": 3321,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sines",
+      "slug": "sines",
+      "distrito": "Setúbal",
+      "dico": "1513",
+      "populacao": 14214,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14214,
+      "nascimentos_ano": 114,
+      "nascimentos_por_ano": {
+        "2024": 114
+      },
+      "criancas_0_3": 342,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arcos de Valdevez",
+      "slug": "arcos-de-valdevez",
+      "distrito": "Viana do Castelo",
+      "dico": "1601",
+      "populacao": 20729,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 20729,
+      "nascimentos_ano": 107,
+      "nascimentos_por_ano": {
+        "2024": 107
+      },
+      "criancas_0_3": 321,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Caminha",
+      "slug": "caminha",
+      "distrito": "Viana do Castelo",
+      "dico": "1602",
+      "populacao": 15828,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15828,
+      "nascimentos_ano": 96,
+      "nascimentos_por_ano": {
+        "2024": 96
+      },
+      "criancas_0_3": 288,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Melgaço",
+      "slug": "melgaco",
+      "distrito": "Viana do Castelo",
+      "dico": "1603",
+      "populacao": 7776,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7776,
+      "nascimentos_ano": 29,
+      "nascimentos_por_ano": {
+        "2024": 29
+      },
+      "criancas_0_3": 87,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Monção",
+      "slug": "moncao",
+      "distrito": "Viana do Castelo",
+      "dico": "1604",
+      "populacao": 17829,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17829,
+      "nascimentos_ano": 105,
+      "nascimentos_por_ano": {
+        "2024": 105
+      },
+      "criancas_0_3": 315,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Paredes de Coura",
+      "slug": "paredes-de-coura",
+      "distrito": "Viana do Castelo",
+      "dico": "1605",
+      "populacao": 8636,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8636,
+      "nascimentos_ano": 41,
+      "nascimentos_por_ano": {
+        "2024": 41
+      },
+      "criancas_0_3": 123,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ponte da Barca",
+      "slug": "ponte-da-barca",
+      "distrito": "Viana do Castelo",
+      "dico": "1606",
+      "populacao": 11058,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11058,
+      "nascimentos_ano": 62,
+      "nascimentos_por_ano": {
+        "2024": 62
+      },
+      "criancas_0_3": 186,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ponte de Lima",
+      "slug": "ponte-de-lima",
+      "distrito": "Viana do Castelo",
+      "dico": "1607",
+      "populacao": 41204,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 41204,
+      "nascimentos_ano": 275,
+      "nascimentos_por_ano": {
+        "2024": 275
+      },
+      "criancas_0_3": 825,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Valença",
+      "slug": "valenca",
+      "distrito": "Viana do Castelo",
+      "dico": "1608",
+      "populacao": 13634,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13634,
+      "nascimentos_ano": 101,
+      "nascimentos_por_ano": {
+        "2024": 101
+      },
+      "criancas_0_3": 303,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Viana do Castelo",
+      "slug": "viana-do-castelo",
+      "distrito": "Viana do Castelo",
+      "dico": "1609",
+      "populacao": 85864,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 85864,
+      "nascimentos_ano": 632,
+      "nascimentos_por_ano": {
+        "2024": 632
+      },
+      "criancas_0_3": 1896,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Cerveira",
+      "slug": "vila-nova-de-cerveira",
+      "distrito": "Viana do Castelo",
+      "dico": "1610",
+      "populacao": 8930,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8930,
+      "nascimentos_ano": 70,
+      "nascimentos_por_ano": {
+        "2024": 70
+      },
+      "criancas_0_3": 210,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alijó",
+      "slug": "alijo",
+      "distrito": "Vila Real",
+      "dico": "1701",
+      "populacao": 10492,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10492,
+      "nascimentos_ano": 50,
+      "nascimentos_por_ano": {
+        "2024": 50
+      },
+      "criancas_0_3": 150,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Boticas",
+      "slug": "boticas",
+      "distrito": "Vila Real",
+      "dico": "1702",
+      "populacao": 5002,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5002,
+      "nascimentos_ano": 24,
+      "nascimentos_por_ano": {
+        "2024": 24
+      },
+      "criancas_0_3": 72,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Chaves",
+      "slug": "chaves",
+      "distrito": "Vila Real",
+      "dico": "1703",
+      "populacao": 37623,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 37623,
+      "nascimentos_ano": 202,
+      "nascimentos_por_ano": {
+        "2024": 202
+      },
+      "criancas_0_3": 606,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mesão Frio",
+      "slug": "mesao-frio",
+      "distrito": "Vila Real",
+      "dico": "1704",
+      "populacao": 3555,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 3555,
+      "nascimentos_ano": 12,
+      "nascimentos_por_ano": {
+        "2024": 12
+      },
+      "criancas_0_3": 36,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mondim de Basto",
+      "slug": "mondim-de-basto",
+      "distrito": "Vila Real",
+      "dico": "1705",
+      "populacao": 6416,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6416,
+      "nascimentos_ano": 34,
+      "nascimentos_por_ano": {
+        "2024": 34
+      },
+      "criancas_0_3": 102,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Montalegre",
+      "slug": "montalegre",
+      "distrito": "Vila Real",
+      "dico": "1706",
+      "populacao": 9279,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9279,
+      "nascimentos_ano": 29,
+      "nascimentos_por_ano": {
+        "2024": 29
+      },
+      "criancas_0_3": 87,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Murça",
+      "slug": "murca",
+      "distrito": "Vila Real",
+      "dico": "1707",
+      "populacao": 5249,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5249,
+      "nascimentos_ano": 21,
+      "nascimentos_por_ano": {
+        "2024": 21
+      },
+      "criancas_0_3": 63,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Peso da Régua",
+      "slug": "peso-da-regua",
+      "distrito": "Vila Real",
+      "dico": "1708",
+      "populacao": 14553,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14553,
+      "nascimentos_ano": 83,
+      "nascimentos_por_ano": {
+        "2024": 83
+      },
+      "criancas_0_3": 249,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Ribeira de Pena",
+      "slug": "ribeira-de-pena",
+      "distrito": "Vila Real",
+      "dico": "1709",
+      "populacao": 5887,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5887,
+      "nascimentos_ano": 30,
+      "nascimentos_por_ano": {
+        "2024": 30
+      },
+      "criancas_0_3": 90,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sabrosa",
+      "slug": "sabrosa",
+      "distrito": "Vila Real",
+      "dico": "1710",
+      "populacao": 5556,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5556,
+      "nascimentos_ano": 30,
+      "nascimentos_por_ano": {
+        "2024": 30
+      },
+      "criancas_0_3": 90,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Marta de Penaguião",
+      "slug": "santa-marta-de-penaguiao",
+      "distrito": "Vila Real",
+      "dico": "1711",
+      "populacao": 6104,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6104,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Valpaços",
+      "slug": "valpacos",
+      "distrito": "Vila Real",
+      "dico": "1712",
+      "populacao": 14714,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 14714,
+      "nascimentos_ano": 69,
+      "nascimentos_por_ano": {
+        "2024": 69
+      },
+      "criancas_0_3": 207,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Pouca de Aguiar",
+      "slug": "vila-pouca-de-aguiar",
+      "distrito": "Vila Real",
+      "dico": "1713",
+      "populacao": 11825,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11825,
+      "nascimentos_ano": 48,
+      "nascimentos_por_ano": {
+        "2024": 48
+      },
+      "criancas_0_3": 144,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Real",
+      "slug": "vila-real",
+      "distrito": "Vila Real",
+      "dico": "1714",
+      "populacao": 49623,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 49623,
+      "nascimentos_ano": 305,
+      "nascimentos_por_ano": {
+        "2024": 305
+      },
+      "criancas_0_3": 915,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Armamar",
+      "slug": "armamar",
+      "distrito": "Viseu",
+      "dico": "1801",
+      "populacao": 5680,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5680,
+      "nascimentos_ano": 21,
+      "nascimentos_por_ano": {
+        "2024": 21
+      },
+      "criancas_0_3": 63,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Carregal do Sal",
+      "slug": "carregal-do-sal",
+      "distrito": "Viseu",
+      "dico": "1802",
+      "populacao": 9048,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9048,
+      "nascimentos_ano": 62,
+      "nascimentos_por_ano": {
+        "2024": 62
+      },
+      "criancas_0_3": 186,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Castro Daire",
+      "slug": "castro-daire",
+      "distrito": "Viseu",
+      "dico": "1803",
+      "populacao": 13753,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13753,
+      "nascimentos_ano": 62,
+      "nascimentos_por_ano": {
+        "2024": 62
+      },
+      "criancas_0_3": 186,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Cinfães",
+      "slug": "cinfaes",
+      "distrito": "Viseu",
+      "dico": "1804",
+      "populacao": 17747,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 17747,
+      "nascimentos_ano": 91,
+      "nascimentos_por_ano": {
+        "2024": 91
+      },
+      "criancas_0_3": 273,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Lamego",
+      "slug": "lamego",
+      "distrito": "Viseu",
+      "dico": "1805",
+      "populacao": 24348,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 24348,
+      "nascimentos_ano": 123,
+      "nascimentos_por_ano": {
+        "2024": 123
+      },
+      "criancas_0_3": 369,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mangualde",
+      "slug": "mangualde",
+      "distrito": "Viseu",
+      "dico": "1806",
+      "populacao": 18294,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 18294,
+      "nascimentos_ano": 112,
+      "nascimentos_por_ano": {
+        "2024": 112
+      },
+      "criancas_0_3": 336,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Moimenta da Beira",
+      "slug": "moimenta-da-beira",
+      "distrito": "Viseu",
+      "dico": "1807",
+      "populacao": 9411,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9411,
+      "nascimentos_ano": 70,
+      "nascimentos_por_ano": {
+        "2024": 70
+      },
+      "criancas_0_3": 210,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mortágua",
+      "slug": "mortagua",
+      "distrito": "Viseu",
+      "dico": "1808",
+      "populacao": 8960,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 8960,
+      "nascimentos_ano": 45,
+      "nascimentos_por_ano": {
+        "2024": 45
+      },
+      "criancas_0_3": 135,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Nelas",
+      "slug": "nelas",
+      "distrito": "Viseu",
+      "dico": "1809",
+      "populacao": 13124,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 13124,
+      "nascimentos_ano": 96,
+      "nascimentos_por_ano": {
+        "2024": 96
+      },
+      "criancas_0_3": 288,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Oliveira de Frades",
+      "slug": "oliveira-de-frades",
+      "distrito": "Viseu",
+      "dico": "1810",
+      "populacao": 9510,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9510,
+      "nascimentos_ano": 59,
+      "nascimentos_por_ano": {
+        "2024": 59
+      },
+      "criancas_0_3": 177,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penalva do Castelo",
+      "slug": "penalva-do-castelo",
+      "distrito": "Viseu",
+      "dico": "1811",
+      "populacao": 7340,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7340,
+      "nascimentos_ano": 34,
+      "nascimentos_por_ano": {
+        "2024": 34
+      },
+      "criancas_0_3": 102,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Penedono",
+      "slug": "penedono",
+      "distrito": "Viseu",
+      "dico": "1812",
+      "populacao": 2731,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2731,
+      "nascimentos_ano": 8,
+      "nascimentos_por_ano": {
+        "2024": 8
+      },
+      "criancas_0_3": 24,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Resende",
+      "slug": "resende",
+      "distrito": "Viseu",
+      "dico": "1813",
+      "populacao": 10053,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10053,
+      "nascimentos_ano": 50,
+      "nascimentos_por_ano": {
+        "2024": 50
+      },
+      "criancas_0_3": 150,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Santa Comba Dão",
+      "slug": "santa-comba-dao",
+      "distrito": "Viseu",
+      "dico": "1814",
+      "populacao": 10642,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 10642,
+      "nascimentos_ano": 70,
+      "nascimentos_por_ano": {
+        "2024": 70
+      },
+      "criancas_0_3": 210,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sernancelhe",
+      "slug": "sernancelhe",
+      "distrito": "Viseu",
+      "dico": "1818",
+      "populacao": 5713,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5713,
+      "nascimentos_ano": 28,
+      "nascimentos_por_ano": {
+        "2024": 28
+      },
+      "criancas_0_3": 84,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Sátão",
+      "slug": "satao",
+      "distrito": "Viseu",
+      "dico": "1817",
+      "populacao": 11026,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11026,
+      "nascimentos_ano": 69,
+      "nascimentos_por_ano": {
+        "2024": 69
+      },
+      "criancas_0_3": 207,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São João da Pesqueira",
+      "slug": "sao-joao-da-pesqueira",
+      "distrito": "Viseu",
+      "dico": "1815",
+      "populacao": 6780,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6780,
+      "nascimentos_ano": 39,
+      "nascimentos_por_ano": {
+        "2024": 39
+      },
+      "criancas_0_3": 117,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "São Pedro do Sul",
+      "slug": "sao-pedro-do-sul",
+      "distrito": "Viseu",
+      "dico": "1816",
+      "populacao": 15139,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15139,
+      "nascimentos_ano": 76,
+      "nascimentos_por_ano": {
+        "2024": 76
+      },
+      "criancas_0_3": 228,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tabuaço",
+      "slug": "tabuaco",
+      "distrito": "Viseu",
+      "dico": "1819",
+      "populacao": 5039,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5039,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tarouca",
+      "slug": "tarouca",
+      "distrito": "Viseu",
+      "dico": "1820",
+      "populacao": 7374,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7374,
+      "nascimentos_ano": 41,
+      "nascimentos_por_ano": {
+        "2024": 41
+      },
+      "criancas_0_3": 123,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Tondela",
+      "slug": "tondela",
+      "distrito": "Viseu",
+      "dico": "1821",
+      "populacao": 25939,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 25939,
+      "nascimentos_ano": 143,
+      "nascimentos_por_ano": {
+        "2024": 143
+      },
+      "criancas_0_3": 429,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Nova de Paiva",
+      "slug": "vila-nova-de-paiva",
+      "distrito": "Viseu",
+      "dico": "1822",
+      "populacao": 4660,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4660,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Viseu",
+      "slug": "viseu",
+      "distrito": "Viseu",
+      "dico": "1823",
+      "populacao": 99693,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 99693,
+      "nascimentos_ano": 803,
+      "nascimentos_por_ano": {
+        "2024": 803
+      },
+      "criancas_0_3": 2409,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vouzela",
+      "slug": "vouzela",
+      "distrito": "Viseu",
+      "dico": "1824",
+      "populacao": 9588,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9588,
+      "nascimentos_ano": 48,
+      "nascimentos_por_ano": {
+        "2024": 48
+      },
+      "criancas_0_3": 144,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Alandroal",
+      "slug": "alandroal",
+      "distrito": "Évora",
+      "dico": "0701",
+      "populacao": 5007,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5007,
+      "nascimentos_ano": 29,
+      "nascimentos_por_ano": {
+        "2024": 29
+      },
+      "criancas_0_3": 87,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Arraiolos",
+      "slug": "arraiolos",
+      "distrito": "Évora",
+      "dico": "0702",
+      "populacao": 6606,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6606,
+      "nascimentos_ano": 48,
+      "nascimentos_por_ano": {
+        "2024": 48
+      },
+      "criancas_0_3": 144,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Borba",
+      "slug": "borba",
+      "distrito": "Évora",
+      "dico": "0703",
+      "populacao": 6428,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6428,
+      "nascimentos_ano": 37,
+      "nascimentos_por_ano": {
+        "2024": 37
+      },
+      "criancas_0_3": 111,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Estremoz",
+      "slug": "estremoz",
+      "distrito": "Évora",
+      "dico": "0704",
+      "populacao": 12688,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 12688,
+      "nascimentos_ano": 106,
+      "nascimentos_por_ano": {
+        "2024": 106
+      },
+      "criancas_0_3": 318,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Montemor-o-Novo",
+      "slug": "montemor-o-novo",
+      "distrito": "Évora",
+      "dico": "0706",
+      "populacao": 15803,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 15803,
+      "nascimentos_ano": 119,
+      "nascimentos_por_ano": {
+        "2024": 119
+      },
+      "criancas_0_3": 357,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mora",
+      "slug": "mora",
+      "distrito": "Évora",
+      "dico": "0707",
+      "populacao": 4128,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 4128,
+      "nascimentos_ano": 24,
+      "nascimentos_por_ano": {
+        "2024": 24
+      },
+      "criancas_0_3": 72,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Mourão",
+      "slug": "mourao",
+      "distrito": "Évora",
+      "dico": "0708",
+      "populacao": 2353,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 2353,
+      "nascimentos_ano": 18,
+      "nascimentos_por_ano": {
+        "2024": 18
+      },
+      "criancas_0_3": 54,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Portel",
+      "slug": "portel",
+      "distrito": "Évora",
+      "dico": "0709",
+      "populacao": 5745,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5745,
+      "nascimentos_ano": 25,
+      "nascimentos_por_ano": {
+        "2024": 25
+      },
+      "criancas_0_3": 75,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Redondo",
+      "slug": "redondo",
+      "distrito": "Évora",
+      "dico": "0710",
+      "populacao": 6287,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 6287,
+      "nascimentos_ano": 40,
+      "nascimentos_por_ano": {
+        "2024": 40
+      },
+      "criancas_0_3": 120,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Reguengos de Monsaraz",
+      "slug": "reguengos-de-monsaraz",
+      "distrito": "Évora",
+      "dico": "0711",
+      "populacao": 9875,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 9875,
+      "nascimentos_ano": 80,
+      "nascimentos_por_ano": {
+        "2024": 80
+      },
+      "criancas_0_3": 240,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vendas Novas",
+      "slug": "vendas-novas",
+      "distrito": "Évora",
+      "dico": "0712",
+      "populacao": 11240,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 11240,
+      "nascimentos_ano": 100,
+      "nascimentos_por_ano": {
+        "2024": 100
+      },
+      "criancas_0_3": 300,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Viana do Alentejo",
+      "slug": "viana-do-alentejo",
+      "distrito": "Évora",
+      "dico": "0713",
+      "populacao": 5323,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 5323,
+      "nascimentos_ano": 40,
+      "nascimentos_por_ano": {
+        "2024": 40
+      },
+      "criancas_0_3": 120,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Vila Viçosa",
+      "slug": "vila-vicosa",
+      "distrito": "Évora",
+      "dico": "0714",
+      "populacao": 7385,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 7385,
+      "nascimentos_ano": 32,
+      "nascimentos_por_ano": {
+        "2024": 32
+      },
+      "criancas_0_3": 96,
+      "criancas_0_3_estimado": true
+    },
+    {
+      "concelho": "Évora",
+      "slug": "evora",
+      "distrito": "Évora",
+      "dico": "0705",
+      "populacao": 53568,
+      "populacao_ano": 2021,
+      "populacao_fonte": "INE, Censos 2021 (compilado na Wikipédia)",
+      "populacao_censos_2021": 53568,
+      "nascimentos_ano": 438,
+      "nascimentos_por_ano": {
+        "2024": 438
+      },
+      "criancas_0_3": 1314,
+      "criancas_0_3_estimado": true
+    }
+  ]
+}

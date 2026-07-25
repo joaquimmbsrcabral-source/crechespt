@@ -148,6 +148,27 @@ table tr:hover{background:rgba(255,243,214,.4)}
 .mini-stat{background:var(--bg,#FFF6EE);border-radius:14px;padding:14px 16px}
 .mini-stat b{font-size:1.5rem;font-family:inherit}
 .mini-stat span{display:block;font-size:12px;color:var(--ink-soft);font-weight:600;margin-top:2px}
+
+/* ── 🔥 Mapa de procura ── */
+.proc-map-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1)}
+#proc-map{height:520px;width:100%;background:var(--c-turquoise-soft)}
+@media(max-width:640px){ #proc-map{height:380px} }
+.proc-legend{position:absolute;right:12px;bottom:12px;z-index:500;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);border-radius:12px;padding:9px 12px;box-shadow:var(--sh-1);font-size:11px;
+  font-weight:600;color:var(--ink-soft);pointer-events:none;max-width:200px}
+.proc-legend .bar{height:8px;border-radius:4px;margin:5px 0 4px;
+  background:linear-gradient(90deg,#48D1CC,#FFD166,#FF9F68,#FF6B9D)}
+.proc-legend .ends{display:flex;justify-content:space-between}
+.proc-note{background:var(--c-yellow-soft);border:1px solid var(--c-yellow);border-radius:12px;
+  padding:11px 14px;font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:12px}
+.proc-note b{color:var(--ink)}
+.proc-ctrls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.proc-ctrls select{font-family:inherit;padding:6px 10px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.btn-ghost{background:#fff;color:#2C2356;border:1.5px solid var(--line);font-weight:700;font-size:13px;padding:8px 14px;border-radius:8px}
+.btn-ghost:hover{border-color:var(--c-coral)}
+.top-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.top-table th.num{text-align:right}
+.top-table td.dim{color:var(--ink-soft)}
 </style>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
@@ -212,6 +233,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
       <button data-nav="inicio" class="on">🏠 Início</button>
       <button data-nav="creches">🏫 Creches <span class="nbadge" id="nav-creches-badge" style="display:none">0</span></button>
       <button data-nav="leads">💌 Leads <span class="nbadge" id="nav-leads-badge" style="display:none">0</span></button>
+      <button data-nav="procura">🔥 Mapa de procura</button>
       <button data-nav="stats">📊 Estatísticas</button>
       <button data-nav="convidar">📨 Convidar creches</button>
       <button data-nav="comunidade">👥 Comunidade</button>
@@ -490,6 +512,72 @@ table tr:hover{background:rgba(255,243,214,.4)}
       <div id="lead-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
     </section>
 
+    <!-- ═══ 🔥 MAPA DE PROCURA — onde as famílias procuram creche ═══ -->
+    <section class="panel" data-pg="procura">
+      <h3>🔥 Mapa de procura <span class="count" id="proc-janela-badge">—</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">
+        Visualizações de fichas de creche agregadas por localização. Mostra <b>onde há procura</b> — útil para
+        priorizar a ativação de creches, para conversas com autarquias e para dar contexto a jornalistas e fundações.
+      </p>
+      <div class="proc-ctrls">
+        <label style="font-size:13px;font-weight:700">Janela:
+          <select id="proc-dias">
+            <option value="30">Últimos 30 dias</option>
+            <option value="90" selected>Últimos 90 dias</option>
+            <option value="365">Últimos 365 dias</option>
+          </select>
+        </label>
+        <button id="proc-refresh" class="btn-ghost">🔄 Atualizar</button>
+        <button id="proc-modo" class="btn-ghost">📍 Ver pontos</button>
+        <button id="proc-csv" class="btn-apply" style="font-size:13px;padding:8px 14px">⬇ Exportar CSV</button>
+        <span id="proc-status" style="font-size:12px;color:var(--ink-soft)">A carregar…</span>
+      </div>
+      <div id="proc-stats" class="mini-stats" style="margin-bottom:14px"></div>
+      <div id="proc-erro" style="display:none"></div>
+      <div class="proc-map-wrap">
+        <div id="proc-map"></div>
+        <div class="proc-legend" id="proc-legend">
+          <div>Intensidade da procura</div>
+          <div class="bar"></div>
+          <div class="ends"><span>pouca</span><span>muita</span></div>
+        </div>
+      </div>
+      <div class="proc-note">
+        <b>Como ler este mapa.</b> Cada ponto é uma <b>creche cuja ficha foi vista</b> no período escolhido —
+        não é a localização de quem visitou o site. Uma zona quente significa que há famílias a olhar para as
+        creches dessa zona, não que essas creches tenham (ou não) vaga.
+        A <b>população é dos Censos 2021</b> (INE) e os <b>nascimentos são de 2024</b> (INE), por isso os
+        indicadores per capita são aproximações. O concelho é derivado do campo «localidade» do dataset e
+        nem sempre corresponde ao concelho administrativo. Concelhos com poucas visualizações não são
+        estatisticamente representativos — trata números pequenos com cautela e não publiques rácios
+        baseados em meia dúzia de visitas.
+      </div>
+    </section>
+
+    <section class="panel" data-pg="procura">
+      <h3>🏙️ Top 20 concelhos por procura</h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        «Views / 1.000 hab» mostra a intensidade da procura face ao tamanho do concelho.
+        «Creches / 100 nascimentos» é um proxy da densidade de oferta (quantas creches existem por cada 100 bebés nascidos num ano).
+        Onde não há correspondência nos dados do INE, fica «—».
+      </p>
+      <div id="proc-concelhos-host" class="tbl-wrap"><div class="empty" style="font-size:13px">A carregar…</div></div>
+    </section>
+
+    <section class="panel" data-pg="procura">
+      <h3>⚠️ Onde a procura mais pressiona a oferta</h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Concelhos ordenados por <b>visualizações por creche existente</b>: muita procura concentrada em poucas creches.
+        Só entram concelhos com <b>10 ou mais visualizações</b>, para evitar ruído estatístico.
+      </p>
+      <div id="proc-pressao-host" class="tbl-wrap"><div class="empty" style="font-size:13px">A carregar…</div></div>
+    </section>
+
+    <section class="panel" data-pg="procura">
+      <h3>🗺️ Procura por distrito</h3>
+      <div id="proc-distritos-host" class="tbl-wrap"><div class="empty" style="font-size:13px">A carregar…</div></div>
+    </section>
+
     <!-- ═══ Admin v2: Estatísticas ═══ -->
     <section class="panel" data-pg="convidar">
       <h3>📨 Convidar creches a gerir a sua página</h3>
@@ -537,7 +625,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
 
 <script>
 // ═══ Admin v2 — router por separadores (hash: #inicio/#creches/#stats/#comunidade) ═══
-const ADM_PAGES = ["inicio","creches","leads","stats","convidar","comunidade"];
+const ADM_PAGES = ["inicio","creches","leads","procura","stats","convidar","comunidade"];
 let _statsLoaded = false;
 function admGo(pg){
   if(!ADM_PAGES.includes(pg)) pg = "inicio";
@@ -556,6 +644,18 @@ function admGo(pg){
     $("inv-preparar").onclick = invPrepararLote;
     $("inv-enviar").onclick = invEnviarLote;
     invRefreshStats();
+  }
+  if(pg === "procura"){
+    if(!_procuraLoaded){
+      _procuraLoaded = true;
+      $("proc-dias").onchange = () => procCarregar();
+      $("proc-refresh").onclick = () => procCarregar();
+      $("proc-modo").onclick = () => procTrocarModo();
+      $("proc-csv").onclick = () => procExportarCSV();
+      procCarregar();
+    } else if(_procMap){
+      setTimeout(() => { try { _procMap.invalidateSize(); } catch(e){} }, 90);
+    }
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -2828,6 +2928,362 @@ async function cpLoadFotos(){
     }
     catch(e){ alert("Erro: " + e.message); b.disabled = false; }
   });
+}
+
+// ═══════════ 🔥 MAPA DE PROCURA — heatmap das visualizações de fichas ═══════════
+// Dados: /api/geo-stats (views agregadas por creche/concelho/distrito)
+//      + /dados/populacao-concelhos.json (INE: Censos 2021 + nascimentos 2024)
+let _procuraLoaded = false;
+let _procGeo = null;        // resposta do /api/geo-stats
+let _procPop = null;        // Map slug → registo do INE (null = ficheiro indisponível)
+let _procMap = null, _procHeat = null, _procDots = null, _procModo = "calor";
+
+const PROC_LEAFLET_JS  = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+const PROC_LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+const PROC_HEAT_JS     = "https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js";
+const PROC_TILES       = "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+const PROC_ATTR = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions">CARTO</a>';
+
+// Slug igual ao do /dados/populacao-concelhos.json (minúsculas, sem acentos, hífens)
+function procSlug(s){
+  return String(s == null ? "" : s)
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+function procNum(n){ return Number(n || 0).toLocaleString("pt-PT"); }
+function procDec(n, casas){
+  if(n == null || !isFinite(n)) return "—";
+  return Number(n).toLocaleString("pt-PT", { minimumFractionDigits: casas, maximumFractionDigits: casas });
+}
+const PROC_MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+function procDataCurta(iso){
+  // "2026-04-27" → "27 abr" (o formato curto pt-PT do Intl devolve "27/04")
+  if(!iso) return "—";
+  const d = new Date(String(iso) + "T12:00:00");
+  if(isNaN(d.getTime())) return String(iso);
+  return d.getDate() + " " + PROC_MESES[d.getMonth()];
+}
+
+// ── Carregamento dinâmico do Leaflet + leaflet.heat (só quando se abre o separador) ──
+function procLoadCSS(href, integrity){
+  return new Promise(res => {
+    if(document.querySelector('link[data-proc="' + href + '"]')) return res();
+    const l = document.createElement("link");
+    l.rel = "stylesheet"; l.href = href; l.setAttribute("data-proc", href);
+    if(integrity){ l.integrity = integrity; l.crossOrigin = ""; }
+    l.onload = () => res(); l.onerror = () => res();   // o mapa ainda funciona sem o CSS
+    document.head.appendChild(l);
+  });
+}
+function procLoadJS(src, integrity){
+  return new Promise((res, rej) => {
+    const ex = document.querySelector('script[data-proc="' + src + '"]');
+    if(ex){
+      if(ex.getAttribute("data-ok") === "1") return res();
+      ex.addEventListener("load", () => res());
+      ex.addEventListener("error", () => rej(new Error("Falha a carregar " + src)));
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = src; s.async = false; s.setAttribute("data-proc", src);
+    if(integrity){ s.integrity = integrity; s.crossOrigin = ""; }
+    s.onload = () => { s.setAttribute("data-ok", "1"); res(); };
+    s.onerror = () => rej(new Error("Falha a carregar " + src));
+    document.head.appendChild(s);
+  });
+}
+async function procLoadLeaflet(){
+  if(window.L && window.L.heatLayer) return;
+  await procLoadCSS(PROC_LEAFLET_CSS, "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=");
+  if(!window.L) await procLoadJS(PROC_LEAFLET_JS, "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=");
+  if(!window.L) throw new Error("Leaflet não carregou (verifica a CSP / ligação).");
+  if(!window.L.heatLayer) await procLoadJS(PROC_HEAT_JS);
+  if(!window.L.heatLayer) throw new Error("O plugin leaflet.heat não carregou.");
+}
+
+// ── População do INE (opcional: se falhar, as colunas per capita ficam "—") ──
+async function procLoadPop(){
+  if(_procPop !== null) return;
+  try {
+    const r = await fetch("/dados/populacao-concelhos.json", { cache: "force-cache" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    const lista = (j && Array.isArray(j.concelhos)) ? j.concelhos : [];
+    const m = new Map();
+    lista.forEach(c => {
+      const slug = c.slug || procSlug(c.concelho);
+      if(slug) m.set(slug, c);
+    });
+    _procPop = m;
+  } catch(e){
+    console.warn("populacao-concelhos.json indisponível:", e);
+    _procPop = new Map();   // Map vazio → colunas per capita a "—", resto funciona
+  }
+}
+
+// ── Carregamento principal ──
+async function procCarregar(){
+  const status = $("proc-status"), erro = $("proc-erro");
+  const dias = parseInt(($("proc-dias") || {}).value, 10) || 90;
+  status.textContent = "A carregar…";
+  erro.style.display = "none"; erro.innerHTML = "";
+  try {
+    if(!auth.currentUser) throw new Error("Sessão expirada — recarrega a página.");
+    const token = await auth.currentUser.getIdToken();
+    const [geo] = await Promise.all([
+      fetch("/api/geo-stats?dias=" + encodeURIComponent(dias), {
+        headers: { Authorization: "Bearer " + token }
+      }).then(async r => {
+        const j = await r.json().catch(() => null);
+        if(!r.ok) throw new Error((j && j.error) || ("HTTP " + r.status));
+        return j;
+      }),
+      procLoadPop()
+    ]);
+    _procGeo = geo;
+    procRenderStats();
+    procRenderTabelas();
+    status.textContent = "✓ Atualizado " + new Date().toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" });
+    try {
+      await procLoadLeaflet();
+      procRenderMapa();
+    } catch(e){
+      console.error("mapa:", e);
+      erro.style.display = "block";
+      erro.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">Não foi possível carregar o mapa: ' +
+        cpEsc(e.message || e) + '<br><span style="color:var(--ink-soft)">As tabelas abaixo continuam válidas.</span></div>';
+    }
+  } catch(e){
+    console.error("geo-stats:", e);
+    status.textContent = "";
+    erro.style.display = "block";
+    erro.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">Erro a obter os dados de procura: ' +
+      cpEsc(e.message || e) + '<br><span style="color:var(--ink-soft)">Se diz «Not an admin» ou «Invalid token», sai e volta a entrar. ' +
+      'Se diz «FIREBASE_SERVICE_ACCOUNT missing», falta a variável de ambiente na Vercel.</span></div>';
+    ["proc-concelhos-host","proc-pressao-host","proc-distritos-host"].forEach(id => {
+      const h = $(id); if(h) h.innerHTML = '<div class="empty" style="font-size:13px">Sem dados.</div>';
+    });
+  }
+}
+
+function procRenderStats(){
+  const g = _procGeo || {};
+  const concelhosComViews = (g.concelhos || []).filter(c => c.views > 0).length;
+  const janela = procDataCurta(g.janela_desde) + " – " + procDataCurta(g.janela_ate);
+  $("proc-janela-badge").textContent = (g.janela_dias || 90) + " dias";
+  $("proc-stats").innerHTML =
+    '<div class="mini-stat" style="background:#FFE2EC"><b>' + procNum(g.total_views) + '</b><span>👀 visualizações de fichas</span></div>' +
+    '<div class="mini-stat" style="background:#FFF1D6"><b>' + procNum(g.creches_com_views) + '</b><span>🏫 creches com procura</span></div>' +
+    '<div class="mini-stat" style="background:#D9F2EF"><b>' + procNum(concelhosComViews) + '</b><span>🏙️ concelhos abrangidos</span></div>' +
+    '<div class="mini-stat"><b style="font-size:1.15rem">' + cpEsc(janela) + '</b><span>📅 janela analisada</span></div>' +
+    (g.views_sem_geo ? '<div class="mini-stat" style="background:#F3EEFF"><b>' + procNum(g.views_sem_geo) + '</b><span>views sem localização (creches já removidas)</span></div>' : "") +
+    (g.pontos_truncados ? '<div class="mini-stat" style="background:#F3EEFF"><b>3000</b><span>⚠️ mapa limitado às creches mais vistas</span></div>' : "");
+}
+
+// ── Mapa: calor ou pontos ──
+function procRenderMapa(){
+  const pontos = (_procGeo && _procGeo.pontos ? _procGeo.pontos : [])
+    .filter(p => isFinite(p.lat) && isFinite(p.lon) && p.views > 0);
+  if(!_procMap){
+    _procMap = L.map("proc-map", { scrollWheelZoom: true, minZoom: 5, maxZoom: 18 }).setView([39.5, -8.0], 7);
+    L.tileLayer(PROC_TILES, { maxZoom: 19, attribution: PROC_ATTR }).addTo(_procMap);
+  }
+  if(_procHeat){ _procMap.removeLayer(_procHeat); _procHeat = null; }
+  if(_procDots){ _procMap.removeLayer(_procDots); _procDots = null; }
+
+  const max = pontos.reduce((m, p) => Math.max(m, p.views), 0) || 1;
+  // Normalização por raiz quadrada: com uma cauda longa (poucas creches com muitas views),
+  // a normalização linear apagaria quase tudo o resto do mapa.
+  const norm = v => Math.max(0.10, Math.sqrt(v) / Math.sqrt(max));
+
+  _procHeat = L.heatLayer(pontos.map(p => [p.lat, p.lon, norm(p.views)]), {
+    radius: 25, blur: 18, maxZoom: 12, minOpacity: 0.25,
+    gradient: { 0.15: "#48D1CC", 0.45: "#FFD166", 0.72: "#FF9F68", 1.0: "#FF6B9D" }
+  });
+
+  _procDots = L.layerGroup(pontos.map(p => {
+    const r = 3 + 13 * Math.sqrt(p.views / max);
+    return L.circleMarker([p.lat, p.lon], {
+      radius: r, weight: 1.5, color: "#FF6B9D", fillColor: "#FF9F68", fillOpacity: 0.55
+    }).bindPopup(
+      '<div style="font-family:Quicksand,sans-serif;font-size:13px;min-width:170px">' +
+        '<b style="font-size:14px">' + cpEsc(p.nome) + '</b><br>' +
+        '<span style="color:#6E6989">' + cpEsc(p.concelho || "—") + ' · ' + cpEsc(p.distrito || "—") + '</span><br>' +
+        '<b style="color:#B4255C">' + procNum(p.views) + '</b> visualizações<br>' +
+        '<a href="/app#creche-' + encodeURIComponent(p.id) + '" target="_blank" rel="noopener">abrir ficha ↗</a>' +
+      '</div>'
+    );
+  }));
+
+  procAplicarModo();
+  setTimeout(() => { try { _procMap.invalidateSize(); } catch(e){} }, 80);
+}
+function procAplicarModo(){
+  if(!_procMap || !_procHeat || !_procDots) return;
+  const btn = $("proc-modo"), leg = $("proc-legend");
+  if(_procModo === "calor"){
+    if(_procMap.hasLayer(_procDots)) _procMap.removeLayer(_procDots);
+    if(!_procMap.hasLayer(_procHeat)) _procHeat.addTo(_procMap);
+    if(btn) btn.textContent = "📍 Ver pontos";
+    if(leg) leg.style.display = "block";
+  } else {
+    if(_procMap.hasLayer(_procHeat)) _procMap.removeLayer(_procHeat);
+    if(!_procMap.hasLayer(_procDots)) _procDots.addTo(_procMap);
+    if(btn) btn.textContent = "🔥 Ver calor";
+    if(leg) leg.style.display = "none";
+  }
+}
+function procTrocarModo(){
+  _procModo = _procModo === "calor" ? "pontos" : "calor";
+  procAplicarModo();
+}
+
+// ── Cruzamento com o INE + tabelas ──
+function procLinhas(){
+  const pop = _procPop || new Map();
+  return (_procGeo && _procGeo.concelhos ? _procGeo.concelhos : []).map(c => {
+    // O endpoint já devolve o slug oficial (concelho atribuído por coordenadas
+    // sobre a CAOP); procSlug fica como fallback para dados antigos.
+    const p = pop.get(c.concelho_slug || procSlug(c.concelho)) || null;
+    const populacao = p && Number(p.populacao) > 0 ? Number(p.populacao) : null;
+    const nasc = p && Number(p.nascimentos_ano) > 0 ? Number(p.nascimentos_ano) : null;
+    return {
+      concelho: c.concelho,
+      distrito: c.distrito,
+      views: c.views || 0,
+      creches_no_mapa: c.creches_no_mapa || 0,
+      creches_com_views: c.creches_com_views || 0,
+      aderentes: c.aderentes || 0,
+      populacao,
+      nascimentos_ano: nasc,
+      criancas_0_3: p && Number(p.criancas_0_3) > 0 ? Number(p.criancas_0_3) : null,
+      views_por_1000_hab: populacao ? (c.views || 0) / (populacao / 1000) : null,
+      creches_por_100_nasc: nasc ? (c.creches_no_mapa || 0) / (nasc / 100) : null,
+      views_por_creche: (c.creches_no_mapa || 0) > 0 ? (c.views || 0) / c.creches_no_mapa : null
+    };
+  });
+}
+
+function procRenderTabelas(){
+  const linhas = procLinhas();
+  // Cobertura do cruzamento com o INE — o campo «localidade» do dataset nem sempre é o concelho
+  const totalV = linhas.reduce((a, l) => a + l.views, 0);
+  const comPopV = linhas.filter(l => l.populacao !== null).reduce((a, l) => a + l.views, 0);
+  const pctPop = totalV > 0 ? Math.round(comPopV / totalV * 100) : 0;
+
+  // 1) Top 20 concelhos por procura
+  const top = linhas.slice().sort((a, b) => b.views - a.views).slice(0, 20);
+  const host1 = $("proc-concelhos-host");
+  if(!top.length || !top[0].views){
+    host1.innerHTML = '<div class="empty" style="font-size:13px">Ainda sem visualizações nesta janela.</div>';
+  } else {
+    host1.innerHTML =
+      '<table class="top-table"><thead><tr>' +
+        '<th class="pos"></th><th>Concelho</th><th>Distrito</th>' +
+        '<th class="num">Views</th><th class="num">Creches</th><th class="num">C/ procura</th><th class="num">Aderentes</th>' +
+        '<th class="num">Views / 1.000 hab</th><th class="num">Creches / 100 nasc.</th>' +
+      '</tr></thead><tbody>' +
+      top.map((l, i) =>
+        '<tr><td class="pos">' + (i + 1) + '</td>' +
+        '<td><b>' + cpEsc(l.concelho) + '</b></td>' +
+        '<td class="dim">' + cpEsc(l.distrito) + '</td>' +
+        '<td class="num"><b>' + procNum(l.views) + '</b></td>' +
+        '<td class="num">' + procNum(l.creches_no_mapa) + '</td>' +
+        '<td class="num">' + procNum(l.creches_com_views) + '</td>' +
+        '<td class="num">' + procNum(l.aderentes) + '</td>' +
+        '<td class="num">' + procDec(l.views_por_1000_hab, 1) + '</td>' +
+        '<td class="num">' + procDec(l.creches_por_100_nasc, 1) + '</td></tr>'
+      ).join("") + '</tbody></table>' +
+      '<p style="color:var(--ink-soft);font-size:11.5px;margin:10px 12px">' +
+        'O «concelho» vem do campo <b>localidade</b> do dataset, que por vezes é uma freguesia ou uma vila ' +
+        '(ex.: «Queluz» em vez de «Sintra») — nesses casos não há cruzamento com o INE e as colunas per capita ficam «—». ' +
+        '«Desconhecido» agrega as creches sem localidade preenchida. Neste momento <b>' + pctPop + '%</b> das ' +
+        'visualizações estão em localidades que cruzam com um concelho do INE.' +
+      '</p>';
+  }
+
+  // 2) Top 15 por pressão (views por creche existente), só com >= 10 views
+  const MIN_VIEWS = 10;
+  const pressao = linhas
+    .filter(l => l.views >= MIN_VIEWS && l.creches_no_mapa > 0 && l.concelho !== "Desconhecido")
+    .sort((a, b) => b.views_por_creche - a.views_por_creche)
+    .slice(0, 15);
+  const host2 = $("proc-pressao-host");
+  if(!pressao.length){
+    host2.innerHTML = '<div class="empty" style="font-size:13px">Ainda não há concelhos com ' + MIN_VIEWS + ' ou mais visualizações nesta janela.</div>';
+  } else {
+    const maxRacio = pressao[0].views_por_creche || 1;
+    host2.innerHTML =
+      '<table class="top-table"><thead><tr>' +
+        '<th class="pos"></th><th>Concelho</th><th>Distrito</th>' +
+        '<th class="num">Views</th><th class="num">Creches</th><th style="width:26%">Views por creche</th>' +
+        '<th class="num">Views / 1.000 hab</th>' +
+      '</tr></thead><tbody>' +
+      pressao.map((l, i) => {
+        const w = Math.max(6, Math.round(l.views_por_creche / maxRacio * 100));
+        return '<tr><td class="pos">' + (i + 1) + '</td>' +
+          '<td><b>' + cpEsc(l.concelho) + '</b></td>' +
+          '<td class="dim">' + cpEsc(l.distrito) + '</td>' +
+          '<td class="num">' + procNum(l.views) + '</td>' +
+          '<td class="num">' + procNum(l.creches_no_mapa) + '</td>' +
+          '<td><span class="vbar" style="width:' + w + '%"></span><b>' + procDec(l.views_por_creche, 1) + '</b></td>' +
+          '<td class="num">' + procDec(l.views_por_1000_hab, 1) + '</td></tr>';
+      }).join("") + '</tbody></table>' +
+      '<p style="color:var(--ink-soft);font-size:11.5px;margin:10px 12px">' +
+        'Rácio alto = muita procura repartida por poucas creches. Não prova falta de vagas — indica onde vale a pena ir ver.' +
+      '</p>';
+  }
+
+  // 3) Distritos
+  const dist = (_procGeo && _procGeo.distritos ? _procGeo.distritos : []).slice(0, 25);
+  const host3 = $("proc-distritos-host");
+  if(!dist.length){
+    host3.innerHTML = '<div class="empty" style="font-size:13px">Sem dados.</div>';
+  } else {
+    const maxV = dist.reduce((m, d) => Math.max(m, d.views || 0), 0) || 1;
+    host3.innerHTML =
+      '<table class="top-table"><thead><tr><th class="pos"></th><th>Distrito</th>' +
+      '<th style="width:34%">Views</th><th class="num">Creches</th><th class="num">C/ procura</th></tr></thead><tbody>' +
+      dist.map((d, i) => {
+        const w = Math.max(4, Math.round((d.views || 0) / maxV * 100));
+        return '<tr><td class="pos">' + (i + 1) + '</td>' +
+          '<td><b>' + cpEsc(d.distrito) + '</b></td>' +
+          '<td><span class="vbar" style="width:' + w + '%"></span><b>' + procNum(d.views) + '</b></td>' +
+          '<td class="num">' + procNum(d.creches_no_mapa) + '</td>' +
+          '<td class="num">' + procNum(d.creches_com_views) + '</td></tr>';
+      }).join("") + '</tbody></table>';
+  }
+}
+
+// ── Exportar CSV (todos os concelhos, com as colunas calculadas) ──
+function procExportarCSV(){
+  if(!_procGeo){ alert("Ainda não há dados carregados."); return; }
+  const g = _procGeo;
+  const linhas = procLinhas().sort((a, b) => b.views - a.views);
+  const cab = ["concelho","distrito","views","creches_no_mapa","creches_com_views","aderentes",
+    "populacao_censos_2021","nascimentos_2024","criancas_0_3_estimado",
+    "views_por_1000_hab","creches_por_100_nascimentos","views_por_creche",
+    "janela_desde","janela_ate"];
+  const dec = (n, c) => (n == null || !isFinite(n)) ? "" : Number(n).toFixed(c);
+  const rows = [cab].concat(linhas.map(l => [
+    l.concelho, l.distrito, l.views, l.creches_no_mapa, l.creches_com_views, l.aderentes,
+    l.populacao == null ? "" : l.populacao,
+    l.nascimentos_ano == null ? "" : l.nascimentos_ano,
+    l.criancas_0_3 == null ? "" : l.criancas_0_3,
+    dec(l.views_por_1000_hab, 2), dec(l.creches_por_100_nasc, 2), dec(l.views_por_creche, 2),
+    g.janela_desde || "", g.janela_ate || ""
+  ]));
+  const csv = "﻿" + rows.map(r => r.map(c => '"' + String(c == null ? "" : c).replace(/"/g, '""') + '"').join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "crechesapp-procura-concelhos-" + (g.janela_ate || new Date().toISOString().slice(0, 10)) + "-" + (g.janela_dias || 90) + "d.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+  $("proc-status").textContent = "✓ CSV com " + linhas.length + " concelhos descarregado.";
 }
 </script>
 </body>
