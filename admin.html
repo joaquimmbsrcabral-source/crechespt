@@ -709,12 +709,42 @@ function renderLeads(){
           (l.mensagem ? '<br><i style="color:var(--ink)">«' + cpEsc(String(l.mensagem).slice(0,300)) + '»</i>' : '') +
         '</div>' +
         '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
+          '<button class="lead-mail btn-apply" data-id="' + l.id + '" style="font-size:12.5px;padding:6px 12px;background:linear-gradient(135deg,#7DD389,#5BC077)">📨 ' + (l.notificado ? 'Reenviar avisos' : 'Enviar avisos') + '</button>' +
           (st === "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="contactado" style="font-size:12.5px;padding:6px 12px">📞 Marcar contactado</button>' : '') +
           (st !== "fechado" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="fechado" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">✓ Fechar</button>' : '') +
           (st !== "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="novo" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#6E6989;border:1.5px solid var(--line)">↩︎ Reabrir</button>' : '') +
         '</div>' +
       '</div>';
   }).join("");
+
+  // Enviar/reenviar os dois emails (creche + confirmação ao pai) via Resend
+  host.querySelectorAll(".lead-mail").forEach(b => {
+    b.onclick = async () => {
+      const l = _leadsRows.find(x => x.id === b.dataset.id);
+      if(!l) return;
+      const alvo = l.creche_nome || l.creche_id;
+      if(!confirm("Enviar os avisos deste pedido?\n\n1) Email à creche «" + alvo + "» com os dados da família\n2) Email de confirmação a " + (l.email || "—") + "\n\nSe a creche não tiver painel, usamos o email público do dataset.")) return;
+      const txt = b.textContent;
+      b.disabled = true; b.textContent = "A enviar…";
+      try {
+        const token = await auth.currentUser.getIdToken();
+        const resp = await fetch("/api/lead-notify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+          body: JSON.stringify({ lead_id: l.id, force: true })
+        });
+        const jr = await resp.json().catch(()=>({}));
+        if(!resp.ok){ alert("Erro: " + (jr.error || resp.status)); b.disabled = false; b.textContent = txt; return; }
+        if(jr.skipped){ alert("Não enviado: " + jr.skipped); b.disabled = false; b.textContent = txt; return; }
+        b.textContent = "✓ Enviado";
+        l.notificado = true;
+        alert("✓ Email enviado à creche" + (jr.ack_pai ? " e confirmação enviada à família." : ". (A confirmação à família não foi enviada — ver consola.)"));
+      } catch(e){
+        alert("Erro: " + (e.message || e));
+        b.disabled = false; b.textContent = txt;
+      }
+    };
+  });
 
   host.querySelectorAll(".lead-act").forEach(b => {
     b.onclick = async () => {
