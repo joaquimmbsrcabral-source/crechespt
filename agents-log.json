@@ -1,6 +1,46 @@
 {
  "entries": [
   {
+   "id": "2026-07-25-briefing",
+   "date": "2026-07-25",
+   "time": "08:57",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Mensagem continua à espera; 40 convites",
+   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) continua sem resposta ao follow-up de dia 24 — responde-lhe hoje — e a Raquel Barão (Fundação JM) confirmou a reunião no Edifício Visconde de Alvalade. Enviei 40 convites (0 falhas) — faltam 1515 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-07-25-ops",
+   "date": "2026-07-25",
+   "time": "08:55",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências hoje",
+   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-07-24-briefing",
+   "date": "2026-07-24",
+   "time": "14:20",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Mensagem insiste, Fundação marca reunião",
+   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) voltou a perguntar se viste o email dela — responde-lhe hoje — e a Raquel Barão (Fundação Jerónimo Martins) confirmou a reunião no Edifício Visconde de Alvalade. Enviei 40 convites (0 falhas) — faltam 1555 creches por convidar. Sem opt-outs, claims pendentes ou fotos por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-07-24-ops",
+   "date": "2026-07-24",
+   "time": "14:19",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências hoje",
+   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
+   "status": "ok"
+  },
+  {
    "id": "2026-07-22-enriquecimento",
    "date": "2026-07-22",
    "time": "09:10",

@@ -211,6 +211,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
     <nav class="adm-nav" id="adm-nav" aria-label="Secções do admin">
       <button data-nav="inicio" class="on">🏠 Início</button>
       <button data-nav="creches">🏫 Creches <span class="nbadge" id="nav-creches-badge" style="display:none">0</span></button>
+      <button data-nav="leads">💌 Leads <span class="nbadge" id="nav-leads-badge" style="display:none">0</span></button>
       <button data-nav="stats">📊 Estatísticas</button>
       <button data-nav="convidar">📨 Convidar creches</button>
       <button data-nav="comunidade">👥 Comunidade</button>
@@ -465,6 +466,30 @@ table tr:hover{background:rgba(255,243,214,.4)}
       <div id="us-host"></div>
     </section>
 
+    <!-- ═══ LEADS — pedidos de contacto de pais às creches ═══ -->
+    <section class="panel" data-pg="leads">
+      <h3>💌 Pedidos de contacto (leads) <span class="count" id="lead-count">0</span></h3>
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
+        Famílias que pediram contacto a uma creche. Os leads são entregues por email à creche (e o pai recebe confirmação).
+        As creches aderentes gerem o estado no painel delas — aqui vês tudo, incluindo creches <b>sem painel</b>, onde ninguém do outro lado responde.
+      </p>
+      <div id="lead-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
+        <label style="font-size:13px;font-weight:700">Ver:
+          <select id="lead-filtro" style="font-family:inherit;padding:6px 10px;border-radius:8px;border:1.5px solid var(--line);margin-left:6px">
+            <option value="por_responder" selected>🆕 Por responder</option>
+            <option value="sem_painel">⚠️ Creches sem painel</option>
+            <option value="todos">Todos</option>
+            <option value="contactado">📞 Contactados</option>
+            <option value="fechado">✓ Fechados</option>
+          </select>
+        </label>
+        <button id="lead-refresh" class="btn-apply" style="font-size:13px;padding:8px 14px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">🔄 Atualizar</button>
+        <span id="lead-status" style="font-size:12px;color:var(--ink-soft)"></span>
+      </div>
+      <div id="lead-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+    </section>
+
     <!-- ═══ Admin v2: Estatísticas ═══ -->
     <section class="panel" data-pg="convidar">
       <h3>📨 Convidar creches a gerir a sua página</h3>
@@ -512,7 +537,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
 
 <script>
 // ═══ Admin v2 — router por separadores (hash: #inicio/#creches/#stats/#comunidade) ═══
-const ADM_PAGES = ["inicio","creches","stats","convidar","comunidade"];
+const ADM_PAGES = ["inicio","creches","leads","stats","convidar","comunidade"];
 let _statsLoaded = false;
 function admGo(pg){
   if(!ADM_PAGES.includes(pg)) pg = "inicio";
@@ -520,6 +545,12 @@ function admGo(pg){
   document.querySelectorAll("#adm-nav [data-nav]").forEach(b => b.classList.toggle("on", b.dataset.nav === pg));
   try { history.replaceState(null, "", "#" + pg); } catch(e){}
   if(pg === "stats" && !_statsLoaded){ _statsLoaded = true; loadTopCreches(); loadLeadsStats(); loadVagasStats(); }
+  if(pg === "leads" && !_leadsLoaded){
+    _leadsLoaded = true;
+    $("lead-refresh").onclick = () => loadLeads(true);
+    $("lead-filtro").onchange = () => renderLeads();
+    loadLeads();
+  }
   if(pg === "convidar" && !_invLoaded){
     _invLoaded = true;
     $("inv-preparar").onclick = invPrepararLote;
@@ -532,6 +563,147 @@ document.addEventListener("click", e => {
   const b = e.target.closest("#adm-nav [data-nav]");
   if(b) admGo(b.dataset.nav);
 });
+
+// ═══════════ LEADS — pedidos de contacto de pais às creches ═══════════
+let _leadsLoaded = false;
+let _leadsRows = [];        // todos os leads carregados
+let _leadsAderentes = null; // Set de creche_id com painel (gestor)
+
+function _leadDias(ts){
+  const ms = ts && ts.toMillis ? ts.toMillis() : 0;
+  if(!ms) return null;
+  return Math.floor((Date.now() - ms) / 86400000);
+}
+function _leadData(ts){
+  const ms = ts && ts.toMillis ? ts.toMillis() : 0;
+  if(!ms) return "—";
+  return new Date(ms).toLocaleDateString("pt-PT", { day:"2-digit", month:"short", year:"numeric" })
+       + " " + new Date(ms).toLocaleTimeString("pt-PT", { hour:"2-digit", minute:"2-digit" });
+}
+
+async function loadLeads(force){
+  const host = $("lead-host");
+  $("lead-status").textContent = "A carregar…";
+  try {
+    const [snap, mgrsSnap] = await Promise.all([
+      db.collection("creche_leads").get(),
+      (_leadsAderentes && !force) ? Promise.resolve(null) : db.collection("creche_managers").get().catch(()=>null)
+    ]);
+    if(mgrsSnap){
+      _leadsAderentes = new Set();
+      mgrsSnap.forEach(d => { const c = d.data().creche_id; if(c) _leadsAderentes.add(String(c)); });
+    }
+    _leadsRows = [];
+    snap.forEach(d => _leadsRows.push({ id: d.id, ...d.data() }));
+    _leadsRows.sort((a,b) => {
+      const ta = a.ts && a.ts.toMillis ? a.ts.toMillis() : 0;
+      const tb = b.ts && b.ts.toMillis ? b.ts.toMillis() : 0;
+      return tb - ta;
+    });
+    $("lead-status").textContent = "";
+    renderLeadStats();
+    renderLeads();
+  } catch(e){
+    host.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">Erro: ' + cpEsc(e.message || e) + '</div>';
+    $("lead-status").textContent = "";
+  }
+}
+
+function renderLeadStats(){
+  const seteDias = Date.now() - 7 * 86400000;
+  let novo = 0, cont = 0, fech = 0, semana = 0, semPainel = 0, velhos = 0;
+  _leadsRows.forEach(l => {
+    const st = l.status || "novo";
+    if(st === "novo") novo++; else if(st === "contactado") cont++; else fech++;
+    if(l.ts && l.ts.toMillis && l.ts.toMillis() > seteDias) semana++;
+    const temPainel = _leadsAderentes && _leadsAderentes.has(String(l.creche_id));
+    if(st === "novo" && !temPainel) semPainel++;
+    const d = _leadDias(l.ts);
+    if(st === "novo" && d != null && d >= 3) velhos++;
+  });
+  $("lead-count").textContent = _leadsRows.length;
+  const badge = $("nav-leads-badge");
+  if(badge){ badge.textContent = novo; badge.style.display = novo > 0 ? "" : "none"; }
+  $("lead-stats").innerHTML =
+    '<div class="mini-stat"><b>' + _leadsRows.length + '</b><span>total</span></div>' +
+    '<div class="mini-stat" style="background:#FFF1D6"><b>' + novo + '</b><span>🆕 por responder</span></div>' +
+    (velhos ? '<div class="mini-stat" style="background:#FFE2EC"><b>' + velhos + '</b><span>⏰ há 3+ dias</span></div>' : '') +
+    (semPainel ? '<div class="mini-stat" style="background:#FFE2EC"><b>' + semPainel + '</b><span>⚠️ creche sem painel</span></div>' : '') +
+    '<div class="mini-stat" style="background:#D9F2EF"><b>' + cont + '</b><span>📞 contactados</span></div>' +
+    '<div class="mini-stat" style="background:#DEF5E1"><b>' + fech + '</b><span>✓ fechados</span></div>' +
+    '<div class="mini-stat"><b>+' + semana + '</b><span>últimos 7 dias</span></div>';
+}
+
+function renderLeads(){
+  const host = $("lead-host");
+  const filtro = $("lead-filtro").value;
+  let rows = _leadsRows.slice();
+  if(filtro === "por_responder") rows = rows.filter(l => (l.status || "novo") === "novo");
+  else if(filtro === "contactado") rows = rows.filter(l => l.status === "contactado");
+  else if(filtro === "fechado")    rows = rows.filter(l => l.status && l.status !== "novo" && l.status !== "contactado");
+  else if(filtro === "sem_painel") rows = rows.filter(l => (l.status || "novo") === "novo" && !(_leadsAderentes && _leadsAderentes.has(String(l.creche_id))));
+
+  if(rows.length === 0){
+    host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Nada aqui — tudo tratado. 🎉</div>';
+    return;
+  }
+
+  host.innerHTML = rows.map(l => {
+    const st = l.status || "novo";
+    const dias = _leadDias(l.ts);
+    const temPainel = _leadsAderentes && _leadsAderentes.has(String(l.creche_id));
+    const stLabel = st === "novo" ? "🆕 Por responder" : (st === "contactado" ? "📞 Contactado" : "✓ Fechado");
+    const stCor   = st === "novo" ? "#FFF1D6" : (st === "contactado" ? "#D9F2EF" : "#DEF5E1");
+    const alerta  = st === "novo" && dias != null && dias >= 3;
+    const nome = cpEsc(l.nome || "—");
+    const email = cpEsc(l.email || "");
+    const tel = cpEsc(l.telefone || "");
+    const creche = cpEsc(l.creche_nome || l.creche_id || "—");
+    const assunto = encodeURIComponent("Creches.app — o seu pedido de contacto para " + (l.creche_nome || "a creche"));
+    return '' +
+      '<div class="row" style="border-left:4px solid ' + (alerta ? "#FF6B9D" : (temPainel ? "#7DD389" : "#FFD166")) + ';padding:12px 14px;margin-bottom:10px;background:#fff;border-radius:12px;border:1px solid var(--line)">' +
+        '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">' +
+          '<b style="font-size:14.5px">' + nome + '</b>' +
+          '<span style="font-size:11.5px;background:' + stCor + ';padding:3px 10px;border-radius:99px;font-weight:700">' + stLabel + '</span>' +
+        '</div>' +
+        '<div style="font-size:13px;color:var(--ink-soft);margin-top:4px;line-height:1.55">' +
+          '🏫 <b style="color:var(--ink)">' + creche + '</b>' +
+          (temPainel ? ' <span style="color:#2F9E4F;font-size:11.5px">✓ tem painel</span>'
+                     : ' <span style="color:#B4255C;font-size:11.5px">⚠️ sem painel — ninguém responde do outro lado</span>') +
+          '<br>' +
+          (email ? '📧 <a href="mailto:' + email + '?subject=' + assunto + '" style="color:#B4255C">' + email + '</a>  ' : '') +
+          (tel ? '📞 <a href="tel:' + tel + '" style="color:#B4255C">' + tel + '</a>' : '') +
+          '<br>' +
+          (l.idade_crianca ? '👶 ' + cpEsc(String(l.idade_crianca)) + '  ' : '') +
+          (l.mes_entrada ? '📅 entrada: ' + cpEsc(String(l.mes_entrada)) + '  ' : '') +
+          '<span style="color:var(--ink-soft)">🕐 ' + _leadData(l.ts) +
+          (dias != null ? ' (há ' + dias + (dias === 1 ? ' dia' : ' dias') + ')' : '') + '</span>' +
+          (l.mensagem ? '<br><i style="color:var(--ink)">«' + cpEsc(String(l.mensagem).slice(0,240)) + '»</i>' : '') +
+        '</div>' +
+        '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
+          (st === "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="contactado" style="font-size:12.5px;padding:6px 12px">📞 Marcar contactado</button>' : '') +
+          (st !== "fechado" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="fechado" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">✓ Fechar</button>' : '') +
+          (st !== "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="novo" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#6E6989;border:1.5px solid var(--line)">↩︎ Reabrir</button>' : '') +
+        '</div>' +
+      '</div>';
+  }).join("");
+
+  host.querySelectorAll(".lead-act").forEach(b => {
+    b.onclick = async () => {
+      b.disabled = true;
+      try {
+        await db.collection("creche_leads").doc(b.dataset.id).update({ status: b.dataset.st });
+        const row = _leadsRows.find(x => x.id === b.dataset.id);
+        if(row) row.status = b.dataset.st;
+        renderLeadStats();
+        renderLeads();
+      } catch(e){
+        alert("Erro ao atualizar: " + (e.message || e));
+        b.disabled = false;
+      }
+    };
+  });
+}
 
 // ═══════════ CONVIDAR CRECHES (campanha de ativação via Resend) ═══════════
 let _invLoaded = false;
