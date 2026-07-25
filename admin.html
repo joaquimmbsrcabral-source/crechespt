@@ -568,6 +568,7 @@ document.addEventListener("click", e => {
 let _leadsLoaded = false;
 let _leadsRows = [];        // todos os leads carregados
 let _leadsAderentes = null; // Set de creche_id com painel (gestor)
+let _leadsDataset = null;   // Map creche_id → {nome, concelho, distrito, email, telefone}
 
 function _leadDias(ts){
   const ms = ts && ts.toMillis ? ts.toMillis() : 0;
@@ -585,13 +586,18 @@ async function loadLeads(force){
   const host = $("lead-host");
   $("lead-status").textContent = "A carregar…";
   try {
-    const [snap, mgrsSnap] = await Promise.all([
+    const [snap, mgrsSnap, ds] = await Promise.all([
       db.collection("creche_leads").get(),
-      (_leadsAderentes && !force) ? Promise.resolve(null) : db.collection("creche_managers").get().catch(()=>null)
+      (_leadsAderentes && !force) ? Promise.resolve(null) : db.collection("creche_managers").get().catch(()=>null),
+      (_leadsDataset && !force) ? Promise.resolve(null) : fetch("/creches_pt.json").then(r=>r.json()).catch(()=>null)
     ]);
     if(mgrsSnap){
       _leadsAderentes = new Set();
       mgrsSnap.forEach(d => { const c = d.data().creche_id; if(c) _leadsAderentes.add(String(c)); });
+    }
+    if(ds && Array.isArray(ds)){
+      _leadsDataset = new Map();
+      ds.forEach(c => _leadsDataset.set(String(c.id), c));
     }
     _leadsRows = [];
     snap.forEach(d => _leadsRows.push({ id: d.id, ...d.data() }));
@@ -658,27 +664,49 @@ function renderLeads(){
     const nome = cpEsc(l.nome || "—");
     const email = cpEsc(l.email || "");
     const tel = cpEsc(l.telefone || "");
-    const creche = cpEsc(l.creche_nome || l.creche_id || "—");
-    const assunto = encodeURIComponent("Creches.app — o seu pedido de contacto para " + (l.creche_nome || "a creche"));
+    // Nome da creche: preferir o guardado no lead; senão procurar no dataset
+    const dsC = _leadsDataset ? _leadsDataset.get(String(l.creche_id)) : null;
+    const crecheNome = l.creche_nome || (dsC && dsC.nome) || null;
+    const creche = cpEsc(crecheNome || ("(sem nome — id: " + (l.creche_id || "?") + ")"));
+    const local = dsC ? [dsC.localidade, dsC.distrito].filter(Boolean).join(", ") : "";
+    const crecheEmail = dsC && dsC.email ? dsC.email : "";
+    const crecheTel = dsC && dsC.telefone ? dsC.telefone : "";
+    const assunto = encodeURIComponent("Creches.app — o seu pedido de contacto para " + (crecheNome || "a creche"));
     return '' +
-      '<div class="row" style="border-left:4px solid ' + (alerta ? "#FF6B9D" : (temPainel ? "#7DD389" : "#FFD166")) + ';padding:12px 14px;margin-bottom:10px;background:#fff;border-radius:12px;border:1px solid var(--line)">' +
-        '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">' +
-          '<b style="font-size:14.5px">' + nome + '</b>' +
-          '<span style="font-size:11.5px;background:' + stCor + ';padding:3px 10px;border-radius:99px;font-weight:700">' + stLabel + '</span>' +
+      '<div class="row" style="border-left:4px solid ' + (alerta ? "#FF6B9D" : (temPainel ? "#7DD389" : "#FFD166")) + ';padding:14px 16px;margin-bottom:10px;background:#fff;border-radius:12px;border:1px solid var(--line)">' +
+        // ─── Cabeçalho: QUEM → PARA QUE CRECHE ───
+        '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px">' +
+          '<div style="font-size:15px;line-height:1.4">' +
+            '<b>' + nome + '</b>' +
+            '<span style="color:var(--ink-soft);margin:0 7px">→</span>' +
+            '<b style="color:#B4255C">' + creche + '</b>' +
+          '</div>' +
+          '<span style="font-size:11.5px;background:' + stCor + ';padding:3px 10px;border-radius:99px;font-weight:700;white-space:nowrap">' + stLabel + '</span>' +
         '</div>' +
-        '<div style="font-size:13px;color:var(--ink-soft);margin-top:4px;line-height:1.55">' +
-          '🏫 <b style="color:var(--ink)">' + creche + '</b>' +
-          (temPainel ? ' <span style="color:#2F9E4F;font-size:11.5px">✓ tem painel</span>'
-                     : ' <span style="color:#B4255C;font-size:11.5px">⚠️ sem painel — ninguém responde do outro lado</span>') +
-          '<br>' +
-          (email ? '📧 <a href="mailto:' + email + '?subject=' + assunto + '" style="color:#B4255C">' + email + '</a>  ' : '') +
-          (tel ? '📞 <a href="tel:' + tel + '" style="color:#B4255C">' + tel + '</a>' : '') +
-          '<br>' +
-          (l.idade_crianca ? '👶 ' + cpEsc(String(l.idade_crianca)) + '  ' : '') +
-          (l.mes_entrada ? '📅 entrada: ' + cpEsc(String(l.mes_entrada)) + '  ' : '') +
-          '<span style="color:var(--ink-soft)">🕐 ' + _leadData(l.ts) +
-          (dias != null ? ' (há ' + dias + (dias === 1 ? ' dia' : ' dias') + ')' : '') + '</span>' +
-          (l.mensagem ? '<br><i style="color:var(--ink)">«' + cpEsc(String(l.mensagem).slice(0,240)) + '»</i>' : '') +
+        // ─── Duas colunas: família | creche ───
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;font-size:13px;line-height:1.6">' +
+          '<div style="background:#FFF6EE;border-radius:10px;padding:10px 12px">' +
+            '<div style="font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">👨‍👩‍👧 Família</div>' +
+            '<b>' + nome + '</b><br>' +
+            (email ? '📧 <a href="mailto:' + email + '?subject=' + assunto + '" style="color:#B4255C">' + email + '</a><br>' : '') +
+            (tel ? '📞 <a href="tel:' + tel + '" style="color:#B4255C">' + tel + '</a><br>' : '') +
+            (l.idade_crianca ? '👶 ' + cpEsc(String(l.idade_crianca)) + '<br>' : '') +
+            (l.mes_entrada ? '📅 entrada: ' + cpEsc(String(l.mes_entrada)) : '') +
+          '</div>' +
+          '<div style="background:#F4F2FB;border-radius:10px;padding:10px 12px">' +
+            '<div style="font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">🏫 Creche pedida</div>' +
+            '<b>' + creche + '</b><br>' +
+            (local ? '📍 ' + cpEsc(local) + '<br>' : '') +
+            (crecheEmail ? '📧 <a href="mailto:' + cpEsc(crecheEmail) + '" style="color:#B4255C">' + cpEsc(crecheEmail) + '</a><br>' : '') +
+            (crecheTel ? '📞 <a href="tel:' + cpEsc(crecheTel) + '" style="color:#B4255C">' + cpEsc(crecheTel) + '</a><br>' : '') +
+            (temPainel ? '<span style="color:#2F9E4F;font-weight:700">✓ tem painel — a creche vê este pedido</span>'
+                       : '<span style="color:#B4255C;font-weight:700">⚠️ sem painel — ninguém responde do outro lado</span>') +
+            (l.creche_id ? '<br><a href="/app?creche=' + encodeURIComponent(l.creche_id) + '" target="_blank" rel="noopener" style="color:var(--ink-soft);font-size:12px">ver no mapa ↗</a>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="font-size:12.5px;color:var(--ink-soft);margin-top:9px;line-height:1.55">' +
+          '🕐 ' + _leadData(l.ts) + (dias != null ? ' (há ' + dias + (dias === 1 ? ' dia' : ' dias') + ')' : '') +
+          (l.mensagem ? '<br><i style="color:var(--ink)">«' + cpEsc(String(l.mensagem).slice(0,300)) + '»</i>' : '') +
         '</div>' +
         '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
           (st === "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="contactado" style="font-size:12.5px;padding:6px 12px">📞 Marcar contactado</button>' : '') +
