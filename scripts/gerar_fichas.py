@@ -141,11 +141,18 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
 /* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
-.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
-  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
-  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
-  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
-  position:relative;z-index:1}
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:15px 16px;border:none;border-radius:16px;cursor:pointer;min-height:56px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16.5px;
+  line-height:1.25;text-align:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);
+  transition:transform .15s,box-shadow .15s;position:relative;z-index:1}
+.cta-primary .pic{font-size:20px;line-height:1;flex:none}
+.cta-primary .pl{min-width:0}
+.cta-primary.is-call .pl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:400px){
+  .cta-primary{font-size:15px;padding:14px 12px;gap:7px}
+  .cta-primary .pic{font-size:18px}
+}
 .cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
 .cta-primary:active{transform:scale(.985)}
 .cta-primary.is-call{color:#1F7A6E}
@@ -275,6 +282,7 @@ def _is_eb(nm): return any(p.search(nm or "") for p in _EB_RX)
 os.makedirs("creche", exist_ok=True)
 urls = []
 n_skip_eb = 0
+n_escritas = 0
 for c in creches:
     if _is_eb(c.get("nome","")):
         n_skip_eb += 1
@@ -438,13 +446,16 @@ for c in creches:
     if mail:
         cta_primary = (
             f'<button type="button" class="cta-primary" id="btn-lead-primary">'
-            f'💌 Tenho interesse — deixar contacto</button>'
-            f'<div class="cta-primary-note">Enviamos o teu pedido à creche e avisamos-te se não responderem</div>'
+            f'<span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button>'
+            f'<div class="cta-primary-note">Deixas o contacto, enviamos o pedido à creche '
+            f'e avisamos-te se não responderem</div>'
         )
     elif tel:
         cta_primary = (
-            f'<a class="cta-primary is-call" href="tel:{esc(tel_clean)}">📞 Ligar {esc(tel)}</a>'
-            f'<div class="cta-primary-note">Ainda não temos o email desta creche</div>'
+            f'<a class="cta-primary is-call" href="tel:{esc(tel_clean)}">'
+            f'<span class="pic" aria-hidden="true">📞</span><span class="pl">Ligar {esc(tel)}</span></a>'
+            f'<div class="cta-primary-note">Ainda não temos o email desta creche '
+            f'para enviarmos o pedido por ti</div>'
         )
         cta_tel = ""   # já é a ação principal — não se repete em baixo
     else:
@@ -724,8 +735,14 @@ document.addEventListener("click", function(e){{
   const slot = document.getElementById("vaga-slot");
   if(!slot) return;
   if(!window.CrecheLeads){{
-    b.textContent = "⏳ Um momento…";
-    setTimeout(function(){{ b.textContent = "💌 Tenho interesse — deixar contacto"; }}, 1200);
+    // Só o rótulo muda — reescrever o textContent do botão apagaria os spans
+    // do ícone e do texto, e o botão voltaria com o layout partido.
+    const pl = b.querySelector(".pl");
+    if(pl){{
+      const orig = pl.textContent;
+      pl.textContent = "Um momento…";
+      setTimeout(function(){{ pl.textContent = orig; }}, 1200);
+    }}
     return;
   }}
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
@@ -820,11 +837,23 @@ function _openVagaModal(crecheId, nome){{
 </script>
 </body>
 </html>"""
-    with open(f"creche/{slug}.html","w",encoding="utf-8") as f:
-        f.write(page)
+    # Escrita incremental: só grava se o conteúdo mudou mesmo.
+    # Reescrever 2578 ficheiros iguais custa quase um minuto de I/O, suja o
+    # diff do git e obriga o Vercel a republicar tudo. Comparar primeiro é
+    # ordens de grandeza mais barato do que escrever.
+    caminho = f"creche/{slug}.html"
+    try:
+        with open(caminho, encoding="utf-8") as f:
+            igual = f.read() == page
+    except FileNotFoundError:
+        igual = False
+    if not igual:
+        with open(caminho, "w", encoding="utf-8") as f:
+            f.write(page)
+        n_escritas += 1
     urls.append(url)
 
-print(f"✓ Geradas {len(urls)} fichas")
+print(f"✓ Geradas {len(urls)} fichas ({n_escritas} alteradas, {len(urls)-n_escritas} já actualizadas)")
 print(f"  Saltadas (Escolas Básicas): {n_skip_eb}")
 
 # sitemap-creches.xml

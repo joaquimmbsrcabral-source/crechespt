@@ -82,11 +82,18 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
 /* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
-.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
-  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
-  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
-  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
-  position:relative;z-index:1}
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:15px 16px;border:none;border-radius:16px;cursor:pointer;min-height:56px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16.5px;
+  line-height:1.25;text-align:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);
+  transition:transform .15s,box-shadow .15s;position:relative;z-index:1}
+.cta-primary .pic{font-size:20px;line-height:1;flex:none}
+.cta-primary .pl{min-width:0}
+.cta-primary.is-call .pl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:400px){
+  .cta-primary{font-size:15px;padding:14px 12px;gap:7px}
+  .cta-primary .pic{font-size:18px}
+}
 .cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
 .cta-primary:active{transform:scale(.985)}
 .cta-primary.is-call{color:#1F7A6E}
@@ -222,7 +229,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary is-call" href="tel:+351214661819;+351214661918">📞 Ligar +351 214661819;+351 214661918</a><div class="cta-primary-note">Ainda não temos o email desta creche</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.699199,-9.380047" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância do Centro Social Paroquial de São Pedro e São João do Estoril" data-share-slug="jardim-de-infancia-do-centro-social-paroquial-de-sao-pedro-e-sao-joao-1302142903" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1302142903" data-cmp-name="Jardim de Infância do Centro Social Paroquial de São Pedro e São João do Estoril" data-cmp-slug="jardim-de-infancia-do-centro-social-paroquial-de-sao-pedro-e-sao-joao-1302142903" data-cmp-tipo="Privada" data-cmp-distrito="Lisboa" data-cmp-localidade="Estoril" data-cmp-lat="38.699199" data-cmp-lon="-9.380047" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary is-call" href="tel:+351214661819;+351214661918"><span class="pic" aria-hidden="true">📞</span><span class="pl">Ligar +351 214661819;+351 214661918</span></a><div class="cta-primary-note">Ainda não temos o email desta creche para enviarmos o pedido por ti</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.699199,-9.380047" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância do Centro Social Paroquial de São Pedro e São João do Estoril" data-share-slug="jardim-de-infancia-do-centro-social-paroquial-de-sao-pedro-e-sao-joao-1302142903" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1302142903" data-cmp-name="Jardim de Infância do Centro Social Paroquial de São Pedro e São João do Estoril" data-cmp-slug="jardim-de-infancia-do-centro-social-paroquial-de-sao-pedro-e-sao-joao-1302142903" data-cmp-tipo="Privada" data-cmp-distrito="Lisboa" data-cmp-localidade="Estoril" data-cmp-lat="38.699199" data-cmp-lon="-9.380047" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -403,8 +410,14 @@ document.addEventListener("click", function(e){
   const slot = document.getElementById("vaga-slot");
   if(!slot) return;
   if(!window.CrecheLeads){
-    b.textContent = "⏳ Um momento…";
-    setTimeout(function(){ b.textContent = "💌 Tenho interesse — deixar contacto"; }, 1200);
+    // Só o rótulo muda — reescrever o textContent do botão apagaria os spans
+    // do ícone e do texto, e o botão voltaria com o layout partido.
+    const pl = b.querySelector(".pl");
+    if(pl){
+      const orig = pl.textContent;
+      pl.textContent = "Um momento…";
+      setTimeout(function(){ pl.textContent = orig; }, 1200);
+    }
     return;
   }
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",

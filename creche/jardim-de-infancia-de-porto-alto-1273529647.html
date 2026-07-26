@@ -82,11 +82,18 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
 /* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
-.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
-  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
-  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
-  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
-  position:relative;z-index:1}
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:15px 16px;border:none;border-radius:16px;cursor:pointer;min-height:56px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16.5px;
+  line-height:1.25;text-align:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);
+  transition:transform .15s,box-shadow .15s;position:relative;z-index:1}
+.cta-primary .pic{font-size:20px;line-height:1;flex:none}
+.cta-primary .pl{min-width:0}
+.cta-primary.is-call .pl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:400px){
+  .cta-primary{font-size:15px;padding:14px 12px;gap:7px}
+  .cta-primary .pic{font-size:18px}
+}
 .cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
 .cta-primary:active{transform:scale(.985)}
 .cta-primary.is-call{color:#1F7A6E}
@@ -222,7 +229,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <button type="button" class="cta-primary" id="btn-lead-primary">💌 Tenho interesse — deixar contacto</button><div class="cta-primary-note">Enviamos o teu pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:+351263655809" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ji.portoalto@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20de%20Porto%20Alto&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.920524,-8.885684" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância de Porto Alto" data-share-slug="jardim-de-infancia-de-porto-alto-1273529647" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1273529647" data-cmp-name="Jardim de Infância de Porto Alto" data-cmp-slug="jardim-de-infancia-de-porto-alto-1273529647" data-cmp-tipo="Pública" data-cmp-distrito="Santarém" data-cmp-localidade="Samora Correia" data-cmp-lat="38.920524" data-cmp-lon="-8.885684" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <button type="button" class="cta-primary" id="btn-lead-primary"><span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button><div class="cta-primary-note">Deixas o contacto, enviamos o pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:+351263655809" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:ji.portoalto@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20de%20Porto%20Alto&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.920524,-8.885684" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância de Porto Alto" data-share-slug="jardim-de-infancia-de-porto-alto-1273529647" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1273529647" data-cmp-name="Jardim de Infância de Porto Alto" data-cmp-slug="jardim-de-infancia-de-porto-alto-1273529647" data-cmp-tipo="Pública" data-cmp-distrito="Santarém" data-cmp-localidade="Samora Correia" data-cmp-lat="38.920524" data-cmp-lon="-8.885684" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -403,8 +410,14 @@ document.addEventListener("click", function(e){
   const slot = document.getElementById("vaga-slot");
   if(!slot) return;
   if(!window.CrecheLeads){
-    b.textContent = "⏳ Um momento…";
-    setTimeout(function(){ b.textContent = "💌 Tenho interesse — deixar contacto"; }, 1200);
+    // Só o rótulo muda — reescrever o textContent do botão apagaria os spans
+    // do ícone e do texto, e o botão voltaria com o layout partido.
+    const pl = b.querySelector(".pl");
+    if(pl){
+      const orig = pl.textContent;
+      pl.textContent = "Um momento…";
+      setTimeout(function(){ pl.textContent = orig; }, 1200);
+    }
     return;
   }
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",

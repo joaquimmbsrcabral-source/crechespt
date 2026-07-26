@@ -753,27 +753,37 @@ header.topbar{
    Botões sem destino são REMOVIDOS do fluxo (hidden), não desativados: um botão
    morto ocupa o mesmo espaço precioso de um botão útil, e no telemóvel isso
    custa uma linha inteira. */
-.d-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
-  padding:15px 16px;border:none;border-radius:15px;cursor:pointer;
+.d-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  box-sizing:border-box;padding:14px 16px;border:none;border-radius:15px;cursor:pointer;
   background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
-  font-family:inherit;font-weight:800;font-size:15.5px;letter-spacing:.01em;
-  box-shadow:0 6px 16px rgba(255,107,157,.30);transition:transform .12s,box-shadow .12s;
-  min-height:52px}      /* alvo de toque confortável no telemóvel */
+  font-family:inherit;font-weight:800;font-size:16px;line-height:1.25;letter-spacing:.01em;
+  text-align:center;box-shadow:0 6px 16px rgba(255,107,157,.30);
+  transition:transform .12s,box-shadow .12s;min-height:54px}  /* alvo de toque confortável */
+.d-primary .pic{font-size:19px;line-height:1;flex:none}
+.d-primary .pl{min-width:0}   /* deixa o texto quebrar em vez de esticar o botão */
 .d-primary:hover{transform:translateY(-1px);box-shadow:0 9px 20px rgba(255,107,157,.38)}
 .d-primary:active{transform:scale(.985)}
 .d-primary[hidden]{display:none}
 .d-primary.is-call{background:linear-gradient(135deg,#5EC0B7,#7DD389);box-shadow:0 6px 16px rgba(94,192,183,.30)}
 .d-primary.is-call:hover{box-shadow:0 9px 20px rgba(94,192,183,.38)}
-.d-primary-note{text-align:center;font-size:11.5px;color:var(--ink-faint);margin:6px 0 0;line-height:1.45}
+/* Número de telefone: nunca partir a meio nem transbordar em ecrãs estreitos */
+.d-primary.is-call .pl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d-primary-note{text-align:center;font-size:12px;color:var(--ink-faint);margin:7px 0 0;line-height:1.5}
 .d-primary-note[hidden]{display:none}
+@media(max-width:400px){
+  .d-primary{font-size:15px;padding:13px 12px;gap:7px}
+  .d-primary .pic{font-size:17px}
+  .d-primary-note{font-size:11.5px}
+}
 
 /* Contactos diretos — auto-fit para 1, 2, 3 ou 4 botões ficarem sempre certos */
-.d-contact-ctas{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:7px;margin:14px 0 0}
+.d-contact-ctas{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:7px;margin:14px 0 16px}
 .d-contact-ctas:empty{display:none}
 @media(max-width:680px){.d-contact-ctas{gap:8px}}
 
-/* Apoio — deixaram de competir com o contacto */
-.d-tertiary{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 18px}
+/* Apoio — vivem no fim, depois da informação, separados por uma linha */
+.d-tertiary{display:flex;align-items:center;justify-content:center;gap:10px;
+  margin:4px 0 12px;padding-top:14px;border-top:1px solid rgba(60,40,90,.08)}
 .d-tert{background:none;border:none;padding:6px 8px;min-height:38px;cursor:pointer;
   font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-faint);border-radius:9px}
 .d-tert:hover{color:var(--ink);background:rgba(60,40,90,.05)}

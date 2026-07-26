@@ -465,7 +465,8 @@
            Agora: uma ação principal (síncrona, sem salto de layout), uma linha de
            contactos diretos, e as ações de apoio reduzidas a links. -->
       <button type="button" id="d-primary" class="d-primary" hidden>
-        <span class="pl" id="d-primary-lb">💌 Tenho interesse</span>
+        <span class="pic" id="d-primary-ic" aria-hidden="true">💌</span>
+        <span class="pl" id="d-primary-lb">Tenho interesse</span>
       </button>
       <div class="d-primary-note" id="d-primary-note" hidden></div>
 
@@ -484,12 +485,6 @@
         </a>
       </div>
 
-      <div class="d-tertiary">
-        <button type="button" id="d-cta-share" class="d-tert" aria-label="Partilhar com outros pais">💬 Partilhar</button>
-        <span class="sep" aria-hidden="true">·</span>
-        <button type="button" id="d-cta-compare" class="d-tert" aria-label="Adicionar a comparar"><span id="d-cta-compare-lb">📊 Comparar</span></button>
-      </div>
-
       <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
       <div id="d-vaga-slot"></div>
       <!-- 🔔 Alerta de vaga — "Avisa-me quando abrir vaga" (se não houver vaga activa) -->
@@ -499,16 +494,22 @@
       <!-- 🆓 Creche Feliz — slot preenchido se houver report ou marcação -->
       <div id="d-cf-slot"></div>
 
-      <!-- Contribuições da comunidade — discretas, não competem com a informação -->
+      <div class="section">
+        <h3>Detalhes</h3>
+        <div id="d-info" class="kv"></div>
+      </div>
+
+      <!-- Ações de apoio e contribuições — juntas, depois da informação, porque
+           nenhuma delas é o motivo pelo qual o pai abriu esta creche. -->
+      <div class="d-tertiary">
+        <button type="button" id="d-cta-share" class="d-tert" aria-label="Partilhar com outros pais">💬 Partilhar</button>
+        <span class="sep" aria-hidden="true">·</span>
+        <button type="button" id="d-cta-compare" class="d-tert" aria-label="Adicionar a comparar"><span id="d-cta-compare-lb">📊 Comparar</span></button>
+      </div>
       <div style="margin:0 0 16px;padding:9px 13px;background:rgba(125,211,137,.10);border-radius:12px;font-size:12.5px;color:#4A4060" id="d-report-actions">
         Sabes algo sobre esta creche?
         <button id="d-vaga-report" type="button" style="background:none;border:none;color:#1F7A3D;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;padding:2px 4px;text-decoration:underline">🟢 Reportar vaga</button> ·
         <button id="d-cf-report" type="button" style="background:none;border:none;color:#1F7A3D;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;padding:2px 4px;text-decoration:underline">🆓 É Creche Feliz</button>
-      </div>
-
-      <div class="section">
-        <h3>Detalhes</h3>
-        <div id="d-info" class="kv"></div>
       </div>
       <details class="d-tracking">
         <summary>📋 Acompanhar a minha inscrição <span class="hint">(opcional)</span></summary>
@@ -1875,6 +1876,7 @@ function openDetail(id){
   // cartão do perfil, que só chega depois de uma leitura ao Firestore: o pai via
   // primeiro seis botões secundários e a ação que interessa aparecia a saltar.
   const dPrim = document.getElementById("d-primary");
+  const dPrimIc = document.getElementById("d-primary-ic");
   const dPrimLb = document.getElementById("d-primary-lb");
   const dPrimNote = document.getElementById("d-primary-note");
   if(dPrim){
@@ -1882,17 +1884,19 @@ function openDetail(id){
     dPrim.onclick = null;
     if(em){
       dPrim.hidden = false;
-      dPrimLb.textContent = "💌 Tenho interesse — deixar contacto";
+      dPrimIc.textContent = "💌";
+      dPrimLb.textContent = "Tenho interesse";
       dPrimNote.hidden = false;
-      dPrimNote.textContent = "Enviamos o teu pedido à creche e avisamos-te se não responderem";
+      dPrimNote.textContent = "Deixas o contacto, enviamos o pedido à creche e avisamos-te se não responderem";
       dPrim.onclick = ()=>{ if(window.CrecheLeads) window.CrecheLeads.open(c.id, c.nome || "", { aderente: !!(State.profileGeridas && State.profileGeridas.has(c.id)) }); };
     } else if(tel){
       // Sem email não conseguimos enviar nada por ela — o telefone é a via honesta.
       dPrim.hidden = false;
       dPrim.classList.add("is-call");
-      dPrimLb.textContent = "📞 Ligar " + tel.replace(/\s+/g,' ').slice(0,20);
+      dPrimIc.textContent = "📞";
+      dPrimLb.textContent = "Ligar " + tel.replace(/\s+/g,' ');
       dPrimNote.hidden = false;
-      dPrimNote.textContent = "Ainda não temos o email desta creche";
+      dPrimNote.textContent = "Ainda não temos o email desta creche para enviarmos o pedido por ti";
       dPrim.onclick = ()=>{ location.href = "tel:" + tel; };
     } else {
       dPrim.hidden = true;
