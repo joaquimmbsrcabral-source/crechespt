@@ -81,13 +81,30 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 @media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
-.ctas-big{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 14px;position:relative;z-index:1}
-@media(max-width:640px){.ctas-big{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
-.cta-big.cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer}
-.cta-big.cta-share:hover{color:#fff;filter:brightness(1.06)}
-.cta-big.cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer}
-.cta-big.cta-compare:hover{color:#fff;filter:brightness(1.08)}
-.cta-big.cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
+/* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
+  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
+  position:relative;z-index:1}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
+.cta-primary:active{transform:scale(.985)}
+.cta-primary.is-call{color:#1F7A6E}
+.cta-primary-note{text-align:center;font-size:12px;color:rgba(255,255,255,.92);margin:8px 0 0;
+  line-height:1.45;font-weight:600;position:relative;z-index:1}
+
+/* Contactos diretos — auto-fit: 1, 2 ou 3 botões ficam sempre certos */
+.ctas-big{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px;margin:14px 0 0;position:relative;z-index:1}
+.ctas-big:empty{display:none}
+
+/* Apoio — deixaram de competir com o contacto */
+.ctas-tert{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 2px;position:relative;z-index:1}
+.cta-tert{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;
+  padding:8px 14px;min-height:40px;border-radius:99px;cursor:pointer;
+  font-family:inherit;font-size:12.5px;font-weight:700;transition:background .15s}
+.cta-tert:hover{background:rgba(255,255,255,.3)}
+.ctas-tert .sep{color:rgba(255,255,255,.45);font-weight:700}
+.cta-tert.cta-compare.active{background:#fff;color:#B4255C;border-color:#fff}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
@@ -205,7 +222,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <div class="ctas-big"><span class="cta-big disabled" aria-label="Sem telefone registado"><span class="ic">📞</span><span class="lb">Sem telefone</span></span><a class="cta-big" href="mailto:ji.ribeiradepedrulhos@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20da%20Ribeira%20de%20Pedrulhos&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=39.083737,-9.304321" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a><button type="button" class="cta-big cta-share" data-share-name="Jardim de Infância da Ribeira de Pedrulhos" data-share-slug="jardim-de-infancia-da-ribeira-de-pedrulhos-1274517812" aria-label="Partilhar com outros pais"><span class="ic">💬</span><span class="lb">Partilhar</span></button><button type="button" class="cta-big cta-compare" data-cmp-id="osm-way-1274517812" data-cmp-name="Jardim de Infância da Ribeira de Pedrulhos" data-cmp-slug="jardim-de-infancia-da-ribeira-de-pedrulhos-1274517812" data-cmp-tipo="Pública" data-cmp-distrito="Lisboa" data-cmp-localidade="Torres Vedras" data-cmp-lat="39.083737" data-cmp-lon="-9.304321" aria-label="Adicionar a comparar"><span class="ic">📊</span><span class="lb">Comparar</span></button></div>
+    <button type="button" class="cta-primary" id="btn-lead-primary">💌 Tenho interesse — deixar contacto</button><div class="cta-primary-note">Enviamos o teu pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="mailto:ji.ribeiradepedrulhos@escolas.min-edu.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20da%20Ribeira%20de%20Pedrulhos&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=39.083737,-9.304321" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância da Ribeira de Pedrulhos" data-share-slug="jardim-de-infancia-da-ribeira-de-pedrulhos-1274517812" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1274517812" data-cmp-name="Jardim de Infância da Ribeira de Pedrulhos" data-cmp-slug="jardim-de-infancia-da-ribeira-de-pedrulhos-1274517812" data-cmp-tipo="Pública" data-cmp-distrito="Lisboa" data-cmp-localidade="Torres Vedras" data-cmp-lat="39.083737" data-cmp-lon="-9.304321" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -226,9 +243,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <!-- Stats cards visuais -->
   <div class="stats-grid">
     <div class="stat-card"><div class="ic">📍</div><span class="k">Distrito</span><span class="v"><a href="/creches/lisboa">Lisboa</a></span></div>
-<div class="stat-card"><div class="ic">🎂</div><span class="k">Idades</span><span class="v">Dos 3 anos aos 5 anos</span></div>
-<div class="stat-card"><div class="ic">🏠</div><span class="k">Resposta</span><span class="v">Jardim de Infância</span></div>
 <div class="stat-card"><div class="ic">🏢</div><span class="k">Operador</span><span class="v">Agrupamento de Escolas Padre V…</span></div>
+<div class="stat-card"><div class="ic">✉</div><span class="k">Código postal</span><span class="v">2560-591</span></div>
   </div>
 
   <!-- Card morada + site -->
@@ -339,8 +355,7 @@ function _syncCmpBtn(btn){
   const id = btn.getAttribute("data-cmp-id");
   const isIn = window.Compare.has(id);
   btn.classList.toggle("active", isIn);
-  const lb = btn.querySelector(".lb");
-  if(lb) lb.textContent = isIn ? "Remover" : "Comparar";
+  btn.textContent = isIn ? "📊 Remover" : "📊 Comparar";
 }
 document.addEventListener("click", function(e){
   const btn = e.target.closest(".cta-compare");
@@ -377,6 +392,23 @@ window.addEventListener('load', function(){
       window.Vagas.renderBadgeInto(slot, slot.dataset.crecheId);
     }
   }, 800);  // delay para Firebase init
+});
+
+// Ação principal "💌 Tenho interesse" — está no HTML desde o primeiro pixel,
+// só o wire é que espera pelo módulo. Assim não há salto de layout nem espera.
+document.addEventListener("click", function(e){
+  const b = e.target.closest("#btn-lead-primary");
+  if(!b) return;
+  e.preventDefault();
+  const slot = document.getElementById("vaga-slot");
+  if(!slot) return;
+  if(!window.CrecheLeads){
+    b.textContent = "⏳ Um momento…";
+    setTimeout(function(){ b.textContent = "💌 Tenho interesse — deixar contacto"; }, 1200);
+    return;
+  }
+  window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
+    { aderente: !!document.getElementById("perfil-creche-box") });
 });
 
 // Modal pai: "🟢 Sei de vaga aqui"

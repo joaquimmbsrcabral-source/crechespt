@@ -140,13 +140,30 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 @media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
-.ctas-big{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 14px;position:relative;z-index:1}
-@media(max-width:640px){.ctas-big{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
-.cta-big.cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer}
-.cta-big.cta-share:hover{color:#fff;filter:brightness(1.06)}
-.cta-big.cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer}
-.cta-big.cta-compare:hover{color:#fff;filter:brightness(1.08)}
-.cta-big.cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
+/* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
+  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
+  position:relative;z-index:1}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
+.cta-primary:active{transform:scale(.985)}
+.cta-primary.is-call{color:#1F7A6E}
+.cta-primary-note{text-align:center;font-size:12px;color:rgba(255,255,255,.92);margin:8px 0 0;
+  line-height:1.45;font-weight:600;position:relative;z-index:1}
+
+/* Contactos diretos — auto-fit: 1, 2 ou 3 botões ficam sempre certos */
+.ctas-big{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px;margin:14px 0 0;position:relative;z-index:1}
+.ctas-big:empty{display:none}
+
+/* Apoio — deixaram de competir com o contacto */
+.ctas-tert{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 2px;position:relative;z-index:1}
+.cta-tert{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;
+  padding:8px 14px;min-height:40px;border-radius:99px;cursor:pointer;
+  font-family:inherit;font-size:12.5px;font-weight:700;transition:background .15s}
+.cta-tert:hover{background:rgba(255,255,255,.3)}
+.ctas-tert .sep{color:rgba(255,255,255,.45);font-weight:700}
+.cta-tert.cta-compare.active{background:#fff;color:#B4255C;border-color:#fff}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
@@ -336,15 +353,19 @@ for c in creches:
     else:
         emoji_av = "🍼"
 
-    # === Stats cards (4 itens visuais) ===
+    # === Stats cards ===
+    # O hero já mostra resposta social, idades e localidade em chips. Repeti-los
+    # aqui obrigava o pai a fazer scroll por informação que já tinha lido —
+    # caro no telemóvel, onde estes cartões ocupam duas filas inteiras.
+    # Ficam só os dados que o hero NÃO dá.
     stats = []
     if distrito:
         dist_html = f'<a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else esc(distrito)
         stats.append(("📍", "Distrito", dist_html))
-    stats.append(("🎂", "Idades", esc(fx)))
-    stats.append(("🏠", "Resposta", esc(resposta)))
     if oper:
         stats.append(("🏢", "Operador", esc(oper)[:30] + ("…" if len(oper)>30 else "")))
+    if cp:
+        stats.append(("✉", "Código postal", esc(cp)))
 
     stats_html = "\n".join(
         f'<div class="stat-card"><div class="ic">{ic}</div><span class="k">{k}</span><span class="v">{v}</span></div>'
@@ -371,12 +392,14 @@ for c in creches:
             f'{site_p}</div>'
         )
 
-    # === CTAs grandes — 3 sempre visíveis (disabled se faltar dado) ===
+    # === AÇÕES, POR ORDEM DE IMPORTÂNCIA ===
+    # Antes: cinco botões do mesmo tamanho, incluindo "Sem telefone" e "Sem email"
+    # a ocupar espaço nobre sem fazerem nada, e "Partilhar"/"Comparar" com tanto
+    # peso como "Ligar". Agora há uma ação principal, contactos a seguir, e o
+    # resto em texto — e botões sem destino simplesmente não são gerados.
     tel_clean = tel.replace(" ","").replace("/","")
-    if tel:
-        cta_tel = f'<a class="cta-big" href="tel:{esc(tel_clean)}" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a>'
-    else:
-        cta_tel = '<span class="cta-big disabled" aria-label="Sem telefone registado"><span class="ic">📞</span><span class="lb">Sem telefone</span></span>'
+    cta_tel = (f'<a class="cta-big" href="tel:{esc(tel_clean)}" aria-label="Ligar">'
+               f'<span class="ic">📞</span><span class="lb">Ligar</span></a>') if tel else ""
 
     if mail:
         # Email template pré-preenchido (sem dados pessoais sensíveis no client; o pai pode editar)
@@ -387,34 +410,52 @@ for c in creches:
         href = f"mailto:{mail}?subject={_u.quote(subj)}&body={_u.quote(body_tpl)}"
         cta_mail = f'<a class="cta-big" href="{esc(href)}" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a>'
     else:
-        cta_mail = '<span class="cta-big disabled" aria-label="Sem email registado"><span class="ic">✉</span><span class="lb">Sem email</span></span>'
+        cta_mail = ""
 
     # Direcções via Google Maps (sempre temos lat/lon)
     dir_url = f"https://www.google.com/maps/dir/?api=1&destination={lat},{lon}"
     cta_dir = f'<a class="cta-big" href="{dir_url}" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a>'
 
-    # Partilhar — Web Share API (mobile) com fallback WhatsApp wa.me
-    # data-share-name + data-share-url são lidos pelo JS para construir mensagem
+    # Partilhar e Comparar — ações de apoio, agora em texto pequeno
     cta_share = (
-        f'<button type="button" class="cta-big cta-share" '
+        f'<button type="button" class="cta-tert cta-share" '
         f'data-share-name="{esc(nome)}" data-share-slug="{esc(slug)}" '
-        f'aria-label="Partilhar com outros pais">'
-        f'<span class="ic">💬</span><span class="lb">Partilhar</span></button>'
+        f'aria-label="Partilhar com outros pais">💬 Partilhar</button>'
     )
-
-    # Comparar — adicionar à lista de comparação (sticky bar global)
     cta_cmp = (
-        f'<button type="button" class="cta-big cta-compare" '
+        f'<button type="button" class="cta-tert cta-compare" '
         f'data-cmp-id="{esc(c["id"])}" data-cmp-name="{esc(nome)}" '
         f'data-cmp-slug="{esc(slug)}" data-cmp-tipo="{esc(c.get("tipo") or "")}" '
         f'data-cmp-distrito="{esc(c.get("distrito") or "")}" '
         f'data-cmp-localidade="{esc(c.get("localidade") or "")}" '
         f'data-cmp-lat="{lat}" data-cmp-lon="{lon}" '
-        f'aria-label="Adicionar a comparar">'
-        f'<span class="ic">📊</span><span class="lb">Comparar</span></button>'
+        f'aria-label="Adicionar a comparar">📊 Comparar</button>'
     )
 
-    ctas_html = f'<div class="ctas-big">{cta_tel}{cta_mail}{cta_dir}{cta_share}{cta_cmp}</div>'
+    # AÇÃO PRINCIPAL — gerada no servidor, por isso aparece de imediato.
+    # Com email: deixar contacto (fica registado e acompanhamos). Sem email:
+    # ligar, que é a única via honesta. Sem nada: não prometemos o que não há.
+    if mail:
+        cta_primary = (
+            f'<button type="button" class="cta-primary" id="btn-lead-primary">'
+            f'💌 Tenho interesse — deixar contacto</button>'
+            f'<div class="cta-primary-note">Enviamos o teu pedido à creche e avisamos-te se não responderem</div>'
+        )
+    elif tel:
+        cta_primary = (
+            f'<a class="cta-primary is-call" href="tel:{esc(tel_clean)}">📞 Ligar {esc(tel)}</a>'
+            f'<div class="cta-primary-note">Ainda não temos o email desta creche</div>'
+        )
+        cta_tel = ""   # já é a ação principal — não se repete em baixo
+    else:
+        cta_primary = ""
+
+    contactos = f'{cta_tel}{cta_mail}{cta_dir}'
+    ctas_html = (
+        f'{cta_primary}'
+        f'<div class="ctas-big">{contactos}</div>'
+        f'<div class="ctas-tert">{cta_share}<span class="sep">·</span>{cta_cmp}</div>'
+    )
 
     # Vaga banner — slot que vai ser preenchido por vagas.js se houver vaga activa
     # data-creche-email: sinaliza ao perfil-creche.js que há para onde enviar um
@@ -635,8 +676,7 @@ function _syncCmpBtn(btn){{
   const id = btn.getAttribute("data-cmp-id");
   const isIn = window.Compare.has(id);
   btn.classList.toggle("active", isIn);
-  const lb = btn.querySelector(".lb");
-  if(lb) lb.textContent = isIn ? "Remover" : "Comparar";
+  btn.textContent = isIn ? "📊 Remover" : "📊 Comparar";
 }}
 document.addEventListener("click", function(e){{
   const btn = e.target.closest(".cta-compare");
@@ -673,6 +713,23 @@ window.addEventListener('load', function(){{
       window.Vagas.renderBadgeInto(slot, slot.dataset.crecheId);
     }}
   }}, 800);  // delay para Firebase init
+}});
+
+// Ação principal "💌 Tenho interesse" — está no HTML desde o primeiro pixel,
+// só o wire é que espera pelo módulo. Assim não há salto de layout nem espera.
+document.addEventListener("click", function(e){{
+  const b = e.target.closest("#btn-lead-primary");
+  if(!b) return;
+  e.preventDefault();
+  const slot = document.getElementById("vaga-slot");
+  if(!slot) return;
+  if(!window.CrecheLeads){{
+    b.textContent = "⏳ Um momento…";
+    setTimeout(function(){{ b.textContent = "💌 Tenho interesse — deixar contacto"; }}, 1200);
+    return;
+  }}
+  window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
+    {{ aderente: !!document.getElementById("perfil-creche-box") }});
 }});
 
 // Modal pai: "🟢 Sei de vaga aqui"

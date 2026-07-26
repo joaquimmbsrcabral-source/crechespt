@@ -81,13 +81,30 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 @media(max-width:640px){.hero{padding:26px 22px 22px;border-radius:var(--r-card)}.hero h1{font-size:26px}.hero .av{width:72px;height:72px;font-size:40px;border-radius:18px}.hero .row1{gap:14px}}
 
 /* === CTAs grandes (sempre coloridos, mesmo disabled) === */
-.ctas-big{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0 14px;position:relative;z-index:1}
-@media(max-width:640px){.ctas-big{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
-.cta-big.cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer}
-.cta-big.cta-share:hover{color:#fff;filter:brightness(1.06)}
-.cta-big.cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer}
-.cta-big.cta-compare:hover{color:#fff;filter:brightness(1.08)}
-.cta-big.cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68)}
+/* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;
+  margin:20px 0 0;padding:16px 18px;border:none;border-radius:16px;cursor:pointer;min-height:54px;
+  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16px;
+  text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .15s,box-shadow .15s;
+  position:relative;z-index:1}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
+.cta-primary:active{transform:scale(.985)}
+.cta-primary.is-call{color:#1F7A6E}
+.cta-primary-note{text-align:center;font-size:12px;color:rgba(255,255,255,.92);margin:8px 0 0;
+  line-height:1.45;font-weight:600;position:relative;z-index:1}
+
+/* Contactos diretos — auto-fit: 1, 2 ou 3 botões ficam sempre certos */
+.ctas-big{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px;margin:14px 0 0;position:relative;z-index:1}
+.ctas-big:empty{display:none}
+
+/* Apoio — deixaram de competir com o contacto */
+.ctas-tert{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 2px;position:relative;z-index:1}
+.cta-tert{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;
+  padding:8px 14px;min-height:40px;border-radius:99px;cursor:pointer;
+  font-family:inherit;font-size:12.5px;font-weight:700;transition:background .15s}
+.cta-tert:hover{background:rgba(255,255,255,.3)}
+.ctas-tert .sep{color:rgba(255,255,255,.45);font-weight:700}
+.cta-tert.cta-compare.active{background:#fff;color:#B4255C;border-color:#fff}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
@@ -173,9 +190,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   .brand-name span{display:none}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro de Reabilitação da Granja", "url": "https://creches.app/creche/centro-de-reabilitacao-da-granja-11961365526", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua da Quinta do Bispo 46", "postalCode": "4410-119", "addressLocality": "São Félix da Marinha", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.039005, "longitude": -8.646125}, "sameAs": "https://www.openstreetmap.org/node/11961365526", "telephone": "+351 227539640"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro de Reabilitação da Granja", "url": "https://creches.app/creche/centro-de-reabilitacao-da-granja-11961365526", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua da Quinta do Bispo 46", "postalCode": "4410-119", "addressLocality": "São Félix da Marinha", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.039005, "longitude": -8.646125}, "sameAs": "https://www.openstreetmap.org/node/11961365526", "telephone": "+351 227539640", "email": "cr.granja@mail.telepac.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Porto", "item": "https://creches.app/creches/porto"}, {"@type": "ListItem", "position": 4, "name": "Centro de Reabilitação da Granja", "item": "https://creches.app/creche/centro-de-reabilitacao-da-granja-11961365526"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro de Reabilitação da Granja é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro de Reabilitação da Granja é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Que idades aceita O Centro de Reabilitação da Granja?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância."}}, {"@type": "Question", "name": "Como contactar O Centro de Reabilitação da Granja?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 227539640."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro de Reabilitação da Granja é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro de Reabilitação da Granja é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Que idades aceita O Centro de Reabilitação da Granja?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância."}}, {"@type": "Question", "name": "Como contactar O Centro de Reabilitação da Granja?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 227539640. Email: cr.granja@mail.telepac.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -205,11 +222,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <div class="ctas-big"><a class="cta-big" href="tel:+351227539640" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><span class="cta-big disabled" aria-label="Sem email registado"><span class="ic">✉</span><span class="lb">Sem email</span></span><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.039005,-8.646125" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a><button type="button" class="cta-big cta-share" data-share-name="Centro de Reabilitação da Granja" data-share-slug="centro-de-reabilitacao-da-granja-11961365526" aria-label="Partilhar com outros pais"><span class="ic">💬</span><span class="lb">Partilhar</span></button><button type="button" class="cta-big cta-compare" data-cmp-id="osm-node-11961365526" data-cmp-name="Centro de Reabilitação da Granja" data-cmp-slug="centro-de-reabilitacao-da-granja-11961365526" data-cmp-tipo="Privada" data-cmp-distrito="Porto" data-cmp-localidade="São Félix da Marinha" data-cmp-lat="41.039005" data-cmp-lon="-8.646125" aria-label="Adicionar a comparar"><span class="ic">📊</span><span class="lb">Comparar</span></button></div>
+    <button type="button" class="cta-primary" id="btn-lead-primary">💌 Tenho interesse — deixar contacto</button><div class="cta-primary-note">Enviamos o teu pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:+351227539640" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:cr.granja@mail.telepac.pt?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Centro%20de%20Reabilita%C3%A7%C3%A3o%20da%20Granja&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.039005,-8.646125" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Centro de Reabilitação da Granja" data-share-slug="centro-de-reabilitacao-da-granja-11961365526" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-11961365526" data-cmp-name="Centro de Reabilitação da Granja" data-cmp-slug="centro-de-reabilitacao-da-granja-11961365526" data-cmp-tipo="Privada" data-cmp-distrito="Porto" data-cmp-localidade="São Félix da Marinha" data-cmp-lat="41.039005" data-cmp-lon="-8.646125" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
-  <div id="vaga-slot" data-creche-id="osm-node-11961365526" data-creche-nome="Centro de Reabilitação da Granja"></div>
+  <div id="vaga-slot" data-creche-id="osm-node-11961365526" data-creche-nome="Centro de Reabilitação da Granja" data-creche-email="cr.granja@mail.telepac.pt"></div>
 
   <!-- Botão para pais reportarem vaga descoberta -->
   <div style="text-align:center;margin:14px 0 20px">
@@ -221,13 +238,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (email). <a href="mailto:geral@creches.app?subject=Contacto%20Centro%20de%20Reabilitação%20da%20Granja">Sabes? Ajuda outros pais →</a></div>
+  <div class="q-banner ok">✓ Contactos verificados</div>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
     <div class="stat-card"><div class="ic">📍</div><span class="k">Distrito</span><span class="v"><a href="/creches/porto">Porto</a></span></div>
-<div class="stat-card"><div class="ic">🎂</div><span class="k">Idades</span><span class="v">Dos 3 anos aos 5 anos</span></div>
-<div class="stat-card"><div class="ic">🏠</div><span class="k">Resposta</span><span class="v">Jardim de Infância</span></div>
+<div class="stat-card"><div class="ic">✉</div><span class="k">Código postal</span><span class="v">4410-119</span></div>
   </div>
 
   <!-- Card morada + site -->
@@ -262,7 +278,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="faq">
     <details><summary>O Centro de Reabilitação da Granja é gratuita?</summary><p>O Centro de Reabilitação da Granja é privada. As creches privadas só são gratuitas se forem <strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. Confirma a adesão e o valor da mensalidade diretamente com a creche.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 3 anos aos 5 anos — funciona como jardim de infância. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
-    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351227539640">+351 227539640</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
+    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351227539640">+351 227539640</a> ou escrever para <a href="mailto:cr.granja@mail.telepac.pt">cr.granja@mail.telepac.pt</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
 
   <div class="aviso">
@@ -338,8 +354,7 @@ function _syncCmpBtn(btn){
   const id = btn.getAttribute("data-cmp-id");
   const isIn = window.Compare.has(id);
   btn.classList.toggle("active", isIn);
-  const lb = btn.querySelector(".lb");
-  if(lb) lb.textContent = isIn ? "Remover" : "Comparar";
+  btn.textContent = isIn ? "📊 Remover" : "📊 Comparar";
 }
 document.addEventListener("click", function(e){
   const btn = e.target.closest(".cta-compare");
@@ -376,6 +391,23 @@ window.addEventListener('load', function(){
       window.Vagas.renderBadgeInto(slot, slot.dataset.crecheId);
     }
   }, 800);  // delay para Firebase init
+});
+
+// Ação principal "💌 Tenho interesse" — está no HTML desde o primeiro pixel,
+// só o wire é que espera pelo módulo. Assim não há salto de layout nem espera.
+document.addEventListener("click", function(e){
+  const b = e.target.closest("#btn-lead-primary");
+  if(!b) return;
+  e.preventDefault();
+  const slot = document.getElementById("vaga-slot");
+  if(!slot) return;
+  if(!window.CrecheLeads){
+    b.textContent = "⏳ Um momento…";
+    setTimeout(function(){ b.textContent = "💌 Tenho interesse — deixar contacto"; }, 1200);
+    return;
+  }
+  window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
+    { aderente: !!document.getElementById("perfil-creche-box") });
 });
 
 // Modal pai: "🟢 Sei de vaga aqui"

@@ -458,7 +458,17 @@
       </div>
     </div>
     <div class="body">
-      <!-- CTAs GRANDES de contacto no TOPO (foco principal) -->
+      <!-- ═══ AÇÕES, POR ORDEM DE IMPORTÂNCIA ═══
+           Antes: seis botões do mesmo tamanho. "Partilhar" e "Comparar" tinham
+           tanto peso como "Ligar", e a ação que interessa mesmo — deixar contacto —
+           só aparecia mais abaixo, depois de uma ida ao Firestore.
+           Agora: uma ação principal (síncrona, sem salto de layout), uma linha de
+           contactos diretos, e as ações de apoio reduzidas a links. -->
+      <button type="button" id="d-primary" class="d-primary" hidden>
+        <span class="pl" id="d-primary-lb">💌 Tenho interesse</span>
+      </button>
+      <div class="d-primary-note" id="d-primary-note" hidden></div>
+
       <div class="d-contact-ctas" id="d-contact-ctas">
         <a id="d-cta-tel" class="d-cta-big" href="#" aria-label="Ligar">
           <span class="ic">📞</span><span class="lb" id="d-cta-tel-lb">Ligar</span>
@@ -472,12 +482,12 @@
         <a id="d-cta-dir" class="d-cta-big" href="#" target="_blank" rel="noopener" aria-label="Direções">
           <span class="ic">🗺</span><span class="lb">Direções</span>
         </a>
-        <button type="button" id="d-cta-share" class="d-cta-big d-cta-share" aria-label="Partilhar com outros pais">
-          <span class="ic">💬</span><span class="lb">Partilhar</span>
-        </button>
-        <button type="button" id="d-cta-compare" class="d-cta-big d-cta-compare" aria-label="Adicionar a comparar">
-          <span class="ic">📊</span><span class="lb" id="d-cta-compare-lb">Comparar</span>
-        </button>
+      </div>
+
+      <div class="d-tertiary">
+        <button type="button" id="d-cta-share" class="d-tert" aria-label="Partilhar com outros pais">💬 Partilhar</button>
+        <span class="sep" aria-hidden="true">·</span>
+        <button type="button" id="d-cta-compare" class="d-tert" aria-label="Adicionar a comparar"><span id="d-cta-compare-lb">📊 Comparar</span></button>
       </div>
 
       <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -1860,24 +1870,62 @@ function openDetail(id){
   // CTAs grandes no topo do body (foco principal)
   const subj = "Inscrição em creche — pedido de informação";
   const body = "Bom dia,\n\nGostaria de saber se têm vagas e como funciona a inscrição na vossa creche para o próximo ano letivo.\n\nObrigado(a).";
+  // ── AÇÃO PRINCIPAL ────────────────────────────────────────────────────────
+  // Renderizada já aqui (síncrona). Antes, o "Tenho interesse" vinha dentro do
+  // cartão do perfil, que só chega depois de uma leitura ao Firestore: o pai via
+  // primeiro seis botões secundários e a ação que interessa aparecia a saltar.
+  const dPrim = document.getElementById("d-primary");
+  const dPrimLb = document.getElementById("d-primary-lb");
+  const dPrimNote = document.getElementById("d-primary-note");
+  if(dPrim){
+    dPrim.className = "d-primary";
+    dPrim.onclick = null;
+    if(em){
+      dPrim.hidden = false;
+      dPrimLb.textContent = "💌 Tenho interesse — deixar contacto";
+      dPrimNote.hidden = false;
+      dPrimNote.textContent = "Enviamos o teu pedido à creche e avisamos-te se não responderem";
+      dPrim.onclick = ()=>{ if(window.CrecheLeads) window.CrecheLeads.open(c.id, c.nome || "", { aderente: !!(State.profileGeridas && State.profileGeridas.has(c.id)) }); };
+    } else if(tel){
+      // Sem email não conseguimos enviar nada por ela — o telefone é a via honesta.
+      dPrim.hidden = false;
+      dPrim.classList.add("is-call");
+      dPrimLb.textContent = "📞 Ligar " + tel.replace(/\s+/g,' ').slice(0,20);
+      dPrimNote.hidden = false;
+      dPrimNote.textContent = "Ainda não temos o email desta creche";
+      dPrim.onclick = ()=>{ location.href = "tel:" + tel; };
+    } else {
+      dPrim.hidden = true;
+      dPrimNote.hidden = true;
+    }
+  }
+
+  // ── CONTACTOS DIRETOS ─────────────────────────────────────────────────────
+  // Botões sem destino saem do fluxo (hidden) em vez de ficarem cinzentos:
+  // no telemóvel, um botão morto custa o mesmo espaço que um botão útil.
   const ctaTel = document.getElementById("d-cta-tel");
   if(ctaTel){
+    // Se o telefone já é a ação principal (creche sem email), não se repete aqui.
+    const telJaEPrincipal = !em && !!tel;
+    ctaTel.hidden = !tel || telJaEPrincipal;
     if(tel){ ctaTel.href = "tel:"+tel; ctaTel.classList.remove("disabled"); document.getElementById("d-cta-tel-lb").textContent = tel.replace(/\s+/g,' ').slice(0,18); }
-    else { ctaTel.href = "#"; ctaTel.classList.add("disabled"); document.getElementById("d-cta-tel-lb").textContent = "Sem telefone"; ctaTel.onclick = (e)=>e.preventDefault(); }
   }
   const ctaMail = document.getElementById("d-cta-mail");
   if(ctaMail){
+    ctaMail.hidden = !em;
     if(em){ ctaMail.href = `mailto:${em}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`; ctaMail.classList.remove("disabled"); }
-    else { ctaMail.href = "#"; ctaMail.classList.add("disabled"); ctaMail.onclick = (e)=>e.preventDefault(); }
   }
   const ctaSite = document.getElementById("d-cta-site");
   if(ctaSite){
-    if(site && /^https?:\/\//i.test(site)){ ctaSite.href = site; ctaSite.classList.remove("disabled"); }
-    else if(site && /^[\w.-]+\.[a-z]{2,}/i.test(site)){ ctaSite.href = "https://" + site; ctaSite.classList.remove("disabled"); }
-    else { ctaSite.href = "#"; ctaSite.classList.add("disabled"); ctaSite.onclick = (e)=>e.preventDefault(); }
+    let siteUrl = "";
+    if(site && /^https?:\/\//i.test(site)) siteUrl = site;
+    else if(site && /^[\w.-]+\.[a-z]{2,}/i.test(site)) siteUrl = "https://" + site;
+    ctaSite.hidden = !siteUrl;
+    if(siteUrl){ ctaSite.href = siteUrl; ctaSite.classList.remove("disabled"); }
   }
   const ctaDir = document.getElementById("d-cta-dir");
   if(ctaDir){
+    ctaDir.hidden = false;
     ctaDir.href = `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lon}`;
     ctaDir.classList.remove("disabled");
   }
@@ -1903,7 +1951,7 @@ function openDetail(id){
     if(!ctaCmp || !window.Compare) return;
     const isIn = window.Compare.has(c.id);
     ctaCmp.classList.toggle("active", isIn);
-    if(ctaCmpLb) ctaCmpLb.textContent = isIn ? "Remover" : "Comparar";
+    if(ctaCmpLb) ctaCmpLb.textContent = isIn ? "📊 Remover" : "📊 Comparar";
   }
   if(ctaCmp && window.Compare){
     _syncCmpBtn();
@@ -3304,9 +3352,6 @@ function _renderPerfilCrechePopup(crecheId, slot){
     ? State.creches.find(function(x){ return String(x.id) === String(crecheId); }) : null;
   var _nome = _c ? _c.nome : "";
   var _temEmail = !!(_c && _c.email);
-  function _abrirLead(aderente){
-    if(window.CrecheLeads) window.CrecheLeads.open(crecheId, _nome, { aderente: aderente });
-  }
   try {
     Promise.all([
       firebase.firestore().doc("creche_profiles/" + crecheId).get().catch(function(){ return null; }),
@@ -3324,22 +3369,14 @@ function _renderPerfilCrechePopup(crecheId, slot){
         // Creche NÃO aderente — passa também a poder receber pedidos (Vaga 1 · 1.3).
         // O api/lead-notify.js descobre o email no dataset público; se não houver
         // email conhecido, não prometemos o que não conseguimos entregar.
-        var hn = selo;
-        if(_temEmail){
-          hn += '<div style="font-size:13px;color:#2C2356;line-height:1.5;margin-bottom:9px">' +
-            '💌 <b>Queres saber se têm vaga?</b> Deixa o teu contacto e enviamos o pedido à creche por ti — ' +
-            'fica registado e avisamos-te se não responderem.</div>' +
-            '<button id="btn-lead-app" style="width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto</button>';
-        } else {
-          hn += '<div style="font-size:13px;color:#2C2356;line-height:1.5">' +
-            '📭 Ainda não temos o email desta creche, por isso não conseguimos enviar o pedido por ti. Usa o telefone acima.</div>';
-        }
-        hn += '<div style="font-size:11.5px;color:#6E6989;margin-top:9px;line-height:1.5">' +
-          'Esta creche ainda não gere a sua página. És desta creche? ' +
-          '<a href="/painel" style="color:#FF6B9D;font-weight:700">Adere gratuitamente</a>.</div>';
-        slot.innerHTML = '<div style="margin:0 0 14px;padding:13px 15px;background:#FFF6EE;border:1.5px solid #FFE3D2;border-radius:14px;font-family:inherit">' + hn + '</div>';
-        var lbn = document.getElementById("btn-lead-app");
-        if(lbn) lbn.onclick = function(){ _abrirLead(false); };
+        // O botão de contacto vive agora no topo (#d-primary) — aqui fica só o
+        // contexto, para não repetir a mesma ação duas vezes no mesmo ecrã.
+        var hn = selo +
+          '<div style="font-size:11.5px;color:#6E6989;line-height:1.5">' +
+          'Esta creche ainda não gere a sua página no creches.app' +
+          (_temEmail ? ' — enviamos o teu pedido por email e avisamos-te se não responderem.' : '.') +
+          ' És desta creche? <a href="/painel" style="color:#FF6B9D;font-weight:700">Adere gratuitamente</a>.</div>';
+        slot.innerHTML = '<div style="margin:0 0 14px;padding:11px 14px;background:#FFF6EE;border-radius:12px;font-family:inherit">' + hn + '</div>';
         return;
       }
 
@@ -3417,10 +3454,7 @@ function _renderPerfilCrechePopup(crecheId, slot){
 
       // 1.1 — capacidade de resposta (só aparece quando o sinal é sólido)
       h += selo;
-
-      // Fase 2 — Botão "Tenho interesse" como CTA primário (canal rastreável)
-      h += '<button id="btn-lead-app" style="margin-top:10px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:11px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer">💌 Tenho interesse — deixar contacto</button>' +
-        '<div style="text-align:center;font-size:11px;color:#6E6989;margin-top:4px">A creche recebe o teu contacto e responde-te diretamente</div>';
+      // O "Tenho interesse" está no topo (#d-primary) — não se repete aqui.
 
       if(det){
         h += '<details style="margin-top:8px">' +
@@ -3429,8 +3463,6 @@ function _renderPerfilCrechePopup(crecheId, slot){
       }
 
       slot.innerHTML = '<div style="margin:0 0 14px;padding:14px 16px;background:linear-gradient(135deg,#fff 0%,#DEF5E1 140%);border:1.5px solid #7DD389;border-radius:16px;font-family:inherit">' + h + '</div>';
-      var lb = document.getElementById("btn-lead-app");
-      if(lb) lb.onclick = function(){ _abrirLead(true); };
     }).catch(function(e){ /* silêncio */ });
   } catch(e){}
 }

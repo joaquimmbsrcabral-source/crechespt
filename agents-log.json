@@ -1,6 +1,16 @@
 {
  "entries": [
   {
+   "id": "2026-07-26-enriquecimento",
+   "date": "2026-07-26",
+   "time": "18:35",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 8 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches privadas sem email: encontrei 8 emails novos, 8 websites e 1 telefone (ex.: Confraria Santa Eulália em Viseu, Casa do Povo de Creixomil em Guimarães, ABEP em Leiria, Génios em Marcha em Gaia). Sem emails inválidos do Resend para corrigir. Em 3 creches (Maçã Azul, Casal dos Sonhos, Escolinha 7) não encontrei contactos fiáveis. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
    "id": "2026-07-26-briefing",
    "date": "2026-07-26",
    "time": "11:34",

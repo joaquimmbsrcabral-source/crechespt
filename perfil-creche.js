@@ -361,10 +361,8 @@
 
     // 1.1 — capacidade de resposta (só quando o sinal é sólido)
     h += window.CrecheStats.html(stats, false);
-
-    // CTA primário: deixar contacto à creche (canal rastreável)
-    h += '<button id="btn-lead-cp" style="margin:12px 0 2px;width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">💌 Tenho interesse — deixar contacto</button>' +
-      '<div style="text-align:center;font-size:.72rem;color:#6E6989;margin-bottom:8px">A creche recebe o teu contacto e responde-te diretamente</div>';
+    // O "Tenho interesse" vive no topo da ficha (#btn-lead-primary), gerado no
+    // servidor. Repeti-lo aqui era pedir a mesma coisa duas vezes no mesmo ecrã.
 
     // Descrição
     if(p.descricao){
@@ -394,10 +392,6 @@
 
     box.innerHTML = h;
     slot.insertAdjacentElement("afterend", box);
-    var lb = document.getElementById("btn-lead-cp");
-    if(lb) lb.onclick = function(){
-      window.CrecheLeads.open(slotCrecheId(), slotCrecheNome(), { aderente: true });
-    };
   }
 
   // ═══════ 1.3 — Creche NÃO aderente: também dá para deixar contacto ═══════
@@ -406,43 +400,17 @@
   // O api/lead-notify.js já sabe descobrir o email da creche no dataset público
   // (emailDoDataset), por isso basta haver email conhecido para o pedido chegar.
   function renderNaoAderente(slot, temEmail, stats){
+    var h = window.CrecheStats.html(stats, false) +
+      '<div style="font-size:.8rem;color:#6E6989;line-height:1.55">' +
+      (temEmail
+        ? 'Esta creche ainda não gere a sua página no creches.app — enviamos o teu pedido por email e avisamos-te se não responderem. '
+        : '📭 Ainda não temos o email desta creche, por isso não conseguimos enviar o teu pedido por ti. Se souberes, <a href="/app" style="color:#FF6B9D;font-weight:700">ajuda-nos a corrigir</a>. ') +
+      'É desta creche? <a href="/painel" style="color:#FF6B9D;font-weight:700">Adira gratuitamente</a>.</div>';
+
     var box = document.createElement("div");
-    box.style.cssText = "margin:16px 0;padding:16px 18px;background:#FFF6EE;border:1.5px solid #FFE3D2;border-radius:16px;font-family:inherit";
-    var h = "";
-
-    h += window.CrecheStats.html(stats, false);
-
-    if(temEmail){
-      h += '<div style="font-size:.88rem;color:#2C2356;line-height:1.5;margin-bottom:10px">' +
-        '💌 <b>Queres saber se têm vaga?</b> Deixa o teu contacto e enviamos o teu pedido à creche por ti — ' +
-        'ficas com o pedido registado e avisamos-te se não responderem.</div>' +
-        '<button id="btn-lead-cp" style="width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">💌 Tenho interesse — deixar contacto</button>';
-    } else {
-      h += '<div style="font-size:.88rem;color:#2C2356;line-height:1.5">' +
-        '📭 Ainda não temos o email desta creche, por isso não conseguimos enviar o teu pedido por ti. ' +
-        'Usa o telefone acima — e se souberes o email, <a href="/app" style="color:#FF6B9D;font-weight:700">ajuda-nos a corrigir</a>.</div>';
-    }
-
-    h += '<div style="font-size:.76rem;color:#6E6989;margin-top:10px;line-height:1.5">' +
-      'Esta creche ainda não gere a sua página no creches.app. É desta creche? ' +
-      '<a href="/painel" style="color:#FF6B9D;font-weight:700">Adira gratuitamente</a> para receber os pedidos no painel.</div>';
-
+    box.style.cssText = "margin:16px 0;padding:13px 16px;background:#FFF6EE;border-radius:14px;font-family:inherit";
     box.innerHTML = h;
     slot.insertAdjacentElement("afterend", box);
-    var lb = document.getElementById("btn-lead-cp");
-    if(lb) lb.onclick = function(){
-      window.CrecheLeads.open(slotCrecheId(), slotCrecheNome(), { aderente: false });
-    };
-  }
-
-  function slotCrecheId(){
-    var slot = document.getElementById("vaga-slot");
-    return slot ? slot.dataset.crecheId : "";
-  }
-  function slotCrecheNome(){
-    var slot = document.getElementById("vaga-slot");
-    if(slot && slot.dataset.crecheNome) return slot.dataset.crecheNome;
-    try { return document.querySelector("h1") ? document.querySelector("h1").textContent.trim() : ""; } catch(e){ return ""; }
   }
 
   function init(){

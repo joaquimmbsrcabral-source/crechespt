@@ -748,13 +748,37 @@ header.topbar{
 .detail .body{overflow:auto;padding:18px 22px;flex:1;min-height:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 
 /* === CTAs grandes de contacto no topo do body (FOCO PRINCIPAL) === */
-.d-contact-ctas{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:0 0 18px}
-@media(max-width:680px){.d-contact-ctas{grid-template-columns:repeat(3,1fr) !important;gap:8px}}
-.d-cta-big.d-cta-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;cursor:pointer;border:none}
-.d-cta-big.d-cta-share:hover{color:#fff;filter:brightness(1.06);box-shadow:0 8px 18px rgba(37,211,102,.4)}
-.d-cta-big.d-cta-compare{background:linear-gradient(135deg,#2C2356,#3D2D5C);color:#fff;cursor:pointer;border:none}
-.d-cta-big.d-cta-compare:hover{color:#fff;filter:brightness(1.08);box-shadow:0 8px 18px rgba(44,35,86,.4)}
-.d-cta-big.d-cta-compare.active{background:linear-gradient(135deg,#FF6B9D,#FF9F68);box-shadow:0 8px 18px rgba(255,107,157,.4)}
+/* ═══ Hierarquia de ações no detalhe (Jul 2026) ═══
+   Uma ação principal, contactos diretos a seguir, apoio em texto pequeno.
+   Botões sem destino são REMOVIDOS do fluxo (hidden), não desativados: um botão
+   morto ocupa o mesmo espaço precioso de um botão útil, e no telemóvel isso
+   custa uma linha inteira. */
+.d-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:15px 16px;border:none;border-radius:15px;cursor:pointer;
+  background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;
+  font-family:inherit;font-weight:800;font-size:15.5px;letter-spacing:.01em;
+  box-shadow:0 6px 16px rgba(255,107,157,.30);transition:transform .12s,box-shadow .12s;
+  min-height:52px}      /* alvo de toque confortável no telemóvel */
+.d-primary:hover{transform:translateY(-1px);box-shadow:0 9px 20px rgba(255,107,157,.38)}
+.d-primary:active{transform:scale(.985)}
+.d-primary[hidden]{display:none}
+.d-primary.is-call{background:linear-gradient(135deg,#5EC0B7,#7DD389);box-shadow:0 6px 16px rgba(94,192,183,.30)}
+.d-primary.is-call:hover{box-shadow:0 9px 20px rgba(94,192,183,.38)}
+.d-primary-note{text-align:center;font-size:11.5px;color:var(--ink-faint);margin:6px 0 0;line-height:1.45}
+.d-primary-note[hidden]{display:none}
+
+/* Contactos diretos — auto-fit para 1, 2, 3 ou 4 botões ficarem sempre certos */
+.d-contact-ctas{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:7px;margin:14px 0 0}
+.d-contact-ctas:empty{display:none}
+@media(max-width:680px){.d-contact-ctas{gap:8px}}
+
+/* Apoio — deixaram de competir com o contacto */
+.d-tertiary{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 18px}
+.d-tert{background:none;border:none;padding:6px 8px;min-height:38px;cursor:pointer;
+  font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-faint);border-radius:9px}
+.d-tert:hover{color:var(--ink);background:rgba(60,40,90,.05)}
+.d-tert.active{color:#B4255C}
+.d-tertiary .sep{color:rgba(60,40,90,.25);font-weight:700}
 .d-cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:14px 6px;
   border-radius:14px;background:linear-gradient(135deg,var(--c-coral),var(--c-peach));color:#fff;font-weight:700;
   font-size:12.5px;text-decoration:none;box-shadow:0 4px 12px rgba(255,107,157,.25);transition:transform .15s,box-shadow .15s;
@@ -764,8 +788,7 @@ header.topbar{
 .d-cta-big .ic{font-size:20px;line-height:1}
 .d-cta-big .lb{font-size:11.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 @media(max-width:520px){
-  /* 3 colunas compactas: as 6 ações cabem em 2 filas, sem empurrar o resto para fora do ecrã */
-  .d-contact-ctas{grid-template-columns:repeat(3,1fr);gap:7px}
+  /* Só há contactos diretos aqui (no máx. 4) — o auto-fit trata do resto sozinho */
   .d-cta-big{padding:11px 4px;gap:4px}
   .d-cta-big .ic{font-size:19px}
   .d-cta-big .lb{font-size:10.5px}

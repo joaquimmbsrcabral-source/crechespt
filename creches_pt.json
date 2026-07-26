@@ -6948,7 +6948,11 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Gaia",
-  "concelho_slug": "vila-nova-de-gaia"
+  "concelho_slug": "vila-nova-de-gaia",
+  "email": "anaspinto@gmail.com",
+  "website": "http://www.geniosemmarcha.pt",
+  "telefone": "+351 224 040 407",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11910594405",
@@ -7529,7 +7533,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Monção",
-  "concelho_slug": "moncao"
+  "concelho_slug": "moncao",
+  "email": "cpsbarbeita@hotmail.com",
+  "website": "http://cpsbarbeita.blogspot.com",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11956149098",
@@ -7599,7 +7606,10 @@
   "resposta": "Jardim de Infância",
   "concelho": "Guimarães",
   "concelho_slug": "guimaraes",
-  "distrito_original": "Viana do Castelo"
+  "distrito_original": "Viana do Castelo",
+  "email": "geral@casadopovocreixomil.pt",
+  "website": "https://casadopovocreixomil.wordpress.com",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11959224556",
@@ -7697,7 +7707,10 @@
   "resposta": "Jardim de Infância",
   "concelho": "Viseu",
   "concelho_slug": "viseu",
-  "distrito_original": "Guarda"
+  "distrito_original": "Guarda",
+  "email": "confrariasantaeulalia@gmail.com",
+  "website": "https://confrariasantaeulalia.pt",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11959252990",
@@ -7959,7 +7972,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Gaia",
-  "concelho_slug": "vila-nova-de-gaia"
+  "concelho_slug": "vila-nova-de-gaia",
+  "email": "cr.granja@mail.telepac.pt",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11961365580",
@@ -8380,7 +8395,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Poiares",
-  "concelho_slug": "vila-nova-de-poiares"
+  "concelho_slug": "vila-nova-de-poiares",
+  "email": "geral@adip.pt",
+  "website": "https://associacao-adip.webnode.pt",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11967812963",
@@ -8519,7 +8537,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Leiria",
-  "concelho_slug": "leiria"
+  "concelho_slug": "leiria",
+  "email": "abep@abep.pt",
+  "website": "http://www.abep.pt",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11970119234",
@@ -8612,7 +8633,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Figueira da Foz",
-  "concelho_slug": "figueira-da-foz"
+  "concelho_slug": "figueira-da-foz",
+  "email": "centrobemquerer@gmail.com",
+  "website": "https://www.csbemquerer.com",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11970695420",
@@ -9403,7 +9427,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Torres Novas",
-  "concelho_slug": "torres-novas"
+  "concelho_slug": "torres-novas",
+  "website": "http://www.academiajunior.pt",
+  "enriquecido_em": "2026-07-26"
  },
  {
   "id": "osm-node-11981739288",
