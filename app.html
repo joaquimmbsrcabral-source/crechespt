@@ -194,7 +194,7 @@
   </div>
 
   <!-- ========================= Onboarding overlay — primeira visita ========================= -->
-  <div id="onboard-host" style="display:none;position:fixed;inset:0;background:rgba(44,35,86,.55);z-index:9000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)">
+  <div id="onboard-host" style="display:none;position:fixed;inset:0;bottom:var(--vv-bottom,0px);background:rgba(44,35,86,.55);z-index:9000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);overflow-y:auto">
     <div style="background:#fff;border-radius:22px;max-width:440px;width:100%;padding:28px 26px 22px;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative">
       <button id="ob-skip-x" aria-label="Saltar onboarding" style="position:absolute;top:14px;right:14px;background:transparent;border:0;color:var(--ink-soft);font-size:22px;cursor:pointer;line-height:1">✕</button>
       <!-- Progress -->
@@ -2580,6 +2580,40 @@ function wireUp(){
   window.addEventListener("resize", ()=>{ if(State.map) try{ State.map.invalidateSize(true); }catch(e){} });
   window.addEventListener("orientationchange", forceMapInvalidate);
 
+  // ── iOS: barra de ferramentas do Safari tapa elementos fixos ──────────────
+  // `position:fixed` alinha-se pelo *layout viewport*, que NÃO encolhe quando a
+  // barra inferior do Safari aparece. Resultado: botões no fundo ficam por trás
+  // dela e não recebem toques. Medimos a diferença com a Visual Viewport API e
+  // expomos em --vv-bottom, que o CSS soma ao `bottom` dos elementos fixos.
+  (function ajustarViewportVisivel(){
+    const vv = window.visualViewport;
+    if(!vv) return;                       // browsers antigos: cai no fallback CSS
+    let raf = 0;
+    function medir(){
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){
+        // Altura tapada no fundo (barra do Safari, teclado, etc.)
+        const tapado = window.innerHeight - (vv.height + vv.offsetTop);
+        const px = Math.max(0, Math.round(tapado));
+        document.documentElement.style.setProperty("--vv-bottom", px + "px");
+      });
+    }
+    vv.addEventListener("resize", medir);
+    vv.addEventListener("scroll", medir);
+    window.addEventListener("orientationchange", ()=> setTimeout(medir, 300));
+    medir();
+
+    // Ao focar um campo, o teclado do iOS pode tapá-lo. Deslizamos o campo para
+    // a zona visível depois de o teclado assentar (~300ms de animação).
+    document.addEventListener("focusin", function(e){
+      const el = e.target;
+      if(!el || !el.matches || !el.matches("input,select,textarea")) return;
+      setTimeout(function(){
+        try { el.scrollIntoView({ block: "center", behavior: "smooth" }); } catch(err){}
+      }, 320);
+    });
+  })();
+
   // Online/offline status
   function refreshOnlineState(){
     if(!navigator.onLine){
@@ -3390,7 +3424,7 @@ function _openCfModalApp(crecheId, nome){
   modal = document.createElement("div");
   modal.id = "_cf-modal-app";
   modal.innerHTML = `
-    <div style="position:fixed;inset:0;background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)" id="_cfm-scrim">
+    <div style="position:fixed;inset:0;bottom:var(--vv-bottom,0px);background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);overflow-y:auto" id="_cfm-scrim">
       <div style="background:#fff;border-radius:24px;padding:26px;max-width:440px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
         <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
           <div>
@@ -3573,7 +3607,7 @@ function _openVagaModalApp(crecheId, nome){
   modal = document.createElement("div");
   modal.id = "_vaga-modal-app";
   modal.innerHTML = `
-    <div style="position:fixed;inset:0;background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)" id="_vam-scrim">
+    <div style="position:fixed;inset:0;bottom:var(--vv-bottom,0px);background:rgba(44,35,86,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);overflow-y:auto" id="_vam-scrim">
       <div style="background:#fff;border-radius:24px;padding:26px;max-width:440px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.3)" onclick="event.stopPropagation()">
         <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
           <div>
