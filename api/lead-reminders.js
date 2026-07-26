@@ -246,6 +246,7 @@ export default async function handler(req, res) {
 
     let enviados = 0, lembretesCreche = 0, alternativasPai = 0, followups = 0, recuperados = 0;
     const mgrCache = new Map();  // creche_id → [emails] (evita queries repetidas)
+    const jaEmailados = new Set();  // ids que já receberam email nesta execução
 
     for (const d of snap.docs) {
       if (enviados >= MAX_EMAILS) break;
@@ -269,7 +270,7 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({ lead_id: d.id, force: true })
           });
-          if (r.ok) { recuperados++; enviados++; await sleep(PAUSA_MS); }
+          if (r.ok) { recuperados++; enviados++; jaEmailados.add(d.id); await sleep(PAUSA_MS); }
           else console.error("recuperação lead", d.id, r.status, await r.text());
         } catch (e) {
           console.error("recuperação lead", d.id, e);
@@ -293,6 +294,7 @@ export default async function handler(req, res) {
             lembretesCreche++;
           }
           enviados++;
+          jaEmailados.add(d.id);
           await sleep(PAUSA_MS);
         } else {
           // Sem gestor com email — marcar para não voltar a tentar todos os dias
@@ -309,13 +311,36 @@ export default async function handler(req, res) {
           alternativasPai++;
         }
         enviados++;
+        jaEmailados.add(d.id);
         await sleep(PAUSA_MS);
         continue;  // no mesmo dia não acumula com o follow-up de resposta
       }
+    }
 
-      // ── 3) Follow-up "a creche respondeu?": 7–30 dias, com email, ainda sem follow-up ──
-      // Limite superior de 30 dias para não inundar o histórico antigo na 1ª execução.
-      if (idade > D7 && idade < D30 && !lead.followup_enviado && lead.email) {
+    // ── 3) Follow-up "a creche respondeu?": 7–30 dias, com email, ainda sem follow-up ──
+    // CORREÇÃO DE ENVIESAMENTO (Vaga 1 · 1.1): este bloco vivia dentro do ciclo
+    // acima, que só percorre leads com status "novo". Consequência: a creche que
+    // entrava no painel e marcava "contactado" — precisamente a que se porta bem —
+    // nunca chegava a ser avaliada, e a amostra do creche_stats ficava cheia de
+    // "não" e vazia de "sim". Agora perguntamos a TODOS os leads da janela, seja
+    // qual for o estado, e a resposta do pai passa a ser também a verificação
+    // independente do que a creche marcou no painel.
+    // Limite superior de 30 dias para não inundar o histórico antigo.
+    if (enviados < MAX_EMAILS) {
+      // Ordenado por data desc: a janela 7–30 dias está sempre perto do topo.
+      const snapTodos = await db.collection("creche_leads")
+        .orderBy("ts", "desc").limit(600).get();
+
+      for (const d of snapTodos.docs) {
+        if (enviados >= MAX_EMAILS) break;
+        if (jaEmailados.has(d.id)) continue;   // não acumula dois emails no mesmo dia
+        const lead = d.data();
+        const ts = lead.ts && lead.ts.toMillis ? lead.ts.toMillis() : 0;
+        if (!ts) continue;
+        const idade = agora - ts;
+        if (idade <= D7 || idade >= D30) continue;
+        if (lead.followup_enviado || !lead.email) continue;
+
         const ok = await enviarResend(followupRespostaEmail(lead, d.id));
         if (ok) {
           await d.ref.update({ followup_enviado: true });
@@ -323,7 +348,6 @@ export default async function handler(req, res) {
         }
         enviados++;
         await sleep(PAUSA_MS);
-        continue;
       }
     }
 

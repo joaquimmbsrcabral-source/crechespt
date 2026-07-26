@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Creches.app — Apresentação</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF6EE;--ink:#2C2356;--soft:#6E6989;
+  --coral:#FF6B9D;--corals:#FFE2EC;--peach:#FF9F68;--peachs:#FFE3D2;
+  --turq:#5EC0B7;--turqs:#D9F2EF;--mint:#7DD389;--mints:#DEF5E1;
+  --lilac:#B197FC;--lilacs:#ECE4FF;--yell:#FFC857;--yells:#FFF1D6;
+  --sh:0 10px 40px rgba(60,40,90,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Quicksand",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;line-height:1.15}
+
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;
+  padding:5.5vh 6vw;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 8% 0%,var(--corals) 0%,transparent 55%),
+    radial-gradient(800px 600px at 100% 5%,var(--turqs) 0%,transparent 55%),
+    radial-gradient(900px 700px at 50% 115%,var(--yells) 0%,transparent 60%),
+    var(--bg)}
+.slide.active{display:flex}
+
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none;animation:float 14s ease-in-out infinite}
+.b1{width:34vw;height:34vw;background:var(--corals);top:-12vh;left:-8vw}
+.b2{width:30vw;height:30vw;background:var(--turqs);top:-10vh;right:-6vw;animation-delay:-4s}
+.b3{width:36vw;height:36vw;background:var(--yells);bottom:-18vh;left:30vw;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(3.5vh) scale(1.06)}}
+
+[data-a]{opacity:0;transform:translateY(30px) scale(.975)}
+.active [data-a]{animation:spring .8s cubic-bezier(.2,1.4,.3,1) forwards;animation-delay:calc(var(--d,0)*.11s)}
+@keyframes spring{to{opacity:1;transform:translateY(0) scale(1)}}
+@media (prefers-reduced-motion: reduce){
+  [data-a],.active [data-a]{animation:none!important;opacity:1!important;transform:none!important}
+  .blob{animation:none}
+}
+
+.kick{display:inline-block;background:#fff;border:1.5px solid var(--corals);color:var(--coral);
+  font-weight:700;font-size:clamp(11px,1.25vw,15px);padding:.5em 1.4em;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.h-hero{font-size:clamp(30px,5.2vw,66px);margin:2.4vh 0 1.4vh}
+.h-hero .accent{color:var(--coral)}
+.stitle{font-size:clamp(23px,3.4vw,42px);margin:1.8vh 0 1vh;max-width:24ch}
+.ssub{color:var(--soft);font-size:clamp(13px,1.6vw,20px);max-width:66ch;margin:0 auto;line-height:1.55}
+.note{position:absolute;bottom:5.5vh;left:6vw;right:6vw;color:var(--soft);font-size:clamp(11px,1.2vw,15px);font-weight:600}
+
+.grid{display:grid;gap:1.6vw;width:100%;max-width:1200px;margin-top:3.6vh}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border-radius:20px;padding:2.8vh 1.5vw;box-shadow:var(--sh);text-align:center}
+.card h3{font-size:clamp(14px,1.6vw,21px);margin:1vh 0 .7vh}
+.card p{color:var(--soft);font-size:clamp(11.5px,1.3vw,16px);line-height:1.5}
+.ic{width:clamp(40px,4.2vw,58px);height:clamp(40px,4.2vw,58px);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(19px,2.1vw,28px);margin:0 auto}
+.big{font-family:"Fredoka";font-weight:700;font-size:clamp(30px,4.2vw,56px);line-height:1}
+.lbl{color:var(--soft);font-size:clamp(11.5px,1.25vw,15.5px);font-weight:600;margin-top:.7vh;line-height:1.4}
+
+.rows{width:100%;max-width:940px;margin-top:3.4vh;display:flex;flex-direction:column;gap:1.3vh;text-align:left}
+.row{display:flex;align-items:center;gap:1.3vw;background:#fff;border-radius:16px;padding:1.9vh 1.8vw;box-shadow:var(--sh)}
+.row .ic{margin:0;flex-shrink:0}
+.row h3{font-size:clamp(14px,1.55vw,20px);margin-bottom:.25vh}
+.row p{color:var(--soft);font-size:clamp(11.5px,1.25vw,15.5px);line-height:1.45}
+
+/* Lista de funcionalidades com check */
+.feat{background:#fff;border-radius:20px;padding:2.6vh 2vw;box-shadow:var(--sh);text-align:left}
+.feat h3{font-size:clamp(15px,1.7vw,22px);margin-bottom:1.4vh;display:flex;align-items:center;gap:.5em}
+.feat ul{list-style:none;display:flex;flex-direction:column;gap:.85vh}
+.feat li{font-size:clamp(11.5px,1.28vw,16px);color:var(--soft);line-height:1.4;padding-left:1.5em;position:relative}
+.feat li::before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:700}
+.feat li b{color:var(--ink);font-weight:700}
+.feat li.novo::before{content:"★";color:var(--coral)}
+
+.pill-row{display:flex;gap:.9vw;flex-wrap:wrap;justify-content:center;margin-top:3.2vh}
+.pill{background:#fff;border-radius:999px;padding:1.3vh 1.9vw;box-shadow:var(--sh);font-weight:700;
+  font-size:clamp(12.5px,1.45vw,18px);display:flex;align-items:center;gap:.6em}
+
+.dots{position:fixed;bottom:2.2vh;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:50}
+.dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(44,35,86,.2);cursor:pointer;padding:0}
+.dots button.on{background:var(--coral);width:24px;border-radius:999px}
+.progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--coral),var(--peach));z-index:60;transition:width .4s}
+.hint{position:fixed;bottom:2.4vh;right:2.4vw;color:var(--soft);font-size:12px;font-weight:600;opacity:.6;z-index:50}
+
+@media (max-width:820px){
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .row{flex-direction:column;text-align:center;gap:1.2vh}
+}
+@media print{
+  body{overflow:visible}
+  .slide{display:flex!important;position:relative;height:100vh;page-break-after:always}
+  .dots,.hint,.progress{display:none}
+  [data-a]{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog"></div>
+
+<!-- 1 · CAPA -->
+<section class="slide active">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Creches.app</span>
+  <h1 class="h-hero" data-a style="--d:1">Encontrar creche em Portugal<br>não devia ser <span class="accent">um labirinto.</span></h1>
+  <p class="ssub" data-a style="--d:2">Um mapa nacional, gratuito, construído para as famílias — e para quem decide onde é preciso investir.</p>
+  <p class="note" data-a style="--d:4">Joaquim Cabral · Fundador · 27 de julho de 2026</p>
+</section>
+
+<!-- 2 · O PROBLEMA -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O problema</span>
+  <h2 class="stitle" data-a style="--d:1">A informação existe.<br>Está é dispersa.</h2>
+  <p class="ssub" data-a style="--d:2">Uma família que procura creche tem de bater a muitas portas para saber o básico: quem existe por perto, quanto custa, e se há lugar.</p>
+  <div class="grid g4">
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--corals)">🗂️</div><h3>Listas dispersas</h3><p>Cada câmara, cada instituição, cada site com o seu formato</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--peachs)">📞</div><h3>Telefonema a telefonema</h3><p>A mesma pergunta repetida dezenas de vezes</p></div>
+    <div class="card" data-a style="--d:5"><div class="ic" style="background:var(--turqs)">💶</div><h3>Preços opacos</h3><p>Raramente publicados, difíceis de comparar</p></div>
+    <div class="card" data-a style="--d:6"><div class="ic" style="background:var(--yells)">⏳</div><h3>Listas de espera</h3><p>Sem visibilidade sobre onde há lugar</p></div>
+  </div>
+</section>
+
+<!-- 3 · O CONTEXTO -->
+<section class="slide">
+  <div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O contexto</span>
+  <h2 class="stitle" data-a style="--d:1">E não é um problema<br>que se resolva depressa.</h2>
+  <div class="grid g2" style="max-width:880px">
+    <div class="card" data-a style="--d:2">
+      <div class="big" style="color:var(--coral)"><span class="cnt" data-to="55">0</span>%</div>
+      <div class="lbl">taxa de cobertura de creche a nível nacional</div>
+    </div>
+    <div class="card" data-a style="--d:3">
+      <div class="big" style="color:var(--peach)">anos</div>
+      <div class="lbl">é o horizonte até as novas vagas previstas estarem concluídas</div>
+    </div>
+  </div>
+  <p class="ssub" data-a style="--d:5;margin-top:3.2vh">Enquanto a oferta não cresce, o que se pode melhorar já hoje é a forma como as famílias a encontram.</p>
+</section>
+
+<!-- 4 · O QUE JÁ EXISTE (números) -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O que já existe</span>
+  <h2 class="stitle" data-a style="--d:1">Está construído.<br>Está online. É gratuito.</h2>
+  <div class="grid g4">
+    <div class="card" data-a style="--d:2">
+      <div class="big" style="color:var(--coral)"><span class="cnt" data-to="2578">0</span></div>
+      <div class="lbl">creches com página própria, de norte a sul e ilhas</div>
+    </div>
+    <div class="card" data-a style="--d:3">
+      <div class="big" style="color:var(--turq)"><span class="cnt" data-to="308">0</span></div>
+      <div class="lbl">concelhos cobertos — o país inteiro</div>
+    </div>
+    <div class="card" data-a style="--d:4">
+      <div class="big" style="color:var(--peach)">0€</div>
+      <div class="lbl">para as famílias — sem publicidade, sem venda de dados</div>
+    </div>
+    <div class="card" data-a style="--d:5">
+      <div class="big" style="color:var(--lilac)">1</div>
+      <div class="lbl">pessoa a construir tudo isto, até hoje</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · O QUE A APP JÁ FAZ — FAMÍLIAS -->
+<section class="slide">
+  <div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O que a plataforma já faz</span>
+  <h2 class="stitle" data-a style="--d:1">Para as famílias</h2>
+  <div class="grid g2" style="max-width:1120px;margin-top:2.8vh">
+    <div class="feat" data-a style="--d:2">
+      <h3><span class="ic" style="background:var(--corals);width:38px;height:38px;font-size:18px">🔎</span> Descobrir</h3>
+      <ul>
+        <li>Mapa nacional com <b>todas as creches</b>, filtrado por zona e <b>idade da criança</b></li>
+        <li>"Creches perto de mim" e pesquisa por nome ou morada</li>
+        <li>Filtro <b>Creche Feliz</b> — só as gratuitas</li>
+        <li>Página por creche: contactos, tipologia, faixas etárias, fotos</li>
+        <li><b>Comparar</b> creches lado a lado e <b>calcular o custo</b> estimado</li>
+        <li>Guias sobre como escolher, custos, listas de espera e adaptação</li>
+      </ul>
+    </div>
+    <div class="feat" data-a style="--d:3">
+      <h3><span class="ic" style="background:var(--mints);width:38px;height:38px;font-size:18px">🟢</span> Agir</h3>
+      <ul>
+        <li><b>Vagas em tempo real</b> — reportadas por famílias e confirmadas pelas creches</li>
+        <li class="novo"><b>Alertas por email</b> quando abre vaga na creche que seguem</li>
+        <li>Pedir contacto a uma creche <b>sem telefonar a uma dezena</b></li>
+        <li>Confirmação imediata e <b>acompanhamento da candidatura</b> por link privado</li>
+        <li>Se a creche não responder, a família é avisada e recebe alternativas</li>
+        <li>Guardar favoritas e organizar as candidaturas em curso</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · O QUE A APP JÁ FAZ — CRECHES -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O que a plataforma já faz</span>
+  <h2 class="stitle" data-a style="--d:1">Para as creches</h2>
+  <div class="grid g2" style="max-width:1120px;margin-top:2.8vh">
+    <div class="feat" data-a style="--d:2">
+      <h3><span class="ic" style="background:var(--turqs);width:38px;height:38px;font-size:18px">🏫</span> Painel gratuito</h3>
+      <ul>
+        <li>A instituição <b>reivindica a sua página</b> e passa a geri-la</li>
+        <li>Publicar e atualizar <b>vagas em tempo real</b></li>
+        <li>Perfil completo: valências, horário, capacidade, línguas, fotos, mensalidade</li>
+        <li>Corrigir dados errados — a informação certa vem de quem a conhece</li>
+      </ul>
+    </div>
+    <div class="feat" data-a style="--d:3">
+      <h3><span class="ic" style="background:var(--yells);width:38px;height:38px;font-size:18px">📈</span> Procura e contactos</h3>
+      <ul>
+        <li>Receber os <b>pedidos das famílias</b> organizados, com todo o contexto</li>
+        <li>Ver <b>quantas famílias as procuraram</b> e como evolui semana a semana</li>
+        <li>Resumo semanal por email, sem terem de entrar em lado nenhum</li>
+        <li>Avisos automáticos quando um pedido fica sem resposta</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note" data-a style="--d:5">Gratuito para as instituições. Sem contrato, sem exclusividade.</p>
+</section>
+
+<!-- 7 · O MOTOR INVISÍVEL -->
+<section class="slide">
+  <div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Por baixo do capô</span>
+  <h2 class="stitle" data-a style="--d:1">Uma operação que<br>trabalha sozinha.</h2>
+  <p class="ssub" data-a style="--d:2">Construí a plataforma para funcionar sem depender de alguém estar sentado a olhar para ela. É isso que permite que uma pessoa só tenha chegado até aqui.</p>
+  <div class="grid g3" style="max-width:1080px">
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--corals)">🤖</div><h3>Rotinas diárias</h3><p>Convites às instituições, triagem de pedidos e verificação de dados, todos os dias, automaticamente</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">🔍</div><h3>Dados que se corrigem</h3><p>A plataforma procura sozinha os contactos em falta e valida o que recebe</p></div>
+    <div class="card" data-a style="--d:5"><div class="ic" style="background:var(--yells)">🌐</div><h3>Encontrada no Google</h3><p>Cada creche tem página própria indexada — é assim que as famílias nos encontram, sem gastar em publicidade</p></div>
+  </div>
+</section>
+
+<!-- 8 · O MAPA VIVO DA PROCURA -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O que isto gera</span>
+  <h2 class="stitle" data-a style="--d:1">Um mapa vivo<br>da procura real.</h2>
+  <p class="ssub" data-a style="--d:2">As estatísticas oficiais dizem quantas vagas existiam no ano passado. A plataforma mostra onde é que as famílias estão a procurar esta semana — e onde não estão a encontrar.</p>
+  <div class="rows">
+    <div class="row" data-a style="--d:3">
+      <div class="ic" style="background:var(--corals)">🔥</div>
+      <div><h3>Onde a procura é maior</h3><p>Concelho a concelho, com atualização contínua</p></div>
+    </div>
+    <div class="row" data-a style="--d:4">
+      <div class="ic" style="background:var(--peachs)">⚖️</div>
+      <div><h3>Onde a procura mais pressiona a oferta</h3><p>Muitas famílias à procura, poucas respostas disponíveis</p></div>
+    </div>
+    <div class="row" data-a style="--d:5">
+      <div class="ic" style="background:var(--turqs)">📍</div>
+      <div><h3>Onde faria diferença investir a seguir</h3><p>Um critério objetivo para escolher territórios — cruzado com população e nascimentos</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · A AMBIÇÃO -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">A ambição</span>
+  <h2 class="h-hero" data-a style="--d:1" >Ser <span class="accent">a</span> plataforma<br>onde se procura creche<br>em Portugal.</h2>
+  <p class="ssub" data-a style="--d:3">Não uma entre várias. A que qualquer família usa por reflexo, a que qualquer instituição mantém atualizada, e a que qualquer decisor consulta antes de investir.</p>
+  <p class="note" data-a style="--d:5">Para lá chegar, é preciso investir em seis frentes ao mesmo tempo.</p>
+</section>
+
+<!-- 10 · ÁREAS DE INVESTIMENTO 1 -->
+<section class="slide">
+  <div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Onde é preciso investir · 1 de 2</span>
+  <h2 class="stitle" data-a style="--d:1">Chegar a toda a gente</h2>
+  <div class="rows" style="max-width:1000px;margin-top:2.6vh">
+    <div class="row" data-a style="--d:2">
+      <div class="ic" style="background:var(--corals)">🤝</div>
+      <div><h3>Ativação das instituições</h3><p>Alguém dedicado a falar com as creches, uma a uma, acompanhá-las e ajudá-las a manter a informação viva. É o trabalho mais determinante e o que não se automatiza.</p></div>
+    </div>
+    <div class="row" data-a style="--d:3">
+      <div class="ic" style="background:var(--peachs)">💛</div>
+      <div><h3>Apoio às famílias</h3><p>Responder a quem escreve, orientar quem está perdido, acompanhar quem não consegue vaga. Hoje é o que tenho menos capacidade de garantir.</p></div>
+    </div>
+    <div class="row" data-a style="--d:4">
+      <div class="ic" style="background:var(--turqs)">📣</div>
+      <div><h3>Dar a conhecer</h3><p>Uma ferramenta que ninguém conhece não serve ninguém. Chegar às famílias no momento em que precisam — imprensa, redes, maternidades, centros de saúde.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · ÁREAS DE INVESTIMENTO 2 -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">Onde é preciso investir · 2 de 2</span>
+  <h2 class="stitle" data-a style="--d:1">Sustentar a confiança</h2>
+  <div class="rows" style="max-width:1000px;margin-top:2.6vh">
+    <div class="row" data-a style="--d:2">
+      <div class="ic" style="background:var(--lilacs)">⚙️</div>
+      <div><h3>Produto e tecnologia</h3><p>Candidatura a várias creches de uma vez, lista de espera digital, aplicação para telemóvel. E capacidade para a plataforma não depender de uma pessoa só.</p></div>
+    </div>
+    <div class="row" data-a style="--d:3">
+      <div class="ic" style="background:var(--mints)">🗂️</div>
+      <div><h3>Qualidade dos dados</h3><p>Ligação às fontes oficiais e atualização permanente. Uma plataforma nacional só é útil se a informação estiver certa — e a confiança perde-se ao primeiro erro.</p></div>
+    </div>
+    <div class="row" data-a style="--d:4">
+      <div class="ic" style="background:var(--yells)">🏛️</div>
+      <div><h3>Relações institucionais</h3><p>Segurança Social, câmaras municipais e redes de instituições. É o que transforma uma boa ferramenta em infraestrutura reconhecida do país.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · O QUE ISSO SIGNIFICA -->
+<section class="slide">
+  <div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Em concreto</span>
+  <h2 class="stitle" data-a style="--d:1">Uma equipa pequena,<br>a trabalhar em conjunto.</h2>
+  <div class="grid g3" style="max-width:1080px">
+    <div class="card" data-a style="--d:2"><div class="ic" style="background:var(--corals)">👤</div><h3>Terreno e operações</h3><p>Quem fala com as instituições e responde às famílias, todos os dias</p></div>
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--turqs)">💻</div><h3>Tecnologia</h3><p>Quem faz a plataforma crescer e garante que aguenta o país inteiro</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--yells)">🚪</div><h3>Portas institucionais</h3><p>O acesso que uma fundação abre em semanas e eu levaria anos a construir</p></div>
+  </div>
+  <p class="ssub" data-a style="--d:6;margin-top:3.2vh"><b>E tempo</b> — o suficiente para provar que funciona antes de ter de se sustentar sozinha.</p>
+</section>
+
+<!-- 13 · COMPROMISSOS -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">Compromissos</span>
+  <h2 class="stitle" data-a style="--d:1">O que não muda,<br>aconteça o que acontecer.</h2>
+  <div class="rows" style="max-width:900px">
+    <div class="row" data-a style="--d:2"><div class="ic" style="background:var(--mints)">💛</div><div><h3>Gratuito para as famílias</h3><p>Sempre. Quem procura creche nunca paga para encontrar.</p></div></div>
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--lilacs)">🔒</div><div><h3>Sem venda de dados, sem publicidade</h3><p>Os dados de uma família só vão para a creche que ela escolheu contactar.</p></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">⚖️</div><div><h3>Independência e neutralidade</h3><p>Nenhuma instituição compra destaque. A ordem é a que serve a família.</p></div></div>
+    <div class="row" data-a style="--d:5"><div class="ic" style="background:var(--yells)">📊</div><div><h3>Metas verificáveis</h3><p>Os números saem do sistema, não de slides. Prestação de contas com dados reais.</p></div></div>
+  </div>
+</section>
+
+<!-- 14 · O CONVITE -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O convite</span>
+  <h2 class="h-hero" data-a style="--d:1" >Construir esta infraestrutura<br>uma única vez — e deixá-la<br><span class="accent">a servir o país.</span></h2>
+  <p class="ssub" data-a style="--d:3">Gostava de perceber convosco de que forma faz sentido caminharmos juntos, e o que é que, para vós, faria isto ser um sucesso daqui a um ano.</p>
+  <div class="pill-row">
+    <div class="pill" data-a style="--d:4">🌐 creches.app</div>
+    <div class="pill" data-a style="--d:5">✉️ geral@creches.app</div>
+  </div>
+  <p class="note" data-a style="--d:7">Obrigado pelo tempo. 💛</p>
+</section>
+
+<div class="dots" id="dots"></div>
+<div class="hint">← → para navegar · F para ecrã inteiro</div>
+
+<script>
+const slides = [...document.querySelectorAll(".slide")];
+const dots = document.getElementById("dots");
+const prog = document.getElementById("prog");
+let i = 0;
+slides.forEach((_, k) => {
+  const b = document.createElement("button");
+  b.setAttribute("aria-label", "Slide " + (k+1));
+  b.onclick = (e) => { e.stopPropagation(); go(k); };
+  dots.appendChild(b);
+});
+function animateCounters(slide){
+  slide.querySelectorAll(".cnt").forEach(el => {
+    const to = parseInt(el.dataset.to, 10);
+    const t0 = performance.now(), dur = 1300;
+    function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * ease).toLocaleString("pt-PT");
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+function go(n){
+  i = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, k) => {
+    s.classList.toggle("active", k === i);
+    if(k === i){
+      s.querySelectorAll("[data-a]").forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; });
+      animateCounters(s);
+    }
+  });
+  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
+  prog.style.width = ((i + 1) / slides.length * 100) + "%";
+}
+document.addEventListener("keydown", e => {
+  if(e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") go(i + 1);
+  else if(e.key === "ArrowLeft" || e.key === "PageUp") go(i - 1);
+  else if(e.key.toLowerCase() === "f"){
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  }
+});
+document.addEventListener("click", e => {
+  if(e.target.closest(".dots")) return;
+  (e.clientX > innerWidth / 2) ? go(i + 1) : go(i - 1);
+});
+let x0 = null;
+document.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
+document.addEventListener("touchend", e => {
+  if(x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if(Math.abs(dx) > 50) (dx < 0) ? go(i + 1) : go(i - 1);
+  x0 = null;
+}, {passive:true});
+go(0);
+</script>
+</body>
+</html>

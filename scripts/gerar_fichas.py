@@ -417,7 +417,13 @@ for c in creches:
     ctas_html = f'<div class="ctas-big">{cta_tel}{cta_mail}{cta_dir}{cta_share}{cta_cmp}</div>'
 
     # Vaga banner — slot que vai ser preenchido por vagas.js se houver vaga activa
-    vaga_slot = f'<div id="vaga-slot" data-creche-id="{esc(c["id"])}" data-creche-nome="{esc(nome)}"></div>'
+    # data-creche-email: sinaliza ao perfil-creche.js que há para onde enviar um
+    # pedido de contacto mesmo quando a creche ainda não gere a página (Vaga 1 · 1.3)
+    attr_email = ' data-creche-email="{}"'.format(esc(mail)) if mail else ""
+    vaga_slot = (
+        f'<div id="vaga-slot" data-creche-id="{esc(c["id"])}" '
+        f'data-creche-nome="{esc(nome)}"{attr_email}></div>'
+    )
 
     # === Banner qualidade de dados ===
     missing = []

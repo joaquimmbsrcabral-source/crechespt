@@ -23,6 +23,12 @@ function escapeHtml(s) {
   return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
 }
 
+// "2025-03-14" → "14/03/2025" (o lead guarda a data ISO para ser agregável)
+function dataPt(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ""));
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : "";
+}
+
 function parseServiceAccount() {
   let raw = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim();
   if (!raw.startsWith("{")) raw = Buffer.from(raw, "base64").toString("utf-8").trim();  // base64
@@ -110,7 +116,10 @@ function avisoCrecheHTML(lead, temPainel) {
     linha("👤", `<b>${escapeHtml(lead.nome || "")}</b>`),
     linha("✉️", `<a href="mailto:${escapeHtml(lead.email)}" style="color:#B4255C">${escapeHtml(lead.email)}</a>`),
     tel ? linha("📞", `<a href="tel:${escapeHtml(tel)}" style="color:#B4255C">${escapeHtml(lead.telefone)}</a>`) : "",
-    lead.idade_crianca ? linha("👶", `Idade da criança: <b>${escapeHtml(lead.idade_crianca)}</b>`) : "",
+    lead.idade_crianca
+      ? linha("👶", `Criança: <b>${escapeHtml(lead.idade_crianca)}</b>${
+          lead.nascimento ? ` <span style="color:#6E6989">(nasc. ${escapeHtml(dataPt(lead.nascimento))})</span>` : ""}`)
+      : "",
     lead.mes_entrada ? linha("📅", `Entrada pretendida: <b>${escapeHtml(lead.mes_entrada)}</b>`) : ""
   ].filter(Boolean).join("");
 
@@ -169,7 +178,7 @@ function avisoCrecheText(lead, temPainel) {
 Nome: ${lead.nome || "—"}
 Email: ${lead.email || "—"}
 Telefone: ${lead.telefone || "—"}
-Idade da criança: ${lead.idade_crianca || "—"}
+Criança: ${lead.idade_crianca || "—"}${lead.nascimento ? ` (nasc. ${dataPt(lead.nascimento)})` : ""}
 Entrada pretendida: ${lead.mes_entrada || "—"}
 ${lead.mensagem ? `Mensagem: «${lead.mensagem}»\n` : ""}
 Responder no próprio dia é meia inscrição feita — as famílias contactam várias creches ao mesmo tempo.

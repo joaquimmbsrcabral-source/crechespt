@@ -424,7 +424,7 @@ service cloud.firestore {
     // nunca listável publicamente.
     match /creche_leads/{id} {
       allow create: if
-           request.resource.data.keys().hasOnly(['creche_id','creche_nome','nome','email','telefone','idade_crianca','mes_entrada','mensagem','consentimento','status','ts','token'])
+           request.resource.data.keys().hasOnly(['creche_id','creche_nome','nome','email','telefone','idade_crianca','nascimento','mes_entrada','inicio_ym','mensagem','consentimento','status','ts','token'])
         && request.resource.data.keys().hasAll(['creche_id','nome','email','consentimento','status','ts'])
         && request.resource.data.consentimento == true
         && request.resource.data.status == 'novo'
@@ -446,6 +446,14 @@ service cloud.firestore {
             (request.resource.data.idade_crianca is string && request.resource.data.idade_crianca.size() <= 40))
         && (!('mes_entrada' in request.resource.data) ||
             (request.resource.data.mes_entrada is string && request.resource.data.mes_entrada.size() <= 40))
+        // Vaga 1 · 1.4/1.5 — data de nascimento real (YYYY-MM-DD) e mês de início
+        // estruturado (YYYY-MM). Formato validado para o dado ser agregável.
+        && (!('nascimento' in request.resource.data) ||
+            (request.resource.data.nascimento is string &&
+             request.resource.data.nascimento.matches('[0-9]{4}-[0-9]{2}-[0-9]{2}')))
+        && (!('inicio_ym' in request.resource.data) ||
+            (request.resource.data.inicio_ym is string &&
+             request.resource.data.inicio_ym.matches('[0-9]{4}-[0-9]{2}')))
         && (!('mensagem' in request.resource.data) ||
             (request.resource.data.mensagem is string && request.resource.data.mensagem.size() <= 400))
         && (!('token' in request.resource.data) ||
