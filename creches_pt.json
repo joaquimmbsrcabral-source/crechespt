@@ -9706,7 +9706,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Faro",
-  "concelho_slug": "faro"
+  "concelho_slug": "faro",
+  "email": "santacasafaro@mail.telepac.pt",
+  "website": "https://misericordiafaro.pt/resposta-social-infancia/centro-infantil-torre/",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-node-11990073458",
@@ -11115,7 +11118,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email": "servico.social@csmusgueira.pt",
+  "website": "https://centro-social-da-musgueira.webnode.pt/",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-node-12063915597",
@@ -11278,7 +11284,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email": "geral.chuvadepapel@gmail.com",
+  "website": "https://www.chuvadepapel.com",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-node-12064092979",
@@ -11345,7 +11354,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email": "geral@creche-e-aparece.com",
+  "website": "http://www.creche-e-aparece.com",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-node-12064093060",
@@ -12181,7 +12193,11 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Coimbra",
-  "concelho_slug": "coimbra"
+  "concelho_slug": "coimbra",
+  "email": "csnsalegria@gmail.com",
+  "telefone": "+351 239 811 411",
+  "website": "https://csnsalegria.com",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-node-13019248211",
@@ -14451,7 +14467,11 @@
   "idade_max_meses": 72,
   "resposta": "Creche + JI",
   "concelho": "Ourique",
-  "concelho_slug": "ourique"
+  "concelho_slug": "ourique",
+  "email": "geral@scmourique.pt",
+  "telefone": "+351 286 510 700",
+  "website": "http://www.scmourique.pt",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-164482046",
@@ -16044,7 +16064,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "email": "geral@abla.org",
+  "website": "https://www.abla.org",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-237494559",
@@ -16938,7 +16961,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "email": "ass.criancaevida@gmail.com",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-285800059",
@@ -17272,7 +17297,9 @@
   "resposta": "Infantário (IPSS)",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "email": "geral@santacasamontijo.pt",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-310999336",
@@ -17553,7 +17580,9 @@
   "resposta": "Creche / Jardim de Infância",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "email": "sede.geral@umutualista.pt",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-323909907",
@@ -17575,7 +17604,9 @@
   "resposta": "Jardim de Infância",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "email": "sede.geral@umutualista.pt",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-326023584",
@@ -18459,7 +18490,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "email": "educacao@amovalflor.org",
+  "enriquecido_em": "2026-07-29"
  },
  {
   "id": "osm-way-416981177",

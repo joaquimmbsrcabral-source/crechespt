@@ -236,6 +236,66 @@
   "osm-node-12063110984": {
    "data": "2026-07-26",
    "resultado": "nada"
+  },
+  "osm-node-11990073457": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "misericordiafaro.pt/contactos"
+  },
+  "osm-node-12063915596": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "centro-social-da-musgueira.webnode.pt/contacto"
+  },
+  "osm-node-12063965852": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "diretorios pai.pt/servicospublicos.pt (nome+morada coincidem)"
+  },
+  "osm-node-12064093059": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "creche-e-aparece.com/contactos"
+  },
+  "osm-node-12998851478": {
+   "data": "2026-07-29",
+   "resultado": "email+site+tel",
+   "fonte": "csnsalegria.com"
+  },
+  "osm-way-163833871": {
+   "data": "2026-07-29",
+   "resultado": "email+site+tel",
+   "fonte": "scmourique.pt (email institucional SCM Ourique)"
+  },
+  "osm-way-236563538": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "abla.org (email institucional ABLA, operadora)"
+  },
+  "osm-way-285419178": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "criancaevida.net (via pesquisa; morada Miguel Bombarda 57 coincide)"
+  },
+  "osm-way-307168933": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "santacasamontijo.pt (email institucional SCM Montijo)"
+  },
+  "osm-way-323837108": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
+  },
+  "osm-way-323909907": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
+  },
+  "osm-way-416562283": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "amovalflor.org/#contact (email da área de educação)"
   }
  }
 }

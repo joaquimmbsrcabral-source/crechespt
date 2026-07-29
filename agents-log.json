@@ -1,6 +1,56 @@
 {
  "entries": [
   {
+   "id": "2026-07-29-enriquecimento",
+   "date": "2026-07-29",
+   "time": "15:09",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 12 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches sem email (Privadas/IPSS) e encontrei email para todas — pleno! 12 emails novos, 7 websites e 2 telefones (ex.: Creche e Aparece em Lisboa, Centro Infantil Torre de Natal em Faro, Centro Social N. Sra. da Alegria em Antanhol, SCM Ourique). Sem emails inválidos a corrigir esta semana. Fichas regeneradas (2578). LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-07-29-briefing",
+   "date": "2026-07-29",
+   "time": "15:04",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Inbox vazio, 40 convites enviados",
+   "summary": "0 emails relevantes nas últimas 24h. Enviei 40 convites a creches sem falhas — faltam 1403 por convidar. Sem opt-outs, claims pendentes nem fotos por moderar; nota: o report do Cantinho das Fadas (escalado pelo agente de operações) continua à tua espera no /admin.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-07-29-ops",
+   "date": "2026-07-29",
+   "time": "15:03",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "1 report continua à tua espera (escalado)",
+   "summary": "Única pendência: o mesmo report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), já escalado a 27/07 e ainda por resolver no /admin. Não apliquei nem rejeitei — veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação, embora 'Babysitting' deixe dúvida. Sem correções, claims, fotos nem remoções; nenhum rascunho de email necessário.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-07-27-briefing",
+   "date": "2026-07-27",
+   "time": "15:50",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Mensagem em OOO, 40 convites enviados",
+   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) está fora — a Catarina Carvalho (catarina.carvalho@amensagem.pt) assume a edição entretanto — e a VIGILANT propõe parceria (registo de presenças para creches). Enviei 40 convites sem falhas — faltam 1443 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-07-27-ops",
+   "date": "2026-07-27",
+   "time": "15:49",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Escalei 1 report para a tua revisão",
+   "summary": "Havia apenas 1 pendência: um report sobre «Cantinho das Fadas - Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com). Não apliquei nem rejeitei — o report veio sem tipo proposto (caso de texto livre, sempre para escalar) e o próprio nome contém 'Berçario', o que contradiz a alegação. Fica à tua espera no /admin. Sem correções, claims, fotos nem remoções pendentes.",
+   "status": "attention"
+  },
+  {
    "id": "2026-07-26-enriquecimento",
    "date": "2026-07-26",
    "time": "18:35",
