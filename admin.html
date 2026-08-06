@@ -758,13 +758,19 @@ function renderLeadFunil(){
   const D = 86400000;
   const idade = l => (l.ts && l.ts.toMillis) ? (agora - l.ts.toMillis()) / D : null;
 
-  let total = 0, notificados = 0;
+  let total = 0, notificados = 0, medidos = 0, horasSoma = 0, horasN = 0;
   let elegivelResp = 0, respSim = 0, respNao = 0;
   let elegivelRes = 0, resEntrei = 0, resEspera = 0, resSemVaga = 0, resDesisti = 0;
 
   _leadsRows.forEach(l => {
     total++;
     if(l.notificado) notificados++;
+    // Medição direta: a creche respondeu ao email e a resposta passou por nós.
+    // Não depende de ninguém clicar em nada.
+    if(l.creche_respondeu){
+      medidos++;
+      if(typeof l.horas_ate_resposta === "number"){ horasSoma += l.horas_ate_resposta; horasN++; }
+    }
     const d = idade(l);
     if(d != null && d >= 7){
       elegivelResp++;
@@ -805,6 +811,18 @@ function renderLeadFunil(){
 
   h += barra("Pedidos entregues à creche", notificados, total, "#5EC0B7",
              notificados < total ? (total - notificados) + " ainda por notificar (ou falharam)" : "");
+
+  // ── Medição direta (a resposta da creche passa por nós) ──
+  const mediaH = horasN ? Math.round(horasSoma / horasN) : null;
+  h += barra("Creches que responderam — medido por nós", medidos, total, "#FF6B9D",
+             medidos
+               ? "a resposta passou pelo nosso canal" + (mediaH != null
+                   ? " · tempo médio: " + (mediaH < 48 ? mediaH + "h" : Math.round(mediaH/24) + " dias") : "")
+               : "sem respostas medidas ainda — confirma que o RESPOSTA_DOMINIO está configurado");
+
+  h += '<div style="font-size:11.5px;color:var(--ink-soft);margin:-4px 0 12px">' +
+       'Abaixo: o que as famílias nos dizem. Serve para apanhar as respostas por telefone, ' +
+       'que o canal de email não vê.</div>';
 
   h += barra("Famílias que nos responderam ao «a creche respondeu?»", respRespondidos, elegivelResp, "#B197FC",
              "só leads com 7+ dias · " + (elegivelResp - respRespondidos) + " sem resposta ao nosso email");

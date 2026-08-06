@@ -1,3 +1,39 @@
+# ⚠️ ATIVAR O CANAL DE RESPOSTA (novo — Jul 2026)
+
+Sem estes passos tudo continua a funcionar como antes (a resposta da creche vai
+direta para o pai) — mas **não conseguimos medir quantas creches respondem**.
+
+**1. Subdomínio de resposta no Resend**
+Resend → Domains → Add Domain → `resposta.creches.app`.
+Adiciona os registos DNS que ele indicar — inclui **MX**, que é o que permite
+*receber* email (o domínio principal só tem os registos de envio).
+
+**2. Ativar o email de entrada**
+Resend → Inbound / Receiving → ativar para `resposta.creches.app`, com a regra
+a apanhar `lead-*@resposta.creches.app`.
+
+**3. Webhook do inbound**
+Resend → Webhooks → novo endpoint:
+- URL: `https://creches.app/api/resposta-inbound`
+- Evento: `email.received` (ou `inbound.email.received`)
+- Copia o **Signing Secret**.
+
+**4. Variáveis de ambiente no Vercel**
+```
+RESPOSTA_DOMINIO       = resposta.creches.app
+RESEND_INBOUND_SECRET  = whsec_...   (o Signing Secret do passo 3)
+```
+⚠️ O `RESPOSTA_DOMINIO` é o interruptor: enquanto não existir, o `lead-notify`
+usa o email do pai como reply-to, exatamente como antes. Configura-o **só depois**
+de o MX e o webhook estarem a funcionar — senão as respostas das creches perdem-se.
+
+**5. Testar antes de confiar**
+Faz um pedido a uma creche tua, responde ao email que chegar, e confirma:
+(a) a resposta chegou ao email do pai; (b) no `/admin` → Leads, o funil mostra
+"Creches que responderam — medido por nós" a contar 1.
+
+---
+
 # Setup — Notificações por email (Vercel + Resend)
 
 Quando aprovas um report de idade ou aprovas uma creche no `/admin`, o

@@ -179,7 +179,9 @@
         '<textarea id="lead-msg" maxlength="400" style="' + INPUT_CSS + ';min-height:64px;resize:vertical"></textarea>' +
         '<label style="display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:#6E6989;margin:12px 0">' +
           '<input id="lead-rgpd" type="checkbox" style="margin-top:2px;flex:none">' +
-          '<span>Autorizo a partilha destes dados com a creche, apenas para me contactar sobre vagas e inscrição. Os dados nunca são vendidos nem usados para publicidade. *</span></label>' +
+          '<span>Autorizo a partilha destes dados com a creche, apenas para me contactar sobre vagas e inscrição. ' +
+          'A resposta da creche passa pelo creches.app e é-te reencaminhada — registamos que houve resposta e quando, ' +
+          'nunca o conteúdo. Os dados não são vendidos nem usados para publicidade. *</span></label>' +
         '<div id="lead-err" style="display:none;background:#FFE2EC;color:#B4255C;font-size:.85rem;font-weight:600;padding:10px 14px;border-radius:10px;margin-bottom:10px"></div>' +
         '<button id="lead-send" style="width:100%;background:#FF6B9D;color:#fff;border:none;border-radius:12px;padding:13px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer">Enviar à creche 💌</button>' +
         '</div>';

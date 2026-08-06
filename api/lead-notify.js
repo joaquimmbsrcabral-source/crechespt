@@ -139,7 +139,7 @@ function avisoCrecheHTML(lead, temPainel) {
       <table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr><td align="center">
         <a href="https://creches.app/para-creches" style="display:inline-block;background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;font-weight:bold;font-size:16px;text-decoration:none;padding:15px 38px;border-radius:99px">Pedir acesso ao painel →</a>
       </td></tr></table>
-      <p style="margin:14px 0 0;font-size:13px;color:#6E6989;text-align:center">Podem responder diretamente a este email — vai direto para a família.</p>`;
+      <p style="margin:14px 0 0;font-size:13px;color:#6E6989;text-align:center">Podem responder diretamente a este email — a vossa resposta chega à família.</p>`;
 
   return `<!doctype html><html lang="pt-PT"><body style="margin:0;padding:0;background:#FFF6EE">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF6EE;padding:28px 12px">
@@ -185,7 +185,7 @@ Responder no próprio dia é meia inscrição feita — as famílias contactam v
 
 ${temPainel ? "Gerir no painel: https://creches.app/painel" : "A vossa página no creches.app é gratuita — podem gerir vagas e receber estes pedidos organizados: https://creches.app/para-creches"}
 
-Podem responder diretamente a este email — vai direto para a família.
+Podem responder diretamente a este email — a vossa resposta chega à família.
 
 — A equipa do creches.app`;
 }
@@ -267,10 +267,21 @@ export default async function handler(req, res) {
       emails.push(fallback);
     }
 
+    // Endereço de resposta próprio deste lead. Se a creche carregar em
+    // "Responder", a mensagem passa por /api/resposta-inbound, que a reencaminha
+    // ao pai e regista que houve resposta — sem isto somos cegos: a resposta ia
+    // direta para a caixa do pai e nunca saberíamos que existiu.
+    // Sem RESPOSTA_DOMINIO configurado, cai no comportamento antigo (email do pai).
+    const dominioResposta = (process.env.RESPOSTA_DOMINIO || "").trim().toLowerCase();
+    const tokenLead = (typeof lead.token === "string" && /^[a-f0-9]{20,64}$/.test(lead.token)) ? lead.token : "";
+    const replyTo = (dominioResposta && tokenLead)
+      ? `lead-${tokenLead}@${dominioResposta}`
+      : lead.email;
+
     const payload = {
       from: FROM_EMAIL,
       to: emails.slice(0, 3),
-      reply_to: lead.email,
+      reply_to: replyTo,
       subject: `💌 Uma família quer contactar a ${lead.creche_nome || "vossa creche"}`,
       text: avisoCrecheText(lead, temPainel),
       html: avisoCrecheHTML(lead, temPainel)
