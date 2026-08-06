@@ -181,6 +181,15 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <section>
     <h2>📡 Já saímos em</h2>
     <div class="coverage-grid">
+      <a class="coverage-card" href="https://amensagem.pt/2026/07/31/procura-creche-sintra-pais-creches-pt/" target="_blank" rel="noopener">
+        <div class="cov-logo">Mensagem</div>
+        <div class="cov-meta">
+          <div class="cov-section">Mensagem de Lisboa · Cidade</div>
+          <div class="cov-date">31 Julho 2026</div>
+          <div class="cov-headline">"Linha de Sintra lidera falta de lugares em creches"</div>
+        </div>
+        <div class="cov-arrow">→</div>
+      </a>
       <a class="coverage-card" href="https://www.publico.pt/2026/06/12/p3/noticia/joaquim-criou-site-mapeia-creches-portugal-usou-ia-demorou-duas-semanas-2178023" target="_blank" rel="noopener">
         <div class="cov-logo cov-publico">Público</div>
         <div class="cov-meta">
@@ -205,10 +214,24 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <section>
     <h2>Stats rápidas</h2>
     <div class="stats-grid">
-      <div class="stat coral"><b>2500+</b><span>Creches mapeadas</span></div>
-      <div class="stat peach"><b>20</b><span>Distritos cobertos</span></div>
-      <div class="stat turq"><b>0€</b><span>Para os pais, sempre</span></div>
-      <div class="stat yellow"><b>4</b><span>Guias gratuitos</span></div>
+      <div class="stat coral"><b>2.591</b><span>Estabelecimentos mapeados</span></div>
+      <div class="stat peach"><b>275</b><span>Concelhos com página própria</span></div>
+      <div class="stat turq"><b>0€</b><span>Para as famílias e para as creches</span></div>
+      <div class="stat yellow"><b>6</b><span>Guias gratuitos</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que a plataforma faz</h2>
+    <div class="fact-list">
+      <dl>
+        <dt>Para as famílias</dt>
+        <dd>Mapa com pesquisa por morada, GPS, concelho, idade da criança e tipo de instituição · página própria para cada estabelecimento, com contactos verificados · vagas em tempo real · alertas por email quando abre vaga · comparador · pedido de contacto enviado à creche pela plataforma, com acompanhamento do estado num link privado e sem necessidade de conta</dd>
+        <dt>Para as creches</dt>
+        <dd>Painel gratuito para gerir a própria página: contactos, horários, mensalidades, fotografias, vagas por sala em tempo real, e receção dos pedidos das famílias com estatísticas de visitas</dd>
+        <dt>Dados e transparência</dt>
+        <dd>Cruzamento do OpenStreetMap com a Carta Social e o INE · concelho atribuído por coordenadas sobre as fronteiras oficiais · dados de procura por concelho disponibilizados a jornalistas e municípios mediante pedido</dd>
+      </dl>
     </div>
   </section>
 
@@ -227,7 +250,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <section>
     <h2>Em uma frase</h2>
     <div class="quote-card">
-      <p>"O Creches.app é um mapa interativo gratuito com mais de 2500 creches de Portugal — IPSS, privadas e jardins de infância — que ajuda pais a procurar e organizar candidaturas."</p>
+      <p>"O Creches.app é um mapa interativo e gratuito de 2.591 creches, jardins de infância e infantários de Portugal — públicos, IPSS e privados — que ajuda as famílias a encontrar, comparar e acompanhar candidaturas, e permite às creches manter a sua página atualizada e receber contactos."</p>
       <div class="attr">— Descrição oficial para imprensa</div>
     </div>
   </section>
@@ -235,7 +258,7 @@ footer a{color:var(--ink-soft);margin:0 8px}
   <section>
     <h2>Citações prontas a usar</h2>
     <div class="quote-card">
-      <p>"Os pais já têm gastos suficientes quando chega um bebé. Não precisam de mais um. Por isso o Creches.app nunca vai cobrar aos pais. Nunca."</p>
+      <p>"Os pais já têm gastos suficientes quando chega um bebé. Não precisam de mais um. Por isso o Creches.app nunca vai cobrar às famílias. Nunca."</p>
       <div class="attr">— Joaquim Cabral, fundador</div>
     </div>
     <div class="quote-card">
@@ -243,7 +266,15 @@ footer a{color:var(--ink-soft);margin:0 8px}
       <div class="attr">— Joaquim Cabral, fundador</div>
     </div>
     <div class="quote-card">
-      <p>"Não é uma startup. É um projeto pessoal que se calhou útil para outros pais. Cruzo dados públicos do OpenStreetMap e da Carta Social, e disponibilizo tudo de forma simples e gratuita."</p>
+      <p>"Para uma família em julho, é como se uma em cada três portas não tivesse campainha. Um terço das creches de Lisboa não tem um único contacto público — nem telefone, nem email."</p>
+      <div class="attr">— Joaquim Cabral, fundador</div>
+    </div>
+    <div class="quote-card">
+      <p>"A dificuldade nem sempre está na falta de uma vaga, mas no obstáculo de saber onde ela está."</p>
+      <div class="attr">— Joaquim Cabral, fundador</div>
+    </div>
+    <div class="quote-card">
+      <p>"Nenhuma creche pode pagar para aparecer melhor colocada. Não vendemos destaque, não vendemos dados e não há publicidade — as regras de ordenação estão publicadas no site precisamente para que isso possa ser verificado."</p>
       <div class="attr">— Joaquim Cabral, fundador</div>
     </div>
   </section>
@@ -260,16 +291,18 @@ footer a{color:var(--ink-soft);margin:0 8px}
         <dd>Maio de 2026</dd>
         <dt>Disponibilidade</dt>
         <dd>Web responsiva (mobile + desktop) · PWA</dd>
+        <dt>Dimensão</dt>
+        <dd>2.591 estabelecimentos · 275 concelhos com página própria · 20 distritos e regiões autónomas</dd>
         <dt>Fontes de dados</dt>
-        <dd>OpenStreetMap (ODbL) + Carta Social (Segurança Social) + contributos de utilizadores</dd>
+        <dd>OpenStreetMap (ODbL) + Carta Social (DGSSS) + INE + contributos de famílias e das próprias creches</dd>
         <dt>Cobertura</dt>
-        <dd>Continente, Açores e Madeira — 100% dos 20 distritos</dd>
+        <dd>Continente, Açores e Madeira. O concelho de cada estabelecimento é atribuído por coordenadas sobre as fronteiras oficiais da CAOP (100% do dataset).</dd>
         <dt>Stack técnico</dt>
         <dd>HTML/CSS/JS · Firebase (Auth + Firestore) · Vercel · Leaflet (mapa)</dd>
-        <dt>Modelo de negócio</dt>
-        <dd>Em validação. Gratuito para pais sempre. Creches privadas podem pagar leads qualificados no futuro.</dd>
-        <dt>Open source</dt>
-        <dd>MIT License · <a href="https://github.com/joaquimmbsrcabral-source/crechespt" target="_blank" rel="noopener">GitHub</a></dd>
+        <dt>Custo para o utilizador</dt>
+        <dd><strong>Gratuito para as famílias e gratuito para as creches.</strong> Não há publicidade, não há venda de dados e <strong>nenhuma creche pode pagar para aparecer melhor colocada nos resultados</strong> — as regras de ordenação estão publicadas. O projeto é sustentado pelo fundador e procura financiamento institucional; se algum dia existirem serviços pagos, serão opcionais, dirigidos às instituições e nunca afetarão a posição nos resultados nem o acesso das famílias.</dd>
+        <dt>Código</dt>
+        <dd>Repositório público no <a href="https://github.com/joaquimmbsrcabral-source/crechespt" target="_blank" rel="noopener">GitHub</a> (sem licença aberta atribuída)</dd>
         <dt>RGPD</dt>
         <dd>Conforme. <a href="/privacidade">Política de Privacidade</a> · <a href="/termos">Termos</a></dd>
       </dl>
@@ -326,13 +359,13 @@ footer a{color:var(--ink-soft);margin:0 8px}
     <h2>Tópicos / ângulos sugeridos</h2>
     <div class="fact-list">
       <ul style="margin:0;padding-left:20px;line-height:1.8">
-        <li><strong>História pessoal:</strong> O pai que mapeou mais de 2500 creches de Portugal durante a gravidez do primeiro filho</li>
+        <li><strong>História pessoal:</strong> O pai que mapeou 2.591 creches de Portugal durante a gravidez do primeiro filho</li>
+        <li><strong>Dados inéditos:</strong> Onde as famílias procuram creche vs. onde há lugares — cruzamento da procura observada com a capacidade oficial da Carta Social, concelho a concelho</li>
+        <li><strong>Opacidade:</strong> Um terço das creches de Lisboa não tem contacto público encontrável — nem telefone, nem email</li>
         <li><strong>Tema social:</strong> Programa Creche Feliz — quais IPSS estão abrangidas, como funciona</li>
-        <li><strong>Dados:</strong> Mensalidades por distrito (de 270€ no interior a 700€ em Cascais)</li>
-        <li><strong>Tecnologia cívica:</strong> Open data (OpenStreetMap + Carta Social) ao serviço das famílias portuguesas</li>
+        <li><strong>Tecnologia cívica:</strong> Dados abertos (OpenStreetMap + Carta Social + INE) ao serviço das famílias portuguesas</li>
         <li><strong>Lifestyle Lisboa/Porto:</strong> Procurar creche na capital — listas de espera, custos, alternativas</li>
         <li><strong>Comparação:</strong> Creche vs Ama vs JI vs Avós — o que escolher por idade do filho</li>
-        <li><strong>Startup PT:</strong> Modelo freemium em validação — creches privadas pagam leads, pais não pagam nada</li>
       </ul>
     </div>
   </section>

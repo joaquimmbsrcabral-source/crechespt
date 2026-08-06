@@ -60,7 +60,7 @@ function emailHTML(nome, ficha) {
   </td></tr>
   <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
     <p style="margin:0 0 16px">Bom dia,</p>
-    <p style="margin:0 0 16px">Sou o Joaquim Cabral, fundador do <b>creches.app</b> — o mapa nacional de creches, com mais de 2.800 creches e destacado na NiT e no Público. Criei-o quando esperava o meu primeiro filho.</p>
+    <p style="margin:0 0 16px">Sou o Joaquim Cabral, fundador do <b>creches.app</b> — o mapa nacional de creches, com 2.591 estabelecimentos e destacado no Público, na NiT e na Mensagem de Lisboa. Criei-o quando esperava o meu primeiro filho.</p>
     <p style="margin:0 0 8px">A <b>${esc(nome)}</b> já tem uma página pública no creches.app, que famílias consultam todos os dias.</p>
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 20px">${verFicha}</table>
     <div style="background:#FFF6EE;border-radius:14px;padding:18px 20px;margin:0 0 22px">
@@ -91,7 +91,7 @@ function emailHTML(nome, ficha) {
 function emailText(nome, ficha) {
   return `Bom dia,
 
-Sou o Joaquim Cabral, fundador do creches.app — o mapa nacional de creches (2.800+ creches, destacado na NiT e no Público). Criei-o quando esperava o meu primeiro filho.
+Sou o Joaquim Cabral, fundador do creches.app — o mapa nacional de creches (2.591 estabelecimentos, destacado no Público, na NiT e na Mensagem de Lisboa). Criei-o quando esperava o meu primeiro filho.
 
 A ${nome} já tem uma página pública no creches.app, que famílias consultam todos os dias.${ficha ? `\nVer a vossa página: ${ficha}` : ""}
 
