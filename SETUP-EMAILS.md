@@ -1,7 +1,30 @@
-# ⚠️ ATIVAR O CANAL DE RESPOSTA (novo — Jul 2026)
+# 💤 CANAL DE RESPOSTA — construído, adormecido (Jul 2026)
 
-Sem estes passos tudo continua a funcionar como antes (a resposta da creche vai
-direta para o pai) — mas **não conseguimos medir quantas creches respondem**.
+**Estado: NÃO ativar por agora.** O código está feito e testado, mas fica inerte
+enquanto a variável `RESPOSTA_DOMINIO` não existir no Vercel. Sem ela, a resposta
+da creche vai direta para o pai, exatamente como sempre foi.
+
+**Porquê adiado:** o plano gratuito do Resend só permite um domínio, já usado pelo
+`creches.app`. E **não se pode pôr os MX do Resend em `creches.app`** — o domínio
+aponta para o Google (`smtp.google.com`), é de lá que vem o `geral@creches.app`;
+mexer nisso parte o email todo. O DNS está nos nameservers da Vercel.
+
+**Quando ligar:** quando o volume de leads justificar o custo, ou quando houver
+financiamento. Enquanto isso, a medição faz-se pelo clique do pai aos 7 dias
+(`/api/lead-feedback`) e pelo desfecho aos 45 (`/api/lead-resultado`) — ambos a
+funcionar e visíveis no `/admin` → Leads.
+
+**Como ligar, no dia em que for para ligar** — duas vias:
+- **Resend pago** (mais simples, ~10 min): permite um segundo domínio; segue os
+  passos abaixo tal como estão.
+- **Cloudflare Email Routing** (gratuito): implica migrar o DNS de `creches.app`
+  da Vercel para a Cloudflare e usar um Email Worker a chamar
+  `https://creches.app/api/resposta-inbound`. Poupa a mensalidade, mas mudar de
+  nameservers é operação delicada — fazer com calma e fora de horas.
+
+---
+
+## Passos (para quando for a altura)
 
 **1. Subdomínio de resposta no Resend**
 Resend → Domains → Add Domain → `resposta.creches.app`.

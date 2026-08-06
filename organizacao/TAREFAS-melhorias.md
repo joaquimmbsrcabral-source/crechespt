@@ -82,6 +82,11 @@ Vai marcando `[x]` à medida que cada uma fica feita e publicada.
   Os leads que mais convertem, segundo os dados deles. Data + período preferidos, com o aviso "ainda não confirmado pela creche".
   *Ficheiros: `perfil-creche.js`, `painel.html`, `api/lead-notify.js`, `firestore.rules`*
 
+- [ ] **2.3b · Ligar o canal de resposta das creches** ★ NOVA · *construído, adormecido*
+  `api/resposta-inbound.js` está feito e testado: cada lead teria um endereço próprio (`lead-{token}@resposta.creches.app`), a resposta da creche passaria por nós, seria registada (só o facto e a hora, nunca o conteúdo) e reencaminhada ao pai em segundos. Privacidade já escrita na política (secção 4.1) e no formulário.
+  **Bloqueado por:** Resend gratuito só permite 1 domínio, e os MX de `creches.app` apontam para o Google (email `geral@`) — não se pode tocar. Ligar exige **Resend pago** ou **migrar DNS para Cloudflare** (Email Routing gratuito).
+  **Interruptor:** basta criar `RESPOSTA_DOMINIO` no Vercel. Sem ela, comportamento antigo intacto. Passos completos no topo do `SETUP-EMAILS.md`.
+
 - [ ] **2.4 · Responder ao pai dentro do painel** `#24` 🟡
   Hoje abre o `mailto:` e a conversa sai da plataforma — ficamos cegos. Enviar via Resend com `reply-to`.
   *Ficheiros: `painel.html`, `api/` (endpoint novo)*
