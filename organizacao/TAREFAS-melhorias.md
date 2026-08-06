@@ -60,6 +60,11 @@ Vai marcando `[x]` à medida que cada uma fica feita e publicada.
 - [ ] **1.11 · "Vistas recentemente"** `#32` 🟢
   *Ficheiro: `app.html`*
 
+- [x] **1.11b · Refazer as páginas de concelho (o buraco de SEO)** ★ NOVA ✅ *06/08*
+  As páginas `/creches/{distrito}/{concelho}` eram geradas a partir do campo `localidade` (freguesia), não do concelho. **"Creches em Lisboa" listava 7 de 130. Sintra, 6 de 81. Faltavam 65% das creches** na página que corresponde exatamente à pesquisa "creches em X" — o principal termo de aquisição orgânica.
+  Novo `scripts/gerar_concelhos.py` (usa `concelho_slug` da CAOP): **275 páginas, 2.591 de 2.591 creches listadas**, contra 84 páginas com 653. Novo `scripts/ligar_concelhos_distritos.py` liga as páginas de distrito aos concelhos — antes as páginas estavam órfãs no grafo interno, só alcançáveis pelo sitemap. 86 redirects 301 no `vercel.json` para as 69 freguesias soltas e 17 URLs antigas das regiões autónomas. Resumo por tipo (IPSS/públicas/privadas/berçário) e JSON-LD ItemList em cada página.
+  *`scripts/gerar_concelhos.py`, `scripts/ligar_concelhos_distritos.py`, `vercel.json`, `sitemap-concelhos.xml`*
+
 - [ ] **1.12 · FAQ automática expandida nas fichas** `#23` 🟢
   De 3 para 6–8 perguntas geradas dos dados. SEO puro.
   *Ficheiro: `scripts/gerar_fichas.py`*

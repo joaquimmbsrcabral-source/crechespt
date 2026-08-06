@@ -339,5 +339,437 @@
       "path": "/api/lead-reminders",
       "schedule": "0 10 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/sao-roque-do-pico",
+      "destination": "/creches/acores/sao-roque-do-pico",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/santa-cruz-da-graciosa",
+      "destination": "/creches/acores/santa-cruz-da-graciosa",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/nordeste",
+      "destination": "/creches/acores/nordeste",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/ponta-delgada",
+      "destination": "/creches/acores/ponta-delgada",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/vila-franca-do-campo",
+      "destination": "/creches/acores/vila-franca-do-campo",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/vila-da-praia-da-vitoria",
+      "destination": "/creches/acores/vila-da-praia-da-vitoria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/horta",
+      "destination": "/creches/acores/horta",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/angra-do-heroismo",
+      "destination": "/creches/acores/angra-do-heroismo",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/madalena",
+      "destination": "/creches/acores/madalena",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-dos-acores/lajes-do-pico",
+      "destination": "/creches/acores/lajes-do-pico",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/camara-de-lobos",
+      "destination": "/creches/madeira/camara-de-lobos",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/funchal",
+      "destination": "/creches/madeira/funchal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/calheta-madeira",
+      "destination": "/creches/madeira/calheta-madeira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/ribeira-brava",
+      "destination": "/creches/madeira/ribeira-brava",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/santa-cruz",
+      "destination": "/creches/madeira/santa-cruz",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/sao-vicente",
+      "destination": "/creches/madeira/sao-vicente",
+      "permanent": true
+    },
+    {
+      "source": "/creches/regiao-autonoma-da-madeira/machico",
+      "destination": "/creches/madeira/machico",
+      "permanent": true
+    },
+    {
+      "source": "/creches/aveiro/arrifana",
+      "destination": "/creches/aveiro/santa-maria-da-feira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/aveiro/branca",
+      "destination": "/creches/aveiro/albergaria-a-velha",
+      "permanent": true
+    },
+    {
+      "source": "/creches/aveiro/tamengos",
+      "destination": "/creches/aveiro/anadia",
+      "permanent": true
+    },
+    {
+      "source": "/creches/braga/lixa",
+      "destination": "/creches/porto/felgueiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/coimbra/arazede",
+      "destination": "/creches/coimbra/montemor-o-velho",
+      "permanent": true
+    },
+    {
+      "source": "/creches/faro/almancil",
+      "destination": "/creches/faro/loule",
+      "permanent": true
+    },
+    {
+      "source": "/creches/faro/quarteira",
+      "destination": "/creches/faro/loule",
+      "permanent": true
+    },
+    {
+      "source": "/creches/guarda/canas-de-senhorim",
+      "destination": "/creches/viseu/nelas",
+      "permanent": true
+    },
+    {
+      "source": "/creches/guarda/silgueiros",
+      "destination": "/creches/viseu/viseu",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/a-dos-cunhados",
+      "destination": "/creches/lisboa/torres-vedras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/amor",
+      "destination": "/creches/leiria/leiria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/bidoeira-de-cima",
+      "destination": "/creches/leiria/leiria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/caranguejeira",
+      "destination": "/creches/leiria/leiria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/maceira",
+      "destination": "/creches/leiria/leiria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/leiria/santa-catarina-da-serra",
+      "destination": "/creches/leiria/leiria",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/agualva-cacem",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/alcabideche",
+      "destination": "/creches/lisboa/cascais",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/alges",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/alverca-do-ribatejo",
+      "destination": "/creches/lisboa/vila-franca-de-xira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/barcarena",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/bobadela",
+      "destination": "/creches/lisboa/loures",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/carcavelos",
+      "destination": "/creches/lisboa/cascais",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/carnaxide",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/estoril",
+      "destination": "/creches/lisboa/cascais",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/linda-a-velha",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/mem-martins",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/moscavide",
+      "destination": "/creches/lisboa/loures",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/paco-de-arcos",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/parede",
+      "destination": "/creches/lisboa/cascais",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/pero-pinheiro",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/porto-salvo",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/povoa-de-santa-iria",
+      "destination": "/creches/lisboa/vila-franca-de-xira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/povoa-de-santo-adriao",
+      "destination": "/creches/lisboa/odivelas",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/queijas",
+      "destination": "/creches/lisboa/oeiras",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/queluz",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/ramada",
+      "destination": "/creches/lisboa/odivelas",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/rio-de-mouro",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/santo-antonio-dos-cavaleiros",
+      "destination": "/creches/lisboa/loures",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/sao-domingos-de-rana",
+      "destination": "/creches/lisboa/cascais",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/sao-joao-da-talha",
+      "destination": "/creches/lisboa/loures",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/sao-joao-das-lampas",
+      "destination": "/creches/lisboa/sintra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/venda-do-pinheiro",
+      "destination": "/creches/lisboa/mafra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/lisboa/vialonga",
+      "destination": "/creches/lisboa/vila-franca-de-xira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/argoncilhe",
+      "destination": "/creches/aveiro/santa-maria-da-feira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/baguim-do-monte",
+      "destination": "/creches/porto/gondomar",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/canelas",
+      "destination": "/creches/porto/vila-nova-de-gaia",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/fanzeres",
+      "destination": "/creches/porto/gondomar",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/fiaes",
+      "destination": "/creches/aveiro/santa-maria-da-feira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/pacos-de-brandao",
+      "destination": "/creches/aveiro/santa-maria-da-feira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/rio-tinto",
+      "destination": "/creches/porto/gondomar",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/sao-felix-da-marinha",
+      "destination": "/creches/porto/vila-nova-de-gaia",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/sao-mamede-de-infesta",
+      "destination": "/creches/porto/matosinhos",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/sao-paio-de-oleiros",
+      "destination": "/creches/aveiro/santa-maria-da-feira",
+      "permanent": true
+    },
+    {
+      "source": "/creches/porto/senhora-da-hora",
+      "destination": "/creches/porto/matosinhos",
+      "permanent": true
+    },
+    {
+      "source": "/creches/santarem/samora-correia",
+      "destination": "/creches/santarem/benavente",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/aldeia-de-paio-pires",
+      "destination": "/creches/setubal/seixal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/alhos-vedros",
+      "destination": "/creches/setubal/moita",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/amora",
+      "destination": "/creches/setubal/seixal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/azeitao",
+      "destination": "/creches/setubal/setubal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/caparica",
+      "destination": "/creches/setubal/almada",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/charneca-de-caparica",
+      "destination": "/creches/setubal/almada",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/corroios",
+      "destination": "/creches/setubal/seixal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/fernao-ferro",
+      "destination": "/creches/setubal/seixal",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/lavradio",
+      "destination": "/creches/setubal/barreiro",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/pinhal-novo",
+      "destination": "/creches/setubal/palmela",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/poceirao",
+      "destination": "/creches/setubal/palmela",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/quinta-do-conde",
+      "destination": "/creches/setubal/sesimbra",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/santo-antonio-da-charneca",
+      "destination": "/creches/setubal/barreiro",
+      "permanent": true
+    },
+    {
+      "source": "/creches/setubal/sobreda",
+      "destination": "/creches/setubal/almada",
+      "permanent": true
+    }
   ]
 }
