@@ -5,10 +5,15 @@
  *    → relembra a creche ("⏰ Uma família aguarda a vossa resposta") e marca lembrete_creche_enviado.
  * 2) Leads "novo" com >5 dias, com email do pai e sem alternativas_pai_enviado:
  *    → email ao pai a sugerir alternativas (mapa com filtro "só com vaga") e marca alternativas_pai_enviado.
- * 3) Leads "novo" com 7–30 dias, com email do pai e sem followup_enviado:
+ * 3) Leads com 7–30 dias (qualquer estado), com email do pai e sem followup_enviado:
  *    → email ao pai "A {creche} respondeu-te?" com dois botões (Sim / Não) que apontam
  *      para /api/lead-feedback com token HMAC; marca followup_enviado.
  *      As respostas alimentam o agregado creche_stats (capacidade de resposta por creche).
+ * 4) Leads com 45–120 dias (qualquer estado), com email do pai e sem resultado_enviado:
+ *    → email ao pai "Conseguiu vaga?" com quatro botões que apontam para
+ *      /api/lead-resultado; marca resultado_enviado.
+ *      As respostas alimentam concelho_stats — o desfecho é agregado por CONCELHO,
+ *      nunca por creche (conseguir vaga depende da lotação, não da instituição).
  *
  * Idempotência: as flags só são gravadas depois de o Resend aceitar o envio;
  * se falhar, fica por marcar e tenta-se de novo na execução seguinte.
@@ -31,6 +36,10 @@ const H72 = 72 * 3600 * 1000;
 const D5 = 5 * 86400000;
 const D7 = 7 * 86400000;
 const D30 = 30 * 86400000;
+// Desfecho: 45 dias dá tempo a um processo de inscrição real; 120 evita
+// perguntar a quem já nem se lembra do pedido.
+const D45 = 45 * 86400000;
+const D120 = 120 * 86400000;
 
 function escapeHtml(s) {
   return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c]);
@@ -229,6 +238,84 @@ Se ainda não tiveste resposta, não fiques à espera: no mapa podes ver creches
   };
 }
 
+// ── Email 4: desfecho da candidatura, aos 45 dias (quatro botões) ────────────
+// Mede o que interessa às famílias: conseguiste vaga? É diferente de "a creche
+// respondeu" — uma creche pode responder no próprio dia e na mesma estar cheia.
+// As respostas agregam por CONCELHO (ver api/lead-resultado.js).
+function resultadoToken(leadId, r) {
+  const key = (process.env.CRON_SECRET || "").trim();
+  return crypto.createHmac("sha256", key).update(`res:${leadId}:${r}`).digest("hex").slice(0, 12);
+}
+function resultadoUrl(leadId, r) {
+  return `https://creches.app/api/lead-resultado?id=${encodeURIComponent(leadId)}&r=${r}&t=${resultadoToken(leadId, r)}`;
+}
+
+function resultadoEmail(lead, leadId) {
+  const creche = escapeHtml(lead.creche_nome || "creche");
+  const nome = escapeHtml((lead.nome || "").split(" ")[0] || "");
+  const U = {
+    entrei: resultadoUrl(leadId, "entrei"),
+    espera: resultadoUrl(leadId, "espera"),
+    sem_vaga: resultadoUrl(leadId, "sem_vaga"),
+    desisti: resultadoUrl(leadId, "desisti")
+  };
+  const botao = (href, bg, cor, borda, txt) =>
+    `<tr><td style="padding:0 0 9px">
+       <a href="${escapeHtml(href)}" style="display:block;background:${bg};color:${cor};font-weight:bold;font-size:15px;text-decoration:none;padding:15px 14px;border-radius:14px;text-align:center;${borda}">${txt}</a>
+     </td></tr>`;
+  const html = `<!doctype html><html lang="pt-PT"><body style="margin:0;padding:0;background:#FFF6EE">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF6EE;padding:28px 12px">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(60,40,90,.1)">
+  <tr><td style="background:linear-gradient(135deg,#5EC0B7,#7DD389);padding:30px 32px 26px">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td style="vertical-align:middle"><img src="https://creches.app/icon-192.png" width="46" height="46" style="border-radius:12px;display:block" alt="Creches.app"></td>
+      <td style="vertical-align:middle;padding-left:12px"><span style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:20px;font-weight:bold;color:#fff">Creches.app</span></td>
+    </tr></table>
+    <div style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:22px;font-weight:bold;color:#fff;line-height:1.3;margin-top:18px">Como acabou a<br>vossa procura de creche?</div>
+  </td></tr>
+  <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
+    <p style="margin:0 0 16px">Olá${nome ? " " + nome : ""} 👋</p>
+    <p style="margin:0 0 16px">Passaram cerca de seis semanas desde que contactaste a <b>${creche}</b>. Conseguiste lugar?</p>
+    <p style="margin:0 0 20px">Um clique chega. Ninguém saberá que foste tu: usamos só o total por concelho, para mostrar a quem decide onde faltam creches a sério.</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+      ${botao(U.entrei,   "#7DD389", "#fff",    "", "🎉 Sim, entrou numa creche")}
+      ${botao(U.espera,   "#FFF1D6", "#8A6200", "border:1px solid #FFD9A0", "⏳ Estamos em lista de espera")}
+      ${botao(U.sem_vaga, "#FFE2EC", "#B4255C", "border:1px solid #FFC9DC", "😔 Não havia vaga")}
+      ${botao(U.desisti,  "#F3EFF7", "#6E6989", "border:1px solid #E7E0EF", "🔄 Desistimos ou escolhemos outra")}
+    </table>
+    <p style="margin:20px 0 0;font-size:13.5px;color:#6E6989">Se ainda estás à procura, no mapa podes filtrar por creches com vaga em <a href="https://creches.app/app" style="color:#B4255C">creches.app/app</a>.</p>
+    <p style="margin:16px 0 0;font-size:14px">— A equipa do creches.app</p>
+  </td></tr>
+  <tr><td style="padding:16px 32px 26px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#9B97B5;border-top:1px solid #F0ECF6">
+    Recebes este email porque pediste contacto a uma creche no creches.app. É o último email que te enviamos sobre este pedido. Os teus dados nunca são vendidos nem usados para publicidade.
+  </td></tr>
+</table>
+</td></tr></table>
+</body></html>`;
+  const text = `Olá ${lead.nome || ""},
+
+Passaram cerca de seis semanas desde que contactaste a ${lead.creche_nome || "creche"}. Conseguiste lugar?
+
+Um clique chega. Usamos só o total por concelho, para mostrar a quem decide onde faltam creches a sério.
+
+Sim, entrou numa creche: ${U.entrei}
+Estamos em lista de espera: ${U.espera}
+Não havia vaga: ${U.sem_vaga}
+Desistimos ou escolhemos outra: ${U.desisti}
+
+Se ainda estás à procura: https://creches.app/app
+
+— A equipa do creches.app`;
+  return {
+    from: FROM_EMAIL,
+    to: [lead.email],
+    reply_to: "geral@creches.app",
+    subject: "Conseguiram vaga na creche?",
+    html, text
+  };
+}
+
 export default async function handler(req, res) {
   try {
     if (!process.env.CRON_SECRET || (req.headers.authorization || "") !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -244,7 +331,7 @@ export default async function handler(req, res) {
     // Leads ainda por responder (o painel usa status: novo → contactado → fechado)
     const snap = await db.collection("creche_leads").where("status", "==", "novo").limit(500).get();
 
-    let enviados = 0, lembretesCreche = 0, alternativasPai = 0, followups = 0, recuperados = 0;
+    let enviados = 0, lembretesCreche = 0, alternativasPai = 0, followups = 0, recuperados = 0, resultados = 0;
     const mgrCache = new Map();  // creche_id → [emails] (evita queries repetidas)
     const jaEmailados = new Set();  // ids que já receberam email nesta execução
 
@@ -345,13 +432,37 @@ export default async function handler(req, res) {
         if (ok) {
           await d.ref.update({ followup_enviado: true });
           followups++;
+          jaEmailados.add(d.id);
+        }
+        enviados++;
+        await sleep(PAUSA_MS);
+      }
+
+      // ── 4) Desfecho "conseguiram vaga?": 45–120 dias, qualquer estado ──
+      // Fecha o circuito: até aqui sabíamos se a creche respondia, não se a
+      // família conseguia lugar. Reutiliza a mesma leitura (snapTodos).
+      for (const d of snapTodos.docs) {
+        if (enviados >= MAX_EMAILS) break;
+        if (jaEmailados.has(d.id)) continue;
+        const lead = d.data();
+        const ts = lead.ts && lead.ts.toMillis ? lead.ts.toMillis() : 0;
+        if (!ts) continue;
+        const idade = agora - ts;
+        if (idade <= D45 || idade >= D120) continue;
+        if (lead.resultado_enviado || lead.resultado || !lead.email) continue;
+
+        const ok = await enviarResend(resultadoEmail(lead, d.id));
+        if (ok) {
+          await d.ref.update({ resultado_enviado: true });
+          resultados++;
+          jaEmailados.add(d.id);
         }
         enviados++;
         await sleep(PAUSA_MS);
       }
     }
 
-    return res.status(200).json({ ok: true, recuperados, lembretes_creche: lembretesCreche, alternativas_pai: alternativasPai, followups });
+    return res.status(200).json({ ok: true, recuperados, lembretes_creche: lembretesCreche, alternativas_pai: alternativasPai, followups, resultados });
   } catch (e) {
     console.error("lead-reminders:", e);
     return res.status(500).json({ error: e.message });

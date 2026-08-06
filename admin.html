@@ -496,6 +496,10 @@ table tr:hover{background:rgba(255,243,214,.4)}
         As creches aderentes gerem o estado no painel delas — aqui vês tudo, incluindo creches <b>sem painel</b>, onde ninguém do outro lado responde.
       </p>
       <div id="lead-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
+
+      <!-- Funil ponta-a-ponta: os estados do painel são o que a creche DIZ;
+           isto é o que realmente aconteceu, segundo as famílias. -->
+      <div id="lead-funil" style="margin:0 0 18px"></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
         <label style="font-size:13px;font-weight:700">Ver:
           <select id="lead-filtro" style="font-family:inherit;padding:6px 10px;border-radius:8px;border:1.5px solid var(--line);margin-left:6px">
@@ -738,6 +742,98 @@ function renderLeadStats(){
     '<div class="mini-stat" style="background:#D9F2EF"><b>' + cont + '</b><span>📞 contactados</span></div>' +
     '<div class="mini-stat" style="background:#DEF5E1"><b>' + fech + '</b><span>✓ fechados</span></div>' +
     '<div class="mini-stat"><b>+' + semana + '</b><span>últimos 7 dias</span></div>';
+  renderLeadFunil();
+}
+
+// ── Funil ponta-a-ponta (Onda 40) ─────────────────────────────────────────────
+// Os estados do painel (novo/contactado/fechado) são a versão da CRECHE.
+// Este funil mostra o que aconteceu de facto, segundo as famílias:
+// pedido → creche avisada → creche respondeu → família conseguiu lugar.
+// Só conta leads com idade suficiente para já terem sido perguntados, senão a
+// taxa aparece artificialmente baixa só porque ainda não houve tempo.
+function renderLeadFunil(){
+  const host = $("lead-funil");
+  if(!host) return;
+  const agora = Date.now();
+  const D = 86400000;
+  const idade = l => (l.ts && l.ts.toMillis) ? (agora - l.ts.toMillis()) / D : null;
+
+  let total = 0, notificados = 0;
+  let elegivelResp = 0, respSim = 0, respNao = 0;
+  let elegivelRes = 0, resEntrei = 0, resEspera = 0, resSemVaga = 0, resDesisti = 0;
+
+  _leadsRows.forEach(l => {
+    total++;
+    if(l.notificado) notificados++;
+    const d = idade(l);
+    if(d != null && d >= 7){
+      elegivelResp++;
+      if(l.resposta_creche === "sim") respSim++;
+      else if(l.resposta_creche === "nao") respNao++;
+    }
+    if(d != null && d >= 45){
+      elegivelRes++;
+      if(l.resultado === "entrei") resEntrei++;
+      else if(l.resultado === "espera") resEspera++;
+      else if(l.resultado === "sem_vaga") resSemVaga++;
+      else if(l.resultado === "desisti") resDesisti++;
+    }
+  });
+
+  const respRespondidos = respSim + respNao;
+  const resRespondidos = resEntrei + resEspera + resSemVaga + resDesisti;
+  const pct = (a,b) => b > 0 ? Math.round(a / b * 100) : null;
+  const fmt = v => v == null ? "—" : v + "%";
+
+  const barra = (label, valor, de, cor, nota) => {
+    const p = pct(valor, de);
+    return '<div style="margin:0 0 11px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:4px">' +
+        '<span style="font-weight:700">' + label + '</span>' +
+        '<span style="color:var(--ink-soft)"><b style="color:var(--ink);font-size:15px">' + valor + '</b>' +
+          (de != null ? ' de ' + de + ' · <b style="color:' + cor + '">' + fmt(p) + '</b>' : '') + '</span>' +
+      '</div>' +
+      '<div style="height:9px;background:#F1ECF7;border-radius:99px;overflow:hidden">' +
+        '<div style="height:100%;width:' + (p || 0) + '%;background:' + cor + ';border-radius:99px"></div></div>' +
+      (nota ? '<div style="font-size:11.5px;color:var(--ink-soft);margin-top:3px">' + nota + '</div>' : '') +
+    '</div>';
+  };
+
+  let h = '<div style="background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px">' +
+    '<div style="font-weight:800;font-size:15px;margin-bottom:4px">🔎 O funil real</div>' +
+    '<div style="font-size:12px;color:var(--ink-soft);margin-bottom:14px">O que as famílias dizem que aconteceu — não o que a creche marcou no painel.</div>';
+
+  h += barra("Pedidos entregues à creche", notificados, total, "#5EC0B7",
+             notificados < total ? (total - notificados) + " ainda por notificar (ou falharam)" : "");
+
+  h += barra("Famílias que nos responderam ao «a creche respondeu?»", respRespondidos, elegivelResp, "#B197FC",
+             "só leads com 7+ dias · " + (elegivelResp - respRespondidos) + " sem resposta ao nosso email");
+
+  h += barra("Dessas, tiveram resposta da creche", respSim, respRespondidos, "#7DD389",
+             respNao ? respNao + " disseram que a creche nunca respondeu" : "");
+
+  h += '<div style="border-top:1px solid var(--line);margin:14px 0 12px"></div>';
+
+  h += barra("Famílias que nos disseram o desfecho", resRespondidos, elegivelRes, "#B197FC",
+             "só leads com 45+ dias");
+
+  if(resRespondidos){
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:10px">' +
+      '<div class="mini-stat" style="background:#DEF5E1"><b>' + resEntrei + '</b><span>🎉 entraram</span></div>' +
+      '<div class="mini-stat" style="background:#FFF1D6"><b>' + resEspera + '</b><span>⏳ lista de espera</span></div>' +
+      '<div class="mini-stat" style="background:#FFE2EC"><b>' + resSemVaga + '</b><span>😔 sem vaga</span></div>' +
+      '<div class="mini-stat"><b>' + resDesisti + '</b><span>🔄 desistiram</span></div>' +
+    '</div>' +
+    '<div style="font-size:12.5px;color:var(--ink-soft);margin-top:10px">' +
+      '<b style="color:var(--ink)">Taxa de sucesso: ' + fmt(pct(resEntrei, resRespondidos)) + '</b> ' +
+      'das famílias que nos responderam conseguiram lugar.</div>';
+  } else if(elegivelRes === 0){
+    h += '<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px">' +
+      'Ainda não há leads com 45+ dias — o email de desfecho começa a sair quando os houver.</div>';
+  }
+
+  h += '</div>';
+  host.innerHTML = h;
 }
 
 function renderLeads(){

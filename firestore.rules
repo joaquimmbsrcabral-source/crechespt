@@ -306,6 +306,18 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // ─── Desfecho das candidaturas por CONCELHO (Jul 2026) ───
+    // Agregado das respostas dos pais ao email "conseguiram vaga?"
+    // (api/lead-resultado). Doc id = concelho_slug; campos res_entrei /
+    // res_espera / res_sem_vaga / res_desisti / res_total.
+    // Deliberadamente ao concelho e não à creche: conseguir vaga depende da
+    // lotação, não da instituição. Sem dados pessoais — leitura pública para
+    // poder alimentar relatórios e mapas de pressão. Escrita só pelo Admin SDK.
+    match /concelho_stats/{slug} {
+      allow read:  if true;
+      allow write: if false;
+    }
+
     // ─── Creche Feliz Reports (Onda 32 — Jun 2026) ───
     // Pais e creches podem reportar adesão ao programa Creche Feliz.
     // Sem expiração (adesão é estável). Admin pode marcar valido=false

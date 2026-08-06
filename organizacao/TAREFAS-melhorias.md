@@ -38,6 +38,10 @@ Vai marcando `[x]` à medida que cada uma fica feita e publicada.
   Nome, email, telefone, nascimento e mês ficam guardados; a partir do 2.º pedido o formulário vem preenchido com um aviso discreto. A mensagem nunca é reaproveitada.
   *`perfil-creche.js`*
 
+- [x] **1.6b · Medir se os leads funcionam (funil ponta-a-ponta)** ★ NOVA ✅ *29/07*
+  Sabíamos se a creche respondia, não se a família conseguia vaga. Novo `api/lead-resultado.js` + bloco 4 no `lead-reminders.js`: aos 45 dias pergunta-se o desfecho com 4 botões (entrou · lista de espera · sem vaga · desistiu), token HMAC, uma resposta por lead. Agrega em `concelho_stats` — **por concelho, nunca por creche**, porque conseguir vaga depende da lotação e não da instituição. No `/admin` → Leads há agora o "funil real", que só conta leads com idade suficiente para já terem sido perguntados.
+  *`api/lead-resultado.js`, `api/lead-reminders.js`, `admin.html`, `firestore.rules`*
+
 - [ ] **1.7 · Modelos de resposta no painel** `#27` 🟢
   Três textos prontos: temos vaga · estamos cheios mas fico com o contacto · convido para visita.
   *Ficheiro: `painel.html`*
