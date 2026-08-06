@@ -104,6 +104,10 @@ Vai marcando `[x]` à medida que cada uma fica feita e publicada.
   Tarefa para o agente de enriquecimento semanal.
   *Ficheiros: agente de enriquecimento, `creches_pt.json`*
 
+- [ ] **2.9b · Integrar a Carta Social no dataset (nacional)** 🔴 ★ NOVA
+  Piloto AML feito a 29/07: 658 dos 814 equipamentos oficiais extraídos por freguesia (`scripts/carta_social_freguesias.py`), 214 cruzados por nome → 171 "JI" reclassificados para Creche/JI com fonte oficial. **Falta:** (a) as 444 creches oficiais da AML que não estão no mapa (`dados/creches-oficiais-em-falta-aml.json`) — precisam de morada/coordenadas para entrar; (b) as freguesias com >10 resultados (paginação JSF); (c) alargar aos restantes 260 concelhos. É a via para valência 0-3 confirmada a 100% e para os rácios de creche verdadeiros no relatório de imprensa.
+  *Ficheiros: `scripts/carta_social_freguesias.py`, `dados/carta-social-*.json`, agente de enriquecimento*
+
 - [ ] **2.10 · Fotos nas fichas estáticas** `#20` 🟡
   Hoje `/creche/{slug}` não tem uma única imagem. Mata a partilha em redes sociais.
   *Ficheiro: `scripts/gerar_fichas.py`*

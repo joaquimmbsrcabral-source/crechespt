@@ -296,6 +296,124 @@
    "data": "2026-07-29",
    "resultado": "email",
    "fonte": "amovalflor.org/#contact (email da área de educação)"
+  },
+  "osm-way-486651394": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "email não confirmado (cepe.cc defunto; diretórios sem email)"
+  },
+  "osm-way-537807519": {
+   "data": "2026-07-31",
+   "resultado": "email+site",
+   "fonte": "scmfamalicao.pt"
+  },
+  "osm-way-600460626": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "anossacasa.eu (site oficial)"
+  },
+  "osm-way-631684850": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "empresa inativa (Iberinform); sem contactos online"
+  },
+  "osm-way-798829089": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "jardimdassementinhas.pt / viseupositivo.pt"
+  },
+  "osm-way-917216509": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "site oficial JS sem email; diretórios sem confirmação"
+  },
+  "osm-way-1008790822": {
+   "data": "2026-07-31",
+   "resultado": "telefone",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1039141139": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "brincadeirasaocubo.com (site oficial)"
+  },
+  "osm-way-1161540326": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "diretórios sem email"
+  },
+  "osm-way-1212021379": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "pai.pt (morada coincide)"
+  },
+  "osm-way-1272028803": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "site oficial JS sem email visível"
+  },
+  "osm-way-1276615463": {
+   "data": "2026-07-31",
+   "resultado": "email+site",
+   "fonte": "oficinadossonhos.pt"
+  },
+  "osm-way-430995350": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cspcr.com (site oficial)"
+  },
+  "osm-way-533599556": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmav.org.pt (site oficial SCM Alhos Vedros)"
+  },
+  "osm-way-694016333": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cse.pt + diretórios"
+  },
+  "osm-way-722393384": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmalenquer.pt/contactos (site oficial)"
+  },
+  "osm-way-734291367": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmconstancia.pt (site oficial)"
+  },
+  "osm-way-761579568": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cspb.pt (site oficial)"
+  },
+  "osm-way-872715645": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "diretórios + domínio oficial scmbjm.pt"
+  },
+  "osm-way-1272888822": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "assap.pt (site oficial)"
+  },
+  "osm-way-1279769525": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "infantarios.pt + Facebook oficial"
+  },
+  "osm-way-1279788477": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "infantarios.pt (nome+morada coincidem)"
+  },
+  "osm-way-665340807": {
+   "data": "2026-08-06",
+   "resultado": "nada"
+  },
+  "osm-way-1279769545": {
+   "data": "2026-08-06",
+   "resultado": "nada"
   }
  }
 }

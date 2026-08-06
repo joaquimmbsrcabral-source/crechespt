@@ -1,0 +1,4270 @@
+{
+ "concelhos": {
+  "alcochete": {
+   "freguesias": [
+    {
+     "dicofre": "150201",
+     "freguesia": "Alcochete",
+     "equipamentos": 5,
+     "capacidade": 319,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150202",
+     "freguesia": "Samouco",
+     "equipamentos": 1,
+     "capacidade": 35,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150203",
+     "freguesia": "São Francisco",
+     "equipamentos": 2,
+     "capacidade": 79,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "3419",
+     "nome": "JARDIM DE INFÂNCIA FUNDAÇÃO JOÃO GONÇALVES JÚNIOR Alcochete",
+     "freguesia": "Alcochete"
+    },
+    {
+     "id": "22836",
+     "nome": "PLANETA BRILHANTE Alcochete",
+     "freguesia": "Alcochete"
+    },
+    {
+     "id": "24613",
+     "nome": "COLÉGIO DA ALAMEDA Alcochete",
+     "freguesia": "Alcochete"
+    },
+    {
+     "id": "28621",
+     "nome": "COLÉGIO QUINTA DO CONCELHO Alcochete",
+     "freguesia": "Alcochete"
+    },
+    {
+     "id": "38837",
+     "nome": "COLÉGIO DA VILLA Alcochete",
+     "freguesia": "Alcochete"
+    },
+    {
+     "id": "3424",
+     "nome": "CENSA - CENTRO SOCIAL SÃO BRÁS DO SAMOUCO Samouco",
+     "freguesia": "Samouco"
+    },
+    {
+     "id": "24612",
+     "nome": "CRECHE O MUNDO DAS CORES São Francisco",
+     "freguesia": "São Francisco"
+    },
+    {
+     "id": "29020",
+     "nome": "COLÉGIO PENAS REAL ALCOCHETE São Francisco",
+     "freguesia": "São Francisco"
+    }
+   ]
+  },
+  "moita": {
+   "freguesias": [
+    {
+     "dicofre": "150601",
+     "freguesia": "Alhos Vedros",
+     "equipamentos": 2,
+     "capacidade": 166,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150603",
+     "freguesia": "Moita",
+     "equipamentos": 5,
+     "capacidade": 369,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150607",
+     "freguesia": "União das freguesias de Baixa da Banheira e Vale da Amoreira",
+     "equipamentos": 4,
+     "capacidade": 142,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150608",
+     "freguesia": "União das freguesias de Gaio-Rosário e Sarilhos Pequenos",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "2348",
+     "nome": "CRECHE JARDIM DE INFANCIA E CATL O CHARLOT Alhos Vedros",
+     "freguesia": "Alhos Vedros"
+    },
+    {
+     "id": "21643",
+     "nome": "CRECHE JARDIM DE INFÂNCIA E CATL O VARINO Alhos Vedros",
+     "freguesia": "Alhos Vedros"
+    },
+    {
+     "id": "24618",
+     "nome": "OS BEICINHAS Moita",
+     "freguesia": "Moita"
+    },
+    {
+     "id": "26881",
+     "nome": "CRECHE \"O REGAÇO\" Moita",
+     "freguesia": "Moita"
+    },
+    {
+     "id": "26939",
+     "nome": "COLÉGIO FRAGATA Moita",
+     "freguesia": "Moita"
+    },
+    {
+     "id": "27688",
+     "nome": "COLÉGIO CORTE REAL - EDIFÍCIO TEJO Moita",
+     "freguesia": "Moita"
+    },
+    {
+     "id": "38755",
+     "nome": "COLÉGIO CORTE REAL - CRECHE SADO Moita",
+     "freguesia": "Moita"
+    },
+    {
+     "id": "2358",
+     "nome": "ESPAÇO EDUCATIVO DA BAIXA DA BANHEIRA - A VOZ DO OPERÁRIO União das freguesias de Baixa da Banheira e Vale da Amoreira",
+     "freguesia": "União das freguesias de Baixa da Banheira e Vale da Amoreira"
+    },
+    {
+     "id": "2361",
+     "nome": "CENTRO DE CONVÍVIO DOS REFORMADOS E IDOSOS DA VILA DA BAIXA DA BANHEIRA União das freguesias de Baixa da Banheira e Vale da Amoreira",
+     "freguesia": "União das freguesias de Baixa da Banheira e Vale da Amoreira"
+    },
+    {
+     "id": "4847",
+     "nome": "O PAPAGAIO CRECHE E JARDIM DE INFÂNCIA, LDA União das freguesias de Baixa da Banheira e Vale da Amoreira",
+     "freguesia": "União das freguesias de Baixa da Banheira e Vale da Amoreira"
+    },
+    {
+     "id": "24535",
+     "nome": "OS AMIGOS DO CANTINHO União das freguesias de Baixa da Banheira e Vale da Amoreira",
+     "freguesia": "União das freguesias de Baixa da Banheira e Vale da Amoreira"
+    }
+   ]
+  },
+  "montijo": {
+   "freguesias": [
+    {
+     "dicofre": "150701",
+     "freguesia": "Canha",
+     "equipamentos": 1,
+     "capacidade": 24,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150704",
+     "freguesia": "Sarilhos Grandes",
+     "equipamentos": 1,
+     "capacidade": 40,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150709",
+     "freguesia": "União das freguesias de Atalaia e Alto Estanqueiro-Jardia",
+     "equipamentos": 3,
+     "capacidade": 146,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150710",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro",
+     "equipamentos": 12,
+     "capacidade": 595,
+     "incompleto": true
+    },
+    {
+     "dicofre": "150711",
+     "freguesia": "União das freguesias de Pegões",
+     "equipamentos": 2,
+     "capacidade": 60,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "3420",
+     "nome": "CASA DO POVO DE CANHA Canha",
+     "freguesia": "Canha"
+    },
+    {
+     "id": "3461",
+     "nome": "CENTRO DE INFÂNCIA DE S.JORGE Sarilhos Grandes",
+     "freguesia": "Sarilhos Grandes"
+    },
+    {
+     "id": "24231",
+     "nome": "CRECHE DE NOSSA SENHORA DA ATALAIA União das freguesias de Atalaia e Alto-Estanqueiro-Jardia",
+     "freguesia": "União das freguesias de Atalaia e Alto Estanqueiro-Jardia"
+    },
+    {
+     "id": "25140",
+     "nome": "COLÉGIO ATALAIA JARDIM União das freguesias de Atalaia e Alto-Estanqueiro-Jardia",
+     "freguesia": "União das freguesias de Atalaia e Alto Estanqueiro-Jardia"
+    },
+    {
+     "id": "25615",
+     "nome": "ESCOLINHA DE NOSSA SENHORA DA ATALAIA União das freguesias de Atalaia e Alto-Estanqueiro-Jardia",
+     "freguesia": "União das freguesias de Atalaia e Alto Estanqueiro-Jardia"
+    },
+    {
+     "id": "3428",
+     "nome": "INFANTÁRIO BAIRRO DO MOUCO União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "3450",
+     "nome": "JARDIM DE INFÂNCIA \"O GIRASSOL\" União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "3457",
+     "nome": "ASSOCIAÇÃO CAMINHO DO BEM FAZER União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "3460",
+     "nome": "CENTRO DE INFÂNCIA RAINHA ST. ISABEL União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "15116",
+     "nome": "CENTRO INFANTIL ANTÓNIO MARQUES União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "15123",
+     "nome": "JARDIM DE INFÂNCIA O PAPAGAIO União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "24355",
+     "nome": "ALDEIA DA PEQUENADA União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "24621",
+     "nome": "CANTINHO DAS DESCOBERTAS União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "27126",
+     "nome": "MINIMILKIES União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "29161",
+     "nome": "COLÉGIO ARCO-ÍRIS E OS SEUS TESOURINHOS União das freguesias de Montijo e Afonsoeiro",
+     "freguesia": "União das freguesias de Montijo e Afonsoeiro"
+    },
+    {
+     "id": "3463",
+     "nome": "CENTRO ACÇÃO SOCIAL CULTURAL DAS FAIAS União das freguesias de Pegões",
+     "freguesia": "União das freguesias de Pegões"
+    },
+    {
+     "id": "32862",
+     "nome": "ALIPIKENOS - PEGÕES União das freguesias de Pegões",
+     "freguesia": "União das freguesias de Pegões"
+    }
+   ]
+  },
+  "palmela": {
+   "freguesias": [
+    {
+     "dicofre": "150802",
+     "freguesia": "Palmela",
+     "equipamentos": 3,
+     "capacidade": 170,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150803",
+     "freguesia": "Pinhal Novo",
+     "equipamentos": 6,
+     "capacidade": 331,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150804",
+     "freguesia": "Quinta do Anjo",
+     "equipamentos": 1,
+     "capacidade": 78,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150806",
+     "freguesia": "União das freguesias de Poceirão e Marateca",
+     "equipamentos": 3,
+     "capacidade": 70,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "2390",
+     "nome": "A ÁRVORE Palmela",
+     "freguesia": "Palmela"
+    },
+    {
+     "id": "29679",
+     "nome": "ST. PETERS INTERNATIONAL SCHOOL Palmela",
+     "freguesia": "Palmela"
+    },
+    {
+     "id": "34295",
+     "nome": "COLÉGIO AIRES REAL Palmela",
+     "freguesia": "Palmela"
+    },
+    {
+     "id": "2380",
+     "nome": "JARDIM DE INFÂNCIA CENTRO SOCIAL PAROQUIAL DE PINHAL NOVO Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "2388",
+     "nome": "SEDE - FUNDAÇÃO COI - PINHAL NOVO Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "24673",
+     "nome": "CRECHE-VILA BELA-PINHAL NOVO Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "26738",
+     "nome": "NINHO DO SOL BERCÁRIO E CRECHE Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "27030",
+     "nome": "CRECHE CRESCER NO CAMPO Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "36534",
+     "nome": "INFANTÁRIO CANTINHO DOS SONHOS Pinhal Novo",
+     "freguesia": "Pinhal Novo"
+    },
+    {
+     "id": "4855",
+     "nome": "JARDIM DE INFÂNCIA DO CENTRO SOCIAL DA QUINTA DO ANJO Quinta do Anjo",
+     "freguesia": "Quinta do Anjo"
+    },
+    {
+     "id": "2320",
+     "nome": "CENTRO SOCIAL EM LAGAMEÇAS União das freguesias de Poceirão e Marateca",
+     "freguesia": "União das freguesias de Poceirão e Marateca"
+    },
+    {
+     "id": "2341",
+     "nome": "JARDIM DE INFÂNCIA UNIÃO SOCIAL SOL CRESCENTE DA MARATECA União das freguesias de Poceirão e Marateca",
+     "freguesia": "União das freguesias de Poceirão e Marateca"
+    },
+    {
+     "id": "2392",
+     "nome": "A CEGONHA União das freguesias de Poceirão e Marateca",
+     "freguesia": "União das freguesias de Poceirão e Marateca"
+    }
+   ]
+  },
+  "sesimbra": {
+   "freguesias": [
+    {
+     "dicofre": "151103",
+     "freguesia": "Quinta do Conde",
+     "equipamentos": 6,
+     "capacidade": 259,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151101",
+     "freguesia": "Sesimbra (Castelo)",
+     "equipamentos": 5,
+     "capacidade": 263,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151102",
+     "freguesia": "Sesimbra (Santiago)",
+     "equipamentos": 1,
+     "capacidade": 84,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "2334",
+     "nome": "CENTRO COMUNITÁRIO DA QUINTA DO CONDE - CENTRO INFANTIL Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "24358",
+     "nome": "ESCOLINHA TOKABRINKAR Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "26708",
+     "nome": "CRECHE E PRÉ-ESCOLAR DA LIGA DOS AMIGOS DA QUINTA DO CONDE Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "26941",
+     "nome": "O RECANTO DOS NENUCOS Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "27687",
+     "nome": "INFANTÁRIO OS CATITAS Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "29805",
+     "nome": "COLÉGIO PIANO MÁGICO Quinta do Conde",
+     "freguesia": "Quinta do Conde"
+    },
+    {
+     "id": "2377",
+     "nome": "CRECHE E PRÉ ESCOLAR - CASCUZ - CENTRO DE APOIO SÓCIO-CULTURAL UNIDADE ZAMBUJALENSE Sesimbra (Castelo)",
+     "freguesia": "Sesimbra (Castelo)"
+    },
+    {
+     "id": "2399",
+     "nome": "CENTRO PAROQUIAL DE BEM ESTAR SOCIAL DO CASTELO DE SESIMBRA Sesimbra (Castelo)",
+     "freguesia": "Sesimbra (Castelo)"
+    },
+    {
+     "id": "4841",
+     "nome": "UNIDADE INTEGRADA DE ATENDIMENTO À INFÂNCIA Sesimbra (Castelo)",
+     "freguesia": "Sesimbra (Castelo)"
+    },
+    {
+     "id": "22453",
+     "nome": "COLÉGIO EDUCA A BRINCAR Sesimbra (Castelo)",
+     "freguesia": "Sesimbra (Castelo)"
+    },
+    {
+     "id": "29154",
+     "nome": "ASSOCIAÇÃO TOM DA TERRA - ECO ESCOLA Sesimbra (Castelo)",
+     "freguesia": "Sesimbra (Castelo)"
+    },
+    {
+     "id": "17204",
+     "nome": "EXTERNATO SANTA JOANA - CRECHE Sesimbra (Santiago)",
+     "freguesia": "Sesimbra (Santiago)"
+    }
+   ]
+  },
+  "barreiro": {
+   "freguesias": [
+    {
+     "dicofre": "150407",
+     "freguesia": "Santo António da Charneca",
+     "equipamentos": 5,
+     "capacidade": 226,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150409",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "equipamentos": 5,
+     "capacidade": 286,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150410",
+     "freguesia": "União das freguesias de Barreiro e Lavradio",
+     "equipamentos": 10,
+     "capacidade": 560,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150411",
+     "freguesia": "União das freguesias de Palhais e Coina",
+     "equipamentos": 5,
+     "capacidade": 264,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "17357",
+     "nome": "CANTO ALEGRE INFANTÁRIO Santo António da Charneca",
+     "freguesia": "Santo António da Charneca"
+    },
+    {
+     "id": "27689",
+     "nome": "COLÉGIO OFICINA DOS SONHOS Santo António da Charneca",
+     "freguesia": "Santo António da Charneca"
+    },
+    {
+     "id": "28619",
+     "nome": "DOCE CHUPETA Santo António da Charneca",
+     "freguesia": "Santo António da Charneca"
+    },
+    {
+     "id": "32872",
+     "nome": "FRASES DE ENCANTAR Santo António da Charneca",
+     "freguesia": "Santo António da Charneca"
+    },
+    {
+     "id": "36657",
+     "nome": "COLÉGIO QUINTA DO VISCONDE Santo António da Charneca",
+     "freguesia": "Santo António da Charneca"
+    },
+    {
+     "id": "2294",
+     "nome": "O COMBOIO União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena"
+    },
+    {
+     "id": "6188",
+     "nome": "CENTRO SOCIAL E PAROQUIAL SANTO ANDRÉ União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena"
+    },
+    {
+     "id": "23211",
+     "nome": "CANTINHO ALEGRE DA INFÂNCIA - CAI União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena"
+    },
+    {
+     "id": "37920",
+     "nome": "COLÉGIO MINERVA - AVENTURA DO SABER União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena"
+    },
+    {
+     "id": "37922",
+     "nome": "RUMO KIDS União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+     "freguesia": "União das freguesias de Alto do Seixalinho, Santo André e Verderena"
+    },
+    {
+     "id": "3549",
+     "nome": "ESPAÇO EDUCATIVO DO LAVRADIO - A VOZ DO OPERÁRIO União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "17132",
+     "nome": "NÓS - ASSOCIAÇÃO DE PAIS E TÉCNICOS PARA A INTEGRAÇÃO DO DEFICIENTE União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "22466",
+     "nome": "JARDIM INFANTIL XICORAÇÃO União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "23284",
+     "nome": "SDUB - EXTERNATO \"O INÍCIO\" União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "24353",
+     "nome": "O REFÚGIO DOS FIDALGUINHOS - BARREIRO União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "24354",
+     "nome": "BEBÉS FIDALGOS, LDA. União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "24536",
+     "nome": "JARDIM DOS PRÍNCIPES União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "25142",
+     "nome": "COMPANHIA DO BÉBÉ União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "32885",
+     "nome": "RECREIO DAS GARGALHADAS União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "37921",
+     "nome": "VENTOS TRAQUINAS União das freguesias de Barreiro e Lavradio",
+     "freguesia": "União das freguesias de Barreiro e Lavradio"
+    },
+    {
+     "id": "2305",
+     "nome": "CENTRO COMUNITÁRIO DE COINA União das freguesias de Palhais e Coina",
+     "freguesia": "União das freguesias de Palhais e Coina"
+    },
+    {
+     "id": "22465",
+     "nome": "CRECHE BRINCADEIRAS AO CUBO União das freguesias de Palhais e Coina",
+     "freguesia": "União das freguesias de Palhais e Coina"
+    },
+    {
+     "id": "25391",
+     "nome": "EQUIPAMENTO CRECHE E PRÉ-ESCOLAR DO CATICA União das freguesias de Palhais e Coina",
+     "freguesia": "União das freguesias de Palhais e Coina"
+    },
+    {
+     "id": "25611",
+     "nome": "CENTRO DE ACÇÃO SOCIAL DE PALHAIS II União das freguesias de Palhais e Coina",
+     "freguesia": "União das freguesias de Palhais e Coina"
+    },
+    {
+     "id": "25791",
+     "nome": "CRECHE RAINHA D. LEONOR União das freguesias de Palhais e Coina",
+     "freguesia": "União das freguesias de Palhais e Coina"
+    }
+   ]
+  },
+  "seixal": {
+   "freguesias": [
+    {
+     "dicofre": "151002",
+     "freguesia": "Amora",
+     "equipamentos": 9,
+     "capacidade": 410,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151008",
+     "freguesia": "Arrentela",
+     "equipamentos": 41,
+     "capacidade": 1898,
+     "incompleto": true
+    },
+    {
+     "dicofre": "151005",
+     "freguesia": "Corroios",
+     "equipamentos": 11,
+     "capacidade": 573,
+     "incompleto": true
+    },
+    {
+     "dicofre": "151006",
+     "freguesia": "Fernão Ferro",
+     "equipamentos": 6,
+     "capacidade": 335,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151009",
+     "freguesia": "Paio Pires",
+     "equipamentos": 41,
+     "capacidade": 1898,
+     "incompleto": true
+    },
+    {
+     "dicofre": "151010",
+     "freguesia": "Seixal",
+     "equipamentos": 41,
+     "capacidade": 1898,
+     "incompleto": true
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "1595",
+     "nome": "COLÉGIO ESPAÇO JÚNIOR, LDA Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "3554",
+     "nome": "CASINHA DAS SURPRESAS - CRECHE E JARDIM DE INFÂNCIA, LDA Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "3600",
+     "nome": "CENTRO ASSISTÊNCIA PAROQUIAL DE AMORA \" PATRONATO \" Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "4833",
+     "nome": "INFANTÁRIO SOL DA PRIMAVERA Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "15171",
+     "nome": "CENTRO COMUNITÁRIO DA CRIAR-T Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "24443",
+     "nome": "PARQUE DOS SORRISOS - FOROS DE AMORA Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "27056",
+     "nome": "COLÉGIO WOOGUI BOOGUI Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "31863",
+     "nome": "CENTRO ASSISTÊNCIA PAROQUIAL DE AMORA - CRECHE O CARACOL Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "32860",
+     "nome": "CRECHE SOCIAL BALEIA AMARELA Amora",
+     "freguesia": "Amora"
+    },
+    {
+     "id": "2597",
+     "nome": "COLÉGIO - O CANTINHO DOS AMIGOS União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "3560",
+     "nome": "CENTRO SOCIAL PAROQUIAL DA SAGRADA FAMÍLIA DE MIRATEJO E LARANJEIRO Corroios",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "4802",
+     "nome": "JARDIM DE INFÂNCIA - O PICA-PAU União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "4817",
+     "nome": "O PEQUENO POLEGAR - BERÇÁRIO E CRECHE, LDA União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "4823",
+     "nome": "EXTERNATO ROSARINHO União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "4826",
+     "nome": "EXTERNATO O MARUJINHO União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "4827",
+     "nome": "COLÉGIO ATLÂNTICO União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+     "freguesia": "Arrentela"
+    },
+    {
+     "id": "18133",
+     "nome": "JARDIM DO PINHAL Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "22442",
+     "nome": "BRINCOLÂNDIA Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "22443",
+     "nome": "DÓ-RÉ-MI II Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "22444",
+     "nome": "IMAGINÁRIO, COLÉGIO INFANTIL,LDA. Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "22463",
+     "nome": "COLÉGIO O GAITINHAS Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "22838",
+     "nome": "NOTA EXEMPLAR INFANTES Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "25120",
+     "nome": "CRECHE MÃOS DADAS Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "26034",
+     "nome": "CRECHE DE SANTA TERESINHA Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "33469",
+     "nome": "COLÉGIO CANTINHO DOS TRAQUINAS Corroios",
+     "freguesia": "Corroios"
+    },
+    {
+     "id": "15092",
+     "nome": "CENTRO PAROQUIAL DE BEM ESTAR SOCIAL DE FERNÃO FERRO- CRECHE Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    },
+    {
+     "id": "22447",
+     "nome": "EXTERNATO A CASINHA MÁGICA Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    },
+    {
+     "id": "24431",
+     "nome": "JARDIM DE INFÂNCIA QUINTA ALEGRE Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    },
+    {
+     "id": "24439",
+     "nome": "COLEGIO VILLALEGRE Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    },
+    {
+     "id": "24659",
+     "nome": "JARDIM DE INFÂNCIA O NOSSO JARDIM Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    },
+    {
+     "id": "32859",
+     "nome": "ESCOLA BEBÉ A BORDO - BERÇÁRIO, CRECHE E PRÉ-ESCOLAR Fernão Ferro",
+     "freguesia": "Fernão Ferro"
+    }
+   ]
+  },
+  "setubal": {
+   "freguesias": [
+    {
+     "dicofre": "151207",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra",
+     "equipamentos": 7,
+     "capacidade": 288,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151208",
+     "freguesia": "Sado",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151205",
+     "freguesia": "Setúbal (São Sebastião)",
+     "equipamentos": 17,
+     "capacidade": 679,
+     "incompleto": true
+    },
+    {
+     "dicofre": "151209",
+     "freguesia": "União das freguesias de Azeitão (São Lourenço e São Simão)",
+     "equipamentos": 4,
+     "capacidade": 273,
+     "incompleto": false
+    },
+    {
+     "dicofre": "151210",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "equipamentos": 12,
+     "capacidade": 625,
+     "incompleto": true
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "25118",
+     "nome": "VIVA KIDS Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "26151",
+     "nome": "JARDIM DE INFÂNCIA A ESCOLINHA DA QUINTA Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "27091",
+     "nome": "INFANTÁRIO OS PITINHOS II - CRECHE E JI Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "27447",
+     "nome": "EDIFÍCIO VOAR MAIS ALTO Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "28337",
+     "nome": "ASSISTENCIA SOCIAL ADVENTISTA Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "29678",
+     "nome": "COLÉGIO SÃO CRISTÓVÃO Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "36715",
+     "nome": "INFANTÁRIO OS PITINHOS II - BERÇÁRIO E CRECHE Gâmbia-Pontes-Alto da Guerra",
+     "freguesia": "Gâmbia-Pontes-Alto da Guerra"
+    },
+    {
+     "id": "1590",
+     "nome": "O CÔCO INFANTÁRIO Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "2338",
+     "nome": "JARDIM DE INFÂNCIA \"OS PIRILAMPOS\" Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "3586",
+     "nome": "CENTRO INFANTIL SETÚBAL - O NINHO Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "5528",
+     "nome": "SEDE YMCA SETÚBAL Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "5543",
+     "nome": "CRECHE \"O SONHO\" Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "5551",
+     "nome": "CRECHE \"JOANINHA\" Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "5974",
+     "nome": "INFANTÁRIO OS PINHEIRINHOS Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "15126",
+     "nome": "CRECHE CENTRO INFANTIL QUINTA NOVA Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "15130",
+     "nome": "CENTRO COMUNITÁRIO DU BOCAGE Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "17228",
+     "nome": "CENTRO SOCIAL Nª SRª DA PAZ Setúbal (São Sebastião)",
+     "freguesia": "Setúbal (São Sebastião)"
+    },
+    {
+     "id": "2396",
+     "nome": "CENTRO INFANTIL SEBASTIÃO DA GAMA DA CASA DO POVO DE AZEITÃO União das freguesias de Azeitão (São Lourenço e São Simão)",
+     "freguesia": "União das freguesias de Azeitão (São Lourenço e São Simão)"
+    },
+    {
+     "id": "25141",
+     "nome": "COLÉGIO DAS FAIAS União das freguesias de Azeitão (São Lourenço e São Simão)",
+     "freguesia": "União das freguesias de Azeitão (São Lourenço e São Simão)"
+    },
+    {
+     "id": "27057",
+     "nome": "ESCOLINHA DO CAMPO União das freguesias de Azeitão (São Lourenço e São Simão)",
+     "freguesia": "União das freguesias de Azeitão (São Lourenço e São Simão)"
+    },
+    {
+     "id": "39240",
+     "nome": "COLÉGIO DAS FAIAS - CASAS DE AZEITÃO União das freguesias de Azeitão (São Lourenço e São Simão)",
+     "freguesia": "União das freguesias de Azeitão (São Lourenço e São Simão)"
+    },
+    {
+     "id": "2369",
+     "nome": "CRECHE YMCA União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "3582",
+     "nome": "JARDIM DE INFÂNCIA AQUÁRIO União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "3583",
+     "nome": "JARDIM DE INFÂNCIA NUVEM União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "5532",
+     "nome": "ASSOCIAÇÃO SETUBALENSE DE APOIO SOCIAL União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "5538",
+     "nome": "JARDIM DE INFÂNCIA O GIRASSOL União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "17206",
+     "nome": "CRECHE DE SANTA MARIA União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "23932",
+     "nome": "CRECHE DO BAIRRO LICEU União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "25195",
+     "nome": "COLÉGIO DO CENTEIO União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "27446",
+     "nome": "SORRISO MAROTO União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    },
+    {
+     "id": "27448",
+     "nome": "BERÇÁRIO E CRECHE \"A COLINA\" União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+     "freguesia": "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)"
+    }
+   ]
+  },
+  "almada": {
+   "freguesias": [
+    {
+     "dicofre": "150303",
+     "freguesia": "Costa da Caparica",
+     "equipamentos": 3,
+     "capacidade": 172,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150312",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "equipamentos": 16,
+     "capacidade": 654,
+     "incompleto": true
+    },
+    {
+     "dicofre": "150313",
+     "freguesia": "União das freguesias de Caparica e Trafaria",
+     "equipamentos": 6,
+     "capacidade": 460,
+     "incompleto": false
+    },
+    {
+     "dicofre": "150314",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda",
+     "equipamentos": 16,
+     "capacidade": 969,
+     "incompleto": true
+    },
+    {
+     "dicofre": "150315",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó",
+     "equipamentos": 9,
+     "capacidade": 541,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "1600",
+     "nome": "CENTRO INFANTIL PADRE BALTAZAR Costa da Caparica",
+     "freguesia": "Costa da Caparica"
+    },
+    {
+     "id": "4807",
+     "nome": "FUNDAÇÃO ARCELINA VICTOR DOS SANTOS Costa da Caparica",
+     "freguesia": "Costa da Caparica"
+    },
+    {
+     "id": "4828",
+     "nome": "EQUIP SOC DO CENTRO SOCIAL E PAROQUIAL NOSSA SENHORA DA CONCEIÇÃO DA COSTA DA CAPARICA Costa da Caparica",
+     "freguesia": "Costa da Caparica"
+    },
+    {
+     "id": "3435",
+     "nome": "MINI CRECHE \"O FUTURO\" União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3440",
+     "nome": "CRECHE JARDIM DE INFÂNCIA DO PRAGAL União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3441",
+     "nome": "CRECHE JARDIM DE INFÂNCIA LIBERDADE União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3442",
+     "nome": "CRECHE JARDIM DE INFÂNCIA PÃO DE AÇÚCAR União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3443",
+     "nome": "CRECHE JARDIM DE INFÂNCIA CASTELO União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3444",
+     "nome": "CRECHE JARDIM DE INFÂNCIA 25 DE ABRIL União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "3459",
+     "nome": "EQUIPAMENTO DO BAIRRO União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "4816",
+     "nome": "PÁTIO DA BRINCADEIRA - ACTIVIDADES EDUCATIVAS União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "15091",
+     "nome": "INFANTÁRIO O MESTRE CUCO União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "17262",
+     "nome": "CRECHE DO CENTRO SOCIAL PAROQUIAL DE ALMADA União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+     "freguesia": "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas"
+    },
+    {
+     "id": "1599",
+     "nome": "CENTRO INFANTIL DA TRAFARIA União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "3412",
+     "nome": "CENTRO SOCIAL PAROQUIAL CRISTO REI União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "4805",
+     "nome": "CRECHE POPULAR DO MONTE DA CAPARICA União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "17356",
+     "nome": "CENTRO DE EDUCAÇÃO PRÉ-ESCOLAR (CEPE) - SASNOVA União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "20022",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE VILA NOVA DA CAPARICA União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "27280",
+     "nome": "CENTRO INTEGRADO ARCO-IRIS União das freguesias de Caparica e Trafaria",
+     "freguesia": "União das freguesias de Caparica e Trafaria"
+    },
+    {
+     "id": "3598",
+     "nome": "JARDIM INFANTIL COALA União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "4815",
+     "nome": "EXTERNATO OS GRILINHOS, LDA União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "4820",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE VALE FIGUEIRA União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "22454",
+     "nome": "INFANTÁRIO MENINOS RABINOS União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "25121",
+     "nome": "EXTERNATO RAINHA SANTA União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "26238",
+     "nome": "COLÉGIO UM DÓ LI TÁ União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "27281",
+     "nome": "COMPLEXO A CASINHA União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "28364",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA O CUBO MÁGICO União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "29639",
+     "nome": "JARDIM ESCOLA VALE ROSAL União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "29686",
+     "nome": "JARDIM DE INFÂNCIA BEM-ME-QUER União das freguesias de Charneca de Caparica e Sobreda",
+     "freguesia": "União das freguesias de Charneca de Caparica e Sobreda"
+    },
+    {
+     "id": "2580",
+     "nome": "ESPAÇO EDUCATIVO DO LARANJEIRO - A VOZ DO OPERÁRIO União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "3422",
+     "nome": "CENTRO COMUNITÁRIO DE PROMOÇÃO SOCIAL DO LARANJEIRO E FEIJÓ União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "17117",
+     "nome": "CENTRO COMUNITÁRIO DA COVA DA PIEDADE/LARANJEIRO União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "17119",
+     "nome": "CENTRO COMUNITÁRIO RENASCER União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "17854",
+     "nome": "JARDIM DE INFÂNCIA \"OS DOIS PATINHOS\" União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "22471",
+     "nome": "ERA UMA VEZ...1,2,3 União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "22472",
+     "nome": "O CANTINHO DA BRINCADEIRA União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "26601",
+     "nome": "CENTRO SOCIOCULTURAL DE SANTO ANTÓNIO União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    },
+    {
+     "id": "37985",
+     "nome": "EXTERNATO TIM TIM - CRECHE União das freguesias de Laranjeiro e Feijó",
+     "freguesia": "União das freguesias de Laranjeiro e Feijó"
+    }
+   ]
+  },
+  "amadora": {
+   "freguesias": [
+    {
+     "dicofre": "111513",
+     "freguesia": "Águas Livres",
+     "equipamentos": 8,
+     "capacidade": 384,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111512",
+     "freguesia": "Alfragide",
+     "equipamentos": 13,
+     "capacidade": 645,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111514",
+     "freguesia": "Encosta do Sol",
+     "equipamentos": 5,
+     "capacidade": 285,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111515",
+     "freguesia": "Falagueira-Venda Nova",
+     "equipamentos": 5,
+     "capacidade": 183,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111516",
+     "freguesia": "Mina de Água",
+     "equipamentos": 11,
+     "capacidade": 534,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111517",
+     "freguesia": "Venteira",
+     "equipamentos": 1,
+     "capacidade": 74,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "5459",
+     "nome": "INFANTÁRIO DO EXTERNATO CINDERELA ALPEDRINHA Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "5574",
+     "nome": "CRECHE DO EXTERNATO MODELO Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "5835",
+     "nome": "CASAL POPULAR DA DAMAIA Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "5845",
+     "nome": "JARDIM DE INFÂNCIA JULIETA PIMENTA Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "20403",
+     "nome": "CENTRO INFANTIL DE SÃO GERARDO Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "20426",
+     "nome": "CRECHE \"A ÁRVORE\" Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "26266",
+     "nome": "CRECHE DA ATALAIA Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "29591",
+     "nome": "ASSOCIAÇÃO DOS AMIGOS DA DAMAIA Águas Livres",
+     "freguesia": "Águas Livres"
+    },
+    {
+     "id": "5436",
+     "nome": "CENTRO SOCIAL PAROQUIAL DO IMACULADO CORAÇÃO DE MARIA Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5445",
+     "nome": "ASSOCIAÇÃO DE SOLIDARIEDADE DE ALFRAGIDE ASSOALFRA Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5468",
+     "nome": "CENTRO DE S. FRANCISCO DE ASSIS Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5469",
+     "nome": "CENTRO DE SANTA CLARA DE ASSIS Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5472",
+     "nome": "CRECHE E ESCOLA LUÍS MADUREIRA Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5830",
+     "nome": "ASSOCIAÇÃO SOLIDARIEDADE SUBUD - CENTRO EDUCACIONAL E COMUNITÁRIO RODA VIVA Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "17286",
+     "nome": "CENTRO DE RECURSOS DO ZAMBUJAL Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "25938",
+     "nome": "ASSOCIAÇÃO SOLIDARIEDADE SUBUD - CRECHE DA ESTRADA DE ALFRAGIDE, 49 Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "26088",
+     "nome": "CRECHE SÃO JORGE Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "26268",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA - DA JUNTA DE FREGUESIA DE ALFRAGIDE Alfragide",
+     "freguesia": "Alfragide"
+    },
+    {
+     "id": "5451",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE ALFORNELOS Encosta do Sol",
+     "freguesia": "Encosta do Sol"
+    },
+    {
+     "id": "5455",
+     "nome": "CENTRO SOCIAL PAROQUIAL DA BRANDOA Encosta do Sol",
+     "freguesia": "Encosta do Sol"
+    },
+    {
+     "id": "20404",
+     "nome": "ABECEDARIO Encosta do Sol",
+     "freguesia": "Encosta do Sol"
+    },
+    {
+     "id": "24424",
+     "nome": "CEBESA - CRECHE E CATL JOSÉ GARCÊS Encosta do Sol",
+     "freguesia": "Encosta do Sol"
+    },
+    {
+     "id": "25168",
+     "nome": "COLÉGIO RIK & ROK AMADORA Encosta do Sol",
+     "freguesia": "Encosta do Sol"
+    },
+    {
+     "id": "5444",
+     "nome": "CENTRO SOCIAL 6 DE MAIO Falagueira-Venda Nova",
+     "freguesia": "Falagueira-Venda Nova"
+    },
+    {
+     "id": "17311",
+     "nome": "AJPAS - ASSOCIAÇÃO DE INTERVENÇÃO COMUNITÁRIA, DESENVOLVIMENTO SOCIAL E DE SAÚDE Falagueira-Venda Nova",
+     "freguesia": "Falagueira-Venda Nova"
+    },
+    {
+     "id": "21591",
+     "nome": "SOCIEDADE FILARMONICA DE APOIO SOCIAL E RECREIO ARTISTICO DA AMADORA - QUINTA DE S.MIGUEL Falagueira-Venda Nova",
+     "freguesia": "Falagueira-Venda Nova"
+    },
+    {
+     "id": "22759",
+     "nome": "O BERCINHO DE SANTA RITA Falagueira-Venda Nova",
+     "freguesia": "Falagueira-Venda Nova"
+    },
+    {
+     "id": "26340",
+     "nome": "CRECHE DA FALAGUEIRA Falagueira-Venda Nova",
+     "freguesia": "Falagueira-Venda Nova"
+    },
+    {
+     "id": "5431",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO BRÁS Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "5438",
+     "nome": "ASSOCIAÇÃO DE PAIS E AMIGOS DAS CRIANÇAS DA FREGUESIA DA MINA Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "5460",
+     "nome": "CRECHE MUNICIPAL DE Á-DA-BEJA Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "18633",
+     "nome": "JARDIM INFANTIL O FINÓRIO Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "20425",
+     "nome": "CRECHE BÉBE DE SONHO Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "24700",
+     "nome": "PEQUENOS SORRISOS Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "26267",
+     "nome": "CRECHE A ROMÃ Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "26578",
+     "nome": "CRECHE SANTA TERESINHA DO MENINO JESUS Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "27487",
+     "nome": "COLÉGIO MOINHO DE SONHO Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "28311",
+     "nome": "CRECHE MATERAMA DE VILA CHÃ Mina de Água",
+     "freguesia": "Mina de Água"
+    },
+    {
+     "id": "26421",
+     "nome": "CRECHE DA VENTEIRA Venteira",
+     "freguesia": "Venteira"
+    }
+   ]
+  },
+  "odivelas": {
+   "freguesias": [
+    {
+     "dicofre": "111603",
+     "freguesia": "Odivelas",
+     "equipamentos": 21,
+     "capacidade": 797,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111608",
+     "freguesia": "União das freguesias de Pontinha e Famões",
+     "equipamentos": 8,
+     "capacidade": 336,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111609",
+     "freguesia": "União das freguesias de Póvoa de Santo Adrião e Olival Basto",
+     "equipamentos": 3,
+     "capacidade": 192,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111610",
+     "freguesia": "União das freguesias de Ramada e Caneças",
+     "equipamentos": 12,
+     "capacidade": 714,
+     "incompleto": true
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "221",
+     "nome": "O BALÃO CIRCULAR Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "1425",
+     "nome": "CENTRO COMUNITÁRIO PAROQUIAL DE FAMÕES - CENTRO INFANTIL DE ODIVELAS Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "1545",
+     "nome": "EXTERNATO JARDIM DA ARROJA Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "18653",
+     "nome": "BONECA DE CORDA JARDIM DE INFÂNCIA Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "21636",
+     "nome": "THE SAILORS - PEIXINHO AMARELO Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "21728",
+     "nome": "A OVELHINHA Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "22795",
+     "nome": "INFANTÁRIO PIPOS & BIBAS Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "24523",
+     "nome": "OS ILUSTRES Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "24657",
+     "nome": "COLEGIO DAS COLINAS - UNIPESSOAL, LDA. Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "24701",
+     "nome": "CRECHE COLINAS DO CRUZEIRO Odivelas",
+     "freguesia": "Odivelas"
+    },
+    {
+     "id": "1415",
+     "nome": "JARDIM INFANTIL POPULAR DA PONTINHA União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "21565",
+     "nome": "CENTRO COMUNITÁRIO E PAROQUIAL DE FAMÕES - POLO SÃO MIGUEL (SEDE) União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "22552",
+     "nome": "COLÉGIO, JARDIM DE INFÂNCIA \"A SANDRINHA, LDA\" União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "24668",
+     "nome": "CARTOLA DE SONHOS União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "26089",
+     "nome": "CRECHE MORANGOS (FAMÕES) União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "28344",
+     "nome": "PEQUENOS E INTELIGENTES União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "37999",
+     "nome": "COLÉGIO MAIS MIMO União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "38889",
+     "nome": "TESOURINHOS À VISTA, UNIPESSOAL LDA União das freguesias de Pontinha e Famões",
+     "freguesia": "União das freguesias de Pontinha e Famões"
+    },
+    {
+     "id": "224",
+     "nome": "INSTITUTO PORTUGUÊS DE PEDAGOGIA INFANTIL União das freguesias de Póvoa de Santo Adrião e Olival Basto",
+     "freguesia": "União das freguesias de Póvoa de Santo Adrião e Olival Basto"
+    },
+    {
+     "id": "17075",
+     "nome": "NI-NÓ-NI, CENTRO INFANTIL - CENTRO HUMANITÁRIO DE LISBOA - CVP União das freguesias de Póvoa de Santo Adrião e Olival Basto",
+     "freguesia": "União das freguesias de Póvoa de Santo Adrião e Olival Basto"
+    },
+    {
+     "id": "21242",
+     "nome": "CENTRO SOCIAL PAROQUIAL DA POVOA DE STO ADRIÃO União das freguesias de Póvoa de Santo Adrião e Olival Basto",
+     "freguesia": "União das freguesias de Póvoa de Santo Adrião e Olival Basto"
+    },
+    {
+     "id": "1412",
+     "nome": "QUINA - INFANTÁRIO E JARDIM DE INFÂNCIA União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "5280",
+     "nome": "SEDE - CENTRO COMUNITÁRIO PAROQUIAL DA RAMADA União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "20445",
+     "nome": "ASSOCIAÇÃO COMUNITÁRIA INFANTIL E JUVENIL DA RAMADA União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "20541",
+     "nome": "PIÃO MÁGICO - INFANTÁRIO União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "24378",
+     "nome": "CRECHE DE SANTA TERESINHA União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "24719",
+     "nome": "OS PREGUIÇAS - EDUCAÇÃO E APOIO PEDAGÓGICO, LDA. União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "25188",
+     "nome": "PEQUENOS E REGUILAS União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "26112",
+     "nome": "ACADEMIA DO MIMO União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "28668",
+     "nome": "JARDIM ESCOLA - JOÃO DE DEUS DE ODIVELAS União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    },
+    {
+     "id": "29303",
+     "nome": "COLÉGIO DO MIMO União das freguesias de Ramada e Caneças",
+     "freguesia": "União das freguesias de Ramada e Caneças"
+    }
+   ]
+  },
+  "oeiras": {
+   "freguesias": [
+    {
+     "dicofre": "111002",
+     "freguesia": "Barcarena",
+     "equipamentos": 5,
+     "capacidade": 216,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111009",
+     "freguesia": "Porto Salvo",
+     "equipamentos": 12,
+     "capacidade": 773,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111012",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "equipamentos": 16,
+     "capacidade": 832,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111013",
+     "freguesia": "União das freguesias de Carnaxide e Queijas",
+     "equipamentos": 13,
+     "capacidade": 667,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111014",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "equipamentos": 21,
+     "capacidade": 1156,
+     "incompleto": true
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "345",
+     "nome": "CENTRO DE INFANCIA DE TERCENA Barcarena",
+     "freguesia": "Barcarena"
+    },
+    {
+     "id": "17032",
+     "nome": "CENTRO DE INFANCIA DA QUINTA DA POLITEIRA Barcarena",
+     "freguesia": "Barcarena"
+    },
+    {
+     "id": "22545",
+     "nome": "JARDIM DE INFÂNCIA CANTEIRO DOS SONHOS Barcarena",
+     "freguesia": "Barcarena"
+    },
+    {
+     "id": "24696",
+     "nome": "COLÉGIO OS BOBOCAS Barcarena",
+     "freguesia": "Barcarena"
+    },
+    {
+     "id": "26225",
+     "nome": "CRECHE SANTA MADALENA CANOSSA Barcarena",
+     "freguesia": "Barcarena"
+    },
+    {
+     "id": "343",
+     "nome": "O TÃO BALALÃO Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "355",
+     "nome": "O CHORÃO Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "668",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA PINGOLÉ Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "676",
+     "nome": "O RECANTINHO Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "5841",
+     "nome": "INSTITUTO CONDESSA DE CUBA Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "17314",
+     "nome": "CRECHE RAINHA D. LEONOR Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "18656",
+     "nome": "CENTRO COMUNITARIO MOINHO DAS ROLAS Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "20122",
+     "nome": "COLEGIO S. FRANCISCO DE ASSIS Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "24669",
+     "nome": "COLÉGIO DA FONTE - CRECHE Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "25029",
+     "nome": "ISS OEIRAS -INTERNATIONAL SHARING SCHOOL OEIRAS, S.A. Porto Salvo",
+     "freguesia": "Porto Salvo"
+    },
+    {
+     "id": "339",
+     "nome": "O PIONEIRO União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "362",
+     "nome": "MARCOLANDIA, CRECHE E JARDIM DE INFÃNCIA União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "664",
+     "nome": "CENTRO SAGRADA FAMÍLIA União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "6069",
+     "nome": "CENTRO INFANTIL PALHAÇO União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "18542",
+     "nome": "CRECHE O PINGUÇAS União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "18625",
+     "nome": "ESCOLA ANA GUEDES União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "20390",
+     "nome": "EQUIP. SOCIAL DO CENTRO SOCIAL E PAROQUIAL NOSSA SENHORA DO CABO União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "21481",
+     "nome": "JARDIM DE INFÂNCIA E ATL O NOVO PINÓQUIO União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "22543",
+     "nome": "KRIABEBES - BERÇARIO, CRECHE E JARDIM DE INFANCIA União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "22557",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA Nª SRª DAS GRAÇAS União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+     "freguesia": "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo"
+    },
+    {
+     "id": "361",
+     "nome": "O TRAQUINAS União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "682",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA 1º DE MAIO União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "5502",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA DE NOSSA SENHORA DA ROCHA União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "17564",
+     "nome": "OBRA SOCIAL MADRE MARIA CLARA União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "20383",
+     "nome": "CRECHE E JARDIM DE INFANCIA DE OUTURELA União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "20385",
+     "nome": "CRECHE E JARDIM DE INFANCIA DE S. MARÇAL União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "20386",
+     "nome": "ASSOC. PARA INSERÇÃO SÓCIO-CULTURAL PROFISSIONAL DA FAMÍLIA- PROJECTO FAMÍLIA GLOBAL União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "22730",
+     "nome": "NINHO DA CEGONHA União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "24709",
+     "nome": "COLÉGIO SANTIAGO União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "27123",
+     "nome": "JARDIM ESCOLA MONTE FLOR União das freguesias de Carnaxide e Queijas",
+     "freguesia": "União das freguesias de Carnaxide e Queijas"
+    },
+    {
+     "id": "340",
+     "nome": "CENTRO DE ASSISTÊNCIA INFANTIL NOSSA SENHORA DAS DORES União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "342",
+     "nome": "INFANTÁRIO DA ASSOCIAÇÃO POPULAR DE PAÇO DE ARCOS União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "349",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA NOSSA SENHORA ACOLHIMENTO União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "352",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA SANTA ANA União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "669",
+     "nome": "A PRACETA União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "673",
+     "nome": "CASA DA CRIANÇA RAINHA SANTA ISABEL União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "678",
+     "nome": "CENTRO SOCIAL E PAROQUIAL DE OEIRAS - INFANTÁRIO O POMBAL União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "684",
+     "nome": "JARDIM DE INFÂNCIA NOSSA SENHORA DO ROSÁRIO DE FÁTIMA União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "5864",
+     "nome": "EXTERNATO A MINHA ESCOLA União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    },
+    {
+     "id": "17868",
+     "nome": "CRECHE DO BUGIO União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+     "freguesia": "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias"
+    }
+   ]
+  },
+  "cascais": {
+   "freguesias": [
+    {
+     "dicofre": "110501",
+     "freguesia": "Alcabideche",
+     "equipamentos": 7,
+     "capacidade": 398,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110506",
+     "freguesia": "São Domingos de Rana",
+     "equipamentos": 15,
+     "capacidade": 934,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110507",
+     "freguesia": "União das freguesias de Carcavelos e Parede",
+     "equipamentos": 13,
+     "capacidade": 800,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110508",
+     "freguesia": "União das freguesias de Cascais e Estoril",
+     "equipamentos": 24,
+     "capacidade": 1234,
+     "incompleto": true
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "306",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO VICENTE DE ALCABIDECHE - EXTENSÃO DE ALVIDE Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "336",
+     "nome": "CENTRO INFANTIL DO LINHÓ (EX. C.I. FISGAS) Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "20447",
+     "nome": "INFANTÁRIO DE BICESSE - SCM CASCAIS Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "21717",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE S. VICENTE DE ALCABIDECHE-EXTENSÃO B.º C. GULBENKIAN Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "21718",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE S. VICENTE DE ALCABIDECHE-SEDE- ESCOLA Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "24710",
+     "nome": "GARATUJA, CRECHE E JARDIM DE INFÂNCIA Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "33359",
+     "nome": "CENTRO SOCIAL PAROQUIAL SÃO VICENTE ALCABIDECHE - EXTENSÃO JANES Alcabideche",
+     "freguesia": "Alcabideche"
+    },
+    {
+     "id": "311",
+     "nome": "CENTRO DE APOIO À FAMÍLIA CRESCER PARA INTEGRAR São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "320",
+     "nome": "CENTRO COMUNITÁRIO DE TIRES São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "326",
+     "nome": "IDEIA - INSTITUTO PARA O DESENVOLVIMENTO EDUCATIVO INTEGRADO NA ACÇÃO São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "337",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO DOMINGOS DE RANA São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "5494",
+     "nome": "CRECHE DA ABÓBODA - SCMC CASCAIS São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "18635",
+     "nome": "COLÉGIO QUINTA DO LAGO São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "18638",
+     "nome": "ESCOLINHA DA TITA São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "18640",
+     "nome": "ACADEMIA ASSOCIAÇÃO JUVENIL ESTUDOS E COMUNICAÇÃO São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "24256",
+     "nome": "CESPA - CENTRO SOCIAL DA PARÓQUIA DE NOSSA SENHORA DA CONCEIÇÃO DE ABÓBADA São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "24934",
+     "nome": "EXTERNATO A NOVA TOCA São Domingos de Rana",
+     "freguesia": "São Domingos de Rana"
+    },
+    {
+     "id": "301",
+     "nome": "CRECHE DO ARNEIRO - SCM CASCAIS União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "317",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA - O BOTÃOZINHO União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "319",
+     "nome": "CENTRO COMUNITÁRIO DA PARÓQUIA DE CARCAVELOS União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "4880",
+     "nome": "ABLA PAREDE (EX-CENTRO INFANTIL DA PAREDE) União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "18570",
+     "nome": "CENTRO DE APOIO À FAMÍLIA EDUCAR PARA INCLUIR União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "18644",
+     "nome": "EXTERNATO JARDIM DOS LOMBOS União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "20446",
+     "nome": "COLÉGIO BRINCA E EDUCA II União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "21721",
+     "nome": "ASSOCIAÇÃO DE BENEFICIÊNCIA LUSO-ALEMÃ União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "24655",
+     "nome": "TRAQUINAUTA União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "24932",
+     "nome": "EXTERNATO O CANTINHO DE CARCAVELOS União das freguesias de Carcavelos e Parede",
+     "freguesia": "União das freguesias de Carcavelos e Parede"
+    },
+    {
+     "id": "309",
+     "nome": "CRECHE MARCELINA TEODORO DOS SANTOS União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "316",
+     "nome": "ASSOCIAÇÃO DOS ANTIGOS ALUNOS SALESIANOS DO ESTORIL União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "333",
+     "nome": "CENTRO ALFREDO PINHEIRO - SCM CASCAIS União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "334",
+     "nome": "INFANTÁRIO O PINHAL - SCM CASCAIS União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "365",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO PEDRO E SÃO JOÃO DO ESTORIL União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "6146",
+     "nome": "A CHUPETA - BERÇARIO E CRECHE União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "14060",
+     "nome": "FRALDINHAS União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "17276",
+     "nome": "FUNDAÇÃO \"O SÉCULO\" União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "18650",
+     "nome": "ESCOLINHA DA ANA União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    },
+    {
+     "id": "18651",
+     "nome": "ST. JOHN'S SCHOOL União das freguesias de Cascais e Estoril",
+     "freguesia": "União das freguesias de Cascais e Estoril"
+    }
+   ]
+  },
+  "mafra": {
+   "freguesias": [
+    {
+     "dicofre": "110902",
+     "freguesia": "Carvoeira",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110904",
+     "freguesia": "Encarnação",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110906",
+     "freguesia": "Ericeira",
+     "equipamentos": 3,
+     "capacidade": 206,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110909",
+     "freguesia": "Mafra",
+     "equipamentos": 4,
+     "capacidade": 434,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110911",
+     "freguesia": "Milharado",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110913",
+     "freguesia": "Santo Isidoro",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110918",
+     "freguesia": "União das freguesias de Azueira e Sobral da Abelheira",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110919",
+     "freguesia": "União das freguesias de Enxara do Bispo, Gradil e Vila Franca do Rosário",
+     "equipamentos": 1,
+     "capacidade": 40,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110920",
+     "freguesia": "União das freguesias de Igreja Nova e Cheleiros",
+     "equipamentos": 2,
+     "capacidade": 79,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110921",
+     "freguesia": "União das freguesias de Malveira e São Miguel de Alcainça",
+     "equipamentos": 4,
+     "capacidade": 288,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110922",
+     "freguesia": "União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés",
+     "equipamentos": 2,
+     "capacidade": 123,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "5159",
+     "nome": "CENTRO SOCIAL DA ERICEIRA Ericeira",
+     "freguesia": "Ericeira"
+    },
+    {
+     "id": "18247",
+     "nome": "CEBI - FUNDAÇÃO PARA O DESENVOLVIMENTO COMUNITÁRIO DE ALVERCA / CENTRO DE RECURSOS DA ERICEIRA Ericeira",
+     "freguesia": "Ericeira"
+    },
+    {
+     "id": "20342",
+     "nome": "ESTRELA DO MAR - JARDIM INFANTIL Ericeira",
+     "freguesia": "Ericeira"
+    },
+    {
+     "id": "4914",
+     "nome": "ASSOCIAÇÃO PARA A EDUCAÇÃO E REABILITAÇÃO DE CRIANÇAS INADAPTADAS DE MAFRA Mafra",
+     "freguesia": "Mafra"
+    },
+    {
+     "id": "4916",
+     "nome": "CENTRO DE BEM ESTAR INFANTIL DE NOSSA SENHORA DAS DORES Mafra",
+     "freguesia": "Mafra"
+    },
+    {
+     "id": "20303",
+     "nome": "A ESCOLINHA DOS PEQUENITOS, ENSINO E FORMAÇÃO, LDA Mafra",
+     "freguesia": "Mafra"
+    },
+    {
+     "id": "26265",
+     "nome": "CRECHE MUNICIPAL DE MAFRA Mafra",
+     "freguesia": "Mafra"
+    },
+    {
+     "id": "20352",
+     "nome": "CRECHE NA RUA DAS HORTÊNCIAS União das freguesias de Enxara do Bispo, Gradil e Vila Franca do Rosário",
+     "freguesia": "União das freguesias de Enxara do Bispo, Gradil e Vila Franca do Rosário"
+    },
+    {
+     "id": "17303",
+     "nome": "CENTRO SOCIAL PAROQUIAL Nª SRª DA CONCEIÇÃO DA IGREJA NOVA União das freguesias de Igreja Nova e Cheleiros",
+     "freguesia": "União das freguesias de Igreja Nova e Cheleiros"
+    },
+    {
+     "id": "24697",
+     "nome": "VERDE ÁGUA - CRECHE E JARDIM DE INFÂNCIA União das freguesias de Igreja Nova e Cheleiros",
+     "freguesia": "União das freguesias de Igreja Nova e Cheleiros"
+    },
+    {
+     "id": "20353",
+     "nome": "JARDIM INFANTIL DA MALVEIRA União das freguesias de Malveira e São Miguel de Alcainça",
+     "freguesia": "União das freguesias de Malveira e São Miguel de Alcainça"
+    },
+    {
+     "id": "22542",
+     "nome": "JARDIM DE INFANCIA MÃE PATINHA União das freguesias de Malveira e São Miguel de Alcainça",
+     "freguesia": "União das freguesias de Malveira e São Miguel de Alcainça"
+    },
+    {
+     "id": "24478",
+     "nome": "SANTA CASA DA MISERICORDIA DA VENDA DO PINHEIRO União das freguesias de Malveira e São Miguel de Alcainça",
+     "freguesia": "União das freguesias de Malveira e São Miguel de Alcainça"
+    },
+    {
+     "id": "24654",
+     "nome": "OS CARAMELOS - CRECHE E JARDIM DE INFÂNCIA União das freguesias de Malveira e São Miguel de Alcainça",
+     "freguesia": "União das freguesias de Malveira e São Miguel de Alcainça"
+    },
+    {
+     "id": "21716",
+     "nome": "OS PEQUENOS MAFRINHAS - CRECHE União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés",
+     "freguesia": "União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés"
+    },
+    {
+     "id": "27040",
+     "nome": "SANTA TERESINHA JARDIM DE INFÂNCIA União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés",
+     "freguesia": "União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés"
+    }
+   ]
+  },
+  "loures": {
+   "freguesias": [
+    {
+     "dicofre": "110702",
+     "freguesia": "Bucelas",
+     "equipamentos": 1,
+     "capacidade": 41,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110705",
+     "freguesia": "Fanhões",
+     "equipamentos": 0,
+     "capacidade": 0,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110707",
+     "freguesia": "Loures",
+     "equipamentos": 9,
+     "capacidade": 476,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110708",
+     "freguesia": "Lousa",
+     "equipamentos": 1,
+     "capacidade": 34,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110731",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação",
+     "equipamentos": 6,
+     "capacidade": 350,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110726",
+     "freguesia": "União das freguesias de Moscavide e Portela",
+     "equipamentos": 6,
+     "capacidade": 297,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110727",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho",
+     "equipamentos": 6,
+     "capacidade": 315,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110728",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "equipamentos": 12,
+     "capacidade": 817,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110729",
+     "freguesia": "União das freguesias de Santo Antão e São Julião do Tojal",
+     "equipamentos": 1,
+     "capacidade": 52,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110730",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "equipamentos": 9,
+     "capacidade": 510,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "5275",
+     "nome": "EQUIP SOCIAL DA INSTITUIÇÃO DE APOIO SOCIAL DA FREGUESIA DE BUCELAS Bucelas",
+     "freguesia": "Bucelas"
+    },
+    {
+     "id": "201",
+     "nome": "ASSOCIAÇÃO LUIZ PEREIRA MOTTA Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "205",
+     "nome": "ROSA AZUL DA FONTE SANTA - CRECHE E JARDIM INFANTIL Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "5291",
+     "nome": "ASSOCIAÇÃO DOUTOR JOÃO DOS SANTOS Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "21781",
+     "nome": "PADRÃO - ESTABELECIMENTO DE ENSINO Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "22773",
+     "nome": "O REI NA BARRIGA - INFANTADO Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "25094",
+     "nome": "COLÉGIO DE SANTA MARIA Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "26982",
+     "nome": "COLÉGIO CRESCER NO INFANTADO Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "29184",
+     "nome": "AMORES PERFEITOS - BERÇÁRIO E CRECHE, LDA. Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "38891",
+     "nome": "COLÉGIO SABER CRESCER Loures",
+     "freguesia": "Loures"
+    },
+    {
+     "id": "38877",
+     "nome": "OS AMIGUINHOS Lousa",
+     "freguesia": "Lousa"
+    },
+    {
+     "id": "239",
+     "nome": "ASSOCIAÇÃO POMBA DA PAZ - I.P.S.S. União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "5255",
+     "nome": "JARDIM DE INFÂNCIA DE NOSSA SENHORA DOS ANJOS União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "21674",
+     "nome": "CENTRO SOCIAL COMUNITÁRIO Bº STO ANTÓNIO I União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "21675",
+     "nome": "CENTRO COMUNITÁRIO DO BAIRRO DE STO ANTÓNIO II União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "28664",
+     "nome": "COLÉGIO PEQUENADA FELIZ União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "39282",
+     "nome": "LIFE IN PARTY, LDA União das freguesias de Camarate, Unhos e Apelação",
+     "freguesia": "União das freguesias de Camarate, Unhos e Apelação"
+    },
+    {
+     "id": "222",
+     "nome": "ASSOCIAÇÃO VIDA ABUNDANTE - ESPAÇO JUNIOR União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "225",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE MOSCAVIDE União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "5287",
+     "nome": "OBRA DE NOSSA SENHORA DA PURIFICAÇÃO União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "24725",
+     "nome": "MIMARTE - TIME FOR KIDS União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "28880",
+     "nome": "CRECHE CINCO ESTRELAS União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "29773",
+     "nome": "A MAMÃ COELHA União das freguesias de Moscavide e Portela",
+     "freguesia": "União das freguesias de Moscavide e Portela"
+    },
+    {
+     "id": "236",
+     "nome": "CENTRO SOCIAL DE SACAVÉM União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "1654",
+     "nome": "CENTRO DE APOIO INFANTIL FILADÉLFIA União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "17246",
+     "nome": "O CANTINHO DA CEGONHA União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "20430",
+     "nome": "CRECHE \"CRESCER SAUDÁVEL\" União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "21672",
+     "nome": "CRECHE - ASSOCIAÇÃO CANTINHO DAS CRIANÇAS DO PRIOR VELHO União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "29255",
+     "nome": "A MÃE CANGURU - CRECHE E JARDIM DE INFÂNCIA LDA União das freguesias de Sacavém e Prior Velho",
+     "freguesia": "União das freguesias de Sacavém e Prior Velho"
+    },
+    {
+     "id": "1559",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA O JARDIM ENCANTADO União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "5260",
+     "nome": "CENTRO SOCIAL PAROQUIAL DA BOBADELA União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "5264",
+     "nome": "CRECHE DO CENTRO POPULAR INFANTIL \"NASCER DO SOL\" União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "22558",
+     "nome": "ESPAÇO A CRIANÇA União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "22774",
+     "nome": "QUINTAROLA II União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "24656",
+     "nome": "COLÉGIO QUINTA DA PARREIRINHA, REDE MORANGOS LDA. União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "24745",
+     "nome": "ASES BRINCALHÕES - EDUCAÇÃO PRÉ - ESCOLAR, LDA União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "25030",
+     "nome": "OS CACHOEIRINHOS União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "28662",
+     "nome": "COLÉGIO BARTOLOMEU DIAS União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+     "freguesia": "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela"
+    },
+    {
+     "id": "34240",
+     "nome": "COLÉGIO SMALL LAND União das freguesias de Santo Antão e São Julião do Tojal",
+     "freguesia": "União das freguesias de Santo Antão e São Julião do Tojal"
+    },
+    {
+     "id": "5265",
+     "nome": "CENTRO COMUNITÁRIO E SOCIAL E CULTURAL DE STº ANTº DOS CAVALEIROS - AMSAC União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "5267",
+     "nome": "CENTRO CULTURAL E SOCIAL DE SANTO ANTÓNIO DOS CAVALEIROS União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "5270",
+     "nome": "O SALTARICO União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "5289",
+     "nome": "ASSOCIAÇÃO CANTINHO DA PEQUENADA União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "18421",
+     "nome": "O REI NA BARRIGA - FRIELAS União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "21621",
+     "nome": "ABA-ASSOCIAÇÃO BENEFICENTE DE AJUDA União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "25058",
+     "nome": "ALDEIA DOS SONHOS União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "27041",
+     "nome": "EXTERNATO DA QUINTINHA União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    },
+    {
+     "id": "27300",
+     "nome": "CRECHE \"O VALE ENCANTADO\" União das freguesias de Santo António dos Cavaleiros e Frielas",
+     "freguesia": "União das freguesias de Santo António dos Cavaleiros e Frielas"
+    }
+   ]
+  },
+  "sintra": {
+   "freguesias": [
+    {
+     "dicofre": "111102",
+     "freguesia": "Algueirão-Mem Martins",
+     "equipamentos": 14,
+     "capacidade": 684,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111129",
+     "freguesia": "Almargem do Bispo",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111130",
+     "freguesia": "Belas",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111115",
+     "freguesia": "Casal de Cambra",
+     "equipamentos": 1,
+     "capacidade": 42,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111105",
+     "freguesia": "Colares",
+     "equipamentos": 3,
+     "capacidade": 77,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111131",
+     "freguesia": "Montelavar",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111132",
+     "freguesia": "Pêro Pinheiro",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111133",
+     "freguesia": "Queluz",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111108",
+     "freguesia": "Rio de Mouro",
+     "equipamentos": 13,
+     "capacidade": 716,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111134",
+     "freguesia": "São João das Lampas",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111135",
+     "freguesia": "Terrugem",
+     "equipamentos": 81,
+     "capacidade": 3749,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111122",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra",
+     "equipamentos": 10,
+     "capacidade": 436,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111125",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão",
+     "equipamentos": 10,
+     "capacidade": 401,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111128",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "equipamentos": 8,
+     "capacidade": 389,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111124",
+     "freguesia": "União das freguesias do Cacém e São Marcos",
+     "equipamentos": 6,
+     "capacidade": 238,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "5168",
+     "nome": "INFANTÁRIO O AZUL Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "5237",
+     "nome": "A CRECHE SEMPRE EM FLOR - S. CARLOS Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "5238",
+     "nome": "A CRECHE SEMPRE EM FLOR (S.JOSÉ) Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "5240",
+     "nome": "COLÉGIO HERDEIROS DO FUTURO, CRL Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "21663",
+     "nome": "O MUNDO DOS SENTIDOS Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "22807",
+     "nome": "COOPERATIVA MIMINHOS ALEGRES CRL Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "25033",
+     "nome": "COLÉGIO O TAPADINHAS II Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "25059",
+     "nome": "VEM BRINCAR! ACTIVIDADES EDUCATIVAS Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "27682",
+     "nome": "COLÉGIO A QUINTA DE SINTRA Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "28385",
+     "nome": "GENTE PEQUENA - CRECHE Algueirão-Mem Martins",
+     "freguesia": "Algueirão-Mem Martins"
+    },
+    {
+     "id": "4894",
+     "nome": "CENTRO COMUNITÁRIO PAROQUIAL DE RIO DE MOURO Rio de Mouro",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4895",
+     "nome": "ASSOCIAÇÃO PROMOTORA DA CRIANÇA Rio de Mouro",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4896",
+     "nome": "CRECHE POPULAR DE RIO DE MOURO Rio de Mouro",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4902",
+     "nome": "CENTRO SOCIAL BAPTISTA União das freguesias do Cacém e São Marcos",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4909",
+     "nome": "CENTRO DE APOIO À CRIANÇA União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4911",
+     "nome": "JOVICRECHE União das freguesias do Cacém e São Marcos",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4923",
+     "nome": "SÍTIO DO PICA PAU AMARELO União das freguesias do Cacém e São Marcos",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4924",
+     "nome": "JARDIM DE INFÂNCIA POPULAR União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "4925",
+     "nome": "CRECHE - JARDIM DE INFÂNCIA FAZ DE CONTA Rio de Mouro",
+     "freguesia": "Almargem do Bispo"
+    },
+    {
+     "id": "5428",
+     "nome": "SOLAMI - ASSOCIAÇÃO DE SOLIDARIEDADE E AMIZADE - CASAL DE CAMBRA Casal de Cambra",
+     "freguesia": "Casal de Cambra"
+    },
+    {
+     "id": "5200",
+     "nome": "CRECHE DAS MAÇÃS Colares",
+     "freguesia": "Colares"
+    },
+    {
+     "id": "5205",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE COLARES - ALMOÇAGEME Colares",
+     "freguesia": "Colares"
+    },
+    {
+     "id": "5206",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE COLARES Colares",
+     "freguesia": "Colares"
+    },
+    {
+     "id": "17248",
+     "nome": "INFANTÁRIO PEQUENOS APRENDIZES Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "17308",
+     "nome": "JARDIM ESCOLA JOÃO DE DEUS - ALBARRAQUE Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "21680",
+     "nome": "O VALE AZUL CRECHE LIMITADA Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "22554",
+     "nome": "BERÇARIO E CRECHE FRALDINHAS E FRALDOCAS Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "22801",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA COSME E DAMIÃO Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "22804",
+     "nome": "INFANTÁRIO BEM-ME-QUER Rio de Mouro",
+     "freguesia": "Rio de Mouro"
+    },
+    {
+     "id": "5489",
+     "nome": "COLÉGIO COLIBRI - JARDIM DE INFÂNCIA União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "14049",
+     "nome": "EXTERNATO Nª SRª DA APRESENTAÇÃO União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "18630",
+     "nome": "TOCA E FICA União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "21722",
+     "nome": "CRECHE A QUINTINHA DA FIDALGA União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "24909",
+     "nome": "COLINHO DAS TIAS, LDA. União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "25179",
+     "nome": "CRECHE O PIU-PIU ALEGRE União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "25180",
+     "nome": "CRECHE ECOBABIES União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "26781",
+     "nome": "FIDALGUINHO - JARDIM DE INFÂNCIA E CRECHE União das freguesias de Agualva e Mira-Sintra",
+     "freguesia": "União das freguesias de Agualva e Mira-Sintra"
+    },
+    {
+     "id": "5479",
+     "nome": "A COLMEIA - INFANTÁRIO E JARDIM DE INFÂNCIA União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "5834",
+     "nome": "INFANTÁRIO DO POVO União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "18628",
+     "nome": "EXTERNATO OS COELHINHOS União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "20391",
+     "nome": "DOCE ALCOFINHA União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "22806",
+     "nome": "O PLANETA BEBÉ União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "24666",
+     "nome": "COLÉGIO O REZINGÃO - ENSINO INFANTIL União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "24895",
+     "nome": "O BARCO DO MIMO União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "26091",
+     "nome": "GIZ MÁGICO União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "34239",
+     "nome": "COLEGIO GALÁXIA BRANCA União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "38888",
+     "nome": "EXTERNATO FERNANDO PESSOA União das freguesias de Massamá e Monte Abraão",
+     "freguesia": "União das freguesias de Massamá e Monte Abraão"
+    },
+    {
+     "id": "5243",
+     "nome": "INFANTÁRIO POPULAR DE SINTRA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "17866",
+     "nome": "CRECHE E JARDIM DE INFÂNCIA DA PORTELA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "18541",
+     "nome": "COLEGIO CATARINA DE BRAGANÇA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "20282",
+     "nome": "COLÉGIO DA BELOURA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "20321",
+     "nome": "JARDIM DAS BRINCADEIRAS União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "20429",
+     "nome": "CRECHE A VELHA FORMIGUINHA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "22800",
+     "nome": "CASTELO MÁGICO - CRECHE E JARDIM DE INFÂNCIA União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+     "freguesia": "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    },
+    {
+     "id": "21651",
+     "nome": "SEMENTINHA MÁGICA, JARDIM INFANTIL E CRECHE União das freguesias do Cacém e São Marcos",
+     "freguesia": "União das freguesias do Cacém e São Marcos"
+    },
+    {
+     "id": "25017",
+     "nome": "AMOR PERFEITO DE AGUALVA-CACÉM - ARPIAC União das freguesias do Cacém e São Marcos",
+     "freguesia": "União das freguesias do Cacém e São Marcos"
+    },
+    {
+     "id": "29117",
+     "nome": "TOCÁBRINCAR União das freguesias do Cacém e São Marcos",
+     "freguesia": "União das freguesias do Cacém e São Marcos"
+    }
+   ]
+  },
+  "lisboa": {
+   "freguesias": [
+    {
+     "dicofre": "110601",
+     "freguesia": "Ajuda",
+     "equipamentos": 5,
+     "capacidade": 265,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110602",
+     "freguesia": "Alcântara",
+     "equipamentos": 5,
+     "capacidade": 285,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110654",
+     "freguesia": "Alvalade",
+     "equipamentos": 17,
+     "capacidade": 981,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110655",
+     "freguesia": "Areeiro",
+     "equipamentos": 6,
+     "capacidade": 233,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110656",
+     "freguesia": "Arroios",
+     "equipamentos": 9,
+     "capacidade": 473,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110657",
+     "freguesia": "Avenidas Novas",
+     "equipamentos": 7,
+     "capacidade": 287,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110607",
+     "freguesia": "Beato",
+     "equipamentos": 2,
+     "capacidade": 87,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110658",
+     "freguesia": "Belém",
+     "equipamentos": 11,
+     "capacidade": 525,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110608",
+     "freguesia": "Benfica",
+     "equipamentos": 8,
+     "capacidade": 429,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110659",
+     "freguesia": "Campo de Ourique",
+     "equipamentos": 7,
+     "capacidade": 522,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110610",
+     "freguesia": "Campolide",
+     "equipamentos": 5,
+     "capacidade": 295,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110611",
+     "freguesia": "Carnide",
+     "equipamentos": 13,
+     "capacidade": 543,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110660",
+     "freguesia": "Estrela",
+     "equipamentos": 9,
+     "capacidade": 567,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110618",
+     "freguesia": "Lumiar",
+     "equipamentos": 22,
+     "capacidade": 1307,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110621",
+     "freguesia": "Marvila",
+     "equipamentos": 11,
+     "capacidade": 932,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110661",
+     "freguesia": "Misericórdia",
+     "equipamentos": 3,
+     "capacidade": 126,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110633",
+     "freguesia": "Olivais",
+     "equipamentos": 4,
+     "capacidade": 311,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110662",
+     "freguesia": "Parque das Nações",
+     "equipamentos": 10,
+     "capacidade": 759,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110663",
+     "freguesia": "Penha de França",
+     "equipamentos": 5,
+     "capacidade": 261,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110664",
+     "freguesia": "Santa Clara",
+     "equipamentos": 9,
+     "capacidade": 637,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110665",
+     "freguesia": "Santa Maria Maior",
+     "equipamentos": 4,
+     "capacidade": 142,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110666",
+     "freguesia": "Santo António",
+     "equipamentos": 7,
+     "capacidade": 396,
+     "incompleto": false
+    },
+    {
+     "dicofre": "110639",
+     "freguesia": "São Domingos de Benfica",
+     "equipamentos": 13,
+     "capacidade": 833,
+     "incompleto": true
+    },
+    {
+     "dicofre": "110667",
+     "freguesia": "São Vicente",
+     "equipamentos": 6,
+     "capacidade": 340,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "1751",
+     "nome": "CENTRO SOCIAL PAROQUIAL NOSSA SENHORA DA AJUDA - SECÇÃO INFANTIL Ajuda",
+     "freguesia": "Ajuda"
+    },
+    {
+     "id": "17703",
+     "nome": "ASSOCIAÇÃO DE ACTIVIDADES DO BAIRRO 2 DE MAIO Ajuda",
+     "freguesia": "Ajuda"
+    },
+    {
+     "id": "20504",
+     "nome": "EQUIP. SOCIAL DA ASSOCIAÇÃO DE PROTECÇÃO À INFANCIA DA AJUDA - APIA Ajuda",
+     "freguesia": "Ajuda"
+    },
+    {
+     "id": "24586",
+     "nome": "JARDIM DE INFANCIA CHIQUINHA Ajuda",
+     "freguesia": "Ajuda"
+    },
+    {
+     "id": "32829",
+     "nome": "ESPAÇO EDUCATIVO CRECHE DA AJUDA Ajuda",
+     "freguesia": "Ajuda"
+    },
+    {
+     "id": "1697",
+     "nome": "CRECHE E JARDIM INFANTIL DE SANTO AMARO Alcântara",
+     "freguesia": "Alcântara"
+    },
+    {
+     "id": "2227",
+     "nome": "CENTRO CULTURAL E RECREATIVO DAS CRIANÇAS DO CRUZEIRO E RIO SECO Alcântara",
+     "freguesia": "Alcântara"
+    },
+    {
+     "id": "2237",
+     "nome": "CAI - CENTRO DE ACOLHIMENTO INFANTIL VITOR MANUEL Alcântara",
+     "freguesia": "Alcântara"
+    },
+    {
+     "id": "5191",
+     "nome": "CRECHE BELOQUITAS Alcântara",
+     "freguesia": "Alcântara"
+    },
+    {
+     "id": "29635",
+     "nome": "ESCOLA AVE-MARIA Alcântara",
+     "freguesia": "Alcântara"
+    },
+    {
+     "id": "642",
+     "nome": "APPACDM - CRECHE A TARTARUGA E A LEBRE Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "653",
+     "nome": "JARDIM ESCOLA JOÃO DE DEUS - ALVALADE Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "701",
+     "nome": "CENTRO INFANTIL JOÃO DE DEUS ALVALADE 1 Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "714",
+     "nome": "FUNDAÇÃO ADOLFO VIEIRA DE BRITO Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "743",
+     "nome": "INFANTÁRIO DE NOSSA SENHORA DA PURIFICAÇÃO Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "1610",
+     "nome": "EXTERNATO LICEAL DA CASA DE SÃO VICENTE DE PAULO Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "1706",
+     "nome": "COLÉGIO MODERNO DE JOÃO SOARES E FILHOS Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "2259",
+     "nome": "CENTRO SOCIAL PAROQUIAL DO CAMPO GRANDE Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "5188",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO JOÃO DE BRITO Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "17175",
+     "nome": "CENTRO INFANTIL JOÃO DE DEUS ALVALADE II Alvalade",
+     "freguesia": "Alvalade"
+    },
+    {
+     "id": "747",
+     "nome": "INFANTÁRIO OS FRALDAS Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "756",
+     "nome": "EXTERNATO SANTA MARIA DO MAR Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "18552",
+     "nome": "COLÉGIO DO LARGO Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "24667",
+     "nome": "EXTERNATO NOBEL - CRECHE Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "28672",
+     "nome": "CENTRO INFANTIL MARIA DE MONSERRATE Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "29796",
+     "nome": "JARDIM INFANTIL DA ASSOCIAÇÃO PESSOAL DO INSTITUTO SUPERIOR TÉCNICO Areeiro",
+     "freguesia": "Areeiro"
+    },
+    {
+     "id": "607",
+     "nome": "ASSOCIAÇÃO PRO-INFÂNCIA SANTO ANTÓNIO DE LISBOA Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "761",
+     "nome": "JIFA - JARDIM DE INFÂNCIA DOS ANJOS Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "1677",
+     "nome": "FUNDAÇÃO D. PEDRO IV - ESTABELECIMENTO DE ARROIOS Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "1689",
+     "nome": "FUNDAÇÃO D. PEDRO IV - CASA DE INFANCIA DE SANTANA Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "5197",
+     "nome": "CENTRO SOCIAL PAROQUIAL DA PENA Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "24671",
+     "nome": "CRECHE MÃE MARIA Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "27518",
+     "nome": "INFANTÁRIO POPULAR RIBEIRO SANTOS Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "30817",
+     "nome": "EXTERNATO INFANTIL E PRIMÁRIO PASSOS MANUEL Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "36951",
+     "nome": "COLÉGIO DE TALENTOS Arroios",
+     "freguesia": "Arroios"
+    },
+    {
+     "id": "707",
+     "nome": "CENTRO INFANTIL VISCONDE VALMOR Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "745",
+     "nome": "ASSOCIAÇÃO DO PESSOAL DA FUNDAÇÃO GULBENKIAN Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "783",
+     "nome": "CENTRO SOCIAL DA PAROQUIA DE SÃO SEBASTIÃO DA PEDREIRA Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "1652",
+     "nome": "BABETE E COMPANHIA Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "18617",
+     "nome": "EXTERNATO SANTA TERESINHA DE LISIEUX Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "27042",
+     "nome": "A RITINHA - EXTERNATO E JARDIM DE INFÂNCIA Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "37900",
+     "nome": "NIDO MONTESSORI LISBOA Avenidas Novas",
+     "freguesia": "Avenidas Novas"
+    },
+    {
+     "id": "1518",
+     "nome": "CRECHE MARQUÊS DE OLHÃO Beato",
+     "freguesia": "Beato"
+    },
+    {
+     "id": "38756",
+     "nome": "CRECHE CASAL DO PINTO Beato",
+     "freguesia": "Beato"
+    },
+    {
+     "id": "728",
+     "nome": "CASINHA DE NOSSA SENHORA Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "1613",
+     "nome": "CASA DA ÁRVORE Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "1748",
+     "nome": "ABRIGO INFANTIL DE SANTA MARIA DE BELÉM Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "5813",
+     "nome": "O NOSSO COLÉGIO Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "17704",
+     "nome": "CASELSOL Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "18232",
+     "nome": "CED D. NUNO ÁLVARES PEREIRA Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "18250",
+     "nome": "CED JACOB RODRIGUES PEREIRA Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "20221",
+     "nome": "GERAÇÃO CHUPETA Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "29253",
+     "nome": "COLÉGIO HELEN KELLER Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "31963",
+     "nome": "PARK INTERNATIONAL SCHOOL CAMPUS RESTELO Belém",
+     "freguesia": "Belém"
+    },
+    {
+     "id": "764",
+     "nome": "EXTERNATO DAS PEDRALVAS LDA Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "4999",
+     "nome": "CAI DO BAIRRO DA BOAVISTA Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "21382",
+     "nome": "RUTE - ASSOCIAÇÃO SOLIDARIEDADE SOCIAL - CRECHE Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "29153",
+     "nome": "CRECHE RAINHA DONA LEONOR Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "29302",
+     "nome": "CRECHE CASA DO BEBÉ Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "29585",
+     "nome": "ASSOCIAÇÃO DE PAIS E TÉCNICOS DO INFANTÁRIO PEDRITA Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "32815",
+     "nome": "COLÉGIO BEBECAS Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "39159",
+     "nome": "COLÉGIO SANTA CRUZ Benfica",
+     "freguesia": "Benfica"
+    },
+    {
+     "id": "777",
+     "nome": "ASSOCIAÇÃO MORADORES DO CASAL VENTOSO Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "1522",
+     "nome": "ASSISTÊNCIA INFANTIL DA FREGUESIA DE SANTA ISABEL Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "1681",
+     "nome": "FUNDAÇÃO D. PEDRO IV - CASA DE INFANCIA DE SANTA QUITÉRIA Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "1702",
+     "nome": "COLÉGIO LUSO-SUÍÇO Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "1721",
+     "nome": "CENTRO SOCIAL JOSÉ LUÍS COELHO Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "17702",
+     "nome": "GRÉMIO INSTRUÇÃO LIBERAL CAMPO OURIQUE Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "29143",
+     "nome": "NUCLISOL JEAN PIAGET/ CRECHE DE CAMPO DE OURIQUE Campo de Ourique",
+     "freguesia": "Campo de Ourique"
+    },
+    {
+     "id": "792",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO VICENTE DE PAULO Campolide",
+     "freguesia": "Campolide"
+    },
+    {
+     "id": "1742",
+     "nome": "CASA DA BELA FLOR Campolide",
+     "freguesia": "Campolide"
+    },
+    {
+     "id": "1791",
+     "nome": "EDUCAÇÃO POPULAR Campolide",
+     "freguesia": "Campolide"
+    },
+    {
+     "id": "2234",
+     "nome": "CAI - CENTRO DE ACOLHIMENTO INFANTIL DE CAMPOLIDE Campolide",
+     "freguesia": "Campolide"
+    },
+    {
+     "id": "33817",
+     "nome": "PARK INTERNATIONAL SCHOOL PRAÇA DE ESPANHA Campolide",
+     "freguesia": "Campolide"
+    },
+    {
+     "id": "1690",
+     "nome": "ASSOCIAÇÃO SOCORRO E AMPARO - CASA DO MENINO JESUS Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "2252",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE CARNIDE Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "5116",
+     "nome": "CAI DO BAIRRO DO PADRE CRUZ Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "5121",
+     "nome": "CENTRO SOCIAL POLIVALENTE DO BAIRRO PADRE CRUZ Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "5183",
+     "nome": "CRECHE A ALCOFINHA - CML Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "18614",
+     "nome": "SOZINHO EM CASA Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "20322",
+     "nome": "THE SAILORS - CARNIDE Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "24935",
+     "nome": "A CASA AMARELA Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "25451",
+     "nome": "CRECHE CARITAS Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "27667",
+     "nome": "CRECHE OS PIPOQUINHAS Carnide",
+     "freguesia": "Carnide"
+    },
+    {
+     "id": "606",
+     "nome": "OBRA DAS CRIANÇAS DA FREGUESIA DA LAPA Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "723",
+     "nome": "ICCO INFANTÁRIO COOPERATIVA DE CAMPO DE OURIQUE Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "789",
+     "nome": "CENTRO SOCIAL DO SAGRADO CORAÇÃO DE JESUS - S. DOMINGOS Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "1601",
+     "nome": "CASA DE PROTECÇÃO E AMPARO DE SANTO ANTÓNIO Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "1648",
+     "nome": "CASA PASTORINHOS DE FÁTIMA Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "5122",
+     "nome": "CENTRO DE BEM ESTAR INFANTIL DAS JANELAS VERDES Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "21733",
+     "nome": "EXTERNATO RAINHA DONA AMÉLIA (JARDIM INFANTIL DA LAPA) Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "26778",
+     "nome": "JARDIM INFANTIL DO PATRONATO CRISTO-REI Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "39286",
+     "nome": "O MONTESSORI Estrela",
+     "freguesia": "Estrela"
+    },
+    {
+     "id": "1417",
+     "nome": "CENTRO DE APOIO INFANTIL FILADÉLFIA - LUMIAR Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "1761",
+     "nome": "OBRA SOCIAL PAULO VI Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "5108",
+     "nome": "CAI DO BAIRRO DA CRUZ VERMELHA Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "17001",
+     "nome": "NUCLISOL - UNIDADE DE DESENVOLVIMENTO INTEGRADO DO LUMIAR Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "18553",
+     "nome": "JARDIM DAS DESCOBERTAS Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "18563",
+     "nome": "COLÉGIO DOS ARCOS Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "18565",
+     "nome": "SÓ BEBÉS, SERVIÇO DE APOIO SOCIAL E ENSINO, LDA. Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "18612",
+     "nome": "GENTE PEQUENA ,CRECHES E SERVIÇOS EDUCATIVOS, LDA Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "21648",
+     "nome": "CRECHE LUMIAR Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "21662",
+     "nome": "SAÍDOS DA CASCA (TELHEIRAS) Lumiar",
+     "freguesia": "Lumiar"
+    },
+    {
+     "id": "779",
+     "nome": "CENTRO SOCIAL COMUNITÁRIO BAIRRO DA FLAMENGA Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "1413",
+     "nome": "INFANTÁRIO DO IES CESÁRIO VERDE INTERNATINAL SCHOOL Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "1513",
+     "nome": "ASSOCIAÇÃO ESTER JANZ Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "2241",
+     "nome": "CAI - CENTRO DE ACOLHIMENTO INFANTIL DOUTOR JOSÉ DOMINGOS BARREIRO Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "2266",
+     "nome": "NUCLISOL - JEAN PIAGET - U.D.I. DE CHELAS /BAIRRO DO CONDADO Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "5103",
+     "nome": "CAI VALE FUNDÃO 1 Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "5104",
+     "nome": "CAI VALE FUNDÃO 2 Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "5838",
+     "nome": "CENTRO SOC. PAROQ. SÃO MAXIMILIANO KOLBE - EQUIPAMENTO DE INFÂNCIA Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "17717",
+     "nome": "NUCLISOL - JEAN PIAGET - U.D.I. DO BAIRRO DO ARMADOR Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "18219",
+     "nome": "ASSOCIAÇÃO TEMPO DE MUDAR PARA DESENVOLVIMENTOS DO Bº DOS LÓIOS Marvila",
+     "freguesia": "Marvila"
+    },
+    {
+     "id": "767",
+     "nome": "COLÉGIO \"O NOSSO JARDIM\" - SECÇÃO INFANTIL Misericórdia",
+     "freguesia": "Misericórdia"
+    },
+    {
+     "id": "1510",
+     "nome": "ADECO - JARDIM DE INFÂNCIA DAS MERCÊS Misericórdia",
+     "freguesia": "Misericórdia"
+    },
+    {
+     "id": "1678",
+     "nome": "FUNDAÇÃO D. PEDRO IV - CASA DE INFÂNCIA DE CALAFATES Misericórdia",
+     "freguesia": "Misericórdia"
+    },
+    {
+     "id": "703",
+     "nome": "CENTRO INFANTIL OLIVAIS SUL Olivais",
+     "freguesia": "Olivais"
+    },
+    {
+     "id": "1680",
+     "nome": "FUNDAÇÃO D. PEDRO IV - CASA DE INFÂNCIA DOS OLIVAIS Olivais",
+     "freguesia": "Olivais"
+    },
+    {
+     "id": "29148",
+     "nome": "CRECHE JOSÉ MATEUS Olivais",
+     "freguesia": "Olivais"
+    },
+    {
+     "id": "29728",
+     "nome": "LUA CRESCENTE Olivais",
+     "freguesia": "Olivais"
+    },
+    {
+     "id": "754",
+     "nome": "EXTERNATO JOÃO XXIII Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "17709",
+     "nome": "ASS. VIDA ABUNDANTE - ESPAÇO CRESCER Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "18562",
+     "nome": "CRECHE DO GATO AMARELO Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "22549",
+     "nome": "COLÉGIO CASA DAS ABELHINHAS Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "22764",
+     "nome": "TUTOR T Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "25191",
+     "nome": "CRECHE & APARECE Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "27503",
+     "nome": "EXTERNATO S. MIGUEL ARCANJO Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "28323",
+     "nome": "CRECHE CANTINHO DAS ALFAZEMAS Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "33482",
+     "nome": "SAÍDOS DA CASCA 2 (PARQUE DAS NAÇÕES) Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "38895",
+     "nome": "ESPAÇO EDUCATIVO ILHA DOS AMORES Parque das Nações",
+     "freguesia": "Parque das Nações"
+    },
+    {
+     "id": "628",
+     "nome": "FUNDAÇÃO JÚLIA MOREIRA Penha de França",
+     "freguesia": "Penha de França"
+    },
+    {
+     "id": "638",
+     "nome": "CRECHE MISSÃO NOSSA SENHORA Penha de França",
+     "freguesia": "Penha de França"
+    },
+    {
+     "id": "1726",
+     "nome": "ASSOCIAÇÃO DE PENHA DE FRANÇA Penha de França",
+     "freguesia": "Penha de França"
+    },
+    {
+     "id": "1745",
+     "nome": "OBRA DE SANTA ZITA - LISBOA Penha de França",
+     "freguesia": "Penha de França"
+    },
+    {
+     "id": "18226",
+     "nome": "CED D. MARIA PIA Penha de França",
+     "freguesia": "Penha de França"
+    },
+    {
+     "id": "5113",
+     "nome": "CENTRO DE PROMOÇÃO SOCIAL DA ALTA DE LISBOA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "14032",
+     "nome": "NUCLISOL - UNIDADE DE DESENVOLVIMENTO INTEGRADO DAS GALINHEIRAS Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "24592",
+     "nome": "CENTRO DE DESENVOLVIMENTO COMUNITÁRIO DA CHARNECA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "28270",
+     "nome": "CRECHE DA AMEIXOEIRA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "28295",
+     "nome": "CRECHE DE S. CLARA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "28659",
+     "nome": "CRECHE NA QUINTA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "29065",
+     "nome": "CRECHE SANTA CLARA Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "33496",
+     "nome": "CENTRO INFANTIL DR. ANTÓNIO DA COSTA LEAL Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "33539",
+     "nome": "KIDSPOT Santa Clara",
+     "freguesia": "Santa Clara"
+    },
+    {
+     "id": "649",
+     "nome": "ASSOCIAÇÃO PROTECTORA DA PRIMEIRA INFÂNCIA Santa Maria Maior",
+     "freguesia": "Santa Maria Maior"
+    },
+    {
+     "id": "1746",
+     "nome": "CENTRO PAROQUIAL BEM ESTAR SOCIAL DE ALFAMA - CRECHE Santa Maria Maior",
+     "freguesia": "Santa Maria Maior"
+    },
+    {
+     "id": "2246",
+     "nome": "CENTRO SOCIAL DO MENINO DEUS Santa Maria Maior",
+     "freguesia": "Santa Maria Maior"
+    },
+    {
+     "id": "18430",
+     "nome": "CRECHE ENCOSTA DO CASTELO Santa Maria Maior",
+     "freguesia": "Santa Maria Maior"
+    },
+    {
+     "id": "1644",
+     "nome": "CRECHE DE NOSSA SENHORA DA CONCEIÇÃO Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "1716",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE NOSSA SENHORA DA ENCARNAÇÃO Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "1757",
+     "nome": "CENTRO SOCIAL PAROQUIAL DE SÃO MAMEDE Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "1760",
+     "nome": "JARDIM INFANTIL OS PIRRALHOS DO MARQUÊS Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "5102",
+     "nome": "CAI DE SÃO JOSÉ Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "22546",
+     "nome": "JARDIM DA FANTASIA - ACTIVIDADES DE CRECHE, JARDIM DE INFÂNCIA E AFINS Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "26319",
+     "nome": "CRECHE O PRINCIPEZINHO Santo António",
+     "freguesia": "Santo António"
+    },
+    {
+     "id": "1647",
+     "nome": "APROS - ASSOCIAÇÃO DE EDUCAÇÃO E PROMOÇÃO SOCIAL São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "1737",
+     "nome": "COLÉGIO DE SÃO DOMINGOS São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "2254",
+     "nome": "CENTRO SOCIAL PAROQUIAL DO CALHARIZ DE BENFICA São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "2287",
+     "nome": "ASSOCIAÇÃO INFANTE DE SAGRES São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "5130",
+     "nome": "CENTRO SOCIAL POLIVALENTE DO BAIRRO DAS FURNAS São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "5179",
+     "nome": "CRECHE DE S. JOSÉ São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "5181",
+     "nome": "CRECHE O POUPAS - CML São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "5182",
+     "nome": "CRECHE O CANGURU - CML São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "20261",
+     "nome": "ACADEMIA DOS MIÚDOS, SOCIEDADE DE ENSINO E APOIO SOCIAL, LDA São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "22647",
+     "nome": "SÓ MIMINHOS São Domingos de Benfica",
+     "freguesia": "São Domingos de Benfica"
+    },
+    {
+     "id": "621",
+     "nome": "CENTRO DE PROMOÇÃO SOCIAL RAINHA DONA LEONOR São Vicente",
+     "freguesia": "São Vicente"
+    },
+    {
+     "id": "1606",
+     "nome": "SOCIEDADE DE INSTRUÇÃO DE BENEFICÊNCIA A VOZ DO OPERÁRIO São Vicente",
+     "freguesia": "São Vicente"
+    },
+    {
+     "id": "1682",
+     "nome": "FUNDAÇÃO D. PEDRO IV - CASA DE INFÂNCIA DE SÃO VICENTE São Vicente",
+     "freguesia": "São Vicente"
+    },
+    {
+     "id": "1683",
+     "nome": "FUNDAÇÂO MARIA DO CARMO ROQUE PEREIRA São Vicente",
+     "freguesia": "São Vicente"
+    },
+    {
+     "id": "4975",
+     "nome": "ASSOCIAÇÃO DE SANTA ENGRÁCIA DE LISBOA São Vicente",
+     "freguesia": "São Vicente"
+    },
+    {
+     "id": "37831",
+     "nome": "CRECHE DO CONVENTO DO DESAGRAVO São Vicente",
+     "freguesia": "São Vicente"
+    }
+   ]
+  },
+  "vila-franca-de-xira": {
+   "freguesias": [
+    {
+     "dicofre": "111412",
+     "freguesia": "União das freguesias de Alhandra, São João dos Montes e Calhandriz",
+     "equipamentos": 3,
+     "capacidade": 184,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111413",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "equipamentos": 5,
+     "capacidade": 564,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111414",
+     "freguesia": "União das freguesias de Castanheira do Ribatejo e Cachoeiras",
+     "equipamentos": 3,
+     "capacidade": 295,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111415",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "equipamentos": 18,
+     "capacidade": 805,
+     "incompleto": true
+    },
+    {
+     "dicofre": "111408",
+     "freguesia": "Vialonga",
+     "equipamentos": 4,
+     "capacidade": 301,
+     "incompleto": false
+    },
+    {
+     "dicofre": "111409",
+     "freguesia": "Vila Franca de Xira",
+     "equipamentos": 3,
+     "capacidade": 311,
+     "incompleto": false
+    }
+   ],
+   "equipamentos": [
+    {
+     "id": "285",
+     "nome": "ASSOCIAÇÃO DE PROMOÇÃO SOCIAL DE ALHANDRA União das freguesias de Alhandra, São João dos Montes e Calhandriz",
+     "freguesia": "União das freguesias de Alhandra, São João dos Montes e Calhandriz"
+    },
+    {
+     "id": "288",
+     "nome": "ASSOCIAÇÃO DE PROMOÇÃO SOCIAL DE ALHANDRA União das freguesias de Alhandra, São João dos Montes e Calhandriz",
+     "freguesia": "União das freguesias de Alhandra, São João dos Montes e Calhandriz"
+    },
+    {
+     "id": "24603",
+     "nome": "CRECHE DA QUINTA DA PONTE - ASSOCIAÇÃO BEM ESTAR INFANTIL VILA FRANCA XIRA União das freguesias de Alhandra, São João dos Montes e Calhandriz",
+     "freguesia": "União das freguesias de Alhandra, São João dos Montes e Calhandriz"
+    },
+    {
+     "id": "283",
+     "nome": "CASBA - CENTRO APOIO SOCIAL BOM SUCESSO E ARCENA União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho"
+    },
+    {
+     "id": "1465",
+     "nome": "CEBI - FUNDAÇÃO PARA O DESENVOLVIMENTO COMUNITÁRIO DE ALVERCA União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho"
+    },
+    {
+     "id": "1467",
+     "nome": "CEBI - FUNDAÇÃO PARA O DESENVOLVIMENTO COMUNITÁRIO DE ALVERCA / CLUBE DE JOVENS União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho"
+    },
+    {
+     "id": "7036",
+     "nome": "CENTRO SOCIAL PARA DESENVOLVIMENTO DO SOBRALINHO União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho"
+    },
+    {
+     "id": "32983",
+     "nome": "CRECHE VOVOVELOS União das freguesias de Alverca do Ribatejo e Sobralinho",
+     "freguesia": "União das freguesias de Alverca do Ribatejo e Sobralinho"
+    },
+    {
+     "id": "1426",
+     "nome": "ASSOCIAÇÃO PROMOÇÃO SOCIAL DE CASTANHEIRA DO RIBATEJO União das freguesias de Castanheira do Ribatejo e Cachoeiras",
+     "freguesia": "União das freguesias de Castanheira do Ribatejo e Cachoeiras"
+    },
+    {
+     "id": "24401",
+     "nome": "CENTRO SOCIAL PAROQUIAL CASA DE SÃO JOSÉ União das freguesias de Castanheira do Ribatejo e Cachoeiras",
+     "freguesia": "União das freguesias de Castanheira do Ribatejo e Cachoeiras"
+    },
+    {
+     "id": "24407",
+     "nome": "CRECHE DA ASSOCIAÇÃO DE PROMOÇÃO SOCIAL União das freguesias de Castanheira do Ribatejo e Cachoeiras",
+     "freguesia": "União das freguesias de Castanheira do Ribatejo e Cachoeiras"
+    },
+    {
+     "id": "268",
+     "nome": "CRECHE INSTITUTO DE APOIO Á COMUNIDADE - BLOCO G União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "269",
+     "nome": "CRECHE INSTITUTO DE APOIO Á COMUNIDADE - BLOCO E União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "1432",
+     "nome": "JARDIM INFANTIL ASSOCIAÇÃO POPULAR APOIO À CRIANÇA União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "1436",
+     "nome": "ASSOCIAÇÃO SOLIDARIEDADE SOCIAL APOIO Á FAMÍLIA União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "1439",
+     "nome": "ACTIVIDADES DE TEMPOS LIVRES DE BOLONHA- CRECHE União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "1440",
+     "nome": "ACTIVIDADES DE TEMPOS LIVRES DE BOLONHA - CRECHE União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "17010",
+     "nome": "CRECHE INSTITUTO DE APOIO COMUNITÁRIO - BLOCO L União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "17021",
+     "nome": "ACTIVIDADES TEMPOS LIVRES DE BOLONHA - CRECHE União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "17300",
+     "nome": "ASSOCIAÇÃO SOLIDARIEDADE SOCIAL E APOIO À FAMÍLIA União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "20364",
+     "nome": "ACTIVIDADES DE TEMPOS LIVRES DE BOLONHA -CRECHE União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+     "freguesia": "União das freguesias de Póvoa de Santa Iria e Forte da Casa"
+    },
+    {
+     "id": "1438",
+     "nome": "CASA DO POVO DE VIALONGA Vialonga",
+     "freguesia": "Vialonga"
+    },
+    {
+     "id": "1462",
+     "nome": "ASSOCIAÇÃO BEM ESTAR INFANTIL DE VIALONGA - SEDE Vialonga",
+     "freguesia": "Vialonga"
+    },
+    {
+     "id": "1464",
+     "nome": "ASSOCIAÇÃO BEM ESTAR INFANTIL DE VIALONGA Vialonga",
+     "freguesia": "Vialonga"
+    },
+    {
+     "id": "20544",
+     "nome": "MEGA KIDS - EXTERNATO PRÉ-PRIMÁRIO Vialonga",
+     "freguesia": "Vialonga"
+    },
+    {
+     "id": "1430",
+     "nome": "CRECHE QUINTA DOS BACELOS - ASSOCIAÇÃO BEM ESTAR INFANTIL VILA FRANCA DE XIRA Vila Franca de Xira",
+     "freguesia": "Vila Franca de Xira"
+    },
+    {
+     "id": "17012",
+     "nome": "CENTRO DE BEM ESTAR INFANTIL VILA FRANCA DE XIRA Vila Franca de Xira",
+     "freguesia": "Vila Franca de Xira"
+    },
+    {
+     "id": "24604",
+     "nome": "CAT-0/12 - CAT-12/18 - CRECHE (FIDALGOS) - ASS.BEM ESTAR INFANTIL V.F.XIRA Vila Franca de Xira",
+     "freguesia": "Vila Franca de Xira"
+    }
+   ]
+  }
+ }
+}

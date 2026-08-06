@@ -1,0 +1,167 @@
+{
+ "fonte": "cartasocial.pt (DGSSS), consulta 2026-07-29, resposta social Creche (tp=1103)",
+ "concelhos": [
+  {
+   "concelho": "Alcochete",
+   "dico": "1502",
+   "equipamentos": 8,
+   "capacidade": 433,
+   "utentes": 336,
+   "nascimentos_2024": 165,
+   "criancas_0_3_est": 495
+  },
+  {
+   "concelho": "Almada",
+   "dico": "1503",
+   "equipamentos": 50,
+   "capacidade": 2796,
+   "utentes": 2438,
+   "nascimentos_2024": 1728,
+   "criancas_0_3_est": 5184
+  },
+  {
+   "concelho": "Amadora",
+   "dico": "1115",
+   "equipamentos": 43,
+   "capacidade": 2105,
+   "utentes": 1878,
+   "nascimentos_2024": 2132,
+   "criancas_0_3_est": 6396
+  },
+  {
+   "concelho": "Barreiro",
+   "dico": "1504",
+   "equipamentos": 25,
+   "capacidade": 1336,
+   "utentes": 1226,
+   "nascimentos_2024": 838,
+   "criancas_0_3_est": 2514
+  },
+  {
+   "concelho": "Cascais",
+   "dico": "1105",
+   "equipamentos": 59,
+   "capacidade": 3366,
+   "utentes": 2902,
+   "nascimentos_2024": 1725,
+   "criancas_0_3_est": 5175
+  },
+  {
+   "concelho": "Lisboa",
+   "dico": "1106",
+   "equipamentos": 198,
+   "capacidade": 11536,
+   "utentes": 10197,
+   "nascimentos_2024": 5767,
+   "criancas_0_3_est": 17301
+  },
+  {
+   "concelho": "Loures",
+   "dico": "1107",
+   "equipamentos": 51,
+   "capacidade": 2892,
+   "utentes": 2515,
+   "nascimentos_2024": 2317,
+   "criancas_0_3_est": 6951
+  },
+  {
+   "concelho": "Mafra",
+   "dico": "1109",
+   "equipamentos": 16,
+   "capacidade": 1170,
+   "utentes": 1127,
+   "nascimentos_2024": 751,
+   "criancas_0_3_est": 2253
+  },
+  {
+   "concelho": "Moita",
+   "dico": "1506",
+   "equipamentos": 11,
+   "capacidade": 677,
+   "utentes": 560,
+   "nascimentos_2024": 769,
+   "criancas_0_3_est": 2307
+  },
+  {
+   "concelho": "Montijo",
+   "dico": "1507",
+   "equipamentos": 19,
+   "capacidade": 865,
+   "utentes": 754,
+   "nascimentos_2024": 618,
+   "criancas_0_3_est": 1854
+  },
+  {
+   "concelho": "Odivelas",
+   "dico": "1116",
+   "equipamentos": 44,
+   "capacidade": 2039,
+   "utentes": 1743,
+   "nascimentos_2024": 1815,
+   "criancas_0_3_est": 5445
+  },
+  {
+   "concelho": "Oeiras",
+   "dico": "1110",
+   "equipamentos": 67,
+   "capacidade": 3644,
+   "utentes": 3015,
+   "nascimentos_2024": 1386,
+   "criancas_0_3_est": 4158
+  },
+  {
+   "concelho": "Palmela",
+   "dico": "1508",
+   "equipamentos": 13,
+   "capacidade": 649,
+   "utentes": 619,
+   "nascimentos_2024": 617,
+   "criancas_0_3_est": 1851
+  },
+  {
+   "concelho": "Seixal",
+   "dico": "1510",
+   "equipamentos": 41,
+   "capacidade": 1898,
+   "utentes": 1778,
+   "nascimentos_2024": 1918,
+   "criancas_0_3_est": 5754
+  },
+  {
+   "concelho": "Sesimbra",
+   "dico": "1511",
+   "equipamentos": 12,
+   "capacidade": 606,
+   "utentes": 571,
+   "nascimentos_2024": 431,
+   "criancas_0_3_est": 1293
+  },
+  {
+   "concelho": "Setúbal",
+   "dico": "1512",
+   "equipamentos": 40,
+   "capacidade": 1865,
+   "utentes": 1498,
+   "nascimentos_2024": 1107,
+   "criancas_0_3_est": 3321
+  },
+  {
+   "concelho": "Sintra",
+   "dico": "1111",
+   "equipamentos": 81,
+   "capacidade": 3749,
+   "utentes": 3227,
+   "nascimentos_2024": 4413,
+   "criancas_0_3_est": 13239
+  },
+  {
+   "concelho": "Vila Franca de Xira",
+   "dico": "1114",
+   "equipamentos": 36,
+   "capacidade": 2460,
+   "utentes": 2154,
+   "nascimentos_2024": 1339,
+   "criancas_0_3_est": 4017
+  }
+ ]
+}

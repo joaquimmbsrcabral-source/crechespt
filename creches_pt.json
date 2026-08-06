@@ -15,11 +15,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/433161494",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5159",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-595655637",
@@ -665,7 +668,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20303"
  },
  {
   "id": "osm-node-1569106285",
@@ -825,11 +830,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/1596865287",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24443",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-1603801482",
@@ -1033,7 +1041,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18612"
  },
  {
   "id": "osm-node-1767609786",
@@ -1225,11 +1235,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/1801714944",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29154",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-1814710258",
@@ -1482,11 +1495,14 @@
   "osm_url": "https://www.openstreetmap.org/node/2100644439",
   "distrito": "Lisboa",
   "distrito_inferido": true,
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5479",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-2128098223",
@@ -2778,7 +2794,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17246"
  },
  {
   "id": "osm-node-5615197517",
@@ -2943,7 +2961,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche + JI",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3442"
  },
  {
   "id": "osm-node-5863089510",
@@ -3068,7 +3088,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3412"
  },
  {
   "id": "osm-node-5863089517",
@@ -3171,7 +3193,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3422"
  },
  {
   "id": "osm-node-5863089522",
@@ -3210,11 +3234,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5863089533",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22454",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5863089534",
@@ -3232,11 +3259,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5863089534",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22472",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5863089535",
@@ -3344,11 +3374,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5863089542",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29639",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5863089543",
@@ -3524,11 +3557,14 @@
   "email": "cpsfamilia@gmail.com",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5871309327",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22443",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5871309340",
@@ -3551,7 +3587,9 @@
   "resposta": "Creche / Jardim de Infância",
   "tipo_inferido": true,
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22447"
  },
  {
   "id": "osm-node-5871309341",
@@ -3635,11 +3673,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5871309351",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3554",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5871309354",
@@ -3726,11 +3767,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/5871309361",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4817",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-5871309362",
@@ -4074,7 +4118,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "15091"
  },
  {
   "id": "osm-node-6452213255",
@@ -4382,11 +4428,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/8699540509",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21722",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-8707600459",
@@ -4703,11 +4752,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/10183831666",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20261",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-10288326199",
@@ -4804,11 +4856,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/10873848734",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29585",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-10893744545",
@@ -6090,11 +6145,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11833231247",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20342",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11835234051",
@@ -6272,13 +6330,16 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11835677813",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "email": "geral@pipos-e-bibas.pt",
   "enriquecido_em": "2026-07-20",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22795",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11835677814",
@@ -6362,14 +6423,17 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11835677852",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "email": "geral@crechecolinasdocruzeiro.com",
   "website": "https://crechecolinasdocruzeiro.com",
   "enriquecido_em": "2026-07-20",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24701",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11835677853",
@@ -6541,11 +6605,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11879391589",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28323",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11879966682",
@@ -6743,11 +6810,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11886421507",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5116",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11889778067",
@@ -6786,11 +6856,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11892515124",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1760",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11893446112",
@@ -6809,11 +6882,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11893446112",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "789",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-11901606979",
@@ -9906,11 +9982,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12046356657",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4855",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12046436573",
@@ -9929,11 +10008,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12046436573",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Alcochete",
-  "concelho_slug": "alcochete"
+  "concelho_slug": "alcochete",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3419",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12046594986",
@@ -9995,11 +10077,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12046710507",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28619",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12046710508",
@@ -10105,11 +10190,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12058101520",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24656",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12058101530",
@@ -10130,11 +10218,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12058101530",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18421",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12058112709",
@@ -10152,11 +10243,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12058112709",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26982",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12058151495",
@@ -10314,11 +10408,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12060004677",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4909",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12060004678",
@@ -10362,11 +10459,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12060004679",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4924",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12060004682",
@@ -10387,11 +10487,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12060004682",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22801",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12060004719",
@@ -10502,11 +10605,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12062075389",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5428",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12062079835",
@@ -10704,11 +10810,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063110973",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5835",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063110977",
@@ -10727,11 +10836,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063110977",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24700",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063110978",
@@ -10863,11 +10975,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063147244",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1425",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063147245",
@@ -10908,11 +11023,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063147246",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18653",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063147247",
@@ -10931,11 +11049,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063147247",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "224",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063147257",
@@ -11022,11 +11143,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063384374",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "339",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063384487",
@@ -11068,11 +11192,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063757118",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1748",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063757137",
@@ -11166,11 +11293,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063915603",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21648",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063915604",
@@ -11188,11 +11318,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063915604",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29255",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063915613",
@@ -11259,11 +11392,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12063917690",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2252",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12063965852",
@@ -11307,11 +11443,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064092979",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1647",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12064093014",
@@ -11400,11 +11539,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064093071",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "222",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12064093072",
@@ -11443,14 +11585,17 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064093073",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "email": "amamacoelha@gmail.com",
   "website": "http://www.amamacoelha.pt",
   "enriquecido_em": "2026-07-22",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29773",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12064923041",
@@ -11559,11 +11704,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064953597",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5188",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12064953615",
@@ -11583,11 +11731,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064953615",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "714",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065313566",
@@ -11605,11 +11756,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12065313566",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1721",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065313567",
@@ -11677,11 +11831,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12065449232",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1689",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065449238",
@@ -11700,11 +11857,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12065449238",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26778",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065449240",
@@ -11724,11 +11884,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12065449240",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1648",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065449241",
@@ -11747,11 +11910,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12065449241",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5122",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12065449242",
@@ -11837,11 +12003,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12066232231",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18617",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12066232234",
@@ -11859,11 +12028,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12066232234",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "707",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12066232236",
@@ -11881,11 +12053,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12066232236",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27518",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12066232256",
@@ -11905,11 +12080,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12066232256",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "628",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-12068906128",
@@ -12274,11 +12452,14 @@
   "website": "http://www.eraumavez123.pt/",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/13075631620",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22471",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-13106064829",
@@ -12346,7 +12527,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21662"
  },
  {
   "id": "osm-node-13312201771",
@@ -12762,11 +12945,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/92354237",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29796",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-93987305",
@@ -12876,7 +13062,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17717"
  },
  {
   "id": "osm-way-101820038",
@@ -13205,11 +13393,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/114814523",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17012",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-114818611",
@@ -13227,11 +13418,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/114818611",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "283",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-115057304",
@@ -13649,11 +13843,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/140376364",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "201",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-140439012",
@@ -13755,7 +13952,9 @@
   "idade_max_meses": 72,
   "resposta": "Infantário",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5243"
  },
  {
   "id": "osm-way-143609300",
@@ -13901,11 +14100,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/144950193",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5265",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-145114562",
@@ -13972,11 +14174,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/145511042",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25118",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-146342993",
@@ -14109,7 +14314,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche + JI",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "225"
  },
  {
   "id": "osm-way-148898259",
@@ -14239,11 +14446,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/152841603",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22838",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-152841621",
@@ -14488,11 +14698,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/164482046",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "33482",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-165614039",
@@ -14572,11 +14785,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/167897388",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1464",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-167975423",
@@ -14933,11 +15149,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/182098259",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24895",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-183090997",
@@ -14988,11 +15207,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/183626725",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5113",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-183927971",
@@ -16060,14 +16282,17 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/236563538",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
   "concelho_slug": "cascais",
   "email": "geral@abla.org",
   "website": "https://www.abla.org",
-  "enriquecido_em": "2026-07-29"
+  "enriquecido_em": "2026-07-29",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21721",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-237494559",
@@ -16305,7 +16530,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28672"
  },
  {
   "id": "osm-way-245803912",
@@ -16671,11 +16898,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/259445923",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5240",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-261742240",
@@ -16695,11 +16925,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/261742240",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21663",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-262614396",
@@ -16735,11 +16968,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/262723817",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27682",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-264314000",
@@ -17006,7 +17242,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche + JI",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4805"
  },
  {
   "id": "osm-way-289397950",
@@ -17299,7 +17537,9 @@
   "concelho": "Montijo",
   "concelho_slug": "montijo",
   "email": "geral@santacasamontijo.pt",
-  "enriquecido_em": "2026-07-29"
+  "enriquecido_em": "2026-07-29",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3460"
  },
  {
   "id": "osm-way-310999336",
@@ -17359,11 +17599,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/312901820",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24621",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-312966658",
@@ -17383,11 +17626,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/312966658",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24604",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-314418870",
@@ -17669,11 +17915,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/326476223",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Moita",
-  "concelho_slug": "moita"
+  "concelho_slug": "moita",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26939",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-329124404",
@@ -17693,11 +17942,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/329124404",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1438",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-332135697",
@@ -17848,11 +18100,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/345704200",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17854",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-353314345",
@@ -18220,11 +18475,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/383227807",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24671",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-383298326",
@@ -18341,11 +18599,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/386998027",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5121",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-389968477",
@@ -18423,7 +18684,9 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
   "concelho_slug": "almada",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17119"
  },
  {
   "id": "osm-way-411358091",
@@ -18637,7 +18900,11 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Caldas da Rainha",
-  "concelho_slug": "caldas-da-rainha"
+  "concelho_slug": "caldas-da-rainha",
+  "email": "geral@cspcr.com",
+  "website": "http://www.cspcr.com/",
+  "telefone": "262 843 665",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-432341646",
@@ -18860,11 +19127,14 @@
   "email": "cspvalefigueira@sapo.pt",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/439031239",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4820",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-440375051",
@@ -18973,11 +19243,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/449058465",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25141",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-454490421",
@@ -18998,7 +19271,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1683"
  },
  {
   "id": "osm-way-457724480",
@@ -19124,11 +19399,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/466945450",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1436",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-470662219",
@@ -19890,7 +20168,11 @@
   "resposta": "Infantário (IPSS)",
   "tipo_inferido": true,
   "concelho": "Moita",
-  "concelho_slug": "moita"
+  "concelho_slug": "moita",
+  "email": "charlot_diretora_pedagogica@scmav.org.pt",
+  "website": "http://www.scmav.org.pt/index.php/o-charlot-creche-j-infancia-e-catl/",
+  "telefone": "212 042 017",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-533613377",
@@ -19910,11 +20192,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/533613377",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Moita",
-  "concelho_slug": "moita"
+  "concelho_slug": "moita",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2348",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-537807519",
@@ -19935,7 +20220,10 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Vila Nova de Famalicão",
-  "concelho_slug": "vila-nova-de-famalicao"
+  "concelho_slug": "vila-nova-de-famalicao",
+  "email": "crechelapa@scmfamalicao.pt",
+  "website": "https://www.scmfamalicao.pt/valencias/creche-nossa-senhora-da-lapa/",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-539475883",
@@ -20006,11 +20294,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/548638330",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "34295",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-551864579",
@@ -20210,7 +20501,9 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "334"
  },
  {
   "id": "osm-way-565013407",
@@ -20415,7 +20708,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Ovar",
-  "concelho_slug": "ovar"
+  "concelho_slug": "ovar",
+  "email": "geral@anossacasa.eu",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-605259507",
@@ -20448,7 +20743,9 @@
   "resposta": "Creche",
   "concelho": "Seixal",
   "concelho_slug": "seixal",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "32860"
  },
  {
   "id": "osm-way-611317454",
@@ -20603,11 +20900,14 @@
   "osm_url": "https://www.openstreetmap.org/way/617890137",
   "distrito": "Setúbal",
   "distrito_inferido": true,
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 72,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24231",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-618068017",
@@ -21568,7 +21868,11 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Valongo",
-  "concelho_slug": "valongo"
+  "concelho_slug": "valongo",
+  "email": "centroermesinde@mail.telepac.pt",
+  "website": "https://www.cse.pt/",
+  "telefone": "229 747 194",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-694611914",
@@ -21736,7 +22040,11 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email": "crechesementesdomundo@scmalenquer.pt",
+  "website": "http://scmalenquer.pt/scma/respostassociais/infancia/",
+  "telefone": "218 272 076",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-729144305",
@@ -21797,7 +22105,11 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Constância",
-  "concelho_slug": "constancia"
+  "concelho_slug": "constancia",
+  "email": "pequenospoetas.creche@gmail.com",
+  "website": "https://scmconstancia.pt/creche/",
+  "telefone": "249 739 681",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-738012751",
@@ -21862,11 +22174,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/743648365",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1545",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-753481008",
@@ -21961,7 +22276,11 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "email": "dtinfancia@cspb.pt",
+  "website": "https://cspb.pt/",
+  "telefone": "227 471 420",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-765167297",
@@ -21977,7 +22296,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "33496"
  },
  {
   "id": "osm-way-766124919",
@@ -22081,11 +22402,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/779063409",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27056",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-780476687",
@@ -22152,7 +22476,9 @@
   "idade_max_meses": 9,
   "resposta": "Creche",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1430"
  },
  {
   "id": "osm-way-788347336",
@@ -22242,7 +22568,9 @@
   "resposta": "Jardim de Infância",
   "concelho": "Viseu",
   "concelho_slug": "viseu",
-  "distrito_original": "Guarda"
+  "distrito_original": "Guarda",
+  "email": "geral@jardimdassementinhas.pt",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-802552621",
@@ -22517,11 +22845,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/848440685",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5834",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-851797180",
@@ -22579,11 +22910,14 @@
   "telefone": "+351 210 150 718",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/854704559",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 120,
   "resposta": "Escola (inclui pré-escolar)",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1606",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-867450333",
@@ -22626,7 +22960,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche + JI",
   "concelho": "Matosinhos",
-  "concelho_slug": "matosinhos"
+  "concelho_slug": "matosinhos",
+  "email": "biquinha@scmbjm.pt",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-875506655",
@@ -23379,11 +23715,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/938086500",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29805",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-944452403",
@@ -23434,7 +23773,9 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28295"
  },
  {
   "id": "osm-way-962984276",
@@ -23594,7 +23935,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5291"
  },
  {
   "id": "osm-way-985753454",
@@ -23723,7 +24066,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "telefone": "+351 211 974 813",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-1011464213",
@@ -23966,11 +24311,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1027226827",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24354",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1032545315",
@@ -24051,11 +24399,16 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1039141139",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22465",
+  "idade_verificar": true,
+  "email": "info@brincadeirasaocubo.com",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-1039325572",
@@ -25002,11 +25355,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1062751410",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27687",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1064645406",
@@ -25148,11 +25504,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1087024777",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Moita",
-  "concelho_slug": "moita"
+  "concelho_slug": "moita",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2358",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1087544462",
@@ -25235,11 +25594,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1094768990",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "32885",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1095008186",
@@ -25530,7 +25892,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "638"
  },
  {
   "id": "osm-way-1104876654",
@@ -25664,11 +26028,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1105378380",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18570",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1105434121",
@@ -25710,11 +26077,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1105692353",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1600",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1105692365",
@@ -25732,7 +26102,9 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Almada",
   "concelho_slug": "almada",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28364"
  },
  {
   "id": "osm-way-1107002621",
@@ -25749,7 +26121,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24673"
  },
  {
   "id": "osm-way-1108423070",
@@ -25831,7 +26205,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5472"
  },
  {
   "id": "osm-way-1125465788",
@@ -26091,11 +26467,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1149394909",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1697",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1149496658",
@@ -26268,7 +26647,9 @@
   "resposta": "Infantário",
   "tipo_inferido": true,
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20447"
  },
  {
   "id": "osm-way-1175158497",
@@ -26326,7 +26707,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17314"
  },
  {
   "id": "osm-way-1190225151",
@@ -26344,11 +26727,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1190225151",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24431",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1190277485",
@@ -26411,11 +26797,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1190936155",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25094",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1192473830",
@@ -26434,11 +26823,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1192473830",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26941",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1193397132",
@@ -26796,7 +27188,9 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "email": "geral.mundomagico@hotmail.com",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-1213128754",
@@ -26943,7 +27337,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5280"
  },
  {
   "id": "osm-way-1229910137",
@@ -27043,11 +27439,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1238240278",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27447",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1241791016",
@@ -27188,7 +27587,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1513"
  },
  {
   "id": "osm-way-1254332764",
@@ -27208,11 +27609,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1254332764",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24355",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1258451609",
@@ -29490,11 +29894,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1266476021",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3461",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1266476022",
@@ -34875,7 +35282,9 @@
   "resposta": "Infantário",
   "concelho": "Vila Nova de Paiva",
   "concelho_slug": "vila-nova-de-paiva",
-  "distrito_original": "Castelo Branco"
+  "distrito_original": "Castelo Branco",
+  "email": "geral@assap.pt",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-1272888826",
@@ -36859,7 +37268,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "239"
  },
  {
   "id": "osm-way-1273790749",
@@ -38585,11 +38996,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274264627",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "288",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274264635",
@@ -38628,11 +39042,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274264640",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24603",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274264641",
@@ -38649,11 +39066,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274264641",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1432",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274264642",
@@ -38670,11 +39090,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274264642",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "285",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274264643",
@@ -38693,11 +39116,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274264643",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1426",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274264647",
@@ -39637,11 +40063,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1274442985",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22542",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1274442986",
@@ -41843,11 +42272,17 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1276615463",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27689",
+  "idade_verificar": true,
+  "email": "info@oficinadossonhos.pt",
+  "website": "https://oficinadossonhos.pt",
+  "enriquecido_em": "2026-07-31"
  },
  {
   "id": "osm-way-1276757919",
@@ -42778,7 +43213,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Gondomar",
-  "concelho_slug": "gondomar"
+  "concelho_slug": "gondomar",
+  "email": "crechechorao@gmail.com",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-1279769526",
@@ -43069,7 +43506,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Póvoa de Varzim",
-  "concelho_slug": "povoa-de-varzim"
+  "concelho_slug": "povoa-de-varzim",
+  "email": "crechemiminho@sapo.pt",
+  "enriquecido_em": "2026-08-06"
  },
  {
   "id": "osm-way-1279788478",
@@ -45913,11 +46352,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1291699735",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27446",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1291699736",
@@ -46006,11 +46448,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1291858261",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2341",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1291858262",
@@ -46055,11 +46500,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1291858263",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3463",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1291858264",
@@ -46417,11 +46865,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1292026042",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2390",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1292026043",
@@ -46461,11 +46912,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1292026045",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26151",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1292220133",
@@ -46827,11 +47281,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1292444651",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "24697",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1292446152",
@@ -48056,11 +48513,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300005695",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2334",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300005696",
@@ -48102,11 +48562,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300005697",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2396",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300199583",
@@ -48125,11 +48588,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300199583",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "32859",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300199584",
@@ -48194,11 +48660,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300571508",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17357",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300571509",
@@ -48218,11 +48687,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300571509",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2380",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300571510",
@@ -48283,11 +48755,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300571512",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "36534",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300571514",
@@ -48395,11 +48870,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300577899",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Alcochete",
-  "concelho_slug": "alcochete"
+  "concelho_slug": "alcochete",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28621",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300577901",
@@ -48416,11 +48894,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300577901",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Alcochete",
-  "concelho_slug": "alcochete"
+  "concelho_slug": "alcochete",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22836",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300596267",
@@ -48482,11 +48963,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300609221",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "3549",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300609222",
@@ -48528,11 +49012,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300609223",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Barreiro",
-  "concelho_slug": "barreiro"
+  "concelho_slug": "barreiro",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "36657",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300620746",
@@ -48616,11 +49103,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300620750",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4833",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300620752",
@@ -48727,11 +49217,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300624336",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "33469",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300624337",
@@ -48771,11 +49264,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1300624338",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25120",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1300624339",
@@ -48885,11 +49381,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301843977",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20544",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301856056",
@@ -48909,11 +49408,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301856056",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22558",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301856058",
@@ -48999,11 +49501,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301858453",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22773",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301858454",
@@ -49042,11 +49547,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301858456",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "38891",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301858458",
@@ -49088,11 +49596,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301858459",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "205",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301858460",
@@ -49222,11 +49733,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301861775",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22800",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301861780",
@@ -49270,11 +49784,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301861782",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5206",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301988501",
@@ -49341,11 +49858,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1301988507",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "336",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1301988511",
@@ -49409,11 +49929,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302041778",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18650",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302041779",
@@ -49541,11 +50064,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095435",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18630",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302095437",
@@ -49606,11 +50132,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095439",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "21651",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302095440",
@@ -49652,11 +50181,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095441",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5489",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302095443",
@@ -49718,11 +50250,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095446",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "28385",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302095447",
@@ -49763,11 +50298,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095448",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25059",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302095451",
@@ -49830,11 +50368,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095461",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18651",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302111207",
@@ -49853,11 +50394,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302111207",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "4902",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302111211",
@@ -49897,11 +50441,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302111212",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17248",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302142901",
@@ -49944,11 +50491,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302142903",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "365",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302307173",
@@ -50059,11 +50609,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302307180",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20446",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302307181",
@@ -50128,11 +50681,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302329656",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "343",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302329657",
@@ -50237,11 +50793,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302345207",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26091",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302345210",
@@ -50283,11 +50842,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302345211",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "22545",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302345212",
@@ -50444,11 +51006,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302364631",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "684",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302364632",
@@ -50560,11 +51125,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302364638",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "340",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302364639",
@@ -50629,11 +51197,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302366913",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "38888",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302366914",
@@ -50676,11 +51247,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302366915",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "34239",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302366916",
@@ -50723,11 +51297,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302366917",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "17564",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302366919",
@@ -50792,11 +51369,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302493206",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5845",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302493207",
@@ -50836,11 +51416,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302493209",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29591",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302493210",
@@ -50883,11 +51466,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302493212",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27487",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302493213",
@@ -50926,11 +51512,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302501947",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25058",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302511803",
@@ -50971,11 +51560,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302526676",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18625",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302526678",
@@ -51131,11 +51723,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302579198",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "20504",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302579205",
@@ -51223,11 +51818,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302595381",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "236",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302595388",
@@ -51289,11 +51887,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302618845",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "703",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302618847",
@@ -51337,11 +51938,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302618849",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5287",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302688327",
@@ -51361,11 +51965,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302688327",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "31963",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302688329",
@@ -51382,11 +51989,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302688329",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "5103",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302688330",
@@ -51430,11 +52040,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302721715",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "745",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1302721716",
@@ -51542,11 +52155,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302865882",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "756",
+  "idade_verificar": true
  },
  {
   "id": "osm-way-1303166423",
@@ -51747,7 +52363,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "642"
  },
  {
   "id": "osm-way-1318497264",
@@ -51886,7 +52504,9 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "38756"
  },
  {
   "id": "osm-way-1339451864",
@@ -51908,7 +52528,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "653"
  },
  {
   "id": "osm-way-1346402573",
@@ -52005,7 +52627,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Franca de Xira",
-  "concelho_slug": "vila-franca-de-xira"
+  "concelho_slug": "vila-franca-de-xira",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "1465"
  },
  {
   "id": "osm-way-1385743023",
@@ -52593,11 +53217,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/relation/17848242",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "306",
+  "idade_verificar": true
  },
  {
   "id": "osm-relation-17854117",
@@ -52616,11 +53243,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/relation/17854117",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "352",
+  "idade_verificar": true
  },
  {
   "id": "osm-relation-17857352",
@@ -52640,11 +53270,14 @@
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/relation/17857352",
-  "idade_min_meses": 36,
+  "idade_min_meses": 4,
   "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29143",
+  "idade_verificar": true
  },
  {
   "id": "osm-node-4104245089",
@@ -53068,7 +53701,9 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "29161"
  },
  {
   "id": "osm-node-5091531659",
@@ -53967,7 +54602,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "18562"
  },
  {
   "id": "osm-node-11878820065",
@@ -54097,7 +54734,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "2234"
  },
  {
   "id": "osm-node-12914239985",
@@ -54147,7 +54786,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "664"
  },
  {
   "id": "osm-node-13435989601",
@@ -54600,7 +55241,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "27057"
  },
  {
   "id": "osm-way-584221380",
@@ -54745,7 +55388,9 @@
   "resposta": "Creche",
   "concelho": "Barreiro",
   "concelho_slug": "barreiro",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "25791"
  },
  {
   "id": "osm-way-881035035",
@@ -54816,7 +55461,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Amadora",
-  "concelho_slug": "amadora"
+  "concelho_slug": "amadora",
+  "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
+  "carta_social_id": "26421"
  },
  {
   "id": "osm-way-959898418",
