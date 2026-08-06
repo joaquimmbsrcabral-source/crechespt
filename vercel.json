@@ -3,6 +3,22 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/api/lead-feedback",
+      "destination": "/api/lead-resposta?fn=feedback"
+    },
+    {
+      "source": "/api/lead-resultado",
+      "destination": "/api/lead-resposta?fn=resultado"
+    },
+    {
+      "source": "/api/vaga-alert-notify",
+      "destination": "/api/vaga-alert?fn=notify"
+    },
+    {
+      "source": "/api/vaga-alert-unsub",
+      "destination": "/api/vaga-alert?fn=unsub"
+    },
+    {
       "source": "/app",
       "destination": "/app.html"
     },
