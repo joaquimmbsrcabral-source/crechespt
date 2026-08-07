@@ -414,6 +414,64 @@
   "osm-way-1279769545": {
    "data": "2026-08-06",
    "resultado": "nada"
+  },
+  "osm-way-1279788478": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1280140574": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "pai.pt (Páginas Amarelas)"
+  },
+  "osm-way-1283016477": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "criancasecompanhia.com / coverflex.com"
+  },
+  "osm-way-1283016487": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "colegiodoamial.com / crechenaminharua.pt"
+  },
+  "osm-way-1283025293": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "pai.pt / servicospublicos.pt"
+  },
+  "osm-way-1283620545": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "acs21porto.com"
+  },
+  "osm-way-1283620546": {
+   "data": "2026-08-07",
+   "resultado": "email+site+telefone",
+   "fonte": "pezinhos-de-la.pt (site oficial)"
+  },
+  "osm-way-1283660759": {
+   "data": "2026-08-07",
+   "resultado": "nada"
+  },
+  "osm-way-1283718685": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1287502647": {
+   "data": "2026-08-07",
+   "resultado": "email+site+telefone",
+   "fonte": "cibaloico.com / pai.pt"
+  },
+  "osm-way-1287760344": {
+   "data": "2026-08-07",
+   "resultado": "nada"
+  },
+  "osm-way-1289191502": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "scmfamalicao.pt / mapasocial.pt"
   }
  }
 }

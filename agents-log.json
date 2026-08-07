@@ -1,6 +1,36 @@
 {
  "entries": [
   {
+   "id": "2026-08-07-enriquecimento",
+   "date": "2026-08-07",
+   "time": "15:40",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 10 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches privadas sem email (Porto, Póvoa de Varzim, Gaia, Famalicão e Açores) e encontrei 10 emails novos, 6 websites e 2 telefones — ex.: Colégio do Amial, Crianças e Companhia, Pezinhos de Lã, Colégio O Baloiço (Angra) e Creche N.ª Sr.ª da Guia (SCM Famalicão). Sem emails inválidos a corrigir (o endpoint /api/ops ainda não devolve essa lista). Fichas regeneradas (2578). LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-07-briefing",
+   "date": "2026-08-07",
+   "time": "15:40",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Inbox vazio, 40 convites num só lote",
+   "summary": "0 emails nas últimas 24h e agenda livre. Enviei 40 convites sem falhas — um só lote, ao contrário do duplicado de ontem — e faltam 1190 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar; 42 views ontem e 664 utilizadores (+1).",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-07-ops",
+   "date": "2026-08-07",
+   "time": "15:36",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Só o report do Cantinho das Fadas continua à tua espera",
+   "summary": "Única pendência continua a ser o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com). Mantive a escalada: o report veio sem tipo proposto (texto livre) e o nome contém 'Berçario', o que contradiz parcialmente a alegação — é para o Joaquim decidir no /admin. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
+   "status": "attention"
+  },
+  {
    "id": "2026-08-06-enriquecimento",
    "date": "2026-08-06",
    "time": "09:54",
