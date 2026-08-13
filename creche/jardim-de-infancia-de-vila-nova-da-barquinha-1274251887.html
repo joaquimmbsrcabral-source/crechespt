@@ -60,7 +60,7 @@ header .cta:hover{filter:brightness(1.05);color:#fff;text-decoration:none}
 
 /* === MAIN — wide canvas === */
 main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
-.breadcrumb{font-size:13px;color:var(--ink-soft);margin-bottom:18px;letter-spacing:.01em}
+.breadcrumb{font-size:16px;color:var(--ink-soft);margin-bottom:18px;letter-spacing:.01em}
 .breadcrumb a{color:var(--ink-soft);font-weight:600}
 .breadcrumb a:hover{color:var(--c-coral)}
 
@@ -84,7 +84,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 /* Ação principal — a única coisa que a maioria dos pais quer fazer aqui */
 .cta-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;
   margin:20px 0 0;padding:15px 16px;border:none;border-radius:16px;cursor:pointer;min-height:56px;
-  background:#fff;color:var(--c-coral);font-family:inherit;font-weight:800;font-size:16.5px;
+  background:#fff;color:var(--c-coral-dk);font-family:inherit;font-weight:800;font-size:16.5px;
   line-height:1.25;text-align:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.16);
   transition:transform .15s,box-shadow .15s;position:relative;z-index:1}
 .cta-primary .pic{font-size:20px;line-height:1;flex:none}
@@ -94,11 +94,12 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
   .cta-primary{font-size:15px;padding:14px 12px;gap:7px}
   .cta-primary .pic{font-size:18px}
 }
-.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral)}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;color:var(--c-coral-dk)}
 .cta-primary:active{transform:scale(.985)}
 .cta-primary.is-call{color:#1F7A6E}
-.cta-primary-note{text-align:center;font-size:12px;color:rgba(255,255,255,.92);margin:8px 0 0;
-  line-height:1.45;font-weight:600;position:relative;z-index:1}
+.cta-primary-note{text-align:center;font-size:12.5px;color:#fff;margin:8px 0 0;
+  line-height:1.45;font-weight:600;position:relative;z-index:1;
+  text-shadow:0 1px 3px rgba(0,0,0,.5)}
 
 /* Contactos diretos — auto-fit: 1, 2 ou 3 botões ficam sempre certos */
 .ctas-big{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px;margin:14px 0 0;position:relative;z-index:1}
@@ -115,7 +116,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .cta-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 8px;border-radius:18px;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:transform .18s, box-shadow .18s;text-align:center;border:none}
 .cta-big:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--ink)}
 .cta-big .ic{font-size:24px;line-height:1}
-.cta-big .lb{font-size:13px;font-weight:700;letter-spacing:.02em}
+.cta-big .lb{font-size:16px;font-weight:700;letter-spacing:.02em}
 .cta-big.primary{background:#fff;color:var(--c-coral-dk)}
 .cta-big.disabled{background:rgba(255,255,255,.5);color:rgba(60,40,90,.45);box-shadow:none;cursor:not-allowed;pointer-events:none}
 @media(max-width:640px){.ctas-big{gap:8px}.cta-big{padding:14px 6px;border-radius:14px}.cta-big .ic{font-size:20px}.cta-big .lb{font-size:11.5px}}
@@ -136,6 +137,8 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 
 /* === Banner qualidade === */
 .q-banner{padding:14px 18px;border-radius:14px;font-size:13.5px;margin:14px 0;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:var(--sh-1)}
+.q-banner.info{background:#EEF4FF;border:1px solid #C7D9F5;color:#2C3E6B}
+.q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
@@ -150,7 +153,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 
 /* === Mapa hero — 380px === */
 .mapa-card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-2);padding:0;overflow:hidden;margin:18px 0}
-.mapa-embed{border:0;width:100%;height:380px;display:block}
+.mapa-embed{pointer-events:none;border:0;width:100%;height:380px;display:block}
 .mapa-foot{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:#fff;font-size:13.5px;border-top:1px solid var(--line)}
 .mapa-foot a{font-weight:700}
 @media(max-width:640px){.mapa-embed{height:280px}.mapa-foot{flex-direction:column;gap:6px;text-align:center}}
@@ -180,7 +183,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .faq details[open]{box-shadow:var(--sh-2)}
 .faq summary{font-weight:700;font-family:"Fredoka";font-size:16px;list-style:none;color:var(--ink);display:flex;align-items:center;gap:10px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::before{content:"?";flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--c-coral-soft);color:var(--c-coral-dk);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.faq summary::before{content:"?";flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--c-coral-soft);color:var(--c-coral-dk);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
 .faq summary::after{content:"+";margin-left:auto;color:var(--c-coral);font-size:24px;line-height:.8;font-weight:300}
 .faq details[open] summary::after{content:"−"}
 .faq p{margin:12px 0 2px;font-size:14.5px;color:var(--ink-soft);padding-left:34px}
@@ -188,7 +191,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 /* === Aviso/footer === */
 .aviso{font-size:12.5px;color:var(--ink-faint);margin-top:30px;padding:18px 20px;background:rgba(255,255,255,.6);border-radius:var(--r-md);text-align:center;line-height:1.7}
 .aviso a{color:var(--c-coral);font-weight:600}
-footer{background:#fff;border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--ink-soft);font-size:13px;margin-top:60px}
+footer{background:#fff;border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--ink-soft);font-size:16px;margin-top:60px}
 footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 
 @media(max-width:640px){
@@ -245,7 +248,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner ok">✓ Contactos verificados</div>
+  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20de%20Vila%20Nova%20da%20Barquinha">Algum está errado? Avisa-nos →</a></div>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,11 +274,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-da-moita-do-norte-1274251883">Jardim de Infância da Moita do Norte</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.6 km</span></div></li>
-<li><a class="nm" href="/creche/abcrescimento-2504770716">ABCrescimento</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.0 km</span></div></li>
+<li><a class="nm" href="/creche/abcrescimento-2504770716">ABCrescimento</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.0 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-atalaia-1274251886">Jardim de Infância de Atalaia</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-tancos-11831556179">Jardim de Infância de Tancos</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.8 km</span></div></li>
 <li><a class="nm" href="/creche/creche-e-infantario-encoprof-1292432421">Creche e Infantário ENCOPROF</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">3.3 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-maria-rapaz-1292432416">Jardim de Infância &quot;Maria Rapaz&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">4.1 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-maria-rapaz-1292432416">Jardim de Infância &quot;Maria Rapaz&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">4.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/santarem" style="font-weight:700">Lista completa em Santarém</a>
@@ -290,7 +293,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1274251887" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-07. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1274251887" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Vila Nova da Barquinha">reporta uma correção</a>.
   </div>
 </main>
@@ -444,7 +447,7 @@ function _openVagaModal(crecheId, nome){
         <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:14px">
           <div>
             <h3 style="margin:0 0 4px;font-family:Fredoka,sans-serif;font-size:20px;color:#2C2356">🟢 Reportar vaga</h3>
-            <div style="font-size:13px;color:#6E6989">${nome}</div>
+            <div style="font-size:16px;color:#6E6989">${nome}</div>
           </div>
           <button type="button" id="_vaga-x" style="background:none;border:0;font-size:24px;color:#9B97B5;cursor:pointer;line-height:1">✕</button>
         </div>
@@ -452,7 +455,7 @@ function _openVagaModal(crecheId, nome){
           ⚠ Reportada por pais — aparece como "não verificada". A creche pode confirmar via creches.app/vagas.
         </div>
         <div style="margin-bottom:14px">
-          <label style="display:block;font-weight:700;color:#2C2356;font-size:13px;margin-bottom:6px">Para que idades sabes que há vaga?</label>
+          <label style="display:block;font-weight:700;color:#2C2356;font-size:16px;margin-bottom:6px">Para que idades sabes que há vaga?</label>
           <div id="_v-idades-pai" style="display:flex;flex-wrap:wrap;gap:6px">
             <button type="button" class="_vi" data-v="berçário" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">👶 Berçário</button>
             <button type="button" class="_vi" data-v="creche" style="background:#F4EBE0;border:1.5px solid #F1E6D9;border-radius:99px;padding:7px 12px;cursor:pointer;font-size:12.5px;font-weight:600;color:#6E6989;font-family:inherit">🍼 Creche</button>
@@ -461,8 +464,8 @@ function _openVagaModal(crecheId, nome){
           </div>
         </div>
         <div style="margin-bottom:14px">
-          <label style="display:block;font-weight:700;color:#2C2356;font-size:13px;margin-bottom:6px">Como soubeste? <small style="color:#6E6989;font-weight:500">(opcional)</small></label>
-          <textarea id="_v-notas-pai" maxlength="280" rows="2" placeholder="Ex.: Liguei hoje e disseram-me que têm vaga para Setembro" style="width:100%;background:#FFF6EE;border:1.5px solid #F1E6D9;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:13px;color:#2C2356;resize:vertical"></textarea>
+          <label style="display:block;font-weight:700;color:#2C2356;font-size:16px;margin-bottom:6px">Como soubeste? <small style="color:#6E6989;font-weight:500">(opcional)</small></label>
+          <textarea id="_v-notas-pai" maxlength="280" rows="2" placeholder="Ex.: Liguei hoje e disseram-me que têm vaga para Setembro" style="width:100%;background:#FFF6EE;border:1.5px solid #F1E6D9;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:16px;color:#2C2356;resize:vertical"></textarea>
         </div>
         <button type="button" id="_v-submit-pai" style="width:100%;padding:13px;background:linear-gradient(135deg,#7DD389,#5BC077);color:#fff;border:0;border-radius:99px;font-weight:800;font-size:14.5px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(125,211,137,.4)">
           🟢 Reportar vaga

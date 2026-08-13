@@ -1,6 +1,116 @@
 {
  "entries": [
   {
+   "id": "2026-08-13-enriquecimento",
+   "date": "2026-08-13",
+   "time": "09:15",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 10 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches IPSS sem email e encontrei contactos para 11: 10 emails, 11 websites e 11 telefones novos, todos confirmados em fontes oficiais (ex.: Os Cordeirinhos/SCM Vila Franca do Campo, Casa da Criança/SCM Mealhada, Creche da Campeã, SCM Cinfães, SCM Peniche). Só a SCM de Matosinhos ficou por resolver (3 equipamentos infantis, ambíguo). O endpoint /api/ops ainda não devolve emails inválidos do Resend, pelo que não houve correções de bounces. Fichas regeneradas (2578). LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-13-briefing",
+   "date": "2026-08-13",
+   "time": "09:11",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados, 1 claim à tua espera",
+   "summary": "0 emails relevantes nas últimas 24h (só 1 notificação do Instagram) e agenda livre. Enviei 40 convites sem falhas — faltam 1040 creches por convidar. 1 claim pendente no /admin (Cantinho das Fadas, escalado pelo agente de operações); sem opt-outs nem fotos por moderar; 671 utilizadores, 1 lead novo e 46 views ontem.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-13-ops",
+   "date": "2026-08-13",
+   "time": "09:11",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Escalei claim do Cantinho das Fadas, 1 rascunho no Gmail",
+   "summary": "Novo claim de Evelin Menezes (Direção, geral@cantinhodasfadas.pt) para «Cantinho das Fadas- Berçario e Babysitting»: a análise devolveu recomendação 'rever' (dataset sem email/website para cruzar, apenas o nome bate) — escalei e deixei um rascunho no Gmail a pedir verificação (website oficial ou telefone). A mensagem dela diz que já não são berçário e agora são Escola da Floresta Bilingue (3-6 anos), o que corrobora em parte o report de 26/07 ('Nunca foi creche', de silvia.matos20@gmail.com) — este continua escalado por vir sem tipo proposto. Os dois casos devem ser decididos em conjunto no /admin: provavelmente reclassificar ou remover a ficha. Sem correções, fotos nem remoções.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-10-enriquecimento",
+   "date": "2026-08-10",
+   "time": "12:14",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 9 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches sem email (10 Privadas, 2 IPSS): encontrei 9 emails novos, 7 websites e 2 telefones — por exemplo O Ninho (Rio Maior), A Gaivota da Cruz Vermelha (Tavira), Bela Infância (Faro), Colégio da Rochinha (Funchal) e Colégio de Santa Maria (Loures). Não havia emails inválidos do Resend para corrigir. Fichas regeneradas (2578). LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-10-briefing",
+   "date": "2026-08-10",
+   "time": "12:05",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Segunda calma: 40 convites, inbox vazio",
+   "summary": "0 emails relevantes nas últimas 24h e agenda livre. Enviei 40 convites sem falhas — faltam 1080 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar; 668 utilizadores (+1), 10 views ontem e 8 creches aderentes.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-10-ops",
+   "date": "2026-08-10",
+   "time": "12:01",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Só o report do Cantinho das Fadas continua à tua espera",
+   "summary": "Única pendência mantém-se o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), escalado desde 27/07 e ainda por resolver no /admin. Mantive a escalada: veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-09-briefing",
+   "date": "2026-08-09",
+   "time": "09:58",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Domingo calmo, convites acionados sem confirmação",
+   "summary": "0 emails relevantes nas últimas 24h e agenda livre. Acionei o lote diário de 40 convites mas o servidor não respondeu a tempo — enviados/restantes por confirmar no Resend (a 08/08 faltavam ~1150); não repeti a chamada para proteger o domínio. Sem opt-outs, claims pendentes nem fotos por moderar; 667 utilizadores (+2) e 26 views ontem.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-09-ops",
+   "date": "2026-08-09",
+   "time": "09:47",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Só o report do Cantinho das Fadas continua à tua espera",
+   "summary": "Única pendência mantém-se o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), escalado desde 27/07 e ainda por resolver no /admin. Mantive a escalada: veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-08-enriquecimento",
+   "date": "2026-08-08",
+   "time": "14:54",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 7 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches privadas/IPSS sem email e encontrei 7 emails novos, 6 websites e 1 telefone — ex.: Cubo Mágico (Leiria), Academia de Sonhos (Tomar), Centro Social Padre José Coelho (Fiães), Os Maravilhas (Gaia), Escolinha Encantada (Coimbra) e O Girassol (Setúbal). Sem emails inválidos a corrigir (o /api/ops ainda não devolve essa lista). Em 4 casos não encontrei fonte fiável (ex.: A Barca em Aguada de Cima, Jardim da Mimi) e ficaram registados para não repetir. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-08-briefing",
+   "date": "2026-08-08",
+   "time": "14:50",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites confirmados no Resend; pai pede opinião",
+   "summary": "1 email relevante: Tiago Vale pede a tua opinião sobre a gratuitidade do filho (criança condicionada que a IPSS quer passar ao pré-escolar) — merece resposta. A chamada de convites excedeu o tempo, mas confirmei no Resend: os 40 saíram às 13:49 (39 entregues, 1 bounce — CSP Vale Figueira); restantes por confirmar (~1150). Sem opt-outs, claims nem fotos por moderar; 666 utilizadores (+2) e 4 leads novos.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-08-ops",
+   "date": "2026-08-08",
+   "time": "14:48",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Só o report do Cantinho das Fadas continua à tua espera",
+   "summary": "Única pendência mantém-se o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), escalado desde 27/07 e ainda por resolver no /admin. Mantive a escalada: veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
+   "status": "attention"
+  },
+  {
    "id": "2026-08-07-enriquecimento",
    "date": "2026-08-07",
    "time": "15:40",

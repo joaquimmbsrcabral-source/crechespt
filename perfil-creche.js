@@ -70,7 +70,7 @@
     try {
       var raw = JSON.parse(localStorage.getItem(LEADS_RATE_KEY) || "{}");
       var today = new Date().toISOString().slice(0,10);
-      return raw.day !== today || (raw.count || 0) < 3;
+      return raw.day !== today || (raw.count || 0) < 8;
     } catch(e){ return true; }
   }
   function _leadsBump(){
@@ -130,7 +130,7 @@
     return (MESES[m] || "") + " " + p[0];
   }
 
-  var INPUT_CSS = "width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:.92rem;background:#fff;color:#2C2356";
+  var INPUT_CSS = "width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid rgba(60,40,90,.12);border-radius:10px;font-family:inherit;font-size:16px;background:#fff;color:#2C2356";
   var LABEL_CSS = "display:block;font-size:.78rem;font-weight:700;color:#6E6989;margin:10px 0 4px";
 
   window.CrecheLeads = {
@@ -170,7 +170,7 @@
         '<label for="lead-tel" style="' + LABEL_CSS + '">Telefone (opcional)</label>' +
         '<input id="lead-tel" type="tel" maxlength="30" value="' + esc(mem.telefone || "") + '" style="' + INPUT_CSS + '">' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">' +
-          '<div><label for="lead-dob" style="' + LABEL_CSS + '">Nascimento da criança</label>' +
+          '<div><label for="lead-dob" style="' + LABEL_CSS + '">Nascimento da criança (opcional)</label>' +
           '<input id="lead-dob" type="date" min="' + minDob + '" max="' + maxDob + '" value="' + esc(mem.nascimento || "") + '" style="' + INPUT_CSS + '">' +
           '<div id="lead-dob-hint" style="font-size:.72rem;color:#6E6989;margin-top:4px;min-height:1em"></div></div>' +
           '<div><label for="lead-inicio" style="' + LABEL_CSS + '">Quando precisas de vaga</label>' +
@@ -209,7 +209,7 @@
         if(nome.length < 2) return fail("Escreve o teu nome.");
         if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Escreve um email válido — é assim que a creche te responde.");
         if(!document.getElementById("lead-rgpd").checked) return fail("Para enviarmos o contacto à creche, precisas de autorizar a partilha dos dados.");
-        if(!_leadsCanSend()) return fail("Já enviaste 3 pedidos hoje. Tenta amanhã.");
+        if(!_leadsCanSend()) return fail("Já enviaste 8 pedidos hoje — é bom sinal! Para não sobrecarregar as creches, continua amanhã. Os pedidos de hoje ficam guardados.");
         var btn = this; btn.disabled = true; btn.textContent = "⏳ A enviar…";
 
         var dob = (dobEl.value || "").slice(0,10);

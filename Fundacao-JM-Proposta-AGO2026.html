@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Creches.app — Proposta à Fundação Jerónimo Martins</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF6EE;--ink:#2C2356;--soft:#6E6989;
+  --coral:#FF6B9D;--corals:#FFE2EC;--peach:#FF9F68;--peachs:#FFE3D2;
+  --turq:#5EC0B7;--turqs:#D9F2EF;--mint:#7DD389;--mints:#DEF5E1;
+  --lilac:#B197FC;--lilacs:#ECE4FF;--yell:#FFC857;--yells:#FFF1D6;
+  --sh:0 10px 40px rgba(60,40,90,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Quicksand",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
+h1,h2,h3{font-family:"Fredoka";font-weight:600;line-height:1.15}
+
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;
+  padding:5.5vh 6vw;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 8% 0%,var(--turqs) 0%,transparent 55%),
+    radial-gradient(800px 600px at 100% 5%,var(--corals) 0%,transparent 55%),
+    radial-gradient(900px 700px at 50% 115%,var(--mints) 0%,transparent 60%),
+    var(--bg)}
+.slide.active{display:flex}
+
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none;animation:float 14s ease-in-out infinite}
+.b1{width:34vw;height:34vw;background:var(--turqs);top:-12vh;left:-8vw}
+.b2{width:30vw;height:30vw;background:var(--corals);top:-10vh;right:-6vw;animation-delay:-4s}
+.b3{width:36vw;height:36vw;background:var(--mints);bottom:-18vh;left:30vw;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(3.5vh) scale(1.06)}}
+
+[data-a]{opacity:0;transform:translateY(30px) scale(.975)}
+.active [data-a]{animation:spring .8s cubic-bezier(.2,1.4,.3,1) forwards;animation-delay:calc(var(--d,0)*.11s)}
+@keyframes spring{to{opacity:1;transform:translateY(0) scale(1)}}
+@media (prefers-reduced-motion: reduce){
+  [data-a],.active [data-a]{animation:none!important;opacity:1!important;transform:none!important}
+  .blob{animation:none}.bar span{animation:none!important}
+}
+
+.kick{display:inline-block;background:#fff;border:1.5px solid var(--turqs);color:var(--turq);
+  font-weight:700;font-size:clamp(11px,1.25vw,15px);padding:.5em 1.4em;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.h-hero{font-size:clamp(28px,5vw,64px);margin:2.4vh 0 1.4vh}
+.h-hero .accent{color:var(--coral)}
+.stitle{font-size:clamp(23px,3.4vw,42px);margin:1.8vh 0 1vh;max-width:24ch}
+.ssub{color:var(--soft);font-size:clamp(13px,1.6vw,20px);max-width:66ch;margin:0 auto;line-height:1.55}
+.note{position:absolute;bottom:5.5vh;left:6vw;right:6vw;color:var(--soft);font-size:clamp(11px,1.2vw,15px);font-weight:600}
+
+.grid{display:grid;gap:1.6vw;width:100%;max-width:1160px;margin-top:3.4vh}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:#fff;border-radius:20px;padding:2.8vh 1.6vw;box-shadow:var(--sh);text-align:center}
+.card h3{font-size:clamp(14px,1.6vw,21px);margin:1vh 0 .7vh}
+.card p{color:var(--soft);font-size:clamp(11.5px,1.3vw,16px);line-height:1.5}
+.ic{width:clamp(40px,4.2vw,58px);height:clamp(40px,4.2vw,58px);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(19px,2.1vw,28px);margin:0 auto}
+
+.rows{width:100%;max-width:960px;margin-top:3.2vh;display:flex;flex-direction:column;gap:1.2vh;text-align:left}
+.row{display:flex;align-items:flex-start;gap:1.3vw;background:#fff;border-radius:16px;padding:2vh 1.9vw;box-shadow:var(--sh)}
+.row .ic{margin:0;flex-shrink:0}
+.row h3{font-size:clamp(14px,1.55vw,20px);margin-bottom:.35vh}
+.row p{color:var(--soft);font-size:clamp(11.5px,1.25vw,15.5px);line-height:1.45}
+.row .tag{display:inline-block;background:var(--mints);color:#1E7B34;font-size:clamp(10px,1.05vw,12.5px);
+  font-weight:700;padding:.15em .8em;border-radius:999px;margin-left:.6em;vertical-align:middle}
+.row .tag.med{background:var(--yells);color:#8A6200}
+.row .tag.alt{background:var(--corals);color:#B4255C}
+
+/* Gráfico de transição */
+.chart{display:flex;align-items:flex-end;justify-content:center;gap:2.4vw;height:34vh;margin-top:4vh;width:100%;max-width:900px}
+.col{display:flex;flex-direction:column;align-items:center;gap:1vh;flex:1;height:100%}
+.stack{display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:100%;gap:3px}
+.bar{border-radius:8px;width:100%;position:relative;overflow:hidden}
+.bar span{display:block;height:100%;width:100%;transform:scaleY(0);transform-origin:bottom;
+  animation:grow .9s cubic-bezier(.2,1,.3,1) forwards;animation-delay:calc(var(--gd,0)*.12s + .3s)}
+@keyframes grow{to{transform:scaleY(1)}}
+.bar.f span{background:linear-gradient(180deg,var(--coral),var(--peach))}
+.bar.p span{background:linear-gradient(180deg,var(--mint),var(--turq))}
+.col .yr{font-weight:700;font-size:clamp(12px,1.4vw,17px);font-family:"Fredoka"}
+.legend{display:flex;gap:2vw;justify-content:center;margin-top:2.4vh;flex-wrap:wrap}
+.legend div{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:clamp(11.5px,1.3vw,16px);color:var(--soft)}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+.pill-row{display:flex;gap:.9vw;flex-wrap:wrap;justify-content:center;margin-top:3.2vh}
+.pill{background:#fff;border-radius:999px;padding:1.3vh 1.9vw;box-shadow:var(--sh);font-weight:700;
+  font-size:clamp(12.5px,1.45vw,18px);display:flex;align-items:center;gap:.6em}
+
+.dots{position:fixed;bottom:2.2vh;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:50}
+.dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(44,35,86,.2);cursor:pointer;padding:0}
+.dots button.on{background:var(--turq);width:24px;border-radius:999px}
+.progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--turq),var(--mint));z-index:60;transition:width .4s}
+.hint{position:fixed;bottom:2.4vh;right:2.4vw;color:var(--soft);font-size:12px;font-weight:600;opacity:.6;z-index:50}
+
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .row{flex-direction:column;text-align:center;gap:1.2vh;align-items:center}
+  .chart{height:26vh;gap:3vw}
+}
+@media print{
+  body{overflow:visible}
+  .slide{display:flex!important;position:relative;height:100vh;page-break-after:always}
+  .dots,.hint,.progress{display:none}
+  [data-a]{opacity:1!important;transform:none!important}
+  .bar span{transform:scaleY(1)!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog"></div>
+
+<!-- 1 · CAPA -->
+<section class="slide active">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Proposta de parceria · Agosto 2026</span>
+  <h1 class="h-hero" data-a style="--d:1">O mapa das creches<br>de Portugal precisa de<br><span class="accent">quem o sustente.</span></h1>
+  <p class="ssub" data-a style="--d:2">Um plano de três anos — e um programa desenhado para os colaboradores do Grupo.</p>
+  <p class="note" data-a style="--d:4">Joaquim Cabral · geral@creches.app · 915 873 799</p>
+</section>
+
+<!-- 2 · O QUE JÁ EXISTE -->
+<section class="slide">
+  <div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">Ponto de partida</span>
+  <h2 class="stitle" data-a style="--d:1">Isto já existe.<br>E foi feito por uma pessoa.</h2>
+  <div class="grid g3" style="max-width:1000px">
+    <div class="card" data-a style="--d:2"><div class="ic" style="background:var(--corals)">🗺</div><h3>2.591</h3><p>estabelecimentos mapeados, nos 308 concelhos do país</p></div>
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--turqs)">📄</div><h3>2.853</h3><p>páginas públicas: 2.578 fichas e 275 páginas de concelho</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--mints)">📰</div><h3>3</h3><p>peças na imprensa nacional: Mensagem, Público e NiT</p></div>
+  </div>
+  <p class="note" data-a style="--d:6">Construído desde maio de 2026, em tempo livre e sem qualquer financiamento.</p>
+</section>
+
+<!-- 3 · O PROBLEMA -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">O problema</span>
+  <h2 class="stitle" data-a style="--d:1">Faltam lugares.<br>E falta saber onde estão.</h2>
+  <div class="rows">
+    <div class="row" data-a style="--d:2"><div class="ic" style="background:var(--corals)">📉</div><div><h3>49% de cobertura na Área Metropolitana de Lisboa</h3><p>De 88% em Oeiras a 28% em Sintra. Três vezes de diferença a quinze minutos de distância.</p></div></div>
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--peachs)">🚪</div><div><h3>Quase um quarto das creches não tem contacto público</h3><p>Nem telefone nem email encontráveis. Em Lisboa, 43 de 130. Para uma família em Julho, uma em cada quatro portas não tem campainha.</p></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">🎯</div><div><h3>A procura concentra-se onde a oferta falta</h3><p>Sintra, Moita, Amadora, Seixal, Palmela e Odivelas — os concelhos-dormitório para onde a habitação empurrou as famílias jovens.</p></div></div>
+  </div>
+</section>
+
+<!-- 3b · ONDE ESTAMOS HOJE -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">Sem rodeios</span>
+  <h2 class="stitle" data-a style="--d:1">1.294 consultas em 90 dias.<br><span style="color:var(--coral)">É pouco. E é esse o ponto.</span></h2>
+  <div class="grid g3" style="max-width:1000px">
+    <div class="card" data-a style="--d:2"><div class="ic" style="background:var(--corals)">📄</div><h3>1.294</h3><p>Consultas a fichas de creche entre 1 de maio e 29 de julho de 2026</p></div>
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--peachs)">🏫</div><h3>771</h3><p>Estabelecimentos distintos consultados, em 167 concelhos</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">€0</div><p style="margin-top:8px">Gastos em divulgação. Ninguém a tempo inteiro no projecto.</p></div>
+  </div>
+  <p class="ssub" data-a style="--d:6"><b>O activo difícil está feito — os dados.</b> O que falta é chegar às famílias, e isso é trabalho de pessoas, não de código. É exactamente aqui que este pedido faz sentido.</p>
+</section>
+
+<!-- 4 · O PEDIDO -->
+<section class="slide">
+  <div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O pedido</span>
+  <h2 class="stitle" data-a style="--d:1">€110.000 no primeiro ano.</h2>
+  <p class="ssub" data-a style="--d:2">Para duas pessoas — uma a tempo inteiro, outra a meio horário a falar com creches e famílias — alargar os dados a todo o país e lançar o programa para os colaboradores.</p>
+  <div class="grid g3" style="max-width:1050px">
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--corals)">👤</div><h3>€43.700</h3><p>Fundador a tempo inteiro — €2.500 brutos, com todos os encargos. Cerca de €1.890 líquidos.</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--peachs)">📞</div><h3>€21.000</h3><p>Relação com creches e famílias — meio horário, cerca de 20h por semana. Cerca de um terço deste tempo é atendimento a colaboradores do Grupo.</p></div>
+    <div class="card" data-a style="--d:5"><div class="ic" style="background:var(--turqs)">💻</div><h3>€18.000</h3><p>Programador freelance, cerca de dia e meio por semana</p></div>
+    <div class="card" data-a style="--d:6"><div class="ic" style="background:var(--mints)">🤝</div><h3>€15.000</h3><p>Programa Colaboradores JM — €8.000 de rubrica própria mais cerca de €7.000 do tempo de atendimento. <b>13,6% do total.</b></p></div>
+    <div class="card" data-a style="--d:7"><div class="ic" style="background:var(--yells)">⚙️</div><h3>€19.300</h3><p>Comunicação, dados, infraestrutura e reserva</p></div>
+  </div>
+  <p class="note" data-a style="--d:9">Indicativo a três anos: €110.000 · €140.000 · €165.000. Sobe por uma razão só — converter em tempo inteiro aquilo que o ano 1 provar que funciona. Se não provar, não sobe. Conversa em cada renovação.</p>
+</section>
+
+
+<!-- 5 · A PESSOA QUE LIGA -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">A rubrica nova</span>
+  <h2 class="stitle" data-a style="--d:1">Mil emails. Duas adesões.<br><span style="color:var(--coral)">O telefone é que resolve.</span></h2>
+  <p class="ssub" data-a style="--d:2">Enviámos mais de mil convites a creches para gerirem a sua página. Aderiram duas. O email não converte — a chamada converte, e hoje não há quem a faça.</p>
+  <div class="rows" style="max-width:900px">
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--corals)">📞</div><div><h3>Telefonar às creches, uma a uma</h3><p>Trazer instituições para a plataforma com uma conversa, não com um email automático.</p></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">💬</div><div><h3>Responder às famílias que não encontram solução</h3><p>Incluindo os colaboradores do Grupo, através do canal dedicado.</p></div></div>
+    <div class="row" data-a style="--d:5"><div class="ic" style="background:var(--mints)">🏫</div><div><h3>Apoiar as creches que já aderiram</h3><p>Ajudar a manter vagas e contactos actualizados — é isso que faz a informação valer.</p></div></div>
+  </div>
+  <p class="note" data-a style="--d:7">Meio horário, cerca de 20 horas por semana. É trabalho paciente e repetitivo — e é o que separa um bom mapa de uma rede viva.</p>
+</section>
+
+<!-- 6 · COLABORADORES: o ponto de partida -->
+<section class="slide">
+  <div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">Para os vossos colaboradores</span>
+  <h2 class="stitle" data-a style="--d:1">Duas creches. E os outros<br><span style="color:var(--coral)">trinta e cinco mil?</span></h2>
+  <div class="rows" style="max-width:900px">
+    <div class="row" data-a style="--d:2"><div class="ic" style="background:var(--mints)">✓</div><div><h3>O que o Grupo já faz</h3><p>Creches próprias e gratuitas em Azambuja e Alfena, dos 0 aos 6 anos, com horário alargado ao sábado e feriados. Mais do que a generalidade das empresas portuguesas faz.</p></div></div>
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--corals)">📍</div><div><h3>O que fica de fora</h3><p>Essas creches servem os centros de distribuição. Os restantes colaboradores — a esmagadora maioria dos 35.360 em Portugal — estão em centenas de lojas de norte a sul, sem creche de empresa ao alcance.</p></div></div>
+  </div>
+  <p class="ssub" data-a style="--d:5"><b>A proposta não é construir mais creches. É levar a quem está longe delas a melhor ferramenta para encontrar lugar.</b></p>
+</section>
+
+<!-- 6 · COLABORADORES: o programa -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">O programa</span>
+  <h2 class="stitle" data-a style="--d:1">Creches.app para Colaboradores</h2>
+  <div class="rows">
+    <div class="row" data-a style="--d:2"><div class="ic" style="background:var(--corals)">🔑</div><div><h3>Espaço dedicado</h3><p>Acesso por código ou email do Grupo, com identidade Jerónimo Martins. Sem criar base de dados de trabalhadores.</p></div></div>
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--peachs)">🕐</div><div><h3>Filtro de horário alargado <span class="tag">novo em Portugal</span></h3><p>Quem trabalha no retalho tem horários que a maioria das creches não cobre. Vamos mapear as que abrem cedo, fecham tarde e funcionam ao sábado. Não existe em nenhuma fonte oficial — só se obtém a telefonar. Começamos pelos concelhos onde o Grupo tem mais gente.</p></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">☎️</div><div><h3>Atendimento prioritário <span class="tag">telefone e email</span></h3><p>Linha reservada aos colaboradores do Grupo. Diz onde vive, a idade do filho e o horário de trabalho — e tem resposta em 48 horas úteis, com nome e voz de alguém. Estes pedidos têm precedência sobre todo o restante trabalho desta pessoa.</p></div></div>
+    <div class="row" data-a style="--d:5"><div class="ic" style="background:var(--mints)">📊</div><div><h3>Mapa de necessidade, para o Grupo</h3><p>Relatório semestral agregado e sem dados pessoais: onde os vossos colaboradores têm mais dificuldade. Responde à pergunta — se houvesse uma terceira creche de empresa, onde deveria ficar?</p></div></div>
+  </div>
+</section>
+
+<!-- 8 · ATENDIMENTO COM IA -->
+<section class="slide">
+  <div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">Como funciona o atendimento</span>
+  <h2 class="stitle" data-a style="--d:1">A inteligência artificial procura.<br><span style="color:var(--coral)">Uma pessoa confirma.</span></h2>
+  <p class="ssub" data-a style="--d:2">Ninguém decide a creche de uma criança a partir de uma resposta automática. A IA faz o trabalho pesado em segundos; a decisão de o que dizer é sempre humana.</p>
+  <div class="rows" style="max-width:920px">
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--corals)">1</div><div><h3>O colaborador contacta</h3><p>Por telefone ou email, na linha reservada ao Grupo. Diz onde vive ou trabalha, a idade da criança e o horário que precisa de cobrir.</p></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--peachs)">2</div><div><h3>A IA cruza tudo em segundos</h3><p>Percorre os 2.591 estabelecimentos, filtra por distância, idade aceite, horário alargado e vagas conhecidas, e prepara uma lista curta com os contactos verificados.</p></div></div>
+    <div class="row" data-a style="--d:5"><div class="ic" style="background:var(--turqs)">3</div><div><h3>Uma pessoa verifica e responde</h3><p>Confirma o que a máquina propôs, telefona às creches quando é preciso, e responde ao colaborador — em 48 horas úteis.</p></div></div>
+    <div class="row" data-a style="--d:6"><div class="ic" style="background:var(--mints)">4</div><div><h3>E acompanha</h3><p>Se a creche não responder, voltamos a insistir. O colaborador não fica sozinho a meio do processo.</p></div></div>
+  </div>
+</section>
+
+<!-- 8 · PROPORÇÃO -->
+<section class="slide">
+  <div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">Proporção</span>
+  <h2 class="h-hero" data-a style="--d:1;font-size:clamp(28px,5.4vw,68px)">Cerca de <span class="accent">1.500 famílias</span><br>do Grupo, em cada momento.</h2>
+  <p class="ssub" data-a style="--d:2">São os colaboradores em Portugal com um filho entre os zero e os três anos — a idade exacta em que este problema existe. Estimativa conservadora a partir dos 35.360 colaboradores do Relatório e Contas de 2025 e da natalidade por pessoa empregada do INE.</p>
+  <p class="ssub" data-a style="--d:3">O apoio total representa menos de <b>€4 por colaborador por ano</b>. Uma fracção do custo de construir uma única creche — e chega a famílias em todo o país, não a um edifício.</p>
+</section>
+
+<!-- 10b · PORQUÊ ISTO -->
+<section class="slide">
+  <div class="blob b4"></div>
+  <span class="kick" data-a style="--d:0">A pergunta legítima</span>
+  <h2 class="stitle" data-a style="--d:1">Porquê isto e não<br><span style="color:var(--coral)">um subsídio ou uma plataforma de benefícios?</span></h2>
+  <div class="rows" style="max-width:920px">
+    <div class="row" data-a style="--d:2"><div class="ic" style="background:var(--peachs)">💶</div><div><h3>Um subsídio de creche</h3><p>Ajuda a pagar um lugar. Não ajuda a encontrá-lo — e o problema destas famílias é encontrar, não só pagar. Quase um quarto das creches do país não tem sequer contacto público.</p></div></div>
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--turqs)">🏷️</div><div><h3>Uma plataforma de benefícios</h3><p>Negoceia descontos com uma rede de parceiros. Nenhuma cobre os 2.591 estabelecimentos do país — e uma rede de parceiros é uma lista de quem pagou para lá estar, o contrário do que torna este mapa credível.</p></div></div>
+  </div>
+  <p class="ssub" data-a style="--d:5"><b>Não existe hoje em Portugal, à venda, aquilo que aqui se propõe.</b> Não existe porque os dados não existiam — e passaram a existir porque alguém os construiu à mão.</p>
+</section>
+
+<!-- 8 · GARANTIAS -->
+<section class="slide">
+  <div class="blob b2"></div>
+  <span class="kick" data-a style="--d:0">O que garantimos</span>
+  <h2 class="stitle" data-a style="--d:1">O que não muda,<br>haja o que houver.</h2>
+  <div class="grid g2" style="max-width:960px">
+    <div class="card" data-a style="--d:2"><div class="ic" style="background:var(--mints)">🆓</div><h3>Gratuito para as famílias</h3><p>Sempre. Está publicado no site desde o primeiro dia.</p></div>
+    <div class="card" data-a style="--d:3"><div class="ic" style="background:var(--turqs)">⚖️</div><h3>Nenhuma creche paga posição</h3><p>As regras de ordenação são públicas e o código está aberto.</p></div>
+    <div class="card" data-a style="--d:4"><div class="ic" style="background:var(--corals)">🔒</div><h3>Sem publicidade nem venda de dados</h3><p>Hoje e no futuro.</p></div>
+    <div class="card" data-a style="--d:5"><div class="ic" style="background:var(--yells)">📂</div><h3>Dados e código sempre abertos</h3><p>Tudo o que for construído fica público e verificável.</p></div>
+  </div>
+  <p class="ssub" data-a style="--d:7"><b>E se algo acontecer a quem faz isto?</b> Os dados e o código são públicos e assim permanecem. O mapa dos 2.591 estabelecimentos, as 275 páginas de concelho e o motor da plataforma continuam disponíveis para quem os queira retomar — incluindo a Fundação. Nada do que este apoio financiar fica preso a uma pessoa.</p>
+</section>
+
+<!-- 9 · MEDIÇÃO -->
+<section class="slide">
+  <div class="blob b1"></div>
+  <span class="kick" data-a style="--d:0">Prestação de contas</span>
+  <h2 class="stitle" data-a style="--d:1">A plataforma mede-se<br>a si própria.</h2>
+  <p class="ssub" data-a style="--d:2">Estes indicadores são apurados automaticamente e podem ser consultados a qualquer momento. Propomos fixar as metas convosco, no acordo — para que meçam o que a Fundação considera relevante.</p>
+  <div class="rows" style="max-width:880px">
+    <div class="row" data-a style="--d:3"><div class="ic" style="background:var(--corals)">📞</div><div><h3>Creches com contactos verificados</h3></div></div>
+    <div class="row" data-a style="--d:4"><div class="ic" style="background:var(--turqs)">🏫</div><div><h3>Creches a gerir a própria página</h3></div></div>
+    <div class="row" data-a style="--d:5"><div class="ic" style="background:var(--peachs)">💌</div><div><h3>Famílias que contactam creches — e quantas recebem resposta</h3></div></div>
+    <div class="row" data-a style="--d:6"><div class="ic" style="background:var(--mints)">🤝</div><div><h3>Colaboradores do Grupo apoiados pelo canal dedicado</h3></div></div>
+  </div>
+  <p class="note" data-a style="--d:8">Relatório de execução semestral, com contas e indicadores.</p>
+</section>
+
+<!-- 10 · FECHO -->
+<section class="slide">
+  <div class="blob b1"></div><div class="blob b3"></div>
+  <span class="kick" data-a style="--d:0">O pedido, em uma frase</span>
+  <h2 class="h-hero" data-a style="--d:1">€110.000 para que isto<br>deixe de depender<br><span class="accent">de uma pessoa.</span></h2>
+  <p class="ssub" data-a style="--d:3">E para que os vossos colaboradores, onde quer que trabalhem, tenham quem os ajude a encontrar creche.</p>
+  <p class="note" data-a style="--d:5">Joaquim Cabral · Creches.app · geral@creches.app · 915 873 799</p>
+</section>
+
+<div class="dots" id="dots"></div>
+<div class="hint">← → para navegar · F para ecrã inteiro</div>
+
+<script>
+const slides = [...document.querySelectorAll(".slide")];
+const dots = document.getElementById("dots");
+const prog = document.getElementById("prog");
+let i = 0;
+slides.forEach((_, k) => {
+  const b = document.createElement("button");
+  b.setAttribute("aria-label", "Slide " + (k+1));
+  b.onclick = (e) => { e.stopPropagation(); go(k); };
+  dots.appendChild(b);
+});
+function go(n){
+  i = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, k) => {
+    s.classList.toggle("active", k === i);
+    if(k === i){
+      s.querySelectorAll("[data-a]").forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; });
+      s.querySelectorAll(".bar span").forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; });
+    }
+  });
+  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
+  prog.style.width = ((i + 1) / slides.length * 100) + "%";
+}
+document.addEventListener("keydown", e => {
+  if(e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") go(i + 1);
+  else if(e.key === "ArrowLeft" || e.key === "PageUp") go(i - 1);
+  else if(e.key.toLowerCase() === "f"){
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  }
+});
+document.addEventListener("click", e => {
+  if(e.target.closest(".dots")) return;
+  (e.clientX > innerWidth / 2) ? go(i + 1) : go(i - 1);
+});
+let x0 = null;
+document.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
+document.addEventListener("touchend", e => {
+  if(x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if(Math.abs(dx) > 50) (dx < 0) ? go(i + 1) : go(i - 1);
+  x0 = null;
+}, {passive:true});
+go(0);
+</script>
+</body>
+</html>
