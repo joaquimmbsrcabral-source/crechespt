@@ -1033,7 +1033,9 @@ async function sincronizarVagaPublica(v){
     notas: "",
     reportado_em: firebase.firestore.FieldValue.serverTimestamp(),
     expires_at: firebase.firestore.Timestamp.fromMillis(Date.now() + 31 * 86400000),
-    reportado_por: { email: (ME.email || "").toLowerCase() }
+    // O email do gestor NÃO entra aqui: /vagas é de leitura pública.
+    // Quem publicou já está identificado pelo próprio doc (painel_<creche_id>).
+    reportado_por: { nome: null }
   });
 }
 

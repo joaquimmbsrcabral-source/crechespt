@@ -6,6 +6,10 @@
  *  - só envia se o lead existir, tiver <10 min e ainda não tiver sido notificado
  *  - o destinatário vem SEMPRE do creche_managers (lookup server-side) — nunca do request
  *  - marca notificado:true (idempotente: cada lead notifica no máximo 1 vez)
+ *  - limite por IP: 12 pedidos/hora (o CORS não protege nada — curl ignora-o)
+ *  - App Check: verificado quando o token vem no corpo; obrigatório se
+ *    APPCHECK_ENFORCE=1 estiver definido no Vercel (ligar depois de confirmar
+ *    nos logs que os tokens estão mesmo a chegar)
  *
  * Env vars: RESEND_API_KEY, FIREBASE_SERVICE_ACCOUNT (as mesmas do notify.js).
  * Sem elas responde 503 e o lead continua a aparecer no painel normalmente.
@@ -203,6 +207,48 @@ async function emailDoDataset(creche_id) {
   }
 }
 
+// ── Limite por IP ───────────────────────────────────────────────────────────
+// Sem isto, quem descobrir o endpoint cria leads em massa e faz-nos enviar
+// milhares de emails com o nosso domínio — queima a quota do Resend, arrisca a
+// suspensão da conta e permite email-bombing de qualquer creche em nosso nome.
+const LIMITE_HORA = 12;
+
+function ipDoPedido(req) {
+  const fwd = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return fwd || req.socket?.remoteAddress || "desconhecido";
+}
+
+async function dentroDoLimite(db, ip) {
+  const janela = new Date().toISOString().slice(0, 13);          // AAAA-MM-DDTHH
+  const ref = db.doc(`ratelimit/lead-notify_${janela}_${Buffer.from(ip).toString("base64url")}`);
+  try {
+    const n = await db.runTransaction(async (t) => {
+      const d = await t.get(ref);
+      const atual = (d.exists && d.data().n) || 0;
+      if (atual >= LIMITE_HORA) return atual + 1;
+      t.set(ref, { n: atual + 1, ip, janela, expires_at: new Date(Date.now() + 2 * 3600e3) });
+      return atual + 1;
+    });
+    return n <= LIMITE_HORA;
+  } catch (e) {
+    return true;   // se o contador falhar, não bloqueamos famílias legítimas
+  }
+}
+
+// ── App Check ───────────────────────────────────────────────────────────────
+// O token vem no corpo (e não num cabeçalho) porque o cliente usa sendBeacon,
+// que não permite cabeçalhos personalizados.
+async function appCheckValido(token) {
+  if (!token || typeof token !== "string") return false;
+  try {
+    const { getAppCheck } = await import("firebase-admin/app-check");
+    await getAppCheck().verifyToken(token);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://creches.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -220,6 +266,22 @@ export default async function handler(req, res) {
     const { lead_id } = req.body || {};
     if (!lead_id || typeof lead_id !== "string" || lead_id.length > 40) {
       return res.status(400).json({ error: "lead_id inválido" });
+    }
+
+    // Limite por IP antes de qualquer leitura pesada ou envio de email.
+    const ip = ipDoPedido(req);
+    if (!(await dentroDoLimite(db, ip))) {
+      console.warn("[lead-notify] limite por IP atingido:", ip);
+      return res.status(429).json({ error: "Demasiados pedidos. Tenta daqui a pouco." });
+    }
+
+    // App Check: enquanto APPCHECK_ENFORCE não estiver ligado, só regista.
+    const okAppCheck = await appCheckValido((req.body || {}).appcheck);
+    if (!okAppCheck) {
+      if (process.env.APPCHECK_ENFORCE === "1") {
+        return res.status(401).json({ error: "App Check inválido" });
+      }
+      console.warn("[lead-notify] sem App Check válido (modo observação) ip=", ip);
     }
 
     const snap = await db.doc(`creche_leads/${lead_id}`).get();

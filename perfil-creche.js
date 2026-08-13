@@ -211,6 +211,15 @@
         if(!document.getElementById("lead-rgpd").checked) return fail("Para enviarmos o contacto à creche, precisas de autorizar a partilha dos dados.");
         if(!_leadsCanSend()) return fail("Já enviaste 8 pedidos hoje — é bom sinal! Para não sobrecarregar as creches, continua amanhã. Os pedidos de hoje ficam guardados.");
         var btn = this; btn.disabled = true; btn.textContent = "⏳ A enviar…";
+        // Pedido a tempo: quando o lead ficar gravado, o token já cá está.
+        var _acTok = null;
+        try {
+          if (window.firebase && firebase.appCheck) {
+            firebase.appCheck().getToken(false)
+              .then(function(t){ _acTok = t && t.token; })
+              .catch(function(){});
+          }
+        } catch(e){}
 
         var dob = (dobEl.value || "").slice(0,10);
         var inicioYm = document.getElementById("lead-inicio").value || "";
@@ -265,7 +274,10 @@
             // com fetch, se o pai fechasse o separador logo a seguir, o pedido morria
             // e o aviso nunca chegava à creche. keepalive no fetch faz o mesmo papel.
             try {
-              var _body = JSON.stringify({ lead_id: ref.id });
+              // O token do App Check vai no CORPO, não num cabeçalho: o sendBeacon
+              // não permite cabeçalhos personalizados, e é ele que garante que o
+              // aviso à creche sobrevive ao fecho do separador.
+              var _body = JSON.stringify({ lead_id: ref.id, appcheck: _acTok || undefined });
               var _enviado = false;
               if(navigator.sendBeacon){
                 try {

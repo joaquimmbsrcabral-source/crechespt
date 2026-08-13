@@ -325,9 +325,18 @@ for c in creches:
     if site: ld["url"] = site; ld["mainEntityOfPage"] = url
     ldjson = json.dumps(ld, ensure_ascii=False)
 
+    # O concelho é o nível que faltava. Sem ele, 2.529 fichas despejavam toda a
+    # autoridade interna nas páginas de distrito e as 275 páginas de concelho —
+    # as que devem rankear para "creches em X" — viviam de 16 links.
+    cslug = c.get("concelho_slug") or ""
+    concelho_nome = c.get("concelho") or ""
+
     crumbs = [{"@type":"ListItem","position":1,"name":"Início","item":BASE+"/"},
               {"@type":"ListItem","position":2,"name":"Creches por distrito","item":BASE+"/creches"}]
     if dslug: crumbs.append({"@type":"ListItem","position":3,"name":f"Creches em {distrito}","item":f"{BASE}/creches/{dslug}"})
+    if dslug and cslug and concelho_nome:
+        crumbs.append({"@type":"ListItem","position":len(crumbs)+1,
+                       "name":f"Creches em {concelho_nome}","item":f"{BASE}/creches/{dslug}/{cslug}"})
     crumbs.append({"@type":"ListItem","position":len(crumbs)+1,"name":nome,"item":url})
     ldbc = json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":crumbs}, ensure_ascii=False)
 
@@ -340,13 +349,23 @@ for c in creches:
         faq_a1 = (f"Ainda não temos a classificação (pública, IPSS ou privada) confirmada para {nome_q[0].lower() + nome_q[1:]}. Se for IPSS ou aderente ao Creche Feliz, pode ser gratuita para crianças nascidas a partir de 1 de setembro de 2021 — confirma diretamente com a creche.")
     else:
         faq_a1 = (f"{nome_q} é {tipo.lower()}. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona.")
+    # Proveniência das idades. 91,7% do dataset tem idades que nunca foram
+    # confirmadas — a maioria é o valor por defeito do OpenStreetMap ("3-5").
+    # Afirmá-las como facto num FAQPage estruturado é entregá-las ao Google
+    # como verdade. Só vai para dados estruturados o que tem fonte.
+    idade_oficial = bool(c.get("carta_social_id"))
     faq_a2 = f"{fx}. Funciona como {resposta.lower()}." if resposta else fx
+    if idade_oficial:
+        faq_a2 += " Valência confirmada na Carta Social (Segurança Social)."
+    else:
+        faq_a2 += (" Estas idades são indicativas, recolhidas do OpenStreetMap "
+                   "e ainda não confirmadas com a instituição — confirma antes de te deslocares.")
     faq_a3 = (f"Telefone: {tel}." if tel else "Não temos contacto registado para esta creche.") + (f" Email: {mail}." if mail else "")
     ldfaq = json.dumps({
         "@context":"https://schema.org","@type":"FAQPage",
         "mainEntity":[
             {"@type":"Question","name":faq_q1,"acceptedAnswer":{"@type":"Answer","text":faq_a1}},
-            {"@type":"Question","name":f"Que idades aceita {nome_q}?","acceptedAnswer":{"@type":"Answer","text":faq_a2}},
+            *([{"@type":"Question","name":f"Que idades aceita {nome_q}?","acceptedAnswer":{"@type":"Answer","text":faq_a2}}] if idade_oficial else []),
             {"@type":"Question","name":f"Como contactar {nome_q}?","acceptedAnswer":{"@type":"Answer","text":faq_a3}}
         ]
     }, ensure_ascii=False)
@@ -462,7 +481,34 @@ for c in creches:
         )
         cta_tel = ""   # já é a ação principal — não se repete em baixo
     else:
-        cta_primary = ""
+        # 571 fichas (22%) não têm telefone nem email. Até aqui não geravam acção
+        # nenhuma: quem chegava do Google não tinha nada que pudesse fazer, e o
+        # único elemento da página pedia ajuda em vez de a dar. A saída passa a
+        # ser a creche contactável mais próxima — e, se ele quiser, guardamos o
+        # contacto dele para o avisar quando descobrirmos o desta.
+        alt = None
+        for o, dkm in vizinhas(c, 12):
+            if o.get("telefone") or o.get("email"):
+                alt = (o, dkm); break
+        if alt and slugs.get(alt[0]["id"]):
+            o, dkm = alt
+            dtxt = f"{dkm*1000:.0f} m" if dkm < 1 else f"{dkm:.1f} km"
+            cta_primary = (
+                f'<a class="cta-primary" href="/creche/{slugs[o["id"]]}">'
+                f'<span class="pic" aria-hidden="true">📍</span>'
+                f'<span class="pl">Ver {esc(o["nome"])} — a {dtxt}</span></a>'
+                f'<div class="cta-primary-note">Ainda não temos contacto desta creche. '
+                f'Esta é a mais próxima com telefone ou email.</div>'
+            )
+        elif dslug and cslug and concelho_nome:
+            cta_primary = (
+                f'<a class="cta-primary" href="/creches/{dslug}/{cslug}">'
+                f'<span class="pic" aria-hidden="true">📍</span>'
+                f'<span class="pl">Ver creches em {esc(concelho_nome)}</span></a>'
+                f'<div class="cta-primary-note">Ainda não temos contacto desta creche</div>'
+            )
+        else:
+            cta_primary = ""
 
     contactos = f'{cta_tel}{cta_mail}{cta_dir}'
     ctas_html = (
@@ -562,7 +608,7 @@ for c in creches:
 <body>
 {HEADER}
 <main>
-  <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a>{f' › <a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else ''} › <span style="color:var(--ink);font-weight:700">{en}</span></div>
+  <div class="breadcrumb"><a href="/">Início</a> › <a href="/creches">Distritos</a>{f' › <a href="/creches/{dslug}">{esc(distrito)}</a>' if dslug else ''}{f' › <a href="/creches/{dslug}/{cslug}">{esc(concelho_nome)}</a>' if (dslug and cslug and concelho_nome) else ''} › <span style="color:var(--ink);font-weight:700">{en}</span></div>
 
   <!-- HERO GIGANTE — gradient colorido por tipo + avatar emoji enorme -->
   <section class="hero tipo-{esc(tipo) or 'Desconhecido'}">
@@ -621,7 +667,7 @@ for c in creches:
 {vlis}
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
-      <a href="/app" style="font-weight:700">Comparar todas no mapa</a>{f' · <a href="/creches/{dslug}" style="font-weight:700">Lista completa em {esc(distrito)}</a>' if dslug else ''}
+      <a href="/app" style="font-weight:700">Comparar todas no mapa</a>{f' · <a href="/creches/{dslug}/{cslug}" style="font-weight:700">Todas as creches em {esc(concelho_nome)}</a>' if (dslug and cslug and concelho_nome) else (f' · <a href="/creches/{dslug}" style="font-weight:700">Lista completa em {esc(distrito)}</a>' if dslug else '')}
     </p>
   </div>
 

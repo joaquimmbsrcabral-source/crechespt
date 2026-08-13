@@ -80,6 +80,12 @@
       <tr><td>Cookies essenciais</td><td>Sempre (necessários ao funcionamento)</td><td>Manter sessão iniciada, guardar preferências</td></tr>
       <tr><td>Dados de utilização anónimos</td><td>Só se aceitares no banner de cookies</td><td>Perceber como melhorar a app</td></tr>
       <tr><td>Email, nome e contactos das creches que submetem o formulário</td><td>Ao submeter "Quero saber mais" em /para-creches</td><td>Responder e manter informação sobre futuras funcionalidades</td></tr>
+      <tr><td><strong>Pedido de contacto a uma creche:</strong> nome, email, telefone (opcional), data de nascimento da criança (opcional), mês previsto de entrada e mensagem que escreveres</td><td>Ao carregares em "Tenho interesse" numa creche</td><td>Enviar o teu pedido à creche e acompanhar se houve resposta. <strong>Estes dados são enviados à creche que escolheste</strong> — é esse o objectivo do pedido</td></tr>
+      <tr><td>Email, para alertas de vaga</td><td>Ao pedires "Avisa-me quando abrir vaga"</td><td>Avisar-te por email quando for reportada vaga nessa creche. Cada email leva link para cancelar</td></tr>
+      <tr><td>Email, para a newsletter</td><td>Só se subscreveres</td><td>Enviar novidades. Podes cancelar em qualquer email</td></tr>
+      <tr><td>Nome, cargo e telefone do responsável</td><td>Ao pedires acesso à gestão de uma creche em /painel</td><td>Confirmar que trabalhas mesmo na instituição antes de dar acesso</td></tr>
+      <tr><td>Primeiro nome (opcional)</td><td>Ao reportares uma vaga</td><td>Dar contexto ao reporte. Não guardamos aqui email nem telefone</td></tr>
+      <tr><td>Email de quem pede a remoção de uma creche</td><td>Ao submeteres um pedido de remoção</td><td>Responder ao pedido</td></tr>
     </tbody>
   </table>
 
@@ -90,6 +96,13 @@
   </ul>
 
   <h2>4. Com quem partilhamos os dados</h2>
+  <p style="background:#FFF6EE;border-left:4px solid #FF6B9D;padding:12px 14px;border-radius:8px">
+  <strong>O destinatário mais importante é a própria creche.</strong> Quando carregas em
+  "Tenho interesse", os dados que preencheste são enviados por email à creche que
+  escolheste — é exactamente para isso que serve o pedido. A partir desse momento a
+  creche passa a ser responsável pelo tratamento que fizer deles. Não enviamos os teus
+  dados a nenhuma creche que não tenhas escolhido, nem os vendemos ou cedemos a
+  terceiros para fins comerciais.</p>
   <p>Para prestar o serviço, recorremos a alguns subcontratantes (sub-processadores):</p>
   <ul>
     <li><strong>Google Firebase</strong> (Google Ireland Ltd) — autenticação, base de dados e analítica. Acordo de tratamento de dados aceite ao criar o projeto. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Mais info</a>.</li>
@@ -117,6 +130,17 @@
   <p>Os dados são guardados na infraestrutura da Google (Firestore), região <code>europe-west</code>, garantindo que ficam dentro da União Europeia. As tiles do mapa e os recursos estáticos são servidos pelas redes globais da Vercel e CARTO/OpenStreetMap.</p>
 
   <h2>6. Por quanto tempo guardamos os dados</h2>
+  <p><strong>Prazos concretos:</strong></p>
+  <ul>
+    <li><strong>Pedidos de contacto a creches:</strong> ao fim de 24 meses os dados
+      pessoais são apagados e fica só a informação sem identificação (concelho, mês de
+      entrada, se houve resposta) que usamos para medir se a plataforma funciona.</li>
+    <li><strong>Alertas de vaga:</strong> apagados 6 meses depois de te avisarmos, ou
+      assim que cancelares.</li>
+    <li><strong>Reportes de vaga:</strong> expiram automaticamente ao fim de 31 dias.</li>
+    <li><strong>Newsletter:</strong> até cancelares.</li>
+    <li><strong>Conta de utilizador:</strong> enquanto a conta estiver activa.</li>
+  </ul>
   <p>Mantemos os dados enquanto a tua conta estiver ativa. Se decidires apagar a tua conta ou pedires explicitamente a eliminação, removemos tudo o que esteja associado a ti em até <strong>30 dias</strong>. O <em>backup</em> automático do Firebase pode reter cópias até <strong>30 dias adicionais</strong>.</p>
 
   <h2>7. Os teus direitos</h2>
@@ -136,7 +160,7 @@
   <p>Usamos as medidas de segurança da Google Firebase: encriptação em trânsito (HTTPS/TLS) e em repouso, regras de segurança Firestore que garantem que cada utilizador só acede aos próprios dados, autenticação OAuth2 via Google. Mesmo assim, nenhum sistema é 100% seguro — recomendamos que não guardes informação sensível em campos de texto livre.</p>
 
   <h2>9. Crianças</h2>
-  <p>O serviço é dirigido a pais e cuidadores. Não recolhemos intencionalmente dados pessoais de crianças menores de 13 anos. Os dados de crianças (idade da criança, data prevista) que registas sobre o teu filho são tratados como teus, no exercício das responsabilidades parentais.</p>
+  <p>O serviço é dirigido a pais e cuidadores. Não recolhemos intencionalmente dados pessoais de crianças menores de 13 anos. Os dados de crianças (data de nascimento da criança (opcional), data prevista) que registas sobre o teu filho são tratados como teus, no exercício das responsabilidades parentais.</p>
 
   <h2>10. Alterações a esta política</h2>
   <p>Esta política pode ser atualizada. Vamos sempre indicar a data da última atualização no topo do documento. Para alterações substanciais, avisaremos com destaque na app.</p>

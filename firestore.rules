@@ -194,6 +194,9 @@ service cloud.firestore {
       // Validação básica: campos obrigatórios, source válido, tamanhos máx.
       allow create: if
            request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'idades', 'notas', 'reportado_em', 'expires_at', 'reportado_por', 'tipo'])
+        && (!('reportado_por' in request.resource.data) ||
+            (request.resource.data.reportado_por is map &&
+             request.resource.data.reportado_por.keys().hasOnly(['nome'])))
         && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em', 'expires_at'])
         && request.resource.data.source in ['creche', 'pai']
         && request.resource.data.verificado == false
@@ -223,6 +226,9 @@ service cloud.firestore {
         && isManagerOf(request.resource.data.creche_id)
         && vagaId == 'painel_' + request.resource.data.creche_id
         && request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'idades', 'notas', 'reportado_em', 'expires_at', 'reportado_por'])
+        && (!('reportado_por' in request.resource.data) ||
+            (request.resource.data.reportado_por is map &&
+             request.resource.data.reportado_por.keys().hasOnly(['nome'])))
         && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em', 'expires_at'])
         && request.resource.data.source == 'painel'
         && request.resource.data.verificado == true
@@ -329,6 +335,9 @@ service cloud.firestore {
       // Qualquer pessoa pode criar (anónimo ou autenticado)
       allow create: if
            request.resource.data.keys().hasOnly(['creche_id', 'nome_creche', 'source', 'verificado', 'valido', 'reportado_em', 'reportado_por'])
+        && (!('reportado_por' in request.resource.data) ||
+            (request.resource.data.reportado_por is map &&
+             request.resource.data.reportado_por.keys().hasOnly(['nome'])))
         && request.resource.data.keys().hasAll(['creche_id', 'source', 'reportado_em'])
         && request.resource.data.source in ['creche', 'pai']
         && request.resource.data.verificado == false
@@ -506,6 +515,13 @@ service cloud.firestore {
              && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estado','atualizado'])
              && request.resource.data.estado in ['novo','contactado','fechado']));
       allow delete: if isAdmin();
+    }
+
+    // Contadores de limite por IP — escritos só pelo Admin SDK (api/lead-notify).
+    // O Admin SDK ignora estas regras; ficam aqui para deixar claro que nenhum
+    // cliente pode ler nem falsear os contadores.
+    match /ratelimit/{doc} {
+      allow read, write: if false;
     }
 
     // Tudo o resto bloqueado

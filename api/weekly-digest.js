@@ -42,6 +42,60 @@ function initFirebase() {
   initializeApp({ credential: cert(sa) });
 }
 
+// ── Retenção de dados pessoais ──────────────────────────────────────────────
+// A política de privacidade promete prazos concretos; esta função é o que os
+// torna verdade. Corre uma vez por semana, com o resto do digest.
+//
+//  · pedidos de contacto  → aos 24 meses, apaga o que identifica a pessoa e
+//    mantém só o que serve para medir (concelho, mês de entrada, resultado)
+//  · alertas de vaga      → apagados 6 meses depois de notificados
+const MESES = (n) => n * 30 * 86400000;
+
+async function aplicarRetencao(db) {
+  const resultado = { leads_anonimizados: 0, alertas_apagados: 0 };
+
+  try {
+    const limite = new Date(Date.now() - MESES(24));
+    const antigos = await db.collection("creche_leads")
+      .where("ts", "<", limite).limit(400).get();
+
+    for (let i = 0; i < antigos.docs.length; i += 300) {
+      const lote = db.batch();
+      for (const d of antigos.docs.slice(i, i + 300)) {
+        if (d.data().anonimizado_em) continue;
+        lote.update(d.ref, {
+          nome: null, email: null, telefone: null,
+          nascimento: null, mensagem: null, token: null,
+          anonimizado_em: new Date(),
+        });
+        resultado.leads_anonimizados++;
+      }
+      await lote.commit();
+    }
+  } catch (e) {
+    console.error("retenção/leads:", e.message);
+  }
+
+  try {
+    const limite = new Date(Date.now() - MESES(6));
+    const velhos = await db.collection("vaga_alerts")
+      .where("notificado_em", "<", limite).limit(400).get();
+
+    for (let i = 0; i < velhos.docs.length; i += 300) {
+      const lote = db.batch();
+      for (const d of velhos.docs.slice(i, i + 300)) {
+        lote.delete(d.ref);
+        resultado.alertas_apagados++;
+      }
+      await lote.commit();
+    }
+  } catch (e) {
+    console.error("retenção/alertas:", e.message);
+  }
+
+  return resultado;
+}
+
 export default async function handler(req, res) {
   try {
     if (!process.env.CRON_SECRET || (req.headers.authorization || "") !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -217,7 +271,8 @@ export default async function handler(req, res) {
       else console.error("digest falhou p/", creche_id, await resp.text());
     }
 
-    return res.status(200).json({ ok: true, enviados });
+    const retencao = await aplicarRetencao(db);
+    return res.status(200).json({ ok: true, enviados, retencao });
   } catch (e) {
     console.error("weekly-digest:", e);
     return res.status(500).json({ error: e.message });

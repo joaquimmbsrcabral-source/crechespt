@@ -160,9 +160,10 @@
         notas: (notas || "").slice(0, 280),
         reportado_em: now,
         expires_at: expires,
-        reportado_por: source === "creche"
-          ? { email: (email || "").trim().toLowerCase() }
-          : { nome: nome ? nome.slice(0, 40) : null }
+        // Sem email aqui: esta coleção é de leitura pública e o campo
+        // transformava-a numa lista de contactos pronta a raspar.
+        // A origem fica registada em 'source'; a identidade não é precisa.
+        reportado_por: { nome: (source !== "creche" && nome) ? nome.slice(0, 40) : null }
       };
 
       const ref = await fdb.collection(COLL).add(doc);
