@@ -263,6 +263,13 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p class="hint" id="salas-hint" style="display:none">Só mostramos as salas das vossas valências — para mudar, ajustem as <b>Valências</b> no perfil, mais abaixo.</p>
       <p class="hint" id="vagas-estado"></p>
       <p class="hint" id="vagas-atualizado"></p>
+      <!-- Botão próprio: publicar vagas é a acção semanal da creche e não deve
+           depender de rolar 2.500px até ao "Guardar alterações" no fim da página.
+           Se ela não chegar lá, a informação não sai — e não fica a saber. -->
+      <button class="btn btn-primary" id="btn-publicar-vagas" style="width:100%;margin-top:12px">
+        🟢 Publicar vagas
+      </button>
+      <p class="hint" id="vagas-msg" style="display:none;margin-top:8px"></p>
     </div>
 
     <!-- CRECHE FELIZ -->
@@ -598,7 +605,7 @@ $("btn-claim").onclick = async () => {
     $("pending-nome").textContent = SEL.nome;
     show("s-pending");
   } catch(e){
-    err("claim-err","Erro: " + (e.message || e));
+    console.warn("claim:", e && e.code); err("claim-err","Não conseguimos enviar o pedido. Verifiquem a ligação e tentem outra vez.");
   }
   btn.disabled = false; btn.textContent = "Pedir acesso ao painel →";
 };
@@ -630,7 +637,7 @@ $("btn-cn").onclick = async () => {
     ok("cn-ok","✓ Recebido! Adicionamos a creche ao mapa em 24-48h e avisamos por email para pedirem o acesso.");
     btn.textContent = "Enviado ✓";
   } catch(e){
-    err("cn-err","Erro: " + (e.message || e));
+    console.warn("creche-nova:", e && e.code); err("cn-err","Não conseguimos submeter agora. Verifiquem a ligação e tentem outra vez.");
     btn.disabled = false; btn.textContent = "Enviar — adicionamos em 24-48h";
   }
 };
@@ -815,7 +822,7 @@ function _renderLeads(snap, card){
         }
         /* o onSnapshot re-renderiza */
       }
-      catch(e){ err("save-err", "Erro ao atualizar o lead: " + (e.message || e)); b.disabled = false; }
+      catch(e){ console.warn("lead:", e && e.code); err("save-err", "Não conseguimos guardar essa alteração. Tentem outra vez."); b.disabled = false; }
     });
     card.style.display = "block";
   } catch(e){
@@ -1007,9 +1014,49 @@ $("btn-save").onclick = async () => {
     ok("save-ok","✓ Guardado! As alterações já estão visíveis para os pais.");
     $("vagas-atualizado").textContent = "Última atualização: agora mesmo";
   } catch(e){
-    err("save-err","Erro a guardar: " + (e.message || e));
+    console.warn("guardar:", e && e.code); err("save-err","Não conseguimos guardar. Verifiquem a ligação — as alterações não se perderam.");
   }
   btn.disabled = false; btn.textContent = "💾 Guardar alterações";
+};
+
+// Publicar só as vagas — grava o mesmo campo que o guardar geral, mas sem
+// obrigar a passar por perfil, fotos e definições.
+$("btn-publicar-vagas").onclick = async () => {
+  const msg = $("vagas-msg");
+  const vagas = {
+    b0:   $("vaga-b0").checked,
+    m12:  $("vaga-m12").checked,
+    m24:  $("vaga-m24").checked,
+    ji36: $("vaga-ji36").checked,
+    atualizado: firebase.firestore.Timestamp.now()
+  };
+  const alguma = vagas.b0 || vagas.m12 || vagas.m24 || vagas.ji36;
+  if(!alguma && PROFILE.vagas && PROFILE.vagas.atualizado){
+    if(!confirm("Sem nenhuma sala ligada, a vossa página vai mostrar «🔴 Sem vagas de momento» aos pais.\n\nConfirmam?")) return;
+  }
+  const b = $("btn-publicar-vagas");
+  b.disabled = true; b.textContent = "⏳ A publicar…";
+  msg.style.display = "none";
+  try {
+    await db.doc("creche_profiles/" + MY_CRECHE.id).set({
+      vagas,
+      updated_at: firebase.firestore.FieldValue.serverTimestamp(),
+      updated_by: ME.uid
+    }, { merge: true });
+    PROFILE.vagas = vagas;
+    await sincronizarVagaPublica(vagas);
+    if(typeof atualizarProgresso === "function") atualizarProgresso();
+    $("vagas-atualizado").textContent = "Última atualização: agora mesmo";
+    msg.style.display = ""; msg.style.color = "#1F7A3D";
+    msg.textContent = alguma
+      ? "✓ Publicado. Os pais já veem as vossas vagas no mapa."
+      : "✓ Publicado. A vossa página mostra agora «sem vagas de momento».";
+  } catch(e){
+    console.warn("publicar vagas:", e && e.code);
+    msg.style.display = ""; msg.style.color = "#B4255C";
+    msg.textContent = "Não conseguimos publicar. Verifiquem a ligação e tentem outra vez.";
+  }
+  b.disabled = false; b.textContent = "🟢 Publicar vagas";
 };
 
 // Fase 0 (0.2) — Escreve/apaga a vaga verificada no doc `vagas/painel_<creche_id>`
@@ -1082,7 +1129,7 @@ $("foto-file").addEventListener("change", async function(){
     ok("foto-ok","✓ Foto enviada! Fica pública depois da revisão (24-48h).");
     carregarFotos();
   } catch(e){
-    err("foto-err","Erro no envio: " + (e.message || e) + (String(e).includes("storage") ? " — o armazenamento de fotos pode ainda não estar ativo; contacta geral@creches.app" : ""));
+    console.warn("foto:", e && e.code); err("foto-err", String(e).includes("storage") ? "O envio de fotos pode ainda não estar disponível — escrevam para geral@creches.app." : "Não conseguimos enviar a foto. Verifiquem que tem menos de 5 MB e tentem outra vez.");
   }
   btn.disabled = false; btn.textContent = "＋ Adicionar fotografia";
   this.value = "";
@@ -1114,7 +1161,7 @@ async function carregarFotos(){
     if(!confirm("Remover esta fotografia?")) return;
     b.disabled = true;
     try { await db.doc("creche_fotos/" + b.dataset.id).delete(); carregarFotos(); }
-    catch(e){ alert("Erro: " + (e.message || e)); b.disabled = false; }
+    catch(e){ console.warn("acção:", e && e.code); alert("Não conseguimos concluir. Verifiquem a ligação e tentem outra vez."); b.disabled = false; }
   });
 }
 function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
@@ -1147,7 +1194,7 @@ $("btn-correcao").onclick = async () => {
     $("cor-ok").textContent = "✓ Correção enviada! Aplicamos em 24-48h e a página pública atualiza automaticamente.";
     $("cor-nota").value = "";
   } catch(e){
-    $("cor-err").textContent = "Erro a enviar: " + (e.message || e);
+    console.warn("correcção:", e && e.code); $("cor-err").textContent = "Não conseguimos enviar a correcção. Tentem outra vez daqui a pouco.";
   }
   btn.disabled = false;
 };
@@ -1203,7 +1250,7 @@ function _abrirModalRemocao(motivo){
       $("rem-motivo").value = "";
     } catch(e){
       m.remove();
-      $("rem-err").textContent = "Erro a enviar: " + (e.message || e);
+      console.warn("remoção:", e && e.code); $("rem-err").textContent = "Não conseguimos enviar o pedido. Tentem outra vez daqui a pouco.";
     }
   };
 }

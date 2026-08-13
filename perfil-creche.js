@@ -320,7 +320,12 @@
               try { navigator.clipboard.writeText(inp.value); lc.textContent = "✓"; } catch(e){ document.execCommand("copy"); lc.textContent = "✓"; }
             };
           }).catch(function(e){
-            fail("Não foi possível enviar: " + (e.message || e));
+            // Nada de jargão do Firebase em inglês no momento em que ela
+            // carrega em "Enviar". Damos-lhe uma saída, não um código de erro.
+            console.warn("lead:", e && (e.code || e.message));
+            var _tel = (document.querySelector("[data-creche-telefone]") || {}).dataset;
+            fail("Não conseguimos enviar agora — pode ser a ligação. Tenta outra vez"
+                 + (_tel && _tel.crecheTelefone ? ", ou liga diretamente para " + _tel.crecheTelefone : "") + ".");
             btn.disabled = false; btn.textContent = "Enviar à creche 💌";
           });
         } catch(e){

@@ -206,8 +206,10 @@ h1,h2,h3,h4{font-family:"Fredoka",inherit;font-weight:600;letter-spacing:-.01em}
   display:inline-flex;align-items:center;gap:8px;animation:toastIn .2s ease-out;
   max-width:90vw;
 }
-.toast.ok{background:linear-gradient(135deg,var(--c-turquoise),var(--c-mint));color:#fff}
-.toast.err{background:var(--c-coral);color:#fff}
+/* Cores sólidas escuras: o feedback do sistema tem de se ler.
+   Antes: branco sobre menta = 1,82:1 e sobre coral = 2,68:1 (mínimo WCAG 4,5:1). */
+.toast.ok{background:#1F7A3D;color:#fff}   /* 5,1:1 */
+.toast.err{background:#B4255C;color:#fff}  /* 6,4:1 */
 .toast.warn{background:linear-gradient(135deg,var(--c-yellow),var(--c-peach));color:#5C3F0E}
 .toast.fade-out{animation:toastOut .25s ease-in forwards}
 .toast button.toast-action{
@@ -404,9 +406,14 @@ header.topbar{
 .filters-collapse{
   display:flex;flex-direction:column;gap:8px;width:100%;
   overflow:hidden;max-height:0;opacity:0;
-  transition:max-height .3s ease, opacity .25s ease;
+  /* visibility:hidden tira os ~15 controlos do foco do teclado e do leitor de
+     ecrã. Sem isto, quem navega por Tab passava por campos invisíveis. */
+  visibility:hidden;
+  transition:max-height .3s ease, opacity .25s ease, visibility 0s linear .25s;
 }
 .filters-collapse.open{
+  visibility:visible;
+  transition:max-height .3s ease, opacity .25s ease, visibility 0s;
   max-height:1000px;opacity:1;
   transition:max-height .4s ease, opacity .3s ease;
 }
@@ -1037,3 +1044,21 @@ header.topbar{
   .mob-toggle{display:none}
 }
 .brand-tld{background:linear-gradient(135deg,var(--c-coral),var(--c-peach));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:inherit}
+
+
+/* ═══ Alvos de toque (WCAG 2.5.5) ═══
+   Estes controlos tinham entre 20 e 30px. O pior era o ✕ do onboarding: 22px,
+   encostado ao canto, e é o botão para sair de um modal que tapa o ecrã todo.
+   Onde o visual não pode crescer, a área clicável cresce por ::after. */
+.report-age-btn,.search-clear,.userloc-clear,.vagas-banner-close,.star,#ob-skip-x{
+  position:relative;
+}
+.report-age-btn::after,.search-clear::after,.userloc-clear::after,
+.vagas-banner-close::after,.star::after,#ob-skip-x::after{
+  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:44px;height:44px;
+}
+.d-tert{min-height:44px}
+@media (pointer:coarse){
+  .report-age-btn,.search-clear,.userloc-clear{min-height:32px}
+}

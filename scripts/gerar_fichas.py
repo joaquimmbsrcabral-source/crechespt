@@ -282,24 +282,33 @@ _EB_RX = [re.compile(p, re.I) for p in [
 ]]
 def _is_eb(nm): return any(p.search(nm or "") for p in _EB_RX)
 
+# Estas não geram ficha — por isso também não podem gerar links. Filtrar aqui,
+# antes de qualquer geração, garante que fichas, concelhos e distritos usam
+# todos a mesma lista e ninguém aponta para uma página que não existe.
+slugs = {c["id"]: slugs[c["id"]] for c in creches if not _is_eb((c.get("nome") or ""))}
+
 os.makedirs("creche", exist_ok=True)
 urls = []
 n_skip_eb = 0
 n_escritas = 0
 for c in creches:
-    if _is_eb(c.get("nome","")):
+    if _is_eb((c.get("nome") or "")):
         n_skip_eb += 1
         continue
     slug = slugs[c["id"]]
     url = f"{BASE}/creche/{slug}"
-    nome, tipo = c["nome"], c.get("tipo","")
+    nome, tipo = c["nome"], (c.get("tipo") or "")
     resposta = c.get("resposta") or "Creche"
     distrito = c.get("distrito") or c.get("distrito_inferido") or ""
     dslug = DIST_SLUG.get(distrito)
     local = c.get("localidade") or distrito
     morada = " ".join(filter(None,[c.get("morada"), str(c.get("numero") or "")])).strip()
-    cp = c.get("codigo_postal",""); tel = c.get("telefone",""); mail = c.get("email",""); site = c.get("website","")
-    oper = c.get("operador","")
+    # `.get(campo, "")` devolve None se a chave existir com valor nulo — e os
+    # registos importados da Carta Social têm campos explicitamente a null.
+    # `or ""` cobre os dois casos.
+    cp = c.get("codigo_postal") or ""; tel = c.get("telefone") or ""
+    mail = c.get("email") or ""; site = c.get("website") or ""
+    oper = (c.get("operador") or "")
     lat, lon = c["lat"], c["lon"]
     fx = faixa(c)
     en, el, etipo = esc(nome), esc(local), esc(tipo)
@@ -488,7 +497,7 @@ for c in creches:
         # contacto dele para o avisar quando descobrirmos o desta.
         alt = None
         for o, dkm in vizinhas(c, 12):
-            if o.get("telefone") or o.get("email"):
+            if (o.get("telefone") or o.get("email")) and slugs.get(o["id"]):
                 alt = (o, dkm); break
         if alt and slugs.get(alt[0]["id"]):
             o, dkm = alt
@@ -521,9 +530,12 @@ for c in creches:
     # data-creche-email: sinaliza ao perfil-creche.js que há para onde enviar um
     # pedido de contacto mesmo quando a creche ainda não gere a página (Vaga 1 · 1.3)
     attr_email = ' data-creche-email="{}"'.format(esc(mail)) if mail else ""
+    # Para o caso de o envio falhar: se soubermos o telefone, a mensagem de erro
+    # oferece-o como alternativa em vez de deixar a pessoa sem saída.
+    attr_tel = ' data-creche-telefone="{}"'.format(esc(tel)) if tel else ""
     vaga_slot = (
         f'<div id="vaga-slot" data-creche-id="{esc(c["id"])}" '
-        f'data-creche-nome="{esc(nome)}"{attr_email}></div>'
+        f'data-creche-nome="{esc(nome)}"{attr_email}{attr_tel}></div>'
     )
 
     # === Banner qualidade de dados ===
@@ -557,7 +569,7 @@ for c in creches:
         f'<span class="pill tipo-{esc(o.get("tipo","Desconhecido") or "Desconhecido")}">{"Sem classificação" if (o.get("tipo") or "Desconhecido") == "Desconhecido" else esc(o.get("tipo"))}</span>'
         f'<span class="d">{d:.1f} km</span>'
         f'</div></li>'
-        for o,d in viz)
+        for o,d in viz if slugs.get(o["id"]))
 
     # FAQ condicional
     en_q = esc(com_artigo(nome))
@@ -925,7 +937,12 @@ with open("sitemap-creches.xml","w",encoding="utf-8") as f:
     f.write("</urlset>\n")
 print(f"✓ sitemap-creches.xml: {len(urls)} URLs")
 
-# mapping id->slug para outros scripts
-json.dump(slugs, open("scripts/slugs.json","w",encoding="utf-8"), ensure_ascii=False, indent=0)
+# mapping id->slug para outros scripts.
+# IMPORTANTE: só entram os que têm mesmo ficha gerada. Enquanto aqui ficavam
+# todos, os geradores de concelho e distrito linkavam 13 fichas inexistentes
+# (as escolas básicas filtradas acima) — 404 em 17 páginas e no sitemap.
+json.dump(slugs, open("scripts/slugs.json", "w", encoding="utf-8"),
+          ensure_ascii=False, indent=0)
+print(f"  ({len(slugs)} slugs — só os que têm ficha, para ninguém linkar um 404)")
 print(f"✓ {len(urls)} fichas geradas em /creche/")
 print(f"✓ sitemap-creches.xml ({len(urls)} URLs)")

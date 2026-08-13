@@ -36,6 +36,15 @@ gmail-drafts-*.html
 instagram-dms-*.html
 test-stats.html
 
+# --- Previews e logs internos (indexáveis se ficarem cá) ---
+# agents-log.json tem emails de creches e de jornalistas e estava servido
+# em creches.app/agents-log.json. Os previews de email são mocks com nomes
+# fictícios, sem noindex, e apareciam no Google.
+agents-log.json
+preview-email-*.html
+Assinatura-*.html
+admin-import-cs.html
+
 # --- Sistema ---
 .DS_Store
 .git/

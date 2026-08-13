@@ -70,6 +70,12 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
     <div class="btnrow"><a class="btn primary" href="/app">🗺 Voltar ao mapa</a></div>
   </div>
 
+  <div class="card" id="offline" style="display:none">
+    <h1 style="font-size:1.4rem">📡 Não conseguimos ligar</h1>
+    <p class="sub">A tua candidatura está guardada — só não conseguimos ir buscá-la agora. Verifica a ligação à internet e tenta outra vez daqui a pouco. Se continuar, escreve-nos para <a href="mailto:geral@creches.app">geral@creches.app</a>.</p>
+    <div class="btnrow"><button class="btn primary" onclick="location.reload()">↻ Tentar outra vez</button></div>
+  </div>
+
   <div id="found" style="display:none">
     <div class="card">
       <h1 style="font-size:1.5rem">💌 A tua candidatura</h1>
@@ -155,7 +161,13 @@ function mostrar(qual){
         else el.querySelector(".dot").textContent = i;
       }
       mostrar("found");
-    }, () => mostrar("notfound"));
+    }, (erro) => {
+      // Distinguir "não existe" de "não consegui ligar". Esta é a página que a
+      // mãe abre ansiosa pela resposta — dizer-lhe que a candidatura não existe
+      // por causa de uma falha de rede é o pior desfecho possível.
+      console.warn("candidatura:", erro && erro.code);
+      mostrar("offline");
+    });
   } catch(e){ mostrar("notfound"); }
 })();
 </script>
