@@ -898,7 +898,15 @@
   "idade_max_meses": 72,
   "resposta": "Infantário",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "email_anterior": null,
+  "email": "geral@kriabebes.pt",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "skoolist.pt",
+  "website": "http://www.kriabebes.pt/",
+  "telefone": "+351 214121906"
  },
  {
   "id": "osm-node-1590594034",
@@ -4666,7 +4674,12 @@
   "resposta": "Jardim de Infância",
   "concelho": "Santiago do Cacém",
   "concelho_slug": "santiago-do-cacem",
-  "distrito_original": "Beja"
+  "distrito_original": "Beja",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "aepal.pt",
+  "website": "https://aepal.pt"
  },
  {
   "id": "osm-node-7251403319",
@@ -6985,7 +6998,11 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Odivelas",
-  "concelho_slug": "odivelas"
+  "concelho_slug": "odivelas",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "obomprincipezinho.pt"
  },
  {
   "id": "osm-node-11835677852",
@@ -7101,7 +7118,15 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Peniche",
-  "concelho_slug": "peniche"
+  "concelho_slug": "peniche",
+  "email_oficial": "jicasalmoinho@atb23.net",
+  "email_oficial_fonte": "agrupamento (verificado)",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "cm-peniche.pt",
+  "website": "http://atb23.net",
+  "telefone": "+351 962946552"
  },
  {
   "id": "osm-node-11841447449",
@@ -7203,8 +7228,7 @@
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "28323",
   "idade_verificar": true,
-  "email_oficial": "geral@crechecantinhodasalfazemas.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_morto": "geral@crechecantinhodasalfazemas.com"
  },
  {
   "id": "osm-node-11879966682",
@@ -7269,7 +7293,12 @@
   "natureza_juridica": "Centro Social Paroquial",
   "tipo_fonte": "carta_social",
   "email_oficial": "centrosocialvalbom@gmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "centrosocialvalbom.org/index.php/contactos",
+  "website": "https://www.centrosocialvalbom.org"
  },
  {
   "id": "osm-node-11879966764",
@@ -7555,14 +7584,14 @@
   "nome": "Associação Social Recreativa Juventude de Vila Fonche",
   "lat": 41.847938,
   "lon": -8.42283,
-  "tipo": "Pública",
+  "tipo": "IPSS",
   "morada": "Rua Professor Doutor José Sebastião da Silva Dias",
   "numero": "LJ 74",
   "localidade": "Arcos de Valdevez",
   "codigo_postal": "4970-747",
   "distrito": "Viana do Castelo",
   "telefone": "+351 258520000",
-  "email": "ass.srjvfonche@escolas.min-edu.pt",
+  "email": "geral@juventudevilafonche.com",
   "fax": "+351 258520005",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -7574,8 +7603,15 @@
   "concelho_slug": "arcos-de-valdevez",
   "tipo_original": "Privada",
   "tipo_inferido": true,
-  "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_fonte": "verificacao_web",
+  "tipo_corrigido_em": "2026-08-13",
+  "email_anterior": "ass.srjvfonche@escolas.min-edu.pt",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "juventudevilafonche.com/sobre",
+  "email_nota": "o telefone que tínhamos era a central da Câmara de Arcos de Valdevez",
+  "website": "https://www.juventudevilafonche.com"
  },
  {
   "id": "osm-node-11901607021",
@@ -8250,7 +8286,11 @@
   "resposta": "Jardim de Infância",
   "concelho": "Felgueiras",
   "concelho_slug": "felgueiras",
-  "distrito_original": "Braga"
+  "distrito_original": "Braga",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "freguesiasdalixa.pt/escolas"
  },
  {
   "id": "osm-node-11954714310",
@@ -15995,14 +16035,13 @@
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "201",
   "idade_verificar": true,
-  "email_oficial": "sede@lpm-loures.com",
-  "email_oficial_fonte": "carta_social",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "alpm-loures.com/contactos",
   "email_anterior_morto": "carlabatista@lpm-loures.com",
-  "website": "https://www.alpm-loures.com/"
+  "website": "https://www.alpm-loures.com/",
+  "email_oficial_morto": "sede@lpm-loures.com"
  },
  {
   "id": "osm-way-140439012",
@@ -16446,7 +16485,16 @@
   "idade_max_meses": 72,
   "resposta": "Infantário",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "email_anterior": null,
+  "email": "infantario@irmandadesantacruz.pt",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "irmandadesantacruz.pt/contactos",
+  "rever": "confirmar que é este o infantário — o nome no mapa é ambíguo",
+  "website": "https://irmandadesantacruz.pt",
+  "telefone": "+351 253205909"
  },
  {
   "id": "osm-way-146627447",
@@ -18342,8 +18390,6 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "email_oficial": "mail@infantarioratinhos.com",
-  "email_oficial_fonte": "carta_social",
   "email_agrupamento": "info@infantarioratinhos.com;cl.osratinhos@escolas.min-edu.pt",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
@@ -18701,7 +18747,14 @@
   "enriquecido_em": "2026-07-29",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "21721",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email_oficial": "candidatura@abla.org",
+  "email_oficial_fonte": "agrupamento (verificado)",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "abla.pt/centro-infantil",
+  "email_nota": "candidatura@ é o endereço que a ABLA indica para pedidos de vaga"
  },
  {
   "id": "osm-way-237494559",
@@ -21065,8 +21118,6 @@
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "24671",
   "idade_verificar": true,
-  "email_oficial": "mariadias@colegiomaemaria.pt",
-  "email_oficial_fonte": "carta_social",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
@@ -21478,7 +21529,14 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email_oficial": "geral@aefarruda.pt",
+  "email_oficial_fonte": "agrupamento (verificado)",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "aefarruda.pt/contactos",
+  "website": "https://aefarruda.pt"
  },
  {
   "id": "osm-way-430540872",
@@ -23020,8 +23078,7 @@
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "34295",
   "idade_verificar": true,
-  "email_oficial": "geral@colegioairesreal.pt",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_morto": "geral@colegioairesreal.pt"
  },
  {
   "id": "osm-way-551864579",
@@ -23227,8 +23284,7 @@
   "codigo_postal": "2765-342",
   "distrito": "Lisboa",
   "telefone": "214689400",
-  "email": "misericordiacascais@scmc.pt",
-  "website": "https://www.cercica.pt/",
+  "email": "creche.pinhal@scmc.pt",
   "fax": "214661307",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/560215736",
@@ -23240,8 +23296,13 @@
   "concelho_slug": "cascais",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "334",
-  "email_oficial": "creche.pinhal@scmc.pt",
-  "email_oficial_fonte": "carta_social"
+  "email_anterior": "misericordiacascais@scmc.pt",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "scmc-infancia.pt/contactos",
+  "email_nota": "tínhamos o email dos serviços centrais e o site de outra instituição",
+  "website": "https://www.scmc-infancia.pt/creche-o-pinhal/"
  },
  {
   "id": "osm-way-565013407",
@@ -23354,8 +23415,6 @@
   "horario_fonte": "carta_social",
   "natureza_juridica": "Fundação de Solidariedade Social",
   "tipo_fonte": "carta_social",
-  "email_oficial": "infantinhosquintadobosque@fundacaovisabeira.com",
-  "email_oficial_fonte": "carta_social",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
@@ -24963,7 +25022,11 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "bogalha.pt/website/contactos"
  },
  {
   "id": "osm-way-743648365",
@@ -25170,8 +25233,6 @@
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
   "tipo_fonte": "carta_social",
-  "email_oficial": "geral@aquariumcoimbra.com",
-  "email_oficial_fonte": "carta_social",
   "email_fonte": "verificacao_web",
   "email_confianca": "provavel",
   "email_verificado_em": "2026-08-14",
@@ -25712,7 +25773,12 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "curiosaidade.pt/contactos",
+  "website": "https://curiosaidade.pt"
  },
  {
   "id": "osm-way-848440685",
@@ -38205,7 +38271,14 @@
   "resposta": "Jardim de Infância",
   "concelho": "Oliveira do Hospital",
   "concelho_slug": "oliveira-do-hospital",
-  "distrito_original": "Viseu"
+  "distrito_original": "Viseu",
+  "email_oficial": "geral@aeoh.pt",
+  "email_oficial_fonte": "agrupamento (verificado)",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "cm-oliveiradohospital.pt",
+  "website": "https://aeoh.pt"
  },
  {
   "id": "osm-way-1272031036",
@@ -42726,7 +42799,14 @@
   "resposta": "Jardim de Infância",
   "concelho": "Pombal",
   "concelho_slug": "pombal",
-  "distrito_original": "Coimbra"
+  "distrito_original": "Coimbra",
+  "email_oficial": "geral@aepombal.edu.pt",
+  "email_oficial_fonte": "agrupamento (verificado)",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "aepombal.edu.pt/contactos",
+  "website": "https://www.aepombal.edu.pt"
  },
  {
   "id": "osm-way-1274416078",
@@ -46051,8 +46131,6 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "email_oficial": "info@colegiopimpolho.pt",
-  "email_oficial_fonte": "carta_social",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
@@ -46124,8 +46202,6 @@
   "horario": "7:30 - 20:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "email_oficial": "direcaocarrocelmagico@gmail.com",
-  "email_oficial_fonte": "carta_social",
   "email_agrupamento": "fernanda-p-rocha@sapo.pt;andreiarocha.ccmagico@gmail.com;ji.carrocelmagico@escolas.min-edu.pt",
   "email_fonte": "verificacao_web",
   "email_confianca": "provavel",
@@ -46166,8 +46242,6 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "email_oficial": "geral@pingaamor.pt",
-  "email_oficial_fonte": "carta_social",
   "email_agrupamento": "infantario@pingaamor.pt;ji.pingaamor@escolas.min-edu.pt",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
@@ -46206,8 +46280,6 @@
   "horario": "7:45 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "email_oficial": "caminharsecretaria@gmail.com",
-  "email_oficial_fonte": "carta_social",
   "email_agrupamento": "ocaminhar@hotmail.com;ji.ocaminhar@escolas.min-edu.pt",
   "email_fonte": "verificacao_web",
   "email_confianca": "provavel",
@@ -55361,7 +55433,10 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "esc.daana@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "escolinhadaana.pt/contactos-escola-infantil-cascais"
  },
  {
   "id": "osm-way-1302041779",
@@ -56155,7 +56230,10 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "cl.brincaeeduca@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "brincaeduca.com"
  },
  {
   "id": "osm-way-1302307181",
@@ -57088,8 +57166,6 @@
   "tipo_inferido": true,
   "tipo_fonte": "nome-ipss",
   "tipo_corrigido_em": "2026-08-13",
-  "email_oficial": "jpimenta@misericordia-oeiras.pt",
-  "email_oficial_fonte": "carta_social",
   "email_agrupamento": "geral@misericordia-oeiras.pt;ji.jpstcmisericordia@escolas.min-edu.pt",
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
@@ -57324,7 +57400,11 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "ji.osnossostemposlivres@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "escolaanaguedes.pt/contacto",
+  "website": "https://escolaanaguedes.pt"
  },
  {
   "id": "osm-way-1302526678",
@@ -57515,7 +57595,11 @@
   "carta_social_id": "20504",
   "idade_verificar": true,
   "email_oficial": "secretaria@apiaajuda.pt",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "apiaajuda.com"
  },
  {
   "id": "osm-way-1302579205",
@@ -67008,7 +67092,7 @@
   "codigo_postal": "2645-080",
   "localidade": "ALCABIDECHE",
   "telefone": "214690287",
-  "email": "mjoao.garcia@cspalcabideche.pt",
+  "email": "geral@cspalcabideche.pt",
   "operador": "CENTRO SOCIAL PAROQUIAL DE SÃO VICENTE DE ALCABIDECHE",
   "concelho": "Cascais",
   "concelho_slug": "cascais",
@@ -67028,7 +67112,14 @@
   "capacidade_oficial": 58,
   "utentes_oficial": 38,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_anterior": "mjoao.garcia@cspalcabideche.pt",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "centroparoquialdealcabideche.pt/contactos",
+  "email_nota": "a anterior era a caixa pessoal de uma colaboradora",
+  "website": "https://centroparoquialdealcabideche.pt/"
  },
  {
   "id": "cs-33359",
@@ -67276,7 +67367,11 @@
   "capacidade_oficial": 28,
   "utentes_oficial": 28,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "provavel",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "primeiraimagem.com"
  },
  {
   "id": "cs-18640",
@@ -67369,7 +67464,12 @@
   "capacidade_oficial": 34,
   "utentes_oficial": 14,
   "horario": "7:30 - 20:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "anovatoca.pt",
+  "website": "https://anovatoca.pt"
  },
  {
   "id": "cs-301",
@@ -67400,7 +67500,12 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 40,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_fonte": "verificacao_web",
+  "email_confianca": "confirmado",
+  "email_verificado_em": "2026-08-14",
+  "email_verificado_fonte": "scmc-infancia.pt/contactos",
+  "website": "https://www.scmc-infancia.pt/creche-arneiro/"
  },
  {
   "id": "cs-319",
