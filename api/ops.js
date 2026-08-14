@@ -19,6 +19,11 @@
  *                                                        (email/domínio coincide); replica o
  *                                                        botão "Aprovar acesso" do /admin
  *   {"action":"rejeitar_claim","id":"<claim_id>"}      → marca o claim como rejeitado
+ *   {"action":"leads_por_entregar"}                    → lista os pedidos que nunca chegaram
+ *   {"action":"leads_reenviar","limite":10}            → entrega-os agora
+ *   {"action":"leads_verificar_emails"}                → os endereços existem? (DNS ao vivo)
+ *   {"action":"leads_endereco_suspeito"}               → entregues no endereço errado
+ *   {"action":"leads_reenviar_suspeitos","limite":10}  → reenvia-os ao endereço certo
  *
  * Cada escrita fica registada em ops_log para auditoria.
  * Env vars: FIREBASE_SERVICE_ACCOUNT (base64 ou JSON), CRON_SECRET.
@@ -88,6 +93,272 @@ function websiteDomain(url) {
 }
 
 // Auditoria: cada ação de escrita fica em ops_log
+// ── Pedidos que nunca chegaram à creche ─────────────────────────────────────
+// Quando uma família pedia contacto a uma creche de que não sabíamos o email, o
+// /api/lead-notify saía com "creche sem email conhecido" e não marcava o lead
+// como notificado. O ecrã dizia "Enviado!" mas ninguém recebia nada — nem a
+// creche, nem sequer a confirmação ao pai, que só sai depois da creche receber.
+//
+// Com a Carta Social passámos a ter email de mais de cem creches que já estavam
+// no mapa. Estes pedidos são recuperáveis, e é isto que os recupera.
+//
+// Corre aqui, no servidor, e não num script local, por uma razão prática: as
+// variáveis de ambiente do Vercel estão marcadas como "Sensitive" e não podem
+// ser lidas depois de criadas — nem pelo dono do projecto. Aqui já as temos.
+const DIAS_MAX_LEAD = 120;
+
+async function lerLeadsPorEntregar(db, diasMax) {
+  const dataset = await fetch("https://creches.app/creches_pt.json").then(r => r.json());
+  const porId = new Map((Array.isArray(dataset) ? dataset : dataset.creches)
+    .map(c => [String(c.id), c]));
+
+  const snap = await db.collection("creche_leads").orderBy("ts", "desc").limit(3000).get();
+  const agora = Date.now();
+  const cont = { lidos: snap.size, entregues: 0, antigos: 0, creche_sem_email: 0 };
+  const prontos = [];
+
+  snap.forEach(d => {
+    const l = d.data();
+    if (l.notificado === true) { cont.entregues++; return; }
+    const ts = l.ts && l.ts.toMillis ? l.ts.toMillis() : 0;
+    const dias = ts ? Math.floor((agora - ts) / 86400000) : 9999;
+    if (dias > diasMax) { cont.antigos++; return; }
+    const creche = porId.get(String(l.creche_id));
+    if (!creche || !creche.email) { cont.creche_sem_email++; return; }
+    prontos.push({ id: d.id, dias, creche: creche.nome, concelho: creche.concelho || "" });
+  });
+
+  prontos.sort((a, b) => a.dias - b.dias);
+  return { cont, prontos };
+}
+
+// ── Os endereços das creches com pedidos existem mesmo? ─────────────────────
+// Verificação técnica, ao vivo: para cada creche que recebeu um pedido de uma
+// família, pergunta-se ao DNS se o domínio do email tem servidor de correio.
+//
+// Um domínio sem MX não recebe correio nenhum — o email rebenta sempre, e
+// rebenta em silêncio do lado de cá. É a única forma de saber que um endereço
+// está morto sem lhe enviar nada.
+//
+// O que isto NÃO prova: que a caixa existe dentro do domínio, nem que alguém a
+// lê. Prova apenas o contrário — que não pode funcionar de todo. Por isso o
+// veredicto "ok" aqui significa "tecnicamente entregável", e nada mais.
+async function actionLeadsVerificarEmails(db, diasMax) {
+  const dns = await import("node:dns/promises");
+  const dataset = await fetch("https://creches.app/creches_pt.json").then(r => r.json());
+  const porId = new Map((Array.isArray(dataset) ? dataset : dataset.creches)
+    .map(c => [String(c.id), c]));
+
+  const snap = await db.collection("creche_leads").orderBy("ts", "desc").limit(3000).get();
+  const agora = Date.now();
+  const porCreche = new Map();
+  // A pergunta que o DNS não responde: a caixa é lida? A única prova que temos
+  // vem das famílias — ao 7.º dia perguntamos-lhes "a creche respondeu-te?".
+  // Comparar essa taxa entre as creches com caixa do Ministério e as restantes
+  // diz-nos se o endereço do agrupamento é um canal vivo ou um buraco.
+  const lido = { minedu: { sim: 0, nao: 0 }, proprio: { sim: 0, nao: 0 } };
+  snap.forEach(d => {
+    const l = d.data();
+    const ts = l.ts && l.ts.toMillis ? l.ts.toMillis() : 0;
+    const dias = ts ? Math.floor((agora - ts) / 86400000) : 9999;
+    if (dias > diasMax) return;
+    const cid = String(l.creche_id || "");
+    if (!cid) return;
+    const j = porCreche.get(cid);
+    if (j) { j.pedidos++; j.dias = Math.min(j.dias, dias); }
+    else porCreche.set(cid, { pedidos: 1, dias });
+    if (l.resposta_creche === "sim" || l.resposta_creche === "nao") {
+      const c = porId.get(cid);
+      const grupo = String((c && c.email) || "").includes("min-edu") ? "minedu" : "proprio";
+      lido[grupo][l.resposta_creche]++;
+    }
+  });
+
+  const taxa = g => {
+    const t = lido[g].sim + lido[g].nao;
+    return { respostas_das_familias: t, creche_respondeu: lido[g].sim,
+             taxa: t ? Math.round((lido[g].sim / t) * 100) : null };
+  };
+
+  // Bounces já registados pelo webhook do Resend: prova directa, vale mais que o DNS.
+  const invalidos = new Set();
+  try {
+    const inv = await db.collection("emails_invalidos").limit(1000).get();
+    inv.forEach(d => { const e = (d.data().email || d.id || "").toLowerCase(); if (e) invalidos.add(e); });
+  } catch (e) { /* colecção pode não existir ainda */ }
+
+  // Uma consulta DNS por domínio, não por creche: dezenas de creches partilham
+  // gmail.com, e o Vercel tem dez segundos para responder.
+  const dominios = new Map();
+  const linhas = [];
+  for (const [cid, info] of porCreche) {
+    const c = porId.get(cid);
+    if (!c) { linhas.push({ creche: `(fora do dataset: ${cid})`, ...info, veredicto: "sem_registo" }); continue; }
+    const email = String(c.email || "").split(";")[0].trim().toLowerCase();
+    const linha = { creche: c.nome, concelho: c.concelho || "", email, ...info };
+    if (!email.includes("@")) { linha.veredicto = "sem_email"; linhas.push(linha); continue; }
+    linha.dominio = email.split("@").pop();
+    if (!dominios.has(linha.dominio)) dominios.set(linha.dominio, null);
+    linhas.push(linha);
+  }
+
+  await Promise.all([...dominios.keys()].map(async d => {
+    try {
+      const mx = await dns.resolveMx(d);
+      dominios.set(d, mx && mx.length ? "MX" : "SEM_MX");
+    } catch (e) {
+      dominios.set(d, e.code === "ENOTFOUND" || e.code === "ENODATA" ? "SEM_MX" : "indeterminado");
+    }
+  }));
+
+  for (const l of linhas) {
+    if (l.veredicto) continue;
+    if (invalidos.has(l.email)) { l.veredicto = "devolveu_erro"; continue; }
+    const mx = dominios.get(l.dominio);
+    l.veredicto = mx === "MX" ? "ok" : mx === "SEM_MX" ? "dominio_morto" : "indeterminado";
+  }
+
+  const ordem = { dominio_morto: 0, devolveu_erro: 1, sem_email: 2, sem_registo: 3, indeterminado: 4, ok: 5 };
+  linhas.sort((a, b) => (ordem[a.veredicto] - ordem[b.veredicto]) || (a.dias - b.dias));
+  const resumo = {};
+  for (const l of linhas) resumo[l.veredicto] = (resumo[l.veredicto] || 0) + 1;
+
+  return {
+    ok: true, creches: linhas.length, dominios_consultados: dominios.size, resumo,
+    problemas: linhas.filter(l => l.veredicto !== "ok"),
+    lido: { caixa_do_ministerio: taxa("minedu"), email_proprio: taxa("proprio") },
+    nota: "MX presente só garante que o domínio recebe correio. Não garante que a caixa exista, nem que alguém a leia.",
+  };
+}
+
+// ── Pedidos entregues num endereço que hoje sabemos ser o errado ────────────
+// Diferente dos "por entregar": estes SAÍRAM, mas foram para a caixa do
+// agrupamento do Ministério em vez da creche — ou para um endereço que depois
+// devolveu erro. Em ambos os casos é provável que ninguém do outro lado tenha
+// lido. Não é certeza: é suspeita fundamentada, e a decisão de reenviar é humana.
+async function actionLeadsEnderecoSuspeito(db, diasMax) {
+  const dataset = await fetch("https://creches.app/creches_pt.json").then(r => r.json());
+  const porId = new Map((Array.isArray(dataset) ? dataset : dataset.creches)
+    .map(c => [String(c.id), c]));
+
+  // Endereços que devolveram erro permanente ou queixa de spam.
+  const invalidos = new Map();
+  try {
+    const inv = await db.collection("emails_invalidos").limit(1000).get();
+    inv.forEach(d => { const v = d.data(); if (v.email) invalidos.set(String(v.email).toLowerCase(), v.motivo || "bounce"); });
+  } catch (e) { /* a coleção pode ainda não existir */ }
+
+  const snap = await db.collection("creche_leads").orderBy("ts", "desc").limit(3000).get();
+  const agora = Date.now();
+  const suspeitos = [];
+
+  snap.forEach(d => {
+    const l = d.data();
+    if (l.notificado !== true) return;                 // esses são o outro caso
+    const ts = l.ts && l.ts.toMillis ? l.ts.toMillis() : 0;
+    const dias = ts ? Math.floor((agora - ts) / 86400000) : 9999;
+    if (dias > diasMax) return;
+    const c = porId.get(String(l.creche_id));
+    if (!c) return;
+
+    // Se a creche gere a página, o lead foi para o gestor — esse está certo.
+    if (l.sem_painel === false) return;
+
+    const principal = String(c.email || "").split(";")[0].trim().toLowerCase();
+    const secundario = String(c.email_oficial || "").trim().toLowerCase();
+
+    let motivo = null;
+    if (invalidos.has(principal)) motivo = `o endereço devolveu erro (${invalidos.get(principal)})`;
+    else if (secundario && (secundario.includes("min-edu") || secundario.includes("min-educ"))) {
+      // O secundário ser do Ministério significa que o principal foi trocado:
+      // na altura o pedido saiu para a caixa do agrupamento.
+      motivo = "foi para a caixa do agrupamento do Ministério, não para a creche";
+    } else if (secundario) {
+      motivo = "a Carta Social indica outro endereço para esta creche";
+    }
+    if (!motivo) return;
+
+    suspeitos.push({ id: d.id, dias, creche: c.nome, concelho: c.concelho || "",
+                     motivo, agora_para: [principal, secundario].filter(Boolean) });
+  });
+
+  suspeitos.sort((a, b) => a.dias - b.dias);
+  return { status: 200, body: { ok: true, action: "leads_endereco_suspeito",
+                                total: suspeitos.length,
+                                pedidos: suspeitos.slice(0, 200) } };
+}
+
+async function actionLeadsReenviarSuspeitos(db, quem, limite, diasMax) {
+  const { body } = await actionLeadsEnderecoSuspeito(db, diasMax);
+  const lote = (body.pedidos || []).slice(0, Math.max(1, Math.min(limite || 10, 100)));
+  const feitos = [];
+  let ok = 0, falhou = 0;
+
+  for (const p of lote) {
+    try {
+      const r = await fetch("https://creches.app/api/lead-notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json",
+                   "Authorization": `Bearer ${(process.env.CRON_SECRET || "").trim()}` },
+        body: JSON.stringify({ lead_id: p.id, force: true })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) { ok++; feitos.push({ creche: p.creche, dias: p.dias, estado: "entregue" }); }
+      else { falhou++; feitos.push({ creche: p.creche, dias: p.dias, estado: j.error || j.skipped || `HTTP ${r.status}` }); }
+    } catch (e) {
+      falhou++; feitos.push({ creche: p.creche, dias: p.dias, estado: e.message });
+    }
+    await new Promise(r => setTimeout(r, 700));
+  }
+
+  await logOp(db, quem, "leads_reenviar_suspeitos", null, null, { enviados: ok, falhados: falhou });
+  return { status: 200, body: { ok: true, action: "leads_reenviar_suspeitos",
+                                enviados: ok, falhados: falhou,
+                                restantes: Math.max(0, body.total - lote.length),
+                                detalhe: feitos } };
+}
+
+async function actionLeadsPorEntregar(db, diasMax) {
+  const { cont, prontos } = await lerLeadsPorEntregar(db, diasMax);
+  return { status: 200, body: { ok: true, action: "leads_por_entregar",
+                                resumo: cont, total: prontos.length,
+                                pedidos: prontos.slice(0, 200) } };
+}
+
+async function actionLeadsReenviar(db, quem, limite, diasMax) {
+  const { prontos } = await lerLeadsPorEntregar(db, diasMax);
+  const lote = prontos.slice(0, Math.max(1, Math.min(limite || 10, 100)));
+  const feitos = [];
+  let ok = 0, falhou = 0;
+
+  for (const p of lote) {
+    try {
+      // Reutiliza o /api/lead-notify: é ele que sabe resolver o destinatário,
+      // montar o email, marcar o lead e avisar a família. Duplicar isso aqui
+      // seria criar uma segunda verdade que mais cedo ou mais tarde diverge.
+      const r = await fetch("https://creches.app/api/lead-notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json",
+                   "Authorization": `Bearer ${(process.env.CRON_SECRET || "").trim()}` },
+        body: JSON.stringify({ lead_id: p.id, force: true })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) { ok++; feitos.push({ creche: p.creche, dias: p.dias, estado: "entregue" }); }
+      else { falhou++; feitos.push({ creche: p.creche, dias: p.dias, estado: j.error || j.skipped || `HTTP ${r.status}` }); }
+    } catch (e) {
+      falhou++;
+      feitos.push({ creche: p.creche, dias: p.dias, estado: e.message });
+    }
+    await new Promise(r => setTimeout(r, 700));   // cortesia com o Resend
+  }
+
+  await logOp(db, quem, "leads_reenviar", null, null, { enviados: ok, falhados: falhou });
+  return { status: 200, body: { ok: true, action: "leads_reenviar",
+                                enviados: ok, falhados: falhou,
+                                restantes: Math.max(0, prontos.length - lote.length),
+                                detalhe: feitos } };
+}
+
 async function logOp(db, quem, action, targetId, crecheId, detalhe) {
   await db.collection("ops_log").add({
     action,
@@ -464,6 +735,17 @@ export default async function handler(req, res) {
         out = await actionAprovarClaim(db, quem, id); break;
       case "rejeitar_claim":
         out = await actionRejeitarClaim(db, quem, id); break;
+      case "leads_por_entregar":
+        return res.status(200).json((await actionLeadsPorEntregar(db, Number(body.dias) || DIAS_MAX_LEAD)).body);
+      case "leads_reenviar":
+        out = await actionLeadsReenviar(db, quem, Number(body.limite) || 10, Number(body.dias) || DIAS_MAX_LEAD); break;
+      case "leads_verificar_emails":
+        resultado = await actionLeadsVerificarEmails(db, dias);
+        break;
+      case "leads_endereco_suspeito":
+        return res.status(200).json((await actionLeadsEnderecoSuspeito(db, Number(body.dias) || DIAS_MAX_LEAD)).body);
+      case "leads_reenviar_suspeitos":
+        out = await actionLeadsReenviarSuspeitos(db, quem, Number(body.limite) || 10, Number(body.dias) || DIAS_MAX_LEAD); break;
       default:
         return res.status(400).json({ error: `Ação desconhecida: ${action}` });
     }

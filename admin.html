@@ -497,6 +497,64 @@ table tr:hover{background:rgba(255,243,214,.4)}
       </p>
       <div id="lead-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
 
+      <!-- Recuperação dos pedidos que nunca chegaram à creche.
+           Está aqui, e não num script local, porque as variáveis do Vercel estão
+           marcadas "Sensitive" e não podem ser lidas depois de criadas. Aqui o
+           servidor já as tem, e o admin já está autenticado. -->
+      <div id="recuperar-box" style="background:#FFF4D6;border:1px solid #E8C97A;border-radius:14px;padding:16px 18px;margin:0 0 18px">
+        <div style="font-weight:800;color:#6B4E00;margin-bottom:4px">⏳ Pedidos que nunca chegaram à creche</div>
+        <p style="margin:0 0 12px;font-size:13.5px;color:#6B4E00;line-height:1.55">
+          Quando não sabíamos o email de uma creche, o pedido da família ficava por entregar —
+          e nem a creche nem a família recebiam aviso. Com os contactos novos da Carta Social,
+          muitos destes podem agora seguir. O email leva uma nota a explicar à creche porque chega atrasado.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button id="btn-ver-por-entregar" class="btn-apply" style="min-height:44px">🔍 Ver quantos há</button>
+          <button id="btn-reenviar-leads" class="btn-approve-ci" style="min-height:44px;display:none">📨 Entregar agora</button>
+          <label id="lbl-limite" style="display:none;font-size:13px;color:#6B4E00">
+            quantos:
+            <input id="inp-limite" type="number" value="10" min="1" max="100"
+                   style="width:70px;font-size:16px;padding:6px 8px;border:1.5px solid #E8C97A;border-radius:8px;margin-left:4px">
+          </label>
+        </div>
+        <div id="recuperar-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
+      </div>
+
+      <!-- Verificação técnica: os endereços das creches com pedidos existem? -->
+      <div id="verif-box" style="background:#E8F7FF;border:1px solid #A9D9EE;border-radius:14px;padding:16px 18px;margin:0 0 18px">
+        <div style="font-weight:800;color:#0F5C7A;margin-bottom:4px">🔎 Os endereços existem mesmo?</div>
+        <p style="margin:0 0 12px;font-size:13.5px;color:#0F5C7A;line-height:1.55">
+          Pergunta ao DNS, ao vivo, se o domínio de cada creche que recebeu pedidos tem servidor de correio.
+          Um domínio sem servidor devolve erro sempre — e em silêncio deste lado.
+          <b>Ter servidor não garante que a caixa exista nem que alguém a leia</b>; só prova o contrário.
+        </p>
+        <button id="btn-verificar-emails" class="btn-apply" style="min-height:44px">🔎 Verificar agora</button>
+        <div id="verif-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
+      </div>
+
+      <!-- Pedidos que saíram, mas para o endereço errado. Diferente dos de cima:
+           estes foram entregues — só que à caixa do agrupamento do Ministério,
+           ou a um endereço que devolveu erro. -->
+      <div id="suspeitos-box" style="background:#FFE9EF;border:1px solid #F0B9CC;border-radius:14px;padding:16px 18px;margin:0 0 18px">
+        <div style="font-weight:800;color:#8A1E45;margin-bottom:4px">📮 Pedidos entregues no endereço errado</div>
+        <p style="margin:0 0 12px;font-size:13.5px;color:#8A1E45;line-height:1.55">
+          Estes saíram, mas foram para a caixa do agrupamento do Ministério em vez da creche,
+          ou para um endereço que devolveu erro. Provavelmente ninguém os leu.
+          A Carta Social deu-nos o endereço próprio de <b>368 creches</b> — reenviar manda para os dois,
+          para não voltarmos a apostar no errado.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button id="btn-ver-suspeitos" class="btn-apply" style="min-height:44px">🔍 Ver quantos há</button>
+          <button id="btn-reenviar-suspeitos" class="btn-approve-ci" style="min-height:44px;display:none">📨 Reenviar ao endereço certo</button>
+          <label id="lbl-limite-s" style="display:none;font-size:13px;color:#8A1E45">
+            quantos:
+            <input id="inp-limite-s" type="number" value="10" min="1" max="100"
+                   style="width:70px;font-size:16px;padding:6px 8px;border:1.5px solid #F0B9CC;border-radius:8px;margin-left:4px">
+          </label>
+        </div>
+        <div id="suspeitos-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
+      </div>
+
       <!-- Funil ponta-a-ponta: os estados do painel são o que a creche DIZ;
            isto é o que realmente aconteceu, segundo as famílias. -->
       <div id="lead-funil" style="margin:0 0 18px"></div>
@@ -2945,6 +3003,205 @@ document.getElementById("btn-fix-prefixos").onclick = async () => {
     btn.disabled = false; btn.textContent = "🛠 Corrigir IDs sem prefixo «extra_» (gestores antigos)";
   }
 };
+
+// === Recuperar pedidos que nunca chegaram à creche ===
+// Duas acções do /api/ops, autenticadas com o token de admin já em sessão.
+// Nunca envia sem um segundo clique — e diz sempre quantos emails vai mandar.
+(function(){
+  const $r = id => document.getElementById(id);
+  let porEntregar = 0;
+
+  function escapaHtml(t){
+    return String(t == null ? "" : t).replace(/[&<>"']/g, c =>
+      ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  async function chamaOps(corpo){
+    const token = await auth.currentUser.getIdToken();
+    const r = await fetch("/api/ops", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+      body: JSON.stringify(corpo)
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || ("HTTP " + r.status));
+    return j;
+  }
+
+  const btnVer = $r("btn-ver-por-entregar");
+  if (btnVer) btnVer.onclick = async () => {
+    const out = $r("recuperar-out");
+    btnVer.disabled = true; btnVer.textContent = "⏳ A verificar…";
+    out.innerHTML = "";
+    try {
+      const j = await chamaOps({ action: "leads_por_entregar" });
+      porEntregar = j.total || 0;
+      if (!porEntregar) {
+        out.innerHTML = '<b style="color:#1F7A3D">✓ Não há nada por entregar.</b> Todos os pedidos chegaram à creche.';
+      } else {
+        const linhas = (j.pedidos || []).slice(0, 25).map(p =>
+          `<div style="padding:3px 0">${String(p.dias).padStart(3)} dias · <b>${escapaHtml(p.creche)}</b>`
+          + (p.concelho ? ` <span style="color:#6E6989">${escapaHtml(p.concelho)}</span>` : "") + "</div>").join("");
+        out.innerHTML =
+          `<b>${porEntregar} ${porEntregar === 1 ? "pedido" : "pedidos"} por entregar</b>`
+          + ` <span style="color:#6E6989">(de ${j.resumo.lidos} lidos · ${j.resumo.entregues} já entregues`
+          + ` · ${j.resumo.creche_sem_email} continuam sem email da creche)</span>`
+          + `<div style="margin-top:10px;max-height:280px;overflow:auto;background:#fff;border-radius:10px;padding:10px 12px">${linhas}`
+          + (porEntregar > 25 ? `<div style="color:#6E6989;padding-top:6px">…e mais ${porEntregar - 25}</div>` : "")
+          + "</div>";
+        $r("btn-reenviar-leads").style.display = "";
+        $r("lbl-limite").style.display = "";
+        $r("inp-limite").value = Math.min(10, porEntregar);
+        $r("inp-limite").max = porEntregar;
+      }
+    } catch (e) {
+      console.warn("leads_por_entregar:", e);
+      out.innerHTML = '<b style="color:#B4255C">Não consegui verificar.</b> Tenta outra vez daqui a pouco.';
+    }
+    btnVer.disabled = false; btnVer.textContent = "🔍 Ver quantos há";
+  };
+
+  // ── Os endereços existem? (DNS ao vivo) ──
+  const VEREDICTOS = {
+    dominio_morto:  ["#B4255C", "domínio sem servidor de correio — o email rebenta sempre"],
+    devolveu_erro:  ["#B4255C", "já devolveu erro num envio anterior"],
+    sem_email:      ["#8A6D00", "não temos email desta creche"],
+    sem_registo:    ["#8A6D00", "creche já não está no dataset"],
+    indeterminado:  ["#6E6989", "o DNS não respondeu a tempo — repetir mais tarde"],
+  };
+  const btnVerif = $r("btn-verificar-emails");
+  if (btnVerif) btnVerif.onclick = async () => {
+    const out = $r("verif-out");
+    btnVerif.disabled = true; btnVerif.textContent = "⏳ A consultar o DNS…";
+    out.innerHTML = "";
+    try {
+      const j = await chamaOps({ action: "leads_verificar_emails" });
+      const maus = j.problemas || [];
+      // A caixa do agrupamento do Ministério é lida? Só as famílias sabem.
+      const L = j.lido || {}, mn = L.caixa_do_ministerio || {}, pr = L.email_proprio || {};
+      const cmp = (mn.respostas_das_familias || pr.respostas_das_familias)
+        ? `<div style="margin-top:10px;background:#fff;border-radius:10px;padding:10px 12px">`
+          + `<b>A caixa é lida?</b> <span style="color:#6E6989;font-size:12.5px">segundo as famílias, ao 7.º dia</span>`
+          + `<div style="margin-top:6px">caixa do Ministério: <b>${mn.taxa === null ? "—" : mn.taxa + "%"}</b> `
+          + `<span style="color:#6E6989">(${mn.creche_respondeu}/${mn.respostas_das_familias} responderam)</span></div>`
+          + `<div>email próprio da creche: <b>${pr.taxa === null ? "—" : pr.taxa + "%"}</b> `
+          + `<span style="color:#6E6989">(${pr.creche_respondeu}/${pr.respostas_das_familias} responderam)</span></div>`
+          + ((mn.respostas_das_familias < 10 || pr.respostas_das_familias < 10)
+              ? `<div style="margin-top:6px;color:#8A6D00;font-size:12.5px">Poucas respostas ainda — não tires conclusões destes números.</div>` : "")
+          + `</div>`
+        : "";
+      const cab = `<b>${j.creches} creches com pedidos</b> · ${j.dominios_consultados} domínios consultados`;
+      if (!maus.length) {
+        out.innerHTML = cab + '<div style="margin-top:8px;color:#1F7A3D"><b>✓ Todos os domínios recebem correio.</b></div>'
+          + cmp + `<div style="margin-top:8px;color:#6E6989;font-size:12.5px">${escapaHtml(j.nota || "")}</div>`;
+      } else {
+        const linhas = maus.map(m => {
+          const [cor, texto] = VEREDICTOS[m.veredicto] || ["#6E6989", m.veredicto];
+          return `<div style="padding:5px 0;border-bottom:1px solid #DCEEF7">`
+            + `<b>${escapaHtml(m.creche)}</b>`
+            + (m.concelho ? ` <span style="color:#6E6989">${escapaHtml(m.concelho)}</span>` : "")
+            + ` <span style="color:#6E6989">· ${m.pedidos} ${m.pedidos === 1 ? "pedido" : "pedidos"}</span>`
+            + `<div style="color:${cor};font-size:12.5px">${escapaHtml(m.email || "—")} — ${texto}</div></div>`;
+        }).join("");
+        out.innerHTML = cab
+          + `<div style="margin-top:8px;color:#B4255C"><b>${maus.length} com problema</b> · ${j.resumo.ok || 0} sem problema técnico</div>`
+          + `<div style="margin-top:10px;max-height:340px;overflow:auto;background:#fff;border-radius:10px;padding:10px 12px">${linhas}</div>`
+          + cmp + `<div style="margin-top:8px;color:#6E6989;font-size:12.5px">${escapaHtml(j.nota || "")}</div>`;
+      }
+    } catch (e) {
+      console.warn("leads_verificar_emails:", e);
+      out.innerHTML = '<b style="color:#B4255C">Não consegui verificar.</b> Tenta outra vez daqui a pouco.';
+    }
+    btnVerif.disabled = false; btnVerif.textContent = "🔎 Verificar agora";
+  };
+
+  // ── Entregues no endereço errado ──
+  let suspeitos = 0;
+  const btnVerS = $r("btn-ver-suspeitos");
+  if (btnVerS) btnVerS.onclick = async () => {
+    const out = $r("suspeitos-out");
+    btnVerS.disabled = true; btnVerS.textContent = "⏳ A verificar…"; out.innerHTML = "";
+    try {
+      const j = await chamaOps({ action: "leads_endereco_suspeito" });
+      suspeitos = j.total || 0;
+      if (!suspeitos) {
+        out.innerHTML = '<b style="color:#1F7A3D">✓ Nenhum.</b> Todos os pedidos entregues foram para um endereço que continua a ser o melhor que temos.';
+      } else {
+        const linhas = (j.pedidos || []).slice(0, 25).map(p =>
+          `<div style="padding:4px 0;border-bottom:1px solid #F6E6EC">${String(p.dias).padStart(3)} dias · <b>${escapaHtml(p.creche)}</b>`
+          + (p.concelho ? ` <span style="color:#6E6989">${escapaHtml(p.concelho)}</span>` : "")
+          + `<div style="color:#8A1E45;font-size:12.5px">${escapaHtml(p.motivo)}</div></div>`).join("");
+        out.innerHTML = `<b>${suspeitos} ${suspeitos === 1 ? "pedido" : "pedidos"} entregues no endereço errado</b>`
+          + `<div style="margin-top:10px;max-height:300px;overflow:auto;background:#fff;border-radius:10px;padding:10px 12px">${linhas}`
+          + (suspeitos > 25 ? `<div style="color:#6E6989;padding-top:6px">…e mais ${suspeitos - 25}</div>` : "") + "</div>";
+        $r("btn-reenviar-suspeitos").style.display = "";
+        $r("lbl-limite-s").style.display = "";
+        $r("inp-limite-s").value = Math.min(10, suspeitos);
+        $r("inp-limite-s").max = suspeitos;
+      }
+    } catch (e) {
+      console.warn("leads_endereco_suspeito:", e);
+      out.innerHTML = '<b style="color:#B4255C">Não consegui verificar.</b> Tenta outra vez daqui a pouco.';
+    }
+    btnVerS.disabled = false; btnVerS.textContent = "🔍 Ver quantos há";
+  };
+
+  const btnEnviarS = $r("btn-reenviar-suspeitos");
+  if (btnEnviarS) btnEnviarS.onclick = async () => {
+    const limite = Math.max(1, Math.min(parseInt($r("inp-limite-s").value, 10) || 10, suspeitos));
+    if (!confirm(`Vais reenviar ${limite} ${limite === 1 ? "pedido" : "pedidos"} ao endereço certo.\n\n`
+               + `A creche pode receber duas vezes (no endereço antigo e no novo).\n`
+               + `É preferível a nunca ter chegado a quem lê.\n\nConfirmas?`)) return;
+    const out = $r("suspeitos-out");
+    btnEnviarS.disabled = true; btnEnviarS.textContent = "📨 A reenviar…";
+    out.innerHTML = "A reenviar… cerca de " + Math.ceil(limite * 0.8) + " segundos.";
+    try {
+      const j = await chamaOps({ action: "leads_reenviar_suspeitos", limite });
+      const linhas = (j.detalhe || []).map(d =>
+        `<div style="padding:3px 0">${d.estado === "entregue" ? "✓" : "✗"} <b>${escapaHtml(d.creche)}</b>`
+        + (d.estado === "entregue" ? "" : ` <span style="color:#B4255C">— ${escapaHtml(d.estado)}</span>`) + "</div>").join("");
+      out.innerHTML = `<b style="color:#1F7A3D">✓ ${j.enviados} reenviados</b>`
+        + (j.falhados ? ` <b style="color:#B4255C">· ${j.falhados} falharam</b>` : "")
+        + (j.restantes ? ` <span style="color:#6E6989">· faltam ${j.restantes}</span>` : "")
+        + `<div style="margin-top:10px;max-height:300px;overflow:auto;background:#fff;border-radius:10px;padding:10px 12px">${linhas}</div>`;
+      suspeitos = j.restantes || 0;
+      if (!suspeitos) { btnEnviarS.style.display = "none"; $r("lbl-limite-s").style.display = "none"; }
+    } catch (e) {
+      console.warn("leads_reenviar_suspeitos:", e);
+      out.innerHTML = '<b style="color:#B4255C">Falhou.</b> Verifica a ligação e tenta outra vez.';
+    }
+    btnEnviarS.disabled = false; btnEnviarS.textContent = "📨 Reenviar ao endereço certo";
+  };
+
+  const btnEnviar = $r("btn-reenviar-leads");
+  if (btnEnviar) btnEnviar.onclick = async () => {
+    const limite = Math.max(1, Math.min(parseInt($r("inp-limite").value, 10) || 10, porEntregar));
+    // Confirmação explícita: são emails a creches reais e a famílias reais.
+    if (!confirm(`Vais entregar ${limite} ${limite === 1 ? "pedido" : "pedidos"}.\n\n`
+               + `Isso são ${limite} emails a creches e ${limite} confirmações a famílias.\n\n`
+               + `Confirmas?`)) return;
+    const out = $r("recuperar-out");
+    btnEnviar.disabled = true; btnEnviar.textContent = "📨 A entregar…";
+    out.innerHTML = "A entregar, um a um. Pode demorar cerca de " + Math.ceil(limite * 0.8) + " segundos…";
+    try {
+      const j = await chamaOps({ action: "leads_reenviar", limite });
+      const linhas = (j.detalhe || []).map(d =>
+        `<div style="padding:3px 0">${d.estado === "entregue" ? "✓" : "✗"} <b>${escapaHtml(d.creche)}</b>`
+        + (d.estado === "entregue" ? "" : ` <span style="color:#B4255C">— ${escapaHtml(d.estado)}</span>`) + "</div>").join("");
+      out.innerHTML =
+        `<b style="color:#1F7A3D">✓ ${j.enviados} ${j.enviados === 1 ? "entregue" : "entregues"}</b>`
+        + (j.falhados ? ` <b style="color:#B4255C">· ${j.falhados} falharam</b>` : "")
+        + (j.restantes ? ` <span style="color:#6E6989">· faltam ${j.restantes}, carrega outra vez</span>` : "")
+        + `<div style="margin-top:10px;max-height:280px;overflow:auto;background:#fff;border-radius:10px;padding:10px 12px">${linhas}</div>`;
+      porEntregar = j.restantes || 0;
+      if (!porEntregar) { btnEnviar.style.display = "none"; $r("lbl-limite").style.display = "none"; }
+    } catch (e) {
+      console.warn("leads_reenviar:", e);
+      out.innerHTML = '<b style="color:#B4255C">Falhou a entrega.</b> Verifica a ligação e tenta outra vez.';
+    }
+    btnEnviar.disabled = false; btnEnviar.textContent = "📨 Entregar agora";
+  };
+})();
 
 // === Fase 0 (0.3) — Email boas-vindas AUTOMÁTICO ao aprovar claim ===
 // Tenta enviar via /api/notify (Resend). Se falhar, cai no Gmail compose manual.

@@ -58,6 +58,22 @@ function initFirebase() {
   initializeApp({ credential: cert(sa) });
 }
 
+// Um pedido que ficou por entregar (a creche não tinha email conhecido) pode
+// chegar semanas depois. A creche tem de saber disso — senão liga a uma família
+// a falar de um pedido de ontem que afinal é de há um mês, e fica a parecer que
+// esteve todo esse tempo sem responder.
+function notaAtraso(lead) {
+  const ts = lead.ts && lead.ts.toMillis ? lead.ts.toMillis() : 0;
+  if (!ts) return "";
+  const dias = Math.floor((Date.now() - ts) / 86400000);
+  if (dias < 3) return "";
+  const d = new Date(ts);
+  const quando = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
+  return `Este pedido foi feito a ${quando}. Só agora conseguimos fazê-lo chegar: `
+       + `não tínhamos o vosso email e passámos a tê-lo. Pedimos desculpa pelo atraso — `
+       + `a família pode entretanto já ter encontrado lugar, mas achámos que devia na mesma chegar-vos.`;
+}
+
 // ── Email de confirmação ao pai (template da marca) ──────────────────────────
 function ackPaiHTML(lead, linkAcomp) {
   const nome = escapeHtml((lead.nome || "").split(" ")[0] || "");
@@ -114,6 +130,7 @@ Se não tiveres resposta em alguns dias, nós avisamos-te e sugerimos alternativ
 // ── Email de aviso à creche (template da marca) ──────────────────────────────
 function avisoCrecheHTML(lead, temPainel) {
   const creche = escapeHtml(lead.creche_nome || "a vossa creche");
+  const atraso = notaAtraso(lead);
   const linha = (ico, txt) => `<tr><td style="padding:5px 0;font-size:15px;color:#2C2356">${ico}&nbsp;&nbsp;${txt}</td></tr>`;
   const tel = lead.telefone ? String(lead.telefone).replace(/\s+/g, "") : "";
   const detalhes = [
@@ -157,6 +174,7 @@ function avisoCrecheHTML(lead, temPainel) {
     <div style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:22px;font-weight:bold;color:#fff;line-height:1.3;margin-top:18px">💌 Uma família quer<br>contactar-vos.</div>
   </td></tr>
   <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
+    ${atraso ? `<div style="background:#FFF4D6;border-left:4px solid #E0A800;border-radius:10px;padding:13px 16px;margin:0 0 18px;font-size:14px;color:#6B4E00;line-height:1.55">⏳ ${escapeHtml(atraso)}</div>` : ""}
     <p style="margin:0 0 18px">Uma família procurou creche no creches.app e deixou contacto para <b>${creche}</b>:</p>
     <div style="background:#FFF6EE;border-radius:14px;padding:16px 20px;margin:0 0 18px">
       <table role="presentation" cellpadding="0" cellspacing="0" width="100%">${detalhes}</table>
@@ -177,7 +195,8 @@ function avisoCrecheHTML(lead, temPainel) {
 }
 
 function avisoCrecheText(lead, temPainel) {
-  return `Uma família procurou creche no creches.app e deixou contacto para ${lead.creche_nome || "a vossa creche"}:
+  const atraso = notaAtraso(lead);
+  return `${atraso ? atraso + "\n\n" : ""}Uma família procurou creche no creches.app e deixou contacto para ${lead.creche_nome || "a vossa creche"}:
 
 Nome: ${lead.nome || "—"}
 Email: ${lead.email || "—"}
@@ -194,16 +213,27 @@ Podem responder diretamente a este email — a vossa resposta chega à família.
 — A equipa do creches.app`;
 }
 
-// Fallback: email da creche no dataset público (para creches ainda sem painel)
-async function emailDoDataset(creche_id) {
+// Emails da creche no dataset público (para creches ainda sem painel).
+//
+// Devolve ATÉ DOIS endereços, e a razão é concreta: 368 creches tinham no
+// OpenStreetMap um email diferente do que consta na Carta Social, e em 284
+// desses casos o nosso era a caixa do agrupamento (@escolas.min-edu.pt) — que
+// a creche raramente lê. Escolher um seria adivinhar qual está a ser lido.
+// Mandar para os dois custa o mesmo e chega a quem estiver do outro lado.
+async function emailsDoDataset(creche_id) {
+  const valido = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
   try {
     const ds = await fetch("https://creches.app/creches_pt.json").then(r => r.json());
-    const c = Array.isArray(ds) ? ds.find(x => String(x.id) === String(creche_id)) : null;
-    const em = c && c.email ? String(c.email).trim() : "";
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) ? em : "";
+    const lista = Array.isArray(ds) ? ds : (ds && ds.creches) || [];
+    const c = lista.find(x => String(x.id) === String(creche_id));
+    if (!c) return [];
+    const candidatos = [c.email, c.email_oficial]
+      .map(e => String(e || "").split(";")[0].trim().toLowerCase())
+      .filter(valido);
+    return [...new Set(candidatos)];          // sem repetidos
   } catch (e) {
-    console.error("emailDoDataset:", e);
-    return "";
+    console.error("emailsDoDataset:", e);
+    return [];
   }
 }
 
@@ -324,9 +354,9 @@ export default async function handler(req, res) {
     mgrs.forEach(d => { const e = d.data().email; if (e) emails.push(e); });
     const temPainel = emails.length > 0;
     if (!temPainel) {
-      const fallback = await emailDoDataset(lead.creche_id);
-      if (!fallback) return res.status(200).json({ ok: true, skipped: "creche sem email conhecido" });
-      emails.push(fallback);
+      const doDataset = await emailsDoDataset(lead.creche_id);
+      if (!doDataset.length) return res.status(200).json({ ok: true, skipped: "creche sem email conhecido" });
+      emails.push(...doDataset);
     }
 
     // Endereço de resposta próprio deste lead. Se a creche carregar em

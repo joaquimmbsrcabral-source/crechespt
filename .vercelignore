@@ -45,6 +45,13 @@ preview-email-*.html
 Assinatura-*.html
 admin-import-cs.html
 
+# --- Credenciais ---
+# Já estão no .gitignore (e o Vercel publica a partir do git), mas se algum dia
+# alguém fizer `vercel deploy` a partir da pasta local, isto é a segunda tranca.
+.env
+.env.*
+.vercel
+
 # --- Sistema ---
 .DS_Store
 .git/
