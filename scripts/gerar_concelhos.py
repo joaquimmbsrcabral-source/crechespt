@@ -63,6 +63,8 @@ def tipo_classe(t):
 # ── Dados ────────────────────────────────────────────────────────────────────
 d = json.load(open("creches_pt.json", encoding="utf-8"))
 creches = d if isinstance(d, list) else d.get("creches", d)
+# Gémeos da Carta Social: contam uma vez só, pelo registo original.
+creches = [c for c in creches if not c.get("oculto_duplicado")]
 slugs = json.load(open("scripts/slugs.json", encoding="utf-8"))
 
 # Só entram creches com ficha gerada (o gerar_fichas.py salta Escolas Básicas)

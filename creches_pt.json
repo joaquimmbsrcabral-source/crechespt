@@ -174,7 +174,21 @@
   "email": "geral@associacaomaconde.pt",
   "website": "https://associacaomaconde.wixsite.com/braga",
   "telefone": "253692955",
-  "enriquecido_em": "2026-08-13"
+  "enriquecido_em": "2026-08-13",
+  "morada": "RUA S.PEDRO DE MAXIMINOS Nº45",
+  "codigo_postal": "4700-227",
+  "localidade": "BRAGA",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 46,
+  "utentes_oficial": 46,
+  "operador": "ASSOCIAÇÃO MACONDE",
+  "carta_social_id": "3097",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3097"
+  ]
  },
  {
   "id": "osm-node-1238482887",
@@ -689,7 +703,21 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Águeda",
-  "concelho_slug": "agueda"
+  "concelho_slug": "agueda",
+  "morada": "RUA DO CURTINHAL Nº325",
+  "telefone": "234625627",
+  "email": "geral@omagico.pt",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 37,
+  "utentes_oficial": 34,
+  "operador": "\"O MÁGICO\" - CENTRO DE APOIO SOCIAL CULTURAL E RECREATIVO",
+  "carta_social_id": "28264",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-28264"
+  ]
  },
  {
   "id": "osm-node-1537328240",
@@ -1037,7 +1065,20 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Rio Maior",
-  "concelho_slug": "rio-maior"
+  "concelho_slug": "rio-maior",
+  "telefone": "243991500",
+  "email": "crechechainca@scmriomaior.pt",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 88,
+  "utentes_oficial": 88,
+  "operador": "SANTA CASA DA MISERICÓRDIA DE RIO MAIOR",
+  "carta_social_id": "25912",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-25912"
+  ]
  },
  {
   "id": "osm-node-1639362544",
@@ -1872,7 +1913,23 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Guimarães",
-  "concelho_slug": "guimaraes"
+  "concelho_slug": "guimaraes",
+  "morada": "RUA FRANCISCO MARTINS SARMENTO",
+  "codigo_postal": "4805-448",
+  "localidade": "BRITEIROS SALVADOR",
+  "telefone": "253576602",
+  "email": "casadopovo.briteiros@gmail.com",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Casa do Povo(Desp.13799/99 e Desp.17747/99)",
+  "capacidade_oficial": 71,
+  "utentes_oficial": 71,
+  "operador": "CASA DO POVO DE BRITEIROS",
+  "carta_social_id": "140",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-140"
+  ]
  },
  {
   "id": "osm-node-2264027414",
@@ -2071,7 +2128,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:00 - 20:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 33,
+  "utentes_oficial": 33,
+  "operador": "ABCRESCIMENTO, LDA",
+  "carta_social_id": "21941",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-21941"
+  ]
  },
  {
   "id": "osm-node-2504772083",
@@ -2129,7 +2197,23 @@
   "resposta": "Jardim de Infância",
   "concelho": "Almada",
   "concelho_slug": "almada",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "morada": "RUA DA ESCOLA PRIMÁRIA, 29 A - COVA DA PIEDADE",
+  "codigo_postal": "2805-139",
+  "localidade": "ALMADA",
+  "telefone": "212761823",
+  "email": "cidade.brincadeira@gmail.com",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 34,
+  "utentes_oficial": 34,
+  "operador": "PAULA MARIA DA COSTA CORREIA",
+  "carta_social_id": "37395",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-37395"
+  ]
  },
  {
   "id": "osm-node-2545029088",
@@ -2347,7 +2431,18 @@
   "resposta": "Jardim de Infância",
   "concelho": "Torres Vedras",
   "concelho_slug": "torres-vedras",
-  "distrito_original": "Leiria"
+  "distrito_original": "Leiria",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Fundação de Solidariedade Social",
+  "capacidade_oficial": 74,
+  "utentes_oficial": 71,
+  "operador": "LAR DE SÃO JOSÉ - FUNDAÇÃO DE SOLIDARIEDADE SOCIAL",
+  "carta_social_id": "17293",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17293"
+  ]
  },
  {
   "id": "osm-node-3016156223",
@@ -3849,7 +3944,19 @@
   "resposta": "Creche / Jardim de Infância",
   "tipo_inferido": true,
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "horario": "7:00 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 36,
+  "utentes_oficial": 36,
+  "operador": "CENTRO DE ASSISTÊNCIA PAROQUIAL DA AMORA",
+  "website": "https://capa-amora.pt/",
+  "carta_social_id": "3600",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3600"
+  ]
  },
  {
   "id": "osm-node-5871309327",
@@ -4587,7 +4694,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Sabugal",
-  "concelho_slug": "sabugal"
+  "concelho_slug": "sabugal",
+  "horario": "7:30 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 32,
+  "carta_social_id": "3932",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3932"
+  ]
  },
  {
   "id": "osm-node-6765196188",
@@ -4824,7 +4941,23 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "morada": "RUA ERNESTO DA SILVA",
+  "codigo_postal": "1495-057",
+  "localidade": "ALGÉS",
+  "telefone": "214116737",
+  "email": "pinoquio@misericordia-oeiras.pt",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 18,
+  "utentes_oficial": 18,
+  "operador": "SANTA CASA DA MISERICÓRDIA DE OEIRAS",
+  "carta_social_id": "21481",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-21481"
+  ]
  },
  {
   "id": "osm-node-8699540509",
@@ -5290,7 +5423,18 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Real",
-  "concelho_slug": "vila-real"
+  "concelho_slug": "vila-real",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 37,
+  "utentes_oficial": 37,
+  "operador": "SANDRA PEREIRA",
+  "carta_social_id": "24635",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-24635"
+  ]
  },
  {
   "id": "osm-node-10735739702",
@@ -5373,7 +5517,23 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "morada": "RUA DA PALMEIRA, 11",
+  "codigo_postal": "1200-311",
+  "localidade": "LISBOA",
+  "telefone": "213427887",
+  "email": "adecogeral@adeco-jim.com",
+  "horario": "8:00 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 31,
+  "utentes_oficial": 31,
+  "operador": "ADECO - ASSOCIAÇÃO DE DESENVOLVIMENTO COMUNITÁRIO",
+  "carta_social_id": "1510",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1510"
+  ]
  },
  {
   "id": "osm-node-11052772589",
@@ -5434,7 +5594,23 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Coimbra",
-  "concelho_slug": "coimbra"
+  "concelho_slug": "coimbra",
+  "morada": "TRAVESSA DE MONTARROIO, Nº 23",
+  "codigo_postal": "3000-220",
+  "localidade": "COIMBRA",
+  "telefone": "239833395",
+  "email": "opatio@sapo.pt",
+  "horario": "7:45 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 55,
+  "utentes_oficial": 55,
+  "operador": "CENTRO DE SOLIDARIEDADE SOCIAL \"O PÁTIO\"",
+  "carta_social_id": "17675",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17675"
+  ]
  },
  {
   "id": "osm-node-11110310650",
@@ -6462,7 +6638,17 @@
   "resposta": "Jardim de Infância",
   "concelho": "Viseu",
   "concelho_slug": "viseu",
-  "distrito_original": "Guarda"
+  "distrito_original": "Guarda",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 38,
+  "utentes_oficial": 37,
+  "carta_social_id": "3345",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3345"
+  ]
  },
  {
   "id": "osm-node-11820087322",
@@ -9548,7 +9734,17 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 35,
+  "utentes_oficial": 30,
+  "carta_social_id": "2834",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2834"
+  ]
  },
  {
   "id": "osm-node-11963020047",
@@ -9804,7 +10000,19 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "morada": "AVENIDA DA CARAPALHA, N.º 43, R/C",
+  "horario": "7:30 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 44,
+  "utentes_oficial": 42,
+  "operador": "O PIMPÃO - CENTRO DE EDUCAÇÃO PARA A INFÂNCIA, LDA",
+  "carta_social_id": "2012",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2012"
+  ]
  },
  {
   "id": "osm-node-11970119211",
@@ -10267,7 +10475,14 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "operador": "INFANTÁRIO OS PITINHOS II, LDA",
+  "carta_social_id": "36715",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-36715"
+  ]
  },
  {
   "id": "osm-node-11975000519",
@@ -10595,7 +10810,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "morada": "BAIRRO CRUZ DA PICADA, 47/49",
+  "horario": "7:45 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 36,
+  "utentes_oficial": 32,
+  "carta_social_id": "1130",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1130"
+  ]
  },
  {
   "id": "osm-node-11976333150",
@@ -10887,7 +11113,17 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 74,
+  "utentes_oficial": 74,
+  "carta_social_id": "378",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-378"
+  ]
  },
  {
   "id": "osm-node-11981109107",
@@ -11362,7 +11598,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Loulé",
-  "concelho_slug": "loule"
+  "concelho_slug": "loule",
+  "morada": "SÍTIO DA ABELHEIRA",
+  "horario": "8:00 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Fundação de Solidariedade Social",
+  "capacidade_oficial": 105,
+  "utentes_oficial": 104,
+  "carta_social_id": "16075",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-16075"
+  ]
  },
  {
   "id": "osm-node-11990092087",
@@ -14367,7 +14614,20 @@
   "idade_max_meses": 12,
   "resposta": "Berçário",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "localidade": "LISBOA",
+  "email": "geral@sobebes.pt",
+  "horario": "8:00 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 51,
+  "utentes_oficial": 49,
+  "operador": "SÓ BEBÉS-SERVIÇO DE APOIO SOCIAL E ENSINO LDA",
+  "carta_social_id": "18565",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18565"
+  ]
  },
  {
   "id": "osm-node-12998851478",
@@ -14570,7 +14830,21 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Mafra",
-  "concelho_slug": "mafra"
+  "concelho_slug": "mafra",
+  "morada": "RUA DO LAMARÃO, Nº 2",
+  "codigo_postal": "2665-190",
+  "localidade": "MALVEIRA",
+  "telefone": "919799162",
+  "email": "mail@oscaramelos.pt",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 82,
+  "utentes_oficial": 0,
+  "operador": "OS CARAMELOS DA MALVEIRA &#8211; CRECHE E JARDIM DE INFÂNCIA, LDA",
+  "carta_social_id": "39903",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-39903"
+  ]
  },
  {
   "id": "osm-node-13470438983",
@@ -14871,7 +15145,23 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Nova de Gaia",
-  "concelho_slug": "vila-nova-de-gaia"
+  "concelho_slug": "vila-nova-de-gaia",
+  "morada": "TRAVESSA DA ARROCHADA S/N",
+  "codigo_postal": "4415-162",
+  "localidade": "PEDROSO",
+  "telefone": "227844572",
+  "email": "dirtecnica@apijumbo.pt",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 60,
+  "utentes_oficial": 59,
+  "operador": "ASSOCIAÇÃO PRÓ-INFÂNCIA DE PEDROSO - JUMBO JARDIM INFANTIL DE PEDROSO",
+  "carta_social_id": "4687",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-4687"
+  ]
  },
  {
   "id": "osm-way-55598975",
@@ -14977,7 +15267,20 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Ovar",
-  "concelho_slug": "ovar"
+  "concelho_slug": "ovar",
+  "telefone": "256591171",
+  "email": "geral@cpsfuradouro.pt",
+  "horario": "7:00 - 18:45",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 64,
+  "utentes_oficial": 59,
+  "operador": "CENTRO DE PROMOÇÃO SOCIAL DO FURADOURO",
+  "carta_social_id": "965",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-965"
+  ]
  },
  {
   "id": "osm-way-86959467",
@@ -16940,7 +17243,23 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "morada": "RUA DO RAIO, 235",
+  "codigo_postal": "4710-923",
+  "localidade": "BRAGA",
+  "telefone": "253200730",
+  "email": "associacaodacrechedebraga2@gmail.com",
+  "horario": "7:45 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 125,
+  "utentes_oficial": 119,
+  "operador": "ASSOCIAÇÃO DA CRECHE DE BRAGA",
+  "carta_social_id": "4270",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-4270"
+  ]
  },
  {
   "id": "osm-way-163316458",
@@ -17040,7 +17359,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 91,
+  "utentes_oficial": 91,
+  "carta_social_id": "3092",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3092"
+  ]
  },
  {
   "id": "osm-way-166523100",
@@ -17185,7 +17514,18 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Ílhavo",
-  "concelho_slug": "ilhavo"
+  "concelho_slug": "ilhavo",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 46,
+  "utentes_oficial": 46,
+  "operador": "CASCI - CENTRO DE ACÇÃO SOCIAL DO CONCELHO DE ÍLHAVO",
+  "carta_social_id": "1252",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1252"
+  ]
  },
  {
   "id": "osm-way-168802708",
@@ -17771,7 +18111,18 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "scmalenquer.pt/scma/contactos",
-  "website": "https://scmalenquer.pt/scma/"
+  "website": "https://scmalenquer.pt/scma/",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 82,
+  "utentes_oficial": 82,
+  "operador": "SANTA CASA DA MISERICÓRDIA DE ALENQUER",
+  "carta_social_id": "695",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-695"
+  ]
  },
  {
   "id": "osm-way-188335907",
@@ -18139,7 +18490,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 54,
+  "utentes_oficial": 50,
+  "operador": "A CHUPETA - BERÇARIO E CRECHE",
+  "carta_social_id": "6146",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-6146"
+  ]
  },
  {
   "id": "osm-way-203160452",
@@ -18894,7 +19256,16 @@
   "resposta": "Jardim de Infância",
   "concelho": "Celorico de Basto",
   "concelho_slug": "celorico-de-basto",
-  "distrito_original": "Viana do Castelo"
+  "distrito_original": "Viana do Castelo",
+  "morada": "RUA DE SÃO BARTOLOMEU, 4165",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 36,
+  "utentes_oficial": 0,
+  "carta_social_id": "39645",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-39645"
+  ]
  },
  {
   "id": "osm-way-244233232",
@@ -18976,7 +19347,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vagos",
-  "concelho_slug": "vagos"
+  "concelho_slug": "vagos",
+  "horario": "7:30 - 20:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 61,
+  "utentes_oficial": 38,
+  "website": "http://www.cspcalvao.pt",
+  "carta_social_id": "1218",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1218"
+  ]
  },
  {
   "id": "osm-way-245528607",
@@ -19516,7 +19898,19 @@
   "resposta": "Jardim de Infância",
   "concelho": "Lourinhã",
   "concelho_slug": "lourinha",
-  "distrito_original": "Leiria"
+  "distrito_original": "Leiria",
+  "email": "cscribamar@gmail.com",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 108,
+  "utentes_oficial": 100,
+  "operador": "CENTRO SOCIAL E CULTURAL RIBAMAR",
+  "carta_social_id": "1459",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1459"
+  ]
  },
  {
   "id": "osm-way-268671160",
@@ -19679,7 +20073,19 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Maia",
-  "concelho_slug": "maia"
+  "concelho_slug": "maia",
+  "morada": "PRACETA DA NORTECOOPE, 20",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 35,
+  "utentes_oficial": 34,
+  "operador": "JARDIMCOOPE - SOLIDARIEDADE SOCIAL",
+  "carta_social_id": "2697",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2697"
+  ]
  },
  {
   "id": "osm-way-285406996",
@@ -21876,7 +22282,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Maia",
-  "concelho_slug": "maia"
+  "concelho_slug": "maia",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 41,
+  "utentes_oficial": 39,
+  "carta_social_id": "2740",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2740"
+  ]
  },
  {
   "id": "osm-way-443788678",
@@ -24000,7 +24416,22 @@
   "resposta": "Infantário (IPSS)",
   "tipo_inferido": true,
   "concelho": "Olhão",
-  "concelho_slug": "olhao"
+  "concelho_slug": "olhao",
+  "morada": "AV. MARIA LIZARDA PALERMO S/Nº",
+  "codigo_postal": "8700-081",
+  "localidade": "MONCARAPACHO",
+  "telefone": "289791235",
+  "email": "stacasam.moncarapacho@sapo.pt",
+  "horario": "7:45 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 65,
+  "utentes_oficial": 64,
+  "carta_social_id": "24446",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-24446"
+  ]
  },
  {
   "id": "osm-way-643156996",
@@ -24727,7 +25158,18 @@
   "email": "centroermesinde@mail.telepac.pt",
   "website": "https://www.cse.pt/",
   "telefone": "229 747 194",
-  "enriquecido_em": "2026-08-06"
+  "enriquecido_em": "2026-08-06",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 80,
+  "utentes_oficial": 64,
+  "operador": "CENTRO SOCIAL DE ERMESINDE",
+  "carta_social_id": "2610",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2610"
+  ]
  },
  {
   "id": "osm-way-694611914",
@@ -25026,7 +25468,19 @@
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
-  "email_verificado_fonte": "bogalha.pt/website/contactos"
+  "email_verificado_fonte": "bogalha.pt/website/contactos",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 44,
+  "utentes_oficial": 40,
+  "operador": "ASSOCIAÇÃO JUVENIL \"A BOGALHA\"",
+  "carta_social_id": "4221",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-4221",
+   "cs-4385"
+  ]
  },
  {
   "id": "osm-way-743648365",
@@ -27144,7 +27598,18 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "casadopessoal-huc.com",
-  "email_anterior_morto": "ji.coimbra@escolas.min-edu.pt"
+  "email_anterior_morto": "ji.coimbra@escolas.min-edu.pt",
+  "morada": "CENTRO HOSPITALAR E UNIVERSITÁRIO DE COIMBRA - PRACETA MOTA PINTO",
+  "horario": "7:30 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação",
+  "capacidade_oficial": 92,
+  "utentes_oficial": 78,
+  "carta_social_id": "29392",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-29392"
+  ]
  },
  {
   "id": "osm-way-1008790822",
@@ -36417,7 +36882,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "morada": "RUA PADRE MOREIRA, Nº 13 - CABREIROS",
+  "horario": "7:15 - 18:45",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 59,
+  "utentes_oficial": 53,
+  "carta_social_id": "21989",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-21989"
+  ]
  },
  {
   "id": "osm-way-1268505524",
@@ -36483,7 +36959,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "horario": "7:00 - 18:50",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Fundação de Solidariedade Social",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 42,
+  "carta_social_id": "185",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-185"
+  ]
  },
  {
   "id": "osm-way-1268505537",
@@ -37928,7 +38414,17 @@
   "resposta": "Jardim de Infância",
   "concelho": "Tábua",
   "concelho_slug": "tabua",
-  "distrito_original": "Viseu"
+  "distrito_original": "Viseu",
+  "horario": "7:45 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 68,
+  "utentes_oficial": 65,
+  "carta_social_id": "12222",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-12222"
+  ]
  },
  {
   "id": "osm-way-1271960186",
@@ -38855,7 +39351,18 @@
   "resposta": "Jardim de Infância",
   "concelho": "Viseu",
   "concelho_slug": "viseu",
-  "distrito_original": "Guarda"
+  "distrito_original": "Guarda",
+  "telefone": "232921312",
+  "horario": "7:45 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 36,
+  "utentes_oficial": 34,
+  "carta_social_id": "21901",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-21901"
+  ]
  },
  {
   "id": "osm-way-1272888861",
@@ -41373,7 +41880,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Penacova",
-  "concelho_slug": "penacova"
+  "concelho_slug": "penacova",
+  "email": "geral@gssdcrmiro.pt",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 33,
+  "utentes_oficial": 16,
+  "carta_social_id": "17764",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17764"
+  ]
  },
  {
   "id": "osm-way-1273876824",
@@ -41806,7 +42324,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vagos",
-  "concelho_slug": "vagos"
+  "concelho_slug": "vagos",
+  "horario": "7:30 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 125,
+  "utentes_oficial": 118,
+  "carta_social_id": "1215",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1215"
+  ]
  },
  {
   "id": "osm-way-1273953439",
@@ -41895,7 +42423,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Mira",
-  "concelho_slug": "mira"
+  "concelho_slug": "mira",
+  "horario": "7:35 - 18:50",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 22,
+  "utentes_oficial": 22,
+  "carta_social_id": "4441",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-4441"
+  ]
  },
  {
   "id": "osm-way-1273956570",
@@ -42963,7 +43501,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Leiria",
-  "concelho_slug": "leiria"
+  "concelho_slug": "leiria",
+  "horario": "7:30 - 18:45",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 55,
+  "utentes_oficial": 55,
+  "carta_social_id": "18326",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18326"
+  ]
  },
  {
   "id": "osm-way-1274426027",
@@ -44230,7 +44778,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:00 - 20:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 22,
+  "utentes_oficial": 24,
+  "operador": "QUINA EDUCAÇÃO INFANTIL, LDA",
+  "carta_social_id": "1412",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1412"
+  ]
  },
  {
   "id": "osm-way-1274689940",
@@ -44697,7 +45256,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Óbidos",
-  "concelho_slug": "obidos"
+  "concelho_slug": "obidos",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação",
+  "capacidade_oficial": 40,
+  "utentes_oficial": 40,
+  "carta_social_id": "24017",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-24017"
+  ]
  },
  {
   "id": "osm-way-1274919740",
@@ -46492,7 +47061,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "8:00 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 22,
+  "utentes_oficial": 22,
+  "operador": "O BARQUINHO - JARDIM DE INFÂNCIA, UNIPESSOAL LDA",
+  "carta_social_id": "17879",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17879"
+  ]
  },
  {
   "id": "osm-way-1279662299",
@@ -46639,7 +47219,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 60,
+  "utentes_oficial": 55,
+  "operador": "O GATINHO INFANTÁRIO, LDA",
+  "carta_social_id": "17934",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17934"
+  ]
  },
  {
   "id": "osm-way-1279662305",
@@ -46884,7 +47475,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Matosinhos",
-  "concelho_slug": "matosinhos"
+  "concelho_slug": "matosinhos",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 23,
+  "utentes_oficial": 23,
+  "operador": "O COQUINHAS - CRECHE, JARDIM DE INFÂNCIA E A.T.L., LDA",
+  "carta_social_id": "5925",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-5925"
+  ]
  },
  {
   "id": "osm-way-1279690032",
@@ -46972,7 +47574,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 33,
+  "utentes_oficial": 33,
+  "operador": "PAULA SOFIA FERRAZ CARNEIRO DE AGUIAR",
+  "carta_social_id": "13191",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-13191"
+  ]
  },
  {
   "id": "osm-way-1279769523",
@@ -47051,7 +47664,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 26,
+  "utentes_oficial": 21,
+  "operador": "MELMAF- INFANTÁRIOS, LDA",
+  "carta_social_id": "17949",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17949"
+  ]
  },
  {
   "id": "osm-way-1279769527",
@@ -47162,7 +47786,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 62,
+  "utentes_oficial": 62,
+  "operador": "A GIRAFA - JARDIM DE INFÂNCIA LDA",
+  "carta_social_id": "17928",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17928"
+  ]
  },
  {
   "id": "osm-way-1279769540",
@@ -47386,7 +48021,18 @@
   "concelho": "Póvoa de Varzim",
   "concelho_slug": "povoa-de-varzim",
   "email": "crechemiminho@sapo.pt",
-  "enriquecido_em": "2026-08-06"
+  "enriquecido_em": "2026-08-06",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Cruz Vermelha Portuguesa",
+  "capacidade_oficial": 57,
+  "utentes_oficial": 58,
+  "operador": "CRUZ VERMELHA PORTUGUESA",
+  "carta_social_id": "24937",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-24937"
+  ]
  },
  {
   "id": "osm-way-1279788478",
@@ -48918,7 +49564,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 38,
+  "utentes_oficial": 32,
+  "operador": "O JARDIM DA ANITA - JARDIM DE INFÂNCIA DA LIXA, LDA",
+  "carta_social_id": "17932",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-17932"
+  ]
  },
  {
   "id": "osm-way-1289387328",
@@ -49093,7 +49750,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "8:00 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 25,
+  "utentes_oficial": 17,
+  "operador": "ASSOCIAÇÃO DE SOLIDARIEDADE SOCIAL RECREIO DO CARAMULO",
+  "carta_social_id": "3814",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-3814"
+  ]
  },
  {
   "id": "osm-way-1290078561",
@@ -49731,7 +50399,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 37,
+  "operador": "TOQUINHA DOS MIMINHOS, LDA",
+  "carta_social_id": "21001",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-21001"
+  ]
  },
  {
   "id": "osm-way-1290775095",
@@ -49793,7 +50472,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 94,
+  "utentes_oficial": 93,
+  "operador": "ASSOCIAÇÃO DE PROMOÇÃO SOCIAL DE VIEIRA DE LEIRIA",
+  "carta_social_id": "2167",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2167"
+  ]
  },
  {
   "id": "osm-way-1290775098",
@@ -50059,7 +50749,18 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "assdz.pt",
-  "website": "http://assdz.pt"
+  "website": "http://assdz.pt",
+  "morada": "RUA PROFESSOR JOSÉ DIAS DA SILVA Nº2",
+  "horario": "8:00 - 17:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 20,
+  "utentes_oficial": 18,
+  "carta_social_id": "2854",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-2854"
+  ]
  },
  {
   "id": "osm-way-1290802373",
@@ -50167,7 +50868,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Cooperativa de Solidariedade Social",
+  "capacidade_oficial": 84,
+  "utentes_oficial": 78,
+  "operador": "OS TRAQUININHAS2 - COOPERATIVA DE DESENVOLVIMENTO HUMANO CRL",
+  "carta_social_id": "18654",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18654"
+  ]
  },
  {
   "id": "osm-way-1290829049",
@@ -50279,7 +50991,18 @@
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
   "tipo_corrigido_em": "2026-08-13",
-  "idade_corrigida_em": "2026-08-13"
+  "idade_corrigida_em": "2026-08-13",
+  "horario": "8:00 - 20:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 92,
+  "utentes_oficial": 89,
+  "operador": "O JARDIM DOS FRALDINHAS, ENSINO PRÉ-ESCOLAR, CRECHE E TEMPOS LIVRES, LDA",
+  "carta_social_id": "24465",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-24465"
+  ]
  },
  {
   "id": "osm-way-1291060281",
@@ -50426,7 +51149,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 40,
+  "operador": "OS TRAQUINAS DOS MILAGRES, CRECHE E INFANTÁRIO, UNIP. LDA",
+  "carta_social_id": "18345",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18345"
+  ]
  },
  {
   "id": "osm-way-1291060287",
@@ -50452,7 +51186,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 41,
+  "utentes_oficial": 41,
+  "operador": "\"TENTATIVA\"- CENTRO EDUCATIVO DE LEIRIA, LDA",
+  "carta_social_id": "19448",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-19448"
+  ]
  },
  {
   "id": "osm-way-1291060288",
@@ -50568,7 +51313,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Gaia",
-  "concelho_slug": "vila-nova-de-gaia"
+  "concelho_slug": "vila-nova-de-gaia",
+  "telefone": "220969001",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 30,
+  "utentes_oficial": 0,
+  "operador": "COLÉGIO CEJI DE SERZEDO, UNIPESSOAL LDA",
+  "carta_social_id": "38856",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-38856"
+  ]
  },
  {
   "id": "osm-way-1291135431",
@@ -52820,7 +53575,18 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "8:15 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 62,
+  "utentes_oficial": 62,
+  "operador": "ASSOCIAÇÃOJARDIM ESCOLA/ INFANTÁRIO DE TAVIRA O PIMPÃO",
+  "carta_social_id": "16086",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-16086"
+  ]
  },
  {
   "id": "osm-way-1293294571",
@@ -52972,7 +53738,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Loulé",
-  "concelho_slug": "loule"
+  "concelho_slug": "loule",
+  "horario": "8:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 134,
+  "utentes_oficial": 74,
+  "operador": "CENTRO PAROQUIAL DE ALMANCIL",
+  "carta_social_id": "36679",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-36679"
+  ]
  },
  {
   "id": "osm-way-1293418125",
@@ -53301,7 +54078,18 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Silves",
-  "concelho_slug": "silves"
+  "concelho_slug": "silves",
+  "morada": "URBANIZAÇÃO DAS AMENDOEIRAS - ARMAÇÃO DE PÊRA",
+  "horario": "8:00 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 60,
+  "utentes_oficial": 60,
+  "carta_social_id": "4191",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-4191"
+  ]
  },
  {
   "id": "osm-way-1293418140",
@@ -58531,7 +59319,23 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "morada": "RUA 31 DE OUTUBRO - BAIRRO DOS PINHEIRINHOS",
+  "codigo_postal": "2910-122",
+  "localidade": "SETÚBAL",
+  "telefone": "265235644",
+  "email": "apinheirinhos@gmail.com",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação",
+  "capacidade_oficial": 15,
+  "utentes_oficial": 15,
+  "operador": "ASSOCIAÇÃO DE MORADORES LUTA DO POVO",
+  "carta_social_id": "5974",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-5974"
+  ]
  },
  {
   "id": "osm-way-1333196793",
@@ -58877,7 +59681,19 @@
   "idade_max_meses": 72,
   "resposta": "Infantário (IPSS)",
   "concelho": "Covilhã",
-  "concelho_slug": "covilha"
+  "concelho_slug": "covilha",
+  "telefone": "275031460",
+  "email": "geral@misericordiacovilha.pt",
+  "horario": "7:30 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Instituto da Segurança Social",
+  "capacidade_oficial": 35,
+  "utentes_oficial": 35,
+  "carta_social_id": "1396",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-1396"
+  ]
  },
  {
   "id": "osm-way-1428264056",
@@ -59066,7 +59882,23 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Paredes",
-  "concelho_slug": "paredes"
+  "concelho_slug": "paredes",
+  "morada": "RUA DAS BOUCETAS, N.º 10",
+  "codigo_postal": "4585-905",
+  "localidade": "RECAREI",
+  "telefone": "969826947",
+  "email": "geral@csprecarei.pt",
+  "horario": "7:00 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 36,
+  "utentes_oficial": 33,
+  "operador": "CENTRO SOCIAL E PAROQUIAL DE RECAREI",
+  "carta_social_id": "18523",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18523"
+  ]
  },
  {
   "id": "osm-way-1454250704",
@@ -59220,7 +60052,18 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "cspsml.pt/contactos",
-  "website": "https://www.cspsml.pt/"
+  "website": "https://www.cspsml.pt/",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 40,
+  "utentes_oficial": 39,
+  "operador": "CENTRO SOCIAL PAROQUIAL SÃO MIGUEL DE LOBRIGOS",
+  "carta_social_id": "18639",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-18639"
+  ]
  },
  {
   "id": "osm-way-1494648504",
@@ -59980,7 +60823,23 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Vila Nova de Gaia",
-  "concelho_slug": "vila-nova-de-gaia"
+  "concelho_slug": "vila-nova-de-gaia",
+  "morada": "RUA MÁRTIR S. SEBASTIÃO Nº 26",
+  "codigo_postal": "4400-000",
+  "localidade": "AFURADA - VILA NOVA DE GAIA",
+  "telefone": "227718028",
+  "email": "geral@candal.eu",
+  "horario": "7:00 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 34,
+  "utentes_oficial": 34,
+  "operador": "CENTRO SOCIAL PAROQUIAL DA IGREJA DO SENHOR DA VERA CRUZ DO CANDAL",
+  "carta_social_id": "27323",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-27323"
+  ]
  },
  {
   "id": "osm-node-5611769245",
@@ -61892,7 +62751,20 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Vila Real de Santo António",
-  "concelho_slug": "vila-real-de-santo-antonio"
+  "concelho_slug": "vila-real-de-santo-antonio",
+  "morada": "EDIFÍCIO JI MANUEL CABANAS - LARGO MANUEL CABANAS",
+  "codigo_postal": "8900-067",
+  "localidade": "VILA REAL DE SANTO ANTÓNIO",
+  "horario": "8:00 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Cruz Vermelha Portuguesa",
+  "capacidade_oficial": 35,
+  "utentes_oficial": 35,
+  "carta_social_id": "39051",
+  "valencia_creche_fonte": "carta_social",
+  "fundido_de": [
+   "cs-39051"
+  ]
  },
  {
   "id": "osm-way-1338316019",
@@ -63368,7 +64240,9 @@
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "capa-amora.pt/resposta-social/creche",
   "email_anterior_morto": "geral@amora-capa.pt",
-  "website": "https://capa-amora.pt/"
+  "website": "https://capa-amora.pt/",
+  "oculto_duplicado": "osm-node-5871309326",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-15171",
@@ -63799,7 +64673,9 @@
   "valencia_creche_fonte": "carta_social",
   "geo_precisao": "codigo_postal",
   "fonte": "carta_social",
-  "importado_em": "2026-08-13"
+  "importado_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-11975000518",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2338",
@@ -63981,7 +64857,9 @@
   "capacidade_oficial": 15,
   "utentes_oficial": 15,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1331989113",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-15126",
@@ -66058,7 +66936,9 @@
   "capacidade_oficial": 22,
   "utentes_oficial": 24,
   "horario": "7:00 - 20:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1274689939",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-20445",
@@ -66678,7 +67558,9 @@
   "capacidade_oficial": 18,
   "utentes_oficial": 18,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-8694939817",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-22543",
@@ -67722,7 +68604,9 @@
   "capacidade_oficial": 54,
   "utentes_oficial": 50,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-202986083",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17276",
@@ -71519,7 +72403,9 @@
   "capacidade_oficial": 51,
   "utentes_oficial": 49,
   "horario": "8:00 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-12980137101",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-779",
@@ -71767,7 +72653,9 @@
   "capacidade_oficial": 31,
   "utentes_oficial": 31,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11019532711",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1678",
@@ -75890,7 +76778,9 @@
   "capacidade_oficial": 46,
   "utentes_oficial": 46,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-168735565",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1255",
@@ -76671,7 +77561,9 @@
   "capacidade_oficial": 64,
   "utentes_oficial": 59,
   "horario": "7:00 - 18:45",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-78121960",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-975",
@@ -77074,7 +77966,9 @@
   "capacidade_oficial": 125,
   "utentes_oficial": 118,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1273953438",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1218",
@@ -77111,7 +78005,9 @@
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "cspcalvao.pt/contatos.html",
   "email_anterior_morto": "secretaria@cspcalvao.org",
-  "website": "http://www.cspcalvao.pt"
+  "website": "http://www.cspcalvao.pt",
+  "oculto_duplicado": "osm-way-244932148",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1219",
@@ -78132,7 +79028,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 42,
   "horario": "7:00 - 18:50",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1268505533",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-187",
@@ -78380,7 +79278,9 @@
   "capacidade_oficial": 91,
   "utentes_oficial": 91,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-165614039",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-39236",
@@ -78473,7 +79373,9 @@
   "capacidade_oficial": 44,
   "utentes_oficial": 40,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-738676776",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-4385",
@@ -78504,7 +79406,9 @@
   "capacidade_oficial": 41,
   "utentes_oficial": 38,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-738676776",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18106",
@@ -78812,7 +79716,9 @@
   "capacidade_oficial": 46,
   "utentes_oficial": 46,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-1225469967",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-5933",
@@ -78967,7 +79873,9 @@
   "capacidade_oficial": 125,
   "utentes_oficial": 119,
   "horario": "7:45 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-162544061",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-4279",
@@ -79091,7 +79999,9 @@
   "capacidade_oficial": 59,
   "utentes_oficial": 53,
   "horario": "7:15 - 18:45",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1268505520",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-13104",
@@ -79521,7 +80431,9 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 36,
-  "utentes_oficial": 0
+  "utentes_oficial": 0,
+  "oculto_duplicado": "osm-way-243789887",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-167",
@@ -80168,7 +81080,9 @@
   "capacidade_oficial": 71,
   "utentes_oficial": 71,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-2244670035",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-156",
@@ -83407,7 +84321,9 @@
   "capacidade_oficial": 44,
   "utentes_oficial": 42,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11970090013",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2017",
@@ -83748,7 +84664,9 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 35,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1422369021",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1397",
@@ -84430,7 +85348,9 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 30,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11963020046",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2836",
@@ -85024,7 +85944,9 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "casadopessoal-huc.com",
-  "website": "https://www.casadopessoal-huc.com"
+  "website": "https://www.casadopessoal-huc.com",
+  "oculto_duplicado": "osm-way-999689112",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-33036",
@@ -85210,7 +86132,9 @@
   "capacidade_oficial": 55,
   "utentes_oficial": 55,
   "horario": "7:45 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11077895490",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17961",
@@ -86293,7 +87217,9 @@
   "capacidade_oficial": 22,
   "utentes_oficial": 22,
   "horario": "7:35 - 18:50",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1273953447",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-4552",
@@ -86696,7 +87622,9 @@
   "capacidade_oficial": 20,
   "utentes_oficial": 18,
   "horario": "8:00 - 17:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1290802372",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-5601",
@@ -86851,7 +87779,9 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 16,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1273876820",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-24216",
@@ -87130,7 +88060,9 @@
   "capacidade_oficial": 68,
   "utentes_oficial": 65,
   "horario": "7:45 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1271960183",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18058",
@@ -87440,7 +88372,9 @@
   "capacidade_oficial": 36,
   "utentes_oficial": 32,
   "horario": "7:45 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11976179361",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1148",
@@ -89553,7 +90487,9 @@
   "capacidade_oficial": 105,
   "utentes_oficial": 104,
   "horario": "8:00 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11990073462",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18225",
@@ -89646,7 +90582,9 @@
   "capacidade_oficial": 134,
   "utentes_oficial": 74,
   "horario": "8:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1293418124",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-21281",
@@ -89956,7 +90894,9 @@
   "capacidade_oficial": 65,
   "utentes_oficial": 64,
   "horario": "7:45 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-635031828",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-25167",
@@ -90450,7 +91390,9 @@
   "capacidade_oficial": 60,
   "utentes_oficial": 60,
   "horario": "8:00 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1293418139",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-16085",
@@ -90574,7 +91516,9 @@
   "capacidade_oficial": 62,
   "utentes_oficial": 62,
   "horario": "8:15 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1293294570",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18292",
@@ -90791,7 +91735,9 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 35,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1273203162",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-3901",
@@ -91566,7 +92512,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 32,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-6751350124",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-3945",
@@ -93021,7 +93969,9 @@
   "capacidade_oficial": 84,
   "utentes_oficial": 78,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1290802379",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2120",
@@ -93112,7 +94062,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 40,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1291060286",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-21365",
@@ -93174,7 +94126,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 37,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1290775094",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2110",
@@ -93267,7 +94221,9 @@
   "capacidade_oficial": 41,
   "utentes_oficial": 41,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1291060287",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-23388",
@@ -93449,7 +94405,9 @@
   "capacidade_oficial": 92,
   "utentes_oficial": 89,
   "horario": "8:00 - 20:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1291060280",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-26980",
@@ -93604,7 +94562,9 @@
   "capacidade_oficial": 55,
   "utentes_oficial": 55,
   "horario": "7:30 - 18:45",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1274426026",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2167",
@@ -93635,7 +94595,9 @@
   "capacidade_oficial": 94,
   "utentes_oficial": 93,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1290775096",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18346",
@@ -93974,7 +94936,9 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 40,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1274919739",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-38884",
@@ -94747,7 +95711,9 @@
   "capacidade_oficial": 82,
   "utentes_oficial": 82,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-187247277",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-21142",
@@ -95080,7 +96046,9 @@
   "capacidade_oficial": 74,
   "utentes_oficial": 74,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11981109073",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-1459",
@@ -95111,7 +96079,9 @@
   "capacidade_oficial": 108,
   "utentes_oficial": 100,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-264314000",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-24406",
@@ -95171,7 +96141,9 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 82,
-  "utentes_oficial": 0
+  "utentes_oficial": 0,
+  "oculto_duplicado": "osm-node-13312201771",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2208",
@@ -95454,7 +96426,9 @@
   "capacidade_oficial": 74,
   "utentes_oficial": 71,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-3008430795",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18423",
@@ -96591,7 +97565,9 @@
   "capacidade_oficial": 38,
   "utentes_oficial": 32,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1289229813",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-26702",
@@ -96781,7 +97757,9 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 33,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279769522",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17121",
@@ -96934,7 +97912,9 @@
   "capacidade_oficial": 62,
   "utentes_oficial": 62,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279769535",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17949",
@@ -96965,7 +97945,9 @@
   "capacidade_oficial": 26,
   "utentes_oficial": 21,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279769526",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-22649",
@@ -97453,7 +98435,9 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 34,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-284325841",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2740",
@@ -97484,7 +98468,9 @@
   "capacidade_oficial": 41,
   "utentes_oficial": 39,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-443631619",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-29365",
@@ -97637,7 +98623,9 @@
   "capacidade_oficial": 60,
   "utentes_oficial": 55,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279662304",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-22825",
@@ -98623,7 +99611,9 @@
   "capacidade_oficial": 36,
   "utentes_oficial": 33,
   "horario": "7:00 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1450214440",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-22097",
@@ -101073,7 +102063,9 @@
   "capacidade_oficial": 80,
   "utentes_oficial": 64,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-694016333",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-2659",
@@ -102649,7 +103641,9 @@
   "capacidade_oficial": 88,
   "utentes_oficial": 88,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-1611825344",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-27450",
@@ -103077,7 +104071,9 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 33,
   "horario": "7:00 - 20:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-2504770716",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-414",
@@ -105529,7 +106525,9 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 39,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1493804002",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-3490",
@@ -105808,7 +106806,9 @@
   "capacidade_oficial": 37,
   "utentes_oficial": 37,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-10711011172",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-24829",
@@ -106794,7 +107794,9 @@
   "capacidade_oficial": 25,
   "utentes_oficial": 17,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1289753578",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18464",
@@ -106949,7 +107951,9 @@
   "capacidade_oficial": 38,
   "utentes_oficial": 37,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11820087224",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-3347",
@@ -107325,7 +108329,9 @@
   "capacidade_oficial": 36,
   "utentes_oficial": 34,
   "horario": "7:45 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1272888846",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-3816",
@@ -107848,7 +108854,9 @@
   "capacidade_oficial": 37,
   "utentes_oficial": 34,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-1533306375",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18310",
@@ -108963,7 +109971,9 @@
   "capacidade_oficial": 23,
   "utentes_oficial": 23,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279690025",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-26640",
@@ -109087,7 +110097,9 @@
   "capacidade_oficial": 22,
   "utentes_oficial": 22,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279662290",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-18315",
@@ -109519,7 +110531,9 @@
   "capacidade_oficial": 57,
   "utentes_oficial": 58,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279788477",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-25051",
@@ -109827,7 +110841,9 @@
   "capacidade_oficial": 60,
   "utentes_oficial": 59,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-54937256",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17967",
@@ -110013,7 +111029,9 @@
   "capacidade_oficial": 34,
   "utentes_oficial": 34,
   "horario": "7:00 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-5534143437",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-27466",
@@ -110073,7 +111091,9 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 30,
-  "utentes_oficial": 0
+  "utentes_oficial": 0,
+  "oculto_duplicado": "osm-way-1291106208",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-24868",
@@ -110166,7 +111186,9 @@
   "capacidade_oficial": 34,
   "utentes_oficial": 34,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-2545025392",
+  "oculto_em": "2026-08-14"
  },
  {
   "id": "cs-17353",

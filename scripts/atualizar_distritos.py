@@ -51,6 +51,8 @@ def slug_distrito(nome):
 def main():
     dados = json.load(open("creches_pt.json", encoding="utf-8"))
     lista = dados if isinstance(dados, list) else dados["creches"]
+    # Gémeos da Carta Social: contam uma vez só, pelo registo original.
+    lista = [c for c in lista if not c.get("oculto_duplicado")]
     slugs = json.load(open("scripts/slugs.json", encoding="utf-8"))
 
     por_distrito = collections.defaultdict(list)

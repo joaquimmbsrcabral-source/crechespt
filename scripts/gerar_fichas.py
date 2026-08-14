@@ -299,6 +299,11 @@ def _is_eb(nm): return any(p.search(nm or "") for p in _EB_RX)
 # Estas não geram ficha — por isso também não podem gerar links. Filtrar aqui,
 # antes de qualquer geração, garante que fichas, concelhos e distritos usam
 # todos a mesma lista e ninguém aponta para uma página que não existe.
+# Gémeos da Carta Social que são a mesma creche que um registo já existente.
+# Ficam no dataset (há ligações e pedidos que apontam para ids), mas não geram
+# ficha própria nem pino no mapa — senão a mesma creche aparece duas vezes e a
+# cópia tapa a original, que é a que tem o perfil e o selo da creche.
+creches = [c for c in creches if not c.get("oculto_duplicado")]
 slugs = {c["id"]: slugs[c["id"]] for c in creches if not _is_eb((c.get("nome") or ""))}
 
 os.makedirs("creche", exist_ok=True)

@@ -20,6 +20,7 @@ if [ "$2" != "--sem-gerar" ]; then
   python3 scripts/gerar_concelhos.py        > /dev/null && echo "  ✓ concelhos"
   python3 scripts/atualizar_distritos.py    > /dev/null && echo "  ✓ distritos"
   python3 scripts/atualizar_sitemap_index.py> /dev/null && echo "  ✓ sitemaps"
+  python3 scripts/atualizar_dataset_app.py   || exit 1
 
   # O mapa lê um dataset embutido no app.html. Se divergir do ficheiro, o site
   # mostra dados que já corrigimos — o erro mais caro e mais silencioso que houve.
@@ -30,6 +31,7 @@ m = re.search(r'<script[^>]*id=["\']dataset["\'][^>]*>(.*?)</script>', h, re.S)
 emb = json.loads(gzip.decompress(base64.b64decode(m.group(1).strip())))
 cur = json.load(io.open("creches_pt.json", encoding="utf-8"))
 cur = cur if isinstance(cur, list) else cur["creches"]
+cur = [c for c in cur if not c.get("oculto_duplicado")]   # gémeos não são pinos
 ci = {c["id"]: c for c in cur}
 dif = sum(1 for e in emb for k in ("idade_min_meses","tipo","concelho","email","telefone")
           if ci.get(e["id"]) and e.get(k) != ci[e["id"]].get(k))
