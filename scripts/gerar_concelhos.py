@@ -19,6 +19,12 @@ from datetime import date
 from collections import defaultdict
 from html import escape as esc
 
+# Mesmo normalizador de horário das fichas — o critério de "horário alargado"
+# tem de ser um só em todo o site. O sys.path é preciso porque o os.chdir abaixo
+# muda o directório antes de o import correr em alguns modos de invocação.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from horario import tem_horario_alargado
+
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(BASE)
 HOJE = date.today().isoformat()
@@ -41,6 +47,11 @@ def slugify(s):
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
     s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
     return s
+
+TITULOS_RESUMO = {
+    "com horário alargado": ("Abre às 7h30 ou antes, ou fecha às 19h00 ou depois — "
+                             "horário confirmado na Carta Social"),
+}
 
 def tipo_classe(t):
     t = (t or "").lower()
@@ -159,6 +170,10 @@ for cs, lista in sorted(por_concelho.items()):
     n_pub = sum(1 for c in lista if tipo_classe(c.get("tipo"))[1] == "Pública")
     n_priv = sum(1 for c in lista if tipo_classe(c.get("tipo"))[1] == "Privada")
     n_bercario = sum(1 for c in lista if (c.get("idade_min_meses") or 99) < 12)
+    # Conta só as que têm horário confirmado e alargado. As que não têm horário
+    # não entram nem para um lado nem para o outro — o número tem de poder ser
+    # lido como "sabemos que estas X abrem cedo ou fecham tarde".
+    n_horario = sum(1 for c in lista if tem_horario_alargado(c))
 
     desc = (f"Lista atualizada de {n} creches, jardins de infância e infantários "
             f"em {nome} ({dist}), com morada, contactos e mapa. Gratuito.")
@@ -220,8 +235,14 @@ for cs, lista in sorted(por_concelho.items()):
     if n_pub: partes.append((n_pub, "públicas"))
     if n_priv: partes.append((n_priv, "privadas"))
     if n_bercario: partes.append((n_bercario, "com berçário"))
+    if n_horario: partes.append((n_horario, "com horário alargado"))
+    # O título só existe para os rótulos que precisam de explicação: "IPSS" ou
+    # "privadas" toda a gente lê, "horário alargado" é um critério nosso e tem
+    # de ser dito qual é.
     resumo = ('<div class="resumo">' +
-              "".join(f"<div><b>{v}</b><span>{t}</span></div>" for v, t in partes) +
+              "".join('<div{}><b>{}</b><span>{}</span></div>'.format(
+                  ' title="{}"'.format(esc(TITULOS_RESUMO[t])) if t in TITULOS_RESUMO else "",
+                  v, t) for v, t in partes) +
               "</div>")
 
     html = f"""<!doctype html>

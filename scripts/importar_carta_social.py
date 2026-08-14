@@ -93,7 +93,18 @@ def concelho_de(lat, lon, municipios):
             continue
         if any(dentro(a, lon, lat) for a in aneis):
             return props
-    return None
+
+    # Recurso: o ponto caiu numa fenda entre polígonos (a CAOP tem a precisão
+    # que tem, e o geocodificador devolve coordenadas aproximadas). Sem isto o
+    # registo ficava sem concelho — e sem concelho não entra em nenhuma página.
+    # Escolhe-se o município cujo centro está mais perto, e só até 15 km: mais
+    # do que isso já não é uma fenda, é um erro que merece ser visto.
+    melhor, menor = None, 15.0
+    for props, aneis, x0, x1, y0, y1 in municipios:
+        d = distancia_km(lat, lon, (y0 + y1) / 2, (x0 + x1) / 2)
+        if d < menor:
+            melhor, menor = props, d
+    return melhor
 
 
 def distancia_km(a_lat, a_lon, b_lat, b_lon):

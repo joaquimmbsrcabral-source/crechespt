@@ -1,6 +1,6 @@
 # Creches.app
 
-> Mapa nacional gratuito de 2.591 estabelecimentos de educação de infância em Portugal — creches, jardins de infância e infantários, públicos, IPSS e privados — com filtros por idade, distrito e tipo. Sem publicidade, sem login obrigatório, sem venda de dados. Plataforma criada por um futuro pai português que percebeu que faltava uma ferramenta simples para os pais navegarem a procura de creche.
+> Mapa nacional gratuito de 4.150 estabelecimentos de educação de infância em Portugal — creches, jardins de infância e infantários, públicos, IPSS e privados — com filtros por idade, distrito e tipo. Sem publicidade, sem login obrigatório, sem venda de dados. Plataforma criada por um futuro pai português que percebeu que faltava uma ferramenta simples para os pais navegarem a procura de creche.
 
 ## Sobre o projecto
 

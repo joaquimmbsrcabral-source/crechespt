@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Associação Jardim Infantil de Ferrel", "url": "https://creches.app/creche/associacao-jardim-infantil-de-ferrel-479160473", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Jardim Infantil 1", "postalCode": "2520-161", "addressLocality": "Ferrel", "addressRegion": "Leiria"}, "geo": {"@type": "GeoCoordinates", "latitude": 39.363035, "longitude": -9.319157}, "sameAs": "https://www.openstreetmap.org/way/479160473", "telephone": "+351 262 769 226", "email": "infantarioferrel@sapo.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Leiria", "item": "https://creches.app/creches/leiria"}, {"@type": "ListItem", "position": 4, "name": "Creches em Peniche", "item": "https://creches.app/creches/leiria/peniche"}, {"@type": "ListItem", "position": 5, "name": "Associação Jardim Infantil de Ferrel", "item": "https://creches.app/creche/associacao-jardim-infantil-de-ferrel-479160473"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Associação Jardim Infantil de Ferrel é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Associação Jardim Infantil de Ferrel integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar A Associação Jardim Infantil de Ferrel?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 262 769 226. Email: infantarioferrel@sapo.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Associação Jardim Infantil de Ferrel é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Associação Jardim Infantil de Ferrel integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita A Associação Jardim Infantil de Ferrel?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 6 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar A Associação Jardim Infantil de Ferrel?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 262 769 226. Email: infantarioferrel@sapo.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Associação%20Jardim%20Infantil%20de%20Ferrel">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Fecha às 19h00 — tarde o suficiente para quem sai do trabalho depois das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:45 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,11 +282,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/centro-paroquial-de-bem-estar-social-de-atouguia-da-baleia-3240">Centro Paroquial de Bem-Estar Social de Atouguia da Baleia</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-casal-moinho-11838300501">Jardim de Infância de Casal Moinho</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">4.1 km</span></div></li>
-<li><a class="nm" href="/creche/santa-casa-da-misericordia-13019248211">Santa Casa da Misericordia</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.2 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-santa-maria-11981109107">Jardim de Infância de Santa Maria</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.3 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-o-traquinas-3232">Centro Infantil - o Traquinas</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">4.8 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-de-serra-d-el-rei-18330">Jardim de Infância de Serra D&#x27;el-Rei</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-geraldes-1274979973">Jardim de Infância de Geraldes</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">5.6 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-colonia-balnear-1241791016">Jardim de Infância da Colónia Balnear</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">5.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-olho-marinho-303285310">Jardim de Infância de Olho Marinho</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">8.2 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/479160473" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/479160473" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Associação Jardim Infantil de Ferrel">reporta uma correção</a>.
   </div>
 </main>

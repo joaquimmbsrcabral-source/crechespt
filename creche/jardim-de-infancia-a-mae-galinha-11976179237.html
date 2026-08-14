@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20&quot;A%20Mãe%20Galinha&quot;">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
-<li><a class="nm" href="/creche/jardim-de-infancia-da-gloria-do-ribatejo-1273534256">Jardim de Infância da Glória do Ribatejo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">5.4 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-da-gloria-do-ribatejo-1273534256">Jardim de Infância da Glória do Ribatejo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-do-centro-de-bem-estar-social-de-muge-11976179226">Jardim de Infância do Centro de Bem Estar Social de Muge</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">6.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-do-centro-paroquial-de-bem-estar-social-de-salvater-11976179272">Jardim de Infância do Centro Paroquial de Bem Estar Social de Salvaterra de Magos</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">7.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-casais-do-vale-da-pedra-1275048280">Jardim de Infância de Casais do Vale da Pedra</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">10.7 km</span></div></li>
+<li><a class="nm" href="/creche/creche-associacao-de-solidariedade-social-benfica-do-ribatejo-15082">Creche Associação de Solidariedade Social- Benfica do Ribatejo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">10.9 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-n-o-3-de-benavente-1273529634">Jardim de Infância n.º 3 de Benavente</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.0 km</span></div></li>
-<li><a class="nm" href="/creche/creche-e-jardim-infantil-de-benavente-1291858278">Creche e Jardim Infantil de Benavente</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.3 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/santarem/salvaterra-de-magos" style="font-weight:700">Todas as creches em Salvaterra de Magos</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/11976179237" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/11976179237" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância &quot;A Mãe Galinha&quot;">reporta uma correção</a>.
   </div>
 </main>

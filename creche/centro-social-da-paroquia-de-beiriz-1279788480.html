@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro Social da Paróquia de Beiriz", "url": "https://creches.app/creche/centro-social-da-paroquia-de-beiriz-1279788480", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua da Igreja 65", "postalCode": "4495-332", "addressLocality": "Póvoa de Varzim", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.396186, "longitude": -8.72311}, "sameAs": "https://www.openstreetmap.org/way/1279788480", "telephone": "+351 252249360", "email": "cs.beiriz@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Porto", "item": "https://creches.app/creches/porto"}, {"@type": "ListItem", "position": 4, "name": "Creches em Póvoa de Varzim", "item": "https://creches.app/creches/porto/povoa-de-varzim"}, {"@type": "ListItem", "position": 5, "name": "Centro Social da Paróquia de Beiriz", "item": "https://creches.app/creche/centro-social-da-paroquia-de-beiriz-1279788480"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro Social da Paróquia de Beiriz é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro Social da Paróquia de Beiriz integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Centro Social da Paróquia de Beiriz?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 252249360. Email: cs.beiriz@escolas.min-edu.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro Social da Paróquia de Beiriz é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro Social da Paróquia de Beiriz integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Centro Social da Paróquia de Beiriz?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Centro Social da Paróquia de Beiriz?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 252249360. Email: cs.beiriz@escolas.min-edu.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Centro%20Social%20da%20Paróquia%20de%20Beiriz">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 e fecha às 19h00 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:30 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -275,9 +285,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <li><a class="nm" href="/creche/jardim-de-infancia-a-arca-dos-tarecos-1279788478">Jardim de Infância &quot;A Arca dos Tarecos&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-jardim-dos-sonhos-1279788481">Jardim de Infância &quot;Jardim dos Sonhos&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-sejaes-297743209">Jardim de Infância de Sejães</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.3 km</span></div></li>
+<li><a class="nm" href="/creche/equip-soc-centro-social-paroquial-de-terroso-2783">Equip. Soc. Centro Social Paroquial de Terroso</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-o-miminho-1279788477">Jardim de Infância &quot;O Miminho&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.6 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-doutor-luis-amaro-de-oliveira-753481008">Jardim de Infância Doutor Luís Amaro de Oliveira</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-educar-prevenir-1279788476">Jardim de Infância &quot;Educar &amp; Prevenir&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.4 km</span></div></li>
+<li><a class="nm" href="/creche/miminho-cruz-vermelha-portuguesa-delegacao-da-povoa-de-varzim-24937">Miminho - Cruz Vermelha Portuguesa - Delegação da Póvoa de Varzim</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">2.6 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/porto/povoa-de-varzim" style="font-weight:700">Todas as creches em Póvoa de Varzim</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1279788480" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1279788480" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Centro Social da Paróquia de Beiriz">reporta uma correção</a>.
   </div>
 </main>

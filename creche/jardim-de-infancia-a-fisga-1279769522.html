@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20&quot;A%20Fisga&quot;">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,12 +282,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/a-fisga-infantario-e-jardim-de-infancia-13191">A Fisga - Infantário e Jardim de Infância</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.0 km</span></div></li>
 <li><a class="nm" href="/creche/carinhos-escritos-1279769523">Carinhos Escritos</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-o-chorao-1279769525">Jardim de Infância &quot;O Chorão&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-venda-nova-1266907119">Jardim de Infância da Venda Nova</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-alegria-de-aprender-11879966682">Jardim de Infância &quot;Alegria de Aprender&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.7 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-alegria-de-aprender-11879966682">Jardim de Infância &quot;Alegria de Aprender&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.7 km</span></div></li>
 <li><a class="nm" href="/creche/escolinha-da-campainha-11879966764">Escolinha da Campainha</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.8 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-ra-mi-ole-1279769526">Jardim de Infância &quot;Rá-Mi-Olé&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.8 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/porto/gondomar" style="font-weight:700">Todas as creches em Gondomar</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1279769522" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1279769522" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância &quot;A Fisga&quot;">reporta uma correção</a>.
   </div>
 </main>

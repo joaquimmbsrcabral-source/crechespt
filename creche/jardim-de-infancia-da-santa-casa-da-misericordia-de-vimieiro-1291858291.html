@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim de Infância da Santa Casa da Misericórdia de Vimieiro", "url": "https://creches.app/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-vimieiro-1291858291", "address": {"@type": "PostalAddress", "addressCountry": "PT", "postalCode": "7040-631", "addressLocality": "Vimieiro", "addressRegion": "Évora"}, "geo": {"@type": "GeoCoordinates", "latitude": 38.833385, "longitude": -7.837679}, "sameAs": "https://www.openstreetmap.org/way/1291858291", "telephone": "+351 266 467 584", "email": "ji.scmvimieiro@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Évora", "item": "https://creches.app/creches/evora"}, {"@type": "ListItem", "position": 4, "name": "Creches em Arraiolos", "item": "https://creches.app/creches/evora/arraiolos"}, {"@type": "ListItem", "position": 5, "name": "Jardim de Infância da Santa Casa da Misericórdia de Vimieiro", "item": "https://creches.app/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-vimieiro-1291858291"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 266 467 584. Email: ji.scmvimieiro@escolas.min-edu.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância da Santa Casa da Misericórdia de Vimieiro?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 266 467 584. Email: ji.scmvimieiro@escolas.min-edu.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20da%20Santa%20Casa%20da%20Misericórdia%20de%20Vimieiro">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h00 e fecha às 19h30 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:00 – 19:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/coopberco-cooperativa-de-solidariedade-social-crl-1116">Coopberço-Cooperativa de Solidariedade Social,crl</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.1 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-igrejinha-1275399322">Jardim de Infância de Igrejinha</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">14.7 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-azaruja-1263424241">Jardim de Infância de Azaruja</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">15.4 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-centro-social-e-paroquial-de-santo-andre-em-estr-11976179350">Jardim de Infância do Centro Social e Paroquial de Santo André em Estremoz</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">21.3 km</span></div></li>
-<li><a class="nm" href="/creche/creche-e-pre-escolar-rainha-santa-isabel-de-estremoz-11976179351">Creche e Pré-Escolar Rainha Santa Isabel de Estremoz</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">21.4 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-santa-maria-150114687">Jardim de Infância de Santa Maria</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">21.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-mata-2031073466">Jardim de Infância da Mata</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">22.1 km</span></div></li>
+<li><a class="nm" href="/creche/creche-nossa-senhora-graca-1825">Creche Nossa Senhora Graça</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">15.6 km</span></div></li>
+<li><a class="nm" href="/creche/equip-soc-da-santa-casa-da-misericordia-de-sousel-1828">Equip Soc da Santa Casa da Misericórdia de Sousel</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">19.1 km</span></div></li>
+<li><a class="nm" href="/creche/polo-de-itinerancia-de-sao-miguel-de-machede-1263424244">Polo de Itinerância de São Miguel de Machede</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">23.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/evora/arraiolos" style="font-weight:700">Todas as creches em Arraiolos</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1291858291" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1291858291" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância da Santa Casa da Misericórdia de Vimieiro">reporta uma correção</a>.
   </div>
 </main>

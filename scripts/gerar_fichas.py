@@ -2,8 +2,14 @@
 # -*- coding: utf-8 -*-
 """Gera fichas individuais /creche/{slug}.html + sitemap-creches.xml a partir de creches_pt.json.
 Correr da raiz do projeto: python3 scripts/gerar_fichas.py"""
-import json, re, unicodedata, html, math, os, shutil
+import json, re, unicodedata, html, math, os, shutil, sys
 from datetime import date
+
+# O normalizador de horário é partilhado com o gerar_concelhos.py (e espelhado
+# em JavaScript no app.html). Sem o sys.path o import parte quando o script é
+# chamado de fora da raiz — e este é chamado pelo deploy.sh e à mão.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from horario import horario_da_creche, texto_selo
 
 HOJE = date.today().isoformat()
 BASE = "https://creches.app"
@@ -200,7 +206,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -561,6 +575,24 @@ for c in creches:
                       'não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20'
                       + esc(nome).replace(" ", "%20") + '">Algum está errado? Avisa-nos →</a></div>')
 
+    # === Horário de funcionamento ===
+    # Só sai alguma coisa quando o horário existe mesmo no dataset. Uma ficha que
+    # afirme "fecha às 19h30" sem fonte manda um pai que sai às 18h30 a uma porta
+    # já fechada — e é exactamente esse pai que a funcionalidade serve.
+    hor = horario_da_creche(c)
+    horario_selo = ""
+    horario_linha = ""
+    if hor:
+        fonte_html = (f'<span class="h-src">· {esc(hor["fonte_txt"])}</span>'
+                      if hor["fonte_txt"] else "")
+        horario_linha = (f'<p class="horario-linha">'
+                         f'<span>🕐 {esc(hor["texto"])}</span>{fonte_html}</p>')
+        if hor["alargado"]:
+            # A frase muda conforme a ponta que o horário cobre: uma creche que
+            # só fecha tarde não "abre cedo", e dizê-lo seria inventar.
+            horario_selo = ('<div class="q-banner horario">🕐 <span><b>Horário alargado</b> — '
+                            + esc(texto_selo(hor)) + '</span></div>')
+
     # === Creches próximas — mini-cards com pills coloridos ===
     viz = vizinhas(c)
     vlis = "\n".join(
@@ -654,6 +686,8 @@ for c in creches:
   </div>
 
   {banner}
+  {horario_selo}
+  {horario_linha}
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">

@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20de%20Sagres">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -276,9 +286,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <li><a class="nm" href="/creche/jardim-infantil-1871263994">Jardim Infantil</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-vila-do-bispo-462739254">Jardim de Infância de Vila do Bispo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">8.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-do-burgau-1265782465">Jardim de Infância do Burgau</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">16.5 km</span></div></li>
+<li><a class="nm" href="/creche/colegio-luz-sao-goncalo-25186">Colégio Luz São Gonçalo</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">19.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-waldorf-infancia-viva-464939843">Jardim de Infância Waldorf &quot;Infância Viva&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">23.4 km</span></div></li>
-<li><a class="nm" href="/creche/centro-infantil-de-santo-amaro-95030327">Centro Infantil de Santo Amaro</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">25.6 km</span></div></li>
-<li><a class="nm" href="/creche/bue-bebe-13744749031">bué bebé</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">25.6 km</span></div></li>
+<li><a class="nm" href="/creche/colegio-bambino-1928">Colégio Bambino</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">23.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/faro/vila-do-bispo" style="font-weight:700">Todas as creches em Vila do Bispo</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1223879474" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1223879474" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Sagres">reporta uma correção</a>.
   </div>
 </main>

@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/centro-de-educacao-integrada-do-centro-de-accao-social-do-concelho-de-1290253885"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Centro de Educação Integrada do Centro de Acção Social do Concelho de Ílhavo — a 475 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.601219,-8.665589" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Infantário do Centro de Acção Social do Concelho de Ílhavo" data-share-slug="infantario-do-centro-de-accao-social-do-concelho-de-ilhavo-268671160" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-268671160" data-cmp-name="Infantário do Centro de Acção Social do Concelho de Ílhavo" data-cmp-slug="infantario-do-centro-de-accao-social-do-concelho-de-ilhavo-268671160" data-cmp-tipo="Desconhecido" data-cmp-distrito="Aveiro" data-cmp-localidade="" data-cmp-lat="40.601219" data-cmp-lon="-8.665589" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/casci-centro-ilhavo-social-23710"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Casci - Centro Ílhavo Social — a 54 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.601219,-8.665589" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Infantário do Centro de Acção Social do Concelho de Ílhavo" data-share-slug="infantario-do-centro-de-accao-social-do-concelho-de-ilhavo-268671160" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-268671160" data-cmp-name="Infantário do Centro de Acção Social do Concelho de Ílhavo" data-cmp-slug="infantario-do-centro-de-accao-social-do-concelho-de-ilhavo-268671160" data-cmp-tipo="Desconhecido" data-cmp-distrito="Aveiro" data-cmp-localidade="" data-cmp-lat="40.601219" data-cmp-lon="-8.665589" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Infantário%20do%20Centro%20de%20Acção%20Social%20do%20Concelho%20de%20Ílhavo">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,12 +281,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/casci-centro-ilhavo-social-23710">Casci - Centro Ílhavo Social</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/creche-do-centro-infantil-da-lagoa-1299">Creche do Centro Infantil da Lagoa</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/centro-paroquial-de-assistencia-e-formacao-dom-manuel-trindade-salguei-1214">Centro Paroquial de Assistência e Formação Dom Manuel Trindade Salgueiro</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
 <li><a class="nm" href="/creche/parque-infantil-105888680">Parque Infantil</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.4 km</span></div></li>
 <li><a class="nm" href="/creche/centro-de-educacao-integrada-do-centro-de-accao-social-do-concelho-de-1290253885">Centro de Educação Integrada do Centro de Acção Social do Concelho de Ílhavo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.5 km</span></div></li>
-<li><a class="nm" href="/creche/escolinha-capitao-lebre-168522918">Escolinha Capitão Lebre</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-quinta-do-picado-1273488667">Jardim de Infância de Quinta do Picado</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.7 km</span></div></li>
-<li><a class="nm" href="/creche/escola-pequeno-cidadao-1290253886">Escola Pequeno Cidadão</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.0 km</span></div></li>
-<li><a class="nm" href="/creche/centro-infantil-de-aveiro-1699716468">Centro Infantil de Aveiro</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">3.2 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-de-ilhavo-1232">Centro Infantil de Ílhavo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/ilhavo" style="font-weight:700">Todas as creches em Ílhavo</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/268671160" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/268671160" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Infantário do Centro de Acção Social do Concelho de Ílhavo">reporta uma correção</a>.
   </div>
 </main>

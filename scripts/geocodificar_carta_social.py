@@ -29,8 +29,9 @@ os.chdir(BASE)
 
 DETALHE = "dados/carta-social-detalhe.json"
 OUT = "dados/carta-social-coordenadas.json"
+CACHE = "dados/cache-geocodificacao.json"
 UA = "creches.app/1.0 (mapa de creches de Portugal; geral@creches.app)"
-PAUSA = 1.15          # política do Nominatim: máximo 1 pedido por segundo
+PAUSA = 1.05          # política do Nominatim: máximo 1 pedido por segundo
 
 # Caixas de Portugal, para apanhar resultados absurdos do geocodificador.
 # A Madeira fica a 32,6°N — muito abaixo do continente. Faltava, e teria feito
@@ -47,7 +48,20 @@ def em_portugal(lat, lon):
     return any(a <= lat <= b and c <= lon <= d for a, b, c, d in LIMITES)
 
 
+# Muitas creches partilham código postal e freguesia. Sem cache, a mesma
+# pergunta é feita dezenas de vezes — e cada uma custa um segundo de espera.
+_cache = {}
+
+
 def nominatim(query):
+    if query in _cache:
+        return _cache[query]
+    r = _nominatim_pedido(query)
+    _cache[query] = r
+    return r
+
+
+def _nominatim_pedido(query):
     try:
         r = subprocess.run(
             ["curl", "-s", "--max-time", "25", "-A", UA, "--get",
@@ -73,10 +87,28 @@ def limpar_morada(m):
     return re.sub(r"\s{2,}", " ", m)
 
 
+
+def gravar(dados, caminho):
+    """Escrita atómica: grava num ficheiro temporário e só depois substitui.
+
+    Sem isto, um Ctrl-C ou um timeout a meio do json.dump deixa o ficheiro
+    truncado e ilegível — e perdem-se horas de recolha. Aconteceu uma vez.
+    """
+    tmp = caminho + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(dados, f, ensure_ascii=False, indent=1)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, caminho)
+
+
 def main():
     argv = sys.argv[1:]
     detalhe = json.load(open(DETALHE, encoding="utf-8"))["equipamentos"]
     feitos = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {}
+    if os.path.exists(CACHE):
+        _cache.update({k: (tuple(v) if v else None)
+                       for k, v in json.load(open(CACHE, encoding="utf-8")).items()})
 
     pendentes = [(k, v) for k, v in detalhe.items() if k not in feitos]
     if "--so" in argv:
@@ -118,12 +150,14 @@ def main():
             contagem["falhou"] += 1
 
         if i % 10 == 0 or i == len(pendentes):
-            json.dump(feitos, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+            gravar(feitos, OUT)
+            gravar({k: list(v) if v else None for k, v in _cache.items()}, CACHE)
             print(f"  {i}/{len(pendentes)} · morada {contagem['morada']} · "
                   f"CP {contagem['codigo_postal']} · freguesia {contagem['freguesia']} · "
                   f"falhou {contagem['falhou']}")
 
-    json.dump(feitos, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    gravar(feitos, OUT)
+    gravar({k: list(v) if v else None for k, v in _cache.items()}, CACHE)
     com = sum(1 for v in feitos.values() if v)
     print(f"\n✓ {com}/{len(feitos)} com coordenadas")
     for nivel in ("morada", "codigo_postal", "freguesia"):

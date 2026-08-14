@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20do%20Castanheiro%20do%20Ouro">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -276,9 +286,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <li><a class="nm" href="/creche/creche-municipal-de-tarouca-169257465">Creche municipal de Tarouca</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.1 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-magia-de-crescer-169257468">Jardim de Infância &quot;Magia de Crescer&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.1 km</span></div></li>
 <li><a class="nm" href="/creche/creche-nova-esperanca-169257464">Creche &quot;Nova Esperança&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.1 km</span></div></li>
-<li><a class="nm" href="/creche/infantario-e-jardim-infantil-o-pintinhas-11959252990">Infantário e Jardim Infantil &quot; O Pintinhas&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">9.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-associacao-pela-infancia-e-terceira-idade-de-lam-11959253004">Jardim de Infância da Associação Pela Infância e Terceira Idade de Lamego</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">9.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-armamar-907490544">Jardim de Infância de Armamar</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.1 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-mae-admiravel-17820">Centro Infantil Mãe Admirável</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">7.2 km</span></div></li>
+<li><a class="nm" href="/creche/patronato-de-sao-jose-3305">Patronato de São Jose</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.2 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-nossa-senhora-de-fatima-17813">Jardim de Infância Nossa Senhora de Fátima</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.2 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/viseu/tarouca" style="font-weight:700">Todas as creches em Tarouca</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1264656432" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1264656432" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância do Castanheiro do Ouro">reporta uma correção</a>.
   </div>
 </main>

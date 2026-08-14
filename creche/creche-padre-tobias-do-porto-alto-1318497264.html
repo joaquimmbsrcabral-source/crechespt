@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Creche Padre Tobias do Porto Alto", "url": "https://creches.app/creche/creche-padre-tobias-do-porto-alto-1318497264", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua do Alecrim", "postalCode": "2135-080", "addressLocality": "Samora Correia", "addressRegion": "Santarém"}, "geo": {"@type": "GeoCoordinates", "latitude": 38.920656, "longitude": -8.875936}, "sameAs": "https://www.openstreetmap.org/way/1318497264", "telephone": "+351 263658455", "email": "geral@cbespadretobias.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Santarém", "item": "https://creches.app/creches/santarem"}, {"@type": "ListItem", "position": 4, "name": "Creches em Benavente", "item": "https://creches.app/creches/santarem/benavente"}, {"@type": "ListItem", "position": 5, "name": "Creche Padre Tobias do Porto Alto", "item": "https://creches.app/creche/creche-padre-tobias-do-porto-alto-1318497264"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Creche Padre Tobias do Porto Alto é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Creche Padre Tobias do Porto Alto integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar A Creche Padre Tobias do Porto Alto?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 263658455. Email: geral@cbespadretobias.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Creche Padre Tobias do Porto Alto é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Creche Padre Tobias do Porto Alto integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita A Creche Padre Tobias do Porto Alto?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 4 meses aos 3 anos. Funciona como creche. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar A Creche Padre Tobias do Porto Alto?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 263658455. Email: geral@cbespadretobias.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Creche%20Padre%20Tobias%20do%20Porto%20Alto">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h00 e fecha às 19h00 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:00 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/creche-miudos-39163">Creche Miúdos</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-porto-alto-1273529647">Jardim de Infância de Porto Alto</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-professor-antonio-jose-ganhao-1273529645">Jardim de Infância Professor António José Ganhão</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-leziria-1273529646">Jardim de Infância da Lezíria</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.7 km</span></div></li>
-<li><a class="nm" href="/creche/creche-e-jardim-de-infancia-padre-tobias-1318497267">Creche e Jardim de Infância Padre Tobias</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.8 km</span></div></li>
+<li><a class="nm" href="/creche/creche-e-jardim-de-infancia-padre-tobias-1318497267">Creche e Jardim de Infância Padre Tobias</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.8 km</span></div></li>
 <li><a class="nm" href="/creche/creche-e-casa-de-trabalho-padre-tobias-1318497268">Creche e Casa de Trabalho &quot;Padre Tobias&quot;</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-n-o-2-de-benavente-1273529642">Jardim de Infância n.º 2 de Benavente</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.8 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/santarem/benavente" style="font-weight:700">Todas as creches em Benavente</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1318497264" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1318497264" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Creche Padre Tobias do Porto Alto">reporta uma correção</a>.
   </div>
 </main>

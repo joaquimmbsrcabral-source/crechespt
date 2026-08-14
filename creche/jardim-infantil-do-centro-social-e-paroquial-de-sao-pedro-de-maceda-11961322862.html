@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda", "url": "https://creches.app/creche/jardim-infantil-do-centro-social-e-paroquial-de-sao-pedro-de-maceda-11961322862", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Largo da Igreja", "postalCode": "3885-708", "addressLocality": "Maceda", "addressRegion": "Aveiro"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.934156, "longitude": -8.613453}, "sameAs": "https://www.openstreetmap.org/node/11961322862", "telephone": "+351 256792178", "email": "ji.cspspedromaceda@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Aveiro", "item": "https://creches.app/creches/aveiro"}, {"@type": "ListItem", "position": 4, "name": "Creches em Ovar", "item": "https://creches.app/creches/aveiro/ovar"}, {"@type": "ListItem", "position": 5, "name": "Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda", "item": "https://creches.app/creche/jardim-infantil-do-centro-social-e-paroquial-de-sao-pedro-de-maceda-11961322862"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 256792178. Email: ji.cspspedromaceda@escolas.min-edu.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 256792178. Email: ji.cspspedromaceda@escolas.min-edu.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20Infantil%20do%20Centro%20Social%20e%20Paroquial%20de%20São%20Pedro%20de%20Maceda">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h00 e fecha às 19h00 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:00 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,10 +284,10 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-a-nossa-casa-600460626">Jardim de Infância &quot;A Nossa Casa&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.9 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-jesus-maria-jose-ovar-980">Centro Social Jesus Maria José - Ovar</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.0 km</span></div></li>
+<li><a class="nm" href="/creche/centro-de-assistencia-social-de-esmoriz-centro-infantil-984">Centro de Assistência Social de Esmoriz - Centro Infantil</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.1 km</span></div></li>
+<li><a class="nm" href="/creche/creche-avo-aninhas-35775">Creche Avó Aninhas</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">3.4 km</span></div></li>
 <li><a class="nm" href="/creche/escola-global-902740702">Escola Global</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">3.4 km</span></div></li>
-<li><a class="nm" href="/creche/centro-social-paroquial-de-santa-maria-da-feira-917118970">Centro Social Paroquial de Santa Maria da Feira</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-movimento-de-assistencia-cultura-urbanismo-e-rec-1097345482">Jardim de Infância do Movimento de Assistência, Cultura, Urbanismo e Recreio</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">4.0 km</span></div></li>
-<li><a class="nm" href="/creche/centro-social-de-pacos-de-brandao-8920333307">Centro Social de Paços de Brandão</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">4.3 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/ovar" style="font-weight:700">Todas as creches em Ovar</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/11961322862" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/11961322862" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim Infantil do Centro Social e Paroquial de São Pedro de Maceda">reporta uma correção</a>.
   </div>
 </main>

@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-de-lage-196226750"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância de Lage — a 2.1 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.15768,-8.392623" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim Infantil de Castromil" data-share-slug="jardim-infantil-de-castromil-1385015921" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-1385015921" data-cmp-name="Jardim Infantil de Castromil" data-cmp-slug="jardim-infantil-de-castromil-1385015921" data-cmp-tipo="Desconhecido" data-cmp-distrito="Porto" data-cmp-localidade="" data-cmp-lat="41.15768" data-cmp-lon="-8.392623" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/associacao-para-o-desenvolvimento-integral-da-26762"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Associação para o Desenvolvimento Integral da — a 1.3 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.15768,-8.392623" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim Infantil de Castromil" data-share-slug="jardim-infantil-de-castromil-1385015921" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-1385015921" data-cmp-name="Jardim Infantil de Castromil" data-cmp-slug="jardim-infantil-de-castromil-1385015921" data-cmp-tipo="Desconhecido" data-cmp-distrito="Porto" data-cmp-localidade="" data-cmp-lat="41.15768" data-cmp-lon="-8.392623" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Jardim%20Infantil%20de%20Castromil">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,11 +282,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-infantil-dos-valinhos-196224690">Jardim Infantil dos Valinhos</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.0 km</span></div></li>
+<li><a class="nm" href="/creche/associacao-para-o-desenvolvimento-integral-da-26762">Associação para o Desenvolvimento Integral da</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.3 km</span></div></li>
 <li><a class="nm" href="/creche/creche-do-centro-social-e-paroquial-de-recarei-1450214440">Creche do Centro Social e Paroquial de Recarei</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.3 km</span></div></li>
+<li><a class="nm" href="/creche/equip-social-do-centro-social-e-paroquial-de-recarei-18523">Equip Social do Centro Social e Paroquial de Recarei</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-lage-196226750">Jardim de Infância de Lage</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.1 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-de-casconha-1385015885">Jardim Infantil de Casconha</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">2.3 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-vale-formoso-1267133110">Jardim de Infância de Vale Formoso</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-gloria-leao-595655637">Jardim de Infância Glória Leão</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">3.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/porto/paredes" style="font-weight:700">Todas as creches em Paredes</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/1385015921" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/1385015921" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim Infantil de Castromil">reporta uma correção</a>.
   </div>
 </main>

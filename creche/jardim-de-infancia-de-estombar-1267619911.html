@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20de%20Estômbar">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -275,10 +285,10 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <ul class="prox">
 <li><a class="nm" href="/creche/creche-e-jardim-de-infancia-do-centro-paroquial-de-estombar-1293418140">Creche e Jardim de Infância do Centro Paroquial de Estômbar</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.2 km</span></div></li>
 <li><a class="nm" href="/creche/escolinha-d-adr-11990092087">Escolinha D&#x27;ADR</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.2 km</span></div></li>
+<li><a class="nm" href="/creche/equipamento-social-do-centro-popular-de-lagoa-1914">Equipamento Social do Centro Popular de Lagoa</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.6 km</span></div></li>
+<li><a class="nm" href="/creche/escolinha-d-adr-24921">Escolinha D&#x27;adr</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">2.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-n-o-2-do-parchal-1267619898">Jardim de Infância N.º 2 do Parchal</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-che-bebe-11990092088">Jardim de Infância &quot;Che Bebé&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.2 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-a-colmeia-das-abelhinhas-1292739906">Jardim de Infância &quot;A Colmeia das Abelhinhas&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">4.8 km</span></div></li>
-<li><a class="nm" href="/creche/santa-teresinha-2274772152">Santa Teresinha</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">4.9 km</span></div></li>
+<li><a class="nm" href="/creche/creche-e-jardim-infancia-chebebe-23861">Creche e Jardim Infância Chebebé</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.2 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/faro/lagoa" style="font-weight:700">Todas as creches em Lagoa</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1267619911" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1267619911" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Estômbar">reporta uma correção</a>.
   </div>
 </main>

@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -200,9 +208,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   .brand-name span{display:none}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim de Infância \"João Pé-de-Feijão\"", "url": "http://www.joaopedefeijao.pt", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Nossa Senhora de Campos 26A;28B;28A;26B", "postalCode": "4520-241", "addressLocality": "Santa Maria da Feira", "addressRegion": "Aveiro"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.925388, "longitude": -8.552898}, "sameAs": "https://www.openstreetmap.org/node/11453860481", "telephone": "+351 918412485", "mainEntityOfPage": "https://creches.app/creche/jardim-de-infancia-joao-pe-de-feijao-11453860481"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim de Infância \"João Pé-de-Feijão\"", "url": "http://www.joaopedefeijao.pt", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Nossa Senhora de Campos 26A;28B;28A;26B", "postalCode": "4520-241", "addressLocality": "Santa Maria da Feira", "addressRegion": "Aveiro"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.925388, "longitude": -8.552898}, "sameAs": "https://www.openstreetmap.org/node/11453860481", "telephone": "+351 918412485", "email": "anagarcia.educacao.infancia@gmail.com", "mainEntityOfPage": "https://creches.app/creche/jardim-de-infancia-joao-pe-de-feijao-11453860481"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Aveiro", "item": "https://creches.app/creches/aveiro"}, {"@type": "ListItem", "position": 4, "name": "Creches em Santa Maria da Feira", "item": "https://creches.app/creches/aveiro/santa-maria-da-feira"}, {"@type": "ListItem", "position": 5, "name": "Jardim de Infância \"João Pé-de-Feijão\"", "item": "https://creches.app/creche/jardim-de-infancia-joao-pe-de-feijao-11453860481"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância \"João Pé-de-Feijão\" é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância \"João Pé-de-Feijão\" é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância \"João Pé-de-Feijão\"?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 918412485."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância \"João Pé-de-Feijão\" é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância \"João Pé-de-Feijão\" é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Que idades aceita O Jardim de Infância \"João Pé-de-Feijão\"?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância \"João Pé-de-Feijão\"?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 918412485. Email: anagarcia.educacao.infancia@gmail.com."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -232,11 +240,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary is-call" href="tel:+351918412485"><span class="pic" aria-hidden="true">📞</span><span class="pl">Ligar +351 918412485</span></a><div class="cta-primary-note">Ainda não temos o email desta creche para enviarmos o pedido por ti</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.925388,-8.552898" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-share-slug="jardim-de-infancia-joao-pe-de-feijao-11453860481" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-11453860481" data-cmp-name="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-cmp-slug="jardim-de-infancia-joao-pe-de-feijao-11453860481" data-cmp-tipo="Privada" data-cmp-distrito="Aveiro" data-cmp-localidade="Santa Maria da Feira" data-cmp-lat="40.925388" data-cmp-lon="-8.552898" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <button type="button" class="cta-primary" id="btn-lead-primary"><span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button><div class="cta-primary-note">Deixas o contacto, enviamos o pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:+351918412485" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:anagarcia.educacao.infancia@gmail.com?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Jardim%20de%20Inf%C3%A2ncia%20%22Jo%C3%A3o%20P%C3%A9-de-Feij%C3%A3o%22&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.925388,-8.552898" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-share-slug="jardim-de-infancia-joao-pe-de-feijao-11453860481" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-11453860481" data-cmp-name="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-cmp-slug="jardim-de-infancia-joao-pe-de-feijao-11453860481" data-cmp-tipo="Privada" data-cmp-distrito="Aveiro" data-cmp-localidade="Santa Maria da Feira" data-cmp-lat="40.925388" data-cmp-lon="-8.552898" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
-  <div id="vaga-slot" data-creche-id="osm-node-11453860481" data-creche-nome="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-creche-telefone="+351 918412485"></div>
+  <div id="vaga-slot" data-creche-id="osm-node-11453860481" data-creche-nome="Jardim de Infância &quot;João Pé-de-Feijão&quot;" data-creche-email="anagarcia.educacao.infancia@gmail.com" data-creche-telefone="+351 918412485"></div>
 
   <!-- Botão para pais reportarem vaga descoberta -->
   <div style="text-align:center;margin:14px 0 20px">
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (email). <a href="mailto:geral@creches.app?subject=Contacto%20Jardim%20de%20Infância%20&quot;João%20Pé-de-Feijão&quot;">Sabes? Ajuda outros pais →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 e fecha às 19h30 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:30 – 19:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -275,10 +285,10 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-joao-pe-de-feijao-917216509">Jardim de infância &quot;João Pé-de-Feijão&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.0 km</span></div></li>
 <li><a class="nm" href="/creche/casa-da-quinta-do-castelo-440536465">Casa da Quinta do Castelo</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.2 km</span></div></li>
-<li><a class="nm" href="/creche/centro-infantil-de-santa-maria-da-feira-1206645880">Centro Infantil de Santa Maria da Feira</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.2 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-de-santa-maria-da-feira-1206645880">Centro Infantil de Santa Maria da Feira</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.2 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-curious-minds-902805333">Jardim de Infância &quot;Curious Minds&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.2 km</span></div></li>
 <li><a class="nm" href="/creche/sonho-da-crianca-964928391">Sonho da Criança</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.6 km</span></div></li>
-<li><a class="nm" href="/creche/escola-global-902740702">Escola Global</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.9 km</span></div></li>
+<li><a class="nm" href="/creche/creche-avo-aninhas-35775">Creche Avó Aninhas</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/santa-maria-da-feira" style="font-weight:700">Todas as creches em Santa Maria da Feira</a>
@@ -289,11 +299,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="faq">
     <details><summary>O Jardim de Infância &quot;João Pé-de-Feijão&quot; é gratuita?</summary><p>O Jardim de Infância &quot;João Pé-de-Feijão&quot; é privada. As creches privadas só são gratuitas se forem <strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. Confirma a adesão e o valor da mensalidade diretamente com a creche.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 3 anos aos 5 anos — funciona como jardim de infância. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
-    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351918412485">+351 918412485</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
+    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351918412485">+351 918412485</a> ou escrever para <a href="mailto:anagarcia.educacao.infancia@gmail.com">anagarcia.educacao.infancia@gmail.com</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/11453860481" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/11453860481" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância &quot;João Pé-de-Feijão&quot;">reporta uma correção</a>.
   </div>
 </main>

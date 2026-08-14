@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20da%20Devesa%20Velha">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/associacao-de-apoio-a-educacao-17505">Associação de Apoio à Educação</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-das-travessas-1053163497">Jardim de Infância das Travessas</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.1 km</span></div></li>
+<li><a class="nm" href="/creche/creche-artes-e-traquinices-alberto-pacheco-24827">Creche Artes e Traquinices - Alberto Pacheco</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.1 km</span></div></li>
+<li><a class="nm" href="/creche/complexo-social-principal-991">Complexo Social Principal</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.3 km</span></div></li>
 <li><a class="nm" href="/creche/abrigo-infantil-das-laranjeiras-11203601713">Abrigo Infantil das Laranjeiras</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.4 km</span></div></li>
-<li><a class="nm" href="/creche/creche-albino-dias-fontes-garcia-9916688717">Creche Albino Dias Fontes Garcia</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.8 km</span></div></li>
-<li><a class="nm" href="/creche/ninho-da-crianca-1290123056">Ninho da Criança</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-casaldelo-1154829559">Jardim de Infância de Casaldelo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-largo-da-feira-1270944992">Jardim de Infância do Largo da Feira</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.1 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-de-sao-joao-da-madeira-990">Centro Infantil de São João da Madeira</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.5 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/sao-joao-da-madeira" style="font-weight:700">Todas as creches em São João da Madeira</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1053163496" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1053163496" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância da Devesa Velha">reporta uma correção</a>.
   </div>
 </main>

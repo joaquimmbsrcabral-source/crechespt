@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-de-ruaes-1268505524"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância de Ruães — a 2.1 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.596732,-8.463034" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Casa do Povo" data-share-slug="casa-do-povo-134659907" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-134659907" data-cmp-name="Casa do Povo" data-cmp-slug="casa-do-povo-134659907" data-cmp-tipo="IPSS" data-cmp-distrito="Braga" data-cmp-localidade="" data-cmp-lat="41.596732" data-cmp-lon="-8.463034" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/casa-do-povo-da-vila-de-prado-3012"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Casa do Povo da Vila de Prado — a 368 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.596732,-8.463034" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Casa do Povo" data-share-slug="casa-do-povo-134659907" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-134659907" data-cmp-name="Casa do Povo" data-cmp-slug="casa-do-povo-134659907" data-cmp-tipo="IPSS" data-cmp-distrito="Braga" data-cmp-localidade="" data-cmp-lat="41.596732" data-cmp-lon="-8.463034" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Casa%20do%20Povo">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,11 +282,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/casa-do-povo-274692944">Casa do Povo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.0 km</span></div></li>
+<li><a class="nm" href="/creche/casa-do-povo-da-vila-de-prado-3012">Casa do Povo da Vila de Prado</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/creche-da-casa-do-povo-da-39222">Creche da Casa do Povo da</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/centro-de-apoio-a-infancia-e-terceira-idade-prado-26380">Centro de Apoio à Infância e Terceira Idade - Prado</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/creche-do-lar-do-trabalhador-de-prado-3015">Creche do Lar do Trabalhador de Prado</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-ruaes-1268505524">Jardim de Infância de Ruães</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-panoias-1268505510">Jardim de Infância de Panoias</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.8 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-paul-1268244328">Jardim de Infância de Paúl</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-coucinheiro-183927971">Jardim de Infância de Coucinheiro</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-frossos-1268505517">Jardim de Infância de Frossos</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.2 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/braga/vila-verde" style="font-weight:700">Todas as creches em Vila Verde</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/134659907" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/134659907" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Casa do Povo">reporta uma correção</a>.
   </div>
 </main>

@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-de-nojoes-1271245347"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância de Nojões — a 11.7 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.930423,-8.244926" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância do Patronato" data-share-slug="jardim-de-infancia-do-patronato-107882857" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-107882857" data-cmp-name="Jardim de Infância do Patronato" data-cmp-slug="jardim-de-infancia-do-patronato-107882857" data-cmp-tipo="IPSS" data-cmp-distrito="Aveiro" data-cmp-localidade="" data-cmp-lat="40.930423" data-cmp-lon="-8.244926" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/patronato-centro-paroquial-e-social-santa-mafalda-4519"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Patronato - Centro Paroquial e Social Santa Mafalda — a 85 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.930423,-8.244926" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância do Patronato" data-share-slug="jardim-de-infancia-do-patronato-107882857" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-107882857" data-cmp-name="Jardim de Infância do Patronato" data-cmp-slug="jardim-de-infancia-do-patronato-107882857" data-cmp-tipo="IPSS" data-cmp-distrito="Aveiro" data-cmp-localidade="" data-cmp-lat="40.930423" data-cmp-lon="-8.244926" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Jardim%20de%20Infância%20do%20Patronato">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,12 +281,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/patronato-centro-paroquial-e-social-santa-mafalda-4519">Patronato - Centro Paroquial e Social Santa Mafalda</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/santa-casa-da-misericordia-de-arouca-3286">Santa Casa da Misericórdia de Arouca</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/creche-s-paulo-25252">Creche S. Paulo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-escola-de-tropeco-1327754926">Jardim-Escola de Tropeço</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">5.6 km</span></div></li>
+<li><a class="nm" href="/creche/casa-do-povo-de-santa-cruz-de-alvarenga-26681">Casa do Povo de Santa Cruz de Alvarenga</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.6 km</span></div></li>
 <li><a class="nm" href="/creche/escola-primaria-de-silveiras-107901558">Escola Primária de Silveiras</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">9.2 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-adro-13777903632">Jardim de Infância do Adro</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">9.6 km</span></div></li>
-<li><a class="nm" href="/creche/escola-de-regoufe-107901554">Escola de Regoufe</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">11.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-nojoes-1271245347">Jardim de Infância de Nojões</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-infantil-social-e-paroquial-1208950590">Jardim Infantil Social e Paroquial</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">12.5 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/arouca" style="font-weight:700">Todas as creches em Arouca</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/107882857" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/107882857" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância do Patronato">reporta uma correção</a>.
   </div>
 </main>

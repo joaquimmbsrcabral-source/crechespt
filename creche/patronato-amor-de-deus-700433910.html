@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -200,9 +208,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   .brand-name span{display:none}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Patronato Amor de Deus", "url": "https://cruzadadobem.wordpress.com/2014/03/17/patronato-do-amor-de-deus/", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua de Santo André 147", "postalCode": "4520-608", "addressLocality": "São João de Ver", "addressRegion": "Aveiro"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.949247, "longitude": -8.543543}, "sameAs": "https://www.openstreetmap.org/way/700433910", "telephone": "+351 256 280 779;+351 919 205 251", "mainEntityOfPage": "https://creches.app/creche/patronato-amor-de-deus-700433910"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Patronato Amor de Deus", "url": "https://cruzadadobem.wordpress.com/2014/03/17/patronato-do-amor-de-deus/", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua de Santo André 147", "postalCode": "4520-608", "addressLocality": "São João de Ver", "addressRegion": "Aveiro"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.949247, "longitude": -8.543543}, "sameAs": "https://www.openstreetmap.org/way/700433910", "telephone": "+351 256 280 779;+351 919 205 251", "email": "patronatoamordedeus1@gmail.com", "mainEntityOfPage": "https://creches.app/creche/patronato-amor-de-deus-700433910"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Aveiro", "item": "https://creches.app/creches/aveiro"}, {"@type": "ListItem", "position": 4, "name": "Creches em Santa Maria da Feira", "item": "https://creches.app/creches/aveiro/santa-maria-da-feira"}, {"@type": "ListItem", "position": 5, "name": "Patronato Amor de Deus", "item": "https://creches.app/creche/patronato-amor-de-deus-700433910"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Patronato Amor de Deus é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Patronato Amor de Deus é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Como contactar O Patronato Amor de Deus?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 256 280 779;+351 919 205 251."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Patronato Amor de Deus é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Patronato Amor de Deus é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Que idades aceita O Patronato Amor de Deus?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 4 meses aos 3 anos. Funciona como creche. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Patronato Amor de Deus?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 256 280 779;+351 919 205 251. Email: patronatoamordedeus1@gmail.com."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -232,11 +240,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary is-call" href="tel:+351256280779;+351919205251"><span class="pic" aria-hidden="true">📞</span><span class="pl">Ligar +351 256 280 779;+351 919 205 251</span></a><div class="cta-primary-note">Ainda não temos o email desta creche para enviarmos o pedido por ti</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.949247,-8.543543" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Patronato Amor de Deus" data-share-slug="patronato-amor-de-deus-700433910" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-700433910" data-cmp-name="Patronato Amor de Deus" data-cmp-slug="patronato-amor-de-deus-700433910" data-cmp-tipo="Privada" data-cmp-distrito="Aveiro" data-cmp-localidade="São João de Ver" data-cmp-lat="40.949247" data-cmp-lon="-8.543543" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <button type="button" class="cta-primary" id="btn-lead-primary"><span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button><div class="cta-primary-note">Deixas o contacto, enviamos o pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:+351256280779;+351919205251" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:patronatoamordedeus1@gmail.com?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Patronato%20Amor%20de%20Deus&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.949247,-8.543543" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Patronato Amor de Deus" data-share-slug="patronato-amor-de-deus-700433910" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-700433910" data-cmp-name="Patronato Amor de Deus" data-cmp-slug="patronato-amor-de-deus-700433910" data-cmp-tipo="Privada" data-cmp-distrito="Aveiro" data-cmp-localidade="São João de Ver" data-cmp-lat="40.949247" data-cmp-lon="-8.543543" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
-  <div id="vaga-slot" data-creche-id="osm-way-700433910" data-creche-nome="Patronato Amor de Deus" data-creche-telefone="+351 256 280 779;+351 919 205 251"></div>
+  <div id="vaga-slot" data-creche-id="osm-way-700433910" data-creche-nome="Patronato Amor de Deus" data-creche-email="patronatoamordedeus1@gmail.com" data-creche-telefone="+351 256 280 779;+351 919 205 251"></div>
 
   <!-- Botão para pais reportarem vaga descoberta -->
   <div style="text-align:center;margin:14px 0 20px">
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (email). <a href="mailto:geral@creches.app?subject=Contacto%20Patronato%20Amor%20de%20Deus">Sabes? Ajuda outros pais →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 e fecha às 19h00 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:30 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/o-abrigo-centro-de-solidariedade-social-de-17510">O Abrigo - Centro de Solidariedade Social de</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-curious-minds-902805333">Jardim de Infância &quot;Curious Minds&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-souto-redondo-924824624">Jardim de Infância de Souto Redondo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.3 km</span></div></li>
 <li><a class="nm" href="/creche/centro-social-paroquial-de-santa-maria-da-feira-917118970">Centro Social Paroquial de Santa Maria da Feira</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-gandara-1053676213">Jardim de Infância de Gândara</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-joao-pe-de-feijao-917216509">Jardim de infância &quot;João Pé-de-Feijão&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-joao-pe-de-feijao-11453860481">Jardim de Infância &quot;João Pé-de-Feijão&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">2.8 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/santa-maria-da-feira" style="font-weight:700">Todas as creches em Santa Maria da Feira</a>
@@ -289,11 +299,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="faq">
     <details><summary>O Patronato Amor de Deus é gratuita?</summary><p>O Patronato Amor de Deus é privada. As creches privadas só são gratuitas se forem <strong>aderentes ao programa <a href="/guias/creche-feliz">Creche Feliz</a></strong> e quando não há vagas na rede social da zona. Confirma a adesão e o valor da mensalidade diretamente com a creche.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 4 meses aos 3 anos — funciona como creche. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
-    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351256280779;+351919205251">+351 256 280 779;+351 919 205 251</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
+    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351256280779;+351919205251">+351 256 280 779;+351 919 205 251</a> ou escrever para <a href="mailto:patronatoamordedeus1@gmail.com">patronatoamordedeus1@gmail.com</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/700433910" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/700433910" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Patronato Amor de Deus">reporta uma correção</a>.
   </div>
 </main>

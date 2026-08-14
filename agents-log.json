@@ -1,6 +1,26 @@
 {
  "entries": [
   {
+   "id": "2026-08-14-briefing",
+   "date": "2026-08-14",
+   "time": "09:05",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados, caixa de entrada limpa",
+   "summary": "Zero emails relevantes nas últimas 24h (só 1 notificação do Instagram) e agenda de hoje sem eventos. Enviei o lote diário de 40 convites sem falhas — restam 1390 creches por convidar. Sem opt-outs, sem claims pendentes e sem fotos por moderar; 673 utilizadores (+2), 3 leads novos e 37 views ontem.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-14-ops",
+   "date": "2026-08-14",
+   "time": "09:03",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "Consultei o endpoint /api/ops e todas as categorias estão a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções. Não houve nada para aplicar, rejeitar ou escalar, e por isso também não deixei rascunhos no Gmail. Nada fica à tua espera nesta frente.",
+   "status": "ok"
+  },
+  {
    "id": "2026-08-13-enriquecimento",
    "date": "2026-08-13",
    "time": "09:15",

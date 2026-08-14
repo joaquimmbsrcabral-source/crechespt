@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro Infantil António Calçada", "url": "https://creches.app/creche/centro-infantil-antonio-calcada-1293294560", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Praceta da Misericórdia 20", "postalCode": "8150-137", "addressLocality": "São Brás de Alportel", "addressRegion": "Faro"}, "geo": {"@type": "GeoCoordinates", "latitude": 37.151502, "longitude": -7.892985}, "sameAs": "https://www.openstreetmap.org/way/1293294560", "telephone": "+351 289842161", "email": "geral@misericordiasaobras.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Faro", "item": "https://creches.app/creches/faro"}, {"@type": "ListItem", "position": 4, "name": "Creches em São Brás de Alportel", "item": "https://creches.app/creches/faro/sao-bras-de-alportel"}, {"@type": "ListItem", "position": 5, "name": "Centro Infantil António Calçada", "item": "https://creches.app/creche/centro-infantil-antonio-calcada-1293294560"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro Infantil António Calçada é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro Infantil António Calçada integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Centro Infantil António Calçada?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 289842161. Email: geral@misericordiasaobras.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro Infantil António Calçada é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro Infantil António Calçada integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Centro Infantil António Calçada?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Centro Infantil António Calçada?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 289842161. Email: geral@misericordiasaobras.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Centro%20Infantil%20António%20Calçada">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Fecha às 19h00 — tarde o suficiente para quem sai do trabalho depois das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 8:00 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,11 +284,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-de-sao-bras-de-alportel-587447342">Jardim de Infância de São Brás de Alportel</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.9 km</span></div></li>
+<li><a class="nm" href="/creche/creche-sitio-do-bebe-25941">Creche Sítio do Bebé</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.0 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-das-mealhas-1273374060">Jardim de Infância das Mealhas</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.1 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-corotelo-1273374063">Jardim de Infância de Corotelo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">3.1 km</span></div></li>
 <li><a class="nm" href="/creche/infantario-o-caracol-1293418123">Infantário &quot;O Caracol&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">6.4 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-poco-novo-1273355860">Jardim de Infância do Poço Novo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.3 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-a-joaninha-1480632703">Jardim de Infância &quot;A Joaninha&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.5 km</span></div></li>
+<li><a class="nm" href="/creche/centro-de-bem-estar-infantil-da-falfosa-18237">Centro de Bem Estar Infantil da Falfosa</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.2 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/faro/sao-bras-de-alportel" style="font-weight:700">Todas as creches em São Brás de Alportel</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1293294560" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1293294560" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Centro Infantil António Calçada">reporta uma correção</a>.
   </div>
 </main>

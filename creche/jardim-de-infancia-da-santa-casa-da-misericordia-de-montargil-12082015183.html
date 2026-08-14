@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20da%20Santa%20Casa%20da%20Misericórdia%20de%20Montargil">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -273,12 +283,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/jardim-de-infancia-nossa-senhora-conceicao-1835">Jardim de Infância Nossa Senhora Conceição</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.2 km</span></div></li>
+<li><a class="nm" href="/creche/centro-materno-infantil-e-cultural-do-couco-564">Centro Materno Infantil e Cultural do Couço</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">14.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-mora-1308438216">Jardim De Infância Da Santa Casa Da Misericórdia De Mora</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">14.5 km</span></div></li>
+<li><a class="nm" href="/creche/equip-soc-santa-casa-misericordia-de-mora-1076">Equip. Soc. Santa Casa Misericórdia de Mora</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">14.7 km</span></div></li>
 <li><a class="nm" href="/creche/infantario-dona-anita-1291858287">Infantário Dona Anita</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">17.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-tramaga-1270729468">Jardim de Infância de Tramaga</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">20.4 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-ervideira-1273556823">Jardim de Infância de Ervideira</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">21.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-ponte-de-sor-157100516">Jardim De Infância Da Santa Casa Da Misericórdia De Ponte De Sor</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">23.6 km</span></div></li>
-<li><a class="nm" href="/creche/parque-infantil-1674645337">Parque Infantil</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">24.0 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/portalegre/ponte-de-sor" style="font-weight:700">Todas as creches em Ponte de Sor</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/12082015183" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/12082015183" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância da Santa Casa da Misericórdia de Montargil">reporta uma correção</a>.
   </div>
 </main>

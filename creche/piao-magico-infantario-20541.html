@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h00 e fecha às 19h00 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:00 – 19:00</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -275,10 +285,10 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-do-centro-social-paroquial-santa-marta-do-casal-de-12063111006">Jardim de Infância do Centro Social Paroquial Santa Marta do Casal de Cambra</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.8 km</span></div></li>
 <li><a class="nm" href="/creche/pequenos-e-inteligentes-28344">Pequenos e Inteligentes</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.0 km</span></div></li>
+<li><a class="nm" href="/creche/ondas-de-imaginacao-39904">Ondas de Imaginação</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.0 km</span></div></li>
 <li><a class="nm" href="/creche/associacao-comunitaria-infantil-e-juvenil-da-ramada-20445">Associação Comunitária Infantil e Juvenil da Ramada</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.1 km</span></div></li>
 <li><a class="nm" href="/creche/os-preguicas-educacao-e-apoio-pedagogico-lda-24719">Os Preguiças - Educação e Apoio Pedagógico, Lda</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.1 km</span></div></li>
 <li><a class="nm" href="/creche/pequenos-e-reguilas-25188">Pequenos e Reguilas</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.1 km</span></div></li>
-<li><a class="nm" href="/creche/colegio-do-mimo-29303">Colégio do Mimo</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/lisboa/odivelas" style="font-weight:700">Todas as creches em Odivelas</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Pião Mágico - Infantário">reporta uma correção</a>.
   </div>
 </main>

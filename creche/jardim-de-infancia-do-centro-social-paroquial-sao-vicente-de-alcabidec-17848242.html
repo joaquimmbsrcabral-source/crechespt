@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 — cedo o suficiente para quem entra ao serviço às 8h.</span></div>
+  <p class="horario-linha"><span>🕐 7:30 – 18:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -277,8 +287,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <li><a class="nm" href="/creche/jardim-de-infancia-fatima-campino-1276780776">Jardim de Infância Fátima Campino</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.2 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-bicesse-1276757919">Jardim de Infância de Bicesse</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.0 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-garatuja-1301988502">Jardim de Infância &quot;Garatuja&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.2 km</span></div></li>
+<li><a class="nm" href="/creche/espaco-educativo-creche-quinta-dos-ourives-39875">Espaço Educativo Creche Quinta dos Ourives</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.2 km</span></div></li>
 <li><a class="nm" href="/creche/centro-social-paroquial-de-s-vicente-de-alcabideche-sede-escola-21718">Centro Social Paroquial de S. Vicente de Alcabideche-Sede- Escola</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.4 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-cesaltina-fialho-gouveia-1301988501">Jardim de Infância Cesaltina Fialho Gouveia</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.4 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/lisboa/cascais" style="font-weight:700">Todas as creches em Cascais</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/relation/17848242" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/relation/17848242" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância do Centro Social Paroquial São Vicente de Alcabideche">reporta uma correção</a>.
   </div>
 </main>

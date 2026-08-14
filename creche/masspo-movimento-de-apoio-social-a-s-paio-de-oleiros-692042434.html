@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Masspo%20-%20Movimento%20de%20Apoio%20Social%20a%20S.%20Paio%20de%20Oleiros">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,11 +282,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-da-quebrada-sao-paio-de-oleiros-692042437">Jardim de Infância da Quebrada, São Paio de Oleiros</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/masspo-movimento-de-apoio-social-a-995">Masspo- Movimento de Apoio Social a</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-lapa-sao-paio-de-oleiros-692042444">Jardim de Infância da Lapa, São Paio de Oleiros</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.8 km</span></div></li>
-<li><a class="nm" href="/creche/casa-nossa-senhora-do-sameiro-1375602259">Casa Nossa Senhora do Sameiro</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.9 km</span></div></li>
+<li><a class="nm" href="/creche/casa-nossa-senhora-do-sameiro-1375602259">Casa Nossa Senhora do Sameiro</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.9 km</span></div></li>
+<li><a class="nm" href="/creche/associacao-social-e-desenvolvimento-da-vila-de-anta-32766">Associação Social e Desenvolvimento da Vila de Anta</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-da-igreja-de-pacos-de-brandao-106790713">Jardim Infantil da Igreja de Paços de Brandão</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-santa-maria-de-lamas-1097536068">Jardim de infância Santa Maria de Lamas</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">2.1 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-portela-692042476">Jardim de Infância da Portela</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/santa-maria-da-feira" style="font-weight:700">Todas as creches em Santa Maria da Feira</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/692042434" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/692042434" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Masspo - Movimento de Apoio Social a S. Paio de Oleiros">reporta uma correção</a>.
   </div>
 </main>

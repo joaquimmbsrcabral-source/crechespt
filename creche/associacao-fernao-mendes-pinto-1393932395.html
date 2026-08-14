@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-da-carapinheira-1273864493"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância da Carapinheira — a 4.6 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.177855,-8.679829" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Associação Fernão Mendes Pinto" data-share-slug="associacao-fernao-mendes-pinto-1393932395" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-1393932395" data-cmp-name="Associação Fernão Mendes Pinto" data-cmp-slug="associacao-fernao-mendes-pinto-1393932395" data-cmp-tipo="IPSS" data-cmp-distrito="Coimbra" data-cmp-localidade="" data-cmp-lat="40.177855" data-cmp-lon="-8.679829" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/creche-da-afmp-cantinho-das-cegonhas-2928"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Creche da Afmp - Cantinho das Cegonhas — a 152 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.177855,-8.679829" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Associação Fernão Mendes Pinto" data-share-slug="associacao-fernao-mendes-pinto-1393932395" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-node-1393932395" data-cmp-name="Associação Fernão Mendes Pinto" data-cmp-slug="associacao-fernao-mendes-pinto-1393932395" data-cmp-tipo="IPSS" data-cmp-distrito="Coimbra" data-cmp-localidade="" data-cmp-lat="40.177855" data-cmp-lon="-8.679829" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Associação%20Fernão%20Mendes%20Pinto">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,12 +281,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/creche-da-afmp-cantinho-das-cegonhas-2928">Creche da Afmp - Cantinho das Cegonhas</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.2 km</span></div></li>
+<li><a class="nm" href="/creche/creche-de-montemor-o-velho-centro-ilda-moreno-2930">Creche de Montemor-O-Velho - Centro Ilda Moreno</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.9 km</span></div></li>
+<li><a class="nm" href="/creche/equip-social-do-centro-de-assistencia-paroquial-da-granja-do-ulmeiro-12170">Equip. Social do Centro de Assistência Paroquial da Granja do Ulmeiro</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">4.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-carapinheira-1273864493">Jardim de Infância da Carapinheira</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">4.6 km</span></div></li>
-<li><a class="nm" href="/creche/casa-da-crianca-1393752220">Casa da Criança</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">5.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-meas-do-campo-1273864494">Jardim de Infância de Meãs do Campo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">5.6 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-o-ninho-da-luz-1290775113">Jardim de Infância &quot;O Ninho da Luz&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">6.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-maiorca-1055140111">Jardim de Infância de Maiorca</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">6.3 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-ferreira-a-nova-1273864511">Jardim de Infância de Ferreira-a-Nova</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.8 km</span></div></li>
+<li><a class="nm" href="/creche/casa-da-crianca-1393752220">Casa da Criança</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.0 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-de-meas-do-campo-1273864494">Jardim de Infância de Meãs do Campo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">5.6 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/coimbra/montemor-o-velho" style="font-weight:700">Todas as creches em Montemor-o-Velho</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/1393932395" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/1393932395" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Associação Fernão Mendes Pinto">reporta uma correção</a>.
   </div>
 </main>

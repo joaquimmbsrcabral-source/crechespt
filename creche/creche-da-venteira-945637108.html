@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/sociedade-filarmonica-de-apoio-social-e-recreio-artistico-da-amadora-q-21591"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Sociedade Filarmonica de Apoio Social e Recreio Artistico da Amadora - Quinta de S.miguel — a 403 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.757076,-9.246867" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Creche da Venteira" data-share-slug="creche-da-venteira-945637108" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-945637108" data-cmp-name="Creche da Venteira" data-cmp-slug="creche-da-venteira-945637108" data-cmp-tipo="Desconhecido" data-cmp-distrito="Lisboa" data-cmp-localidade="" data-cmp-lat="38.757076" data-cmp-lon="-9.246867" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/creche-o-baloico-39889"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Creche o Baloiço — a 111 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.757076,-9.246867" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Creche da Venteira" data-share-slug="creche-da-venteira-945637108" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-945637108" data-cmp-name="Creche da Venteira" data-cmp-slug="creche-da-venteira-945637108" data-cmp-tipo="Desconhecido" data-cmp-distrito="Lisboa" data-cmp-localidade="" data-cmp-lat="38.757076" data-cmp-lon="-9.246867" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Creche%20da%20Venteira">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,12 +282,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/creche-o-baloico-39889">Creche o Baloiço</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.1 km</span></div></li>
 <li><a class="nm" href="/creche/sociedade-filarmonica-de-apoio-social-e-recreio-artistico-da-amadora-q-21591">Sociedade Filarmonica de Apoio Social e Recreio Artistico da Amadora - Quinta de S.miguel</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-raquel-gameiro-1105434121">Jardim de Infância Raquel Gameiro</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/complexo-de-apoio-a-infancia-sol-dourado-5414">Complexo de Apoio à Infância &quot;sol Dourado&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-o-caracol-pimpao-12063069343">Jardim Infantil &quot;O Caracol Pimpão&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.6 km</span></div></li>
 <li><a class="nm" href="/creche/tesouros-e-aventuras-12062079837">Tesouros e Aventuras</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.9 km</span></div></li>
-<li><a class="nm" href="/creche/creche-a-roma-26267">Creche a Romã</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.0 km</span></div></li>
-<li><a class="nm" href="/creche/externato-marite-12063069340">Externato &quot;Marité&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.0 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/lisboa/amadora" style="font-weight:700">Todas as creches em Amadora</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/945637108" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/945637108" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Creche da Venteira">reporta uma correção</a>.
   </div>
 </main>

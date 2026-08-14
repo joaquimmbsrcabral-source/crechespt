@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20de%20Graça%20do%20Divor">Algum está errado? Avisa-nos →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,11 +284,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-legado-caixeiro-alentejano-12021328199">Jardim de infância Legado Caixeiro Alentejano</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">7.6 km</span></div></li>
+<li><a class="nm" href="/creche/legado-caixeiro-alentejano-1198">Legado Caixeiro Alentejano</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">9.1 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-igrejinha-1275399322">Jardim de Infância de Igrejinha</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">9.9 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-agua-de-lupe-1263424449">Jardim de Infância de Água de Lupe</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">10.3 km</span></div></li>
+<li><a class="nm" href="/creche/associacao-solidariedade-social-ninho-22112">Associação Solidariedade Social Ninho</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">10.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-do-penedo-de-ouro-1263424254">Jardim de Infância do Penedo de Ouro</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">10.8 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-cruz-da-picada-1263424455">Jardim de Infância da Cruz da Picada</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-o-casulo-11976179361">Jardim de Infância &quot;O Casulo&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">11.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/evora/evora" style="font-weight:700">Todas as creches em Évora</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1263424238" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1263424238" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Graça do Divor">reporta uma correção</a>.
   </div>
 </main>

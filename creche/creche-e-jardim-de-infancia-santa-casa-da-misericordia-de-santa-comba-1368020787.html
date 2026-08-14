@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-infantil-do-centro-paroquial-de-bem-estar-do-vimieiro-11959253262"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim Infantil do Centro Paroquial de Bem-Estar do Vimieiro — a 1.6 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.394807,-8.134148" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Creche e Jardim de Infância Santa Casa da Misericórdia de Santa Comba Dão" data-share-slug="creche-e-jardim-de-infancia-santa-casa-da-misericordia-de-santa-comba-1368020787" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1368020787" data-cmp-name="Creche e Jardim de Infância Santa Casa da Misericórdia de Santa Comba Dão" data-cmp-slug="creche-e-jardim-de-infancia-santa-casa-da-misericordia-de-santa-comba-1368020787" data-cmp-tipo="IPSS" data-cmp-distrito="Viseu" data-cmp-localidade="" data-cmp-lat="40.394807" data-cmp-lon="-8.134148" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/creche-e-jardim-de-infancia-da-misericordia-de-santa-comba-dao-3805"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Creche e Jardim de Infância da Misericórdia de Santa Comba Dão — a 953 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.394807,-8.134148" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Creche e Jardim de Infância Santa Casa da Misericórdia de Santa Comba Dão" data-share-slug="creche-e-jardim-de-infancia-santa-casa-da-misericordia-de-santa-comba-1368020787" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1368020787" data-cmp-name="Creche e Jardim de Infância Santa Casa da Misericórdia de Santa Comba Dão" data-cmp-slug="creche-e-jardim-de-infancia-santa-casa-da-misericordia-de-santa-comba-1368020787" data-cmp-tipo="IPSS" data-cmp-distrito="Viseu" data-cmp-localidade="" data-cmp-lat="40.394807" data-cmp-lon="-8.134148" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Creche%20e%20Jardim%20de%20Infância%20Santa%20Casa%20da%20Misericórdia%20de%20Santa%20Comba%20Dão">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,12 +281,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/creche-e-jardim-de-infancia-da-misericordia-de-santa-comba-dao-3805">Creche e Jardim de Infância da Misericórdia de Santa Comba Dão</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.0 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-do-centro-paroquial-de-bem-estar-do-vimieiro-11959253262">Jardim Infantil do Centro Paroquial de Bem-Estar do Vimieiro</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.6 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-azere-1271960193">Jardim de Infância de Ázere</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">6.3 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-alvarim-1271517634">Jardim de Infância de Alvarim</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.3 km</span></div></li>
-<li><a class="nm" href="/creche/creche-jardim-de-infancia-santa-casa-da-misericordia-871854669">Creche - Jardim de Infância - Santa Casa da Misericórdia</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">9.7 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-tabua-1271960183">Jardim de Infância de Tábua</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">9.8 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-sao-pedro-de-alva-penacova-1273876824">Jardim de Infância de São Pedro de Alva, Penacova</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">10.4 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-escola-joao-de-deus-de-mortagua-3289">Jardim Escola João de Deus de Mortágua</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.0 km</span></div></li>
+<li><a class="nm" href="/creche/creche-do-centro-educativo-de-mortagua-26342">Creche do Centro Educativo de Mortágua</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">8.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/viseu/santa-comba-dao" style="font-weight:700">Todas as creches em Santa Comba Dão</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1368020787" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1368020787" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Creche e Jardim de Infância Santa Casa da Misericórdia de Santa Comba Dão">reporta uma correção</a>.
   </div>
 </main>

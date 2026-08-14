@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-de-igreja-sanguedo-1270884194"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância de Igreja, Sanguedo — a 1.8 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.996958,-8.502482" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância de Candal" data-share-slug="jardim-de-infancia-de-candal-1053648191" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1053648191" data-cmp-name="Jardim de Infância de Candal" data-cmp-slug="jardim-de-infancia-de-candal-1053648191" data-cmp-tipo="Desconhecido" data-cmp-distrito="Aveiro" data-cmp-localidade="Lobão" data-cmp-lat="40.996958" data-cmp-lon="-8.502482" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/centro-de-assistencia-social-a-terceira-idade-e-infancia-de-1207"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Centro de Assistência Social à Terceira Idade e Infância de — a 1.6 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=40.996958,-8.502482" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim de Infância de Candal" data-share-slug="jardim-de-infancia-de-candal-1053648191" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-1053648191" data-cmp-name="Jardim de Infância de Candal" data-cmp-slug="jardim-de-infancia-de-candal-1053648191" data-cmp-tipo="Desconhecido" data-cmp-distrito="Aveiro" data-cmp-localidade="Lobão" data-cmp-lat="40.996958" data-cmp-lon="-8.502482" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Jardim%20de%20Infância%20de%20Candal">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -272,12 +282,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/centro-de-assistencia-social-a-terceira-idade-e-infancia-de-1207">Centro de Assistência Social à Terceira Idade e Infância de</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.6 km</span></div></li>
+<li><a class="nm" href="/creche/creche-arco-iris-sanguedo-1208">Creche &quot;arco Íris&quot; - (sanguedo)</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.6 km</span></div></li>
+<li><a class="nm" href="/creche/equip-social-do-centro-social-de-sao-tiago-do-lobao-954">Equip Social do Centro Social de São Tiago do Lobão</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.7 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-igreja-sanguedo-1270884194">Jardim de Infância de Igreja, Sanguedo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-chao-do-rio-1053599755">Jardim de Infância de Chão do Rio</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.8 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-do-centro-social-padre-jose-coelho-1290078561">Jardim de Infância do Centro Social Padre José Coelho</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">1.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-infantil-do-centro-social-de-santa-maria-de-fiaes-11961322868">Jardim Infantil do Centro Social de Santa Maria de Fiães</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">2.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-igreja-vila-maior-1053648190">Jardim de Infância de Igreja, Vila Maior</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.2 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-giao-1053648192">Jardim de Infância de Gião</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">2.7 km</span></div></li>
+<li><a class="nm" href="/creche/jardim-de-infancia-do-centro-social-padre-jose-coelho-1290078561">Jardim de Infância do Centro Social Padre José Coelho</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.9 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/aveiro/santa-maria-da-feira" style="font-weight:700">Todas as creches em Santa Maria da Feira</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1053648191" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1053648191" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Candal">reporta uma correção</a>.
   </div>
 </main>

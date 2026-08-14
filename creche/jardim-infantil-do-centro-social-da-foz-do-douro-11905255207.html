@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim Infantil do Centro Social da Foz do Douro", "url": "https://creches.app/creche/jardim-infantil-do-centro-social-da-foz-do-douro-11905255207", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Príncipe Dom Luís Filipe 52", "postalCode": "4150-472", "addressLocality": "Porto", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.14795, "longitude": -8.672852}, "sameAs": "https://www.openstreetmap.org/node/11905255207", "telephone": "+351 226181036", "email": "ji.csfozdouro@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Porto", "item": "https://creches.app/creches/porto"}, {"@type": "ListItem", "position": 4, "name": "Creches em Porto", "item": "https://creches.app/creches/porto/porto"}, {"@type": "ListItem", "position": 5, "name": "Jardim Infantil do Centro Social da Foz do Douro", "item": "https://creches.app/creche/jardim-infantil-do-centro-social-da-foz-do-douro-11905255207"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim Infantil do Centro Social da Foz do Douro é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim Infantil do Centro Social da Foz do Douro integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Jardim Infantil do Centro Social da Foz do Douro?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 226181036. Email: ji.csfozdouro@escolas.min-edu.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim Infantil do Centro Social da Foz do Douro é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim Infantil do Centro Social da Foz do Douro integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Jardim Infantil do Centro Social da Foz do Douro?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Jardim Infantil do Centro Social da Foz do Douro?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 226181036. Email: ji.csfozdouro@escolas.min-edu.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20Infantil%20do%20Centro%20Social%20da%20Foz%20do%20Douro">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Fecha às 19h15 — tarde o suficiente para quem sai do trabalho depois das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:45 – 19:15</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,10 +284,10 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-infantil-calouste-gulbenkian-551538460">Jardim Infantil Calouste Gulbenkian</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.0 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-joao-e-maria-890998165">Jardim de Infância &quot;João e Maria&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.7 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-paroquial-sao-miguel-de-nevogilde-3717">Centro Social Paroquial São Miguel de Nevogilde</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.7 km</span></div></li>
 <li><a class="nm" href="/creche/maple-bear-757376699">Maple Bear</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-criancas-e-companhia-1283016477">Jardim de Infância &quot;Crianças e Companhia&quot;</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.8 km</span></div></li>
-<li><a class="nm" href="/creche/a-escolinha-8283416671">A Escolinha</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">1.0 km</span></div></li>
-<li><a class="nm" href="/creche/colegio-cebes-kids-1283025298">Colégio CEBES Kids</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.2 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-do-bairro-rainha-dona-leonor-3746">Centro Social do Bairro Rainha Dona Leonor</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.0 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/porto/porto" style="font-weight:700">Todas as creches em Porto</a>
@@ -292,7 +302,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/11905255207" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/11905255207" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim Infantil do Centro Social da Foz do Douro">reporta uma correção</a>.
   </div>
 </main>

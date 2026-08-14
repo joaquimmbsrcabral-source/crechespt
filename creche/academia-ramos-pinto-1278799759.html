@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Academia Ramos Pinto", "url": "http://www.academiaramospinto.pt", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua das Arroteias 302", "postalCode": "4435-017", "addressLocality": "Areosa", "addressRegion": "Porto"}, "geo": {"@type": "GeoCoordinates", "latitude": 41.183954, "longitude": -8.579449}, "sameAs": "https://www.openstreetmap.org/way/1278799759", "telephone": "+351 22 974 0029;+351 916063000", "email": "info@academiaramospinto.pt;manuelpinto@academiaramospinto.pt", "mainEntityOfPage": "https://creches.app/creche/academia-ramos-pinto-1278799759"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Porto", "item": "https://creches.app/creches/porto"}, {"@type": "ListItem", "position": 4, "name": "Creches em Gondomar", "item": "https://creches.app/creches/porto/gondomar"}, {"@type": "ListItem", "position": 5, "name": "Academia Ramos Pinto", "item": "https://creches.app/creche/academia-ramos-pinto-1278799759"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Academia Ramos Pinto é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Academia Ramos Pinto é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Como contactar A Academia Ramos Pinto?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 22 974 0029;+351 916063000. Email: info@academiaramospinto.pt;manuelpinto@academiaramospinto.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A Academia Ramos Pinto é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "A Academia Ramos Pinto é privada. As creches privadas só são gratuitas se forem aderentes ao programa Creche Feliz e quando não há vagas na rede social da zona."}}, {"@type": "Question", "name": "Que idades aceita A Academia Ramos Pinto?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 0 aos 5 anos. Funciona como infantário. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar A Academia Ramos Pinto?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 22 974 0029;+351 916063000. Email: info@academiaramospinto.pt;manuelpinto@academiaramospinto.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Academia%20Ramos%20Pinto">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 e fecha às 19h30 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:30 – 19:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,11 +284,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/colegio-da-areosa-1279769533">Colégio da Areosa</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.1 km</span></div></li>
+<li><a class="nm" href="/creche/equip-soc-perpetuo-educacao-e-cultura-4622">Equip. Soc. Perpétuo, Educação e Cultura</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.5 km</span></div></li>
+<li><a class="nm" href="/creche/o-popas-creche-e-jardim-de-infancia-4614">O Popas Creche e Jardim de Infância</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.5 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-a-girafa-1279769535">Jardim Infantil &quot;A Girafa&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">0.5 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-de-santegaos-1190277485">Jardim de Infância de Santegãos</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">1.2 km</span></div></li>
-<li><a class="nm" href="/creche/creche-pre-escolar-de-pedroucos-443631619">Creche Pré-Escolar de Pedrouços</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.2 km</span></div></li>
-<li><a class="nm" href="/creche/centro-social-e-paroquial-de-santo-antonio-de-corim-483324178">Centro Social e Paroquial de Santo António de Corim</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.4 km</span></div></li>
-<li><a class="nm" href="/creche/o-amanha-da-crianca-infantario-443788678">O Amanhã da Criança - Infantário</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.5 km</span></div></li>
+<li><a class="nm" href="/creche/a-girafa-jardim-de-infancia-lda-17928">A Girafa - Jardim de Infância Lda</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.5 km</span></div></li>
+<li><a class="nm" href="/creche/creche-jardim-de-infancia-de-pedroucos-2740">Creche Jardim de Infância de Pedrouços</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.0 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/porto/gondomar" style="font-weight:700">Todas as creches em Gondomar</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1278799759" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1278799759" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Academia Ramos Pinto">reporta uma correção</a>.
   </div>
 </main>

@@ -15,6 +15,7 @@ resto — e é o resto que vale:
 Guarda o progresso a cada equipamento e retoma onde ficou.
 
 Uso:
+  python3 scripts/carta_social_detalhe.py --nacional        # todo o país
   python3 scripts/carta_social_detalhe.py --em-falta        # os 444 da AML
   python3 scripts/carta_social_detalhe.py --cruzados        # os 214 já ligados
   python3 scripts/carta_social_detalhe.py --so 50           # limitar o lote
@@ -79,6 +80,21 @@ ROTULOS = ["Contactos", "Morada", "Código Postal", "Telefone / Fax", "Email",
            "Dados institucionais", "Entidade proprietária", "Natureza Jurídica",
            "Ver no mapa", "Telefonar", "Enviar email", "Resposta social",
            "Capacidade", "Utentes", "Horário", "Última Atualização", "Certificações"]
+
+
+
+def gravar(dados, caminho):
+    """Escrita atómica: grava num ficheiro temporário e só depois substitui.
+
+    Sem isto, um Ctrl-C ou um timeout a meio do json.dump deixa o ficheiro
+    truncado e ilegível — e perdem-se horas de recolha. Aconteceu uma vez.
+    """
+    tmp = caminho + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(dados, f, ensure_ascii=False, indent=1)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, caminho)
 
 
 def parse(bruto):
@@ -151,6 +167,16 @@ def alvos(argv, dados):
             if cid:
                 lista.append({"cs_id": cid, "cs_nome": m.get("cs_nome"),
                               "nosso_id": m.get("id") or m.get("nosso_id")})
+    if "--nacional" in argv:
+        # Todos os equipamentos identificados no varrimento nacional.
+        nac = json.load(open("dados/carta-social-nacional.json", encoding="utf-8"))
+        for slug, c in nac["concelhos"].items():
+            for e in c.get("equip", []):
+                lista.append({"cs_id": str(e["id"]), "cs_nome": e.get("nome"),
+                              "concelho": c.get("concelho"),
+                              "freguesia": e.get("freguesia"),
+                              "distrito": c.get("distrito")})
+
     if "--em-falta" in argv or not lista:
         falta = json.load(open("dados/creches-oficiais-em-falta-aml.json", encoding="utf-8"))
         for m in falta["creches"]:
@@ -203,10 +229,10 @@ def main():
                   f"{'·'.join(extras)}")
 
         if i % 10 == 0 or i == len(pendentes):
-            json.dump(dados, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            gravar(dados, OUT)
         time.sleep(PAUSA)
 
-    json.dump(dados, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    gravar(dados, OUT)
     tot = dados["equipamentos"]
     print(f"\n✓ {ok} obtidos · {falhas} sem ficha · {len(tot)} no total")
     print(f"  com telefone : {sum(1 for v in tot.values() if v.get('telefone'))}")

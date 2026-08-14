@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Gente%20Pequena">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,9 +284,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 <li><a class="nm" href="/creche/jardim-infantil-do-pombal-aipica-5863089511">Jardim Infantil do Pombal (AIPICA)</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.2 km</span></div></li>
 <li><a class="nm" href="/creche/mimos-compa-12141140084">Mimos &amp; Compª</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.2 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-infantil-do-centro-paroquial-de-almada-5863089515">Jardim Infantil do Centro Paroquial de Almada</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/creche-frei-luis-de-sousa-27029">Creche Frei Luis de Sousa</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
+<li><a class="nm" href="/creche/apepi-associacao-de-pais-educadores-para-infancia-2163">Apepi - Associação de Pais Educadores para Infância</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-a-cidade-da-brincadeira-2545025392">Jardim de Infância &quot;A Cidade da Brincadeira&quot;</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">0.4 km</span></div></li>
-<li><a class="nm" href="/creche/patio-da-brincadeira-actividades-educativas-4816">Pátio da Brincadeira - Actividades Educativas</a><div class="meta"><span class="pill tipo-Privada">Privada</span><span class="d">0.5 km</span></div></li>
-<li><a class="nm" href="/creche/centro-paroquial-de-bem-estar-social-de-cacilhas-149726949">Centro Paroquial de Bem Estar Social de Cacilhas</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.5 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/setubal/almada" style="font-weight:700">Todas as creches em Almada</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/10271803543" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/10271803543" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Gente Pequena">reporta uma correção</a>.
   </div>
 </main>

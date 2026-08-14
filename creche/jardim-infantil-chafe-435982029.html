@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -232,7 +240,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <a class="cta-primary" href="/creche/jardim-de-infancia-da-senhora-das-oliveiras-1265336544"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Jardim de Infância da Senhora das Oliveiras — a 4.0 km</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.649062,-8.780143" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim Infantil Chafé" data-share-slug="jardim-infantil-chafe-435982029" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-435982029" data-cmp-name="Jardim Infantil Chafé" data-cmp-slug="jardim-infantil-chafe-435982029" data-cmp-tipo="Desconhecido" data-cmp-distrito="Viana do Castelo" data-cmp-localidade="" data-cmp-lat="41.649062" data-cmp-lon="-8.780143" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary" href="/creche/centro-social-paroquial-sao-romao-do-neiva-1"><span class="pic" aria-hidden="true">📍</span><span class="pl">Ver Centro Social Paroquial São Romão do Neiva — a 41 m</span></a><div class="cta-primary-note">Ainda não temos contacto desta creche. Esta é a mais próxima com telefone ou email.</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=41.649062,-8.780143" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Jardim Infantil Chafé" data-share-slug="jardim-infantil-chafe-435982029" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="osm-way-435982029" data-cmp-name="Jardim Infantil Chafé" data-cmp-slug="jardim-infantil-chafe-435982029" data-cmp-tipo="Desconhecido" data-cmp-distrito="Viana do Castelo" data-cmp-localidade="" data-cmp-lat="41.649062" data-cmp-lon="-8.780143" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
@@ -249,6 +257,8 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Jardim%20Infantil%20Chafé">Sabes? Ajuda outros pais →</a></div>
+  
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -271,12 +281,12 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="card">
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
+<li><a class="nm" href="/creche/centro-social-paroquial-sao-romao-do-neiva-1">Centro Social Paroquial São Romão do Neiva</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">0.0 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-paroquial-de-vila-nova-de-24705">Centro Social Paroquial de Vila Nova de</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">1.8 km</span></div></li>
+<li><a class="nm" href="/creche/creche-bercinho-s-jose-27443">Creche Bercinho S. José</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.0 km</span></div></li>
+<li><a class="nm" href="/creche/centro-social-e-paroquial-vila-de-punhe-56">Centro Social e Paroquial Vila de Punhe</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.7 km</span></div></li>
 <li><a class="nm" href="/creche/ji-vila-de-punhe-9334171885">JI Vila de Punhe</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">3.9 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-da-senhora-das-oliveiras-1265336544">Jardim de Infância da Senhora das Oliveiras</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">4.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-lar-de-santa-teresa-851797180">Jardim de Infância Lar de Santa Teresa</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">6.6 km</span></div></li>
-<li><a class="nm" href="/creche/centro-social-paroquial-santa-marta-de-portuzelo-4810003121">Centro social paroquial Santa Marta de Portuzelo</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">6.9 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-n-o-1-de-viana-do-castelo-1265313992">Jardim de Infância n.º 1 de Viana do Castelo</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.0 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-da-meadela-1265313996">Jardim de Infância da Meadela</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">7.0 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/viana-do-castelo/viana-do-castelo" style="font-weight:700">Todas as creches em Viana do Castelo</a>
@@ -291,7 +301,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/435982029" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/435982029" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim Infantil Chafé">reporta uma correção</a>.
   </div>
 </main>

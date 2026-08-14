@@ -141,7 +141,15 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .q-banner .q-src{font-weight:600;opacity:.8}
 .q-banner.warn{background:linear-gradient(135deg,#FFF3D6,#FFE8D6);color:#856404;border-left:4px solid var(--c-yellow)}
 .q-banner.ok{background:linear-gradient(135deg,#DEF5E1,#D8F5F4);color:#2f7d3b;border-left:4px solid var(--c-mint)}
+/* Horário alargado — pêssego suave com texto castanho escuro. O amarelo e o
+   pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
+   o contraste vem do texto escuro sobre o fundo claro. */
+.q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+/* Linha do horário — informação de apoio, discreta por baixo do selo */
+.horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.horario-linha .h-src{color:var(--ink-faint);font-weight:600}
 
 /* === Cards === */
 .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-1);padding:22px 24px;margin:18px 0}
@@ -202,7 +210,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira", "url": "https://creches.app/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-moimenta-da-beira-1289753571", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua General Humberto Delgado 65", "postalCode": "3620-308", "addressLocality": "Moimenta da Beira", "addressRegion": "Viseu"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.973374, "longitude": -7.612367}, "sameAs": "https://www.openstreetmap.org/way/1289753571", "telephone": "+351 254582789", "email": "ji.scm.moimentadabeira@escolas.min-edu.pt"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Viseu", "item": "https://creches.app/creches/viseu"}, {"@type": "ListItem", "position": 4, "name": "Creches em Moimenta da Beira", "item": "https://creches.app/creches/viseu/moimenta-da-beira"}, {"@type": "ListItem", "position": 5, "name": "Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira", "item": "https://creches.app/creche/jardim-de-infancia-da-santa-casa-da-misericordia-de-moimenta-da-beira-1289753571"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 254582789. Email: ji.scm.moimentadabeira@escolas.min-edu.pt."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 3 anos aos 5 anos. Funciona como jardim de infância. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: +351 254582789. Email: ji.scm.moimentadabeira@escolas.min-edu.pt."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -248,7 +256,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20da%20Santa%20Casa%20da%20Misericórdia%20de%20Moimenta%20da%20Beira">Algum está errado? Avisa-nos →</a></div>
+  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Fecha às 19h30 — tarde o suficiente para quem sai do trabalho depois das 18h30.</span></div>
+  <p class="horario-linha"><span>🕐 7:45 – 19:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -274,11 +284,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <div class="card-h"><div class="pin blue">📍</div>Creches perto desta</div>
     <ul class="prox">
 <li><a class="nm" href="/creche/jardim-de-infancia-de-forca-1264663518">Jardim de Infância de Forca</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">8.9 km</span></div></li>
+<li><a class="nm" href="/creche/equip-social-da-associacao-de-solidariedade-social-e-recreativa-de-s-c-17398">Equip Social da Associação de Solidariedade Social e Recreativa de S. Cosmado</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">10.4 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-riodades-1263051297">Jardim de Infância de Riodades</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">10.8 km</span></div></li>
 <li><a class="nm" href="/creche/jardim-de-infancia-de-sernancelhe-11841447449">Jardim de Infância de Sernancelhe</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">12.9 km</span></div></li>
-<li><a class="nm" href="/creche/creche-nova-esperanca-169257464">Creche &quot;Nova Esperança&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">14.3 km</span></div></li>
-<li><a class="nm" href="/creche/jardim-de-infancia-magia-de-crescer-169257468">Jardim de Infância &quot;Magia de Crescer&quot;</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">14.3 km</span></div></li>
-<li><a class="nm" href="/creche/creche-municipal-de-tarouca-169257465">Creche municipal de Tarouca</a><div class="meta"><span class="pill tipo-Desconhecido">Sem classificação</span><span class="d">14.6 km</span></div></li>
+<li><a class="nm" href="/creche/equip-soc-da-misericordia-de-sernancelhe-4482">Equip. Soc. da Misericórdia de Sernancelhe</a><div class="meta"><span class="pill tipo-IPSS">IPSS</span><span class="d">12.9 km</span></div></li>
+<li><a class="nm" href="/creche/centro-infantil-de-sernancelhe-casa-da-crianca-24268">Centro Infantil de Sernancelhe &quot;casa da Criança&quot;</a><div class="meta"><span class="pill tipo-Pública">Pública</span><span class="d">13.1 km</span></div></li>
     </ul>
     <p style="font-size:14px;color:var(--ink-soft);margin:16px 0 0;text-align:center">
       <a href="/app" style="font-weight:700">Comparar todas no mapa</a> · <a href="/creches/viseu/moimenta-da-beira" style="font-weight:700">Todas as creches em Moimenta da Beira</a>
@@ -293,7 +303,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/1289753571" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-13. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/1289753571" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-14. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
     És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância da Santa Casa da Misericórdia de Moimenta da Beira">reporta uma correção</a>.
   </div>
 </main>
