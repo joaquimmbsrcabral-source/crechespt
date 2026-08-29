@@ -645,7 +645,7 @@ $("btn-cn").onclick = async () => {
 // URL pública da creche: ficha estática rica para creches do dataset (osm-*);
 // as "extra" só existem no mapa (não têm ficha estática)
 function fichaPublicaURL(id, nome){
-  if(!/^osm-/.test(String(id))) return "/app#creche-" + encodeURIComponent(id);
+  if(!/^(osm-|cs-)/.test(String(id))) return "/app#creche-" + encodeURIComponent(id);
   const num = String(id).replace(/\D/g, "");
   let slug = String(nome || "creche").normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase()

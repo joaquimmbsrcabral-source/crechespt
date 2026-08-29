@@ -146,6 +146,14 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
    o contraste vem do texto escuro sobre o fundo claro. */
 .q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+.reclamar{margin:30px 0 10px;padding:22px 24px;border-radius:18px;background:linear-gradient(135deg,var(--c-cream),#FFF);border:1.5px solid #F0DCCB;box-shadow:var(--sh-1)}
+.reclamar-h{font-family:Fredoka,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.reclamar p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin:0 0 16px}
+.reclamar-acoes{display:flex;flex-wrap:wrap;gap:10px}
+.btn-reclamar{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 22px;border-radius:99px;background:var(--c-coral-dk);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn-reclamar:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(194,24,91,.25)}
+.btn-reclamar.sec{background:#fff;color:var(--ink-soft);border:1.5px solid #E7DDD4}
+@media(max-width:520px){.reclamar-acoes{flex-direction:column}.btn-reclamar{width:100%}}
 /* Linha do horário — informação de apoio, discreta por baixo do selo */
 .horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
   font-size:13.5px;color:var(--ink-soft);font-weight:600}
@@ -259,6 +267,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20de%20Padim%20da%20Graça">Algum está errado? Avisa-nos →</a></div>
   
   
+  
 
   <!-- Stats cards visuais -->
   <div class="stats-grid">
@@ -302,9 +311,22 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:+351253282161">+351 253282161</a> ou escrever para <a href="mailto:ji.nogueiredo@escolas.min-edu.pt">ji.nogueiredo@escolas.min-edu.pt</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
 
+  <!-- Reclamar a página. Antes era uma linha de letra miudinha no rodapé que nem
+       dizia o nome da creche. Esta é a página onde a diretora cai ao pesquisar a
+       própria instituição no Google — vale a pena que perceba que é dela. -->
+  <div class="reclamar">
+    <div class="reclamar-h">🏫 Trabalha no Jardim de Infância de Padim da Graça?</div>
+    <p>Esta página é pública e aparece no Google. Pode passar a geri-la — <b>gratuitamente e
+    para sempre</b> — para corrigir os contactos, publicar o horário, dizer quando há vaga
+    e receber diretamente os pedidos das famílias que a encontram aqui.</p>
+    <div class="reclamar-acoes">
+      <a class="btn-reclamar" href="/painel?creche=osm-way-1268505525">Gerir esta página</a>
+      <a class="btn-reclamar sec" href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Padim da Graça">Reportar uma correção</a>
+    </div>
+  </div>
+
   <div class="aviso">
     Dados de <a href="https://www.openstreetmap.org/way/1268505525" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-29. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
-    És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Jardim de Infância de Padim da Graça">reporta uma correção</a>.
   </div>
 </main>
 <footer>

@@ -1,6 +1,6 @@
 # Creches.app
 
-> Mapa nacional gratuito de 4.150 estabelecimentos de educação de infância em Portugal — creches, jardins de infância e infantários, públicos, IPSS e privados — com filtros por idade, distrito e tipo. Sem publicidade, sem login obrigatório, sem venda de dados. Plataforma criada por um futuro pai português que percebeu que faltava uma ferramenta simples para os pais navegarem a procura de creche.
+> Mapa nacional gratuito de 4.037 estabelecimentos de educação de infância em Portugal — creches, jardins de infância e infantários, públicos, IPSS e privados — com filtros por idade, distrito e tipo. Sem publicidade, sem login obrigatório, sem venda de dados. Plataforma criada por um futuro pai português que percebeu que faltava uma ferramenta simples para os pais navegarem a procura de creche.
 
 ## Sobre o projecto
 
@@ -52,7 +52,7 @@
 - [Como escolher creche em Portugal](https://creches.app/guias/como-escolher-creche)
 - [Quanto custa uma creche em Portugal em 2026](https://creches.app/guias/quanto-custa-creche-portugal)
 - [Creche vs Ama vs Avós — qual escolher](https://creches.app/guias/creche-ama-avos-qual-escolher)
-- [Creche Feliz — como conseguir creche gratuita](https://creches.app/guias/creche-feliz-creche-gratuita-portugal)
+- [Creche Feliz — como conseguir creche gratuita](https://creches.app/guias/creche-feliz)
 
 ## Optional
 

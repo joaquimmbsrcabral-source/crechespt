@@ -29,6 +29,16 @@ import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
 const FROM_EMAIL = process.env.EMAIL_FROM || "Creches.app <onboarding@resend.dev>";
+// O link tem de levar o que o texto promete. Dizer "Ver creches com vaga em
+// Cascais" e mandar para o mapa nacional obrigava a mãe a refazer a pesquisa.
+function linkMapa(zona, extra){
+  const p = new URLSearchParams();
+  if(zona) p.set("concelho", zona);
+  if(extra) for(const [k,v] of Object.entries(extra)) p.set(k, v);
+  const qs = p.toString();
+  return "https://creches.app/app" + (qs ? "?" + qs : "");
+}
+
 const MAX_EMAILS = 50;
 const PAUSA_MS = 300;
 const H48 = 48 * 3600 * 1000;
@@ -134,7 +144,7 @@ function alternativasPaiEmail(lead) {
       <div style="font-size:14.5px;color:#4A4060">No mapa podes ativar o filtro <b>«só com vaga»</b> e ver logo que creches${zona ? ` em <b>${escapeHtml(zona)}</b>` : " na tua zona"} têm lugar neste momento.</div>
     </div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr><td align="center">
-      <a href="https://creches.app/app" style="display:inline-block;background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;font-weight:bold;font-size:16px;text-decoration:none;padding:15px 38px;border-radius:99px">${ctaLabel}</a>
+      <a href="${linkMapa(zona, {vaga: 1})}" style="display:inline-block;background:linear-gradient(135deg,#FF6B9D,#FF9F68);color:#fff;font-weight:bold;font-size:16px;text-decoration:none;padding:15px 38px;border-radius:99px">${ctaLabel}</a>
     </td></tr></table>
     <p style="margin:22px 0 0;font-size:14px;color:#4A4060">Se entretanto a ${creche} já te respondeu, ótimo — ignora este email e boa sorte! 🍀</p>
     <p style="margin:16px 0 0;font-size:14px">— A equipa do creches.app</p>
@@ -151,7 +161,7 @@ Há uns dias enviaste um pedido de contacto à ${lead.creche_nome || "creche"} e
 
 Entretanto, um plano B nunca fez mal a ninguém: no mapa podes ativar o filtro "só com vaga" e ver logo que creches${zona ? ` em ${zona}` : " na tua zona"} têm lugar neste momento.
 
-${zona ? `Ver creches com vaga em ${zona}` : "Ver creches com vaga na tua zona"}: https://creches.app/app
+${zona ? `Ver creches com vaga em ${zona}` : "Ver creches com vaga na tua zona"}: ${linkMapa(zona, {vaga: 1})}
 
 Se entretanto a creche já te respondeu, ótimo — ignora este email e boa sorte!
 
@@ -179,6 +189,7 @@ function feedbackUrl(leadId, resposta) {
 }
 
 function followupRespostaEmail(lead, leadId) {
+  const zona = lead.concelho || lead.zona || "";   // para o link levar a zona certa
   const creche = escapeHtml(lead.creche_nome || "creche");
   const nome = escapeHtml((lead.nome || "").split(" ")[0] || "");
   const urlSim = feedbackUrl(leadId, "sim");
@@ -208,7 +219,7 @@ function followupRespostaEmail(lead, leadId) {
         <a href="${hNao}" style="display:block;background:#F3ECEE;color:#7A6E77;font-weight:bold;font-size:15px;text-decoration:none;padding:16px 10px;border-radius:14px;text-align:center;border:1px solid #EADDE1">✗ Não, sem resposta</a>
       </td>
     </tr></table>
-    <p style="margin:22px 0 0;font-size:13.5px;color:#6E6989">Se ainda não tiveste resposta, não fiques à espera: no mapa podes ver creches com vaga perto de ti em <a href="https://creches.app/app" style="color:#B4255C">creches.app/app</a>.</p>
+    <p style="margin:22px 0 0;font-size:13.5px;color:#6E6989">Se ainda não tiveste resposta, não fiques à espera: no mapa podes ver creches com vaga perto de ti em <a href="${linkMapa(zona, {vaga: 1})}" style="color:#B4255C">creches.app/app</a>.</p>
     <p style="margin:16px 0 0;font-size:14px">— A equipa do creches.app</p>
   </td></tr>
   <tr><td style="padding:16px 32px 26px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#9B97B5;border-top:1px solid #F0ECF6">
@@ -251,6 +262,7 @@ function resultadoUrl(leadId, r) {
 }
 
 function resultadoEmail(lead, leadId) {
+  const zona = lead.concelho || lead.zona || "";   // para o link levar a zona certa
   const creche = escapeHtml(lead.creche_nome || "creche");
   const nome = escapeHtml((lead.nome || "").split(" ")[0] || "");
   const U = {
@@ -284,7 +296,7 @@ function resultadoEmail(lead, leadId) {
       ${botao(U.sem_vaga, "#FFE2EC", "#B4255C", "border:1px solid #FFC9DC", "😔 Não havia vaga")}
       ${botao(U.desisti,  "#F3EFF7", "#6E6989", "border:1px solid #E7E0EF", "🔄 Desistimos ou escolhemos outra")}
     </table>
-    <p style="margin:20px 0 0;font-size:13.5px;color:#6E6989">Se ainda estás à procura, no mapa podes filtrar por creches com vaga em <a href="https://creches.app/app" style="color:#B4255C">creches.app/app</a>.</p>
+    <p style="margin:20px 0 0;font-size:13.5px;color:#6E6989">Se ainda estás à procura, no mapa podes filtrar por creches com vaga em <a href="${linkMapa(zona, {vaga: 1})}" style="color:#B4255C">creches.app/app</a>.</p>
     <p style="margin:16px 0 0;font-size:14px">— A equipa do creches.app</p>
   </td></tr>
   <tr><td style="padding:16px 32px 26px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#9B97B5;border-top:1px solid #F0ECF6">
@@ -304,7 +316,7 @@ Estamos em lista de espera: ${U.espera}
 Não havia vaga: ${U.sem_vaga}
 Desistimos ou escolhemos outra: ${U.desisti}
 
-Se ainda estás à procura: https://creches.app/app
+Se ainda estás à procura: ${linkMapa(zona, {vaga: 1})}
 
 — A equipa do creches.app`;
   return {

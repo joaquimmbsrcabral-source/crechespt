@@ -146,6 +146,14 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
    o contraste vem do texto escuro sobre o fundo claro. */
 .q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
 .q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+.reclamar{margin:30px 0 10px;padding:22px 24px;border-radius:18px;background:linear-gradient(135deg,var(--c-cream),#FFF);border:1.5px solid #F0DCCB;box-shadow:var(--sh-1)}
+.reclamar-h{font-family:Fredoka,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.reclamar p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin:0 0 16px}
+.reclamar-acoes{display:flex;flex-wrap:wrap;gap:10px}
+.btn-reclamar{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 22px;border-radius:99px;background:var(--c-coral-dk);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn-reclamar:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(194,24,91,.25)}
+.btn-reclamar.sec{background:#fff;color:var(--ink-soft);border:1.5px solid #E7DDD4}
+@media(max-width:520px){.reclamar-acoes{flex-direction:column}.btn-reclamar{width:100%}}
 /* Linha do horário — informação de apoio, discreta por baixo do selo */
 .horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
   font-size:13.5px;color:var(--ink-soft);font-weight:600}
@@ -208,9 +216,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   .brand-name span{display:none}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro de Apoio Infantil Filadélfia", "url": "https://creches.app/creche/centro-de-apoio-infantil-filadelfia-1417", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Bernardo Marques, Lojas 4 C e 8 A", "addressLocality": "1750 LISBOA", "addressRegion": "Lisboa"}, "geo": {"@type": "GeoCoordinates", "latitude": 38.768551, "longitude": -9.162484}, "sameAs": null, "telephone": "211957166", "email": "associaçao@filadelfia.org"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ChildCare", "name": "Centro de Apoio Infantil Filadélfia", "url": "https://creches.app/creche/centro-de-apoio-infantil-filadelfia-1417", "address": {"@type": "PostalAddress", "addressCountry": "PT", "streetAddress": "Rua Bernardo Marques, Lojas 4 C e 8 A", "addressLocality": "1750 LISBOA", "addressRegion": "Lisboa"}, "geo": {"@type": "GeoCoordinates", "latitude": 38.768551, "longitude": -9.162484}, "sameAs": null, "telephone": "211957166"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://creches.app/"}, {"@type": "ListItem", "position": 2, "name": "Creches por distrito", "item": "https://creches.app/creches"}, {"@type": "ListItem", "position": 3, "name": "Creches em Lisboa", "item": "https://creches.app/creches/lisboa"}, {"@type": "ListItem", "position": 4, "name": "Creches em Lisboa", "item": "https://creches.app/creches/lisboa/lisboa"}, {"@type": "ListItem", "position": 5, "name": "Centro de Apoio Infantil Filadélfia", "item": "https://creches.app/creche/centro-de-apoio-infantil-filadelfia-1417"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro de Apoio Infantil Filadélfia é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro de Apoio Infantil Filadélfia integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Centro de Apoio Infantil Filadélfia?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 4 meses aos 3 anos. Funciona como creche. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Centro de Apoio Infantil Filadélfia?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: 211957166. Email: associaçao@filadelfia.org."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Centro de Apoio Infantil Filadélfia é gratuita?", "acceptedAnswer": {"@type": "Answer", "text": "O Centro de Apoio Infantil Filadélfia integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência pode ser gratuita ao abrigo do programa Creche Feliz, se houver vaga."}}, {"@type": "Question", "name": "Que idades aceita O Centro de Apoio Infantil Filadélfia?", "acceptedAnswer": {"@type": "Answer", "text": "Dos 4 meses aos 3 anos. Funciona como creche. Valência confirmada na Carta Social (Segurança Social)."}}, {"@type": "Question", "name": "Como contactar O Centro de Apoio Infantil Filadélfia?", "acceptedAnswer": {"@type": "Answer", "text": "Telefone: 211957166."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -240,11 +248,11 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
       </div>
     </div>
     <!-- 3 CTAs GIGANTES sempre visíveis -->
-    <button type="button" class="cta-primary" id="btn-lead-primary"><span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button><div class="cta-primary-note">Deixas o contacto, enviamos o pedido à creche e avisamos-te se não responderem</div><div class="ctas-big"><a class="cta-big" href="tel:211957166" aria-label="Ligar"><span class="ic">📞</span><span class="lb">Ligar</span></a><a class="cta-big" href="mailto:associaçao@filadelfia.org?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20%E2%80%94%20Centro%20de%20Apoio%20Infantil%20Filad%C3%A9lfia&amp;body=Ol%C3%A1%2C%0A%0AGostaria%20de%20saber%20se%20t%C3%AAm%20vaga%20para%20a%20pr%C3%B3xima%20%C3%A9poca%20e%20qual%20o%20procedimento%20de%20inscri%C3%A7%C3%A3o.%0A%0AObrigado%28a%29" aria-label="Enviar email"><span class="ic">✉</span><span class="lb">Email</span></a><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.768551,-9.162484" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Centro de Apoio Infantil Filadélfia" data-share-slug="centro-de-apoio-infantil-filadelfia-1417" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="cs-1417" data-cmp-name="Centro de Apoio Infantil Filadélfia" data-cmp-slug="centro-de-apoio-infantil-filadelfia-1417" data-cmp-tipo="IPSS" data-cmp-distrito="Lisboa" data-cmp-localidade="1750 LISBOA" data-cmp-lat="38.768551" data-cmp-lon="-9.162484" aria-label="Adicionar a comparar">📊 Comparar</button></div>
+    <a class="cta-primary is-call" href="tel:211957166"><span class="pic" aria-hidden="true">📞</span><span class="pl">Ligar 211957166</span></a><div class="cta-primary-note">Ainda não temos o email desta creche para enviarmos o pedido por ti</div><div class="ctas-big"><a class="cta-big" href="https://www.google.com/maps/dir/?api=1&destination=38.768551,-9.162484" target="_blank" rel="noopener" aria-label="Como chegar"><span class="ic">🗺</span><span class="lb">Direcções</span></a></div><div class="ctas-tert"><button type="button" class="cta-tert cta-share" data-share-name="Centro de Apoio Infantil Filadélfia" data-share-slug="centro-de-apoio-infantil-filadelfia-1417" aria-label="Partilhar com outros pais">💬 Partilhar</button><span class="sep">·</span><button type="button" class="cta-tert cta-compare" data-cmp-id="cs-1417" data-cmp-name="Centro de Apoio Infantil Filadélfia" data-cmp-slug="centro-de-apoio-infantil-filadelfia-1417" data-cmp-tipo="IPSS" data-cmp-distrito="Lisboa" data-cmp-localidade="1750 LISBOA" data-cmp-lat="38.768551" data-cmp-lon="-9.162484" aria-label="Adicionar a comparar">📊 Comparar</button></div>
   </section>
 
   <!-- 🟢 Vaga em tempo real — slot preenchido por vagas.js se houver vaga activa -->
-  <div id="vaga-slot" data-creche-id="cs-1417" data-creche-nome="Centro de Apoio Infantil Filadélfia" data-creche-email="associaçao@filadelfia.org" data-creche-telefone="211957166"></div>
+  <div id="vaga-slot" data-creche-id="cs-1417" data-creche-nome="Centro de Apoio Infantil Filadélfia" data-creche-telefone="211957166"></div>
 
   <!-- Botão para pais reportarem vaga descoberta -->
   <div style="text-align:center;margin:14px 0 20px">
@@ -256,8 +264,9 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     </button>
   </div>
 
-  <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
+  <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (email). <a href="mailto:geral@creches.app?subject=Contacto%20Centro%20de%20Apoio%20Infantil%20Filadélfia">Sabes? Ajuda outros pais →</a></div>
   <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 — cedo o suficiente para quem entra ao serviço às 8h.</span></div>
+  <div class="q-banner ok">📋 <span>O Centro de Apoio Infantil Filadélfia tinha <b>1 lugar por preencher</b> no último registo oficial (30 de 31 lugares ocupados). <span class="q-src">Fonte: Carta Social · não é confirmação de vaga — confirma com a creche.</span></span></div>
   <p class="horario-linha"><span>🕐 7:30 – 18:30</span><span class="h-src">· horário confirmado na Carta Social</span></p>
 
   <!-- Stats cards visuais -->
@@ -298,12 +307,25 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   <div class="faq">
     <details><summary>O Centro de Apoio Infantil Filadélfia é gratuita?</summary><p>O Centro de Apoio Infantil Filadélfia integra a rede solidária (IPSS). Para crianças nascidas a partir de 1 de setembro de 2021, a frequência de creche pode ser gratuita ao abrigo do programa <a href="/guias/creche-feliz">Creche Feliz</a>, se a instituição integrar a rede aderente e tiver vaga. Confirma diretamente com a instituição ou na app oficial da Segurança Social.</p></details>
     <details><summary>Que idades aceita?</summary><p>Dos 4 meses aos 3 anos — funciona como creche. Em caso de dúvida (berçário, salas por ano), confirma com a instituição: a capacidade por sala muda todos os anos letivos.</p></details>
-    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:211957166">211957166</a> ou escrever para <a href="mailto:associaçao@filadelfia.org">associaçao@filadelfia.org</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
+    <details><summary>Como posso contactar ou visitar?</summary><p>Podes ligar para o <a href="tel:211957166">211957166</a>. Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
+  </div>
+
+  <!-- Reclamar a página. Antes era uma linha de letra miudinha no rodapé que nem
+       dizia o nome da creche. Esta é a página onde a diretora cai ao pesquisar a
+       própria instituição no Google — vale a pena que perceba que é dela. -->
+  <div class="reclamar">
+    <div class="reclamar-h">🏫 Trabalha no Centro de Apoio Infantil Filadélfia?</div>
+    <p>Esta página é pública e aparece no Google. Pode passar a geri-la — <b>gratuitamente e
+    para sempre</b> — para corrigir os contactos, publicar o horário, dizer quando há vaga
+    e receber diretamente os pedidos das famílias que a encontram aqui.</p>
+    <div class="reclamar-acoes">
+      <a class="btn-reclamar" href="/painel?creche=cs-1417">Gerir esta página</a>
+      <a class="btn-reclamar sec" href="mailto:geral@creches.app?subject=Correção: Centro de Apoio Infantil Filadélfia">Reportar uma correção</a>
+    </div>
   </div>
 
   <div class="aviso">
     Dados de <a href="" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-08-29. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
-    És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: Centro de Apoio Infantil Filadélfia">reporta uma correção</a>.
   </div>
 </main>
 <footer>

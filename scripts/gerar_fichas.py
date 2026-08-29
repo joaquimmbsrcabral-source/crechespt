@@ -210,7 +210,7 @@ main{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
    pêssego da marca não aguentam texto branco por cima (falham o AA), por isso
    o contraste vem do texto escuro sobre o fundo claro. */
 .q-banner.horario{background:linear-gradient(135deg,var(--c-peach-soft),var(--c-yellow-soft));color:#7A4A12;border-left:4px solid var(--c-peach)}
-.q-banner a{color:inherit;text-decoration:underline;font-weight:700}
+.q-banner a{color:inherit;text-decoration:underline;font-weight:700}\n.reclamar{margin:30px 0 10px;padding:22px 24px;border-radius:18px;background:linear-gradient(135deg,var(--c-cream),#FFF);border:1.5px solid #F0DCCB;box-shadow:var(--sh-1)}\n.reclamar-h{font-family:Fredoka,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}\n.reclamar p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin:0 0 16px}\n.reclamar-acoes{display:flex;flex-wrap:wrap;gap:10px}\n.btn-reclamar{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 22px;border-radius:99px;background:var(--c-coral-dk);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:transform .15s,box-shadow .15s}\n.btn-reclamar:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(194,24,91,.25)}\n.btn-reclamar.sec{background:#fff;color:var(--ink-soft);border:1.5px solid #E7DDD4}\n@media(max-width:520px){.reclamar-acoes{flex-direction:column}.btn-reclamar{width:100%}}
 /* Linha do horário — informação de apoio, discreta por baixo do selo */
 .horario-linha{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0 0;
   font-size:13.5px;color:var(--ink-soft);font-weight:600}
@@ -598,6 +598,57 @@ for c in creches:
             horario_selo = ('<div class="q-banner horario">🕐 <span><b>Horário alargado</b> — '
                             + esc(texto_selo(hor)) + '</span></div>')
 
+    en_a = esc(com_artigo(nome))
+    _art_a = com_artigo(nome).lower().startswith("a ")
+    # === Lotação oficial (Carta Social) =========================================
+    # 1.547 creches têm estes dois números e até agora ninguém os via. É o único
+    # sinal de "onde provavelmente há lugar" com cobertura nacional — mas é um
+    # retrato anual, por isso nunca escrevemos "tem vaga", só quantos lugares
+    # estavam ocupados no último registo.
+    lotacao_banner = ""
+    _cap = c.get("capacidade_oficial")
+    _ut = c.get("utentes_oficial")
+    if _cap:
+        try:
+            _cap = int(_cap)
+        except (TypeError, ValueError):
+            _cap = 0
+        if _cap > 0 and _ut is not None:
+            try:
+                _ut = int(_ut)
+            except (TypeError, ValueError):
+                _ut = None
+        if _cap > 0 and isinstance(_ut, int):
+            _pct = round(_ut / _cap * 100)
+            _folga = _cap - _ut
+            if _folga <= 0:
+                # Sem adjetivos com género: o sujeito tanto pode ser "a creche"
+                # como "o jardim de infância", e "estava completa" saía errado
+                # em metade das 1.547 fichas.
+                _frase = (f"<b>não tinha lugares livres</b> no último registo oficial "
+                          f"({_ut} de {_cap} lugares ocupados)")
+                _classe = "warn"
+                _emoji = "📋"
+            elif _folga == 1:
+                _frase = (f"tinha <b>1 lugar por preencher</b> no último registo oficial "
+                          f"({_ut} de {_cap} lugares ocupados)")
+                _classe = "ok"
+                _emoji = "📋"
+            else:
+                _frase = (f"tinha <b>{_folga} lugares por preencher</b> no último registo "
+                          f"oficial ({_ut} de {_cap} ocupados, {_pct}%)")
+                _classe = "ok" if _pct < 95 else "info"
+                _emoji = "📋"
+            lotacao_banner = (
+                f'<div class="q-banner {_classe}">{_emoji} <span>{en_a} {_frase}. '
+                f'<span class="q-src">Fonte: Carta Social · não é confirmação de vaga — '
+                f'confirma com a creche.</span></span></div>')
+        elif _cap > 0:
+            lotacao_banner = (
+                f'<div class="q-banner info">📋 <span>Capacidade licenciada: '
+                f'<b>{_cap} lugares</b>. <span class="q-src">Fonte: Carta Social.</span>'
+                f'</span></div>')
+
     # === Creches próximas — mini-cards com pills coloridos ===
     viz = vizinhas(c)
     vlis = "\n".join(
@@ -692,6 +743,7 @@ for c in creches:
 
   {banner}
   {horario_selo}
+  {lotacao_banner}
   {horario_linha}
 
   <!-- Stats cards visuais -->
@@ -729,9 +781,22 @@ for c in creches:
     <details><summary>Como posso contactar ou visitar?</summary><p>{contacto_faq} Vê no nosso guia <a href="/guias/como-escolher-creche">as 15 perguntas a fazer na visita</a>.</p></details>
   </div>
 
+  <!-- Reclamar a página. Antes era uma linha de letra miudinha no rodapé que nem
+       dizia o nome da creche. Esta é a página onde a diretora cai ao pesquisar a
+       própria instituição no Google — vale a pena que perceba que é dela. -->
+  <div class="reclamar">
+    <div class="reclamar-h">🏫 Trabalha n{'a' if _art_a else 'o'} {en}?</div>
+    <p>Esta página é pública e aparece no Google. Pode passar a geri-la — <b>gratuitamente e
+    para sempre</b> — para corrigir os contactos, publicar o horário, dizer quando há vaga
+    e receber diretamente os pedidos das famílias que a encontram aqui.</p>
+    <div class="reclamar-acoes">
+      <a class="btn-reclamar" href="/painel?creche={esc(c['id'])}">Gerir esta página</a>
+      <a class="btn-reclamar sec" href="mailto:geral@creches.app?subject=Correção: {en}">Reportar uma correção</a>
+    </div>
+  </div>
+
   <div class="aviso">
     Dados de <a href="{esc(c.get('osm_url',''))}" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a {HOJE}. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
-    És responsável por esta creche? <a href="/para-creches">Atualiza os teus dados</a> ou <a href="mailto:geral@creches.app?subject=Correção: {en}">reporta uma correção</a>.
   </div>
 </main>
 {FOOTER}

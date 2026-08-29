@@ -126,15 +126,26 @@ def main():
     if os.path.exists("index.html"):
         idx = open("index.html", encoding="utf-8").read()
         original = idx
-        for dslug, cs in por_distrito.items():
-            rot = cs[0]["distrito"]
-            idx = re.sub(rf'(>{re.escape(rot)}\s*</?[^>]*>?\s*)\b\d+\b', rf"\g<1>{len(cs)}", idx)
-            idx = re.sub(rf"\b{re.escape(rot)} (\d+)\b", f"{rot} {len(cs)}", idx)
+        # Os dois regexes antigos nunca casavam com o HTML real da homepage —
+        # os cartões são <a href="/creches/{slug}" …><span>📍 Nome</span><span …>N</span></a>,
+        # com atributos de estilo enormes pelo meio. Resultado: a homepage anunciou
+        # 853 creches em Lisboa durante semanas enquanto /creches/lisboa dizia 836.
+        # Passamos a ancorar no href, que é estável, e a substituir o último número.
+        alvo = {dslug: len(cs) for dslug, cs in por_distrito.items()}
+
+        def _corrige(m):
+            dslug = m.group("slug")
+            if dslug not in alvo:
+                return m.group(0)
+            return re.sub(r"(>)\d+(</span>)", rf"\g<1>{alvo[dslug]}\g<2>", m.group(0))
+
+        idx = re.sub(r'<a href="/creches/(?P<slug>[a-z-]+)"(?:(?!</a>).)*?</a>',
+                     _corrige, idx, flags=re.S)
         if idx != original:
             open("index.html", "w", encoding="utf-8").write(idx)
             print("✓ contagens da homepage actualizadas")
         else:
-            print("· homepage sem contagens no formato esperado — verificar à mão")
+            print("· homepage já com as contagens certas")
 
 
 if __name__ == "__main__":

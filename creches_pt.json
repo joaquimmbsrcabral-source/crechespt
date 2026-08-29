@@ -29904,7 +29904,6 @@
   "codigo_postal": "2795-158",
   "distrito": "Lisboa",
   "telefone": "+351 214191239",
-  "email": "palhaço@misericordia-oeiras.pt",
   "fax": "+351 214228641",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -29925,7 +29924,11 @@
   "natureza_juridica": "Irmandade da Misericórdia / SCM",
   "email_oficial": "cji.opalhaco@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "email_anterior_morto": "palhaço@misericordia-oeiras.pt",
+  "email_estado": "invalido_acentos",
+  "email_verificado_em": "2026-08-29",
+  "email_verificado_fonte": "revisao_manual"
  },
  {
   "id": "osm-way-1105343921",
@@ -72661,7 +72664,6 @@
   "codigo_postal": null,
   "localidade": "1750 LISBOA",
   "telefone": "211957166",
-  "email": "associaçao@filadelfia.org",
   "operador": "ASSOCIAÇÃO VIDA CRISTÃ FILADÉLFIA",
   "concelho": "Lisboa",
   "concelho_slug": "lisboa",
@@ -72681,7 +72683,11 @@
   "capacidade_oficial": 31,
   "utentes_oficial": 30,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_anterior_morto": "associaçao@filadelfia.org",
+  "email_estado": "invalido_acentos",
+  "email_verificado_em": "2026-08-29",
+  "email_verificado_fonte": "revisao_manual"
  },
  {
   "id": "cs-1761",
@@ -96858,7 +96864,6 @@
   "codigo_postal": "2560-657",
   "localidade": "TORRES VEDRAS",
   "telefone": "261317901",
-  "email": "associaçãosvicente@hotmail.com",
   "operador": "ASSSOCIAÇÃO DE SOLIDARIEDADE SOCIAL DE S. VICENTE",
   "concelho": "Torres Vedras",
   "concelho_slug": "torres-vedras",
@@ -96878,7 +96883,11 @@
   "capacidade_oficial": 56,
   "utentes_oficial": 56,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_anterior_morto": "associaçãosvicente@hotmail.com",
+  "email_estado": "invalido_acentos",
+  "email_verificado_em": "2026-08-29",
+  "email_verificado_fonte": "revisao_manual"
  },
  {
   "id": "cs-27508",

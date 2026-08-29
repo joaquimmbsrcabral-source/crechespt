@@ -55,6 +55,20 @@ def main():
     indice = re.sub(
         r"<sitemap>\s*<loc>([^<]+)</loc>.*?</sitemap>", troca, indice, flags=re.S
     )
+    # ── Sitemaps novos que existem em disco mas ainda não estão no índice ──
+    # Aconteceu com o sitemap-horario-alargado.xml: gerámos 100 páginas novas e
+    # elas ficaram invisíveis para o Google porque ninguém se lembrou de as
+    # declarar aqui. Passa a ser automático.
+    ja_listados = set(re.findall(r"<loc>[^<]*/(sitemap-[^<]+\.xml)</loc>", indice))
+    novos = sorted(set(glob.glob("sitemap-*.xml")) - ja_listados)
+    for ficheiro in novos:
+        bloco = (f"  <sitemap>\n"
+                 f"    <loc>https://creches.app/{ficheiro}</loc>\n"
+                 f"    <lastmod>{data_do_sitemap(ficheiro)}</lastmod>\n"
+                 f"  </sitemap>\n")
+        indice = indice.replace("</sitemapindex>", bloco + "</sitemapindex>", 1)
+        print(f"  + {ficheiro} acrescentado ao índice")
+
     open("sitemap.xml", "w", encoding="utf-8").write(indice)
 
     if alterados:

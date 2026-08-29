@@ -18,7 +18,9 @@ if [ "$2" != "--sem-gerar" ]; then
   echo "🔄 A regenerar a partir do dataset..."
   python3 scripts/gerar_fichas.py           > /dev/null && echo "  ✓ fichas"
   python3 scripts/gerar_concelhos.py        > /dev/null && echo "  ✓ concelhos"
+  python3 scripts/gerar_horario_alargado.py --limpar-orfas > /dev/null && echo "  ✓ horário alargado"
   python3 scripts/atualizar_distritos.py    > /dev/null && echo "  ✓ distritos"
+  python3 scripts/atualizar_creches_index.py > /dev/null && echo "  ✓ /creches (números)"
   python3 scripts/atualizar_sitemap_index.py> /dev/null && echo "  ✓ sitemaps"
   python3 scripts/atualizar_dataset_app.py   || exit 1
 

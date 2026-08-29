@@ -43,7 +43,12 @@ function esc(s) {
   return String(s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-function emailHTML(nome, ficha) {
+// `views` = visualizações reais da página desta creche. O construirLoteAuto() já
+// as calculava para ordenar o lote e depois deitava-as fora. Dizer "foi vista 143
+// vezes" transforma o email de carta comercial em facto sobre a instituição —
+// mas só quando o número aguenta ser dito: abaixo de 10 não prova nada.
+const VIEWS_MINIMO = 10;
+function emailHTML(nome, ficha, views) {
   const verFicha = ficha
     ? `<tr><td style="padding:0 0 8px"><a href="${esc(ficha)}" style="color:#FF6B9D;font-weight:bold;text-decoration:none">👀 Ver a vossa página pública →</a></td></tr>`
     : "";
@@ -60,8 +65,10 @@ function emailHTML(nome, ficha) {
   </td></tr>
   <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
     <p style="margin:0 0 16px">Bom dia,</p>
-    <p style="margin:0 0 16px">Sou o Joaquim Cabral, fundador do <b>creches.app</b> — o mapa nacional de creches, com 2.591 estabelecimentos e destacado no Público, na NiT e na Mensagem de Lisboa. Criei-o quando esperava o meu primeiro filho.</p>
-    <p style="margin:0 0 8px">A <b>${esc(nome)}</b> já tem uma página pública no creches.app, que famílias consultam todos os dias.</p>
+    <p style="margin:0 0 16px">Sou o Joaquim Cabral, fundador do <b>creches.app</b> — o mapa nacional de creches, com 4.037 estabelecimentos e destacado no Público, na NiT e na Mensagem de Lisboa. Criei-o quando esperava o meu primeiro filho.</p>
+    <p style="margin:0 0 8px">${(views >= VIEWS_MINIMO)
+      ? `A página da <b>${esc(nome)}</b> foi vista <b>${views} vezes</b> no creches.app por famílias à procura de creche.`
+      : `A <b>${esc(nome)}</b> já tem uma página pública no creches.app, que famílias consultam todos os dias.`}</p>
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 20px">${verFicha}</table>
     <div style="background:#FFF6EE;border-radius:14px;padding:18px 20px;margin:0 0 22px">
       <div style="font-weight:bold;margin-bottom:10px;color:#2C2356">A novidade: podem geri-la gratuitamente</div>
@@ -88,12 +95,14 @@ function emailHTML(nome, ficha) {
 </body></html>`;
 }
 
-function emailText(nome, ficha) {
+function emailText(nome, ficha, views) {
   return `Bom dia,
 
-Sou o Joaquim Cabral, fundador do creches.app — o mapa nacional de creches (2.591 estabelecimentos, destacado no Público, na NiT e na Mensagem de Lisboa). Criei-o quando esperava o meu primeiro filho.
+Sou o Joaquim Cabral, fundador do creches.app — o mapa nacional de creches (4.037 estabelecimentos, destacado no Público, na NiT e na Mensagem de Lisboa). Criei-o quando esperava o meu primeiro filho.
 
-A ${nome} já tem uma página pública no creches.app, que famílias consultam todos os dias.${ficha ? `\nVer a vossa página: ${ficha}` : ""}
+${(views >= VIEWS_MINIMO)
+  ? `A página da ${nome} foi vista ${views} vezes no creches.app por famílias à procura de creche.`
+  : `A ${nome} já tem uma página pública no creches.app, que famílias consultam todos os dias.`}${ficha ? `\nVer a vossa página: ${ficha}` : ""}
 
 A novidade: podem geri-la gratuitamente —
 - Atualizar contactos, horários e mensalidades
@@ -142,7 +151,7 @@ async function construirLoteAuto(db, limit) {
     .map((c) => ({
       id: String(c.id), nome: c.nome, email: c.email,
       views: views.get(String(c.id)) || 0,
-      ficha: /^osm-/.test(String(c.id)) ? ("https://creches.app/creche/" + slugify(c.nome) + "-" + String(c.id).replace(/\D/g, "")) : "",
+      ficha: /^(osm-|cs-)/.test(String(c.id)) ? ("https://creches.app/creche/" + slugify(c.nome) + "-" + String(c.id).replace(/\D/g, "")) : "",
     }))
     .sort((a, b) => b.views - a.views);
   const lote = cand.slice(0, limit);
@@ -195,6 +204,7 @@ export default async function handler(req, res) {
       const id = String(r.id || r.email || "");
       const email = String(r.email || "").trim();
       const nome = String(r.nome || "a vossa creche").slice(0, 200);
+      const views = Number(r.views) || 0;
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { results.push({ id, email, status: "email_invalido" }); continue; }
 
       // Idempotência: já enviado?
@@ -212,9 +222,11 @@ export default async function handler(req, res) {
             from: FROM_EMAIL,
             to: [email],
             reply_to: "geral@creches.app",
-            subject: `A página da ${nome} no creches.app — já a podem gerir (grátis)`,
-            html: emailHTML(nome, r.ficha),
-            text: emailText(nome, r.ficha),
+            subject: (views >= VIEWS_MINIMO)
+              ? `A página da ${nome} foi vista ${views} vezes no creches.app`
+              : `A página da ${nome} no creches.app — já a podem gerir (grátis)`,
+            html: emailHTML(nome, r.ficha, views),
+            text: emailText(nome, r.ficha, views),
           }),
         });
         const ok = resp.ok;

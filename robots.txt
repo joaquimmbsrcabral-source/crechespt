@@ -9,6 +9,16 @@ Allow: /
 Disallow: /admin
 Disallow: /admin.html
 
+# Documentos internos de trabalho: propostas datadas, rascunhos de outreach e
+# apresentações. Estão na raiz porque é daqui que os partilho por link, mas os
+# números que contêm são snapshots do dia em que foram escritos — o Google a
+# indexá-los põe "2591 creches" e "4.150 estabelecimentos" a competir nos
+# resultados com as páginas reais, que dizem 4.037.
+Disallow: /Fundacao-JM-
+Disallow: /instagram-dms-
+Disallow: /gmail-drafts-
+Disallow: /Assinatura-Gmail-
+
 # ---- AI training & search bots (permissão explícita) ----
 
 # OpenAI
