@@ -1,642 +1,762 @@
 {
-  "tentadas": {
-    "osm-node-1814710258": {
-      "data": "2026-07-19",
-      "resultado": "email+site",
-      "fonte": "cssademia.com"
-    },
-    "osm-node-1988288505": {
-      "data": "2026-07-19",
-      "resultado": "telefone+site",
-      "fonte": "braga.cruzvermelha.pt"
-    },
-    "osm-node-2194531980": {
-      "data": "2026-07-19",
-      "resultado": "email+site",
-      "fonte": "cics.pt"
-    },
-    "osm-node-2541717978": {
-      "data": "2026-07-19",
-      "resultado": "email+telefone+site",
-      "fonte": "scmmealhada.pt"
-    },
-    "osm-node-2808881281": {
-      "data": "2026-07-19",
-      "resultado": "email+telefone+site",
-      "fonte": "fundacaocpsssaveiro.pt"
-    },
-    "osm-node-5115491657": {
-      "data": "2026-07-19",
-      "resultado": "email+telefone+site",
-      "fonte": "associacaosolnascente.pt"
-    },
-    "osm-node-5221426483": {
-      "data": "2026-07-19",
-      "resultado": "telefone",
-      "fonte": "pai.pt"
-    },
-    "osm-node-5720822112": {
-      "data": "2026-07-19",
-      "resultado": "nada",
-      "fonte": ""
-    },
-    "osm-node-5863089543": {
-      "data": "2026-07-19",
-      "resultado": "email+site",
-      "fonte": "atrium7.pt / cm-almada.pt"
-    },
-    "osm-node-7882260544": {
-      "data": "2026-07-19",
-      "resultado": "email",
-      "fonte": "pequenosindios.pt"
-    },
-    "osm-node-8699540509": {
-      "data": "2026-07-19",
-      "resultado": "nada",
-      "fonte": "site oficial sem email"
-    },
-    "osm-node-11203601713": {
-      "data": "2026-07-19",
-      "resultado": "telefone",
-      "fonte": "misericordiasjm.org"
-    },
-    "osm-node-11303236774": {
-      "data": "2026-07-20",
-      "resultado": "email",
-      "fonte": "servicospublicos.pt/guiapt.com"
-    },
-    "osm-node-11408632696": {
-      "data": "2026-07-20",
-      "resultado": "email",
-      "fonte": "cartolinhas.pt / crechenaminharua.pt"
-    },
-    "osm-node-11453860481": {
-      "data": "2026-07-20",
-      "resultado": "nada",
-      "fonte": "site oficial sem email visível"
-    },
-    "osm-node-11835234052": {
-      "data": "2026-07-20",
-      "resultado": "nada",
-      "fonte": "diretórios sem email"
-    },
-    "osm-node-11835677799": {
-      "data": "2026-07-20",
-      "resultado": "email",
-      "fonte": "ostrombinhas.pt / pai.pt"
-    },
-    "osm-node-11835677800": {
-      "data": "2026-07-20",
-      "resultado": "email+site",
-      "fonte": "colegioosilustres.pt"
-    },
-    "osm-node-11835677813": {
-      "data": "2026-07-20",
-      "resultado": "email",
-      "fonte": "pai.pt / directorioescolas.eu"
-    },
-    "osm-node-11835677814": {
-      "data": "2026-07-20",
-      "resultado": "email+site",
-      "fonte": "duendemagico.pt"
-    },
-    "osm-node-11835677852": {
-      "data": "2026-07-20",
-      "resultado": "email+site",
-      "fonte": "crechecolinasdocruzeiro.com"
-    },
-    "osm-node-11835677853": {
-      "data": "2026-07-20",
-      "resultado": "nada",
-      "fonte": "sem email em fontes fiáveis"
-    },
-    "osm-node-11879966764": {
-      "data": "2026-07-20",
-      "resultado": "email+facebook",
-      "fonte": "escoladevidro.pt / facebook"
-    },
-    "osm-node-11883403372": {
-      "data": "2026-07-20",
-      "resultado": "email",
-      "fonte": "academiadospimpolhos.com"
-    },
-    "osm-way-146952375": {
-      "data": "2026-07-22",
-      "resultado": "email",
-      "fonte": "scme.pt/contactos"
-    },
-    "osm-node-11967812984": {
-      "data": "2026-07-22",
-      "resultado": "email",
-      "fonte": "mapasocial.pt"
-    },
-    "osm-way-168522918": {
-      "data": "2026-07-22",
-      "resultado": "email",
-      "fonte": "ossalineiros.pt / diretórios"
-    },
-    "osm-node-11939558015": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "stocondestavel.pt"
-    },
-    "osm-node-11954645930": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "cspavidos.net"
-    },
-    "osm-node-11962804178": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "mapasocial.pt / solsil.pt"
-    },
-    "osm-node-11962804271": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "asassantajoana.pt"
-    },
-    "osm-node-11970695439": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "obradofreigil.pt/contact"
-    },
-    "osm-node-12063147257": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "pequenosedivertidos.pt/contactos"
-    },
-    "osm-node-12064093073": {
-      "data": "2026-07-22",
-      "resultado": "email+site",
-      "fonte": "mapasocial.pt / amamacoelha.pt"
-    },
-    "osm-node-11981301488": {
-      "data": "2026-07-22",
-      "resultado": "site",
-      "fonte": "scmtorresnovas.pt (email protegido no site)"
-    },
-    "osm-node-11970553038": {
-      "data": "2026-07-22",
-      "resultado": "nada",
-      "fonte": "email protegido em diretórios; habitovar.pt em manutenção"
-    },
-    "osm-node-11910594391": {
-      "data": "2026-07-26",
-      "resultado": "email+telefone+site",
-      "fonte": "crechenaminharua.pt/creches/genios-em-marcha"
-    },
-    "osm-node-11956149079": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "mapasocial.pt/pt/centro-paroquial-e-social-de-barbeita-creche-arco-iris/I2938"
-    },
-    "osm-node-11956179232": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "casadopovocreixomil.wordpress.com/contactos"
-    },
-    "osm-node-11959252978": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "confrariasantaeulalia.pt/contactos"
-    },
-    "osm-node-11961365526": {
-      "data": "2026-07-26",
-      "resultado": "email",
-      "fonte": "servicospublicos.pt/servico-publico/13767"
-    },
-    "osm-node-11967812815": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "associacao-adip.webnode.pt/contacto"
-    },
-    "osm-node-11970119211": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "abep.pt (site oficial)"
-    },
-    "osm-node-11970695409": {
-      "data": "2026-07-26",
-      "resultado": "email+site",
-      "fonte": "mapasocial.pt/pt/centro-social-bem-querer-da-brenha/I1054"
-    },
-    "osm-node-11981301493": {
-      "data": "2026-07-26",
-      "resultado": "site",
-      "fonte": "aiyellow.com (dir.)"
-    },
-    "osm-node-12059871971": {
-      "data": "2026-07-26",
-      "resultado": "nada"
-    },
-    "osm-node-12063069367": {
-      "data": "2026-07-26",
-      "resultado": "nada"
-    },
-    "osm-node-12063110984": {
-      "data": "2026-07-26",
-      "resultado": "nada"
-    },
-    "osm-node-11990073457": {
-      "data": "2026-07-29",
-      "resultado": "email+site",
-      "fonte": "misericordiafaro.pt/contactos"
-    },
-    "osm-node-12063915596": {
-      "data": "2026-07-29",
-      "resultado": "email+site",
-      "fonte": "centro-social-da-musgueira.webnode.pt/contacto"
-    },
-    "osm-node-12063965852": {
-      "data": "2026-07-29",
-      "resultado": "email+site",
-      "fonte": "diretorios pai.pt/servicospublicos.pt (nome+morada coincidem)"
-    },
-    "osm-node-12064093059": {
-      "data": "2026-07-29",
-      "resultado": "email+site",
-      "fonte": "creche-e-aparece.com/contactos"
-    },
-    "osm-node-12998851478": {
-      "data": "2026-07-29",
-      "resultado": "email+site+tel",
-      "fonte": "csnsalegria.com"
-    },
-    "osm-way-163833871": {
-      "data": "2026-07-29",
-      "resultado": "email+site+tel",
-      "fonte": "scmourique.pt (email institucional SCM Ourique)"
-    },
-    "osm-way-236563538": {
-      "data": "2026-07-29",
-      "resultado": "email+site",
-      "fonte": "abla.org (email institucional ABLA, operadora)"
-    },
-    "osm-way-285419178": {
-      "data": "2026-07-29",
-      "resultado": "email",
-      "fonte": "criancaevida.net (via pesquisa; morada Miguel Bombarda 57 coincide)"
-    },
-    "osm-way-307168933": {
-      "data": "2026-07-29",
-      "resultado": "email",
-      "fonte": "santacasamontijo.pt (email institucional SCM Montijo)"
-    },
-    "osm-way-323837108": {
-      "data": "2026-07-29",
-      "resultado": "email",
-      "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
-    },
-    "osm-way-323909907": {
-      "data": "2026-07-29",
-      "resultado": "email",
-      "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
-    },
-    "osm-way-416562283": {
-      "data": "2026-07-29",
-      "resultado": "email",
-      "fonte": "amovalflor.org/#contact (email da área de educação)"
-    },
-    "osm-way-486651394": {
-      "data": "2026-07-31",
-      "resultado": "nada",
-      "fonte": "email não confirmado (cepe.cc defunto; diretórios sem email)"
-    },
-    "osm-way-537807519": {
-      "data": "2026-07-31",
-      "resultado": "email+site",
-      "fonte": "scmfamalicao.pt"
-    },
-    "osm-way-600460626": {
-      "data": "2026-07-31",
-      "resultado": "email",
-      "fonte": "anossacasa.eu (site oficial)"
-    },
-    "osm-way-631684850": {
-      "data": "2026-07-31",
-      "resultado": "nada",
-      "fonte": "empresa inativa (Iberinform); sem contactos online"
-    },
-    "osm-way-798829089": {
-      "data": "2026-07-31",
-      "resultado": "email",
-      "fonte": "jardimdassementinhas.pt / viseupositivo.pt"
-    },
-    "osm-way-917216509": {
-      "data": "2026-07-31",
-      "resultado": "nada",
-      "fonte": "site oficial JS sem email; diretórios sem confirmação"
-    },
-    "osm-way-1008790822": {
-      "data": "2026-07-31",
-      "resultado": "telefone",
-      "fonte": "crechenaminharua.pt"
-    },
-    "osm-way-1039141139": {
-      "data": "2026-07-31",
-      "resultado": "email",
-      "fonte": "brincadeirasaocubo.com (site oficial)"
-    },
-    "osm-way-1161540326": {
-      "data": "2026-07-31",
-      "resultado": "nada",
-      "fonte": "diretórios sem email"
-    },
-    "osm-way-1212021379": {
-      "data": "2026-07-31",
-      "resultado": "email",
-      "fonte": "pai.pt (morada coincide)"
-    },
-    "osm-way-1272028803": {
-      "data": "2026-07-31",
-      "resultado": "nada",
-      "fonte": "site oficial JS sem email visível"
-    },
-    "osm-way-1276615463": {
-      "data": "2026-07-31",
-      "resultado": "email+site",
-      "fonte": "oficinadossonhos.pt"
-    },
-    "osm-way-430995350": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "cspcr.com (site oficial)"
-    },
-    "osm-way-533599556": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "scmav.org.pt (site oficial SCM Alhos Vedros)"
-    },
-    "osm-way-694016333": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "cse.pt + diretórios"
-    },
-    "osm-way-722393384": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "scmalenquer.pt/contactos (site oficial)"
-    },
-    "osm-way-734291367": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "scmconstancia.pt (site oficial)"
-    },
-    "osm-way-761579568": {
-      "data": "2026-08-06",
-      "resultado": "email+website+telefone",
-      "fonte": "cspb.pt (site oficial)"
-    },
-    "osm-way-872715645": {
-      "data": "2026-08-06",
-      "resultado": "email",
-      "fonte": "diretórios + domínio oficial scmbjm.pt"
-    },
-    "osm-way-1272888822": {
-      "data": "2026-08-06",
-      "resultado": "email",
-      "fonte": "assap.pt (site oficial)"
-    },
-    "osm-way-1279769525": {
-      "data": "2026-08-06",
-      "resultado": "email",
-      "fonte": "infantarios.pt + Facebook oficial"
-    },
-    "osm-way-1279788477": {
-      "data": "2026-08-06",
-      "resultado": "email",
-      "fonte": "infantarios.pt (nome+morada coincidem)"
-    },
-    "osm-way-665340807": {
-      "data": "2026-08-06",
-      "resultado": "nada"
-    },
-    "osm-way-1279769545": {
-      "data": "2026-08-06",
-      "resultado": "nada"
-    },
-    "osm-way-1279788478": {
-      "data": "2026-08-07",
-      "resultado": "email",
-      "fonte": "crechenaminharua.pt"
-    },
-    "osm-way-1280140574": {
-      "data": "2026-08-07",
-      "resultado": "email+site",
-      "fonte": "pai.pt (Páginas Amarelas)"
-    },
-    "osm-way-1283016477": {
-      "data": "2026-08-07",
-      "resultado": "email",
-      "fonte": "criancasecompanhia.com / coverflex.com"
-    },
-    "osm-way-1283016487": {
-      "data": "2026-08-07",
-      "resultado": "email+site",
-      "fonte": "colegiodoamial.com / crechenaminharua.pt"
-    },
-    "osm-way-1283025293": {
-      "data": "2026-08-07",
-      "resultado": "email",
-      "fonte": "pai.pt / servicospublicos.pt"
-    },
-    "osm-way-1283620545": {
-      "data": "2026-08-07",
-      "resultado": "email+site",
-      "fonte": "acs21porto.com"
-    },
-    "osm-way-1283620546": {
-      "data": "2026-08-07",
-      "resultado": "email+site+telefone",
-      "fonte": "pezinhos-de-la.pt (site oficial)"
-    },
-    "osm-way-1283660759": {
-      "data": "2026-08-07",
-      "resultado": "nada"
-    },
-    "osm-way-1283718685": {
-      "data": "2026-08-07",
-      "resultado": "email+site",
-      "fonte": "crechenaminharua.pt"
-    },
-    "osm-way-1287502647": {
-      "data": "2026-08-07",
-      "resultado": "email+site+telefone",
-      "fonte": "cibaloico.com / pai.pt"
-    },
-    "osm-way-1287760344": {
-      "data": "2026-08-07",
-      "resultado": "nada"
-    },
-    "osm-way-1289191502": {
-      "data": "2026-08-07",
-      "resultado": "email",
-      "fonte": "scmfamalicao.pt / mapasocial.pt"
-    },
-    "osm-way-1291060283": {
-      "data": "2026-08-08",
-      "resultado": "email"
-    },
-    "osm-way-1291878637": {
-      "data": "2026-08-08",
-      "resultado": "email"
-    },
-    "osm-way-1290078561": {
-      "data": "2026-08-08",
-      "resultado": "email+site"
-    },
-    "osm-way-1290078570": {
-      "data": "2026-08-08",
-      "resultado": "email+site"
-    },
-    "osm-way-1290310820": {
-      "data": "2026-08-08",
-      "resultado": "email+site+telefone"
-    },
-    "osm-way-1291699736": {
-      "data": "2026-08-08",
-      "resultado": "email+site"
-    },
-    "osm-way-1291163184": {
-      "data": "2026-08-08",
-      "resultado": "email+site (operador SCM Portalegre)"
-    },
-    "osm-way-1291135431": {
-      "data": "2026-08-08",
-      "resultado": "site"
-    },
-    "osm-way-1289215714": {
-      "data": "2026-08-08",
-      "resultado": "nada"
-    },
-    "osm-way-1289753554": {
-      "data": "2026-08-08",
-      "resultado": "nada"
-    },
-    "osm-way-1290253877": {
-      "data": "2026-08-08",
-      "resultado": "nada"
-    },
-    "osm-way-1290775101": {
-      "data": "2026-08-08",
-      "resultado": "nada"
-    },
-    "osm-way-1292026043": {
-      "data": "2026-08-10",
-      "resultado": "email",
-      "fonte": "https://www.mapasocial.pt/pt/geracao-aventura/I2709"
-    },
-    "osm-way-1292220133": {
-      "data": "2026-08-10",
-      "resultado": "email",
-      "fonte": "https://scmriomaior.pt/contactos-creche-e-jardim-de-infancia-o-ninho/"
-    },
-    "osm-way-1293294566": {
-      "data": "2026-08-10",
-      "resultado": "email+telefone+site",
-      "fonte": "https://cruzvermelhatavira.pt/pt/contactos/13centro-de-apoio-integrado-a-criancas-a-gaivota-caic"
-    },
-    "osm-way-1293493512": {
-      "data": "2026-08-10",
-      "resultado": "email",
-      "fonte": "https://superescola.pt/"
-    },
-    "osm-way-1293493527": {
-      "data": "2026-08-10",
-      "resultado": "email+site",
-      "fonte": "https://www.belainfancia.pt/contactos.php"
-    },
-    "osm-way-1298800097": {
-      "data": "2026-08-10",
-      "resultado": "email+telefone+site",
-      "fonte": "https://www.colegiodarochinha.com/contactos"
-    },
-    "osm-way-1300577895": {
-      "data": "2026-08-10",
-      "resultado": "nada"
-    },
-    "osm-way-1300609220": {
-      "data": "2026-08-10",
-      "resultado": "site",
-      "fonte": "http://ocarinho.pt/"
-    },
-    "osm-way-1300620746": {
-      "data": "2026-08-10",
-      "resultado": "email+site",
-      "fonte": "https://sultour.pt/externatohelguinha"
-    },
-    "osm-way-1301166097": {
-      "data": "2026-08-10",
-      "resultado": "email+site",
-      "fonte": "https://csdbrottier.pt/en/contacts/"
-    },
-    "osm-way-1301858454": {
-      "data": "2026-08-10",
-      "resultado": "email+site",
-      "fonte": "https://colegiodesantamaria.pt/contactos/"
-    },
-    "osm-way-1302095438": {
-      "data": "2026-08-10",
-      "resultado": "nada"
-    },
-    "osm-node-1033327595": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://scmcuba.pt/contactos"
-    },
-    "osm-node-11203373340": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://scmvfc.pt/creche/"
-    },
-    "osm-node-11655027138": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://www.cspcampea.com/index.php/contactos"
-    },
-    "osm-node-11655027225": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://cspsantoantonio.pt/"
-    },
-    "osm-node-11987874706": {
-      "data": "2026-08-13",
-      "resultado": "site+telefone (sem email específico fiável)",
-      "fonte": "https://caritascoimbra.pt"
-    },
-    "osm-node-1225469967": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://associacaomaconde.wixsite.com/braga/Contact"
-    },
-    "osm-node-12335685186": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://misericordiaseverdovouga.pt/contactos/"
-    },
-    "osm-node-1238482887": {
-      "data": "2026-08-13",
-      "resultado": "nada (ambíguo: SCM Bom Jesus de Matosinhos tem 3 equipamentos infantis; não foi possível identificar qual)"
-    },
-    "osm-node-1240877911": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://scmcinfaes.pt/"
-    },
-    "osm-node-1257259826": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://scmmealhada.pt/contactos/educacao/"
-    },
-    "osm-node-12927908570": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://www.somosipss.pt/ipss/centro-social-do-couto-mineiro-do-pejao"
-    },
-    "osm-node-13019248211": {
-      "data": "2026-08-13",
-      "resultado": "email+site+telefone",
-      "fonte": "https://www.cm-peniche.pt/pages/1756?poi_id=173"
-    }
+ "tentadas": {
+  "osm-node-1814710258": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "cssademia.com"
+  },
+  "osm-node-1988288505": {
+   "data": "2026-07-19",
+   "resultado": "telefone+site",
+   "fonte": "braga.cruzvermelha.pt"
+  },
+  "osm-node-2194531980": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "cics.pt"
+  },
+  "osm-node-2541717978": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "scmmealhada.pt"
+  },
+  "osm-node-2808881281": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "fundacaocpsssaveiro.pt"
+  },
+  "osm-node-5115491657": {
+   "data": "2026-07-19",
+   "resultado": "email+telefone+site",
+   "fonte": "associacaosolnascente.pt"
+  },
+  "osm-node-5221426483": {
+   "data": "2026-07-19",
+   "resultado": "telefone",
+   "fonte": "pai.pt"
+  },
+  "osm-node-5720822112": {
+   "data": "2026-07-19",
+   "resultado": "nada",
+   "fonte": ""
+  },
+  "osm-node-5863089543": {
+   "data": "2026-07-19",
+   "resultado": "email+site",
+   "fonte": "atrium7.pt / cm-almada.pt"
+  },
+  "osm-node-7882260544": {
+   "data": "2026-07-19",
+   "resultado": "email",
+   "fonte": "pequenosindios.pt"
+  },
+  "osm-node-8699540509": {
+   "data": "2026-07-19",
+   "resultado": "nada",
+   "fonte": "site oficial sem email"
+  },
+  "osm-node-11203601713": {
+   "data": "2026-07-19",
+   "resultado": "telefone",
+   "fonte": "misericordiasjm.org"
+  },
+  "osm-node-11303236774": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "servicospublicos.pt/guiapt.com"
+  },
+  "osm-node-11408632696": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "cartolinhas.pt / crechenaminharua.pt"
+  },
+  "osm-node-11453860481": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "site oficial sem email visível"
+  },
+  "osm-node-11835234052": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "diretórios sem email"
+  },
+  "osm-node-11835677799": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "ostrombinhas.pt / pai.pt"
+  },
+  "osm-node-11835677800": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "colegioosilustres.pt"
+  },
+  "osm-node-11835677813": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "pai.pt / directorioescolas.eu"
+  },
+  "osm-node-11835677814": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "duendemagico.pt"
+  },
+  "osm-node-11835677852": {
+   "data": "2026-07-20",
+   "resultado": "email+site",
+   "fonte": "crechecolinasdocruzeiro.com"
+  },
+  "osm-node-11835677853": {
+   "data": "2026-07-20",
+   "resultado": "nada",
+   "fonte": "sem email em fontes fiáveis"
+  },
+  "osm-node-11879966764": {
+   "data": "2026-07-20",
+   "resultado": "email+facebook",
+   "fonte": "escoladevidro.pt / facebook"
+  },
+  "osm-node-11883403372": {
+   "data": "2026-07-20",
+   "resultado": "email",
+   "fonte": "academiadospimpolhos.com"
+  },
+  "osm-way-146952375": {
+   "data": "2026-07-22",
+   "resultado": "email",
+   "fonte": "scme.pt/contactos"
+  },
+  "osm-node-11967812984": {
+   "data": "2026-07-22",
+   "resultado": "email",
+   "fonte": "mapasocial.pt"
+  },
+  "osm-way-168522918": {
+   "data": "2026-07-22",
+   "resultado": "email",
+   "fonte": "ossalineiros.pt / diretórios"
+  },
+  "osm-node-11939558015": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "stocondestavel.pt"
+  },
+  "osm-node-11954645930": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "cspavidos.net"
+  },
+  "osm-node-11962804178": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "mapasocial.pt / solsil.pt"
+  },
+  "osm-node-11962804271": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "asassantajoana.pt"
+  },
+  "osm-node-11970695439": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "obradofreigil.pt/contact"
+  },
+  "osm-node-12063147257": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "pequenosedivertidos.pt/contactos"
+  },
+  "osm-node-12064093073": {
+   "data": "2026-07-22",
+   "resultado": "email+site",
+   "fonte": "mapasocial.pt / amamacoelha.pt"
+  },
+  "osm-node-11981301488": {
+   "data": "2026-07-22",
+   "resultado": "site",
+   "fonte": "scmtorresnovas.pt (email protegido no site)"
+  },
+  "osm-node-11970553038": {
+   "data": "2026-07-22",
+   "resultado": "nada",
+   "fonte": "email protegido em diretórios; habitovar.pt em manutenção"
+  },
+  "osm-node-11910594391": {
+   "data": "2026-07-26",
+   "resultado": "email+telefone+site",
+   "fonte": "crechenaminharua.pt/creches/genios-em-marcha"
+  },
+  "osm-node-11956149079": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "mapasocial.pt/pt/centro-paroquial-e-social-de-barbeita-creche-arco-iris/I2938"
+  },
+  "osm-node-11956179232": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "casadopovocreixomil.wordpress.com/contactos"
+  },
+  "osm-node-11959252978": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "confrariasantaeulalia.pt/contactos"
+  },
+  "osm-node-11961365526": {
+   "data": "2026-07-26",
+   "resultado": "email",
+   "fonte": "servicospublicos.pt/servico-publico/13767"
+  },
+  "osm-node-11967812815": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "associacao-adip.webnode.pt/contacto"
+  },
+  "osm-node-11970119211": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "abep.pt (site oficial)"
+  },
+  "osm-node-11970695409": {
+   "data": "2026-07-26",
+   "resultado": "email+site",
+   "fonte": "mapasocial.pt/pt/centro-social-bem-querer-da-brenha/I1054"
+  },
+  "osm-node-11981301493": {
+   "data": "2026-07-26",
+   "resultado": "site",
+   "fonte": "aiyellow.com (dir.)"
+  },
+  "osm-node-12059871971": {
+   "data": "2026-07-26",
+   "resultado": "nada"
+  },
+  "osm-node-12063069367": {
+   "data": "2026-07-26",
+   "resultado": "nada"
+  },
+  "osm-node-12063110984": {
+   "data": "2026-07-26",
+   "resultado": "nada"
+  },
+  "osm-node-11990073457": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "misericordiafaro.pt/contactos"
+  },
+  "osm-node-12063915596": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "centro-social-da-musgueira.webnode.pt/contacto"
+  },
+  "osm-node-12063965852": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "diretorios pai.pt/servicospublicos.pt (nome+morada coincidem)"
+  },
+  "osm-node-12064093059": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "creche-e-aparece.com/contactos"
+  },
+  "osm-node-12998851478": {
+   "data": "2026-07-29",
+   "resultado": "email+site+tel",
+   "fonte": "csnsalegria.com"
+  },
+  "osm-way-163833871": {
+   "data": "2026-07-29",
+   "resultado": "email+site+tel",
+   "fonte": "scmourique.pt (email institucional SCM Ourique)"
+  },
+  "osm-way-236563538": {
+   "data": "2026-07-29",
+   "resultado": "email+site",
+   "fonte": "abla.org (email institucional ABLA, operadora)"
+  },
+  "osm-way-285419178": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "criancaevida.net (via pesquisa; morada Miguel Bombarda 57 coincide)"
+  },
+  "osm-way-307168933": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "santacasamontijo.pt (email institucional SCM Montijo)"
+  },
+  "osm-way-323837108": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
+  },
+  "osm-way-323909907": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "umutualista.pt (email institucional UMNSC; email do centro protegido no site)"
+  },
+  "osm-way-416562283": {
+   "data": "2026-07-29",
+   "resultado": "email",
+   "fonte": "amovalflor.org/#contact (email da área de educação)"
+  },
+  "osm-way-486651394": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "email não confirmado (cepe.cc defunto; diretórios sem email)"
+  },
+  "osm-way-537807519": {
+   "data": "2026-07-31",
+   "resultado": "email+site",
+   "fonte": "scmfamalicao.pt"
+  },
+  "osm-way-600460626": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "anossacasa.eu (site oficial)"
+  },
+  "osm-way-631684850": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "empresa inativa (Iberinform); sem contactos online"
+  },
+  "osm-way-798829089": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "jardimdassementinhas.pt / viseupositivo.pt"
+  },
+  "osm-way-917216509": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "site oficial JS sem email; diretórios sem confirmação"
+  },
+  "osm-way-1008790822": {
+   "data": "2026-07-31",
+   "resultado": "telefone",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1039141139": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "brincadeirasaocubo.com (site oficial)"
+  },
+  "osm-way-1161540326": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "diretórios sem email"
+  },
+  "osm-way-1212021379": {
+   "data": "2026-07-31",
+   "resultado": "email",
+   "fonte": "pai.pt (morada coincide)"
+  },
+  "osm-way-1272028803": {
+   "data": "2026-07-31",
+   "resultado": "nada",
+   "fonte": "site oficial JS sem email visível"
+  },
+  "osm-way-1276615463": {
+   "data": "2026-07-31",
+   "resultado": "email+site",
+   "fonte": "oficinadossonhos.pt"
+  },
+  "osm-way-430995350": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cspcr.com (site oficial)"
+  },
+  "osm-way-533599556": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmav.org.pt (site oficial SCM Alhos Vedros)"
+  },
+  "osm-way-694016333": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cse.pt + diretórios"
+  },
+  "osm-way-722393384": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmalenquer.pt/contactos (site oficial)"
+  },
+  "osm-way-734291367": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "scmconstancia.pt (site oficial)"
+  },
+  "osm-way-761579568": {
+   "data": "2026-08-06",
+   "resultado": "email+website+telefone",
+   "fonte": "cspb.pt (site oficial)"
+  },
+  "osm-way-872715645": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "diretórios + domínio oficial scmbjm.pt"
+  },
+  "osm-way-1272888822": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "assap.pt (site oficial)"
+  },
+  "osm-way-1279769525": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "infantarios.pt + Facebook oficial"
+  },
+  "osm-way-1279788477": {
+   "data": "2026-08-06",
+   "resultado": "email",
+   "fonte": "infantarios.pt (nome+morada coincidem)"
+  },
+  "osm-way-665340807": {
+   "data": "2026-08-06",
+   "resultado": "nada"
+  },
+  "osm-way-1279769545": {
+   "data": "2026-08-06",
+   "resultado": "nada"
+  },
+  "osm-way-1279788478": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1280140574": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "pai.pt (Páginas Amarelas)"
+  },
+  "osm-way-1283016477": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "criancasecompanhia.com / coverflex.com"
+  },
+  "osm-way-1283016487": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "colegiodoamial.com / crechenaminharua.pt"
+  },
+  "osm-way-1283025293": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "pai.pt / servicospublicos.pt"
+  },
+  "osm-way-1283620545": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "acs21porto.com"
+  },
+  "osm-way-1283620546": {
+   "data": "2026-08-07",
+   "resultado": "email+site+telefone",
+   "fonte": "pezinhos-de-la.pt (site oficial)"
+  },
+  "osm-way-1283660759": {
+   "data": "2026-08-07",
+   "resultado": "nada"
+  },
+  "osm-way-1283718685": {
+   "data": "2026-08-07",
+   "resultado": "email+site",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-1287502647": {
+   "data": "2026-08-07",
+   "resultado": "email+site+telefone",
+   "fonte": "cibaloico.com / pai.pt"
+  },
+  "osm-way-1287760344": {
+   "data": "2026-08-07",
+   "resultado": "nada"
+  },
+  "osm-way-1289191502": {
+   "data": "2026-08-07",
+   "resultado": "email",
+   "fonte": "scmfamalicao.pt / mapasocial.pt"
+  },
+  "osm-way-1291060283": {
+   "data": "2026-08-08",
+   "resultado": "email"
+  },
+  "osm-way-1291878637": {
+   "data": "2026-08-08",
+   "resultado": "email"
+  },
+  "osm-way-1290078561": {
+   "data": "2026-08-08",
+   "resultado": "email+site"
+  },
+  "osm-way-1290078570": {
+   "data": "2026-08-08",
+   "resultado": "email+site"
+  },
+  "osm-way-1290310820": {
+   "data": "2026-08-08",
+   "resultado": "email+site+telefone"
+  },
+  "osm-way-1291699736": {
+   "data": "2026-08-08",
+   "resultado": "email+site"
+  },
+  "osm-way-1291163184": {
+   "data": "2026-08-08",
+   "resultado": "email+site (operador SCM Portalegre)"
+  },
+  "osm-way-1291135431": {
+   "data": "2026-08-08",
+   "resultado": "site"
+  },
+  "osm-way-1289215714": {
+   "data": "2026-08-08",
+   "resultado": "nada"
+  },
+  "osm-way-1289753554": {
+   "data": "2026-08-08",
+   "resultado": "nada"
+  },
+  "osm-way-1290253877": {
+   "data": "2026-08-08",
+   "resultado": "nada"
+  },
+  "osm-way-1290775101": {
+   "data": "2026-08-08",
+   "resultado": "nada"
+  },
+  "osm-way-1292026043": {
+   "data": "2026-08-10",
+   "resultado": "email",
+   "fonte": "https://www.mapasocial.pt/pt/geracao-aventura/I2709"
+  },
+  "osm-way-1292220133": {
+   "data": "2026-08-10",
+   "resultado": "email",
+   "fonte": "https://scmriomaior.pt/contactos-creche-e-jardim-de-infancia-o-ninho/"
+  },
+  "osm-way-1293294566": {
+   "data": "2026-08-10",
+   "resultado": "email+telefone+site",
+   "fonte": "https://cruzvermelhatavira.pt/pt/contactos/13centro-de-apoio-integrado-a-criancas-a-gaivota-caic"
+  },
+  "osm-way-1293493512": {
+   "data": "2026-08-10",
+   "resultado": "email",
+   "fonte": "https://superescola.pt/"
+  },
+  "osm-way-1293493527": {
+   "data": "2026-08-10",
+   "resultado": "email+site",
+   "fonte": "https://www.belainfancia.pt/contactos.php"
+  },
+  "osm-way-1298800097": {
+   "data": "2026-08-10",
+   "resultado": "email+telefone+site",
+   "fonte": "https://www.colegiodarochinha.com/contactos"
+  },
+  "osm-way-1300577895": {
+   "data": "2026-08-10",
+   "resultado": "nada"
+  },
+  "osm-way-1300609220": {
+   "data": "2026-08-10",
+   "resultado": "site",
+   "fonte": "http://ocarinho.pt/"
+  },
+  "osm-way-1300620746": {
+   "data": "2026-08-10",
+   "resultado": "email+site",
+   "fonte": "https://sultour.pt/externatohelguinha"
+  },
+  "osm-way-1301166097": {
+   "data": "2026-08-10",
+   "resultado": "email+site",
+   "fonte": "https://csdbrottier.pt/en/contacts/"
+  },
+  "osm-way-1301858454": {
+   "data": "2026-08-10",
+   "resultado": "email+site",
+   "fonte": "https://colegiodesantamaria.pt/contactos/"
+  },
+  "osm-way-1302095438": {
+   "data": "2026-08-10",
+   "resultado": "nada"
+  },
+  "osm-node-1033327595": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://scmcuba.pt/contactos"
+  },
+  "osm-node-11203373340": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://scmvfc.pt/creche/"
+  },
+  "osm-node-11655027138": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://www.cspcampea.com/index.php/contactos"
+  },
+  "osm-node-11655027225": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://cspsantoantonio.pt/"
+  },
+  "osm-node-11987874706": {
+   "data": "2026-08-13",
+   "resultado": "site+telefone (sem email específico fiável)",
+   "fonte": "https://caritascoimbra.pt"
+  },
+  "osm-node-1225469967": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://associacaomaconde.wixsite.com/braga/Contact"
+  },
+  "osm-node-12335685186": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://misericordiaseverdovouga.pt/contactos/"
+  },
+  "osm-node-1238482887": {
+   "data": "2026-08-13",
+   "resultado": "nada (ambíguo: SCM Bom Jesus de Matosinhos tem 3 equipamentos infantis; não foi possível identificar qual)"
+  },
+  "osm-node-1240877911": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://scmcinfaes.pt/"
+  },
+  "osm-node-1257259826": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://scmmealhada.pt/contactos/educacao/"
+  },
+  "osm-node-12927908570": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://www.somosipss.pt/ipss/centro-social-do-couto-mineiro-do-pejao"
+  },
+  "osm-node-13019248211": {
+   "data": "2026-08-13",
+   "resultado": "email+site+telefone",
+   "fonte": "https://www.cm-peniche.pt/pages/1756?poi_id=173"
+  },
+  "osm-node-11974118500": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://mapasocial.pt/pt/jardim-ide-infancia-e-catl-o-aviao/I403"
+  },
+  "osm-way-252558063": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://patrosantonio.webnode.pt/contactos/"
+  },
+  "osm-way-963783165": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://www.cm-almada.pt/externato-o-palhacinho-vaidoso"
+  },
+  "osm-way-1302095448": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://www.rotanacional.pt/anuncio/328488-vem-brincar-actividades-educativas-lda"
+  },
+  "osm-way-1302493212": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://moinhodesonho.pt/"
+  },
+  "osm-way-1302688327": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://colegioeuropeu-astoria.com/en/contact/"
+  },
+  "osm-way-339752590": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://www.externatotimtim.com/contactos.php"
+  },
+  "osm-way-1338316019": {
+   "data": "2026-08-20",
+   "resultado": "email+telefone",
+   "fonte": "https://www.casbi.pt/repostas-sociais/creche"
+  },
+  "cs-4056": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://www.idfgomes.pt/contactos/"
+  },
+  "cs-2778": {
+   "data": "2026-08-20",
+   "resultado": "email",
+   "fonte": "https://www.cm-viladoconde.pt/servicos/servicos-municipais/poi/centro-social-cultural-e-recreativo-arvorense"
+  },
+  "osm-way-1302111211": {
+   "data": "2026-08-20",
+   "resultado": "nada",
+   "nota": "Krexe e Muito Mais (Rio de Mouro) - só telefone em diretórios, email nao publicado"
+  },
+  "osm-way-1302366913": {
+   "data": "2026-08-20",
+   "resultado": "nada",
+   "nota": "Externato Fernando Pessoa (Queluz) - email encontrado pertence a homonimo em Lisboa"
+  },
+  "cs-18148": {
+   "data": "2026-08-26",
+   "resultado": "email",
+   "fonte": "www.mapasocial.pt"
+  },
+  "cs-39814": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "scmparedes.pt"
+  },
+  "cs-29035": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "www.asasderamalde.com"
+  },
+  "cs-3739": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "www.odps.org.pt"
+  },
+  "cs-27453": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "www.apdgalegos.com"
+  },
+  "osm-way-1302142903": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "cspspsje.pt"
+  },
+  "osm-way-1302307179": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "www.scmc-infancia.pt"
+  },
+  "osm-way-1302526685": {
+   "data": "2026-08-26",
+   "resultado": "email+site",
+   "fonte": "fundacao-paodeacucar-auchan.pt"
+  },
+  "cs-26781": {
+   "data": "2026-08-26",
+   "resultado": "sem_resultado",
+   "motivo": "sem email publico (Mapa Social sem email; sem site proprio)"
+  },
+  "cs-25711": {
+   "data": "2026-08-26",
+   "resultado": "sem_resultado",
+   "motivo": "sem email publico (Mapa Social sem email para o polo Gambelas)"
+  },
+  "cs-1112": {
+   "data": "2026-08-26",
+   "resultado": "sem_resultado",
+   "motivo": "so encontrado email pessoal nao institucional - nao aceite"
+  },
+  "osm-way-1302364625": {
+   "data": "2026-08-26",
+   "resultado": "sem_resultado",
+   "motivo": "email encontrado (aepzambujal.com) DESCARTADO: dominio sem MX"
   }
+ }
 }

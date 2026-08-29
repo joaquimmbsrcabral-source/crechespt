@@ -58,3 +58,9 @@ admin-import-cs.html
 node_modules/
 outputs/
 organizacao/
+
+# Recolha interna (Carta Social, geocodificação, CAOP). Não é para servir:
+# são megabytes de trabalho nosso, indexáveis e a pagar largura de banda.
+dados/
+# ...menos este, que o /admin usa para cruzar com dados do INE:
+!dados/populacao-concelhos.json

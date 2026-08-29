@@ -1,6 +1,276 @@
 {
  "entries": [
   {
+   "id": "2026-08-29-briefing",
+   "date": "2026-08-29",
+   "time": "09:25",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "38 convites enviados, 2 emails a responder",
+   "summary": "Enviei o lote diário: 38 convites entregues em 40 (2 falharam por caracteres acentuados no endereço de email). Faltam 2172 creches por convidar. Na caixa de entrada, 2 respostas relevantes — a Carla Prata da St John's School confirmou a correção do email e a Fabiana Ramos continua sem vaga de pré-escolar para o filho. Há 1 claim pendente por tratar no admin.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-29-ops",
+   "date": "2026-08-29",
+   "time": "09:23",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "1 claim escalado, 1 rascunho no Gmail",
+   "summary": "Triagem diária ao /api/ops: correções, reports, fotos e remoções estão todos a zero. Havia 1 claim pendente — Carla Prata (Secretaria/Administrativo) para a «St John's School», com email info@stjohns-school.com. A análise devolveu recomendação \"rever\": a creche não está no dataset e nem o domínio nem o email coincidem, por isso não aprovei. Deixei no Gmail um rascunho educado a pedir confirmação da ligação à instituição (resposta a partir do email oficial ou contacto telefónico para validação). Fica à tua espera essa decisão.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-28-briefing",
+   "date": "2026-08-28",
+   "time": "12:20",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, inbox vazia",
+   "summary": "Enviei o lote diário: 39 de 40 convites saíram e 1 voltou a falhar por caracteres não-ASCII no email (cs-1417, Filadélfia); faltam 2210 creches por convidar. A inbox não recebeu nada de novo nas últimas 24h — o pedido da mãe de Coimbra continua por responder desde ontem. Sem opt-outs, sem claims pendentes e sem fotos por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-28-ops",
+   "date": "2026-08-28",
+   "time": "12:17",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — filas todas a zero",
+   "summary": "Triagem diária ao /api/ops feita sem incidentes: o endpoint respondeu 200 e as cinco filas estão a zero — nenhuma correção de nome ou morada, nenhum report de idades, nenhum claim, nenhuma foto por moderar e nenhum pedido de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, por isso também não deixei rascunhos no Gmail. Nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-27-briefing",
+   "date": "2026-08-27",
+   "time": "20:57",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, 1 email de pai",
+   "summary": "Enviei o lote diário de convites: 39 de 40 chegaram e 1 falhou por o email ter caracteres não-ASCII (cs-1417, Filadélfia); faltam 2249 creches por convidar. Na inbox só entrou 1 email relevante — uma mãe de Coimbra a pedir ajuda sobre a candidatura da filha de 5 meses. Sem opt-outs, sem claims pendentes e sem fotos por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-27-ops",
+   "date": "2026-08-27",
+   "time": "20:55",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada a tratar hoje",
+   "summary": "Fiz a triagem diária ao /api/ops e as cinco filas estão a zero: nenhuma correção de nome ou morada, nenhum report de idades, nenhum claim, nenhuma foto por moderar e nenhum pedido de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, e por isso também não deixei rascunhos no Gmail. Nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-26-enriquecimento",
+   "date": "2026-08-26",
+   "time": "21:21",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "8 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches Privadas e IPSS sem email e encontrei 8 contactos válidos em fontes oficiais: Creche Abóbada (SCM Cascais), Centro Social Fonte de Moura (ODPS), Colégio Rik & Rok de Alfragide (Fundação Auchan), JI do Centro Social Paroquial do Estoril, Creche do Oural (SCM Paredes), Os Ramaldinhos, APD Galegos e a Misericórdia de Monforte. 1 candidato foi descartado por falhar o teste de MX — a Assoc. de Educação Popular do Zambujal, cujo domínio aepzambujal.com não recebe correio; as outras 3 ficaram sem email por não existir contacto público credível (Fidalguinho, O Relógio-Gambelas e Renascer de Bombel, esta só com um endereço pessoal). Nenhum registo verificado à mão foi tocado. Para publicar, corre ./deploy.sh no Terminal.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-26-briefing",
+   "date": "2026-08-26",
+   "time": "21:20",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, 19 leads novos",
+   "summary": "Lote diário enviado: 39 de 40 convites entregues — falhou de novo associaçao@filadelfia.org (email com acentos, não-ASCII). Faltam 2288 creches por convidar. Inbox sem emails novos nas últimas 24h e agenda vazia. Dia forte de leads: 19 novos (105 total), 690 utilizadores (+3), 212 views ontem, 11 creches aderentes. 1 claim pendente no admin (já tratado pelo agente de operações).",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-26-ops",
+   "date": "2026-08-26",
+   "time": "21:15",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Aprovei 1 claim, 1 rascunho no Gmail",
+   "summary": "Uma única pendência hoje: o claim da Márcia Vicente, diretora técnica do Jardim de Infância \"A Estrelinha Amarela\" (osm-node-12058000310). A análise devolveu recomendação \"aprovar\" — o email estrelinhaamarela2018@gmail.com coincide exactamente com o do dataset e o nome bate certo — por isso aprovei e deixei no Gmail o rascunho de boas-vindas com o link para o painel, pronto para reveres e enviares. Não havia correções, reports de idades, fotos nem pedidos de remoção pendentes. Nada mais à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-25-briefing",
+   "date": "2026-08-25",
+   "time": "21:15",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, inbox vazio",
+   "summary": "Lote diário enviado: 39 de 40 convites entregues — falhou outra vez o associaçao@filadelfia.org (email com acentos, não-ASCII). Faltam 2327 creches por convidar. Inbox sem qualquer email novo nas últimas 24h e agenda de hoje vazia; sem opt-outs, 0 claims pendentes e 0 fotos por moderar. Números: 687 utilizadores (+3), 7 leads novos, 195 views ontem, 11 creches aderentes.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-25-ops",
+   "date": "2026-08-25",
+   "time": "21:14",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "Triagem diária concluída sem trabalho: o endpoint /api/ops respondeu com todas as categorias a zero — nenhuma correção, report de idades, claim, foto ou pedido de remoção pendente. Não apliquei nem rejeitei nada e não deixei rascunhos no Gmail. Nada à espera do Joaquim.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-23-briefing",
+   "date": "2026-08-23",
+   "time": "09:43",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, 1 correção de nome",
+   "summary": "Lote diário enviado: 39 de 40 convites entregues (falhou outra vez associaçao@filadelfia.org, email com acentos). Faltam 2366 creches por convidar. Um único email no inbox: o Colégio Carrocel Mágico a corrigir a denominação da instituição. Sem opt-outs, sem claims pendentes e sem fotos por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-23-ops",
+   "date": "2026-08-23",
+   "time": "10:43",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "O /api/ops respondeu sem erros e devolveu todas as categorias a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções pendentes. Não apliquei, aprovei nem rejeitei nada, e não deixei rascunhos no Gmail. Segundo dia consecutivo sem fila de administração — nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-22-briefing",
+   "date": "2026-08-22",
+   "time": "09:47",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, inbox calmo",
+   "summary": "Lote diário enviado: 39 de 40 convites entregues (1 falhou por email com acentos: associaçao@filadelfia.org), faltam 2405 creches por convidar. Inbox só com 1 resposta automática da CM Coruche, sem opt-outs nem claims pendentes. Stats: 679 utilizadores, 143 views ontem, 11 creches aderentes.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-22-ops",
+   "date": "2026-08-22",
+   "time": "09:47",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "O /api/ops respondeu bem e devolveu tudo a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções pendentes. Não apliquei, aprovei nem rejeitei nada, e não deixei rascunhos no Gmail. O claim do Colégio «O Pimpolho», que ontem tinha ficado escalado, já não aparece na lista — presumo que o tenhas resolvido no admin. Nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-21-briefing",
+   "date": "2026-08-21",
+   "time": "15:30",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados, 1 claim à espera de ti",
+   "summary": "Enviei o lote diário de 40 convites (todos com sucesso) — faltam 2.444 creches por convidar. Sem emails novos nas últimas 24h; a única thread ativa é o Colégio O Pimpolho, que já pediu acesso e pediu correção de valências (creche, pré-escolar e 1.º CEB). Continua 1 claim pendente no admin e a agenda de hoje está vazia; sem opt-outs a tratar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-21-ops",
+   "date": "2026-08-21",
+   "time": "15:29",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "1 claim escalado (O Pimpolho), 1 rascunho no Gmail",
+   "summary": "O /api/ops só tinha 1 pendência: o claim do Colégio \"O Pimpolho\" (osm-way-1278789244), submetido a 20/08 por Raquel Vasconcelos, Direção. A análise devolveu recomendação \"rever\" — a creche está no dataset e o nome bate certo, mas o email do pedido (paula.mano@gmail.com) não coincide nem com o email do dataset (info@colegiopimpolho.pt) nem com o domínio opimpolho.pt, e o nome próprio do email também não corresponde ao da pessoa. Não aprovei nem rejeitei: fica escalado para ti. Deixei no Gmail um rascunho educado a pedir que respondam a partir do email oficial do colégio ou indiquem um telefone da instituição para validarmos. Sem correções, reports, fotos ou remoções pendentes — a foto que estava à espera desde 17/08 já não aparece na lista.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-20-enriquecimento",
+   "date": "2026-08-20",
+   "time": "11:15",
+   "agent": "Enriquecimento de dados",
+   "emoji": "🔍",
+   "title": "Encontrei 10 emails novos em 12 pesquisas",
+   "summary": "Pesquisei 12 creches Privadas/IPSS sem email e confirmei 10 emails novos (mais 1 telefone) — todos validados em fonte que identifica a creche pelo nome E pela morada: sites oficiais (Patronato Sto. António, Moinho de Sonho, Astória, Externato Tim Tim, Instituto D. Francisco Gomes, CASBI/Os Vidoeirinhos), câmaras municipais (Palhacinho Vaidoso via CM Almada, Centro Arvorense via CM Vila do Conde) e Mapa Social (Jardim Infantil O Avião, Beja). Só 2 ficaram sem email: o Krexe (Rio de Mouro) não o publica e o Externato Fernando Pessoa de Queluz só tinha um endereço de um homónimo em Lisboa — não arrisquei. Nota técnica: o passo dos emails devolvidos não correu, porque a ação leads_verificar_emails do /api/ops rebenta com 'dias is not defined' (falta Number(body.dias) na linha 743 do api/ops.js). Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-20-briefing",
+   "date": "2026-08-20",
+   "time": "10:30",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "39 convites enviados, 1 opt-out e 1 pedido de gestão",
+   "summary": "Enviei 39 dos 40 convites do lote de hoje (1 falhou por email com caracteres não-ASCII: cs-1417 Filadélfia) e restam 2484 creches por convidar. Dois emails precisam de ti: o Colégio \"O Pimpolho\" quer gerir a página (dados errados) e o Centro Social Paroquial Padre Ricardo Gameiro pediu REMOÇÃO da app e da mailing list. Stats: 677 utilizadores, 44 leads (3 novos), 16 vagas ativas, 103 views ontem, 0 claims pendentes e 1 foto por moderar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-20-ops",
+   "date": "2026-08-20",
+   "time": "10:28",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências de moderação — 1 foto continua à espera",
+   "summary": "Consultei o endpoint /api/ops: 0 correções, 0 reports de idades, 0 claims e 0 remoções pendentes, portanto não houve nada para aplicar, rejeitar ou escalar. Mantém-se 1 foto por moderar (creche osm-node-7882260544, submetida a 17/08) — é a mesma de ontem e continua à tua espera no /admin, já que não consigo ver imagens. Não deixei rascunhos no Gmail porque não houve claims para tratar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-19-briefing",
+   "date": "2026-08-19",
+   "time": "09:20",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites entregues, inbox sem nada relevante",
+   "summary": "Zero emails relevantes nas últimas 24h (só 2 notificações automáticas: Microsoft Advertising e Instagram) e agenda de hoje sem eventos. Acionei o lote diário de convites: a resposta do endpoint excedeu o tempo, mas confirmei no Resend que ~40 saíram às 09:17-09:18, todos entregues e sem bounces (restam ~2520 por convidar); nota: a 18/08 não saiu nenhum lote. Sem opt-outs nem claims pendentes, mas fica 1 foto por moderar no /admin; 677 utilizadores, 41 leads (1 novo), 16 vagas ativas e 59 views ontem.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-19-ops",
+   "date": "2026-08-19",
+   "time": "10:17",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências de moderação — 1 foto à tua espera",
+   "summary": "Consultei o endpoint /api/ops: 0 correções, 0 reports de idades, 0 claims e 0 remoções pendentes, por isso não houve nada para aplicar, rejeitar ou escalar. Fica 1 foto por moderar (creche osm-node-7882260544, submetida a 17/08) — como não consigo ver imagens, essa continua à tua espera no painel. Não deixei rascunhos no Gmail porque não houve claims para tratar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-17-briefing",
+   "date": "2026-08-17",
+   "time": "08:45",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados, inbox praticamente vazia",
+   "summary": "Enviei o lote diário de 40 convites com sucesso (2562 creches ainda por convidar) — resolveu o timeout da execução das 00:05. Inbox sem nada relevante nas últimas 24h (só 1 notificação do Instagram) e agenda sem eventos. Números estáveis: 677 utilizadores, 34 leads (1 novo), 15 vagas ativas, 10 creches aderentes, 0 claims pendentes e 0 fotos por moderar.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-17-ops",
+   "date": "2026-08-17",
+   "time": "08:09",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "Consultei o endpoint /api/ops e todas as categorias estão a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções. Não houve nada para aplicar, rejeitar ou escalar, e por isso também não deixei rascunhos no Gmail. Nada fica à tua espera nesta frente.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-16-ops",
+   "date": "2026-08-16",
+   "time": "22:30",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "Consultei o endpoint /api/ops e todas as categorias estão a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções. Não houve nada para aplicar, rejeitar ou escalar, e por isso também não deixei rascunhos no Gmail. Nada fica à tua espera nesta frente.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-15-briefing",
+   "date": "2026-08-15",
+   "time": "11:05",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados, inbox sem nada relevante",
+   "summary": "Zero emails relevantes nas últimas 24h (só 1 notificação do Instagram) e agenda de hoje sem eventos. Enviei o lote diário de 40 convites, todos com sucesso — restam 2642 creches por convidar (a base cresceu com o enriquecimento). Sem opt-outs, sem claims pendentes e sem fotos por moderar; 677 utilizadores (+3), 9 leads novos e 50 views ontem.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-15-ops",
+   "date": "2026-08-15",
+   "time": "11:03",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — nada para tratar hoje",
+   "summary": "Consultei o endpoint /api/ops e todas as categorias estão a zero: 0 correções, 0 reports de idades, 0 claims, 0 fotos e 0 remoções. Não houve nada para aplicar, rejeitar ou escalar, e por isso também não deixei rascunhos no Gmail. Nada fica à tua espera nesta frente.",
+   "status": "ok"
+  },
+  {
    "id": "2026-08-14-briefing",
    "date": "2026-08-14",
    "time": "09:05",
@@ -161,6 +431,16 @@
    "status": "attention"
   },
   {
+   "id": "2026-08-06-briefing",
+   "date": "2026-08-06",
+   "time": "09:57",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "80 convites hoje (lote duplicado) — quota Resend a 80%",
+   "summary": "Inbox sem emails relevantes. Este briefing correu duas vezes hoje e saíram DOIS lotes de 40 convites (80 no total) — o endpoint não bloqueou o segundo lote no mesmo dia; o Resend avisou que atingimos 80% da quota diária. Faltam 1214 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
+   "status": "attention"
+  },
+  {
    "id": "2026-08-06-enriquecimento",
    "date": "2026-08-06",
    "time": "09:54",
@@ -178,16 +458,6 @@
    "emoji": "🛡️",
    "title": "Escalei 2 claims novos, 2 rascunhos de verificação no Gmail",
    "summary": "Analisei 2 claims novos, ambos com recomendação 'rever': Pedro dos Santos para «Jardim Infantil \"O Rezingão\"» (email pedroperdigao@colegiorezingao.pt não coincide com o do dataset, ji.orezingao@escolas.min-edu.pt) e Marta Botelho para «Colégio Piloto Diese» (creche não está no dataset, sem sinais para validar). Não aprovei nem rejeitei nenhum; deixei 2 rascunhos no Gmail a pedir validação pelo email/telefone oficial. Mantém-se escalado o report de 26/07 do «Cantinho das Fadas» ('Nunca foi creche', contradiz o nome com 'Berçario'). Sem correções, fotos nem remoções.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-08-06-briefing",
-   "date": "2026-08-06",
-   "time": "09:57",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "80 convites hoje (lote duplicado) — quota Resend a 80%",
-   "summary": "Inbox sem emails relevantes. Este briefing correu duas vezes hoje e saíram DOIS lotes de 40 convites (80 no total) — o endpoint não bloqueou o segundo lote no mesmo dia; o Resend avisou que atingimos 80% da quota diária. Faltam 1214 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
    "status": "attention"
   },
   {
@@ -329,146 +599,6 @@
    "title": "Inbox calmo, 40 convites enviados",
    "summary": "0 emails relevantes nas últimas 24h (só 2 notificações automáticas). Enviei 40 convites a creches sem falhas — faltam 1475 por convidar. Sem opt-outs, claims pendentes nem fotos por moderar; agenda de hoje vazia.",
    "status": "ok"
-  },
-  {
-   "id": "2026-07-25-briefing",
-   "date": "2026-07-25",
-   "time": "08:57",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "Mensagem continua à espera; 40 convites",
-   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) continua sem resposta ao follow-up de dia 24 — responde-lhe hoje — e a Raquel Barão (Fundação JM) confirmou a reunião no Edifício Visconde de Alvalade. Enviei 40 convites (0 falhas) — faltam 1515 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-25-ops",
-   "date": "2026-07-25",
-   "time": "08:55",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências hoje",
-   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-24-briefing",
-   "date": "2026-07-24",
-   "time": "14:20",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "Mensagem insiste, Fundação marca reunião",
-   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) voltou a perguntar se viste o email dela — responde-lhe hoje — e a Raquel Barão (Fundação Jerónimo Martins) confirmou a reunião no Edifício Visconde de Alvalade. Enviei 40 convites (0 falhas) — faltam 1555 creches por convidar. Sem opt-outs, claims pendentes ou fotos por moderar.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-24-ops",
-   "date": "2026-07-24",
-   "time": "14:19",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências hoje",
-   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-22-enriquecimento",
-   "date": "2026-07-22",
-   "time": "09:10",
-   "agent": "Enriquecimento de dados",
-   "emoji": "🔍",
-   "title": "Encontrei 10 emails novos em 12 pesquisas",
-   "summary": "Pesquisei 12 creches Privadas/IPSS sem email: encontrei 10 emails novos, 8 websites e confirmei tudo em fontes oficiais (ex.: Centro Infantil da Misericórdia de Espinho, SOLSIL em Oiã, Obra do Frei Gil em Bustos, Pequenos e Divertidos em Odivelas). Só o JI Habitovar (Ovar) ficou sem contacto e a SCM Torres Novas só rendeu o website. Fichas regeneradas (2578). LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-22-briefing",
-   "date": "2026-07-22",
-   "time": "09:10",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "Mensagem de Lisboa quer avançar; 40 convites",
-   "summary": "1 email relevante: Catarina Reis, editora da Mensagem de Lisboa, quer avançar com o exclusivo dos dados de procura e pergunta em que formato estão. Enviei 40 convites (0 falhas) — faltam 1585 creches por convidar. Sem opt-outs; 0 claims pendentes, 1 foto por moderar no /admin.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-22-ops",
-   "date": "2026-07-22",
-   "time": "09:05",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Aprovei 1 claim, rascunho de boas-vindas no Gmail",
-   "summary": "Aprovei o claim de Eliane Morais (Secretaria/Administrativo) para o «Jardim de Infância da Fundação Vida Nova» — o email geral.vidanova@gmail.com coincide com o do dataset e o nome bate. Deixei o rascunho de boas-vindas no Gmail para reveres e enviares. Sem correções, reports nem remoções pendentes. Há 1 foto à tua espera para moderar (Ouriços do Saber, cabeçalho 2025).",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-21-briefing",
-   "date": "2026-07-21",
-   "time": "10:55",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "40 convites enviados, creche respondeu com entusiasmo",
-   "summary": "2 emails relevantes: a Bebés Fidalgos respondeu ao convite com entusiasmo (vai preencher o perfil) e o email à CNN Portugal falhou definitivamente após 3 dias de tentativas. Enviei 40 convites (0 falhas) — faltam 1610 creches por convidar. 1 claim pendente no /admin (Ouriços do Saber); sem opt-outs nem fotos por moderar.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-21-ops",
-   "date": "2026-07-21",
-   "time": "09:19",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "1 claim pronto para aprovação rápida",
-   "summary": "Zero correções, reports, fotos e remoções pendentes. Há 1 claim: Fatima Karolia (Direção) reclama a creche 'Ouriços do Saber' — o email ouricosdosaber@gmail.com coincide com o do dataset e o nome bate, sinais fortes para aprovação rápida no /admin. Não aprovei nada, como combinado.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-20-enriquecimento",
-   "date": "2026-07-20",
-   "time": "11:13",
-   "agent": "Enriquecimento de dados",
-   "emoji": "🔍",
-   "title": "Encontrei 16 emails novos em 24 pesquisas (2 lotes)",
-   "summary": "Pesquisei 24 creches Privadas/IPSS sem email em dois lotes (o de 19/07 tinha ficado aplicado mas por registar). Resultado: 16 emails, 11 websites e 6 telefones novos — ex.: Cartolinhas (Gaia), Os Trombinhas e Os Ilustres (Odivelas), Academia dos Pimpolhos (Viana), CSS Adémia (Coimbra), Casa da Criança da Misericórdia da Mealhada. As 2578 fichas e o sitemap foram regenerados com os dados novos. Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-20-briefing",
-   "date": "2026-07-20",
-   "time": "09:01",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "40 convites enviados, inbox calmo",
-   "summary": "Só 1 thread relevante nas últimas 24h (avisos de atraso na entrega do email à CNN Portugal). Enviei 40 convites a creches — faltam 1650 por convidar. Sem opt-outs, claims pendentes ou fotos por moderar.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-20-ops",
-   "date": "2026-07-20",
-   "time": "09:00",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências hoje",
-   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-19-ops",
-   "date": "2026-07-19",
-   "time": "19:40",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências hoje",
-   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
-   "status": "ok"
-  },
-  {
-   "id": "seed-1",
-   "date": "2026-07-19",
-   "time": "10:15",
-   "agent": "Sistema",
-   "emoji": "🛠️",
-   "title": "Diário dos agents criado",
-   "summary": "A partir de amanhã de manhã, o briefing diário passa a escrever aqui um resumo do que fez — emails, convites enviados, alertas para ti.",
-   "status": "info"
   }
  ]
 }

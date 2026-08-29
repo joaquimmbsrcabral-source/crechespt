@@ -56,21 +56,51 @@ async function aplicarRetencao(db) {
 
   try {
     const limite = new Date(Date.now() - MESES(24));
-    const antigos = await db.collection("creche_leads")
-      .where("ts", "<", limite).limit(400).get();
 
-    for (let i = 0; i < antigos.docs.length; i += 300) {
+    // Percorre com cursor em vez de pedir sempre os mesmos 400 primeiros.
+    //
+    // O que estava antes: `.where("ts","<",limite).limit(400)` devolvia
+    // invariavelmente os 400 leads mais antigos. A anonimização não mexe no
+    // `ts`, portanto na semana seguinte vinham exactamente os mesmos, eram
+    // todos saltados pelo `continue`, e os do 401.º em diante nunca chegavam a
+    // ser anonimizados. A promessa dos 24 meses que fazemos na política de
+    // privacidade deixava de ser cumprida — em silêncio, e só quando houvesse
+    // volume suficiente para alguém reparar.
+    //
+    // Filtrar por `anonimizado_em == null` não serviria: no Firestore, uma
+    // query sobre um campo exclui os documentos que não o têm — e os leads
+    // antigos não têm. Ficariam todos de fora, que é pior do que o bug.
+    const MAX_POR_EXECUCAO = 400;
+    const PAGINA = 300;
+    let cursor = null;
+    let vistos = 0;
+
+    while (resultado.leads_anonimizados < MAX_POR_EXECUCAO && vistos < 5000) {
+      let q = db.collection("creche_leads")
+        .where("ts", "<", limite).orderBy("ts").limit(PAGINA);
+      if (cursor) q = q.startAfter(cursor);
+      const pagina = await q.get();
+      if (pagina.empty) break;
+
+      cursor = pagina.docs[pagina.docs.length - 1];
+      vistos += pagina.size;
+
       const lote = db.batch();
-      for (const d of antigos.docs.slice(i, i + 300)) {
+      let nesteLote = 0;
+      for (const d of pagina.docs) {
         if (d.data().anonimizado_em) continue;
         lote.update(d.ref, {
           nome: null, email: null, telefone: null,
           nascimento: null, mensagem: null, token: null,
           anonimizado_em: new Date(),
         });
-        resultado.leads_anonimizados++;
+        nesteLote++;
       }
-      await lote.commit();
+      if (nesteLote) {
+        await lote.commit();
+        resultado.leads_anonimizados += nesteLote;
+      }
+      if (pagina.size < PAGINA) break;   // chegámos ao fim
     }
   } catch (e) {
     console.error("retenção/leads:", e.message);
@@ -106,6 +136,12 @@ export default async function handler(req, res) {
     }
     initFirebase();
     const db = getFirestore();
+
+    // A retenção corre ANTES dos emails. Estava no fim, depois de até 100
+    // chamadas ao Resend com pausas — nunca lá chegava dentro dos 10 s do
+    // plano Hobby, e a promessa dos 24 meses da política de privacidade
+    // ficava por cumprir sem ninguém dar por isso.
+    const retencao = await aplicarRetencao(db);
 
     // Dias (UTC) da última semana — mesmas chaves que os contadores usam
     const dias = [];
@@ -271,7 +307,6 @@ export default async function handler(req, res) {
       else console.error("digest falhou p/", creche_id, await resp.text());
     }
 
-    const retencao = await aplicarRetencao(db);
     return res.status(200).json({ ok: true, enviados, retencao });
   } catch (e) {
     console.error("weekly-digest:", e);

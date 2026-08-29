@@ -744,7 +744,7 @@ function atualizarProgresso(){
 function copiarLinkPagina(){
   const url = location.origin + fichaPublicaURL(MY_CRECHE.id, MY_CRECHE.nome);
   navigator.clipboard.writeText(url).then(() => {
-    ok("save-ok", "✓ Link copiado! Colem-no no vosso site, Facebook ou WhatsApp.");
+    ok("save-ok", "✓ Link copiado! Colem-no vosso site, Facebook ou WhatsApp.");
     setTimeout(() => ok("save-ok"), 4000);
   }).catch(() => { prompt("Copiem o link:", url); });
 }

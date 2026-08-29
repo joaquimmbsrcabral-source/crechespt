@@ -109,6 +109,69 @@ Ver no mapa: https://creches.app/app?creche=${encodeURIComponent(crecheId)}
 (Não queres mais alertas desta creche? Remove aqui: ${unsubUrl})`;
 }
 
+// ── Limite por IP ───────────────────────────────────────────────────────────
+// Este endpoint envia email para endereços que não foram confirmados por
+// ninguém: qualquer pessoa pode subscrever qualquer email a qualquer creche, e
+// depois reportar uma vaga para disparar o envio. Sem tecto, isso é um relay de
+// spam com o nosso domínio — queima a reputação e a conta do Resend.
+// O mesmo limite existe no /api/lead-notify, pelas mesmas razões.
+const LIMITE_HORA = 6;
+
+function ipDoPedido(req) {
+  const fwd = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return fwd || req.socket?.remoteAddress || "desconhecido";
+}
+
+async function dentroDoLimite(db, ip) {
+  const janela = new Date().toISOString().slice(0, 13);          // AAAA-MM-DDTHH
+  const ref = db.doc(`ratelimit/vaga-alert_${janela}_${Buffer.from(ip).toString("base64url")}`);
+  try {
+    const n = await db.runTransaction(async (t) => {
+      const d = await t.get(ref);
+      const atual = (d.exists && d.data().n) || 0;
+      if (atual >= LIMITE_HORA) return atual + 1;
+      t.set(ref, { n: atual + 1, ip, janela, expires_at: new Date(Date.now() + 2 * 3600e3) });
+      return atual + 1;
+    });
+    return n <= LIMITE_HORA;
+  } catch (e) {
+    return true;   // se o contador falhar, não bloqueamos pais legítimos
+  }
+}
+
+// O nome vai no assunto do email. Vindo do documento `vagas`, que qualquer
+// pessoa pode criar com 200 caracteres à escolha, era texto livre num assunto
+// enviado do nosso domínio. Passa a vir do dataset público, pelo creche_id.
+// O dataset tem 3,3 MB. O processo do Vercel é reaproveitado entre invocações
+// quentes, por isso guarda-se em memória por uma hora — senão era um download
+// por cada notificação, dentro de um limite de 10 segundos que já é apertado.
+let _nomes = null, _nomesEm = 0;
+
+async function nomeOficialDaCreche(crecheId) {
+  try {
+    if (!_nomes || Date.now() - _nomesEm > 3600e3) {
+      const r = await fetch("https://creches.app/creches_pt.json");
+      if (!r.ok) return null;
+      const ds = await r.json();
+      const lista = Array.isArray(ds) ? ds : ds.creches;
+      _nomes = new Map(lista.map(c => [String(c.id), String(c.nome || "")]));
+      _nomesEm = Date.now();
+    }
+    const n = _nomes.get(String(crecheId));
+    return n ? n.slice(0, 80) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Rede de segurança para quando a creche não está no dataset (criada via
+// creche_extras) ou o fetch falha: limpa o nome que veio do cliente em vez de
+// o usar cru numa linha de assunto enviada do nosso domínio.
+function nomeSeguro(bruto) {
+  const n = String(bruto || "").replace(/[\r\n]+/g, " ").replace(/[<>]/g, "").trim();
+  return n ? n.slice(0, 60) : null;
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://creches.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -133,6 +196,10 @@ export default async function handler(req, res) {
     }
 
     // Salvaguardas: a vaga tem de existir, ser desta creche, ser recente e não ser "sem_vaga"
+    if (!(await dentroDoLimite(db, ipDoPedido(req)))) {
+      return res.status(429).json({ error: "Demasiados pedidos. Tenta daqui a pouco." });
+    }
+
     const snap = await db.doc(`vagas/${vaga_id}`).get();
     if (!snap.exists) return res.status(404).json({ error: "Vaga não existe" });
     const vaga = snap.data();
@@ -157,7 +224,13 @@ export default async function handler(req, res) {
       if (!notifMs || notifMs < cutoff) elegiveis.push({ id: d.id, ref: d.ref, email: s.email });
     });
 
-    const nomeCreche = vaga.nome_creche || "esta creche";
+    // Só depois de sabermos que há mesmo quem notificar — o dataset é caro.
+    if (!elegiveis.length) return res.status(200).json({ ok: true, notificados: 0 });
+
+    // Nunca o nome cru do documento criado pelo cliente. Se o dataset não o
+    // tiver, usa-se a versão limpa; e se nem isso, uma frase que não fica
+    // partida em português ("Abriu vaga na esta creche!").
+    const nomeCreche = (await nomeOficialDaCreche(creche_id)) || nomeSeguro(vaga.nome_creche) || "";
     const quando = quandoReportada(ts);
     let notificados = 0;
 
@@ -170,7 +243,7 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             from: FROM_EMAIL,
             to: [sub.email],
-            subject: `🟢 Abriu vaga na ${nomeCreche}!`,
+            subject: nomeCreche ? `🟢 Abriu vaga na ${nomeCreche}!` : "🟢 Abriu vaga numa creche que estás a seguir!",
             html: emailHTML({ nomeCreche, crecheId: creche_id, quando, unsubUrl }),
             text: emailText({ nomeCreche, crecheId: creche_id, quando, unsubUrl })
           })

@@ -740,8 +740,7 @@ export default async function handler(req, res) {
       case "leads_reenviar":
         out = await actionLeadsReenviar(db, quem, Number(body.limite) || 10, Number(body.dias) || DIAS_MAX_LEAD); break;
       case "leads_verificar_emails":
-        resultado = await actionLeadsVerificarEmails(db, dias);
-        break;
+        return res.status(200).json(await actionLeadsVerificarEmails(db, Number(body.dias) || DIAS_MAX_LEAD));
       case "leads_endereco_suspeito":
         return res.status(200).json((await actionLeadsEnderecoSuspeito(db, Number(body.dias) || DIAS_MAX_LEAD)).body);
       case "leads_reenviar_suspeitos":

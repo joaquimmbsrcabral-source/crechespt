@@ -2723,10 +2723,10 @@ if(btnCopy) btnCopy.addEventListener("click", async ()=>{
     const lines = [
       `=== Resumo Creches.app — ${today} ===`,
       ``,
-      `Dataset base: 2.591 creches em 20 distritos`,
+      `Dataset base: 4.037 creches em 20 distritos`,
       `Creches extras adicionadas via admin: ${extrasUnicos} únicas (${extrasSnap.size} docs em creche_extras${extrasSnap.size > extrasUnicos ? " — há duplicados!" : ""})`,
       `Overrides de idade aplicados: ${overridesSnap.size}`,
-      `Total mapeado: ${2591 + extrasUnicos} creches`,
+      `Total mapeado: ${4037 + extrasUnicos} creches`,
       ``,
       `--- Métricas do dashboard ---`,
       ...Object.entries(counts).map(([k,v])=>`${k}: ${v}`),

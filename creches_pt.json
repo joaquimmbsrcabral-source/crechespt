@@ -272,7 +272,15 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Matosinhos",
-  "concelho_slug": "matosinhos"
+  "concelho_slug": "matosinhos",
+  "morada": "Rua Dr. José Ventura, 203",
+  "codigo_postal": "4450-172",
+  "localidade": "Matosinhos",
+  "telefone": "+351 229383137",
+  "email": "cl.fontedoisamigos@escolas.min-edu.pt",
+  "fundido_de": [
+   "osm-way-1279690032"
+  ]
  },
  {
   "id": "osm-node-1257259826",
@@ -795,7 +803,16 @@
   "concelho": "Mafra",
   "concelho_slug": "mafra",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
-  "carta_social_id": "20303"
+  "carta_social_id": "20303",
+  "morada": "Rua Moreira",
+  "codigo_postal": "2640-507",
+  "localidade": "Mafra",
+  "telefone": "+351 261 819 550",
+  "email": "ji.aescolinhadospequenitos@escolas.min-edu.pt",
+  "website": "https://www.escolinhadospequenitos.pt/",
+  "fundido_de": [
+   "osm-way-1274442964"
+  ]
  },
  {
   "id": "osm-node-1569106285",
@@ -934,7 +951,20 @@
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "skoolist.pt",
   "website": "http://www.kriabebes.pt/",
-  "telefone": "+351 214121906"
+  "telefone": "+351 214121906",
+  "morada": "RUA QUINTA DE SANTA MARTA, Nº 8C /8E",
+  "codigo_postal": "1495-171",
+  "localidade": "ALGÉS",
+  "horario": "7:30 - 20:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 93,
+  "utentes_oficial": 53,
+  "operador": "KRIABEBES-BERÇARIO, CRECHE E JARDIM DE INFÂNCIA, LDA",
+  "carta_social_id": "22543",
+  "fundido_de": [
+   "cs-22543"
+  ]
  },
  {
   "id": "osm-node-1590594034",
@@ -1637,7 +1667,10 @@
   "email": "dbraga@cruzvermelha.org.pt",
   "horario": "8:00 - 18:30",
   "horario_fonte": "carta_social",
-  "natureza_juridica": "Cruz Vermelha Portuguesa"
+  "natureza_juridica": "Cruz Vermelha Portuguesa",
+  "fundido_de": [
+   "osm-way-311434170"
+  ]
  },
  {
   "id": "osm-node-2001156148",
@@ -3287,7 +3320,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 69,
+  "utentes_oficial": 69,
+  "operador": "ASSOCIAÇÃO SOLIDARIEDADE E DESENVOLVIMENTO DO LARANJEIRO",
+  "carta_social_id": "26601",
+  "fundido_de": [
+   "cs-26601"
+  ]
  },
  {
   "id": "osm-node-5863089508",
@@ -3870,7 +3913,10 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Almada",
-  "concelho_slug": "almada"
+  "concelho_slug": "almada",
+  "fundido_de": [
+   "osm-node-12046843003"
+  ]
  },
  {
   "id": "osm-node-5863089549",
@@ -4009,7 +4055,10 @@
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "22447",
   "email_oficial": "colegioacasinhamagica@gmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "fundido_de": [
+   "osm-way-1300199585"
+  ]
  },
  {
   "id": "osm-node-5871309341",
@@ -4038,7 +4087,10 @@
   "natureza_juridica": "Entidade Privada Lucrativa",
   "tipo_fonte": "carta_social",
   "email_oficial": "carla.nosso.jardim@gmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "fundido_de": [
+   "osm-way-1300199584"
+  ]
  },
  {
   "id": "osm-node-5871309342",
@@ -4239,7 +4291,10 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "ext.opequenopolegar@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "fundido_de": [
+   "osm-way-959898418"
+  ]
  },
  {
   "id": "osm-node-5871309362",
@@ -4382,7 +4437,7 @@
   "localidade": "Vila Nova de Milfontes",
   "codigo_postal": "7645-224",
   "distrito": "Beja",
-  "email": "diretora.milfontes@gmail.com;secretariamilfontes@sapo.pt",
+  "email": "diretora.milfontes@gmail.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/6147511273",
@@ -4390,7 +4445,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Odemira",
-  "concelho_slug": "odemira"
+  "concelho_slug": "odemira",
+  "email_oficial": "secretariamilfontes@sapo.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "diretora.milfontes@gmail.com;secretariamilfontes@sapo.pt"
  },
  {
   "id": "osm-node-6165584193",
@@ -4472,7 +4530,10 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Ponte da Barca",
   "concelho_slug": "ponte-da-barca",
-  "distrito_original": "Braga"
+  "distrito_original": "Braga",
+  "fundido_de": [
+   "osm-way-190433478"
+  ]
  },
  {
   "id": "osm-node-6284776421",
@@ -4664,7 +4725,7 @@
   "localidade": "Porto",
   "codigo_postal": "4050-499",
   "distrito": "Porto",
-  "email": "geral@ligacombatentes.org.pt",
+  "email": "geral@ligacombatentes.org",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/6680293208",
@@ -4672,7 +4733,13 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "fundido_de": [
+   "osm-way-710522705"
+  ],
+  "email_anterior": "geral@ligacombatentes.org.pt",
+  "email_fonte": "comunicado pela instituição",
+  "email_verificado_em": "2026-08-27"
  },
  {
   "id": "osm-node-6751350124",
@@ -4694,17 +4761,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Sabugal",
-  "concelho_slug": "sabugal",
-  "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Irmandade da Misericórdia / SCM",
-  "capacidade_oficial": 42,
-  "utentes_oficial": 32,
-  "carta_social_id": "3932",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-3932"
-  ]
+  "concelho_slug": "sabugal"
  },
  {
   "id": "osm-node-6765196188",
@@ -4782,7 +4839,7 @@
   "codigo_postal": "7565-210",
   "distrito": "Setúbal",
   "telefone": "+351 269502933",
-  "email": "executivo@aepal.pt;secretaria@aepal.pt",
+  "email": "executivo@aepal.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/7208310227",
@@ -4796,7 +4853,10 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "aepal.pt",
-  "website": "https://aepal.pt"
+  "website": "https://aepal.pt",
+  "email_oficial": "secretaria@aepal.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "executivo@aepal.pt;secretaria@aepal.pt"
  },
  {
   "id": "osm-node-7251403319",
@@ -5192,7 +5252,16 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "horario": "8:30 - 16:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação",
+  "capacidade_oficial": 33,
+  "utentes_oficial": 33,
+  "carta_social_id": "767",
+  "fundido_de": [
+   "cs-767"
+  ]
  },
  {
   "id": "osm-node-9617131696",
@@ -5229,7 +5298,10 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "fundido_de": [
+   "osm-node-9730189237"
+  ]
  },
  {
   "id": "osm-node-9730189237",
@@ -5245,7 +5317,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "oculto_duplicado": "osm-node-9730189235",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-9890134508",
@@ -5815,7 +5889,16 @@
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
-  "email_verificado_fonte": "misericordiadamaia.com"
+  "email_verificado_fonte": "misericordiadamaia.com",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 40,
+  "utentes_oficial": 39,
+  "carta_social_id": "2669",
+  "fundido_de": [
+   "cs-2669"
+  ]
  },
  {
   "id": "osm-node-11289627742",
@@ -5942,7 +6025,10 @@
   "idade_max_meses": 72,
   "resposta": "Infantário",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "fundido_de": [
+   "osm-way-285406996"
+  ]
  },
  {
   "id": "osm-node-11434623738",
@@ -5989,7 +6075,10 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "fundido_de": [
+   "osm-way-917216509"
+  ]
  },
  {
   "id": "osm-node-11470035986",
@@ -6109,7 +6198,7 @@
   "codigo_postal": "2675-654",
   "distrito": "Lisboa",
   "telefone": "+351 219 339 754",
-  "email": "geral@academiadospeixinhos.pt;ji.academiadospeixinhos@escolas.min-edu.pt",
+  "email": "geral@academiadospeixinhos.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11733773536",
@@ -6121,7 +6210,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "ji.academiadospeixinhos@escolas.min-edu.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "geral@academiadospeixinhos.pt;ji.academiadospeixinhos@escolas.min-edu.pt"
  },
  {
   "id": "osm-node-11749211188",
@@ -6422,7 +6514,7 @@
   "codigo_postal": "7570-214",
   "distrito": "Setúbal",
   "telefone": "+351 913823371",
-  "email": "direcao@ae-grandola.pt;secretaria@ae-grandola.pt",
+  "email": "direcao@ae-grandola.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11768989061",
@@ -6431,7 +6523,10 @@
   "resposta": "Jardim de Infância",
   "concelho": "Grândola",
   "concelho_slug": "grandola",
-  "distrito_original": "Beja"
+  "distrito_original": "Beja",
+  "email_oficial": "secretaria@ae-grandola.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "direcao@ae-grandola.pt;secretaria@ae-grandola.pt"
  },
  {
   "id": "osm-node-11770206502",
@@ -6454,7 +6549,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Famalicão",
-  "concelho_slug": "vila-nova-de-famalicao"
+  "concelho_slug": "vila-nova-de-famalicao",
+  "fundido_de": [
+   "osm-way-107492398"
+  ]
  },
  {
   "id": "osm-node-11772640296",
@@ -8210,7 +8308,7 @@
   "codigo_postal": "4700-298",
   "distrito": "Braga",
   "telefone": "+351 253110647",
-  "email": "agpinterno@gmail.com;a.g.pequena@gmail.com",
+  "email": "agpinterno@gmail.com",
   "website": "http://www.agp.yolasite.com",
   "fax": "+351 253615409",
   "grades": "3-5",
@@ -8226,7 +8324,8 @@
   "natureza_juridica": "Associação de Solidariedade Social",
   "tipo_fonte": "carta_social",
   "email_oficial": "a.g.pequena@gmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "emails_originais": "agpinterno@gmail.com;a.g.pequena@gmail.com"
  },
  {
   "id": "osm-node-11954645911",
@@ -8651,7 +8750,16 @@
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
-  "email_verificado_fonte": "cspcarvalhosa.com/contactos"
+  "email_verificado_fonte": "cspcarvalhosa.com/contactos",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 43,
+  "utentes_oficial": 43,
+  "carta_social_id": "3640",
+  "fundido_de": [
+   "cs-3640"
+  ]
  },
  {
   "id": "osm-node-11956139762",
@@ -9794,7 +9902,16 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Coimbra",
-  "concelho_slug": "coimbra"
+  "concelho_slug": "coimbra",
+  "horario": "7:45 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 60,
+  "utentes_oficial": 57,
+  "carta_social_id": "12195",
+  "fundido_de": [
+   "cs-12195"
+  ]
  },
  {
   "id": "osm-node-11967812773",
@@ -10453,7 +10570,10 @@
   "distrito_original": "Setúbal",
   "email_anterior_morto": "aviao@adasd.pt",
   "email_estado": "so_telefone",
-  "email_verificado_em": "2026-08-14"
+  "email_verificado_em": "2026-08-14",
+  "email": "aviao.colegio@gmail.com",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-node-11975000518",
@@ -10506,7 +10626,13 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "operador": "INFANTÁRIO OS PITINHOS II, LDA",
+  "carta_social_id": "27091",
+  "fundido_de": [
+   "cs-27091"
+  ]
  },
  {
   "id": "osm-node-11976164747",
@@ -11100,7 +11226,7 @@
   "codigo_postal": "2530-114",
   "distrito": "Lisboa",
   "telefone": "+351 261413740",
-  "email": "ass.opetiz@escolas.min-edu.pt;direcao.petiz@gmail.com",
+  "email": "ass.opetiz@escolas.min-edu.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/11981109073",
@@ -11123,7 +11249,10 @@
   "valencia_creche_fonte": "carta_social",
   "fundido_de": [
    "cs-378"
-  ]
+  ],
+  "email_oficial": "direcao.petiz@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "ass.opetiz@escolas.min-edu.pt;direcao.petiz@gmail.com"
  },
  {
   "id": "osm-node-11981109107",
@@ -11436,7 +11565,8 @@
   "natureza_juridica": "Centro Social Paroquial",
   "email_oficial": "ji.cmgrande@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "operador": "Agrupamento de Escolas de Bemposta"
  },
  {
   "id": "osm-node-11989084473",
@@ -11577,7 +11707,16 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Loulé",
-  "concelho_slug": "loule"
+  "concelho_slug": "loule",
+  "horario": "8:00 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Fundação de Solidariedade Social",
+  "capacidade_oficial": 162,
+  "utentes_oficial": 162,
+  "carta_social_id": "24739",
+  "fundido_de": [
+   "cs-24739"
+  ]
  },
  {
   "id": "osm-node-11990073462",
@@ -11841,7 +11980,10 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "ji.fjgoncalvesjunior@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "fundido_de": [
+   "osm-node-5030381364"
+  ]
  },
  {
   "id": "osm-node-12046594986",
@@ -11978,7 +12120,9 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-5863089547",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-12057755790",
@@ -12065,7 +12209,7 @@
   "codigo_postal": "2660-055",
   "distrito": "Lisboa",
   "telefone": "+351 219891937",
-  "email": "info@oreinabarriga.pt;gsoares@oreinabarriga.pt",
+  "email": "info@oreinabarriga.pt",
   "website": "http://www.oreinabarriga.pt",
   "fax": "+351 219891937",
   "grades": "3-5",
@@ -12078,7 +12222,10 @@
   "concelho_slug": "loures",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "18421",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email_oficial": "gsoares@oreinabarriga.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "info@oreinabarriga.pt;gsoares@oreinabarriga.pt"
  },
  {
   "id": "osm-node-12058112709",
@@ -12143,7 +12290,7 @@
   "codigo_postal": "2710-694",
   "distrito": "Lisboa",
   "telefone": "+351 219108040",
-  "email": "belourinha@escolas.min-edu.pt;secretaria@colegiodabeloura.pt",
+  "email": "belourinha@escolas.min-edu.pt",
   "website": "http://www.belourinha.com",
   "fax": "+351 219108042",
   "grades": "3-5",
@@ -12157,7 +12304,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "secretaria@colegiodabeloura.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "belourinha@escolas.min-edu.pt;secretaria@colegiodabeloura.pt"
  },
  {
   "id": "osm-node-12059868017",
@@ -12172,7 +12322,7 @@
   "codigo_postal": "2735-342",
   "distrito": "Lisboa",
   "telefone": "+351 219141490",
-  "email": "colegioosamigos@gmail.com;margaridagomescolegio@gmail.com",
+  "email": "colegioosamigos@gmail.com",
   "website": "https://www.colegioosmeusamigos.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -12181,7 +12331,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "email_oficial": "margaridagomescolegio@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "colegioosamigos@gmail.com;margaridagomescolegio@gmail.com"
  },
  {
   "id": "osm-node-12059868061",
@@ -13755,7 +13908,7 @@
   "codigo_postal": "1600-207",
   "distrito": "Lisboa",
   "telefone": "+351 215834088",
-  "email": "montessorischoolsl@gmail.com;oateliermontessori@gmail.com",
+  "email": "montessorischoolsl@gmail.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/node/12064923060",
@@ -13763,7 +13916,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email_oficial": "oateliermontessori@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "montessorischoolsl@gmail.com;oateliermontessori@gmail.com"
  },
  {
   "id": "osm-node-12064953572",
@@ -14133,7 +14289,16 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "escolanochiado.pt/contactos",
-  "website": "https://www.escolanochiado.pt/"
+  "website": "https://www.escolanochiado.pt/",
+  "horario": "8:00 - 18:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 68,
+  "utentes_oficial": 68,
+  "carta_social_id": "1716",
+  "fundido_de": [
+   "cs-1716"
+  ]
  },
  {
   "id": "osm-node-12066232226",
@@ -14760,7 +14925,15 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Viana do Alentejo",
-  "concelho_slug": "viana-do-alentejo"
+  "concelho_slug": "viana-do-alentejo",
+  "codigo_postal": "7090-405",
+  "localidade": "Aguiar Vnt",
+  "telefone": "+351 266 791 243",
+  "email": "ji.aguiar10outubro@escolas.min-edu.pt",
+  "operador": "Agrupamento de Escolas de Viana do Alentejo",
+  "fundido_de": [
+   "osm-way-117655985"
+  ]
  },
  {
   "id": "osm-node-13153880050",
@@ -14975,7 +15148,16 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Porto de Mós",
-  "concelho_slug": "porto-de-mos"
+  "concelho_slug": "porto-de-mos",
+  "morada": "Rua da Associação",
+  "codigo_postal": "2480-215",
+  "localidade": "Mendiga",
+  "telefone": "+351 244450749",
+  "email": "ji.mendiga@escolas.min-edu.pt",
+  "operador": "Agrupamento de Escolas de Porto de Mós",
+  "fundido_de": [
+   "osm-way-1194322482"
+  ]
  },
  {
   "id": "osm-node-13851565627",
@@ -15461,7 +15643,10 @@
   "concelho": "Lisboa",
   "concelho_slug": "lisboa",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
-  "carta_social_id": "17717"
+  "carta_social_id": "17717",
+  "fundido_de": [
+   "osm-way-150618628"
+  ]
  },
  {
   "id": "osm-way-101820038",
@@ -15631,7 +15816,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vila Nova de Famalicão",
-  "concelho_slug": "vila-nova-de-famalicao"
+  "concelho_slug": "vila-nova-de-famalicao",
+  "oculto_duplicado": "osm-node-11770206502",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-107681189",
@@ -15913,7 +16100,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Viana do Alentejo",
-  "concelho_slug": "viana-do-alentejo"
+  "concelho_slug": "viana-do-alentejo",
+  "oculto_duplicado": "osm-node-13106064829",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-120806622",
@@ -16047,7 +16236,11 @@
   "horario": "7:30 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Associação de Solidariedade Social",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "morada": "Rua da Escola",
+  "codigo_postal": "3800-682",
+  "localidade": "Eirol",
+  "operador": "Agrupamento de Escolas de Eixo, Aveiro"
  },
  {
   "id": "osm-way-134486044",
@@ -16142,7 +16335,10 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Verde",
-  "concelho_slug": "vila-verde"
+  "concelho_slug": "vila-verde",
+  "fundido_de": [
+   "osm-way-274692944"
+  ]
  },
  {
   "id": "osm-way-134955697",
@@ -16975,7 +17171,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "oculto_duplicado": "osm-way-99635186",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-151267239",
@@ -17126,7 +17324,7 @@
   "codigo_postal": "7400-222",
   "distrito": "Portalegre",
   "telefone": "+351 242 201 532",
-  "email": "dora.cabeca@scmps.pt;jardimescolascmps@hotmail.com",
+  "email": "dora.cabeca@scmps.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/157100516",
@@ -17143,7 +17341,8 @@
   "natureza_juridica": "Irmandade da Misericórdia / SCM",
   "tipo_fonte": "carta_social",
   "email_oficial": "geral@scmps.pt",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "emails_originais": "dora.cabeca@scmps.pt;jardimescolascmps@hotmail.com"
  },
  {
   "id": "osm-way-157385358",
@@ -17203,7 +17402,7 @@
   "codigo_postal": "2845-085",
   "distrito": "Setúbal",
   "telefone": "+351 212267220",
-  "email": "pedroeaneslobato@aepel.org;secretaria@aepel.org",
+  "email": "pedroeaneslobato@aepel.org",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/160219610",
@@ -17211,7 +17410,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "email_oficial": "secretaria@aepel.org",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "pedroeaneslobato@aepel.org;secretaria@aepel.org"
  },
  {
   "id": "osm-way-161202906",
@@ -17359,17 +17561,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga",
-  "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Centro Social Paroquial",
-  "capacidade_oficial": 91,
-  "utentes_oficial": 91,
-  "carta_social_id": "3092",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-3092"
-  ]
+  "concelho_slug": "braga"
  },
  {
   "id": "osm-way-166523100",
@@ -18119,10 +18311,7 @@
   "utentes_oficial": 82,
   "operador": "SANTA CASA DA MISERICÓRDIA DE ALENQUER",
   "carta_social_id": "695",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-695"
-  ]
+  "valencia_creche_fonte": "carta_social"
  },
  {
   "id": "osm-way-188335907",
@@ -18189,7 +18378,9 @@
   "resposta": "Infantário",
   "concelho": "Ponte da Barca",
   "concelho_slug": "ponte-da-barca",
-  "distrito_original": "Braga"
+  "distrito_original": "Braga",
+  "oculto_duplicado": "osm-node-6245403950",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-190495100",
@@ -19257,15 +19448,7 @@
   "concelho": "Celorico de Basto",
   "concelho_slug": "celorico-de-basto",
   "distrito_original": "Viana do Castelo",
-  "morada": "RUA DE SÃO BARTOLOMEU, 4165",
-  "natureza_juridica": "Centro Social Paroquial",
-  "capacidade_oficial": 36,
-  "utentes_oficial": 0,
-  "carta_social_id": "39645",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-39645"
-  ]
+  "morada": "RUA DE SÃO BARTOLOMEU, 4165"
  },
  {
   "id": "osm-way-244233232",
@@ -19347,18 +19530,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vagos",
-  "concelho_slug": "vagos",
-  "horario": "7:30 - 20:00",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Centro Social Paroquial",
-  "capacidade_oficial": 61,
-  "utentes_oficial": 38,
-  "website": "http://www.cspcalvao.pt",
-  "carta_social_id": "1218",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-1218"
-  ]
+  "concelho_slug": "vagos"
  },
  {
   "id": "osm-way-245528607",
@@ -19646,11 +19818,12 @@
   "horario_fonte": "carta_social",
   "natureza_juridica": "Associação de Solidariedade Social",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social",
   "email_anterior_morto": "geral@patsantonio.pt",
   "email_estado": "so_telefone",
-  "email_verificado_em": "2026-08-14",
-  "website": "https://patrosantonio.webnode.pt/"
+  "email_verificado_em": "2026-08-21",
+  "website": "https://patrosantonio.webnode.pt/",
+  "email_adivinhado_removido": "geral@patsantonio.pt",
+  "email_nota": "domínio sem servidor de correio — verificado por DNS"
  },
  {
   "id": "osm-way-252636930",
@@ -19986,7 +20159,9 @@
   "idade_max_meses": 72,
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Vila Verde",
-  "concelho_slug": "vila-verde"
+  "concelho_slug": "vila-verde",
+  "oculto_duplicado": "osm-way-134659907",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-278630142",
@@ -20101,7 +20276,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "oculto_duplicado": "osm-node-11432217591",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-285419178",
@@ -20156,7 +20333,16 @@
   "email_fonte": "verificacao_web",
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
-  "email_verificado_fonte": "misericordiadamaia.com"
+  "email_verificado_fonte": "misericordiadamaia.com",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 40,
+  "utentes_oficial": 38,
+  "carta_social_id": "2743",
+  "fundido_de": [
+   "cs-2743"
+  ]
  },
  {
   "id": "osm-way-286261688",
@@ -20503,7 +20689,7 @@
   "codigo_postal": "7570-000",
   "distrito": "Setúbal",
   "telefone": "+351 269440034",
-  "email": "direcao@ae-grandola.pt;secretaria@ae-grandola.pt",
+  "email": "direcao@ae-grandola.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/310999336",
@@ -20512,7 +20698,10 @@
   "resposta": "Jardim de Infância",
   "concelho": "Grândola",
   "concelho_slug": "grandola",
-  "distrito_original": "Beja"
+  "distrito_original": "Beja",
+  "email_oficial": "secretaria@ae-grandola.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "direcao@ae-grandola.pt;secretaria@ae-grandola.pt"
  },
  {
   "id": "osm-way-311434170",
@@ -20529,7 +20718,9 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Braga",
-  "concelho_slug": "braga"
+  "concelho_slug": "braga",
+  "oculto_duplicado": "osm-node-1988288505",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-312901820",
@@ -21172,7 +21363,7 @@
   "codigo_postal": "4580-027",
   "distrito": "Porto",
   "telefone": "+351 255784279;+351 964774000",
-  "email": "ji.solarpequeninos@escolas.min-edu.pt;regina@solardaeducacao.pt",
+  "email": "ji.solarpequeninos@escolas.min-edu.pt",
   "website": "http://www.solardaeducacao.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -21185,7 +21376,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "regina@solardaeducacao.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "ji.solarpequeninos@escolas.min-edu.pt;regina@solardaeducacao.pt"
  },
  {
   "id": "osm-way-358558733",
@@ -21409,7 +21603,7 @@
   "codigo_postal": "7630-436",
   "distrito": "Beja",
   "telefone": "+351 283975243",
-  "email": "diretora.milfontes@gmail.com;secretariamilfontes@sapo.pt",
+  "email": "diretora.milfontes@gmail.com",
   "grades": "3-9",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/379392769",
@@ -21418,7 +21612,10 @@
   "resposta": "Creche",
   "concelho": "Odemira",
   "concelho_slug": "odemira",
-  "idade_corrigida_em": "2026-08-13"
+  "idade_corrigida_em": "2026-08-13",
+  "email_oficial": "secretariamilfontes@sapo.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "diretora.milfontes@gmail.com;secretariamilfontes@sapo.pt"
  },
  {
   "id": "osm-way-380734888",
@@ -21610,7 +21807,11 @@
   "horario": "7:30 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Associação de Solidariedade Social",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "website": "https://www.centrosocialcmp.pt/",
+  "fundido_de": [
+   "osm-node-12927908570"
+  ]
  },
  {
   "id": "osm-way-386974979",
@@ -21838,7 +22039,7 @@
   "codigo_postal": "3460-521",
   "distrito": "Viseu",
   "telefone": "+351 232819050",
-  "email": "direcao@aetcf.edu.gov.pt;servicos@aetcf.edu.gov.pt",
+  "email": "direcao@aetcf.edu.gov.pt",
   "website": "http://www.aetcf.pt",
   "fax": "+351 232823001",
   "grades": "6-14",
@@ -21849,7 +22050,10 @@
   "resposta": "Creche",
   "concelho": "Tondela",
   "concelho_slug": "tondela",
-  "idade_corrigida_em": "2026-08-13"
+  "idade_corrigida_em": "2026-08-13",
+  "email_oficial": "servicos@aetcf.edu.gov.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "direcao@aetcf.edu.gov.pt;servicos@aetcf.edu.gov.pt"
  },
  {
   "id": "osm-way-417118972",
@@ -22307,7 +22511,7 @@
   "codigo_postal": "4425-057",
   "distrito": "Porto",
   "telefone": "+351 220 996 688;+351 220 998 345",
-  "email": "isabel@acrianca.pt;silvia@acrianca.pt",
+  "email": "isabel@acrianca.pt",
   "fax": "+351 229783199",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -22324,7 +22528,8 @@
   "natureza_juridica": "Associação de Solidariedade Social",
   "tipo_fonte": "carta_social",
   "email_oficial": "amanha.crianca@iol.pt",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "emails_originais": "isabel@acrianca.pt;silvia@acrianca.pt"
  },
  {
   "id": "osm-way-445031341",
@@ -22559,7 +22764,12 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Óbidos",
-  "concelho_slug": "obidos"
+  "concelho_slug": "obidos",
+  "email": "ji.arelho@escolas.min-edu.pt",
+  "operador": "Agrupamento de Escolas Josefa de Óbidos, Óbidos",
+  "fundido_de": [
+   "osm-way-470664743"
+  ]
  },
  {
   "id": "osm-way-470664743",
@@ -22580,7 +22790,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Óbidos",
-  "concelho_slug": "obidos"
+  "concelho_slug": "obidos",
+  "oculto_duplicado": "osm-way-470662219",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-478723431",
@@ -23718,7 +23930,10 @@
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "scmc-infancia.pt/contactos",
   "email_nota": "tínhamos o email dos serviços centrais e o site de outra instituição",
-  "website": "https://www.scmc-infancia.pt/creche-o-pinhal/"
+  "website": "https://www.scmc-infancia.pt/creche-o-pinhal/",
+  "fundido_de": [
+   "osm-node-5616009394"
+  ]
  },
  {
   "id": "osm-way-565013407",
@@ -24000,7 +24215,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Maia",
-  "concelho_slug": "maia"
+  "concelho_slug": "maia",
+  "horario": "7:30 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Associação de Solidariedade Social",
+  "capacidade_oficial": 66,
+  "utentes_oficial": 66,
+  "operador": "ASMAN - ASSOCIAÇÃO DE SOLIDARIEDADE SOCIAL MOUTA AZENHA NOVA",
+  "carta_social_id": "32882",
+  "fundido_de": [
+   "cs-32882"
+  ]
  },
  {
   "id": "osm-way-612785594",
@@ -25297,7 +25522,7 @@
   "localidade": "Porto",
   "codigo_postal": "4050-499",
   "distrito": "Porto",
-  "email": "geral@ligacombatentes.org.pt",
+  "email": "geral@ligacombatentes.org",
   "grades": "0-2",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/710522705",
@@ -25305,7 +25530,12 @@
   "idade_max_meses": 24,
   "resposta": "Creche",
   "concelho": "Porto",
-  "concelho_slug": "porto"
+  "concelho_slug": "porto",
+  "oculto_duplicado": "osm-node-6680293208",
+  "oculto_em": "2026-08-21",
+  "email_anterior": "geral@ligacombatentes.org.pt",
+  "email_fonte": "comunicado pela instituição",
+  "email_verificado_em": "2026-08-27"
  },
  {
   "id": "osm-way-720253385",
@@ -25382,7 +25612,7 @@
   "codigo_postal": "8005-445",
   "distrito": "Faro",
   "telefone": "+351 289802770",
-  "email": "ji.arcoirisfaro@escolas.min-edu.pt;secretariaarcoirisfaro@gmail.com",
+  "email": "ji.arcoirisfaro@escolas.min-edu.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/731062622",
@@ -25394,7 +25624,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "secretariaarcoirisfaro@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "ji.arcoirisfaro@escolas.min-edu.pt;secretariaarcoirisfaro@gmail.com"
  },
  {
   "id": "osm-way-734291367",
@@ -25418,7 +25651,17 @@
   "email": "pequenospoetas.creche@gmail.com",
   "website": "https://scmconstancia.pt/creche/",
   "telefone": "249 739 681",
-  "enriquecido_em": "2026-08-06"
+  "enriquecido_em": "2026-08-06",
+  "codigo_postal": "2250-021",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 73,
+  "utentes_oficial": 65,
+  "carta_social_id": "32480",
+  "fundido_de": [
+   "cs-32480"
+  ]
  },
  {
   "id": "osm-way-738012751",
@@ -25476,11 +25719,7 @@
   "utentes_oficial": 40,
   "operador": "ASSOCIAÇÃO JUVENIL \"A BOGALHA\"",
   "carta_social_id": "4221",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-4221",
-   "cs-4385"
-  ]
+  "valencia_creche_fonte": "carta_social"
  },
  {
   "id": "osm-way-743648365",
@@ -25576,7 +25815,16 @@
   "horario": "7:30 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Associação de Solidariedade Social",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "morada": "Rua 5 da Urbanização Brévias",
+  "localidade": "Paços de Brandão",
+  "website": "https://cspb.pt/",
+  "fundido_de": [
+   "osm-way-761579568",
+   "osm-way-964390650",
+   "osm-way-761579567",
+   "osm-node-8920333307"
+  ]
  },
  {
   "id": "osm-way-761579567",
@@ -25593,7 +25841,9 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "oculto_duplicado": "osm-way-761579566",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-761579568",
@@ -25616,7 +25866,9 @@
   "email": "dtinfancia@cspb.pt",
   "website": "https://cspb.pt/",
   "telefone": "227 471 420",
-  "enriquecido_em": "2026-08-06"
+  "enriquecido_em": "2026-08-06",
+  "oculto_duplicado": "osm-way-761579566",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-765167297",
@@ -26668,7 +26920,14 @@
   "resposta": "Jardim de Infância",
   "concelho": "Figueiró dos Vinhos",
   "concelho_slug": "figueiro-dos-vinhos",
-  "distrito_original": "Coimbra"
+  "distrito_original": "Coimbra",
+  "morada": "Aguda",
+  "email": "ji.aguda@escolas.min-edu.pt",
+  "operador": "Agrupamento de Escolas de Figueiró dos Vinhos",
+  "website": "http://www.aefv.edu.pt",
+  "fundido_de": [
+   "osm-way-1274251889"
+  ]
  },
  {
   "id": "osm-way-900945111",
@@ -26729,7 +26988,7 @@
   "codigo_postal": "4520-199",
   "distrito": "Aveiro",
   "telefone": "+351 256375776;+351 918165819",
-  "email": "vaniacrc1992@gmail.com;jardimamiguinho@iol.pt",
+  "email": "vaniacrc1992@gmail.com",
   "website": "https://curious-minds.pt/",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -26739,7 +26998,10 @@
   "resposta": "Jardim de Infância",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "email_oficial": "jardimamiguinho@iol.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "vaniacrc1992@gmail.com;jardimamiguinho@iol.pt"
  },
  {
   "id": "osm-way-906539969",
@@ -26890,7 +27152,9 @@
   "resposta": "Jardim de Infância",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "oculto_duplicado": "osm-node-11453860481",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-920535610",
@@ -27355,9 +27619,11 @@
   "concelho": "Almada",
   "concelho_slug": "almada",
   "email_anterior_morto": "geral@palhacinhovaidoso.pt",
-  "email_estado": "nao_encontrado",
-  "email_verificado_em": "2026-08-14",
-  "website": "https://www.facebook.com/palhacinhovaidoso/"
+  "email_estado": "so_telefone",
+  "email_verificado_em": "2026-08-21",
+  "website": "https://www.facebook.com/palhacinhovaidoso/",
+  "email_adivinhado_removido": "geral@palhacinhovaidoso.pt",
+  "email_nota": "domínio sem servidor de correio — verificado por DNS"
  },
  {
   "id": "osm-way-964390650",
@@ -27374,7 +27640,9 @@
   "resposta": "Creche / Jardim de Infância",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "oculto_duplicado": "osm-way-761579566",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-968890331",
@@ -27682,7 +27950,7 @@
   "codigo_postal": "2660-186",
   "distrito": "Lisboa",
   "telefone": "+351 219 730 551",
-  "email": "jipinteus@gmail.com;eb1.n4.stantaotojal@escolas.min-edu.pt",
+  "email": "jipinteus@gmail.com",
   "fax": "+351 219 738 278",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -27691,7 +27959,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Loures",
-  "concelho_slug": "loures"
+  "concelho_slug": "loures",
+  "email_oficial": "eb1.n4.stantaotojal@escolas.min-edu.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "jipinteus@gmail.com;eb1.n4.stantaotojal@escolas.min-edu.pt"
  },
  {
   "id": "osm-way-1015839447",
@@ -27872,7 +28143,17 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:00 - 19:30",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 84,
+  "utentes_oficial": 84,
+  "operador": "JARDIM INFANTIL XICORAÇÃO, LDA",
+  "carta_social_id": "22466",
+  "fundido_de": [
+   "cs-22466"
+  ]
  },
  {
   "id": "osm-way-1027226827",
@@ -29946,7 +30227,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "fundido_de": [
+   "osm-way-1125490108"
+  ]
  },
  {
   "id": "osm-way-1125490108",
@@ -29962,7 +30246,9 @@
   "idade_max_meses": 72,
   "resposta": "Jardim de Infância",
   "concelho": "Sesimbra",
-  "concelho_slug": "sesimbra"
+  "concelho_slug": "sesimbra",
+  "oculto_duplicado": "osm-way-1125490106",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1125709657",
@@ -30338,7 +30624,7 @@
   "codigo_postal": "2910-274",
   "distrito": "Setúbal",
   "telefone": "+351 265702504",
-  "email": "cspsj.setubal.geral@gmail.com;jiabelhinha@edu-min.pt",
+  "email": "cspsj.setubal.geral@gmail.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1157531265",
@@ -30346,7 +30632,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Setúbal",
-  "concelho_slug": "setubal"
+  "concelho_slug": "setubal",
+  "email_oficial": "jiabelhinha@edu-min.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "cspsj.setubal.geral@gmail.com;jiabelhinha@edu-min.pt"
  },
  {
   "id": "osm-way-1161540326",
@@ -30664,7 +30953,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Porto de Mós",
-  "concelho_slug": "porto-de-mos"
+  "concelho_slug": "porto-de-mos",
+  "oculto_duplicado": "osm-node-13830600194",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1195546938",
@@ -30678,7 +30969,7 @@
   "codigo_postal": "2965-261",
   "distrito": "Setúbal",
   "telefone": "+351 265998263",
-  "email": "secretaria@aejs.pt;direcao@aejs.pt",
+  "email": "secretaria@aejs.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1195546938",
@@ -30686,7 +30977,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "email_oficial": "direcao@aejs.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "secretaria@aejs.pt;direcao@aejs.pt"
  },
  {
   "id": "osm-way-1197213973",
@@ -32435,7 +32729,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Guarda",
-  "concelho_slug": "guarda"
+  "concelho_slug": "guarda",
+  "fundido_de": [
+   "osm-way-1263042766"
+  ]
  },
  {
   "id": "osm-way-1263042766",
@@ -32458,7 +32755,9 @@
   "resposta": "Creche",
   "concelho": "Guarda",
   "concelho_slug": "guarda",
-  "idade_corrigida_em": "2026-08-13"
+  "idade_corrigida_em": "2026-08-13",
+  "oculto_duplicado": "osm-way-1263042761",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1263042770",
@@ -32831,7 +33130,7 @@
   "codigo_postal": "2965-211",
   "distrito": "Setúbal",
   "telefone": "+351 265995055",
-  "email": "secretaria@aejs.pt;direcao@aejs.pt",
+  "email": "secretaria@aejs.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1264444910",
@@ -32839,7 +33138,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Palmela",
-  "concelho_slug": "palmela"
+  "concelho_slug": "palmela",
+  "email_oficial": "direcao@aejs.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "secretaria@aejs.pt;direcao@aejs.pt"
  },
  {
   "id": "osm-way-1264562666",
@@ -36883,17 +37185,7 @@
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
   "concelho_slug": "braga",
-  "morada": "RUA PADRE MOREIRA, Nº 13 - CABREIROS",
-  "horario": "7:15 - 18:45",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação de Solidariedade Social",
-  "capacidade_oficial": 59,
-  "utentes_oficial": 53,
-  "carta_social_id": "21989",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-21989"
-  ]
+  "morada": "RUA PADRE MOREIRA, Nº 13 - CABREIROS"
  },
  {
   "id": "osm-way-1268505524",
@@ -36959,17 +37251,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Braga",
-  "concelho_slug": "braga",
-  "horario": "7:00 - 18:50",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Fundação de Solidariedade Social",
-  "capacidade_oficial": 42,
-  "utentes_oficial": 42,
-  "carta_social_id": "185",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-185"
-  ]
+  "concelho_slug": "braga"
  },
  {
   "id": "osm-way-1268505537",
@@ -37606,7 +37888,7 @@
   "localidade": "Tondela",
   "codigo_postal": "3460-000",
   "distrito": "Viseu",
-  "email": "direcao@aetcf.pt;ji.sabugosa@escolas.min-edu.pt",
+  "email": "direcao@aetcf.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1271517610",
@@ -37614,7 +37896,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Tondela",
-  "concelho_slug": "tondela"
+  "concelho_slug": "tondela",
+  "email_oficial": "ji.sabugosa@escolas.min-edu.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "direcao@aetcf.pt;ji.sabugosa@escolas.min-edu.pt"
  },
  {
   "id": "osm-way-1271517611",
@@ -38414,17 +38699,7 @@
   "resposta": "Jardim de Infância",
   "concelho": "Tábua",
   "concelho_slug": "tabua",
-  "distrito_original": "Viseu",
-  "horario": "7:45 - 19:30",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Irmandade da Misericórdia / SCM",
-  "capacidade_oficial": 68,
-  "utentes_oficial": 65,
-  "carta_social_id": "12222",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-12222"
-  ]
+  "distrito_original": "Viseu"
  },
  {
   "id": "osm-way-1271960186",
@@ -40636,7 +40911,7 @@
   "localidade": "Tavira",
   "codigo_postal": "8800-456",
   "telefone": "+351 281325339",
-  "email": "ji.infancia.eco@gmail.com;ji.tavira@escolas.min-edu.pt",
+  "email": "ji.infancia.eco@gmail.com",
   "fax": "+351 281323952",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -40647,7 +40922,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Tavira",
-  "concelho_slug": "tavira"
+  "concelho_slug": "tavira",
+  "email_oficial": "ji.tavira@escolas.min-edu.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "ji.infancia.eco@gmail.com;ji.tavira@escolas.min-edu.pt"
  },
  {
   "id": "osm-way-1273374057",
@@ -40891,7 +41169,8 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Benavente",
-  "concelho_slug": "benavente"
+  "concelho_slug": "benavente",
+  "morada": "Travessa da Creche"
  },
  {
   "id": "osm-way-1273529642",
@@ -41881,17 +42160,7 @@
   "resposta": "Jardim de Infância",
   "concelho": "Penacova",
   "concelho_slug": "penacova",
-  "email": "geral@gssdcrmiro.pt",
-  "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação de Solidariedade Social",
-  "capacidade_oficial": 33,
-  "utentes_oficial": 16,
-  "carta_social_id": "17764",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-17764"
-  ]
+  "email": "geral@gssdcrmiro.pt"
  },
  {
   "id": "osm-way-1273876824",
@@ -42324,17 +42593,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Vagos",
-  "concelho_slug": "vagos",
-  "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Irmandade da Misericórdia / SCM",
-  "capacidade_oficial": 125,
-  "utentes_oficial": 118,
-  "carta_social_id": "1215",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-1215"
-  ]
+  "concelho_slug": "vagos"
  },
  {
   "id": "osm-way-1273953439",
@@ -42423,17 +42682,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Mira",
-  "concelho_slug": "mira",
-  "horario": "7:35 - 18:50",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação de Solidariedade Social",
-  "capacidade_oficial": 22,
-  "utentes_oficial": 22,
-  "carta_social_id": "4441",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-4441"
-  ]
+  "concelho_slug": "mira"
  },
  {
   "id": "osm-way-1273956570",
@@ -42948,7 +43197,9 @@
   "resposta": "Jardim de Infância",
   "concelho": "Figueiró dos Vinhos",
   "concelho_slug": "figueiro-dos-vinhos",
-  "distrito_original": "Coimbra"
+  "distrito_original": "Coimbra",
+  "oculto_duplicado": "osm-way-900531201",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1274251892",
@@ -43501,17 +43752,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Leiria",
-  "concelho_slug": "leiria",
-  "horario": "7:30 - 18:45",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação de Solidariedade Social",
-  "capacidade_oficial": 55,
-  "utentes_oficial": 55,
-  "carta_social_id": "18326",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-18326"
-  ]
+  "concelho_slug": "leiria"
  },
  {
   "id": "osm-way-1274426027",
@@ -43937,7 +44178,9 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-1547517207",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1274442976",
@@ -44628,7 +44871,7 @@
   "codigo_postal": "2650-657",
   "distrito": "Lisboa",
   "telefone": "+351 261317901",
-  "email": "geral@crechesaovicente.net;geralcrechesaovicente@hotmail.com",
+  "email": "geral@crechesaovicente.net",
   "website": "http://www.crechesaovicente.net",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -44637,7 +44880,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Torres Vedras",
-  "concelho_slug": "torres-vedras"
+  "concelho_slug": "torres-vedras",
+  "email_oficial": "geralcrechesaovicente@hotmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "geral@crechesaovicente.net;geralcrechesaovicente@hotmail.com"
  },
  {
   "id": "osm-way-1274665036",
@@ -45256,17 +45502,7 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Óbidos",
-  "concelho_slug": "obidos",
-  "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação",
-  "capacidade_oficial": 40,
-  "utentes_oficial": 40,
-  "carta_social_id": "24017",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-24017"
-  ]
+  "concelho_slug": "obidos"
  },
  {
   "id": "osm-way-1274919740",
@@ -46681,14 +46917,14 @@
   "distrito": "Porto",
   "telefone": "+351 229413544",
   "email": "info@colegiopimpolho.pt",
-  "website": "http://www.opimpolho.pt",
+  "website": "https://www.colegiopimpolho.pt/",
   "fax": "+351 229413544",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1278789244",
-  "idade_min_meses": 36,
-  "idade_max_meses": 60,
-  "resposta": "Jardim de Infância",
+  "idade_min_meses": 4,
+  "idade_max_meses": 120,
+  "resposta": "Creche, Pré-Escolar, 1.º CEB",
   "concelho": "Maia",
   "concelho_slug": "maia",
   "tipo_original": "Privada",
@@ -46704,7 +46940,17 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "colegiopimpolho.pt/contactos",
-  "email_anterior_morto": "info@opimpolho.pt;info@colegiopimpolho.pt;ji.opimpolhovermoim@escolas.min-edu.pt"
+  "email_anterior_morto": "info@opimpolho.pt;info@colegiopimpolho.pt;ji.opimpolhovermoim@escolas.min-edu.pt",
+  "valencias": [
+   "Berçário",
+   "Creche",
+   "Pré-Escolar",
+   "1.º CEB"
+  ],
+  "valencias_fonte": "confirmado pela direção por email",
+  "idade_verificar": false,
+  "website_anterior": "http://www.opimpolho.pt",
+  "dados_verificados_em": "2026-08-23"
  },
  {
   "id": "osm-way-1278799759",
@@ -46719,7 +46965,7 @@
   "codigo_postal": "4435-017",
   "distrito": "Porto",
   "telefone": "+351 22 974 0029;+351 916063000",
-  "email": "info@academiaramospinto.pt;manuelpinto@academiaramospinto.pt",
+  "email": "info@academiaramospinto.pt",
   "website": "http://www.academiaramospinto.pt",
   "grades": "0-5",
   "categoria_osm": "kindergarten",
@@ -46736,11 +46982,12 @@
   "natureza_juridica": "Entidade Privada Lucrativa",
   "tipo_fonte": "carta_social",
   "email_oficial": "ramos_ju@hotmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "emails_originais": "info@academiaramospinto.pt;manuelpinto@academiaramospinto.pt"
  },
  {
   "id": "osm-way-1278799760",
-  "nome": "Jardim Infantil \"Carrocel Mágico\"",
+  "nome": "Colégio Carrocel Mágico",
   "lat": 41.185605,
   "lon": -8.558036,
   "tipo": "Privada",
@@ -46776,7 +47023,10 @@
   "email_confianca": "provavel",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "mapasocial.pt",
-  "website_removido_em": "2026-08-14"
+  "website_removido_em": "2026-08-14",
+  "nome_anterior": "Jardim Infantil \"Carrocel Mágico\"",
+  "nome_fonte": "confirmado pela direção por email",
+  "nome_verificado_em": "2026-08-23"
  },
  {
   "id": "osm-way-1278799763",
@@ -46985,7 +47235,16 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Marinha Grande",
-  "concelho_slug": "marinha-grande"
+  "concelho_slug": "marinha-grande",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 39,
+  "utentes_oficial": 39,
+  "carta_social_id": "21026",
+  "fundido_de": [
+   "cs-21026"
+  ]
  },
  {
   "id": "osm-way-1279416094",
@@ -47425,7 +47684,16 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "misericordiadatrofa.pt",
-  "website": "https://misericordiadatrofa.pt/creche/"
+  "website": "https://misericordiadatrofa.pt/creche/",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 43,
+  "carta_social_id": "23065",
+  "fundido_de": [
+   "cs-23065"
+  ]
  },
  {
   "id": "osm-way-1279690024",
@@ -47511,7 +47779,9 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-1243615940",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1279690034",
@@ -48464,7 +48734,10 @@
   "horario": "7:30 - 19:30",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Entidade Privada Lucrativa",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "capacidade_oficial": 34,
+  "utentes_oficial": 34,
+  "operador": "CENTRO SOCIAL PAROQUIAL DO AMIAL"
  },
  {
   "id": "osm-way-1283016489",
@@ -48719,7 +48992,17 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "horario": "7:30 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Entidade Privada Lucrativa",
+  "capacidade_oficial": 42,
+  "utentes_oficial": 20,
+  "operador": "ARAÚJO FERREIRA E SILVA OLIVEIRA, LDA",
+  "carta_social_id": "18508",
+  "fundido_de": [
+   "cs-18508"
+  ]
  },
  {
   "id": "osm-way-1283620545",
@@ -50251,7 +50534,7 @@
   "codigo_postal": "3020-876",
   "distrito": "Coimbra",
   "telefone": "+351 239911385",
-  "email": "ct.asocialsouselas@escolas.min-edu.pt;geral@cass.pt",
+  "email": "ct.asocialsouselas@escolas.min-edu.pt",
   "fax": "+351 239914268",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -50264,7 +50547,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "geral@cass.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "ct.asocialsouselas@escolas.min-edu.pt;geral@cass.pt"
  },
  {
   "id": "osm-way-1290310831",
@@ -50284,7 +50570,14 @@
   "tipo_inferido": true,
   "concelho": "Anadia",
   "concelho_slug": "anadia",
-  "distrito_original": "Coimbra"
+  "distrito_original": "Coimbra",
+  "morada": "Rua dos Ibiscos",
+  "codigo_postal": "3780-541",
+  "localidade": "Tamengos",
+  "telefone": "+351 231511928",
+  "fundido_de": [
+   "osm-way-1290310832"
+  ]
  },
  {
   "id": "osm-way-1290310832",
@@ -50309,7 +50602,9 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "oculto_duplicado": "osm-way-1290310831",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1290318732",
@@ -50794,7 +51089,16 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "scmpserra.pt",
-  "website": "https://scmpserra.pt/casa-da-crianca/"
+  "website": "https://scmpserra.pt/casa-da-crianca/",
+  "horario": "7:30 - 18:45",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Irmandade da Misericórdia / SCM",
+  "capacidade_oficial": 35,
+  "utentes_oficial": 23,
+  "carta_social_id": "5601",
+  "fundido_de": [
+   "cs-5601"
+  ]
  },
  {
   "id": "osm-way-1290802376",
@@ -51731,7 +52035,7 @@
   "codigo_postal": "7520-148",
   "distrito": "Setúbal",
   "telefone": "+351 269101024",
-  "email": "conchinha.espiga@outlook.com;espiga.direcao@outlook.pt",
+  "email": "conchinha.espiga@outlook.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1291601112",
@@ -51748,7 +52052,8 @@
   "natureza_juridica": "Cooperativa de Solidariedade Social",
   "tipo_fonte": "carta_social",
   "email_oficial": "coop_espiga@hotmail.com",
-  "email_oficial_fonte": "carta_social"
+  "email_oficial_fonte": "carta_social",
+  "emails_originais": "conchinha.espiga@outlook.com;espiga.direcao@outlook.pt"
  },
  {
   "id": "osm-way-1291699735",
@@ -52977,7 +53282,7 @@
   "codigo_postal": "2715-001",
   "distrito": "Lisboa",
   "telefone": "+351 219270535",
-  "email": "cl.opinheirosabichao@escolas.min-edu.pt;vilamaravilha@gmail.com",
+  "email": "cl.opinheirosabichao@escolas.min-edu.pt",
   "website": "http://colegiopinheirinhosabichao.pt",
   "fax": "+351 219270535",
   "grades": "3-5",
@@ -52991,7 +53296,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "vilamaravilha@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "cl.opinheirosabichao@escolas.min-edu.pt;vilamaravilha@gmail.com"
  },
  {
   "id": "osm-way-1292464655",
@@ -53250,7 +53558,7 @@
   "codigo_postal": "8500-299",
   "distrito": "Faro",
   "telefone": "+351 282 410 540",
-  "email": "geral@lardacrianca.com;contabilidade@lardacrianca.com",
+  "email": "geral@lardacrianca.com",
   "website": "https://www.lardacrianca.com",
   "fax": "+351 282410559",
   "grades": "3-5",
@@ -53265,7 +53573,10 @@
   "valencia_creche_fonte": "carta_social",
   "horario": "7:45 - 19:30",
   "horario_fonte": "carta_social",
-  "natureza_juridica": "Associação"
+  "natureza_juridica": "Associação",
+  "email_oficial": "contabilidade@lardacrianca.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "geral@lardacrianca.com;contabilidade@lardacrianca.com"
  },
  {
   "id": "osm-way-1292739908",
@@ -53870,7 +54181,7 @@
   "codigo_postal": "8200-047",
   "distrito": "Faro",
   "telefone": "+351 289 513 294",
-  "email": "admissionseden@gmail.com;edenschoolproject@gmail.com",
+  "email": "admissionseden@gmail.com",
   "website": "https://edenmontessori.pt/",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -53879,7 +54190,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Albufeira",
-  "concelho_slug": "albufeira"
+  "concelho_slug": "albufeira",
+  "email_oficial": "edenschoolproject@gmail.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "admissionseden@gmail.com;edenschoolproject@gmail.com"
  },
  {
   "id": "osm-way-1293418130",
@@ -54221,7 +54535,7 @@
   "codigo_postal": "8000-544",
   "distrito": "Faro",
   "telefone": "+351 289096793;+351 217154760",
-  "email": "estreladomar@fvrm.pt;geral@fvrm.pt",
+  "email": "estreladomar@fvrm.pt",
   "fax": "+351 217154123",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -54230,7 +54544,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Faro",
-  "concelho_slug": "faro"
+  "concelho_slug": "faro",
+  "email_oficial": "geral@fvrm.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "estreladomar@fvrm.pt;geral@fvrm.pt"
  },
  {
   "id": "osm-way-1293493523",
@@ -54503,7 +54820,10 @@
   "email": "colegiorochinha@sapo.pt",
   "telefone": "+351 291 280 410",
   "website": "https://www.colegiodarochinha.com",
-  "enriquecido_em": "2026-08-10"
+  "enriquecido_em": "2026-08-10",
+  "fundido_de": [
+   "osm-node-4104245089"
+  ]
  },
  {
   "id": "osm-way-1300005695",
@@ -54630,7 +54950,9 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-5871309341",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1300199585",
@@ -54654,7 +54976,9 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Seixal",
-  "concelho_slug": "seixal"
+  "concelho_slug": "seixal",
+  "oculto_duplicado": "osm-node-5871309340",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-1300571508",
@@ -54983,7 +55307,17 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Moita",
-  "concelho_slug": "moita"
+  "concelho_slug": "moita",
+  "horario": "7:00 - 19:00",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 66,
+  "utentes_oficial": 48,
+  "operador": "CENTRO PAROQUIAL DE ACÇÃO SOCIAL DA PAROQUIA DA MOITA",
+  "carta_social_id": "26881",
+  "fundido_de": [
+   "cs-26881"
+  ]
  },
  {
   "id": "osm-way-1300609220",
@@ -55044,7 +55378,7 @@
   "codigo_postal": "2830-502",
   "distrito": "Setúbal",
   "telefone": "+351 212149487",
-  "email": "geral@parquedosinfantes.pt;ji.parquedosinfantes@escolas.min-edu.pt",
+  "email": "geral@parquedosinfantes.pt",
   "website": "http://www.parquedosinfantes.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -55057,7 +55391,10 @@
   "tipo_original": "Privada",
   "tipo_inferido": true,
   "tipo_fonte": "email-min-edu",
-  "tipo_corrigido_em": "2026-08-13"
+  "tipo_corrigido_em": "2026-08-13",
+  "email_oficial": "ji.parquedosinfantes@escolas.min-edu.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "geral@parquedosinfantes.pt;ji.parquedosinfantes@escolas.min-edu.pt"
  },
  {
   "id": "osm-way-1300609223",
@@ -56652,7 +56989,10 @@
   "concelho_slug": "sintra",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "25059",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email": "geral@vembrincar.pt",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-way-1302095451",
@@ -56737,7 +57077,8 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "cl.stjohn@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "confirmado pela direção por email",
+  "email_verificado_em": "2026-08-27"
  },
  {
   "id": "osm-way-1302111207",
@@ -56874,7 +57215,12 @@
   "concelho_slug": "cascais",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "365",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email": "geral@cspspsje.pt",
+  "website": "https://cspspsje.pt",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://cspspsje.pt/contactos/"
  },
  {
   "id": "osm-way-1302307173",
@@ -56985,7 +57331,12 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "email": "creche.aboboda@scmc.pt",
+  "website": "https://www.scmc-infancia.pt/creche-aboboda/",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.scmc-infancia.pt/contactos/"
  },
  {
   "id": "osm-way-1302307180",
@@ -57168,7 +57519,10 @@
   "natureza_juridica": "Entidade Privada Lucrativa",
   "email_oficial": "ji.sonhosefantasias@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "fundido_de": [
+   "osm-node-8644828917"
+  ]
  },
  {
   "id": "osm-way-1302345205",
@@ -57202,7 +57556,7 @@
   "codigo_postal": "2745-838",
   "distrito": "Lisboa",
   "telefone": "+351 214377388",
-  "email": "info@acolmeia.pt;direccao@acolmeia.pt",
+  "email": "info@acolmeia.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302345206",
@@ -57210,7 +57564,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "email_oficial": "direccao@acolmeia.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "info@acolmeia.pt;direccao@acolmeia.pt"
  },
  {
   "id": "osm-way-1302345207",
@@ -57408,7 +57765,7 @@
   "codigo_postal": "2785-410",
   "distrito": "Lisboa",
   "telefone": "+351 211378062",
-  "email": "gab.direcao@horizonte.pt;secretaria.hsf@horizonte.pt",
+  "email": "gab.direcao@horizonte.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302364623",
@@ -57416,7 +57773,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "email_oficial": "secretaria.hsf@horizonte.pt",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "gab.direcao@horizonte.pt;secretaria.hsf@horizonte.pt"
  },
  {
   "id": "osm-way-1302364625",
@@ -58083,7 +58443,10 @@
   "concelho_slug": "amadora",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "27487",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email": "info@moinhodesonho.pt",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-way-1302493213",
@@ -58298,7 +58661,12 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Oeiras",
-  "concelho_slug": "oeiras"
+  "concelho_slug": "oeiras",
+  "email": "colegiorikrok.alfragide@auchan.pt",
+  "website": "https://fundacao-paodeacucar-auchan.pt/website/colegio-rikrok-alfragide-2/",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://fundacao-paodeacucar-auchan.pt/website/colegio-rikrok-alfragide-2/"
  },
  {
   "id": "osm-way-1302526686",
@@ -58402,7 +58770,7 @@
   "codigo_postal": "1400-314",
   "distrito": "Lisboa",
   "telefone": "+351 910335102;+351 211931518",
-  "email": "info@lecoletrilingue.com;admin@lecoletrilingue.com;direction@lecolebiligue.com",
+  "email": "info@lecoletrilingue.com",
   "website": "https://lecoletrilingue.com",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -58411,7 +58779,10 @@
   "idade_max_meses": 60,
   "resposta": "Jardim de Infância",
   "concelho": "Lisboa",
-  "concelho_slug": "lisboa"
+  "concelho_slug": "lisboa",
+  "email_oficial": "admin@lecoletrilingue.com",
+  "email_oficial_fonte": "segundo endereço do registo original",
+  "emails_originais": "info@lecoletrilingue.com;admin@lecoletrilingue.com;direction@lecolebiligue.com"
  },
  {
   "id": "osm-way-1302579211",
@@ -58687,7 +59058,10 @@
   "concelho_slug": "lisboa",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "31963",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email": "info@colegioeuropeu-astoria.com",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-way-1302688329",
@@ -59737,7 +60111,8 @@
   "horario": "7:30 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Associação de Solidariedade Social",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "operador": "Jardim Infantil da Casa do Pessoal"
  },
  {
   "id": "osm-way-1442182145",
@@ -60060,10 +60435,7 @@
   "utentes_oficial": 39,
   "operador": "CENTRO SOCIAL PAROQUIAL SÃO MIGUEL DE LOBRIGOS",
   "carta_social_id": "18639",
-  "valencia_creche_fonte": "carta_social",
-  "fundido_de": [
-   "cs-18639"
-  ]
+  "valencia_creche_fonte": "carta_social"
  },
  {
   "id": "osm-way-1494648504",
@@ -60333,7 +60705,9 @@
   "resposta": "Infantário",
   "concelho": "Funchal",
   "concelho_slug": "funchal",
-  "distrito_original": "Madeira"
+  "distrito_original": "Madeira",
+  "oculto_duplicado": "osm-way-1298800097",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-4108051200",
@@ -60383,7 +60757,11 @@
   "resposta": "Creche",
   "concelho": "Tomar",
   "concelho_slug": "tomar",
-  "distrito_original": "Leiria"
+  "distrito_original": "Leiria",
+  "fundido_de": [
+   "osm-node-4755141423",
+   "osm-node-4756643621"
+  ]
  },
  {
   "id": "osm-node-4755141423",
@@ -60400,7 +60778,9 @@
   "resposta": "Creche",
   "concelho": "Tomar",
   "concelho_slug": "tomar",
-  "distrito_original": "Leiria"
+  "distrito_original": "Leiria",
+  "oculto_duplicado": "osm-node-4747704424",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-4756643621",
@@ -60417,7 +60797,9 @@
   "resposta": "Creche",
   "concelho": "Tomar",
   "concelho_slug": "tomar",
-  "distrito_original": "Leiria"
+  "distrito_original": "Leiria",
+  "oculto_duplicado": "osm-node-4747704424",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-5030381364",
@@ -60435,7 +60817,9 @@
   "resposta": "Creche",
   "concelho": "Alcochete",
   "concelho_slug": "alcochete",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "oculto_duplicado": "osm-node-12046436573",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-5066280817",
@@ -60761,7 +61145,10 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "fundido_de": [
+   "osm-node-5091531660"
+  ]
  },
  {
   "id": "osm-node-5091531660",
@@ -60783,7 +61170,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "oculto_duplicado": "osm-node-5091531659",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-5149434270",
@@ -60927,7 +61316,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Cascais",
-  "concelho_slug": "cascais"
+  "concelho_slug": "cascais",
+  "oculto_duplicado": "osm-way-560215736",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-5622616733",
@@ -61234,7 +61625,9 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Sintra",
-  "concelho_slug": "sintra"
+  "concelho_slug": "sintra",
+  "oculto_duplicado": "osm-way-1302345204",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-8662115936",
@@ -61341,7 +61734,9 @@
   "resposta": "Creche",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "oculto_duplicado": "osm-way-761579566",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-8920333310",
@@ -61650,7 +62045,19 @@
   "email": "cspsantoantonio@gmail.com",
   "website": "https://cspsantoantonio.pt",
   "telefone": "259300030",
-  "enriquecido_em": "2026-08-13"
+  "enriquecido_em": "2026-08-13",
+  "morada": "URBANIZAÇÃO QUINTA DA VEIGA, RUA AFONSO DUARTE Nº1",
+  "codigo_postal": "5000-710",
+  "localidade": "VILA REAL",
+  "horario": "7:45 - 19:15",
+  "horario_fonte": "carta_social",
+  "natureza_juridica": "Centro Social Paroquial",
+  "capacidade_oficial": 33,
+  "utentes_oficial": 33,
+  "carta_social_id": "3520",
+  "fundido_de": [
+   "cs-3520"
+  ]
  },
  {
   "id": "osm-node-11822705732",
@@ -61893,7 +62300,9 @@
   "email_confianca": "confirmado",
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "centrosocialcmp.pt",
-  "email_anterior_morto": "centro.pejao@netc.pt"
+  "email_anterior_morto": "centro.pejao@netc.pt",
+  "oculto_duplicado": "osm-way-386689788",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-node-13158855530",
@@ -62172,7 +62581,10 @@
   "tipo_inferido": true,
   "concelho": "Almada",
   "concelho_slug": "almada",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "email": "externatotimtim@gmail.com",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-way-392434703",
@@ -62450,7 +62862,10 @@
   "horario": "7:15 - 19:00",
   "horario_fonte": "carta_social",
   "natureza_juridica": "Instituto da Segurança Social",
-  "tipo_fonte": "carta_social"
+  "tipo_fonte": "carta_social",
+  "fundido_de": [
+   "osm-way-692042412"
+  ]
  },
  {
   "id": "osm-way-692042412",
@@ -62467,7 +62882,9 @@
   "resposta": "Creche",
   "concelho": "Santa Maria da Feira",
   "concelho_slug": "santa-maria-da-feira",
-  "distrito_original": "Porto"
+  "distrito_original": "Porto",
+  "oculto_duplicado": "osm-way-692042409",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-692042434",
@@ -62639,7 +63056,9 @@
   "resposta": "Creche",
   "concelho": "Seixal",
   "concelho_slug": "seixal",
-  "distrito_original": "Lisboa"
+  "distrito_original": "Lisboa",
+  "oculto_duplicado": "osm-node-5871309361",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "osm-way-964928391",
@@ -62785,7 +63204,11 @@
   "idade_max_meses": 36,
   "resposta": "Creche",
   "concelho": "Leiria",
-  "concelho_slug": "leiria"
+  "concelho_slug": "leiria",
+  "email": "geral@casbi.pt",
+  "telefone": "+351 244 724 091",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "osm-way-1375602259",
@@ -63051,7 +63474,9 @@
   "capacidade_oficial": 66,
   "utentes_oficial": 48,
   "horario": "7:00 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1300596267",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-27688",
@@ -63950,7 +64375,9 @@
   "capacidade_oficial": 84,
   "utentes_oficial": 84,
   "horario": "7:00 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1027226767",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-23284",
@@ -64584,7 +65011,9 @@
   "valencia_creche_fonte": "carta_social",
   "geo_precisao": "codigo_postal",
   "fonte": "carta_social",
-  "importado_em": "2026-08-13"
+  "importado_em": "2026-08-13",
+  "oculto_duplicado": "osm-node-11975000519",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-28337",
@@ -65696,7 +66125,9 @@
   "capacidade_oficial": 69,
   "utentes_oficial": 69,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-5863089507",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-37985",
@@ -67591,7 +68022,9 @@
   "capacidade_oficial": 93,
   "utentes_oficial": 53,
   "horario": "7:30 - 20:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-1589700652",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-22557",
@@ -72622,7 +73055,9 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 33,
   "horario": "8:30 - 16:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-9408637256",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-1510",
@@ -73277,7 +73712,9 @@
   "capacidade_oficial": 68,
   "utentes_oficial": 68,
   "horario": "8:00 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-12065449248",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-1757",
@@ -73837,7 +74274,7 @@
   "lat": 38.868166,
   "lon": -9.059446,
   "morada": "PRAÇA EÇA DE QUEIROZ, Nº1 - FORTE DA CASA",
-  "codigo_postal": null,
+  "codigo_postal": "2625-474",
   "localidade": "2625 FORTE DA CASA",
   "telefone": "219599253",
   "email": "info.iac@mail.telepac.pt",
@@ -77966,9 +78403,7 @@
   "capacidade_oficial": 125,
   "utentes_oficial": 118,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1273953438",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-1218",
@@ -78005,9 +78440,7 @@
   "email_verificado_em": "2026-08-14",
   "email_verificado_fonte": "cspcalvao.pt/contatos.html",
   "email_anterior_morto": "secretaria@cspcalvao.org",
-  "website": "http://www.cspcalvao.pt",
-  "oculto_duplicado": "osm-way-244932148",
-  "oculto_em": "2026-08-14"
+  "website": "http://www.cspcalvao.pt"
  },
  {
   "id": "cs-1219",
@@ -79028,9 +79461,7 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 42,
   "horario": "7:00 - 18:50",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1268505533",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-187",
@@ -79278,9 +79709,7 @@
   "capacidade_oficial": 91,
   "utentes_oficial": 91,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-165614039",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-39236",
@@ -79373,9 +79802,7 @@
   "capacidade_oficial": 44,
   "utentes_oficial": 40,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-738676776",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-4385",
@@ -79406,9 +79833,7 @@
   "capacidade_oficial": 41,
   "utentes_oficial": 38,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-738676776",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-18106",
@@ -79999,9 +80424,7 @@
   "capacidade_oficial": 59,
   "utentes_oficial": 53,
   "horario": "7:15 - 18:45",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1268505520",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-13104",
@@ -80431,9 +80854,7 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 36,
-  "utentes_oficial": 0,
-  "oculto_duplicado": "osm-way-243789887",
-  "oculto_em": "2026-08-14"
+  "utentes_oficial": 0
  },
  {
   "id": "cs-167",
@@ -83308,7 +83729,8 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 33,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "website": "http://www.cpvp.pt"
  },
  {
   "id": "cs-3015",
@@ -86101,7 +86523,9 @@
   "capacidade_oficial": 60,
   "utentes_oficial": 57,
   "horario": "7:45 - 18:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11963327023",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-17675",
@@ -87217,9 +87641,7 @@
   "capacidade_oficial": 22,
   "utentes_oficial": 22,
   "horario": "7:35 - 18:50",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1273953447",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-4552",
@@ -87655,7 +88077,9 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 23,
   "horario": "7:30 - 18:45",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1290802373",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-2853",
@@ -87779,9 +88203,7 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 16,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1273876820",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-24216",
@@ -88060,9 +88482,7 @@
   "capacidade_oficial": 68,
   "utentes_oficial": 65,
   "horario": "7:45 - 19:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1271960183",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-18058",
@@ -89644,7 +90064,10 @@
   "email_anterior_morto": "geral@casadosrapazes.com",
   "email_estado": "so_telefone",
   "email_verificado_em": "2026-08-14",
-  "website": "https://www.idfgomes.pt/"
+  "website": "https://www.idfgomes.pt/",
+  "email": "geral@idfgomes.pt",
+  "enriquecido_em": "2026-08-20",
+  "email_fonte": "enriquecimento_web"
  },
  {
   "id": "cs-4057",
@@ -90646,7 +91069,9 @@
   "capacidade_oficial": 162,
   "utentes_oficial": 162,
   "horario": "8:00 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11990073458",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-24734",
@@ -92512,9 +92937,7 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 32,
   "horario": "7:30 - 18:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-node-6751350124",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-3945",
@@ -94562,9 +94985,7 @@
   "capacidade_oficial": 55,
   "utentes_oficial": 55,
   "horario": "7:30 - 18:45",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1274426026",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-2167",
@@ -94690,7 +95111,9 @@
   "capacidade_oficial": 39,
   "utentes_oficial": 39,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279119530",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-26711",
@@ -94936,9 +95359,7 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 40,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1274919739",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-38884",
@@ -95711,9 +96132,7 @@
   "capacidade_oficial": 82,
   "utentes_oficial": 82,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-187247277",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-21142",
@@ -97018,7 +97437,7 @@
   "codigo_postal": "7450-134",
   "localidade": "Monforte",
   "telefone": "245573222",
-  "email": null,
+  "email": "monfortescm@sapo.pt",
   "operador": "SANTA CASA DA MISERICÓRDIA DE MONFORTE",
   "concelho": "Monforte",
   "concelho_slug": "monforte",
@@ -97038,7 +97457,10 @@
   "capacidade_oficial": 30,
   "utentes_oficial": 26,
   "horario": "8:00 - 18:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.mapasocial.pt/pt/equip-soc-santa-casa-misericordia-de-monforte/I1990"
  },
  {
   "id": "cs-1890",
@@ -98404,7 +98826,9 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 39,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11289627736",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-2697",
@@ -98718,7 +99142,9 @@
   "capacidade_oficial": 66,
   "utentes_oficial": 66,
   "horario": "7:30 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-611317454",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-38852",
@@ -98811,7 +99237,9 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 38,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-285800059",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-25192",
@@ -99307,7 +99735,9 @@
   "capacidade_oficial": 43,
   "utentes_oficial": 43,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11954763492",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-17958",
@@ -99748,7 +100178,7 @@
   "codigo_postal": "4580-227",
   "localidade": "PAREDES",
   "telefone": null,
-  "email": null,
+  "email": "jardim.infancia@scmparedes.pt",
   "operador": "SANTA CASA DA MISERICÓRDIA DE PAREDES",
   "concelho": "Paredes",
   "concelho_slug": "paredes",
@@ -99766,7 +100196,11 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 42,
-  "utentes_oficial": 33
+  "utentes_oficial": 33,
+  "website": "https://scmparedes.pt",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://scmparedes.pt/contactos"
  },
  {
   "id": "cs-26762",
@@ -100089,7 +100523,7 @@
   "codigo_postal": "4560-122",
   "localidade": "GALEGOS PNF",
   "telefone": "255724364",
-  "email": null,
+  "email": "geral@apdgalegos.com",
   "operador": "ASSOCIAÇÃO PARA O DESENVOLVIMENTO DE GALEGOS",
   "concelho": "Penafiel",
   "concelho_slug": "penafiel",
@@ -100109,7 +100543,11 @@
   "capacidade_oficial": 37,
   "utentes_oficial": 37,
   "horario": "7:00 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "website": "https://www.apdgalegos.com",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.apdgalegos.com/index.php?option=com_contact"
  },
  {
   "id": "cs-2601",
@@ -101259,7 +101697,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 20,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1283620543",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-22565",
@@ -101332,7 +101772,7 @@
   "codigo_postal": "4250-206",
   "localidade": "PORTO",
   "telefone": null,
-  "email": null,
+  "email": "asasderamalde.geral@gmail.com",
   "operador": "ASSOCIAÇÃO DE SOLIDARIEDADE E ACÇÃO SOCIAL DE RAMALDE",
   "concelho": "Porto",
   "concelho_slug": "porto",
@@ -101350,7 +101790,11 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 33,
-  "utentes_oficial": 20
+  "utentes_oficial": 20,
+  "website": "https://www.asasderamalde.com",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.asasderamalde.com/"
  },
  {
   "id": "cs-3739",
@@ -101361,7 +101805,7 @@
   "codigo_postal": "4100-057",
   "localidade": "PORTO",
   "telefone": "226184347",
-  "email": null,
+  "email": "fonte.moura@odps.org.pt",
   "operador": "OBRA DIOCESANA DE PROMOÇÃO SOCIAL",
   "concelho": "Trofa",
   "concelho_slug": "trofa",
@@ -101381,7 +101825,11 @@
   "capacidade_oficial": 35,
   "utentes_oficial": 34,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "website": "https://www.odps.org.pt",
+  "enriquecido_em": "2026-08-26",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.odps.org.pt/espaco/fonte-da-moura/"
  },
  {
   "id": "cs-3746",
@@ -102408,8 +102856,10 @@
   "horario_fonte": "carta_social",
   "email_anterior_morto": "info@centroarvorense.pt",
   "email_estado": "so_telefone",
-  "email_verificado_em": "2026-08-14",
-  "website": "https://www.centroarvorense.com.pt/"
+  "email_verificado_em": "2026-08-21",
+  "website": "https://www.centroarvorense.com.pt/",
+  "email_adivinhado_removido": "info@centroarvorense.pt",
+  "email_nota": "domínio sem servidor de correio — verificado por DNS"
  },
  {
   "id": "cs-2786",
@@ -102816,7 +103266,9 @@
   "capacidade_oficial": 42,
   "utentes_oficial": 43,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-1279662322",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-34136",
@@ -103335,7 +103787,9 @@
   "capacidade_oficial": 73,
   "utentes_oficial": 65,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-way-734291367",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-564",
@@ -106525,9 +106979,7 @@
   "capacidade_oficial": 40,
   "utentes_oficial": 39,
   "horario": "7:30 - 19:00",
-  "horario_fonte": "carta_social",
-  "oculto_duplicado": "osm-way-1493804002",
-  "oculto_em": "2026-08-14"
+  "horario_fonte": "carta_social"
  },
  {
   "id": "cs-3490",
@@ -106651,7 +107103,9 @@
   "capacidade_oficial": 33,
   "utentes_oficial": 33,
   "horario": "7:45 - 19:15",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "oculto_duplicado": "osm-node-11655027225",
+  "oculto_em": "2026-08-21"
  },
  {
   "id": "cs-3521",
