@@ -9,6 +9,8 @@
  *
  * Body JSON: { action, ...params }
  *   {"action":"list"}                                  → snapshot de todas as pendências
+ *   {"action":"aderentes"}                             → creches que gerem a própria página,
+ *                                                        com email e frescura das vagas
  *   {"action":"aplicar_correcao","id":"<creche_id>"}   → aplica ao creche_overrides e apaga a correção
  *   {"action":"rejeitar_correcao","id":"<creche_id>"}  → apaga a correção (como o botão rejeitar)
  *   {"action":"aplicar_report","id":"<report_id>"}     → réplica de applyReport do admin
@@ -370,6 +372,67 @@ async function logOp(db, quem, action, targetId, crecheId, detalhe) {
   });
 }
 
+// ── action: aderentes — as creches que gerem a própria página ───────────────
+// Existe porque a lista completa não é obtível de fora: creche_profiles é
+// público mas só tem quem preencheu o perfil (9 de 14), e creche_managers —
+// que tem toda a gente e o email de quem faz login — é privado por desenho.
+// Sem isto, uma campanha às aderentes falha um terço delas em silêncio.
+//
+// Junta o estado das vagas para se poder segmentar por frescura: uma creche que
+// confirmou ontem não precisa de ser incomodada.
+async function actionAderentes(db) {
+  const [mgrSnap, perfSnap, vagasSnap] = await Promise.all([
+    db.collection("creche_managers").get().catch(() => null),
+    db.collection("creche_profiles").get().catch(() => null),
+    db.collection("vagas").get().catch(() => null),
+  ]);
+
+  const perfis = new Map();
+  if (perfSnap) for (const d of perfSnap.docs) perfis.set(d.id, d.data());
+  const comVaga = new Set();
+  if (vagasSnap) for (const d of vagasSnap.docs) {
+    const v = d.data();
+    if (v.creche_id) comVaga.add(String(v.creche_id));
+  }
+
+  const SALAS = ["b0", "m12", "m24", "ji36"];
+  const agora = Date.now();
+  const toMs = (t) => (t && t.toMillis ? t.toMillis() : 0);
+
+  const lista = [];
+  if (mgrSnap) for (const d of mgrSnap.docs) {
+    const m = d.data();
+    const cid = String(m.creche_id || "");
+    if (!cid) continue;
+    const p = perfis.get(cid) || {};
+    const vagas = p.vagas || {};
+    const atualizadoMs = toMs(vagas.atualizado) || toMs(p.updated_at) || 0;
+    lista.push({
+      creche_id: cid,
+      nome: m.creche_nome || p.nome_creche || "",
+      // O email do gestor é quem faz login e quem vai carregar no botão; o
+      // contacto público do perfil é para os pais e pode ser uma geral@ que
+      // ninguém lê. Damos os dois e quem consome decide.
+      email_gestor: m.email || "",
+      email_perfil: (p.contacto_email || "").trim(),
+      tem_perfil: perfis.has(cid),
+      salas_com_vaga: SALAS.filter((k) => vagas[k] === true),
+      vaga_publicada: comVaga.has(cid),
+      atualizado_em: atualizadoMs ? new Date(atualizadoMs).toISOString() : null,
+      dias_sem_atualizar: atualizadoMs ? Math.floor((agora - atualizadoMs) / 86400000) : null,
+      aprovado_em: toMs(m.aprovado_em) ? new Date(toMs(m.aprovado_em)).toISOString() : null,
+    });
+  }
+  lista.sort((a, b) => (b.dias_sem_atualizar ?? -1) - (a.dias_sem_atualizar ?? -1));
+
+  return {
+    total: lista.length,
+    com_perfil: lista.filter((x) => x.tem_perfil).length,
+    com_vaga_publicada: lista.filter((x) => x.vaga_publicada).length,
+    aderentes: lista,
+  };
+}
+
 // ── action: list — snapshot de todas as pendências (máx. 50 por categoria) ──
 async function actionList(db) {
   const LIM = 50;
@@ -719,6 +782,8 @@ export default async function handler(req, res) {
     switch (action) {
       case "list":
         return res.status(200).json(await actionList(db));
+      case "aderentes":
+        return res.status(200).json(await actionAderentes(db));
       case "aplicar_correcao":
         out = await actionAplicarCorrecao(db, quem, id); break;
       case "rejeitar_correcao":

@@ -1,6 +1,26 @@
 {
  "entries": [
   {
+   "id": "2026-08-30-briefing",
+   "date": "2026-08-30",
+   "time": "10:30",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites entregues sem falhas, inbox calma",
+   "summary": "Melhor lote até hoje: 40 de 40 convites enviados sem uma única falha — faltam 2186 creches por convidar. A inbox não recebeu nada de novo nas últimas 24h (as threads da Carla Prata e da Fabiana Ramos já foram respondidas) e a agenda de hoje está vazia. Sem opt-outs, 0 claims pendentes e 0 fotos por moderar; 703 utilizadores (+3), 142 leads (+2) e 91 views ontem.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-08-30-ops",
+   "date": "2026-08-30",
+   "time": "10:26",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — filas todas a zero",
+   "summary": "Triagem diária ao /api/ops feita sem incidentes: o endpoint respondeu 200 e as cinco filas estão a zero — nenhuma correção de nome ou morada, nenhum report de idades, nenhum claim, nenhuma foto por moderar e nenhum pedido de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, por isso também não deixei rascunhos no Gmail. Nota: o claim da Carla Prata (St John's School), escalado ontem, já não aparece na fila. Nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
    "id": "2026-08-29-briefing",
    "date": "2026-08-29",
    "time": "09:25",
@@ -579,26 +599,6 @@
    "title": "Encontrei 8 emails novos em 12 pesquisas",
    "summary": "Pesquisei 12 creches privadas sem email: encontrei 8 emails novos, 8 websites e 1 telefone (ex.: Confraria Santa Eulália em Viseu, Casa do Povo de Creixomil em Guimarães, ABEP em Leiria, Génios em Marcha em Gaia). Sem emails inválidos do Resend para corrigir. Em 3 creches (Maçã Azul, Casal dos Sonhos, Escolinha 7) não encontrei contactos fiáveis. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
    "status": "attention"
-  },
-  {
-   "id": "2026-07-26-ops",
-   "date": "2026-07-26",
-   "time": "12:18",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências hoje",
-   "summary": "Verifiquei o endpoint de operações: zero correções, reports, fotos, claims e remoções pendentes. Nada a aplicar, rejeitar ou escalar. Não há nada à espera do Joaquim.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-26-briefing",
-   "date": "2026-07-26",
-   "time": "11:34",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "Inbox calmo, 40 convites enviados",
-   "summary": "0 emails relevantes nas últimas 24h (só 2 notificações automáticas). Enviei 40 convites a creches sem falhas — faltam 1475 por convidar. Sem opt-outs, claims pendentes nem fotos por moderar; agenda de hoje vazia.",
-   "status": "ok"
   }
  ]
 }

@@ -19,6 +19,10 @@
       "destination": "/api/vaga-alert?fn=unsub"
     },
     {
+      "source": "/api/vaga-confirmar",
+      "destination": "/api/vaga-alert?fn=confirmar"
+    },
+    {
       "source": "/app",
       "destination": "/app.html"
     },
