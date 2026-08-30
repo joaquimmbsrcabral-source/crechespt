@@ -44,7 +44,11 @@ const vagaToken = (crecheId, resposta) =>
   crypto.createHmac("sha256", SEGREDO).update(`${crecheId}:${resposta}`).digest("hex").slice(0, 12);
 
 /** Tira o artigo inicial do nome, para não o repetir depois da contracção. */
-const semArtigo = (nome) => String(nome || "").trim().replace(/^(?:[Oo]s|[Aa]s|[Oo]|[Aa])\s+/, "");
+const semArtigo = (nome) => {
+  const n = String(nome || "").trim();
+  // O "The" fica: "a página do The Sailors" lê-se; "do Sailors" não.
+  return /^the\s/i.test(n) ? n : n.replace(/^(?:[Oo]s|[Aa]s|[Oo]|[Aa])\s+/, "");
+};
 
 const ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ESC[c]);
@@ -71,6 +75,10 @@ function artigo(nome) {
   // de hoje é assim, mas há dezenas no dataset e este script vai ser reutilizado.
   const m = low.match(/^(os|as|o|a)\s/);
   if (m) return { o: "do", a: "da", os: "dos", as: "das" }[m[1]];
+  // Nomes ingleses ("The Sailors"): em português usa-se o masculino singular
+  // para o nome próprio estrangeiro inteiro — "a página do The Sailors". Tirar
+  // o "The" seria pior, porque renomeava a instituição.
+  if (low.startsWith("the ")) return "do";
   const primeira = (low.split(/[\s\-]/)[0] || "").replace(/^["«'']+/, "");
   if (MASC.has(primeira) || primeira.startsWith("jardim")) return "do";
   if (primeira.length > 3 && primeira.endsWith("s")) {
@@ -154,9 +162,16 @@ function emailHTML({ nome, dias, salas, linkSim, linkNao }) {
   const salasTxt = salas.length
     ? `Da última vez disseram-nos que tinham vaga em <b>${esc(salas.map((k) => SALAS[k]).join(", "))}</b>.`
     : `Neste momento a vossa página não mostra nenhuma vaga.`;
-  const frase = dias == null
-    ? `Ainda não sabemos se têm vaga.`
+  // Duas situações diferentes, dois textos. Dizer "se a informação estiver
+  // velha" a quem nunca publicou nada é falar de um problema que não têm — e a
+  // primeira coisa que faz alguém fechar um email é perceber que não é para si.
+  const nunca = dias == null;
+  const frase = nunca
+    ? `Ainda não nos disseram se têm vaga, por isso a vossa página não mostra nada sobre isso.`
     : `A última vez que atualizaram as vagas foi <b>há ${dias} dia${dias === 1 ? "" : "s"}</b>. ${salasTxt}`;
+  const aviso = nunca
+    ? `Uma creche que mostra vaga aparece <b>primeiro</b> para os pais que filtram por isso — e recebe mais pedidos. Basta um clique.`
+    : `Se a informação estiver velha, os pais telefonam para uma vaga que já não existe — ou, pior, <b>passam à frente</b> quando na verdade têm lugar.`;
 
   return `<!doctype html><html lang="pt-PT"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -178,7 +193,7 @@ function emailHTML({ nome, dias, salas, linkSim, linkNao }) {
     <p style="margin:0 0 16px">Todos os dias há famílias a abrir a página ${artigo(nome)} <b>${esc(semArtigo(nome))}</b> no creches.app à procura de lugar para o filho.</p>
     <p style="margin:0 0 20px">${frase}</p>
     <div style="background:#FFF6EE;border-radius:14px;padding:16px 20px;margin:0 0 24px;font-size:14.5px;color:#4A4060;line-height:1.6">
-      Se a informação estiver velha, os pais telefonam para uma vaga que já não existe — ou, pior, <b>passam à frente</b> quando na verdade têm lugar.
+      ${aviso}
     </div>
   </td></tr>
 
@@ -214,9 +229,9 @@ function emailTexto({ nome, dias, linkSim, linkNao }) {
   return `Olá,
 
 Todos os dias há famílias a abrir a página ${artigo(nome)} ${semArtigo(nome)} no creches.app à procura de lugar para o filho.
-${dias == null ? "Ainda não sabemos se têm vaga." : `A última vez que atualizaram as vagas foi há ${dias} dias.`}
-
-Se a informação estiver velha, os pais telefonam para uma vaga que já não existe — ou passam à frente quando na verdade têm lugar.
+${dias == null
+  ? "Ainda não nos disseram se têm vaga, por isso a vossa página não mostra nada sobre isso.\n\nUma creche que mostra vaga aparece primeiro para os pais que filtram por isso — e recebe mais pedidos. Basta um clique."
+  : `A última vez que atualizaram as vagas foi há ${dias} dias.\n\nSe a informação estiver velha, os pais telefonam para uma vaga que já não existe — ou passam à frente quando na verdade têm lugar.`}
 
 Respondam num clique (não precisam de fazer login):
 
@@ -258,9 +273,14 @@ for (const p of fonte) {
   // Um email tem de ter um @ e um domínio a sério. O perfil de teste tem
   // "geral@" e enviar para lá só queima reputação do domínio.
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email);
-  if (!nome || !emailOk) {
+  // As contas de teste do próprio Joaquim estão no creche_managers como
+  // aderentes a sério — e sem isto entravam na campanha. Ficam de fora do envio
+  // real, mas continuam disponíveis por --so=<email> para ensaiar o percurso
+  // completo (receber, clicar, ver o selo aparecer) antes de tocar em ninguém.
+  const ehTeste = /^teste\s*\d*$/i.test(nome.trim());
+  if (!nome || !emailOk || (ehTeste && !SO)) {
     excluidos.push({ id: p.id, nome: nome || "(sem nome)", email: p.email || "(sem email)",
-      motivo: !nome ? "sem nome no dataset" : "email inválido" });
+      motivo: !nome ? "sem nome no dataset" : !emailOk ? "email inválido" : "conta de teste" });
     continue;
   }
   if (SO && p.email.toLowerCase() !== SO.toLowerCase()) continue;
