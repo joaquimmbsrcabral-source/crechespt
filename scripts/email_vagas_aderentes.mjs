@@ -31,6 +31,15 @@ const FROM = process.env.EMAIL_FROM || "Joaquim Cabral <geral@creches.app>";
 const args = process.argv.slice(2);
 const MODO_ENVIO = args.includes("--enviar");
 const SO = (args.find((a) => a.startsWith("--so=")) || "").slice(5);
+// Quem já recebeu e não deve receber outra vez. Existe porque os três primeiros
+// envios foram feitos à mão, copiando ids do ecrã — e em dois deles copiei o id
+// da creche errada. O token não bateu certo e o endpoint devolveu 403, portanto
+// não se escreveu nada em lado nenhum; mas dois emails saíram com botões mortos.
+// A lição é a óbvia: isto envia-se a partir dos dados, nunca a partir de uma
+// listagem lida por olho.
+const EXCEPTO = new Set(
+  (args.find((a) => a.startsWith("--excepto=")) || "").slice(10)
+    .split(",").map((x) => x.trim().toLowerCase()).filter(Boolean));
 
 const SEGREDO = (process.env.CRON_SECRET || "").trim();
 if (!SEGREDO) {
@@ -284,6 +293,10 @@ for (const p of fonte) {
     continue;
   }
   if (SO && p.email.toLowerCase() !== SO.toLowerCase()) continue;
+  if (EXCEPTO.has(p.email.toLowerCase())) {
+    excluidos.push({ id: p.id, nome, email: p.email, motivo: "já recebeu (--excepto)" });
+    continue;
+  }
   const dias = p.dias !== undefined ? p.dias
              : (p.atualizado ? Math.floor((agora - Date.parse(p.atualizado)) / 86400000) : null);
   destinatarios.push({
@@ -369,6 +382,17 @@ if (!process.env.RESEND_API_KEY) {
 }
 let ok = 0, falhou = 0;
 for (const d of destinatarios) {
+  // Cinto e suspensórios: reconstrói o token a partir do id que está no link e
+  // compara. Se alguma vez o link e o id divergirem, o email não sai.
+  const mSim = d.linkSim.match(/c=([^&]+)&r=sim&t=([a-f0-9]+)/);
+  const mNao = d.linkNao.match(/c=([^&]+)&r=nao&t=([a-f0-9]+)/);
+  const idOk = mSim && mNao
+    && decodeURIComponent(mSim[1]) === d.id && decodeURIComponent(mNao[1]) === d.id
+    && mSim[2] === vagaToken(d.id, "sim") && mNao[2] === vagaToken(d.id, "nao");
+  if (!idOk) {
+    falhou++; console.log(`  ✗ ${d.email} — links não correspondem à creche; NÃO enviado`);
+    continue;
+  }
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },

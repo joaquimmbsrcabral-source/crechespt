@@ -241,3 +241,28 @@ Do plano acima, ficou feito:
 - **9 · Páginas de concelho mais grossas** e **10/11 · Câmaras e juntas** — trabalho de conteúdo e de outreach.
 - **Podar o UI** (3 ordenações mortas, filtro "✓ Aderentes", chip de tipo "?") — deixei por medir. Apagar funcionalidades que funcionam com base num palpite meu não é melhoria; vale mais um mês de dados.
 - **Verificar a taxa de abertura no Resend.** Continua a ser a coisa de dez minutos com maior retorno: se o `EMAIL_FROM` não estiver definido em produção, todos os convites saíram de `onboarding@resend.dev` e o problema não é o produto, é o SPF/DKIM.
+
+---
+
+## Campanha de vagas — 1 set 2026
+
+Enviado a **13 creches aderentes** (14 no `creche_managers`, mais uma que aderiu
+durante o envio; as 2 contas de teste ficaram de fora). Todos entregues.
+
+O que o teste de ponta a ponta apanhou, antes e depois:
+
+- **A métrica `vaga_publicada` do `/api/ops` mentia.** Dizia 9 quando eram 4:
+  contava os 32 documentos de vaga já expirados e os 64 reportados por famílias.
+  O mapa está correcto — o `app.html` filtra por `expires_at` — era só a métrica.
+  Corrigido; falta o deploy.
+- **Enviei os três primeiros emails à mão** e em dois copiei o `creche_id` da
+  creche errada. Como o token é HMAC de `id:resposta`, deixou de bater certo e o
+  endpoint devolveu 403 — **nenhum dado errado foi escrito**, que é precisamente
+  para isto que a assinatura existe. Mas dois emails saíram com botões mortos.
+  Reenviados corrigidos.
+
+A causa não foi distração, foi o método: ler ids de uma listagem no ecrã e
+escrevê-los noutro sítio. O envio passa a sair sempre do
+`scripts/email_vagas_aderentes.mjs`, que constrói tudo a partir dos dados, e que
+agora reconstrói o token a partir do id que está no próprio link e **recusa-se a
+enviar** se divergirem.
