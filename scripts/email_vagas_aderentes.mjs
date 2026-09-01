@@ -269,7 +269,7 @@ const excluidos = [];
 
 const fonte = viaOps || perfis;
 for (const p of fonte) {
-  const nome = p.nome || nomes.get(p.id) || nomesExtras.get(p.id) || "";
+  const nome = (p.nome || nomes.get(p.id) || nomesExtras.get(p.id) || "").trim().replace(/\s+/g, " ");
   // Um email tem de ter um @ e um domínio a sério. O perfil de teste tem
   // "geral@" e enviar para lá só queima reputação do domínio.
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email);
@@ -278,7 +278,7 @@ for (const p of fonte) {
   // real, mas continuam disponíveis por --so=<email> para ensaiar o percurso
   // completo (receber, clicar, ver o selo aparecer) antes de tocar em ninguém.
   const ehTeste = /^teste\s*\d*$/i.test(nome.trim());
-  if (!nome || !emailOk || (ehTeste && !SO)) {
+  if (!nome || !emailOk || (ehTeste && !SO && !args.includes("--incluir-teste"))) {
     excluidos.push({ id: p.id, nome: nome || "(sem nome)", email: p.email || "(sem email)",
       motivo: !nome ? "sem nome no dataset" : !emailOk ? "email inválido" : "conta de teste" });
     continue;
@@ -301,6 +301,20 @@ for (const d of destinatarios) {
 if (excluidos.length) {
   console.log(`\n${excluidos.length} excluídos:`);
   for (const x of excluidos) console.log(`         ${x.nome.slice(0, 40).padEnd(41)} ${x.email} — ${x.motivo}`);
+}
+
+if (args.includes("--json")) {
+  // Payloads prontos a enviar, para quem tem a chave do Resend e este script
+  // não tem. Inclui as contas de teste quando se pede --incluir-teste.
+  const saida = destinatarios.map((d) => ({
+    creche_id: d.id, nome: d.nome, to: d.email, dias: d.dias,
+    subject: assunto(d), html: emailHTML(d), text: emailTexto(d),
+    linkSim: d.linkSim, linkNao: d.linkNao,
+  }));
+  fs.writeFileSync(path.join(BASE, "organizacao", "envio-vagas.json"),
+                   JSON.stringify(saida, null, 1));
+  console.log(`\n✓ organizacao/envio-vagas.json — ${saida.length} emails prontos.\n`);
+  process.exit(0);
 }
 
 if (!MODO_ENVIO) {

@@ -389,10 +389,21 @@ async function actionAderentes(db) {
 
   const perfis = new Map();
   if (perfSnap) for (const d of perfSnap.docs) perfis.set(d.id, d.data());
+  // Só conta como "a creche publicou vaga" o que o mapa realmente mostra vindo
+  // DELA: dentro da validade e reportado por ela (painel ou email), não por um
+  // pai. Sem estes dois filtros a contagem dizia 9 quando eram 4 — juntava 32
+  // documentos expirados e 64 reports de famílias. O app.html já filtra por
+  // expires_at, portanto o mapa estava certo; era esta métrica que mentia.
+  const agoraMs = Date.now();
   const comVaga = new Set();
   if (vagasSnap) for (const d of vagasSnap.docs) {
     const v = d.data();
-    if (v.creche_id) comVaga.add(String(v.creche_id));
+    if (!v.creche_id) continue;
+    if (v.tipo === "sem_vaga") continue;
+    if (!(v.source === "painel" || v.source === "email")) continue;
+    const exp = v.expires_at && v.expires_at.toMillis ? v.expires_at.toMillis() : 0;
+    if (exp <= agoraMs) continue;
+    comVaga.add(String(v.creche_id));
   }
 
   const SALAS = ["b0", "m12", "m24", "ji36"];

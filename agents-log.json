@@ -1,6 +1,36 @@
 {
  "entries": [
   {
+   "id": "2026-09-01-briefing",
+   "date": "2026-09-01",
+   "time": "08:51",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Segundo lote do dia enviado por engano",
+   "summary": "Enviei 40 convites (40/40 sem falhas), ficam 2106 creches por convidar — mas este foi o SEGUNDO lote de hoje: o briefing das 00:14 já tinha enviado outro, o que soma 80 num só dia e é mais do que o ritmo definido para proteger a reputação do domínio. Inbox só com 1 notificação do Instagram, zero opt-outs, agenda vazia. Fica 1 claim pendente e 9 fotos por moderar no admin.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-09-01-ops",
+   "date": "2026-09-01",
+   "time": "08:52",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "1 claim escalado, 1 rascunho no Gmail, 9 fotos à tua espera",
+   "summary": "Triagem diária ao /api/ops sem incidentes. Correções, reports de idades e pedidos de remoção continuam a zero. Entrou 1 claim: Sónia Saraiva (Direção) para «Os Amiguinhos» (osm-way-1301843976) — a análise devolveu recomendação «rever» porque o email do pedido (osamiguinhos2017@gmail.com) não coincide com o do dataset (amiguinhosbe@hotmail.com), embora o nome da creche bata certo. Não aprovei: deixei um rascunho no Gmail a pedir que respondam do email oficial da creche ou indiquem um telefone da instituição para validação. Ficam 9 fotos por moderar (todas da creche extra_vrHeqyLvyjFBaHSCd67a, submetidas a 31/ago) — não consigo ver imagens, por isso precisam do teu olhar.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-08-31-ops",
+   "date": "2026-08-31",
+   "time": "09:01",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Sem pendências — filas todas a zero",
+   "summary": "Triagem diária ao /api/ops feita sem incidentes: o endpoint respondeu 200 e as cinco filas continuam a zero — nenhuma correção de nome ou morada, nenhum report de idades, nenhum claim, nenhuma foto por moderar e nenhum pedido de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, por isso também não deixei rascunhos no Gmail. Segundo dia consecutivo com a fila de administração limpa — nada à tua espera do lado das operações.",
+   "status": "ok"
+  },
+  {
    "id": "2026-08-30-briefing",
    "date": "2026-08-30",
    "time": "10:30",
@@ -568,36 +598,6 @@
    "emoji": "🛡️",
    "title": "1 report continua à tua espera (escalado)",
    "summary": "Única pendência: o mesmo report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), já escalado a 27/07 e ainda por resolver no /admin. Não apliquei nem rejeitei — veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação, embora 'Babysitting' deixe dúvida. Sem correções, claims, fotos nem remoções; nenhum rascunho de email necessário.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-27-briefing",
-   "date": "2026-07-27",
-   "time": "15:50",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "Mensagem em OOO, 40 convites enviados",
-   "summary": "2 emails relevantes: a Catarina Reis (Mensagem de Lisboa) está fora — a Catarina Carvalho (catarina.carvalho@amensagem.pt) assume a edição entretanto — e a VIGILANT propõe parceria (registo de presenças para creches). Enviei 40 convites sem falhas — faltam 1443 creches por convidar. Sem opt-outs, claims pendentes nem fotos por moderar.",
-   "status": "ok"
-  },
-  {
-   "id": "2026-07-27-ops",
-   "date": "2026-07-27",
-   "time": "15:49",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Escalei 1 report para a tua revisão",
-   "summary": "Havia apenas 1 pendência: um report sobre «Cantinho das Fadas - Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com). Não apliquei nem rejeitei — o report veio sem tipo proposto (caso de texto livre, sempre para escalar) e o próprio nome contém 'Berçario', o que contradiz a alegação. Fica à tua espera no /admin. Sem correções, claims, fotos nem remoções pendentes.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-26-enriquecimento",
-   "date": "2026-07-26",
-   "time": "18:35",
-   "agent": "Enriquecimento de dados",
-   "emoji": "🔍",
-   "title": "Encontrei 8 emails novos em 12 pesquisas",
-   "summary": "Pesquisei 12 creches privadas sem email: encontrei 8 emails novos, 8 websites e 1 telefone (ex.: Confraria Santa Eulália em Viseu, Casa do Povo de Creixomil em Guimarães, ABEP em Leiria, Génios em Marcha em Gaia). Sem emails inválidos do Resend para corrigir. Em 3 creches (Maçã Azul, Casal dos Sonhos, Escolinha 7) não encontrei contactos fiáveis. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
    "status": "attention"
   }
  ]
