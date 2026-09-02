@@ -58499,7 +58499,12 @@
   "concelho_slug": "loures",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
   "carta_social_id": "25058",
-  "idade_verificar": true
+  "idade_verificar": true,
+  "email": "geral@aldeiadossonhos.com",
+  "website": "https://aldeiadossonhos.com/",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://aldeiadossonhos.com/contactos/"
  },
  {
   "id": "osm-way-1302511803",
@@ -61104,7 +61109,13 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "email": "geralmariabarbosa@gmail.com",
+  "website": "https://www.colegiomariabarbosa.com/",
+  "telefone": "+351 212 311 730",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.colegiomariabarbosa.com/contactos"
  },
  {
   "id": "osm-node-5090478634",
@@ -61126,7 +61137,12 @@
   "concelho": "Montijo",
   "concelho_slug": "montijo",
   "valencia_creche_fonte": "Carta Social (DGSSS), consulta 2026-07-29",
-  "carta_social_id": "29161"
+  "carta_social_id": "29161",
+  "email": "geral.colegioarcoiris@gmail.com",
+  "telefone": "+351 913 840 996",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://crechenaminharua.pt/creches/colegio-arco-iris-e-os-seus-tesourinhos"
  },
  {
   "id": "osm-node-5091531659",
@@ -61612,7 +61628,12 @@
   "tipo_inferido": true,
   "concelho": "Ribeira Brava",
   "concelho_slug": "ribeira-brava",
-  "distrito_original": "Madeira"
+  "distrito_original": "Madeira",
+  "email": "crechedocampanario@gmail.com",
+  "telefone": "+351 291 953 300",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://place.madeira.gov.pt/docs/2425/Contactos2425.pdf"
  },
  {
   "id": "osm-node-8644828917",
@@ -62634,7 +62655,13 @@
   "resposta": "Creche + JI",
   "tipo_inferido": true,
   "concelho": "Reguengos de Monsaraz",
-  "concelho_slug": "reguengos-de-monsaraz"
+  "concelho_slug": "reguengos-de-monsaraz",
+  "email": "jard-infancia@scmreguengos.eu",
+  "website": "https://scmreguengos.eu/",
+  "telefone": "+351 266 509 190",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://diocesedeevora.pt/santas-casas-da-misericordia/"
  },
  {
   "id": "osm-way-440536465",
@@ -62737,7 +62764,12 @@
   "resposta": "Creche",
   "tipo_inferido": true,
   "concelho": "Montijo",
-  "concelho_slug": "montijo"
+  "concelho_slug": "montijo",
+  "email": "geral@colegiodotejo.com",
+  "website": "https://www.colegiodotejo.com/",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.colegiodotejo.com/contacto/"
  },
  {
   "id": "osm-way-551538460",
@@ -72387,7 +72419,7 @@
   "codigo_postal": "1600-413",
   "localidade": "LISBOA",
   "telefone": "217168118",
-  "email": null,
+  "email": "sozinhoemcasa@sapo.pt",
   "operador": "SOZINHO EM CASA - ACOLHIMENTO OCASIONAL DE CRIANÇAS, LDA",
   "concelho": "Lisboa",
   "concelho_slug": "lisboa",
@@ -72407,7 +72439,11 @@
   "capacidade_oficial": 28,
   "utentes_oficial": 26,
   "horario": "8:00 - 19:30",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "website": "https://www.sozinhoemcasa.pt/",
+  "enriquecido_em": "2026-09-02",
+  "email_fonte": "enriquecimento_web",
+  "email_verificado_fonte": "https://www.sozinhoemcasa.pt/contactos"
  },
  {
   "id": "cs-20322",
@@ -96928,7 +96964,7 @@
   "morada": "AV.º ALJUBARROTA, Nº 19, R / C ESQ.º",
   "codigo_postal": "2700-039",
   "localidade": "VENTEIRA",
-  "telefone": "919953300",
+  "telefone": "214923442",
   "email": "crechebaloico@gmail.com",
   "operador": "RIBEIRO & FILHOS LDA",
   "concelho": "Amadora",
@@ -96947,7 +96983,9 @@
   "fonte": "carta_social",
   "importado_em": "2026-08-14",
   "capacidade_oficial": 37,
-  "utentes_oficial": 0
+  "utentes_oficial": 0,
+  "telefone_fonte": "confirmado pela direção por email",
+  "telefone_verificado_em": "2026-09-02"
  },
  {
   "id": "cs-39904",

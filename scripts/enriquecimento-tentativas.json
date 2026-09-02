@@ -757,6 +757,71 @@
    "data": "2026-08-26",
    "resultado": "sem_resultado",
    "motivo": "email encontrado (aepzambujal.com) DESCARTADO: dominio sem MX"
+  },
+  "osm-way-1302501947": {
+   "data": "2026-09-02",
+   "resultado": "email+site",
+   "fonte": "aldeiadossonhos.com"
+  },
+  "osm-node-5082082190": {
+   "data": "2026-09-02",
+   "resultado": "email+telefone+site",
+   "fonte": "colegiomariabarbosa.com"
+  },
+  "osm-node-5090478634": {
+   "data": "2026-09-02",
+   "resultado": "email+telefone",
+   "fonte": "crechenaminharua.pt"
+  },
+  "osm-way-522656389": {
+   "data": "2026-09-02",
+   "resultado": "email+site",
+   "fonte": "colegiodotejo.com"
+  },
+  "cs-18614": {
+   "data": "2026-09-02",
+   "resultado": "email+site",
+   "fonte": "sozinhoemcasa.pt"
+  },
+  "osm-node-8401091838": {
+   "data": "2026-09-02",
+   "resultado": "email+telefone",
+   "fonte": "place.madeira.gov.pt"
+  },
+  "osm-way-392434707": {
+   "data": "2026-09-02",
+   "resultado": "email+telefone+site",
+   "fonte": "diocesedeevora.pt"
+  },
+  "osm-way-1302095443": {
+   "data": "2026-09-02",
+   "resultado": "sem_email_fiavel",
+   "fonte": "-"
+  },
+  "osm-way-1302345205": {
+   "data": "2026-09-02",
+   "resultado": "sem_email_fiavel",
+   "fonte": "-"
+  },
+  "osm-node-4108051200": {
+   "data": "2026-09-02",
+   "resultado": "fonte_nao_identifica_a_creche",
+   "fonte": "-"
+  },
+  "osm-node-5030381364": {
+   "data": "2026-09-02",
+   "resultado": "site_sem_conteudo",
+   "fonte": "-"
+  },
+  "cs-39286": {
+   "data": "2026-09-02",
+   "resultado": "homonimos_ambiguo",
+   "fonte": "-"
+  },
+  "cs-39271": {
+   "data": "2026-09-02",
+   "resultado": "fonte_e_de_outra_localidade",
+   "fonte": "-"
   }
  }
 }
