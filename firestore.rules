@@ -389,6 +389,16 @@ service cloud.firestore {
     }
 
     // Perfil editável da creche — leitura PÚBLICA (alimenta fichas e /app)
+    // ⚠️ O hasOnly() abaixo avalia o documento COMPLETO depois do merge, não só
+    // os campos que estão a ser escritos. Consequência: se alguma coisa gravar
+    // aqui um campo fora desta lista — tipicamente código de servidor, que usa
+    // o Admin SDK e ignora as regras — o documento fica PERMANENTEMENTE fechado
+    // a todos os clientes: a creche deixa de editar o próprio perfil e o admin
+    // deixa de lhe aprovar fotos, ambos com "Missing or insufficient permissions".
+    // Aconteceu a 1 set 2026 (vaga_confirmada_em/via, 10 de 12 perfis).
+    // Antes de acrescentar um campo aqui do lado do servidor: acrescenta-o
+    // também a esta lista E ao PERFIL_CAMPOS_OK do api/ops.js.
+    // Diagnóstico: {"action":"perfis_limpar_campos"} no /api/ops.
     match /creche_profiles/{cid} {
       allow read: if true;
       allow create, update: if (isManagerOf(cid) || isAdmin())
