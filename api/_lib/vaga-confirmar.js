@@ -23,6 +23,20 @@
  *  - Em ambos: creche_profiles/{creche_id}.vagas.atualizado = agora, para o
  *    painel e o nudge de frescura verem que houve confirmação.
  *
+ * ⚠️ NUNCA acrescentar campos novos a creche_profiles a partir daqui.
+ * A regra do Firestore desse documento usa `hasOnly([...])`, e o `hasOnly`
+ * avalia o documento COMPLETO depois do merge — não só os campos que estão a
+ * ser escritos. O Admin SDK ignora as regras, por isso um campo novo entra sem
+ * erro nenhum; mas a partir desse momento QUALQUER escrita de cliente naquele
+ * documento passa a falhar com "Missing or insufficient permissions".
+ *
+ * Aconteceu a 1 de setembro: esta função escrevia `vaga_confirmada_em` e
+ * `vaga_confirmada_via`, e as 10 creches que carregaram no botão ficaram sem
+ * conseguir editar o próprio perfil no painel — e o admin sem conseguir
+ * aprovar-lhes fotos. O rasto de auditoria que esses campos guardavam já existe
+ * no próprio vagas/painel_<id> (source:"email" + reportado_em), portanto eram
+ * redundantes além de perigosos.
+ *
  * Devolve HTML (é aberto no browser a partir do cliente de email), não JSON.
  * Env vars: FIREBASE_SERVICE_ACCOUNT, CRON_SECRET.
  */
@@ -141,8 +155,6 @@ export default async function handler(req, res) {
       await vagaRef.delete().catch(() => {});
       await perfilRef.set({
         vagas: { b0: false, m12: false, m24: false, ji36: false, atualizado: FieldValue.serverTimestamp() },
-        vaga_confirmada_em: FieldValue.serverTimestamp(),
-        vaga_confirmada_via: "email",
       }, { merge: true }).catch(() => {});
 
       return res.status(200).send(page(
@@ -173,8 +185,6 @@ export default async function handler(req, res) {
 
     await perfilRef.set({
       vagas: { ...v, atualizado: FieldValue.serverTimestamp() },
-      vaga_confirmada_em: FieldValue.serverTimestamp(),
-      vaga_confirmada_via: "email",
     }, { merge: true }).catch(() => {});
 
     const listaSalas = idades.length

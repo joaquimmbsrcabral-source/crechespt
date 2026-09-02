@@ -9,6 +9,9 @@
  *
  * Body JSON: { action, ...params }
  *   {"action":"list"}                                  → snapshot de todas as pendências
+ *   {"action":"perfis_limpar_campos"}                  → perfis fechados por campos fora da
+ *                                                        lista branca das regras (dry-run;
+ *                                                        {"aplicar":true} corrige)
  *   {"action":"aderentes"}                             → creches que gerem a própria página,
  *                                                        com email e frescura das vagas
  *   {"action":"aplicar_correcao","id":"<creche_id>"}   → aplica ao creche_overrides e apaga a correção
@@ -370,6 +373,62 @@ async function logOp(db, quem, action, targetId, crecheId, detalhe) {
     executado_em: FieldValue.serverTimestamp(),
     detalhe: detalhe || null,
   });
+}
+
+// ── action: perfis_limpar_campos — repara documentos que ninguém consegue editar ──
+// A regra de creche_profiles usa hasOnly([...]) e o hasOnly avalia o documento
+// COMPLETO depois do merge. Basta um campo fora da lista para o documento ficar
+// permanentemente fechado a qualquer cliente: a creche não edita o próprio
+// perfil, o admin não lhe aprova fotos. E como o Admin SDK ignora as regras, o
+// campo entra sem erro nenhum — falha silenciosa até alguém carregar num botão.
+//
+// A 1 de setembro o vaga-confirmar.js escrevia vaga_confirmada_em/via e fechou
+// 10 dos 12 perfis. Esta acção existe para reparar isso e o que vier a seguir.
+//
+// A lista de campos permitidos está aqui em duplicado de propósito: se a regra
+// mudar e isto não, o `dry_run` mostra a divergência em vez de a esconder.
+const PERFIL_CAMPOS_OK = [
+  "descricao", "horario", "mensalidade_min", "mensalidade_max", "creche_feliz",
+  "vagas", "contacto_email", "contacto_telefone", "website", "fotos",
+  "updated_at", "updated_by", "capacidade", "linguas", "valencias",
+];
+
+async function actionPerfisLimparCampos(db, quem, aplicar) {
+  const snap = await db.collection("creche_profiles").get();
+  const permitidos = new Set(PERFIL_CAMPOS_OK);
+  const afectados = [];
+
+  for (const d of snap.docs) {
+    const extra = Object.keys(d.data()).filter((k) => !permitidos.has(k));
+    if (extra.length) afectados.push({ creche_id: d.id, campos_a_remover: extra });
+  }
+
+  if (aplicar && afectados.length) {
+    // Em lotes de 400: o limite do batch são 500 operações.
+    for (let i = 0; i < afectados.length; i += 400) {
+      const batch = db.batch();
+      for (const a of afectados.slice(i, i + 400)) {
+        const patch = {};
+        for (const k of a.campos_a_remover) patch[k] = FieldValue.delete();
+        batch.update(db.doc(`creche_profiles/${a.creche_id}`), patch);
+      }
+      await batch.commit();
+    }
+    await logOp(db, quem, "perfis_limpar_campos", null, null,
+                { perfis: afectados.length, campos: [...new Set(afectados.flatMap((a) => a.campos_a_remover))] });
+  }
+
+  return {
+    ok: true,
+    dry_run: !aplicar,
+    total_perfis: snap.size,
+    perfis_bloqueados: afectados.length,
+    campos_permitidos: PERFIL_CAMPOS_OK,
+    afectados,
+    nota: aplicar
+      ? "Campos removidos. Estes perfis voltam a ser editáveis pela creche e pelo admin."
+      : "Nada foi alterado. Repete com {\"aplicar\":true} para corrigir.",
+  };
 }
 
 // ── action: aderentes — as creches que gerem a própria página ───────────────
@@ -795,6 +854,9 @@ export default async function handler(req, res) {
         return res.status(200).json(await actionList(db));
       case "aderentes":
         return res.status(200).json(await actionAderentes(db));
+      case "perfis_limpar_campos":
+        return res.status(200).json(
+          await actionPerfisLimparCampos(db, quem, body.aplicar === true));
       case "aplicar_correcao":
         out = await actionAplicarCorrecao(db, quem, id); break;
       case "rejeitar_correcao":
