@@ -295,3 +295,43 @@ Isto expõe um buraco maior: **mandamos alertas de vaga para creches que não t�
 como ser contactadas.** Vale a pena não deixar ativar alerta numa creche sem
 contacto, ou pelo menos dizê-lo à cabeça — em vez de o pai descobrir depois de
 receber a boa notícia.
+
+---
+
+## A métrica que faltava — 4 set 2026
+
+**As creches respondem a 20% dos pedidos das famílias.**
+
+De `creche_stats` (agregado das respostas dos pais ao follow-up dos 7 dias):
+46 famílias disseram-nos o que aconteceu — **9 dizem que a creche respondeu, 37
+dizem que não**.
+
+Ressalva honesta: só 46 dos 241 leads têm resposta do pai (19%), e quem foi
+ignorado tem mais motivo para responder ao inquérito. A taxa real é
+provavelmente melhor do que 20%. Mesmo a corrigir com generosidade, a distância
+para o número seguinte não desaparece.
+
+### O contraste que diz o que fazer
+
+| pedimos à creche | fazem |
+|---|---|
+| responder por email a uma família | **20%** |
+| carregar num de dois botões | **69%** (9 de 13, 1 set) |
+
+São as mesmas instituições. A diferença não é vontade, é fricção: responder a
+uma família obriga a compor uma mensagem; carregar num botão demora um segundo.
+
+### O que isto implica
+
+O email que a creche recebe com um pedido (`api/lead-notify.js`) tem exatamente
+dois botões: **"Gerir no painel →"** e **"Pedir acesso ao painel →"**. Ambos
+exigem login. Para responder à família, a creche tem de escrever um email do
+zero — e 4 em cada 5 não escreve.
+
+A correção é usar a máquina que já está construída e provada: **dois botões
+assinados no email do lead**, que respondem à família na hora e em nome da
+creche. É o mesmo padrão do `vaga-confirmar` e entra como `fn=` num endpoint
+existente (as 12 funções do plano Hobby continuam gastas).
+
+Enquanto isto não existir, todo o SEO e todos os convites levam famílias a uma
+promessa que falha 80% das vezes.
