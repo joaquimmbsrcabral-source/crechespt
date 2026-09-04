@@ -9,6 +9,8 @@
  *
  * Body JSON: { action, ...params }
  *   {"action":"list"}                                  → snapshot de todas as pendências
+ *   {"action":"leads_painel"}                          → leads cruzados, com estado derivado
+ *                                                        e agregados por creche (o /admin)
  *   {"action":"perfis_limpar_campos"}                  → perfis fechados por campos fora da
  *                                                        lista branca das regras (dry-run;
  *                                                        {"aplicar":true} corrige)
@@ -373,6 +375,177 @@ async function logOp(db, quem, action, targetId, crecheId, detalhe) {
     executado_em: FieldValue.serverTimestamp(),
     detalhe: detalhe || null,
   });
+}
+
+// ── action: leads_painel — tudo o que o /admin precisa, já cruzado ──────────
+//
+// Porque existe: o separador de leads do admin descarregava o creches_pt.json
+// (3,35 MB) a cada abertura só para ir buscar nome/concelho/contacto de umas
+// 150 creches, e lia a coleção creche_leads inteira três vezes — uma por cada
+// separador que mostra contagens. Eram ~723 leituras Firestore e 10 MB por
+// sessão para desenhar uma lista.
+//
+// Mas o motivo principal não é a performance. É que o documento do lead tem 23
+// campos e o admin mostrava 8. Os 15 escondidos — creche_respondeu,
+// horas_ate_resposta, notificado_em, resultado, os quatro sinalizadores de
+// lembrete — são precisamente os que dizem se um pedido está saudável ou
+// partido. O ecrã mostrava 241 cartões iguais ordenados por data e o Joaquim
+// não tinha como ver os 47 que estão estragados.
+//
+// Aqui o servidor faz o cruzamento uma vez e devolve, por lead, um ESTADO
+// DERIVADO. O `status` manual ("novo"/"contactado"/"fechado") continua a
+// existir mas deixa de ser a única verdade: 240 dos 241 leads estavam em
+// "novo" porque esse campo só muda por clique humano e nenhuma automação lhe
+// toca — um lead onde a família já entrou continuava a dizer "por responder".
+async function actionLeadsPainel(db, diasMax) {
+  const [dataset, invSnap, mgrSnap, leadsSnap] = await Promise.all([
+    fetch("https://creches.app/creches_pt.json").then((r) => r.json()).catch(() => []),
+    db.collection("emails_invalidos").limit(1000).get().catch(() => null),
+    db.collection("creche_managers").get().catch(() => null),
+    db.collection("creche_leads").orderBy("ts", "desc").limit(3000).get(),
+  ]);
+
+  const porId = new Map((Array.isArray(dataset) ? dataset : (dataset.creches || []))
+    .map((c) => [String(c.id), c]));
+
+  const invalidos = new Map();
+  if (invSnap) invSnap.forEach((d) => {
+    const v = d.data();
+    if (v.email) invalidos.set(String(v.email).toLowerCase(), v.motivo || "bounce");
+  });
+
+  const comPainel = new Set();
+  if (mgrSnap) mgrSnap.forEach((d) => {
+    const m = d.data();
+    if (m.creche_id) comPainel.add(String(m.creche_id));
+  });
+
+  const agora = Date.now();
+  const ms = (t) => (t && t.toMillis ? t.toMillis() : 0);
+  const iso = (t) => (ms(t) ? new Date(ms(t)).toISOString() : null);
+
+  const leads = [];
+  const porCreche = new Map();
+
+  leadsSnap.forEach((d) => {
+    const l = d.data();
+    // Leads anonimizados pela retenção: contam para as estatísticas históricas
+    // mas não têm dados pessoais para mostrar. Saltamos.
+    if (l.anonimizado_em) return;
+
+    const tsMs = ms(l.ts);
+    const dias = tsMs ? Math.floor((agora - tsMs) / 86400000) : 9999;
+    if (dias > diasMax) return;
+
+    const c = porId.get(String(l.creche_id)) || null;
+    const emailCreche = c ? String(c.email || "").split(";")[0].trim().toLowerCase() : "";
+    const emailOficial = c ? String(c.email_oficial || "").trim().toLowerCase() : "";
+    const temPainel = comPainel.has(String(l.creche_id));
+
+    // ── Endereço suspeito: mesma lógica do leads_endereco_suspeito, para os
+    // dois ecrãs não discordarem um do outro.
+    let enderecoSuspeito = null;
+    if (l.notificado === true && c && l.sem_painel !== false) {
+      if (invalidos.has(emailCreche)) enderecoSuspeito = `o endereço devolveu erro (${invalidos.get(emailCreche)})`;
+      else if (emailOficial && /min-edu/.test(emailOficial)) enderecoSuspeito = "foi para a caixa do agrupamento do Ministério";
+      else if (emailOficial) enderecoSuspeito = "a Carta Social indica outro endereço";
+    }
+
+    // ── Estado derivado. A ordem importa: é uma cascata do mais grave para o
+    // mais resolvido, e o primeiro que bater ganha.
+    let estado, ordem;
+    if (l.resultado) { estado = "resolvido"; ordem = 5; }
+    else if (l.creche_respondeu === true || l.resposta_creche === "sim") { estado = "respondeu"; ordem = 4; }
+    else if (!l.notificado) { estado = "por_entregar"; ordem = 0; }
+    else if (enderecoSuspeito) { estado = "endereco_errado"; ordem = 1; }
+    else if (l.resposta_creche === "nao" || dias >= 14) { estado = "sem_resposta"; ordem = 2; }
+    else { estado = "a_aguardar"; ordem = 3; }
+
+    leads.push({
+      id: d.id,
+      // ── família ──
+      nome: l.nome || "", email: l.email || "", telefone: l.telefone || "",
+      idade_crianca: l.idade_crianca || "", nascimento: l.nascimento || "",
+      mes_entrada: l.mes_entrada || "", inicio_ym: l.inicio_ym || "",
+      mensagem: l.mensagem || "",
+      // ── creche ──
+      creche_id: String(l.creche_id || ""),
+      creche_nome: l.creche_nome || (c ? c.nome : ""),
+      concelho: c ? (c.concelho || "") : "", distrito: c ? (c.distrito || "") : "",
+      creche_email: emailCreche, creche_telefone: c ? (c.telefone || "") : "",
+      tem_painel: temPainel,
+      // ── percurso ──
+      ts: iso(l.ts), dias,
+      estado, ordem,
+      status_manual: l.status || "novo",
+      notificado: l.notificado === true, notificado_em: iso(l.notificado_em),
+      entregue_para: l.entregue_para || null,
+      endereco_suspeito: enderecoSuspeito,
+      creche_respondeu: l.creche_respondeu === true,
+      creche_respondeu_em: iso(l.creche_respondeu_em),
+      horas_ate_resposta: typeof l.horas_ate_resposta === "number" ? Math.round(l.horas_ate_resposta) : null,
+      resposta_creche: l.resposta_creche || null,       // o que o PAI nos disse aos 7 dias
+      resultado: l.resultado || null,                    // desfecho aos 45 dias
+      lembretes: {
+        creche: l.lembrete_creche_enviado === true,
+        alternativas: l.alternativas_pai_enviado === true,
+        followup: l.followup_enviado === true,
+        resultado: l.resultado_enviado === true,
+      },
+    });
+
+    // ── agregado por creche ──
+    const k = String(l.creche_id || "");
+    if (!k) return;
+    if (!porCreche.has(k)) {
+      porCreche.set(k, {
+        creche_id: k, nome: l.creche_nome || (c ? c.nome : ""), 
+        concelho: c ? (c.concelho || "") : "", distrito: c ? (c.distrito || "") : "",
+        email: emailCreche, telefone: c ? (c.telefone || "") : "",
+        tem_painel: temPainel,
+        email_invalido: emailCreche ? invalidos.has(emailCreche) : false,
+        pedidos: 0, entregues: 0, respondeu: 0, sem_resposta: 0,
+        endereco_errado: 0, resolvidos: 0, horas: [],
+      });
+    }
+    const a = porCreche.get(k);
+    a.pedidos++;
+    if (l.notificado) a.entregues++;
+    if (estado === "respondeu" || estado === "resolvido") a.respondeu++;
+    if (estado === "sem_resposta") a.sem_resposta++;
+    if (estado === "endereco_errado") a.endereco_errado++;
+    if (l.resultado) a.resolvidos++;
+    if (typeof l.horas_ate_resposta === "number") a.horas.push(l.horas_ate_resposta);
+  });
+
+  const creches = [...porCreche.values()].map((a) => ({
+    ...a,
+    horas: undefined,
+    horas_media: a.horas.length
+      ? Math.round(a.horas.reduce((s, h) => s + h, 0) / a.horas.length)
+      : null,
+    // Taxa sobre ENTREGUES, não sobre pedidos: uma creche a quem nunca
+    // chegámos não "falhou em responder" — falhámos nós.
+    taxa_resposta: a.entregues ? Math.round((a.respondeu / a.entregues) * 100) : null,
+  })).sort((x, y) => y.pedidos - x.pedidos);
+
+  const conta = (e) => leads.filter((l) => l.estado === e).length;
+  return {
+    ok: true,
+    action: "leads_painel",
+    gerado_em: new Date().toISOString(),
+    total: leads.length,
+    bandeja: {
+      por_entregar: conta("por_entregar"),
+      endereco_errado: conta("endereco_errado"),
+      sem_resposta: conta("sem_resposta"),
+      a_aguardar: conta("a_aguardar"),
+      respondeu_por_fechar: leads.filter((l) => l.estado === "respondeu" && l.status_manual === "novo").length,
+      resolvido: conta("resolvido"),
+    },
+    leads,
+    creches,
+  };
 }
 
 // ── action: perfis_limpar_campos — repara documentos que ninguém consegue editar ──
@@ -854,6 +1027,9 @@ export default async function handler(req, res) {
         return res.status(200).json(await actionList(db));
       case "aderentes":
         return res.status(200).json(await actionAderentes(db));
+      case "leads_painel":
+        return res.status(200).json(
+          await actionLeadsPainel(db, Number(body.dias) || DIAS_MAX_LEAD));
       case "perfis_limpar_campos":
         return res.status(200).json(
           await actionPerfisLimparCampos(db, quem, body.aplicar === true));
