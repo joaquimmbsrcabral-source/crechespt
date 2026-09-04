@@ -169,6 +169,64 @@ table tr:hover{background:rgba(255,243,214,.4)}
 .top-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .top-table th.num{text-align:right}
 .top-table td.dim{color:var(--ink-soft)}
+/* ── Leads: bandeja, filtros, cartões ────────────────────────────────────── */
+.bandeja{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 16px}
+.bandeja button{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:12px;
+  border:2px solid transparent;background:#fff;box-shadow:var(--sh-1);cursor:pointer;font-family:inherit;
+  transition:transform .12s,box-shadow .12s}
+.bandeja button:hover{transform:translateY(-1px);box-shadow:var(--sh-2)}
+.bandeja button[aria-pressed="true"]{border-color:currentColor}
+.bandeja .n{display:block;font-size:24px;font-weight:800;line-height:1.1;font-family:Fredoka,inherit}
+.bandeja .r{display:block;font-size:12.5px;font-weight:600;line-height:1.35;margin-top:3px;opacity:.9}
+.bandeja .b-erro{background:#FFE9EF;color:#8A1E45}
+.bandeja .b-aviso{background:#FFF4D6;color:#6B4E00}
+.bandeja .b-ok{background:#DEF5E1;color:#1F6E37}
+.bandeja .b-neutro{background:#fff;color:var(--ink-soft)}
+.lead-filtros{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+.lead-filtros input[type=search],.lead-filtros select{font-family:inherit;font-size:16px;padding:9px 12px;
+  border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-height:40px}
+.lead-filtros input[type=search]{flex:1;min-width:200px}
+.lead-massa{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--c-turquoise-soft);
+  border-radius:12px;padding:10px 14px;margin:0 0 10px;font-size:13.5px;font-weight:700;color:#12615D}
+.lead-barra{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 10px}
+.lead-todos{font-size:13px;color:var(--ink-soft);font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer}
+.lead-todos input{width:18px;height:18px;cursor:pointer}
+.lead-card{background:#fff;border-radius:14px;padding:14px 16px;margin:0 0 10px;box-shadow:var(--sh-1);
+  border-left:4px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+.lead-card.e-endereco_errado{border-left-color:#D4436F}
+.lead-card.e-por_entregar{border-left-color:#E0A21A}
+.lead-card.e-sem_resposta{border-left-color:#E0A21A}
+.lead-card.e-a_aguardar{border-left-color:var(--c-turquoise)}
+.lead-card.e-respondeu{border-left-color:#3FA86A}
+.lead-card.e-resolvido{border-left-color:#9B97B5}
+.lead-card > input[type=checkbox]{width:18px;height:18px;margin-top:3px;flex:none;cursor:pointer}
+.lead-corpo{flex:1;min-width:0}
+.lead-topo{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.lead-nome{font-weight:800;font-size:15px}
+.lead-creche{font-size:13px;color:var(--ink-soft)}
+.lead-pill{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:var(--r-pill);white-space:nowrap}
+.lead-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);margin:8px 0 0}
+.lead-meta a{color:var(--ink-soft)}
+.lead-msg{font-size:13px;background:var(--bg);border-radius:10px;padding:9px 12px;margin:9px 0 0;line-height:1.5}
+.lead-percurso{border-top:1px solid var(--line);margin:10px 0 0;padding:9px 0 0;font-size:12.5px;
+  color:var(--ink-soft);display:grid;gap:4px}
+.lead-acoes{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 0}
+.lead-acoes button{font-size:12.5px;font-weight:700;padding:8px 13px;border-radius:10px;min-height:38px;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;font-family:inherit}
+.lead-acoes button:hover{background:var(--bg)}
+.lead-pag{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 0;font-size:13px}
+.lead-pag button{font-size:13px;font-weight:700;padding:8px 14px;border-radius:10px;min-height:40px;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;font-family:inherit}
+.lead-pag button:disabled{opacity:.4;cursor:default}
+.rk-tabela{width:100%;border-collapse:collapse;font-size:13px}
+.rk-tabela th{text-align:left;font-size:12px;color:var(--ink-soft);padding:8px 10px;border-bottom:1.5px solid var(--line)}
+.rk-tabela td{padding:9px 10px;border-bottom:1px solid var(--line)}
+.rk-tabela tr:hover td{background:var(--bg)}
+.rk-taxa{font-weight:800}
+@media(max-width:620px){
+  .bandeja{grid-template-columns:repeat(2,1fr)}
+  .lead-filtros input[type=search]{min-width:100%}
+}
 </style>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "076bc362f2104b70ba542774beb4a274"}'></script>
 </head>
@@ -491,17 +549,76 @@ table tr:hover{background:rgba(255,243,214,.4)}
     <!-- ═══ LEADS — pedidos de contacto de pais às creches ═══ -->
     <section class="panel" data-pg="leads">
       <h3>💌 Pedidos de contacto (leads) <span class="count" id="lead-count">0</span></h3>
-      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 12px">
-        Famílias que pediram contacto a uma creche. Os leads são entregues por email à creche (e o pai recebe confirmação).
-        As creches aderentes gerem o estado no painel delas — aqui vês tudo, incluindo creches <b>sem painel</b>, onde ninguém do outro lado responde.
+      <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">
+        Famílias que pediram contacto a uma creche. O <b>estado é calculado</b> a partir do que
+        sabemos — se o pedido saiu, para onde foi, se a creche respondeu, se a família disse o
+        desfecho. Não depende de ninguém o marcar à mão.
       </p>
-      <div id="lead-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
 
-      <!-- Recuperação dos pedidos que nunca chegaram à creche.
-           Está aqui, e não num script local, porque as variáveis do Vercel estão
-           marcadas "Sensitive" e não podem ser lidas depois de criadas. Aqui o
-           servidor já as tem, e o admin já está autenticado. -->
-      <div id="recuperar-box" style="background:#FFF4D6;border:1px solid #E8C97A;border-radius:14px;padding:16px 18px;margin:0 0 18px">
+      <!-- Bandeja: cada cartão é um filtro. A ordem é do mais partido para o mais
+           resolvido, que é a ordem por que vale a pena olhar para eles. -->
+      <div id="lead-bandeja" class="bandeja"></div>
+
+      <div class="lead-filtros">
+        <input id="lead-q" type="search" placeholder="Família, creche, email, concelho…"
+               autocomplete="off" aria-label="Pesquisar pedidos">
+        <select id="lead-concelho" aria-label="Filtrar por concelho"><option value="">Todos os concelhos</option></select>
+        <select id="lead-idade" aria-label="Filtrar por idade">
+          <option value="">Qualquer idade</option>
+          <option value="b0">Berçário (&lt; 1 ano)</option>
+          <option value="m12">1-2 anos</option>
+          <option value="m24">2-3 anos</option>
+          <option value="ji">3+ anos</option>
+        </select>
+        <select id="lead-entrada" aria-label="Filtrar por mês de entrada"><option value="">Qualquer entrada</option></select>
+        <button id="lead-refresh" class="btn-ghost" style="min-height:40px">🔄 Atualizar</button>
+      </div>
+
+      <!-- Barra de ações em massa: só aparece com seleção. -->
+      <div id="lead-massa" class="lead-massa" style="display:none">
+        <span id="lead-massa-n"></span>
+        <button id="lead-massa-contactado" class="btn-ghost">📞 Marcar contactado</button>
+        <button id="lead-massa-fechar" class="btn-ghost">✓ Fechar</button>
+        <button id="lead-massa-csv" class="btn-ghost">⬇ Exportar CSV</button>
+        <button id="lead-massa-limpar" class="btn-ghost">✕ Limpar seleção</button>
+      </div>
+
+      <div class="lead-barra">
+        <label class="lead-todos"><input type="checkbox" id="lead-sel-todos"> Selecionar os visíveis</label>
+        <span id="lead-status" style="font-size:12px;color:var(--ink-soft)"></span>
+      </div>
+
+      <div id="lead-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+      <div id="lead-paginacao" class="lead-pag" style="display:none"></div>
+
+      <!-- ── Ranking de creches ──────────────────────────────────────────────
+           O número que interessa não é "241 pedidos", é "que creches nunca
+           respondem". Diz quem convidar para o painel (as que já têm procura)
+           e a quem deixar de mandar famílias. -->
+      <details id="lead-ranking-box" style="margin:22px 0 0">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;padding:10px 0">
+          🏫 Creches por procura e resposta
+        </summary>
+        <div id="lead-ranking" style="margin-top:10px"></div>
+      </details>
+
+      <!-- Funil ponta-a-ponta: os estados do painel são o que a creche DIZ;
+           isto é o que realmente aconteceu, segundo as famílias. -->
+      <details style="margin:14px 0 0">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;padding:10px 0">
+          📊 Funil ponta-a-ponta
+        </summary>
+        <div id="lead-funil" style="margin-top:10px"></div>
+      </details>
+
+      <!-- Operações de recuperação. Ficam recolhidas: são para quando a bandeja
+           acusa alguma coisa, não para o dia-a-dia. -->
+      <details style="margin:14px 0 0">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;padding:10px 0">
+          🛠 Operações de recuperação
+        </summary>
+
+      <div id="recuperar-box" style="background:#FFF4D6;border:1px solid #E8C97A;border-radius:14px;padding:16px 18px;margin:10px 0 18px">
         <div style="font-weight:800;color:#6B4E00;margin-bottom:4px">⏳ Pedidos que nunca chegaram à creche</div>
         <p style="margin:0 0 12px;font-size:13.5px;color:#6B4E00;line-height:1.55">
           Quando não sabíamos o email de uma creche, o pedido da família ficava por entregar —
@@ -520,7 +637,6 @@ table tr:hover{background:rgba(255,243,214,.4)}
         <div id="recuperar-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
       </div>
 
-      <!-- Verificação técnica: os endereços das creches com pedidos existem? -->
       <div id="verif-box" style="background:#E8F7FF;border:1px solid #A9D9EE;border-radius:14px;padding:16px 18px;margin:0 0 18px">
         <div style="font-weight:800;color:#0F5C7A;margin-bottom:4px">🔎 Os endereços existem mesmo?</div>
         <p style="margin:0 0 12px;font-size:13.5px;color:#0F5C7A;line-height:1.55">
@@ -532,10 +648,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
         <div id="verif-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
       </div>
 
-      <!-- Pedidos que saíram, mas para o endereço errado. Diferente dos de cima:
-           estes foram entregues — só que à caixa do agrupamento do Ministério,
-           ou a um endereço que devolveu erro. -->
-      <div id="suspeitos-box" style="background:#FFE9EF;border:1px solid #F0B9CC;border-radius:14px;padding:16px 18px;margin:0 0 18px">
+      <div id="suspeitos-box" style="background:#FFE9EF;border:1px solid #F0B9CC;border-radius:14px;padding:16px 18px;margin:0 0 4px">
         <div style="font-weight:800;color:#8A1E45;margin-bottom:4px">📮 Pedidos entregues no endereço errado</div>
         <p style="margin:0 0 12px;font-size:13.5px;color:#8A1E45;line-height:1.55">
           Estes saíram, mas foram para a caixa do agrupamento do Ministério em vez da creche,
@@ -554,24 +667,7 @@ table tr:hover{background:rgba(255,243,214,.4)}
         </div>
         <div id="suspeitos-out" style="margin-top:12px;font-size:13.5px;color:#2C2356"></div>
       </div>
-
-      <!-- Funil ponta-a-ponta: os estados do painel são o que a creche DIZ;
-           isto é o que realmente aconteceu, segundo as famílias. -->
-      <div id="lead-funil" style="margin:0 0 18px"></div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
-        <label style="font-size:13px;font-weight:700">Ver:
-          <select id="lead-filtro" style="font-family:inherit;padding:6px 10px;border-radius:8px;border:1.5px solid var(--line);margin-left:6px">
-            <option value="por_responder" selected>🆕 Por responder</option>
-            <option value="sem_painel">⚠️ Creches sem painel</option>
-            <option value="todos">Todos</option>
-            <option value="contactado">📞 Contactados</option>
-            <option value="fechado">✓ Fechados</option>
-          </select>
-        </label>
-        <button id="lead-refresh" class="btn-apply" style="font-size:13px;padding:8px 14px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">🔄 Atualizar</button>
-        <span id="lead-status" style="font-size:12px;color:var(--ink-soft)"></span>
-      </div>
-      <div id="lead-host"><div class="empty" style="color:var(--ink-soft);font-size:13px">A carregar…</div></div>
+      </details>
     </section>
 
     <!-- ═══ 🔥 MAPA DE PROCURA — onde as famílias procuram creche ═══ -->
@@ -727,100 +823,330 @@ document.addEventListener("click", e => {
 });
 
 // ═══════════ LEADS — pedidos de contacto de pais às creches ═══════════
+//
+// O estado de cada pedido é CALCULADO no servidor (/api/ops leads_painel), não
+// escrito à mão. Antes havia 240 leads em "novo" de 241: esse campo só mudava
+// por clique e nenhuma automação lhe tocava, por isso um pedido onde a família
+// já tinha entrado continuava a dizer "por responder". O estado manual continua
+// a existir — serve para o Joaquim marcar o que já tratou — mas deixou de ser a
+// única verdade.
+//
+// O servidor também faz o cruzamento com o dataset. Este ecrã descarregava
+// 3,35 MB do creches_pt.json a cada abertura para ir buscar o concelho de umas
+// 150 creches, e lia a coleção de leads três vezes (uma por separador com
+// contagens). Eram ~723 leituras Firestore por sessão.
 let _leadsLoaded = false;
-let _leadsRows = [];        // todos os leads carregados
-let _leadsAderentes = null; // Set de creche_id com painel (gestor)
-let _leadsDataset = null;   // Map creche_id → {nome, concelho, distrito, email, telefone}
+let _LP = null;              // resposta do leads_painel
+let _leadFiltro = "";        // estado escolhido na bandeja ("" = todos)
+let _leadSel = new Set();    // ids selecionados
+let _leadPag = 0;
+const LEAD_POR_PAGINA = 40;
 
-function _leadDias(ts){
-  const ms = ts && ts.toMillis ? ts.toMillis() : 0;
-  if(!ms) return null;
-  return Math.floor((Date.now() - ms) / 86400000);
-}
-function _leadData(ts){
-  const ms = ts && ts.toMillis ? ts.toMillis() : 0;
-  if(!ms) return "—";
-  return new Date(ms).toLocaleDateString("pt-PT", { day:"2-digit", month:"short", year:"numeric" })
-       + " " + new Date(ms).toLocaleTimeString("pt-PT", { hour:"2-digit", minute:"2-digit" });
+const LEAD_ESTADOS = {
+  por_entregar:    { rot: "Nunca entregue",      cls: "b-aviso",  pill: "#FFF4D6|#6B4E00" },
+  endereco_errado: { rot: "Sítio errado",        cls: "b-erro",   pill: "#FFE9EF|#8A1E45" },
+  sem_resposta:    { rot: "Sem resposta",        cls: "b-aviso",  pill: "#FFF4D6|#6B4E00" },
+  a_aguardar:      { rot: "A aguardar",          cls: "b-neutro", pill: "#D8F5F4|#12615D" },
+  respondeu:       { rot: "Creche respondeu",    cls: "b-ok",     pill: "#DEF5E1|#1F6E37" },
+  resolvido:       { rot: "Resolvido",           cls: "b-neutro", pill: "#F0EBF8|#5A5570" },
+};
+
+function _leadData(iso){
+  if(!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("pt-PT",{day:"2-digit",month:"short"}) + " " +
+         d.toLocaleTimeString("pt-PT",{hour:"2-digit",minute:"2-digit"});
 }
 
 async function loadLeads(force){
+  if(_leadsLoaded && !force) return;
   const host = $("lead-host");
-  $("lead-status").textContent = "A carregar…";
+  $("lead-status").textContent = "a carregar…";
   try {
-    const [snap, mgrsSnap, ds] = await Promise.all([
-      db.collection("creche_leads").get(),
-      (_leadsAderentes && !force) ? Promise.resolve(null) : db.collection("creche_managers").get().catch(()=>null),
-      (_leadsDataset && !force) ? Promise.resolve(null) : fetch("/creches_pt.json").then(r=>r.json()).catch(()=>null)
-    ]);
-    if(mgrsSnap){
-      _leadsAderentes = new Set();
-      mgrsSnap.forEach(d => { const c = d.data().creche_id; if(c) _leadsAderentes.add(String(c)); });
-    }
-    if(ds && Array.isArray(ds)){
-      _leadsDataset = new Map();
-      ds.forEach(c => _leadsDataset.set(String(c.id), c));
-    }
-    _leadsRows = [];
-    snap.forEach(d => _leadsRows.push({ id: d.id, ...d.data() }));
-    _leadsRows.sort((a,b) => {
-      const ta = a.ts && a.ts.toMillis ? a.ts.toMillis() : 0;
-      const tb = b.ts && b.ts.toMillis ? b.ts.toMillis() : 0;
-      return tb - ta;
+    const tok = await firebase.auth().currentUser.getIdToken();
+    const r = await fetch("/api/ops", {
+      method:"POST",
+      headers:{ Authorization:"Bearer "+tok, "Content-Type":"application/json" },
+      body: JSON.stringify({ action:"leads_painel" })
     });
-    $("lead-status").textContent = "";
-    renderLeadStats();
+    const j = await r.json();
+    if(!r.ok || !j.leads) throw new Error(j.error || ("HTTP "+r.status));
+    _LP = j;
+    _leadsLoaded = true;
+    $("lead-count").textContent = j.total;
+    $("lead-status").textContent = "atualizado " + new Date(j.gerado_em).toLocaleTimeString("pt-PT",{hour:"2-digit",minute:"2-digit"});
+    _preencherFiltros();
+    renderLeadBandeja();
+    renderLeadFunil();
+    renderLeadRanking();
     renderLeads();
   } catch(e){
-    host.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">Erro: ' + cpEsc(e.message || e) + '</div>';
+    host.innerHTML = '<div class="empty" style="color:#8A1E45;font-size:13.5px">Não consegui carregar os pedidos: ' +
+      cpEsc(e.message || String(e)) + '<br><span style="color:var(--ink-soft)">Se isto persistir, o endpoint pode não estar publicado — corre o deploy.</span></div>';
     $("lead-status").textContent = "";
   }
 }
 
-function renderLeadStats(){
-  const seteDias = Date.now() - 7 * 86400000;
-  let novo = 0, cont = 0, fech = 0, semana = 0, semPainel = 0, velhos = 0;
-  _leadsRows.forEach(l => {
-    const st = l.status || "novo";
-    if(st === "novo") novo++; else if(st === "contactado") cont++; else fech++;
-    if(l.ts && l.ts.toMillis && l.ts.toMillis() > seteDias) semana++;
-    const temPainel = _leadsAderentes && _leadsAderentes.has(String(l.creche_id));
-    if(st === "novo" && !temPainel) semPainel++;
-    const d = _leadDias(l.ts);
-    if(st === "novo" && d != null && d >= 3) velhos++;
-  });
-  $("lead-count").textContent = _leadsRows.length;
-  const badge = $("nav-leads-badge");
-  if(badge){ badge.textContent = novo; badge.style.display = novo > 0 ? "" : "none"; }
-  $("lead-stats").innerHTML =
-    '<div class="mini-stat"><b>' + _leadsRows.length + '</b><span>total</span></div>' +
-    '<div class="mini-stat" style="background:#FFF1D6"><b>' + novo + '</b><span>🆕 por responder</span></div>' +
-    (velhos ? '<div class="mini-stat" style="background:#FFE2EC"><b>' + velhos + '</b><span>⏰ há 3+ dias</span></div>' : '') +
-    (semPainel ? '<div class="mini-stat" style="background:#FFE2EC"><b>' + semPainel + '</b><span>⚠️ creche sem painel</span></div>' : '') +
-    '<div class="mini-stat" style="background:#D9F2EF"><b>' + cont + '</b><span>📞 contactados</span></div>' +
-    '<div class="mini-stat" style="background:#DEF5E1"><b>' + fech + '</b><span>✓ fechados</span></div>' +
-    '<div class="mini-stat"><b>+' + semana + '</b><span>últimos 7 dias</span></div>';
-  renderLeadFunil();
+// Concelhos e meses de entrada saem dos dados, não de uma lista fixa: assim
+// nunca aparece um filtro que não devolve nada.
+function _preencherFiltros(){
+  const conc = [...new Set(_LP.leads.map(l=>l.concelho).filter(Boolean))].sort();
+  const selC = $("lead-concelho");
+  selC.innerHTML = '<option value="">Todos os concelhos</option>' +
+    conc.map(c=>'<option value="'+cpEsc(c)+'">'+cpEsc(c)+'</option>').join("");
+  const ent = [...new Set(_LP.leads.map(l=>l.inicio_ym).filter(Boolean))].sort().reverse();
+  const selE = $("lead-entrada");
+  selE.innerHTML = '<option value="">Qualquer entrada</option>' +
+    ent.map(m=>'<option value="'+cpEsc(m)+'">'+cpEsc(m)+'</option>').join("");
 }
 
-// ── Funil ponta-a-ponta (Onda 40) ─────────────────────────────────────────────
-// Os estados do painel (novo/contactado/fechado) são a versão da CRECHE.
-// Este funil mostra o que aconteceu de facto, segundo as famílias:
-// pedido → creche avisada → creche respondeu → família conseguiu lugar.
-// Só conta leads com idade suficiente para já terem sido perguntados, senão a
-// taxa aparece artificialmente baixa só porque ainda não houve tempo.
+function renderLeadBandeja(){
+  const b = _LP.bandeja;
+  const cartoes = [
+    ["endereco_errado", b.endereco_errado, "Entregues no sítio errado", "b-erro"],
+    ["sem_resposta",    b.sem_resposta,    "Sem resposta há 14+ dias",  "b-aviso"],
+    ["por_entregar",    b.por_entregar,    "Nunca entregues",           "b-aviso"],
+    ["respondeu",       b.respondeu_por_fechar, "Creche respondeu, por fechar", "b-ok"],
+    ["a_aguardar",      b.a_aguardar,      "A aguardar, dentro do prazo", "b-neutro"],
+    ["resolvido",       b.resolvido,       "Resolvidos",                 "b-neutro"],
+  ];
+  $("lead-bandeja").innerHTML = cartoes.map(([est,n,rot,cls]) =>
+    '<button class="'+cls+'" data-est="'+est+'" aria-pressed="'+(_leadFiltro===est)+'">' +
+    '<span class="n">'+n+'</span><span class="r">'+rot+'</span></button>').join("");
+  $("lead-bandeja").querySelectorAll("button").forEach(btn => {
+    btn.onclick = () => {
+      _leadFiltro = (_leadFiltro === btn.dataset.est) ? "" : btn.dataset.est;
+      _leadPag = 0; _leadSel.clear();
+      renderLeadBandeja(); renderLeads();
+    };
+  });
+}
+
+// Um lead passa o filtro? Todos os critérios são AND — é isso que torna a
+// pesquisa útil: "Sintra + berçário + entrada em setembro" numa creche que
+// acabou de abrir vaga.
+function _leadPassa(l){
+  if(_leadFiltro){
+    if(_leadFiltro === "respondeu"){
+      if(!(l.estado === "respondeu" && l.status_manual === "novo")) return false;
+    } else if(l.estado !== _leadFiltro) return false;
+  }
+  const conc = $("lead-concelho").value;
+  if(conc && l.concelho !== conc) return false;
+  const ent = $("lead-entrada").value;
+  if(ent && l.inicio_ym !== ent) return false;
+  const idade = $("lead-idade").value;
+  if(idade){
+    const m = _leadMeses(l);
+    if(m == null) return false;
+    if(idade==="b0"  && !(m < 12)) return false;
+    if(idade==="m12" && !(m >= 12 && m < 24)) return false;
+    if(idade==="m24" && !(m >= 24 && m < 36)) return false;
+    if(idade==="ji"  && !(m >= 36)) return false;
+  }
+  const q = ($("lead-q").value || "").trim().toLowerCase();
+  if(q){
+    const alvo = [l.nome,l.email,l.telefone,l.creche_nome,l.concelho,l.distrito,l.mensagem]
+      .filter(Boolean).join(" ").toLowerCase();
+    if(!alvo.includes(q)) return false;
+  }
+  return true;
+}
+
+// Idade em meses à data do pedido. Preferimos o `nascimento` estruturado; o
+// `idade_crianca` é texto livre de formulários antigos e só serve de recurso.
+function _leadMeses(l){
+  if(l.nascimento){
+    const n = new Date(l.nascimento), t = l.ts ? new Date(l.ts) : new Date();
+    if(!isNaN(n)) return Math.max(0, Math.round((t - n) / 2629800000));
+  }
+  const s = (l.idade_crianca||"").toLowerCase();
+  let m = s.match(/(\d+)\s*(mes|mês|meses)/); if(m) return +m[1];
+  m = s.match(/(\d+)\s*(ano|anos)/);          if(m) return +m[1] * 12;
+  return null;
+}
+
+function renderLeads(){
+  const host = $("lead-host");
+  const todos = _LP.leads.filter(_leadPassa);
+  const paginas = Math.max(1, Math.ceil(todos.length / LEAD_POR_PAGINA));
+  if(_leadPag >= paginas) _leadPag = 0;
+  const rows = todos.slice(_leadPag*LEAD_POR_PAGINA, (_leadPag+1)*LEAD_POR_PAGINA);
+
+  if(!todos.length){
+    host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13.5px;padding:24px 0;text-align:center">Nenhum pedido com estes filtros.</div>';
+    $("lead-paginacao").style.display = "none";
+    _renderMassa(); return;
+  }
+
+  host.innerHTML = rows.map(l => {
+    const e = LEAD_ESTADOS[l.estado] || LEAD_ESTADOS.a_aguardar;
+    const [pb, pc] = e.pill.split("|");
+    const meses = _leadMeses(l);
+    const meta = [
+      l.email ? '<span>✉️ <a href="mailto:'+cpEsc(l.email)+'">'+cpEsc(l.email)+'</a></span>' : "",
+      l.telefone ? '<span>📞 <a href="tel:'+cpEsc(String(l.telefone).replace(/\s/g,""))+'">'+cpEsc(l.telefone)+'</a></span>' : "",
+      meses != null ? '<span>👶 '+(meses<12 ? meses+" meses" : Math.floor(meses/12)+" anos")+'</span>' : "",
+      l.inicio_ym ? '<span>📅 entrada '+cpEsc(l.inicio_ym)+'</span>' : (l.mes_entrada ? '<span>📅 '+cpEsc(l.mes_entrada)+'</span>' : ""),
+    ].filter(Boolean).join("");
+
+    const passos = [];
+    if(l.notificado) passos.push('<div>✓ Entregue '+_leadData(l.notificado_em) +
+      (l.endereco_suspeito ? ' — <span style="color:#8A1E45">'+cpEsc(l.endereco_suspeito)+'</span>' : '') + '</div>');
+    else passos.push('<div style="color:#8A1E45">✗ Nunca entregue à creche</div>');
+    if(l.lembretes.creche)       passos.push('<div>✓ Lembrete à creche aos 2 dias</div>');
+    if(l.lembretes.alternativas) passos.push('<div>✓ Alternativas ao pai aos 5 dias</div>');
+    if(l.creche_respondeu)       passos.push('<div style="color:#1F6E37">✓ A creche respondeu'+
+      (l.horas_ate_resposta!=null ? ' em '+l.horas_ate_resposta+'h' : '')+'</div>');
+    if(l.resposta_creche === "sim") passos.push('<div style="color:#1F6E37">✓ A família confirmou que houve resposta</div>');
+    if(l.resposta_creche === "nao") passos.push('<div style="color:#8A1E45">✗ A família diz que ninguém respondeu</div>');
+    if(l.resultado)              passos.push('<div>🏁 Desfecho: '+cpEsc(l.resultado)+'</div>');
+    if(!l.creche_respondeu && !l.resultado && l.notificado)
+      passos.push('<div>⏳ '+l.dias+' dias desde o pedido</div>');
+
+    return '<div class="lead-card e-'+l.estado+'">' +
+      '<input type="checkbox" class="lead-chk" data-id="'+cpEsc(l.id)+'"'+(_leadSel.has(l.id)?" checked":"")+' aria-label="Selecionar pedido">' +
+      '<div class="lead-corpo">' +
+        '<div class="lead-topo"><div>' +
+          '<div class="lead-nome">'+cpEsc(l.nome||"(sem nome)")+'</div>' +
+          '<div class="lead-creche">'+cpEsc(l.creche_nome||"—") +
+            (l.concelho ? ' · '+cpEsc(l.concelho) : '') +
+            (l.tem_painel ? ' · <span style="color:#1F6E37">tem painel</span>' : ' · <span style="color:#8A6B00">sem painel</span>') +
+          '</div></div>' +
+          '<span class="lead-pill" style="background:'+pb+';color:'+pc+'">'+e.rot+'</span>' +
+        '</div>' +
+        '<div class="lead-meta">'+meta+'</div>' +
+        (l.mensagem ? '<div class="lead-msg">'+cpEsc(l.mensagem.slice(0,400))+'</div>' : '') +
+        '<div class="lead-percurso">'+passos.join("")+'</div>' +
+        '<div class="lead-acoes">' +
+          '<button data-act="notificar" data-id="'+cpEsc(l.id)+'">'+(l.notificado?"📨 Reenviar":"📨 Entregar")+'</button>' +
+          (l.status_manual==="novo" ? '<button data-act="st" data-st="contactado" data-id="'+cpEsc(l.id)+'">📞 Contactado</button>' : '') +
+          (l.status_manual!=="fechado" ? '<button data-act="st" data-st="fechado" data-id="'+cpEsc(l.id)+'">✓ Fechar</button>'
+                                       : '<button data-act="st" data-st="novo" data-id="'+cpEsc(l.id)+'">↩︎ Reabrir</button>') +
+        '</div>' +
+      '</div></div>';
+  }).join("");
+
+  $("lead-paginacao").style.display = paginas > 1 ? "flex" : "none";
+  if(paginas > 1){
+    $("lead-paginacao").innerHTML =
+      '<button id="pg-ant"'+(_leadPag===0?" disabled":"")+'>← Anteriores</button>' +
+      '<span>'+(_leadPag+1)+' de '+paginas+' · '+todos.length+' pedidos</span>' +
+      '<button id="pg-seg"'+(_leadPag>=paginas-1?" disabled":"")+'>Seguintes →</button>';
+    $("pg-ant").onclick = () => { _leadPag--; renderLeads(); window.scrollTo({top:0,behavior:"smooth"}); };
+    $("pg-seg").onclick = () => { _leadPag++; renderLeads(); window.scrollTo({top:0,behavior:"smooth"}); };
+  }
+
+  host.querySelectorAll(".lead-chk").forEach(c => {
+    c.onchange = () => { c.checked ? _leadSel.add(c.dataset.id) : _leadSel.delete(c.dataset.id); _renderMassa(); };
+  });
+  host.querySelectorAll('[data-act="st"]').forEach(b => { b.onclick = () => _leadEstado([b.dataset.id], b.dataset.st, b); });
+  host.querySelectorAll('[data-act="notificar"]').forEach(b => { b.onclick = () => _leadNotificar(b.dataset.id, b); });
+  _renderMassa();
+}
+
+function _renderMassa(){
+  const n = _leadSel.size;
+  $("lead-massa").style.display = n ? "flex" : "none";
+  if(n) $("lead-massa-n").textContent = n + (n===1 ? " pedido selecionado" : " pedidos selecionados");
+  const t = $("lead-sel-todos");
+  const visiveis = _LP ? _LP.leads.filter(_leadPassa).slice(_leadPag*LEAD_POR_PAGINA,(_leadPag+1)*LEAD_POR_PAGINA) : [];
+  t.checked = visiveis.length > 0 && visiveis.every(l => _leadSel.has(l.id));
+}
+
+// Escreve o estado manual. Em massa vai em lotes de 400 (o limite do batch são
+// 500 operações) — fechar 240 pedidos passa de 240 cliques a um.
+async function _leadEstado(ids, st, btn){
+  if(btn){ btn.disabled = true; btn.textContent = "⏳"; }
+  try {
+    for(let i=0; i<ids.length; i+=400){
+      const batch = db.batch();
+      ids.slice(i,i+400).forEach(id => batch.update(db.collection("creche_leads").doc(id), { status: st }));
+      await batch.commit();
+    }
+    ids.forEach(id => { const l = _LP.leads.find(x=>x.id===id); if(l) l.status_manual = st; });
+    _leadSel.clear();
+    renderLeadBandeja(); renderLeads();
+  } catch(e){
+    alert("Não consegui atualizar: " + (e.message || e));
+    if(btn) btn.disabled = false;
+    renderLeads();
+  }
+}
+
+async function _leadNotificar(id, btn){
+  const l = _LP.leads.find(x=>x.id===id);
+  if(!confirm((l && l.notificado ? "Reenviar" : "Entregar") + " o pedido de " + (l?l.nome:"") + " à creche?")) return;
+  btn.disabled = true; btn.textContent = "⏳";
+  try {
+    const tok = await firebase.auth().currentUser.getIdToken();
+    const r = await fetch("/api/lead-notify", {
+      method:"POST", headers:{ Authorization:"Bearer "+tok, "Content-Type":"application/json" },
+      body: JSON.stringify({ lead_id:id, force:true })
+    });
+    const j = await r.json();
+    if(!r.ok) throw new Error(j.error || ("HTTP "+r.status));
+    await loadLeads(true);
+  } catch(e){
+    alert("Não consegui entregar: " + (e.message || e));
+    btn.disabled = false; renderLeads();
+  }
+}
+
+function _leadCSV(){
+  const sel = _LP.leads.filter(l => _leadSel.has(l.id));
+  const cols = ["ts","estado","nome","email","telefone","nascimento","inicio_ym","creche_nome",
+                "concelho","distrito","creche_email","tem_painel","notificado","notificado_em",
+                "endereco_suspeito","creche_respondeu","horas_ate_resposta","resposta_creche",
+                "resultado","dias","status_manual","mensagem"];
+  const esc = v => '"' + String(v==null?"":v).replace(/"/g,'""').replace(/\r?\n/g," ") + '"';
+  const csv = "﻿" + cols.join(";") + "\n" +
+    sel.map(l => cols.map(c => esc(l[c])).join(";")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+  a.download = "leads-" + new Date().toISOString().slice(0,10) + ".csv";
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+// O número que interessa não é "241 pedidos", é "que creches nunca respondem".
+// A taxa é sobre ENTREGUES: uma creche a quem nunca chegámos não falhou em
+// responder — falhámos nós.
+function renderLeadRanking(){
+  const cs = (_LP.creches || []).filter(c => c.pedidos > 0);
+  if(!cs.length){ $("lead-ranking").innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Ainda sem dados.</div>'; return; }
+  const cor = t => t == null ? "var(--ink-soft)" : (t >= 60 ? "#1F6E37" : t >= 25 ? "#8A6B00" : "#8A1E45");
+  $("lead-ranking").innerHTML =
+    '<div style="overflow-x:auto"><table class="rk-tabela"><thead><tr>' +
+    '<th>Creche</th><th>Pedidos</th><th>Entregues</th><th>Respondeu</th><th>Taxa</th><th>Tempo médio</th><th>Painel</th>' +
+    '</tr></thead><tbody>' +
+    cs.slice(0,60).map(c =>
+      '<tr><td><b>'+cpEsc(c.nome||"—")+'</b>' +
+        (c.concelho ? '<br><span style="color:var(--ink-soft);font-size:12px">'+cpEsc(c.concelho)+'</span>' : '') +
+        (c.email_invalido ? '<br><span style="color:#8A1E45;font-size:12px">email rebentado</span>' : '') +
+      '</td>' +
+      '<td>'+c.pedidos+'</td><td>'+c.entregues+'</td><td>'+c.respondeu+'</td>' +
+      '<td class="rk-taxa" style="color:'+cor(c.taxa_resposta)+'">'+(c.taxa_resposta==null?"—":c.taxa_resposta+"%")+'</td>' +
+      '<td>'+(c.horas_media==null?"—":c.horas_media+"h")+'</td>' +
+      '<td>'+(c.tem_painel?"✓":"—")+'</td></tr>').join("") +
+    '</tbody></table></div>' +
+    '<p style="font-size:12.5px;color:var(--ink-soft);margin:10px 0 0">' +
+    'Ordenado por procura. As de cima com taxa baixa e sem painel são as que vale a pena convidar — já têm famílias a bater à porta.</p>';
+}
+
 function renderLeadFunil(){
   const host = $("lead-funil");
   if(!host) return;
-  const agora = Date.now();
+  if(!_LP) return;
   const D = 86400000;
-  const idade = l => (l.ts && l.ts.toMillis) ? (agora - l.ts.toMillis()) / D : null;
+  // O leads_painel já devolve `dias` calculado e as datas em ISO — o funil
+  // deixa de precisar de Timestamps do Firestore.
+  const idade = l => (typeof l.dias === "number" ? l.dias : null);
 
   let total = 0, notificados = 0, medidos = 0, horasSoma = 0, horasN = 0;
   let elegivelResp = 0, respSim = 0, respNao = 0;
   let elegivelRes = 0, resEntrei = 0, resEspera = 0, resSemVaga = 0, resDesisti = 0;
 
-  _leadsRows.forEach(l => {
+  _LP.leads.forEach(l => {
     total++;
     if(l.notificado) notificados++;
     // Medição direta: a creche respondeu ao email e a resposta passou por nós.
@@ -912,128 +1238,37 @@ function renderLeadFunil(){
   host.innerHTML = h;
 }
 
-function renderLeads(){
-  const host = $("lead-host");
-  const filtro = $("lead-filtro").value;
-  let rows = _leadsRows.slice();
-  if(filtro === "por_responder") rows = rows.filter(l => (l.status || "novo") === "novo");
-  else if(filtro === "contactado") rows = rows.filter(l => l.status === "contactado");
-  else if(filtro === "fechado")    rows = rows.filter(l => l.status && l.status !== "novo" && l.status !== "contactado");
-  else if(filtro === "sem_painel") rows = rows.filter(l => (l.status || "novo") === "novo" && !(_leadsAderentes && _leadsAderentes.has(String(l.creche_id))));
 
-  if(rows.length === 0){
-    host.innerHTML = '<div class="empty" style="color:var(--ink-soft);font-size:13px">Nada aqui — tudo tratado. 🎉</div>';
-    return;
-  }
-
-  host.innerHTML = rows.map(l => {
-    const st = l.status || "novo";
-    const dias = _leadDias(l.ts);
-    const temPainel = _leadsAderentes && _leadsAderentes.has(String(l.creche_id));
-    const stLabel = st === "novo" ? "🆕 Por responder" : (st === "contactado" ? "📞 Contactado" : "✓ Fechado");
-    const stCor   = st === "novo" ? "#FFF1D6" : (st === "contactado" ? "#D9F2EF" : "#DEF5E1");
-    const alerta  = st === "novo" && dias != null && dias >= 3;
-    const nome = cpEsc(l.nome || "—");
-    const email = cpEsc(l.email || "");
-    const tel = cpEsc(l.telefone || "");
-    // Nome da creche: preferir o guardado no lead; senão procurar no dataset
-    const dsC = _leadsDataset ? _leadsDataset.get(String(l.creche_id)) : null;
-    const crecheNome = l.creche_nome || (dsC && dsC.nome) || null;
-    const creche = cpEsc(crecheNome || ("(sem nome — id: " + (l.creche_id || "?") + ")"));
-    const local = dsC ? [dsC.localidade, dsC.distrito].filter(Boolean).join(", ") : "";
-    const crecheEmail = dsC && dsC.email ? dsC.email : "";
-    const crecheTel = dsC && dsC.telefone ? dsC.telefone : "";
-    const assunto = encodeURIComponent("Creches.app — o seu pedido de contacto para " + (crecheNome || "a creche"));
-    return '' +
-      '<div class="row" style="border-left:4px solid ' + (alerta ? "#FF6B9D" : (temPainel ? "#7DD389" : "#FFD166")) + ';padding:14px 16px;margin-bottom:10px;background:#fff;border-radius:12px;border:1px solid var(--line)">' +
-        // ─── Cabeçalho: QUEM → PARA QUE CRECHE ───
-        '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px">' +
-          '<div style="font-size:15px;line-height:1.4">' +
-            '<b>' + nome + '</b>' +
-            '<span style="color:var(--ink-soft);margin:0 7px">→</span>' +
-            '<b style="color:#B4255C">' + creche + '</b>' +
-          '</div>' +
-          '<span style="font-size:11.5px;background:' + stCor + ';padding:3px 10px;border-radius:99px;font-weight:700;white-space:nowrap">' + stLabel + '</span>' +
-        '</div>' +
-        // ─── Duas colunas: família | creche ───
-        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;font-size:13px;line-height:1.6">' +
-          '<div style="background:#FFF6EE;border-radius:10px;padding:10px 12px">' +
-            '<div style="font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">👨‍👩‍👧 Família</div>' +
-            '<b>' + nome + '</b><br>' +
-            (email ? '📧 <a href="mailto:' + email + '?subject=' + assunto + '" style="color:#B4255C">' + email + '</a><br>' : '') +
-            (tel ? '📞 <a href="tel:' + tel + '" style="color:#B4255C">' + tel + '</a><br>' : '') +
-            (l.idade_crianca ? '👶 ' + cpEsc(String(l.idade_crianca)) + '<br>' : '') +
-            (l.mes_entrada ? '📅 entrada: ' + cpEsc(String(l.mes_entrada)) : '') +
-          '</div>' +
-          '<div style="background:#F4F2FB;border-radius:10px;padding:10px 12px">' +
-            '<div style="font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">🏫 Creche pedida</div>' +
-            '<b>' + creche + '</b><br>' +
-            (local ? '📍 ' + cpEsc(local) + '<br>' : '') +
-            (crecheEmail ? '📧 <a href="mailto:' + cpEsc(crecheEmail) + '" style="color:#B4255C">' + cpEsc(crecheEmail) + '</a><br>' : '') +
-            (crecheTel ? '📞 <a href="tel:' + cpEsc(crecheTel) + '" style="color:#B4255C">' + cpEsc(crecheTel) + '</a><br>' : '') +
-            (temPainel ? '<span style="color:#2F9E4F;font-weight:700">✓ tem painel — a creche vê este pedido</span>'
-                       : '<span style="color:#B4255C;font-weight:700">⚠️ sem painel — ninguém responde do outro lado</span>') +
-            (l.creche_id ? '<br><a href="/app?creche=' + encodeURIComponent(l.creche_id) + '" target="_blank" rel="noopener" style="color:var(--ink-soft);font-size:12px">ver no mapa ↗</a>' : '') +
-          '</div>' +
-        '</div>' +
-        '<div style="font-size:12.5px;color:var(--ink-soft);margin-top:9px;line-height:1.55">' +
-          '🕐 ' + _leadData(l.ts) + (dias != null ? ' (há ' + dias + (dias === 1 ? ' dia' : ' dias') + ')' : '') +
-          (l.mensagem ? '<br><i style="color:var(--ink)">«' + cpEsc(String(l.mensagem).slice(0,300)) + '»</i>' : '') +
-        '</div>' +
-        '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
-          '<button class="lead-mail btn-apply" data-id="' + l.id + '" style="font-size:12.5px;padding:6px 12px;background:linear-gradient(135deg,#7DD389,#5BC077)">📨 ' + (l.notificado ? 'Reenviar avisos' : 'Enviar avisos') + '</button>' +
-          (st === "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="contactado" style="font-size:12.5px;padding:6px 12px">📞 Marcar contactado</button>' : '') +
-          (st !== "fechado" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="fechado" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#2C2356;border:1.5px solid var(--line)">✓ Fechar</button>' : '') +
-          (st !== "novo" ? '<button class="lead-act btn-apply" data-id="' + l.id + '" data-st="novo" style="font-size:12.5px;padding:6px 12px;background:#fff;color:#6E6989;border:1.5px solid var(--line)">↩︎ Reabrir</button>' : '') +
-        '</div>' +
-      '</div>';
-  }).join("");
-
-  // Enviar/reenviar os dois emails (creche + confirmação ao pai) via Resend
-  host.querySelectorAll(".lead-mail").forEach(b => {
-    b.onclick = async () => {
-      const l = _leadsRows.find(x => x.id === b.dataset.id);
-      if(!l) return;
-      const alvo = l.creche_nome || l.creche_id;
-      if(!confirm("Enviar os avisos deste pedido?\n\n1) Email à creche «" + alvo + "» com os dados da família\n2) Email de confirmação a " + (l.email || "—") + "\n\nSe a creche não tiver painel, usamos o email público do dataset.")) return;
-      const txt = b.textContent;
-      b.disabled = true; b.textContent = "A enviar…";
-      try {
-        const token = await auth.currentUser.getIdToken();
-        const resp = await fetch("/api/lead-notify", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-          body: JSON.stringify({ lead_id: l.id, force: true })
-        });
-        const jr = await resp.json().catch(()=>({}));
-        if(!resp.ok){ alert("Erro: " + (jr.error || resp.status)); b.disabled = false; b.textContent = txt; return; }
-        if(jr.skipped){ alert("Não enviado: " + jr.skipped); b.disabled = false; b.textContent = txt; return; }
-        b.textContent = "✓ Enviado";
-        l.notificado = true;
-        alert("✓ Email enviado à creche" + (jr.ack_pai ? " e confirmação enviada à família." : ". (A confirmação à família não foi enviada — ver consola.)"));
-      } catch(e){
-        alert("Erro: " + (e.message || e));
-        b.disabled = false; b.textContent = txt;
-      }
+// ── Ligação dos controlos. Fica num sítio só, e não espalhada pelo render,
+// porque estes elementos existem sempre no DOM: o router apenas troca a classe
+// pg-on, nunca destrói o painel. Basta ligá-los uma vez.
+(function ligarLeads(){
+  const liga = () => {
+    const q = $("lead-q");
+    if(!q) return;
+    let t = null;
+    q.oninput = () => { clearTimeout(t); t = setTimeout(() => { _leadPag = 0; renderLeads(); }, 200); };
+    ["lead-concelho","lead-idade","lead-entrada"].forEach(id => {
+      const el = $(id); if(el) el.onchange = () => { _leadPag = 0; renderLeads(); };
+    });
+    const r = $("lead-refresh"); if(r) r.onclick = () => loadLeads(true);
+    const st = $("lead-sel-todos");
+    if(st) st.onchange = () => {
+      const vis = _LP ? _LP.leads.filter(_leadPassa).slice(_leadPag*LEAD_POR_PAGINA,(_leadPag+1)*LEAD_POR_PAGINA) : [];
+      vis.forEach(l => st.checked ? _leadSel.add(l.id) : _leadSel.delete(l.id));
+      renderLeads();
     };
-  });
-
-  host.querySelectorAll(".lead-act").forEach(b => {
-    b.onclick = async () => {
-      b.disabled = true;
-      try {
-        await db.collection("creche_leads").doc(b.dataset.id).update({ status: b.dataset.st });
-        const row = _leadsRows.find(x => x.id === b.dataset.id);
-        if(row) row.status = b.dataset.st;
-        renderLeadStats();
-        renderLeads();
-      } catch(e){
-        alert("Erro ao atualizar: " + (e.message || e));
-        b.disabled = false;
-      }
+    const acoes = {
+      "lead-massa-contactado": () => _leadEstado([..._leadSel], "contactado"),
+      "lead-massa-fechar":     () => { if(confirm("Fechar " + _leadSel.size + " pedidos?")) _leadEstado([..._leadSel], "fechado"); },
+      "lead-massa-csv":        _leadCSV,
+      "lead-massa-limpar":     () => { _leadSel.clear(); renderLeads(); },
     };
-  });
-}
+    Object.entries(acoes).forEach(([id, fn]) => { const el = $(id); if(el) el.onclick = fn; });
+  };
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", liga);
+  else liga();
+})();
 
 // ═══════════ CONVIDAR CRECHES (campanha de ativação via Resend) ═══════════
 let _invLoaded = false;
@@ -1177,26 +1412,24 @@ async function loadTopCreches(){
 }
 
 // Leads por estado
+// Reutiliza o carregamento do separador Leads em vez de reler a coleção. Havia
+// três leituras completas de creche_leads — uma por cada separador com
+// contagens — e cada uma tinha a sua própria definição de "fechado".
 async function loadLeadsStats(){
   const host = $("leads-stats-host");
   try {
-    const snap = await db.collection("creche_leads").get();
-    let novo = 0, cont = 0, fech = 0, semana = 0;
-    const seteDias = Date.now() - 7 * 86400000;
-    snap.forEach(d => {
-      const x = d.data(), st = x.status || "novo";
-      if(st === "novo") novo++; else if(st === "contactado") cont++; else fech++;
-      if(x.ts && x.ts.toMillis && x.ts.toMillis() > seteDias) semana++;
-    });
+    await loadLeads(false);
+    if(!_LP) throw new Error("sem dados");
+    const b = _LP.bandeja;
+    const semana = _LP.leads.filter(l => l.dias <= 7).length;
     host.innerHTML =
-      '<div class="mini-stat"><b>' + snap.size + '</b><span>total entregues</span></div>' +
-      '<div class="mini-stat" style="background:#FFF1D6"><b>' + novo + '</b><span>🆕 por responder</span></div>' +
-      '<div class="mini-stat" style="background:#D9F2EF"><b>' + cont + '</b><span>📞 contactados</span></div>' +
-      '<div class="mini-stat" style="background:#DEF5E1"><b>' + fech + '</b><span>✓ fechados</span></div>' +
-      '<div class="mini-stat" style="background:#FFE2EC"><b>+' + semana + '</b><span>últimos 7 dias</span></div>';
+      '<div class="mini-stat"><b>' + _LP.total + '</b><span>pedidos</span></div>' +
+      '<div class="mini-stat" style="background:#FFE2EC"><b>' + b.endereco_errado + '</b><span>📮 sítio errado</span></div>' +
+      '<div class="mini-stat" style="background:#FFF1D6"><b>' + b.sem_resposta + '</b><span>⏳ sem resposta</span></div>' +
+      '<div class="mini-stat" style="background:#DEF5E1"><b>' + b.respondeu_por_fechar + '</b><span>✓ creche respondeu</span></div>' +
+      '<div class="mini-stat" style="background:#D9F2EF"><b>+' + semana + '</b><span>últimos 7 dias</span></div>';
   } catch(e){ host.innerHTML = '<div class="empty" style="color:#B4255C;font-size:13px">' + cpEsc(e.message || e) + '</div>'; }
 }
-
 // Vagas ativas por fonte
 async function loadVagasStats(){
   const host = $("vagas-stats-host");
