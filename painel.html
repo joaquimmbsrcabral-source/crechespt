@@ -53,6 +53,15 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
   font-family:"Quicksand";font-size:.95rem;color:var(--ink);background:#FFFDFB}
 .field textarea{min-height:110px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* 44px é o mínimo utilizável com o polegar. O interruptor tinha 30. */
+.switch{width:56px;height:32px}
+.toggle-row{min-height:52px}
+.lead-st{min-height:44px;padding:10px 16px !important}
+.ph-del{min-width:34px;min-height:34px}
+.userchip button{padding:8px 10px;min-height:40px}
+/* Sem media query: o iOS dá zoom em qualquer input abaixo de 16px, em qualquer
+   largura de ecrã. A regra estava só abaixo de 560px. */
+input,select,textarea{font-size:16px}
 @media(max-width:560px){.row2{grid-template-columns:1fr}}
 .hint{font-size:.78rem;color:var(--ink-faint);margin-top:4px}
 .msg{padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;margin:12px 0;display:none}
@@ -93,7 +102,9 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
 .fotos-grid img{width:100%;height:100%;object-fit:cover}
 .fotos-grid .st{position:absolute;left:6px;bottom:6px;font-size:.62rem;font-weight:800;background:rgba(255,255,255,.92);padding:2px 8px;border-radius:999px}
 .footer-note{text-align:center;color:var(--ink-faint);font-size:.78rem;margin-top:30px}
-.savebar{position:sticky;bottom:14px;text-align:center;margin-top:6px}
+.savebar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);width:min(720px,calc(100% - 32px));z-index:60;pointer-events:none}
+.savebar > *{pointer-events:auto}
+.savebar.escondida{display:none}
 @media(max-width:560px){
   .field input,.field textarea,.field select{font-size:16px !important}
 }
@@ -125,7 +136,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <div class="divider">ou com email</div>
       <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" autocomplete="email" placeholder="geral@minhacreche.pt"></div>
       <div class="field"><label for="li-pass">Palavra-passe</label><input id="li-pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
-      <div class="msg err" id="login-err"></div>
+      <div class="msg" id="login-err"></div>
       <div class="row2">
         <button class="btn btn-primary" id="btn-login">Entrar</button>
         <button class="btn btn-secondary" id="btn-registar">Criar conta</button>
@@ -157,7 +168,7 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       </div>
       <div class="field"><label for="claim-tel">Telefone da creche (para verificação)</label><input id="claim-tel" type="tel" placeholder="21 xxx xx xx"></div>
       <div class="field"><label for="claim-msg">Mensagem (opcional)</label><textarea id="claim-msg" style="min-height:70px" placeholder="Algo que nos ajude a confirmar que são da creche"></textarea></div>
-      <div class="msg err" id="claim-err"></div>
+      <div class="msg" id="claim-err"></div>
       <button class="btn btn-primary" id="btn-claim" style="width:100%">Pedir acesso ao painel →</button>
       <div class="divider">a vossa creche não aparece na pesquisa?</div>
       <details id="claim-nova">
@@ -173,8 +184,8 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
             <div class="field"><label for="cn-distrito">Distrito</label><input id="cn-distrito" maxlength="60"></div>
             <div class="field"><label for="cn-tel">Telefone</label><input id="cn-tel" type="tel" maxlength="30"></div>
           </div>
-          <div class="msg err" id="cn-err"></div>
-          <div class="msg ok" id="cn-ok"></div>
+          <div class="msg" id="cn-err"></div>
+          <div class="msg" id="cn-ok"></div>
           <button class="btn btn-secondary" id="btn-cn" style="width:100%">Enviar — adicionamos em 24-48h</button>
           <p class="hint center" style="margin-top:8px">Depois de a creche estar no mapa, avisamos-vos por email para pedirem aqui o acesso ao painel.</p>
         </div>
@@ -214,8 +225,6 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p style="font-size:.88rem;color:var(--ink-soft);margin:0">Tudo o que guardarem aqui aparece na vossa página pública e na app que os pais usam. <a id="dash-ver-ficha" href="#" target="_blank" rel="noopener">Ver a nossa página pública ↗</a> · <a href="#" id="btn-copiar-link" style="cursor:pointer">Copiar link 🔗</a></p>
       <p style="font-size:.78rem;color:var(--ink-faint);margin:6px 0 0">Nome ou morada errados? <a href="#card-definicoes" onclick="document.getElementById('def-correcao').open=true">Corrijam aqui ↓</a> — aplicamos em 24-48h.</p>
     </div>
-
-    <!-- PROGRESSO DO PERFIL -->
     <div class="card" id="card-progresso" style="display:none;padding:18px 26px">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
         <div style="flex:none;font-family:'Fredoka';font-weight:700;font-size:1.5rem" id="prog-pct">0%</div>
@@ -227,15 +236,33 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
         </div>
       </div>
     </div>
-
-    <!-- LEADS — famílias interessadas (Fase 2) -->
     <div class="card" id="card-leads" style="display:none">
       <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">💌</span> Famílias interessadas <span id="leads-novo-pill" class="pill-status pill-pending" style="display:none"></span></h2>
       <p class="sub">Pais que deixaram contacto na vossa página. Respondam depressa — é meia inscrição feita. 😉</p>
       <div id="leads-list"></div>
     </div>
-
-    <!-- ANALYTICS — visualizações da ficha (F1: 30 dias + tendência) -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
+      <p class="sub">Digam aos pais onde têm lugar. É a informação mais valiosa da plataforma — atualizem sempre que mudar.</p>
+      <p class="hint" id="vagas-atualizado" style="margin:0 0 14px"></p>
+      <div class="toggle-row" data-sala="b0"><div><div class="t">Berçário (0-12 meses)</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-b0" aria-label="Vaga no berçário (0-12 meses)"><span class="slider"></span></label></div>
+      <div class="toggle-row" data-sala="m12"><div><div class="t">Sala 1-2 anos</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-m12" aria-label="Vaga na sala 1-2 anos"><span class="slider"></span></label></div>
+      <div class="toggle-row" data-sala="m24"><div><div class="t">Sala 2-3 anos</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-m24" aria-label="Vaga na sala 2-3 anos"><span class="slider"></span></label></div>
+      <div class="toggle-row" data-sala="ji36"><div><div class="t">Jardim de Infância (3-6 anos)</div></div>
+        <label class="switch"><input type="checkbox" id="vaga-ji36" aria-label="Vaga no jardim de infância (3-6 anos)"><span class="slider"></span></label></div>
+      <p class="hint" id="salas-hint" style="display:none">Só mostramos as salas das vossas valências — para mudar, ajustem as <b>Valências</b> no perfil, mais abaixo.</p>
+      <p class="hint" id="vagas-estado"></p>
+      <!-- Botão próprio: publicar vagas é a acção semanal da creche e não deve
+           depender de rolar 2.500px até ao "Guardar alterações" no fim da página.
+           Se ela não chegar lá, a informação não sai — e não fica a saber. -->
+      <button class="btn btn-primary" id="btn-publicar-vagas" style="width:100%;margin-top:12px">
+        🟢 Publicar vagas
+      </button>
+      <p class="hint" id="vagas-msg" style="display:none;margin-top:8px"></p>
+    </div>
     <div class="card" id="card-analytics" style="display:none">
       <h2><span class="emoji-chip" style="background:#FFF3D6">📊</span> A vossa página</h2>
       <p class="sub">Pais que abriram a vossa ficha no creches.app.</p>
@@ -248,42 +275,18 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
       <p class="hint" id="a-mes" style="margin-top:10px"></p>
     </div>
 
-    <!-- VAGAS -->
-    <div class="card">
-      <h2><span class="emoji-chip" style="background:var(--c-mint-soft)">🟢</span> Vagas neste momento</h2>
-      <p class="sub">Digam aos pais onde têm lugar. É a informação mais valiosa da plataforma — atualizem sempre que mudar.</p>
-      <div class="toggle-row" data-sala="b0"><div><div class="t">Berçário (0-12 meses)</div></div>
-        <label class="switch"><input type="checkbox" id="vaga-b0" aria-label="Vaga no berçário (0-12 meses)"><span class="slider"></span></label></div>
-      <div class="toggle-row" data-sala="m12"><div><div class="t">Sala 1-2 anos</div></div>
-        <label class="switch"><input type="checkbox" id="vaga-m12" aria-label="Vaga na sala 1-2 anos"><span class="slider"></span></label></div>
-      <div class="toggle-row" data-sala="m24"><div><div class="t">Sala 2-3 anos</div></div>
-        <label class="switch"><input type="checkbox" id="vaga-m24" aria-label="Vaga na sala 2-3 anos"><span class="slider"></span></label></div>
-      <div class="toggle-row" data-sala="ji36"><div><div class="t">Jardim de Infância (3-6 anos)</div></div>
-        <label class="switch"><input type="checkbox" id="vaga-ji36" aria-label="Vaga no jardim de infância (3-6 anos)"><span class="slider"></span></label></div>
-      <p class="hint" id="salas-hint" style="display:none">Só mostramos as salas das vossas valências — para mudar, ajustem as <b>Valências</b> no perfil, mais abaixo.</p>
-      <p class="hint" id="vagas-estado"></p>
-      <p class="hint" id="vagas-atualizado"></p>
-      <!-- Botão próprio: publicar vagas é a acção semanal da creche e não deve
-           depender de rolar 2.500px até ao "Guardar alterações" no fim da página.
-           Se ela não chegar lá, a informação não sai — e não fica a saber. -->
-      <button class="btn btn-primary" id="btn-publicar-vagas" style="width:100%;margin-top:12px">
-        🟢 Publicar vagas
-      </button>
-      <p class="hint" id="vagas-msg" style="display:none;margin-top:8px"></p>
-    </div>
+      <!-- Tudo o que se preenche uma vez na vida fica atrás deste separador.
+           Antes, 1.100 dos ~3.200px do painel eram este formulário, e estava
+           ENTRE a diretora e as duas coisas que ela faz todas as semanas:
+           ver quem a procurou e dizer se tem vaga. -->
+      <details id="card-editar" style="margin:18px 0 0">
+        <summary style="cursor:pointer;font-weight:800;font-size:1rem;padding:14px 4px;list-style:none">
+          ⚙️ Editar o perfil, fotografias e definições
+          <span style="font-weight:600;font-size:.85rem;color:var(--ink-faint);display:block;margin-top:2px">
+            descrição, horário, mensalidades, contactos, valências, fotos
+          </span>
+        </summary>
 
-    <!-- CRECHE FELIZ -->
-    <div class="card">
-      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">🍼</span> Creche Feliz</h2>
-      <p class="sub">A vossa creche adere ao programa de creches gratuitas? Os pais filtram por isto.</p>
-      <div class="seg3" id="cf-seg">
-        <button data-v="true">✓ Sim, aderimos</button>
-        <button data-v="false">✗ Não aderimos</button>
-        <button data-v="null">Não sei / Em processo</button>
-      </div>
-    </div>
-
-    <!-- PERFIL -->
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-lilac-soft)">📝</span> O vosso perfil</h2>
       <p class="sub">Apresentem-se às famílias — projeto pedagógico, espaços, equipa, o que vos torna especiais.</p>
@@ -315,19 +318,24 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
         </div>
       </div>
     </div>
-
-    <!-- FOTOS -->
+    <div class="card">
+      <h2><span class="emoji-chip" style="background:var(--c-coral-soft)">🍼</span> Creche Feliz</h2>
+      <p class="sub">A vossa creche adere ao programa de creches gratuitas? Os pais filtram por isto.</p>
+      <div class="seg3" id="cf-seg">
+        <button data-v="true">✓ Sim, aderimos</button>
+        <button data-v="false">✗ Não aderimos</button>
+        <button data-v="null">Não sei / Em processo</button>
+      </div>
+    </div>
     <div class="card">
       <h2><span class="emoji-chip" style="background:var(--c-yellow-soft)">📷</span> Fotografias</h2>
       <p class="sub">Mostrem os vossos espaços. Por segurança, cada foto é revista pela nossa equipa antes de ficar pública (24-48h) — evitem fotos com crianças identificáveis. <b id="fotos-count"></b></p>
       <input type="file" id="foto-file" accept="image/*" style="display:none">
       <button class="btn btn-secondary" id="btn-foto">＋ Adicionar fotografia</button>
-      <div class="msg err" id="foto-err"></div>
-      <div class="msg ok" id="foto-ok"></div>
+      <div class="msg" id="foto-err"></div>
+      <div class="msg" id="foto-ok"></div>
       <div class="fotos-grid" id="fotos-grid"></div>
     </div>
-
-    <!-- DEFINIÇÕES DA PÁGINA -->
     <div class="card" id="card-definicoes">
       <h2><span class="emoji-chip" style="background:#EDEBF7">⚙️</span> Definições da página</h2>
       <p class="sub">Correções aos dados oficiais e opções da vossa presença no mapa.</p>
@@ -337,8 +345,8 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
           <div class="field"><label for="cor-nome">Nome correto</label><input id="cor-nome" maxlength="200"></div>
           <div class="field"><label for="cor-morada">Morada correta</label><input id="cor-morada" maxlength="240" placeholder="Rua, número, código postal, localidade"></div>
           <div class="field"><label for="cor-nota">Nota (opcional)</label><input id="cor-nota" maxlength="300" placeholder="Ex.: mudámos de instalações em 2025"></div>
-          <div class="msg err" id="cor-err"></div>
-          <div class="msg ok" id="cor-ok"></div>
+          <div class="msg" id="cor-err"></div>
+          <div class="msg" id="cor-ok"></div>
           <button class="btn btn-secondary" id="btn-correcao">Enviar correção — aplicamos em 24-48h</button>
           <p class="hint" style="margin-top:8px">Revemos manualmente para proteger a vossa página (o nome é a vossa identidade pública).</p>
         </div>
@@ -348,16 +356,17 @@ a{color:var(--c-coral);text-decoration:none;font-weight:600}
         <div style="margin-top:12px">
           <p class="hint">A página pública e o perfil deixam de aparecer no creches.app. Confirmamos convosco antes de remover — e podem voltar quando quiserem.</p>
           <div class="field"><label for="rem-motivo">Motivo</label><textarea id="rem-motivo" style="min-height:60px" maxlength="600" placeholder="Ex.: a creche encerrou / não queremos constar no mapa"></textarea></div>
-          <div class="msg err" id="rem-err"></div>
-          <div class="msg ok" id="rem-ok"></div>
+          <div class="msg" id="rem-err"></div>
+          <div class="msg" id="rem-ok"></div>
           <button class="btn" id="btn-remover" style="border:1.5px solid #B4255C;color:#B4255C;background:#fff">Pedir remoção do mapa</button>
         </div>
       </details>
     </div>
+      </details>
 
-    <div class="msg err" id="save-err"></div>
-    <div class="msg ok" id="save-ok"></div>
-    <div class="savebar">
+    <div class="msg" id="save-err"></div>
+    <div class="msg" id="save-ok"></div>
+    <div class="savebar escondida">
       <button class="btn btn-primary" id="btn-save" style="min-width:260px;box-shadow:var(--sh-2)">💾 Guardar alterações</button>
     </div>
   </div>
@@ -688,12 +697,19 @@ async function abrirDashboard(){
   $("p-tel").value = PROFILE.contacto_telefone || "";
   $("p-capacidade").value = PROFILE.capacidade ?? "";
   $("p-linguas").value = PROFILE.linguas || "";
-  setValencias(PROFILE.valencias || []);
+  // A ORDEM IMPORTA. O setValencias() chama o syncSalasComValencias(), que
+  // esconde as salas fora das valências e desliga as respetivas checkboxes.
+  // Quando corria ANTES desta atribuição, desligava caixas que ainda estavam a
+  // false e as linhas seguintes voltavam a ligá-las — já escondidas. Uma creche
+  // só com "Jardim de Infância" e um vagas.b0 antigo ficava com o berçário
+  // ligado, invisível e impossível de desligar, e o painel anunciava "vagas
+  // abertas" para uma sala que ela não tem.
   const v = PROFILE.vagas || {};
   $("vaga-b0").checked = !!v.b0;
   $("vaga-m12").checked = !!v.m12;
   $("vaga-m24").checked = !!v.m24;
   $("vaga-ji36").checked = !!v.ji36;
+  setValencias(PROFILE.valencias || []);
   // F1 — Nudge de frescura: vagas atualizadas há >30 dias pedem reconfirmação
   if(v.atualizado && v.atualizado.toDate){
     const el = $("vagas-atualizado");
@@ -716,6 +732,36 @@ async function abrirDashboard(){
 }
 
 // Progresso do perfil — espelha o KPI "perfil completo" e diz o que falta
+// Uma vaga publicada há mês e meio não é informação, é ruído: o pai lê o selo
+// como se fosse de hoje. 31 dias é o mesmo prazo do expires_at das vagas — se
+// o selo já expirou no mapa, não pode contar como "feito" no painel.
+const DIAS_VAGA_FRESCA = 31;
+function _vagasFrescas(){
+  const t = PROFILE.vagas && PROFILE.vagas.atualizado;
+  if(!t) return false;
+  const ms = t.toMillis ? t.toMillis() : (t.seconds ? t.seconds*1000 : Date.parse(t));
+  if(!ms) return false;
+  return (Date.now() - ms) < DIAS_VAGA_FRESCA * 86400000;
+}
+
+// Constrói o bloco `vagas` preservando o carimbo antigo quando nada mudou.
+function _payloadVagas(){
+  const atual = {
+    b0:   $("vaga-b0").checked,
+    m12:  $("vaga-m12").checked,
+    m24:  $("vaga-m24").checked,
+    ji36: $("vaga-ji36").checked,
+  };
+  const antes = PROFILE.vagas || {};
+  const mudou = ["b0","m12","m24","ji36"].some(k => !!antes[k] !== atual[k]);
+  return {
+    ...atual,
+    atualizado: (mudou || !antes.atualizado)
+      ? firebase.firestore.Timestamp.now()
+      : antes.atualizado,
+  };
+}
+
 function atualizarProgresso(){
   const card = $("card-progresso");
   if(!card) return;
@@ -725,7 +771,7 @@ function atualizarProgresso(){
     ["horário", !!PROFILE.horario],
     ["contacto para famílias", !!(PROFILE.contacto_email || PROFILE.contacto_telefone)],
     ["fotografias", !!(PROFILE.fotos && PROFILE.fotos.length)],
-    ["vagas atualizadas", !!(PROFILE.vagas && PROFILE.vagas.atualizado)],
+    ["vagas atualizadas", _vagasFrescas()],
     ["Creche Feliz", PROFILE.creche_feliz === true || PROFILE.creche_feliz === false],
     ["valências", !!(PROFILE.valencias && PROFILE.valencias.length)]
   ];
@@ -977,13 +1023,11 @@ $("btn-save").onclick = async () => {
     contacto_email: $("p-email").value.slice(0,120),
     contacto_telefone: $("p-tel").value.slice(0,30),
     creche_feliz: CF_VAL,
-    vagas: {
-      b0: $("vaga-b0").checked,
-      m12: $("vaga-m12").checked,
-      m24: $("vaga-m24").checked,
-      ji36: $("vaga-ji36").checked,
-      atualizado: firebase.firestore.Timestamp.now()
-    },
+    // As vagas só levam carimbo novo se os interruptores tiverem mesmo mudado.
+    // Antes o payload trazia sempre `atualizado: agora`, portanto corrigir uma
+    // gralha na descrição renovava os 31 dias de validade do selo no mapa — e
+    // contaminava a métrica de frescura: parecia fresco quem nunca lá tocou.
+    vagas: _payloadVagas(),
     updated_at: firebase.firestore.FieldValue.serverTimestamp(),
     updated_by: ME.uid
   };
@@ -1090,6 +1134,11 @@ async function sincronizarVagaPublica(v){
 let _DIRTY = false;
 function _setDirty(v){
   _DIRTY = v;
+  // A barra de guardar passou a ser fixa no ecrã (era sticky dentro de um pai
+  // que acabava logo a seguir, portanto nunca flutuava). Fixa e sempre visível
+  // taparia conteúdo, por isso só aparece quando há mesmo algo por guardar.
+  const bar = document.querySelector(".savebar");
+  if(bar) bar.classList.toggle("escondida", !v);
   const b = $("btn-save");
   if(!b) return;
   if(v){ b.textContent = "💾 Guardar alterações — por guardar!"; b.style.boxShadow = "0 0 0 3px var(--c-yellow), var(--sh-2)"; }
