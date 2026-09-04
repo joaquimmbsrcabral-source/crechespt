@@ -62,7 +62,13 @@ function quandoReportada(ms) {
   return `há ${Math.floor(mins / 60)}h`;
 }
 
-function emailHTML({ nomeCreche, crecheId, quando, unsubUrl }) {
+// A origem da vaga muda o que o pai deve fazer a seguir, por isso tem de estar
+// no email. Um report de outra família é um palpite útil; uma confirmação da
+// creche é outra coisa. Dizer "foi reportada uma vaga" nos dois casos fazia o
+// pai ligar com uma certeza que não tinha — e, na primeira vez que isto foi
+// para pessoas a sério (3 set 2026), o pai escreveu-nos a pedir o contacto de
+// uma creche que nem contacto tem.
+function emailHTML({ nomeCreche, crecheId, quando, unsubUrl, verificada }) {
   const nome = escapeHtml(nomeCreche);
   const mapaUrl = `https://creches.app/app?creche=${encodeURIComponent(crecheId)}`;
   return `<!doctype html><html lang="pt-PT"><body style="margin:0;padding:0;background:#FFF6EE">
@@ -77,7 +83,13 @@ function emailHTML({ nomeCreche, crecheId, quando, unsubUrl }) {
     <div style="font-family:'Trebuchet MS',Arial,sans-serif;font-size:22px;font-weight:bold;color:#fff;line-height:1.3;margin-top:18px">🟢 Abriu vaga na<br>${nome}!</div>
   </td></tr>
   <tr><td style="padding:28px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2C2356;line-height:1.6">
-    <p style="margin:0 0 16px">Boas notícias! Pediste para te avisarmos quando abrisse vaga na <b>${nome}</b> — e acabou de ser reportada uma vaga (${escapeHtml(quando)}).</p>
+    <p style="margin:0 0 16px">Pediste para te avisarmos quando abrisse vaga na <b>${nome}</b> — e ${verificada
+      ? `a própria creche <b>acabou de confirmar</b> que tem lugar (${escapeHtml(quando)}).`
+      : `<b>outra família</b> sinalizou que há lugar (${escapeHtml(quando)}).`}</p>
+    ${verificada ? "" : `<div style="background:#FFF3D6;border-radius:12px;padding:13px 16px;margin:0 0 16px;font-size:13.5px;color:#856404;line-height:1.55">
+      Esta vaga <b>não foi confirmada pela creche</b> — foi um pai ou mãe que nos disse.
+      Vale a pena ligar, mas conta com a possibilidade de já não existir.
+    </div>`}
     <div style="background:#DEF5E1;border-left:4px solid #7DD389;border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:14px;color:#2C2356">
       💡 <b>Liga já</b> — as vagas preenchem-se rápido. Confirma diretamente com a creche antes de contares com ela.
     </div>
@@ -95,10 +107,12 @@ function emailHTML({ nomeCreche, crecheId, quando, unsubUrl }) {
 </body></html>`;
 }
 
-function emailText({ nomeCreche, crecheId, quando, unsubUrl }) {
+function emailText({ nomeCreche, crecheId, quando, unsubUrl, verificada }) {
   return `Boas notícias!
 
-Pediste para te avisarmos quando abrisse vaga na ${nomeCreche} — e acabou de ser reportada uma vaga (${quando}).
+Pediste para te avisarmos quando abrisse vaga na ${nomeCreche} — e ${verificada
+  ? `a própria creche acabou de confirmar que tem lugar (${quando}).`
+  : `outra família sinalizou que há lugar (${quando}).\n\nATENÇÃO: esta vaga não foi confirmada pela creche — foi um pai ou mãe que nos disse. Vale a pena ligar, mas conta com a possibilidade de já não existir.`}
 
 Liga já — as vagas preenchem-se rápido. Confirma diretamente com a creche.
 
@@ -231,6 +245,9 @@ export default async function handler(req, res) {
     // tiver, usa-se a versão limpa; e se nem isso, uma frase que não fica
     // partida em português ("Abriu vaga na esta creche!").
     const nomeCreche = (await nomeOficialDaCreche(creche_id)) || nomeSeguro(vaga.nome_creche) || "";
+    // "verificado" é escrito pelo painel e pelo botão do email — ou seja, pela
+    // própria creche. Os reports de famílias vêm com source:"pai" e sem ele.
+    const verificada = vaga.verificado === true;
     const quando = quandoReportada(ts);
     let notificados = 0;
 
@@ -244,8 +261,8 @@ export default async function handler(req, res) {
             from: FROM_EMAIL,
             to: [sub.email],
             subject: nomeCreche ? `🟢 Abriu vaga na ${nomeCreche}!` : "🟢 Abriu vaga numa creche que estás a seguir!",
-            html: emailHTML({ nomeCreche, crecheId: creche_id, quando, unsubUrl }),
-            text: emailText({ nomeCreche, crecheId: creche_id, quando, unsubUrl })
+            html: emailHTML({ nomeCreche, crecheId: creche_id, quando, unsubUrl, verificada }),
+            text: emailText({ nomeCreche, crecheId: creche_id, quando, unsubUrl, verificada })
           })
         });
         if (resp.ok) {

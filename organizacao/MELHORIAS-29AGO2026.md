@@ -266,3 +266,32 @@ escrevê-los noutro sítio. O envio passa a sair sempre do
 `scripts/email_vagas_aderentes.mjs`, que constrói tudo a partir dos dados, e que
 agora reconstrói o token a partir do id que está no próprio link e **recusa-se a
 enviar** se divergirem.
+
+---
+
+## O email de um pai, 4 set 2026
+
+Um pai escreveu a pedir o contacto de uma creche onde o nosso alerta lhe disse
+que havia vaga. Ao investigar porquê, apareceram três coisas.
+
+**O `?creche=` nunca foi lido pelo mapa.** O alerta de vaga — o email mais
+urgente que o produto envia, "liga já, as vagas preenchem-se rápido" — mandava
+para `creches.app/app?creche=<id>`, e o `app.html` só sabia ler `#creche-<id>`.
+Toda a gente que clicou desde que os alertas existem caiu no mapa nacional com
+4.037 creches. O `/admin` gera o mesmo link em "ver no mapa ↗". Corrigido, com
+espera para as creches "extra" que só chegam depois do Firebase.
+
+**O alerta não dizia quem reportou a vaga.** Dizia "acabou de ser reportada uma
+vaga" tanto quando é a creche a confirmar como quando é outra família a
+sinalizar. São coisas diferentes e mudam o que o pai deve esperar ao telefone.
+Passa a distinguir, com aviso explícito quando não é verificada.
+
+**A creche em causa não tem contacto nenhum** — nem telefone, nem email, nem
+site. Procurei e não consegui confirmar: o número que aparece nas pesquisas é da
+Escola EB1/JI de Fitares, que tem outro código postal e começa aos 3 anos,
+enquanto a vaga reportada era de berçário. Não é a mesma instituição.
+
+Isto expõe um buraco maior: **mandamos alertas de vaga para creches que não têm
+como ser contactadas.** Vale a pena não deixar ativar alerta numa creche sem
+contacto, ou pelo menos dizê-lo à cabeça — em vez de o pai descobrir depois de
+receber a boa notícia.

@@ -1,25 +1,74 @@
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Creches Agents Log",
+  "schemaVersion": 1,
+  "description": "Diário dos agents do Creches.app — registo diário do que cada automação fez (emails, convites, alertas). Atualizado pelos próprios agents no fim de cada execução."
+}
+</script>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<title>Diário dos Agents — Creches.app</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #FAF9F7;
+    color: #2C2356;
+    padding: 28px 32px 48px;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #6B6483; font-size: 14px; margin: 0 0 22px; }
+
+  .active-row {
+    display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;
+  }
+  .chip {
+    background:#fff; border:1px solid #ECE9F5; border-radius:99px;
+    padding:6px 13px; font-size:12px; color:#5A5470; display:flex; align-items:center; gap:6px;
+  }
+  .chip .dot { width:7px; height:7px; border-radius:50%; background:#3FB65F; }
+
+  .date-heading {
+    font-size:12.5px; font-weight:700; color:#8A8497; text-transform:uppercase;
+    letter-spacing:.04em; margin: 26px 0 10px; padding-top: 4px;
+  }
+  .date-heading:first-of-type { margin-top: 0; }
+
+  .entry {
+    background:#fff; border:1px solid #ECE9F5; border-radius:14px;
+    padding:14px 16px; margin-bottom:10px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .stripe { width:4px; align-self:stretch; border-radius:4px; flex-shrink:0; }
+  .stripe.ok { background:#3FB65F; }
+  .stripe.attention { background:#F2A93B; }
+  .stripe.info { background:#8A7FE0; }
+  .stripe.error { background:#E05B5B; }
+
+  .entry-body { flex:1; min-width:0; }
+  .entry-top { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:3px; }
+  .entry-agent { font-weight:700; font-size:13.5px; }
+  .entry-time { font-size:11.5px; color:#9A93AE; }
+  .entry-title { font-size:13.5px; font-weight:600; color:#2C2356; margin-bottom:3px; }
+  .entry-summary { font-size:13px; color:#5A5470; line-height:1.5; }
+
+  .empty { color:#8A8497; font-size:13.5px; padding: 20px 0; }
+</style>
+</head>
+<body>
+
+  <h1>Diário dos Agents</h1>
+  <p class="sub">O que os teus agents fizeram, dia a dia — mais recente primeiro</p>
+
+  <div class="active-row" id="activeRow"></div>
+
+  <div id="log"></div>
+
+  <script type="application/json" id="log-data">
 {
  "entries": [
-  {
-   "id": "2026-09-04-briefing",
-   "date": "2026-09-04",
-   "time": "09:35",
-   "agent": "Briefing diário",
-   "emoji": "☕",
-   "title": "40 convites enviados, pai de Fitares ainda à espera",
-   "summary": "Lote diário enviado sem falhas: 40 convites a creches, ficam 1992 por convidar. Na caixa de entrada só 1 email relevante — o mesmo pai (djataquitana10@gmail.com) que pediu o contacto da creche de Fitares continua sem resposta desde ontem; o outro é uma resposta automática do Castelo Mágico. Zero opt-outs e zero claims pendentes, mas continua 1 foto por moderar e o Google Calendar devolveu a agenda vazia.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-09-04-ops",
-   "date": "2026-09-04",
-   "time": "09:31",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Sem pendências para tratar — a mesma foto continua à tua espera",
-   "summary": "Segundo dia seguido com a fila de administração praticamente vazia: zero correções, zero reports de idades, zero claims e zero pedidos de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, e por isso também não deixei rascunhos de email no Gmail. Continua 1 foto por moderar — é a mesma de ontem (creche osm-way-1301843976, submetida a 1 de setembro) e, como não consigo ver imagens, fica à espera do teu olhar no admin.",
-   "status": "attention"
-  },
   {
    "id": "2026-09-03-briefing",
    "date": "2026-09-03",
@@ -599,6 +648,88 @@
    "title": "Encontrei 6 emails novos em 12 pesquisas",
    "summary": "Pesquisei 12 creches privadas sem email: encontrei 6 emails novos (Creche N. Sra. da Lapa em Famalicão, A Nossa Casa em Esmoriz, Jardim das Sementinhas em Viseu, Brincadeiras ao Cubo no Barreiro, O Mundo Mágico no Porto, Oficina dos Sonhos na Charneca — este último com website também), 1 telefone (Os Pitruquinhas, Odivelas) e 2 websites. Sem emails inválidos a corrigir esta semana. As fichas foram regeneradas. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
    "status": "attention"
+  },
+  {
+   "id": "2026-07-31-briefing",
+   "date": "2026-07-31",
+   "time": "08:05",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "Inbox vazio, convites de volta aos eixos",
+   "summary": "0 emails relevantes nas últimas 24h e agenda livre. Enviei 40 convites sem falhas — faltam 1335 creches por convidar (o lote de ontem, que tinha ficado por confirmar, saiu pelo menos em parte). Sem opt-outs, claims pendentes nem fotos por moderar; 47 views ontem e 1 vaga nova de pais.",
+   "status": "ok"
+  },
+  {
+   "id": "2026-07-31-ops",
+   "date": "2026-07-31",
+   "time": "07:38",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Só o report do Cantinho das Fadas continua à tua espera",
+   "summary": "Única pendência mantém-se o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), escalado desde 27/07 e ainda por resolver no /admin. Mantive a escalada: veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
+   "status": "attention"
   }
  ]
 }
+</script>
+  <script>
+function fmtDate(d){
+  try {
+    const dt = new Date(d + 'T00:00:00');
+    return dt.toLocaleDateString('pt-PT', { weekday:'long', day:'numeric', month:'long' });
+  } catch(e){ return d; }
+}
+
+function render(){
+  const raw = JSON.parse(document.getElementById('log-data').textContent || '{"entries":[]}');
+  const entries = (raw.entries || []).slice().sort((a,b) => {
+    const ka = a.date + ' ' + (a.time||''), kb = b.date + ' ' + (b.time||'');
+    return kb.localeCompare(ka);
+  });
+
+  const cutoff = Date.now() - 7*86400000;
+  const seen = new Map();
+  entries.forEach(e => {
+    const t = new Date(e.date + 'T' + (e.time||'00:00')).getTime();
+    if(t >= cutoff && !seen.has(e.agent)) seen.set(e.agent, e.emoji || '\u{1F916}');
+  });
+  const activeRow = document.getElementById('activeRow');
+  if(seen.size === 0){
+    activeRow.innerHTML = '<span class="chip"><span class="dot" style="background:#C9C5D8"></span>Ainda sem agents ativos esta semana</span>';
+  } else {
+    activeRow.innerHTML = [...seen.entries()].map(([agent, emoji]) =>
+      `<span class="chip"><span class="dot"></span>${emoji} ${agent}</span>`
+    ).join('');
+  }
+
+  const log = document.getElementById('log');
+  if(entries.length === 0){
+    log.innerHTML = '<div class="empty">Ainda não há registos.</div>';
+    return;
+  }
+
+  let html = '';
+  let lastDate = null;
+  entries.forEach(e => {
+    if(e.date !== lastDate){
+      html += `<div class="date-heading">${fmtDate(e.date)}</div>`;
+      lastDate = e.date;
+    }
+    const status = ['ok','attention','info','error'].includes(e.status) ? e.status : 'info';
+    html += `
+      <div class="entry">
+        <div class="stripe ${status}"></div>
+        <div class="entry-body">
+          <div class="entry-top">
+            <span class="entry-agent">${e.emoji || '\u{1F916}'} ${e.agent || 'Agent'}</span>
+            <span class="entry-time">${e.time || ''}</span>
+          </div>
+          <div class="entry-title">${e.title || ''}</div>
+          <div class="entry-summary">${e.summary || ''}</div>
+        </div>
+      </div>`;
+  });
+  log.innerHTML = html;
+}
+render();
+</script>

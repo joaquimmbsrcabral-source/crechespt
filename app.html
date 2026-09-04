@@ -3084,14 +3084,28 @@ function sincronizarControlosComFiltros(){
 }
 window._aplicarParametrosURL = aplicarParametrosURL;
 
-// Deep link: abrir creche se URL tem #creche-<id>
+// Deep link: abrir creche se URL tem #creche-<id> OU ?creche=<id>
+  //
+  // O ?creche= existia nos emails muito antes de existir aqui. O alerta de vaga
+  // — o email mais urgente que o produto envia, "liga já, as vagas preenchem-se
+  // rápido" — mandava o pai para creches.app/app?creche=<id>, e o mapa abria no
+  // país inteiro com 4.037 creches porque ninguém lia o parâmetro. A 3 de
+  // setembro um pai teve de nos escrever a pedir o contacto da creche que o
+  // email dizia ter vaga. O admin gera o mesmo link em "ver no mapa ↗".
   function checkHashDeepLink(){
     const m = (location.hash||"").match(/#creche-(.+)/);
-    if(m){
-      const id = decodeURIComponent(m[1]);
-      if(State.creches.find(c=>c.id===id)){
-        openDetail(id);
-      }
+    let id = m ? decodeURIComponent(m[1]) : "";
+    if(!id){
+      try { id = new URLSearchParams(location.search).get("creche") || ""; }
+      catch(e){ id = ""; }
+    }
+    if(!id) return;
+    if(State.creches.find(c=>c.id===id)){
+      openDetail(id);
+    } else if(State.userData && State.userData.extrasPendentes !== false){
+      // As creches "extra" entram depois do Firebase responder. Sem esta espera,
+      // um link para uma página criada pela própria creche não abria nada.
+      setTimeout(()=>{ if(State.creches.find(c=>c.id===id)) openDetail(id); }, 2500);
     }
   }
   window.addEventListener("hashchange", checkHashDeepLink);
