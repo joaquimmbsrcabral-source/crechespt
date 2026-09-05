@@ -994,6 +994,7 @@ function renderLeads(){
     if(l.notificado) passos.push('<div>✓ Entregue '+_leadData(l.notificado_em) +
       (l.endereco_suspeito ? ' — <span style="color:#8A1E45">'+cpEsc(l.endereco_suspeito)+'</span>' : '') + '</div>');
     else passos.push('<div style="color:#8A1E45">✗ Nunca entregue à creche</div>');
+    if(l.reenviado_suspeito_em)  passos.push('<div style="color:#1F6E37">✓ Reenviado ao endereço certo '+_leadData(l.reenviado_suspeito_em)+'</div>');
     if(l.lembretes.creche)       passos.push('<div>✓ Lembrete à creche aos 2 dias</div>');
     if(l.lembretes.alternativas) passos.push('<div>✓ Alternativas ao pai aos 5 dias</div>');
     if(l.creche_respondeu)       passos.push('<div style="color:#1F6E37">✓ A creche respondeu'+

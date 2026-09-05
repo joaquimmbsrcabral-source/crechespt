@@ -129,12 +129,21 @@ function slugify(nome) {
 // Calcula o próximo lote server-side: creches com email, não aderentes, não convidadas,
 // ordenadas por visualizações (desc). Devolve também quantas ficam por convidar.
 async function construirLoteAuto(db, limit) {
-  const [ds, mgrsSnap, invSnap, daysSnap] = await Promise.all([
+  const [ds, mgrsSnap, invSnap, daysSnap, optSnap] = await Promise.all([
     fetch("https://creches.app/creches_pt.json").then((r) => r.json()).catch(() => []),
     db.collection("creche_managers").get().catch(() => null),
     db.collection("creche_invites").get().catch(() => null),
     db.collectionGroup("days").get().catch(() => null),
+    db.collection("email_optouts").get().catch(() => null),
   ]);
+  // Quem pediu para sair. Vive em Firestore e não no dataset porque um opt-out
+  // tem de valer no minuto seguinte ao pedido — não no próximo deploy. Com 40
+  // convites por dia, um dia de atraso é um segundo email a quem já disse não.
+  const optOut = new Set();
+  if (optSnap) optSnap.forEach((d) => {
+    const e = String((d.data() || {}).email || "").trim().toLowerCase();
+    if (e) optOut.add(e);
+  });
   const aderentes = new Set();
   if (mgrsSnap) mgrsSnap.forEach((d) => aderentes.add(String(d.data().creche_id)));
   const convidadas = new Set();
@@ -153,6 +162,7 @@ async function construirLoteAuto(db, limit) {
     // público (só para filhos de colaboradores, por exemplo), a quem um convite
     // para receber famílias não faz sentido nenhum.
     .filter((c) => !c.nao_contactar && !c.fechada_ao_publico)
+    .filter((c) => !optOut.has(String(c.email || "").split(";")[0].trim().toLowerCase()))
     .filter((c) => c.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email))
     .filter((c) => !aderentes.has(String(c.id)) && !convidadas.has(String(c.id)))
     .map((c) => ({

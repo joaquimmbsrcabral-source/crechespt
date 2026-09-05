@@ -146,6 +146,14 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Quem pediu para não receber convites. Contém endereços de email, por isso
+    // é fechada como a de cima. Escrita só pelo servidor (/api/ops opt_out),
+    // que corre com o Admin SDK e ignora estas regras.
+    match /email_optouts/{id} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
     // Stats diários (page views agregados, sem dados pessoais)
     // Qualquer pessoa pode criar/incrementar; só admin lê.
     match /daily_stats/{date} {

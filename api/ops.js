@@ -9,6 +9,8 @@
  *
  * Body JSON: { action, ...params }
  *   {"action":"list"}                                  → snapshot de todas as pendências
+ *   {"action":"opt_out","email":"x@y.pt","motivo":"..."} → tira da lista de convites
+ *   {"action":"optouts"}                              → quem já pediu para sair
  *   {"action":"leads_painel"}                          → leads cruzados, com estado derivado
  *                                                        e agregados por creche (o /admin)
  *   {"action":"perfis_limpar_campos"}                  → perfis fechados por campos fora da
@@ -270,6 +272,8 @@ async function actionLeadsEnderecoSuspeito(db, diasMax) {
 
     // Se a creche gere a página, o lead foi para o gestor — esse está certo.
     if (l.sem_painel === false) return;
+    // Já reenviado para o endereço certo: está tratado.
+    if (l.reenviado_suspeito_em) return;
 
     const principal = String(c.email || "").split(";")[0].trim().toLowerCase();
     const secundario = String(c.email_oficial || "").trim().toLowerCase();
@@ -310,7 +314,18 @@ async function actionLeadsReenviarSuspeitos(db, quem, limite, diasMax) {
         body: JSON.stringify({ lead_id: p.id, force: true })
       });
       const j = await r.json().catch(() => ({}));
-      if (r.ok && j.ok) { ok++; feitos.push({ creche: p.creche, dias: p.dias, estado: "entregue" }); }
+      if (r.ok && j.ok) {
+        ok++;
+        feitos.push({ creche: p.creche, dias: p.dias, estado: "entregue" });
+        // Sem esta marca, o leads_endereco_suspeito devolvia os MESMOS pedidos
+        // para sempre: a heurística compara o email do dataset com o oficial, e
+        // reenviar não muda nenhum dos dois. Resultado: 15 dos 47 já tinham sido
+        // reenviados e continuavam na lista, com risco de a creche receber o
+        // mesmo pedido da mesma família três e quatro vezes.
+        await db.doc(`creche_leads/${p.id}`)
+          .update({ reenviado_suspeito_em: FieldValue.serverTimestamp() })
+          .catch(() => {});
+      }
       else { falhou++; feitos.push({ creche: p.creche, dias: p.dias, estado: j.error || j.skipped || `HTTP ${r.status}` }); }
     } catch (e) {
       falhou++; feitos.push({ creche: p.creche, dias: p.dias, estado: e.message });
@@ -375,6 +390,52 @@ async function logOp(db, quem, action, targetId, crecheId, detalhe) {
     executado_em: FieldValue.serverTimestamp(),
     detalhe: detalhe || null,
   });
+}
+
+// ── action: opt_out — retirar alguém da lista, sem passar por um deploy ────
+//
+// O convite promete "respondam «remover» e retiramos-vos da lista" desde o
+// primeiro dia. Até agora isso significava: o Joaquim vê o email, edita o
+// creches_pt.json à mão, faz commit, faz deploy. Com 1.952 convites por enviar
+// a 40 por dia, são mais sete semanas de opt-outs a chegar — e enquanto o
+// deploy não sai, a creche que pediu para sair pode receber outro email.
+//
+// Passa a viver em Firestore: efeito imediato, sem deploy, e com registo de
+// quem pediu e quando. O `nao_contactar` do dataset continua a valer (é o
+// registo histórico e sobrevive a uma limpeza da base) — isto acrescenta-se.
+async function actionOptOut(db, quem, email, motivo) {
+  const e = String(email || "").trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) {
+    return { status: 400, body: { error: "email inválido" } };
+  }
+  // O id é o próprio email com os pontos escapados: um endereço só pode
+  // aparecer uma vez, e pedir duas vezes não cria dois registos.
+  const id = e.replace(/[./#$[\]]/g, "_");
+  await db.doc(`email_optouts/${id}`).set({
+    email: e,
+    motivo: String(motivo || "pediu para não receber emails").slice(0, 300),
+    registado_por: quem,
+    registado_em: FieldValue.serverTimestamp(),
+  }, { merge: true });
+  await logOp(db, quem, "opt_out", id, null, { email: e });
+
+  const snap = await db.collection("email_optouts").get().catch(() => null);
+  return { status: 200, body: { ok: true, action: "opt_out", email: e, total: snap ? snap.size : null } };
+}
+
+async function actionOptOutsListar(db) {
+  const snap = await db.collection("email_optouts").get();
+  const ms = (t) => (t && t.toMillis ? t.toMillis() : 0);
+  const lista = snap.docs.map((d) => {
+    const v = d.data();
+    return {
+      email: v.email || d.id,
+      motivo: v.motivo || "",
+      registado_por: v.registado_por || null,
+      registado_em: ms(v.registado_em) ? new Date(ms(v.registado_em)).toISOString() : null,
+    };
+  }).sort((a, b) => String(b.registado_em).localeCompare(String(a.registado_em)));
+  return { status: 200, body: { ok: true, action: "optouts", total: lista.length, optouts: lista } };
 }
 
 // ── action: leads_painel — tudo o que o /admin precisa, já cruzado ──────────
@@ -445,7 +506,7 @@ async function actionLeadsPainel(db, diasMax) {
     // ── Endereço suspeito: mesma lógica do leads_endereco_suspeito, para os
     // dois ecrãs não discordarem um do outro.
     let enderecoSuspeito = null;
-    if (l.notificado === true && c && l.sem_painel !== false) {
+    if (l.notificado === true && c && l.sem_painel !== false && !l.reenviado_suspeito_em) {
       if (invalidos.has(emailCreche)) enderecoSuspeito = `o endereço devolveu erro (${invalidos.get(emailCreche)})`;
       else if (emailOficial && /min-edu/.test(emailOficial)) enderecoSuspeito = "foi para a caixa do agrupamento do Ministério";
       else if (emailOficial) enderecoSuspeito = "a Carta Social indica outro endereço";
@@ -481,6 +542,7 @@ async function actionLeadsPainel(db, diasMax) {
       notificado: l.notificado === true, notificado_em: iso(l.notificado_em),
       entregue_para: l.entregue_para || null,
       endereco_suspeito: enderecoSuspeito,
+      reenviado_suspeito_em: iso(l.reenviado_suspeito_em),
       creche_respondeu: l.creche_respondeu === true,
       creche_respondeu_em: iso(l.creche_respondeu_em),
       horas_ate_resposta: typeof l.horas_ate_resposta === "number" ? Math.round(l.horas_ate_resposta) : null,
@@ -1027,6 +1089,10 @@ export default async function handler(req, res) {
         return res.status(200).json(await actionList(db));
       case "aderentes":
         return res.status(200).json(await actionAderentes(db));
+      case "opt_out":
+        out = await actionOptOut(db, quem, body.email, body.motivo); break;
+      case "optouts":
+        return res.status(200).json((await actionOptOutsListar(db)).body);
       case "leads_painel":
         return res.status(200).json(
           await actionLeadsPainel(db, Number(body.dias) || DIAS_MAX_LEAD));
