@@ -259,11 +259,13 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <button type="button" class="vaga-report-btn"
             data-vaga-creche-id="cs-3744"
             data-vaga-creche-nome="Centro Social da Pasteleira"
+            data-sem-contacto="0"
             style="background:#fff;border:1.5px solid #7DD389;color:#1F6E37;padding:11px 22px;border-radius:99px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .15s">
       🟢 Sei que esta creche tem vaga — reporta
     </button>
   </div>
 
+  
   <div class="q-banner ok">✓ Confirmado na Carta Social <span class="q-src">(fonte oficial da Segurança Social)</span></div>
   <div class="q-banner horario">🕐 <span><b>Horário alargado</b> — Abre às 7h30 e fecha às 19h30 — útil para quem trabalha por turnos e não consegue chegar antes das 18h30.</span></div>
   <div class="q-banner warn">📋 <span>O Centro Social da Pasteleira <b>não tinha lugares livres</b> no último registo oficial (42 de 42 lugares ocupados). <span class="q-src">Fonte: Carta Social · não é confirmação de vaga — confirma com a creche.</span></span></div>
@@ -326,7 +328,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-04. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-05. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
   </div>
 </main>
 <footer>
@@ -456,7 +458,8 @@ document.addEventListener("click", function(e){
     return;
   }
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
-    { aderente: !!document.getElementById("perfil-creche-box") });
+    { aderente: !!document.getElementById("perfil-creche-box"),
+       semContacto: slot.dataset.semContacto === "1" });
 });
 
 // Modal pai: "🟢 Sei de vaga aqui"

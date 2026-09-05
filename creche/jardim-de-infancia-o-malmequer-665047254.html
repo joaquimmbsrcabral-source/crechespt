@@ -259,11 +259,13 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <button type="button" class="vaga-report-btn"
             data-vaga-creche-id="osm-way-665047254"
             data-vaga-creche-nome="Jardim de Infância &quot;O Malmequer&quot;"
+            data-sem-contacto="0"
             style="background:#fff;border:1.5px solid #7DD389;color:#1F6E37;padding:11px 22px;border-radius:99px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .15s">
       🟢 Sei que esta creche tem vaga — reporta
     </button>
   </div>
 
+  
   <div class="q-banner info">ℹ Contactos recolhidos do OpenStreetMap e ainda não confirmados por nós. <a href="mailto:geral@creches.app?subject=Correcção%20Jardim%20de%20Infância%20&quot;O%20Malmequer&quot;">Algum está errado? Avisa-nos →</a></div>
   
   
@@ -324,7 +326,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/way/665047254" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-04. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/way/665047254" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-05. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
   </div>
 </main>
 <footer>
@@ -454,7 +456,8 @@ document.addEventListener("click", function(e){
     return;
   }
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
-    { aderente: !!document.getElementById("perfil-creche-box") });
+    { aderente: !!document.getElementById("perfil-creche-box"),
+       semContacto: slot.dataset.semContacto === "1" });
 });
 
 // Modal pai: "🟢 Sei de vaga aqui"

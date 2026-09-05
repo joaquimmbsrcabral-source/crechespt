@@ -1,6 +1,26 @@
 {
  "entries": [
   {
+   "id": "2026-09-05-briefing",
+   "date": "2026-09-05",
+   "time": "08:50",
+   "agent": "Briefing diário",
+   "emoji": "☕",
+   "title": "40 convites enviados e dois pedidos de remoção",
+   "summary": "Lote diário enviado sem falhas: 40 convites a creches, ficam 1952 por convidar. Na caixa de entrada 3 emails relevantes, dois deles pedidos de remoção que tens de tratar — o Colégio Colibri pede para sair da base de dados por confusão com o JI n.º 2 do Cacém, e a Creche o Gonzo (Braga, Grupo Jerónimo Martins) diz que só serve filhos de colaboradores e quer sair. Há ainda uma mãe a desistir por causa do preço. Zero claims pendentes, mas continua 1 foto por moderar e o Google Calendar devolveu a agenda vazia.",
+   "status": "attention"
+  },
+  {
+   "id": "2026-09-05-ops",
+   "date": "2026-09-05",
+   "time": "08:47",
+   "agent": "Agente de operações",
+   "emoji": "🛡️",
+   "title": "Terceiro dia sem pendências — a foto continua por moderar",
+   "summary": "A fila de administração voltou a aparecer vazia: zero correções, zero reports de idades, zero claims e zero pedidos de remoção. Não houve nada para aplicar, aprovar, rejeitar ou escalar, e por isso também não deixei rascunhos de email no Gmail. Continua exactamente 1 foto por moderar — a mesma desde 1 de setembro (creche osm-way-1301843976) — e como não consigo ver imagens, esse é o único ponto que espera por ti no admin.",
+   "status": "attention"
+  },
+  {
    "id": "2026-09-04-briefing",
    "date": "2026-09-04",
    "time": "09:35",
@@ -578,26 +598,6 @@
    "emoji": "🛡️",
    "title": "Escalei 2 claims novos, 2 rascunhos de verificação no Gmail",
    "summary": "Analisei 2 claims novos, ambos com recomendação 'rever': Pedro dos Santos para «Jardim Infantil \"O Rezingão\"» (email pedroperdigao@colegiorezingao.pt não coincide com o do dataset, ji.orezingao@escolas.min-edu.pt) e Marta Botelho para «Colégio Piloto Diese» (creche não está no dataset, sem sinais para validar). Não aprovei nem rejeitei nenhum; deixei 2 rascunhos no Gmail a pedir validação pelo email/telefone oficial. Mantém-se escalado o report de 26/07 do «Cantinho das Fadas» ('Nunca foi creche', contradiz o nome com 'Berçario'). Sem correções, fotos nem remoções.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-08-04-ops",
-   "date": "2026-08-04",
-   "time": "10:46",
-   "agent": "Agente de operações",
-   "emoji": "🛡️",
-   "title": "Só o report do Cantinho das Fadas continua à tua espera",
-   "summary": "Única pendência mantém-se o report de 26/07 sobre «Cantinho das Fadas- Berçario e Babysitting» com a nota 'Nunca foi creche' (de silvia.matos20@gmail.com), escalado desde 27/07 e ainda por resolver no /admin. Mantive a escalada: veio sem tipo proposto (texto livre, sempre para escalar) e o nome contém 'Berçario', o que contradiz parcialmente a alegação. Sem correções, claims, fotos nem remoções hoje; nenhum rascunho de email necessário.",
-   "status": "attention"
-  },
-  {
-   "id": "2026-07-31-enriquecimento",
-   "date": "2026-07-31",
-   "time": "09:22",
-   "agent": "Enriquecimento de dados",
-   "emoji": "🔍",
-   "title": "Encontrei 6 emails novos em 12 pesquisas",
-   "summary": "Pesquisei 12 creches privadas sem email: encontrei 6 emails novos (Creche N. Sra. da Lapa em Famalicão, A Nossa Casa em Esmoriz, Jardim das Sementinhas em Viseu, Brincadeiras ao Cubo no Barreiro, O Mundo Mágico no Porto, Oficina dos Sonhos na Charneca — este último com website também), 1 telefone (Os Pitruquinhas, Odivelas) e 2 websites. Sem emails inválidos a corrigir esta semana. As fichas foram regeneradas. LEMBRETE: Para publicar, corre ./deploy.sh no Terminal — as alterações só ficam online depois do deploy.",
    "status": "attention"
   }
  ]

@@ -146,6 +146,13 @@ async function construirLoteAuto(db, limit) {
     views.set(p.id, (views.get(p.id) || 0) + (d.data().count || 0));
   });
   const cand = ds
+    // O convite promete "respondam «remover» e retiramos-vos da lista" desde o
+    // primeiro dia — mas não havia campo nenhum que cumprisse a promessa: quem
+    // pedia para sair era retirado à mão e voltava no lote seguinte. `nao_contactar`
+    // no dataset passa a ser esse mecanismo. Também apanha as creches fechadas ao
+    // público (só para filhos de colaboradores, por exemplo), a quem um convite
+    // para receber famílias não faz sentido nenhum.
+    .filter((c) => !c.nao_contactar && !c.fechada_ao_publico)
     .filter((c) => c.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email))
     .filter((c) => !aderentes.has(String(c.id)) && !convidadas.has(String(c.id)))
     .map((c) => ({

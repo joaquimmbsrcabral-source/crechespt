@@ -227,6 +227,13 @@ async function emailsDoDataset(creche_id) {
     const lista = Array.isArray(ds) ? ds : (ds && ds.creches) || [];
     const c = lista.find(x => String(x.id) === String(creche_id));
     if (!c) return [];
+    // Creche fechada ao público (só filhos de colaboradores, por exemplo): não
+    // faz sentido entregar-lhe o pedido de uma família que nunca poderá entrar.
+    // A creche o Gonzo de Braga escreveu-nos exactamente isto — que estar
+    // listada como disponível "cria uma ilusão de possibilidade". Tem razão.
+    // O `nao_contactar` NÃO entra aqui de propósito: é um opt-out dos convites,
+    // que são marketing nosso. O pedido de uma família é outra coisa.
+    if (c.fechada_ao_publico) return [];
     const candidatos = [c.email, c.email_oficial]
       .map(e => String(e || "").split(";")[0].trim().toLowerCase())
       .filter(valido);
@@ -355,7 +362,24 @@ export default async function handler(req, res) {
     const temPainel = emails.length > 0;
     if (!temPainel) {
       const doDataset = await emailsDoDataset(lead.creche_id);
-      if (!doDataset.length) return res.status(200).json({ ok: true, skipped: "creche sem email conhecido" });
+      if (!doDataset.length) {
+        // Devolvia ok:true e o ecrã dizia "Enviado!" — a uma família cujo pedido
+        // morreu aqui e que nunca foi avisada. Aconteceu duas vezes à mesma mãe,
+        // a 23 e a 31 de agosto, para "A Escolinha" no Porto: ficou 12 dias à
+        // espera de uma resposta que nunca ia chegar. São 466 das 4.037 creches
+        // sem contacto nenhum, portanto isto não era um caso isolado.
+        //
+        // Continua a devolver 200 (o pedido FICA registado — se um dia
+        // encontrarmos o contacto, o leads_por_entregar entrega-o), mas passa a
+        // dizer a verdade ao cliente, que tem de a mostrar.
+        await snap.ref.update({ notificado: false, sem_contacto: true }).catch(() => {});
+        return res.status(200).json({
+          ok: true,
+          entregue: false,
+          motivo: "sem_contacto",
+          aviso: "Ainda não temos contacto desta creche, por isso o pedido não pôde ser entregue. Guardámo-lo: se conseguirmos o contacto, enviamos e avisamos-te.",
+        });
+      }
       emails.push(...doDataset);
     }
 
@@ -421,7 +445,7 @@ export default async function handler(req, res) {
       }
     }
 
-    return res.status(200).json({ ok: true, ack_pai: ackPai });
+    return res.status(200).json({ ok: true, entregue: true, ack_pai: ackPai });
   } catch (e) {
     console.error("lead-notify:", e);
     return res.status(500).json({ error: e.message });

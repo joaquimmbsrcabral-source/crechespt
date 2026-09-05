@@ -139,6 +139,12 @@
     open: function(crecheId, crecheNome, opts){
       opts = opts || {};
       var aderente = opts.aderente !== false;
+      // `semContacto`: a creche não tem email nem telefone conhecidos. O ecrã
+      // final dizia "Enviado!" a toda a gente, porque o aviso à creche vai por
+      // sendBeacon e o sendBeacon não lê resposta — o cliente não podia saber.
+      // Uma mãe ficou 12 dias à espera de resposta de uma creche a quem nunca
+      // foi possível entregar nada. São 466 das 4.037 creches sem contacto.
+      var semContacto = opts.semContacto === true;
       var mem = _perfilLer();
 
       var old = document.getElementById("lead-modal-cp");
@@ -299,9 +305,13 @@
 
             var linkAcomp = location.origin + "/candidatura?c=" + tok;
             ov.firstChild.innerHTML = '<div style="text-align:center;padding:22px 10px">' +
-              '<div style="font-size:2.4rem">💌</div><h3 style="margin:10px 0 6px;color:#2C2356">Enviado!</h3>' +
+              '<div style="font-size:2.4rem">' + (semContacto ? '📥' : '💌') + '</div>' +
+              '<h3 style="margin:10px 0 6px;color:#2C2356">' +
+                (semContacto ? 'Pedido guardado' : 'Enviado!') + '</h3>' +
               '<p style="font-size:.9rem;color:#6E6989;margin:0 0 14px">' +
-                (aderente
+                (semContacto
+                  ? 'Ainda <b>não temos contacto</b> desta creche, por isso não conseguimos entregar-lhe o pedido agora. Guardámo-lo: assim que descobrirmos o contacto, enviamos e avisamos-te. Entretanto vale a pena procurar o telefone e ligar diretamente.'
+                  : aderente
                   ? 'A creche recebeu o teu contacto e vai responder-te diretamente. Boa sorte! 🍀'
                   : 'Enviámos o teu contacto por email à creche. Se não te responderem, avisamos-te e sugerimos alternativas. 🍀') +
               '</p>' +

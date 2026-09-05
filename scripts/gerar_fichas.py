@@ -493,7 +493,13 @@ for c in creches:
     # AÇÃO PRINCIPAL — gerada no servidor, por isso aparece de imediato.
     # Com email: deixar contacto (fica registado e acompanhamos). Sem email:
     # ligar, que é a única via honesta. Sem nada: não prometemos o que não há.
-    if mail:
+    if c.get("fechada_ao_publico"):
+        # Sem botão de contacto: pedir vaga aqui é pedir a uma porta fechada.
+        cta_primary = (
+            '<div class="cta-primary-note" style="margin:0">'
+            'Esta creche não aceita inscrições do público — ver a nota acima.</div>'
+        )
+    elif mail:
         cta_primary = (
             f'<button type="button" class="cta-primary" id="btn-lead-primary">'
             f'<span class="pic" aria-hidden="true">💌</span><span class="pl">Tenho interesse</span></button>'
@@ -605,6 +611,19 @@ for c in creches:
     # sinal de "onde provavelmente há lugar" com cobertura nacional — mas é um
     # retrato anual, por isso nunca escrevemos "tem vaga", só quantos lugares
     # estavam ocupados no último registo.
+    # Creche fechada ao público. Uma família que peça vaga aqui perde tempo e
+    # ganha uma desilusão — e a creche recebe pedidos que nunca pode aceitar.
+    # Foi o Gonzo de Braga a dizer-nos: estar listado como disponível "cria uma
+    # ilusão de possibilidade". O aviso vem ANTES de tudo, e o botão de contacto
+    # desaparece (ver `acoes_html`).
+    fechada_banner = ""
+    if c.get("fechada_ao_publico"):
+        _nota = c.get("fechada_ao_publico_nota") or "Não aceita inscrições do público em geral."
+        fechada_banner = (
+            '<div class="q-banner warn">🚫 <span><b>Esta creche não está aberta ao público.</b> '
+            + esc(_nota) + ' Deixamo-la no mapa para não a procurares em vão — mas não vale a pena '
+            'contactar, a não ser que reúnas as condições acima.</span></div>')
+
     lotacao_banner = ""
     _cap = c.get("capacidade_oficial")
     _ut = c.get("utentes_oficial")
@@ -736,11 +755,13 @@ for c in creches:
     <button type="button" class="vaga-report-btn"
             data-vaga-creche-id="{esc(c['id'])}"
             data-vaga-creche-nome="{esc(nome)}"
+            data-sem-contacto="{"1" if not (mail or tel) else "0"}"
             style="background:#fff;border:1.5px solid #7DD389;color:#1F6E37;padding:11px 22px;border-radius:99px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .15s">
       🟢 Sei que esta creche tem vaga — reporta
     </button>
   </div>
 
+  {fechada_banner}
   {banner}
   {horario_selo}
   {lotacao_banner}
@@ -923,7 +944,8 @@ document.addEventListener("click", function(e){{
     return;
   }}
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
-    {{ aderente: !!document.getElementById("perfil-creche-box") }});
+    {{ aderente: !!document.getElementById("perfil-creche-box"),
+       semContacto: slot.dataset.semContacto === "1" }});
 }});
 
 // Modal pai: "🟢 Sei de vaga aqui"

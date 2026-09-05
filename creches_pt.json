@@ -20033,7 +20033,7 @@
   "codigo_postal": "2725-294",
   "distrito": "Lisboa",
   "telefone": "+351 219 262 290",
-  "email": "geral@colegioaquinta.com",
+  "email": "eb1.n3.memmartins@escolas.min-edu.pt",
   "website": "http://www.eb1-n3-mem-martins.rcts.pt",
   "fax": "+351 219 262 290",
   "grades": "3-5",
@@ -20049,7 +20049,11 @@
   "idade_verificar": true,
   "email_oficial": "eb1.n3.memmartins@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social_corrigido",
+  "email_anterior_removido": "geral@colegioaquinta.com",
+  "email_estado": "corrigido_troca",
+  "email_verificado_em": "2026-09-05",
+  "email_verificado_fonte": "mesmo padrão do JI n.º 2 do Cacém: JI público numerado com email de colégio privado, ambos em Sintra"
  },
  {
   "id": "osm-way-264314000",
@@ -56841,7 +56845,7 @@
   "codigo_postal": "2735-000",
   "distrito": "Lisboa",
   "telefone": "+351 214313413",
-  "email": "secretaria@colegiocolibri.pt",
+  "email": "ji.cuantaagualva@escolas.min-edu.pt",
   "fax": "+351 214313413",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
@@ -56856,7 +56860,11 @@
   "idade_verificar": true,
   "email_oficial": "ji.cuantaagualva@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social_corrigido",
+  "email_anterior_removido": "secretaria@colegiocolibri.pt",
+  "email_estado": "corrigido_troca",
+  "email_verificado_em": "2026-09-05",
+  "email_verificado_fonte": "opt-out do Colégio Colibri, 5 set 2026: confirmaram por email que não são esta creche"
  },
  {
   "id": "osm-way-1302095443",
@@ -56914,7 +56922,7 @@
   "codigo_postal": "2725-032",
   "distrito": "Lisboa",
   "telefone": "+351 219263073",
-  "email": "escolagentepequena@gmai.com",
+  "email": "ji.gentepequena@escolas.min-edu.pt",
   "grades": "3-5",
   "categoria_osm": "kindergarten",
   "osm_url": "https://www.openstreetmap.org/way/1302095446",
@@ -56932,7 +56940,11 @@
   "tipo_corrigido_em": "2026-08-13",
   "email_oficial": "ji.gentepequena@escolas.min-edu.pt",
   "email_oficial_fonte": "carta_social",
-  "email_fonte": "carta_social"
+  "email_fonte": "carta_social",
+  "email_anterior_removido": "escolagentepequena@gmai.com",
+  "email_estado": "corrigido_typo_dominio",
+  "email_verificado_em": "2026-09-05",
+  "email_verificado_fonte": "gmai.com é typosquatting de gmail.com — TEM MX, portanto o email saía e ia parar a outro sítio"
  },
  {
   "id": "osm-way-1302095447",
@@ -80601,7 +80613,6 @@
   "codigo_postal": "4715-238",
   "localidade": "BRAGA",
   "telefone": "253600240",
-  "email": "creche.braga@recheio.pt",
   "operador": "PINGO DOCE - DISTRIBUIÇÃO ALIMENTAR S.A",
   "concelho": "Braga",
   "concelho_slug": "braga",
@@ -80621,7 +80632,14 @@
   "capacidade_oficial": 38,
   "utentes_oficial": 16,
   "horario": "7:00 - 19:00",
-  "horario_fonte": "carta_social"
+  "horario_fonte": "carta_social",
+  "email_anterior_removido": "creche.braga@recheio.pt",
+  "email_estado": "opt_out",
+  "nao_contactar": true,
+  "nao_contactar_em": "2026-09-05",
+  "nao_contactar_motivo": "pediram por email para não receber contactos (5 set 2026)",
+  "fechada_ao_publico": true,
+  "fechada_ao_publico_nota": "Exclusiva a filhos de colaboradores do Grupo Jerónimo Martins"
  },
  {
   "id": "cs-3194",

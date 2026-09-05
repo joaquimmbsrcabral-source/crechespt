@@ -259,11 +259,13 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
     <button type="button" class="vaga-report-btn"
             data-vaga-creche-id="osm-node-1393932395"
             data-vaga-creche-nome="Associação Fernão Mendes Pinto"
+            data-sem-contacto="1"
             style="background:#fff;border:1.5px solid #7DD389;color:#1F6E37;padding:11px 22px;border-radius:99px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:all .15s">
       🟢 Sei que esta creche tem vaga — reporta
     </button>
   </div>
 
+  
   <div class="q-banner warn">⚠ Faltam-nos os contactos desta creche (telefone e email). <a href="mailto:geral@creches.app?subject=Contacto%20Associação%20Fernão%20Mendes%20Pinto">Sabes? Ajuda outros pais →</a></div>
   
   
@@ -324,7 +326,7 @@ footer a{color:var(--ink-soft);margin:0 7px}footer a:hover{color:var(--c-coral)}
   </div>
 
   <div class="aviso">
-    Dados de <a href="https://www.openstreetmap.org/node/1393932395" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-04. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
+    Dados de <a href="https://www.openstreetmap.org/node/1393932395" rel="nofollow noopener" target="_blank">OpenStreetMap</a> (ODbL), atualizados a 2026-09-05. Podem existir alterações de contactos ou horários — confirma sempre com a instituição.
   </div>
 </main>
 <footer>
@@ -454,7 +456,8 @@ document.addEventListener("click", function(e){
     return;
   }
   window.CrecheLeads.open(slot.dataset.crecheId, slot.dataset.crecheNome || "",
-    { aderente: !!document.getElementById("perfil-creche-box") });
+    { aderente: !!document.getElementById("perfil-creche-box"),
+       semContacto: slot.dataset.semContacto === "1" });
 });
 
 // Modal pai: "🟢 Sei de vaga aqui"
